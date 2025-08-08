@@ -60,7 +60,12 @@ public class SakuraRecipeProvider extends AbstractRecipeProvider {
     private void registerCraftingRecipe(Consumer<FinishedRecipe> consumer) {
 
         makeSlab(consumer,BlockRegistry.TATAMI_SLAB, BlockRegistry.TATAMI);
+        makeSlab(consumer,BlockRegistry.TATAMI_SLAB_WAXED, BlockRegistry.TATAMI_WAXED);
         makeSlab(consumer,BlockRegistry.TATAMI_SLAB_SUNBURNT, BlockRegistry.TATAMI_SUNBURNT);
+        
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TATAMI_WAXED.get(), 1)
+        .requires(BlockRegistry.TATAMI.get()).requires(Items.HONEYCOMB)
+        .unlockedBy("has_tatami", has(BlockRegistry.TATAMI.get())).save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.STRAW_BLOCK.get(),4).pattern("LLL").pattern("LLL").pattern("LLL")
                 .define('L', SakuraItemTags.STRAW).unlockedBy("has_item", has(SakuraItemTags.STRAW)).save(consumer);
@@ -421,6 +426,7 @@ public class SakuraRecipeProvider extends AbstractRecipeProvider {
                 .save(consumer, new ResourceLocation(SakuraMod.MODID, "breadcrumbs_from_breads"));
 
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.RICE).get(), 1)
+        		.addResult(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.NUKA).get())
                 .requires(SakuraItemTags.RICE_BROWN).requires(SakuraItemTags.RICE_BROWN)
                 .save(consumer, new ResourceLocation(SakuraMod.MODID, "rice_from_mortar"));
         StoneMortarRecipeBuilder.mortar(Items.SUGAR, 3)
@@ -432,6 +438,7 @@ public class SakuraRecipeProvider extends AbstractRecipeProvider {
                 .requires(Items.BEETROOT).save(consumer,
                 new ResourceLocation(SakuraMod.MODID, "beetsugar_from_mortar"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.FLOUR).get(), 1)
+        		.addResult(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.STRAW).get(), 1)
                 .requires(SakuraItemTags.GRAIN_WHEAT)
                 .save(consumer, new ResourceLocation(SakuraMod.MODID, "flour_from_mortar"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.FLOUR_BUCKWHEAT).get(), 1)
@@ -847,6 +854,53 @@ public class SakuraRecipeProvider extends AbstractRecipeProvider {
                         FoodRegistry.FOODSET.get(SakuraFoodSet.NIMONO_FISH).get(), 2)
                 .requires(SakuraItemTags.RAW_FISHES).requires(SakuraItemTags.MISO).requires(SakuraItemTags.SALT)
                 .save(consumer, new ResourceLocation(SakuraMod.MODID, "nimono_fish_cooking"));
+        
+        CookingPotRecipeBuilder
+		        .cooking(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 125),
+		                FoodRegistry.FOODSET.get(SakuraFoodSet.NIKUJAGA).get(), 2)
+		        .requires(Ingredient.fromValues(Stream.of(new Ingredient.TagValue(SakuraItemTags.RAW_PORK),
+		                new Ingredient.TagValue(SakuraItemTags.RAW_BEEF))))
+		        .requires(Tags.Items.CROPS_CARROT).requires(Tags.Items.CROPS_POTATO)
+		        .requires(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.KAESHI).get())
+		        .save(consumer, new ResourceLocation(SakuraMod.MODID, "nikujaga_cooking_kaeshi"));
+		
+		CookingPotRecipeBuilder
+		        .cooking(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 250),
+		                FoodRegistry.FOODSET.get(SakuraFoodSet.NIMONO_PUMPKIN).get(), 2)
+		        .requires(SakuraItemTags.CROPS_PUMPKIN)
+		        .requires(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.KAESHI).get())
+		        .save(consumer, new ResourceLocation(SakuraMod.MODID, "nimono_pumpkin_cooking_kaeshi"));
+		
+		CookingPotRecipeBuilder
+		        .cooking(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 250),
+		                FoodRegistry.FOODSET.get(SakuraFoodSet.NIMONO_RADISH).get(), 2)
+		        .requires(SakuraItemTags.CROPS_RADISH)
+		        .requires(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.KAESHI).get())
+		        .save(consumer, new ResourceLocation(SakuraMod.MODID, "nimono_radish_cooking_kaeshi"));
+		
+		CookingPotRecipeBuilder
+		        .cooking(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 250),
+		                FoodRegistry.FOODSET.get(SakuraFoodSet.IMOTAKI).get(), 2)
+		        .requires(SakuraItemTags.CROPS_TARO)
+		        .requires(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.KAESHI).get())
+		        .save(consumer, new ResourceLocation(SakuraMod.MODID, "imotaki_cooking_kaeshi"));
+		
+		CookingPotRecipeBuilder
+		        .cooking(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 250),
+		                FoodRegistry.FOODSET.get(SakuraFoodSet.CHIKUZENNI).get(), 2)
+		        .requires(SakuraItemTags.RAW_CHICKEN).requires(SakuraItemTags.MUSHROOMS)
+		        .requires(SakuraItemTags.VEGETABLES)
+		        .requires(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.KAESHI).get())
+		        .save(consumer, new ResourceLocation(SakuraMod.MODID, "chikuzenni_cooking_kaeshi"));
+		
+		CookingPotRecipeBuilder
+		        .cooking(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 250),
+		                FoodRegistry.FOODSET.get(SakuraFoodSet.NOPPEI_JIRU).get(), 2)
+		        .requires(SakuraItemTags.RAW_CHICKEN).requires(SakuraItemTags.CROPS_TARO)
+		        .requires(SakuraItemTags.VEGETABLES)
+		        .requires(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.KAESHI).get())
+		        .save(consumer, new ResourceLocation(SakuraMod.MODID, "noppei_jiru_cooking_kaeshi"));
+		    
 
         CookingPotRecipeBuilder
                 .cooking(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 125),
@@ -878,6 +932,23 @@ public class SakuraRecipeProvider extends AbstractRecipeProvider {
     }
 
     private void registerFermenterRecipe(Consumer<FinishedRecipe> consumer) {
+    	
+        FermenterRecipeBuilder
+		        .fermenting(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 100),
+		        		FoodRegistry.FOODSET.get(SakuraFoodSet.PICKELD_RADISH).get(), 2, FluidStack.EMPTY, 0, 400)
+		        .requires(SakuraItemTags.CROPS_RADISH)
+		        .requires(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.NUKA).get())
+		        .requires(SakuraItemTags.SALT)
+		        .save(consumer, new ResourceLocation(SakuraMod.MODID, "nukazuke_radish"));
+        
+        FermenterRecipeBuilder
+		        .fermenting(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 100),
+		        		FoodRegistry.FOODSET.get(SakuraFoodSet.PICKELD_EGGPLANT).get(), 2, FluidStack.EMPTY, 0, 400)
+		        .requires(SakuraItemTags.CROPS_EGGPLANT)
+		        .requires(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.NUKA).get())
+		        .requires(SakuraItemTags.SALT)
+		        .save(consumer, new ResourceLocation(SakuraMod.MODID, "nukazuke_eggplant"));
+    	
         FermenterRecipeBuilder
                 .fermenting(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 500),
                         ItemRegistry.MATERIALS.get(SakuraNormalItemSet.KOUJI).get(), 2, FluidStack.EMPTY)
@@ -894,7 +965,7 @@ public class SakuraRecipeProvider extends AbstractRecipeProvider {
                         new FluidStack(FluidRegistry.BEER.get(), 100))
                 .requires(SakuraItemTags.GRAIN)
                 .requires(SakuraItemTags.BROWN_MUSHROOMS)
-                .requires(SakuraItemTags.SUGAR)
+                .requires(SakuraItemTags.SUGAR_SUGAR)
                 .save(consumer, new ResourceLocation(SakuraMod.MODID, "basic_beer_fermenting"));
         
         FermenterRecipeBuilder
@@ -909,20 +980,21 @@ public class SakuraRecipeProvider extends AbstractRecipeProvider {
                 .fermenting(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 200),
                         ItemRegistry.MATERIALS.get(SakuraNormalItemSet.YEAST).get(), 4,FluidStack.EMPTY,0,400)
                 .requires(SakuraItemTags.BROWN_MUSHROOMS)
-                .requires(SakuraItemTags.SUGAR)
+                .requires(SakuraItemTags.SUGAR_SUGAR)
                 .save(consumer, new ResourceLocation(SakuraMod.MODID, "yeast_fermenting"));
         
         FermenterRecipeBuilder
                 .fermenting(FluidIngredient.fromTag(SakuraFluidTags.WATER_WATER, 100),
                         ItemRegistry.MATERIALS.get(SakuraNormalItemSet.YEAST).get(), 4,FluidStack.EMPTY,0,200)
                 .requires(SakuraItemTags.YEAST)
-                .requires(SakuraItemTags.SUGAR)
-                .requires(SakuraItemTags.SUGAR)
+                .requires(SakuraItemTags.SUGAR_SUGAR)
+                .requires(SakuraItemTags.SUGAR_SUGAR)
                 .save(consumer, new ResourceLocation(SakuraMod.MODID, "yeast_multiply"));
 
         FermenterRecipeBuilder
                 .fermenting(FluidIngredient.fromTag(SakuraFluidTags.BREWERS_ALCOHOL, 500),
                         ItemRegistry.MATERIALS.get(SakuraNormalItemSet.MIRIN).get(), 8, FluidStack.EMPTY)
+                .addResult(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.MIRIN_KASU).get(), 1)
                 .requires(FoodRegistry.FOODSET.get(SakuraFoodSet.RICE_COOKED).get()).requires(SakuraItemTags.KOUJI)
                 .requires(SakuraItemTags.SUGAR)
                 .save(consumer, new ResourceLocation(SakuraMod.MODID, "mirin_fermenting"));

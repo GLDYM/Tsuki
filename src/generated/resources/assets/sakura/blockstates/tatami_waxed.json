@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sakura:block/tatami_waxed",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sakura:block/tatami_waxed"
+    },
+    "facing=south": {
+      "model": "sakura:block/tatami_waxed",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sakura:block/tatami_waxed",
+      "y": 270
+    }
+  }
+}

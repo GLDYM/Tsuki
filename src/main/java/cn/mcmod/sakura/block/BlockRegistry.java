@@ -117,10 +117,14 @@ public class BlockRegistry {
 
     public static final RegistryObject<Block> TATAMI = BLOCKS.register("tatami",
             () -> new TatamiBlock(Block.Properties.copy(Blocks.HAY_BLOCK)));
+    public static final RegistryObject<Block> TATAMI_WAXED = BLOCKS.register("tatami_waxed",
+            () -> new BaseHorizonBlock(Block.Properties.copy(Blocks.HAY_BLOCK)));
     public static final RegistryObject<Block> TATAMI_SUNBURNT = BLOCKS.register("tatami_sunburnt",
             () -> new BaseHorizonBlock(Block.Properties.copy(Blocks.HAY_BLOCK)));
     public static final RegistryObject<FacingSlab> TATAMI_SLAB = BLOCKS.register("tatami_slab",
             () -> new TatamiSlabBlock(Block.Properties.copy(Blocks.HAY_BLOCK)));
+    public static final RegistryObject<FacingSlab> TATAMI_SLAB_WAXED = BLOCKS.register("tatami_slab_waxed",
+            () -> new FacingSlab(Block.Properties.copy(Blocks.HAY_BLOCK)));
     public static final RegistryObject<FacingSlab> TATAMI_SLAB_SUNBURNT = BLOCKS.register("tatami_slab_sunburnt",
             () -> new FacingSlab(Block.Properties.copy(Blocks.HAY_BLOCK)));
 

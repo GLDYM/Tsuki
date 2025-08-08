@@ -10,10 +10,10 @@
       "tag": "forge:yeast"
     },
     {
-      "tag": "forge:sugar"
+      "tag": "forge:sugar/sugar"
     },
     {
-      "tag": "forge:sugar"
+      "tag": "forge:sugar/sugar"
     }
   ],
   "recipeTime": 200,

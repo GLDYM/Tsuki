@@ -51,6 +51,18 @@ public class SakuraBlockStateProvider extends AbstractBlockStateProvider {
                 texture("tatami"), 
                 texture("tatami"), 
                 texture("tatami"));
+        
+        horizontalBlock(BlockRegistry.TATAMI_WAXED.get(), 
+                texture("tatami"), 
+                texture("tatami"), 
+                texture("tatami"));
+        
+        facingSlabBlock(BlockRegistry.TATAMI_SLAB_WAXED, 
+                texture("tatami"), 
+                texture("tatami"), 
+                texture("tatami")
+        );
+        
         horizontalBlock(BlockRegistry.TATAMI_SUNBURNT.get(), 
                 texture("tatami_tan"), 
                 texture("tatami_tan"), 

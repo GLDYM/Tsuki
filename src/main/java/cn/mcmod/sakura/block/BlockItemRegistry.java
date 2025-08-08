@@ -63,6 +63,11 @@ public class BlockItemRegistry {
     public static final RegistryObject<Item> TATAMI_SLAB = ITEMS.register("tatami_slab",
             () -> new BlockItem(BlockRegistry.TATAMI_SLAB.get(), SakuraMod.defaultItemProperties()));
     
+    public static final RegistryObject<Item> TATAMI_WAXED = ITEMS.register("tatami_waxed",
+            () -> new BlockItem(BlockRegistry.TATAMI_WAXED.get(), SakuraMod.defaultItemProperties()));
+    public static final RegistryObject<Item> TATAMI_SLAB_WAXED = ITEMS.register("tatami_slab_waxed",
+            () -> new BlockItem(BlockRegistry.TATAMI_SLAB_WAXED.get(), SakuraMod.defaultItemProperties()));
+    
     public static final RegistryObject<Item> TATAMI_SUNBURNT = ITEMS.register("tatami_sunburnt",
             () -> new BlockItem(BlockRegistry.TATAMI_SUNBURNT.get(), SakuraMod.defaultItemProperties()));
     public static final RegistryObject<Item> TATAMI_SLAB_SUNBURNT = ITEMS.register("tatami_slab_sunburnt",

@@ -36,7 +36,7 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
     public FermenterCategory(IGuiHelper helper) {
         title = Component.translatable("sakura.jei.fermenting");
         ResourceLocation backgroundImage = new ResourceLocation(SakuraMod.MODID, "textures/gui/barrel.png");
-        background = helper.createDrawable(backgroundImage, 32, 10, 110, 66);
+        background = helper.createDrawable(backgroundImage, 32, 16, 110, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.FERMENTER.get()));
         arrow = helper.drawableBuilder(backgroundImage, 176, 0, 24, 17).buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
         bubbles = helper.drawableBuilder(backgroundImage, 176, 35, 18, 18).buildAnimated(18, IDrawableAnimated.StartDirection.BOTTOM, false);
@@ -69,31 +69,31 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
         for (int row = 0; row < 3; ++row) {
                 int inputIndex = row;
                 if (inputIndex < recipeIngredients.size()) {
-                    builder.addSlot(RecipeIngredientRole.INPUT, 23, 7 + row * borderSlotSize)
+                    builder.addSlot(RecipeIngredientRole.INPUT, 23, 1 + row * borderSlotSize)
                     .addIngredients(recipeIngredients.get(inputIndex));
                 }
         }
         if(recipe.getRequiredFluid() != FluidIngredient.EMPTY)
             builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
-            .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 64)
+            .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
             .addIngredients(ForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
         
         for (int row = 0; row < 3; ++row) {
             int inputIndex = row;
             if (inputIndex < recipe.getResultItemList().size()) {
-                builder.addSlot(RecipeIngredientRole.OUTPUT, 71, 7 + row * borderSlotSize)
+                builder.addSlot(RecipeIngredientRole.OUTPUT, 71, 1 + row * borderSlotSize)
                 .addItemStack(recipe.getResultItemList().get(inputIndex));
             }
         }
         if(!recipe.getResultFluid().isEmpty())
             builder.addSlot(RecipeIngredientRole.INPUT, 93, 1)
-            .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 64)
+            .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
             .addIngredient(ForgeTypes.FLUID_STACK, recipe.getResultFluid());
     }
 
     @Override
     public void draw(FermenterRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        bubbles.draw(guiGraphics, 46, 16);
-        arrow.draw(guiGraphics, 44, 34);
+        bubbles.draw(guiGraphics, 46, 10);
+        arrow.draw(guiGraphics, 44, 28);
     }
 }

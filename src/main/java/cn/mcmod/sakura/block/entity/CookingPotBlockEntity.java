@@ -46,7 +46,7 @@ import net.minecraftforge.items.wrapper.RecipeWrapper;
 
 public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProvider, HeatableBlockEntity {
 
-    public static final int TANK_CAPACITY = 8000;
+    public static final int TANK_CAPACITY = 2000;
     private final ItemStackHandler inventory;
     private LazyOptional<IItemHandler> inputHandler;
     private LazyOptional<IItemHandler> outputHandler;
@@ -70,6 +70,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         this.tileData = createIntArray();
         this.fluidTank = LazyOptional.of(this::createFluidHandler);
         this.experienceTracker = new Object2IntOpenHashMap<>();
+        this.checkNewRecipe = true;
     }
 
     public static void workingTick(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity blockEntity) {

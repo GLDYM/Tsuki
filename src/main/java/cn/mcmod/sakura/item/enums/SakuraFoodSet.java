@@ -11,6 +11,12 @@ public enum SakuraFoodSet {
             .compostChance(0.3F).decayModifier(2.5F).heatCapacity(1F).cookingTemp(480F).build()),
     EGGPLANT(FoodInfo.builder().name("eggplant").amountAndCalories(2, 0.2F).water(5F).nutrients(0F, 0F, 2F, 0F, 0F)
             .compostChance(0.3F).decayModifier(2.5F).heatCapacity(1F).cookingTemp(480F).build()),
+    
+    PICKELD_RADISH(FoodInfo.builder().name("pickled_radish").amountAndCalories(2, 0.2F).water(5F).nutrients(0F, 0F, 2F, 0F, 0F)
+            .compostChance(0.5F).decayModifier(1F).heatCapacity(1F).cookingTemp(480F).build()),
+    PICKELD_EGGPLANT(FoodInfo.builder().name("pickled_eggplant").amountAndCalories(2, 0.2F).water(5F).nutrients(0F, 0F, 2F, 0F, 0F)
+            .compostChance(0.5F).decayModifier(1F).heatCapacity(1F).cookingTemp(480F).build()),
+    
     CABBAGE(FoodInfo.builder().name("cabbage").amountAndCalories(2, 0.2F).water(5F).nutrients(0F, 0F, 2F, 0F, 0F)
             .compostChance(0.3F).decayModifier(2.5F).heatCapacity(1F).cookingTemp(480F).build()),
     ONION(FoodInfo.builder().name("onion").amountAndCalories(2, 0.2F).water(5F).nutrients(0F, 0F, 2F, 0F, 0F)

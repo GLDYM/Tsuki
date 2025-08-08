@@ -37,7 +37,7 @@ public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
     public DistillerCategory(IGuiHelper helper) {
         title = Component.translatable("sakura.jei.distillation");
         ResourceLocation backgroundImage = new ResourceLocation(SakuraMod.MODID, "textures/gui/distiller.png");
-        background = helper.createDrawable(backgroundImage, 32, 10, 110, 66);
+        background = helper.createDrawable(backgroundImage, 32, 16, 110, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.DISTILLER.get()));
         heatIndicator = helper.createDrawable(backgroundImage, 176, 17, 18, 18);
         arrow = helper.drawableBuilder(backgroundImage, 176, 0, 24, 17).buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
@@ -71,32 +71,32 @@ public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
         for (int row = 0; row < 3; ++row) {
                 int inputIndex = row;
                 if (inputIndex < recipeIngredients.size()) {
-                    builder.addSlot(RecipeIngredientRole.INPUT, 23, 7 + row * borderSlotSize)
+                    builder.addSlot(RecipeIngredientRole.INPUT, 23, 1 + row * borderSlotSize)
                     .addIngredients(recipeIngredients.get(inputIndex));
                 }
         }
         if(recipe.getRequiredFluid() != FluidIngredient.EMPTY)
             builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
-            .setFluidRenderer(DistillerBlockEntity.TANK_CAPACITY, true, 16, 64)
+            .setFluidRenderer(DistillerBlockEntity.TANK_CAPACITY, true, 16, 52)
             .addIngredients(ForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
         
         for (int row = 0; row < 3; ++row) {
             int inputIndex = row;
             if (inputIndex < recipe.getResultItemList().size()) {
-                builder.addSlot(RecipeIngredientRole.OUTPUT, 71, 7 + row * borderSlotSize)
+                builder.addSlot(RecipeIngredientRole.OUTPUT, 71, 1 + row * borderSlotSize)
                 .addItemStack(recipe.getResultItemList().get(inputIndex));
             }
         }
         if(!recipe.getResultFluid().isEmpty())
             builder.addSlot(RecipeIngredientRole.INPUT, 93, 1)
-            .setFluidRenderer(DistillerBlockEntity.TANK_CAPACITY, true, 16, 64)
+            .setFluidRenderer(DistillerBlockEntity.TANK_CAPACITY, true, 16, 52)
             .addIngredient(ForgeTypes.FLUID_STACK, recipe.getResultFluid());
     }
 
     @Override
     public void draw(DistillerRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        bubbles.draw(guiGraphics, 46, 6);
-        arrow.draw(guiGraphics, 44, 24);
-        heatIndicator.draw(guiGraphics, 47, 43);
+        bubbles.draw(guiGraphics, 46, 0);
+        arrow.draw(guiGraphics, 44, 18);
+        heatIndicator.draw(guiGraphics, 47, 37);
     }
 }

@@ -2,6 +2,8 @@
     "block.sakura.sakura_diamond_block":"Block of Sakura Diamond",
     "block.sakura.kawara_block":"Kawara Block",
     "block.sakura.kawara":"Kawara",
+	"block.sakura.tatami_waxed":"Waxed Tatami",
+	"block.sakura.tatami_slab_waxed":"Waxed Tatami Slab",
     "block.sakura.tatami_tan":"Tan Tatami",
     "block.sakura.tatami":"Tatami",
     "block.sakura.tatami_tan_ns":"No Skirt Tan Tatami",
@@ -165,6 +167,12 @@
     "item.sakura.okinoyaki_plus":"Okinoyaki Plus",
     "item.sakura.okinoyaki_final":"Okinoyaki Final",
 
+	"item.sakura.kaeshi":"Kaeshi",
+	"item.sakura.nuka":"Rice Bran",
+	"item.sakura.mirin_kasu":"Mirin Kasu",
+	"item.sakura.pickled_radish":"Pickled Radish",
+	"item.sakura.pickled_eggplant":"Pickled Eggplant",
+	
     "item.sakura.bento_0":"Bento",
     "item.sakura.bento_1":"Bento",
     "item.sakura.bento_2":"Omurice Bento",

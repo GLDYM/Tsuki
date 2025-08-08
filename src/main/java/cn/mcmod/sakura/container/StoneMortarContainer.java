@@ -78,15 +78,18 @@ public class StoneMortarContainer extends AbstractContainerMenu {
                 if (!this.moveItemStackTo(itemStack1, 6, 42, true)) {
                     return ItemStack.EMPTY;
                 }
+                slot.onQuickCraft(itemStack1, itemStack);
             } else if (index >= 6) {
-                if (index >= 6 && index < 33) {
-                    if (!this.moveItemStackTo(itemStack1, 33, 42, false)) {
-                        return ItemStack.EMPTY;
-                    }
-                } else if (index >= 33 && index < 42 && !this.moveItemStackTo(itemStack1, 6, 32, false)) {
-                    return ItemStack.EMPTY;
+            	if (!this.moveItemStackTo(itemStack1, 0, 4, false)) {
+            		if (index >= 6 && index < 33) {
+	                    if (!this.moveItemStackTo(itemStack1, 33, 42, false)) {
+	                        return ItemStack.EMPTY;
+	                    }
+	                } else if (index >= 33 && index < 42 && !this.moveItemStackTo(itemStack1, 6, 33, false)) {
+	                    return ItemStack.EMPTY;
+	                }
                 }
-            } else if (!this.moveItemStackTo(itemStack1, 6, 42, false)) {
+            } else if (!this.moveItemStackTo(itemStack1, 6, 43, false)) {
                 return ItemStack.EMPTY;
             }
 

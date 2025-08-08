@@ -43,7 +43,7 @@ import java.util.Optional;
 
 public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvider {
 
-    public static final int TANK_CAPACITY = 8000;
+    public static final int TANK_CAPACITY = 4000;
     private final ItemStackHandler inventory;
     private LazyOptional<IItemHandler> inputHandler;
     private LazyOptional<IItemHandler> outputHandler;
@@ -69,6 +69,7 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
         this.inputfluidTank = LazyOptional.of(this::createInputFluidHandler);
         this.outputfluidTank = LazyOptional.of(this::createFluidHandler);
         this.experienceTracker = new Object2IntOpenHashMap<>();
+        this.checkNewRecipe = true;
     }
 
     public static void workingTick(Level level, BlockPos pos, BlockState state, FermenterBlockEntity blockEntity) {

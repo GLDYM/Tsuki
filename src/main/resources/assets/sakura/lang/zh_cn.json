@@ -14,6 +14,10 @@
 	"block.sakura.tatami_carpet": "榻榻米地毯",
 	"block.sakura.tatami_tan_ns_carpet": "无边缘榻榻米地毯（日晒）",
 	"block.sakura.tatami_ns_carpet": "无边缘榻榻米地毯",
+	
+	"block.sakura.tatami_waxed":"榻榻米（涂蜡）",
+	"block.sakura.tatami_slab_waxed":"榻榻米台阶（涂蜡）",
+	
 	"block.sakura.bamboo_door": "竹门",
 
 	"block.sakura.bamboo_shoot": "竹笋",
@@ -135,8 +139,13 @@
 	"block.sakura.nabe_sukiyaki": "寿喜烧锅",
 	"block.sakura.nabe_oden": "关东煮锅",
 	
+	"item.sakura.kaeshi":"调味酱油",
+	"item.sakura.nuka":"米糠",
+	"item.sakura.mirin_kasu":"味淋粕",
+	"item.sakura.pickled_radish":"腌萝卜",
+	"item.sakura.pickled_eggplant":"腌茄子",
 
-	"item.sakura.machined_fish": "加工鱼肉",
+	"item.sakura.machined_fish": "鱼片",
 	"item.sakura.futon": "布团",
 	"item.sakura.silk": "丝绸",
 	"item.sakura.bento_box": "便当盒",

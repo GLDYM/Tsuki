@@ -135,7 +135,9 @@ public class SakuraItemTagsProvider extends ItemTagsProvider {
         tag(SakuraItemTags.DUST_SALT).addTag(SakuraItemTags.SALT_SALT);
         tag(SakuraItemTags.SALT_SALT).add(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.SALT).get());
 
-        tag(SakuraItemTags.SUGAR).addTag(SakuraItemTags.SUGAR_SUGAR);
+        tag(SakuraItemTags.SUGAR)
+        	.add(ItemRegistry.MATERIALS.get(SakuraNormalItemSet.MIRIN_KASU).get())
+        	.addTag(SakuraItemTags.SUGAR_SUGAR);
         tag(SakuraItemTags.SUGAR_SUGAR).add(Items.SUGAR);
         
         tag(SakuraItemTags.CHEESE).addTag(SakuraItemTags.CHEESE_CHEESE);
