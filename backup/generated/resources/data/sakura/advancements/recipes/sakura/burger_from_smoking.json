@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:burger_from_smoking"
+      "tsuki:burger_from_smoking"
     ]
   },
   "criteria": {
-    "has_sakura:burger_raw": {
+    "has_tsuki:burger_raw": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "sakura:burger_raw"
+              "tsuki:burger_raw"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:burger_from_smoking"
+        "recipe": "tsuki:burger_from_smoking"
       }
     }
   },
   "requirements": [
     [
-      "has_sakura:burger_raw",
+      "has_tsuki:burger_raw",
       "has_the_recipe"
     ]
   ]

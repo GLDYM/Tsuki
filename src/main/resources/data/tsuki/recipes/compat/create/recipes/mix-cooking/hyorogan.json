@@ -1,0 +1,33 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:flour"
+    },
+    {
+      "item": "tsuki:rice"
+    },
+    [
+      {
+        "tag": "forge:crops/taro"
+      },
+      {
+        "tag": "forge:crops/potato"
+      }
+    ],
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:hyorogan",
+      "count": 2
+    }
+  ]
+}

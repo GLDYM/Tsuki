@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "sakura:burger_raw"
+    "item": "tsuki:burger_raw"
   },
-  "result": "sakura:burger",
+  "result": "tsuki:burger",
   "experience": 0.5,
   "cookingtime": 200
 }

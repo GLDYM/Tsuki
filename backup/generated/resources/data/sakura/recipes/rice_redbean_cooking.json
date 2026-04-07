@@ -1,8 +1,8 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "tag": "sakura:rice/rice"
+      "tag": "tsuki:rice/rice"
     },
     {
       "tag": "forge:crops/redbean"
@@ -13,7 +13,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:rice_redbean"
+    "item": "tsuki:rice_redbean"
   },
   "recipeTime": 200
 }

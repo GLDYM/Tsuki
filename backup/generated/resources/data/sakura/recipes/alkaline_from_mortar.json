@@ -1,5 +1,5 @@
 {
-  "type": "sakura:stone_mortar",
+  "type": "tsuki:stone_mortar",
   "ingredients": [
     {
       "tag": "forge:stone"
@@ -10,7 +10,7 @@
       "item": "minecraft:cobblestone"
     },
     {
-      "item": "sakura:salt",
+      "item": "tsuki:salt",
       "count": 2
     }
   ],

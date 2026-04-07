@@ -13,17 +13,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "sakura:buckwheat_crop",
+                  "block": "tsuki:buckwheat_crop",
                   "properties": {
                     "age": "7"
                   }
                 }
               ],
-              "name": "sakura:buckwheat"
+              "name": "tsuki:buckwheat"
             },
             {
               "type": "minecraft:item",
-              "name": "sakura:buckwheat"
+              "name": "tsuki:buckwheat"
             }
           ]
         }
@@ -46,13 +46,13 @@
               }
             }
           ],
-          "name": "sakura:buckwheat"
+          "name": "tsuki:buckwheat"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "sakura:buckwheat_crop",
+          "block": "tsuki:buckwheat_crop",
           "properties": {
             "age": "7"
           }

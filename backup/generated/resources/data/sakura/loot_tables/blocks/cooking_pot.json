@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "sakura:cooking_pot"
+          "name": "tsuki:cooking_pot"
         }
       ],
       "conditions": [

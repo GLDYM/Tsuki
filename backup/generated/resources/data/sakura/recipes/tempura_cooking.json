@@ -1,8 +1,8 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "item": "sakura:tempura_batter"
+      "item": "tsuki:tempura_batter"
     },
     {
       "tag": "forge:shrimp"
@@ -13,7 +13,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:tempura"
+    "item": "tsuki:tempura"
   },
   "recipeTime": 200
 }

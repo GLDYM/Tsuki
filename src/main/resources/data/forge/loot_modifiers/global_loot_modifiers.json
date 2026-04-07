@@ -1,11 +1,11 @@
 {
   "replace": false,
   "entries": [
-    "sakura:fishing",
-    "sakura:grass_seeds",
-    "sakura:tall_grass_seeds",
-    "sakura:fern_seeds",
-    "sakura:large_fern_seeds",
-    "sakura:chest_curry"
+    "tsuki:fishing",
+    "tsuki:grass_seeds",
+    "tsuki:tall_grass_seeds",
+    "tsuki:fern_seeds",
+    "tsuki:large_fern_seeds",
+    "tsuki:chest_curry"
   ]
 }

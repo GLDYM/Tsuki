@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:cooking_pot"
+      "tsuki:cooking_pot"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:cooking_pot"
+        "recipe": "tsuki:cooking_pot"
       }
     }
   },

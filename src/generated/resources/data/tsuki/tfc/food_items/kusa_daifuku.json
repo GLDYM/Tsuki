@@ -1,0 +1,14 @@
+{
+  "dairy": 0.5,
+  "decayModifier": 2.25,
+  "fruit": 0.0,
+  "grain": 3.0,
+  "hunger": 6,
+  "ingredient": {
+    "item": "tsuki:kusa_daifuku"
+  },
+  "protein": 0.0,
+  "saturation": 0.6,
+  "vegetables": 1.5,
+  "water": 0.5
+}

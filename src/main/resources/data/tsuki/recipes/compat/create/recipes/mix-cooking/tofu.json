@@ -1,0 +1,22 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:crops/soybean"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:tofu",
+      "count": 2
+    }
+  ]
+}

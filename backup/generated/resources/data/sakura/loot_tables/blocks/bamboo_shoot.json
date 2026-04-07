@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "sakura:bamboo_shoot"
+          "name": "tsuki:bamboo_shoot"
         }
       ],
       "conditions": [

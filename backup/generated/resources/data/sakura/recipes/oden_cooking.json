@@ -1,8 +1,8 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "item": "sakura:fishcake"
+      "item": "tsuki:fishcake"
     },
     {
       "tag": "forge:eggs"
@@ -16,7 +16,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:oden"
+    "item": "tsuki:oden"
   },
   "recipeTime": 200
 }

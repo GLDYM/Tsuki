@@ -1,5 +1,5 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
       "tag": "forge:crops/tomato"
@@ -13,7 +13,7 @@
     "amount": 250
   },
   "result": {
-    "item": "sakura:tomato_sauce",
+    "item": "tsuki:tomato_sauce",
     "count": 2
   },
   "recipeTime": 200

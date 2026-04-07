@@ -1,13 +1,13 @@
 {
-  "type": "sakura:stone_mortar",
+  "type": "tsuki:stone_mortar",
   "ingredients": [
     {
-      "tag": "sakura:rice/rice"
+      "tag": "tsuki:rice/rice"
     }
   ],
   "results": [
     {
-      "item": "sakura:flour_rice"
+      "item": "tsuki:flour_rice"
     }
   ],
   "recipeTime": 200

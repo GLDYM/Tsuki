@@ -1,5 +1,5 @@
 {
-  "type": "sakura:stone_mortar",
+  "type": "tsuki:stone_mortar",
   "ingredients": [
     {
       "tag": "forge:bread"
@@ -7,11 +7,11 @@
   ],
   "results": [
     {
-      "item": "sakura:breadcrumbs",
+      "item": "tsuki:breadcrumbs",
       "count": 2
     },
     {
-      "item": "sakura:breadcrumbs",
+      "item": "tsuki:breadcrumbs",
       "count": 2
     }
   ],

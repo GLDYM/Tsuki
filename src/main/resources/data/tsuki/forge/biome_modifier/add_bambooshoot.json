@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#tsuki:can_spawn_bamboo",
+  "features": "tsuki:patch_bambooshoot",
+  "step": "vegetal_decoration"
+}

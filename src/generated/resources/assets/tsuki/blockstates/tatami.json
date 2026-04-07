@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tsuki:block/tatami",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "tsuki:block/tatami"
+    },
+    "facing=south": {
+      "model": "tsuki:block/tatami",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tsuki:block/tatami",
+      "y": 270
+    }
+  }
+}

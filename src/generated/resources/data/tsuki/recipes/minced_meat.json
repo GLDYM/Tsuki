@@ -1,0 +1,45 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0.0,
+  "ingredients": [
+    [
+      {
+        "tag": "forge:raw_chicken"
+      },
+      {
+        "tag": "forge:raw_pork"
+      },
+      {
+        "tag": "forge:raw_beef"
+      },
+      {
+        "tag": "forge:raw_mutton"
+      }
+    ],
+    [
+      {
+        "tag": "forge:raw_chicken"
+      },
+      {
+        "tag": "forge:raw_pork"
+      },
+      {
+        "tag": "forge:raw_beef"
+      },
+      {
+        "tag": "forge:raw_mutton"
+      }
+    ]
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:minced_meat"
+    },
+    {
+      "count": 2,
+      "item": "tsuki:minced_meat"
+    }
+  ]
+}

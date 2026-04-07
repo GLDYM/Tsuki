@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "group": "sakura",
+  "ingredient": {
+    "item": "tsuki:dough_rice"
+  },
+  "result": "tsuki:rice_bread"
+}

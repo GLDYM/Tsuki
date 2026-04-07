@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#sakura:can_spawn_bamboo",
-  "features": "sakura:patch_bambooshoot",
-  "step": "vegetal_decoration"
-}

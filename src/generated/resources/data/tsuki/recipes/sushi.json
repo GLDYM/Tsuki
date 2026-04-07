@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:vinegar_rice"
+    },
+    {
+      "tag": "forge:slices/raw_fishes"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "tsuki:sushi"
+  }
+}

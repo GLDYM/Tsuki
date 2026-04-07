@@ -1,5 +1,5 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
       "tag": "forge:raw_pork"
@@ -9,7 +9,7 @@
     }
   ],
   "result": {
-    "item": "sakura:pork_stick",
+    "item": "tsuki:pork_stick",
     "count": 2
   },
   "recipeTime": 200

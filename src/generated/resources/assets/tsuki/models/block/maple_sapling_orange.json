@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "tsuki:block/maple_sapling_orange"
+  }
+}

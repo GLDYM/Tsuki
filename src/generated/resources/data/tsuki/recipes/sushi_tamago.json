@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:vinegar_rice"
+    },
+    {
+      "item": "tsuki:tamagoyaki"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "tsuki:sushi_tamago"
+  }
+}

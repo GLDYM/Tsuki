@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "L": {
+      "tag": "forge:lumber"
+    }
+  },
+  "pattern": [
+    "II",
+    "II",
+    "IL"
+  ],
+  "result": {
+    "item": "tsuki:knife_noodle"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,14 @@
+{
+  "dairy": 1.0,
+  "decayModifier": 2.0,
+  "fruit": 0.0,
+  "grain": 3.0,
+  "hunger": 6,
+  "ingredient": {
+    "item": "tsuki:dananko"
+  },
+  "protein": 0.0,
+  "saturation": 0.6,
+  "vegetables": 0.0,
+  "water": 1.0
+}

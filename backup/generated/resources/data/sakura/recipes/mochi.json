@@ -2,20 +2,20 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "sakura:rice_cooked"
+      "item": "tsuki:rice_cooked"
     },
     {
-      "item": "sakura:rice_cooked"
+      "item": "tsuki:rice_cooked"
     },
     {
-      "item": "sakura:rice_cooked"
+      "item": "tsuki:rice_cooked"
     },
     {
-      "item": "sakura:rice_cooked"
+      "item": "tsuki:rice_cooked"
     }
   ],
   "result": {
-    "item": "sakura:mochi",
+    "item": "tsuki:mochi",
     "count": 8
   }
 }

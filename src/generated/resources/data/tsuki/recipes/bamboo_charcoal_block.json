@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "sakura",
+  "key": {
+    "#": {
+      "item": "tsuki:bamboo_charcoal"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "tsuki:bamboo_charcoal_block"
+  },
+  "show_notification": true
+}

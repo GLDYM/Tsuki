@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "age=0":  { "model": "tsuki:block/onion_0" },
+    "age=1":  { "model": "tsuki:block/onion_1" },
+    "age=2":  { "model": "tsuki:block/onion_2" },
+    "age=3":  { "model": "tsuki:block/onion_3" }
+  }
+}

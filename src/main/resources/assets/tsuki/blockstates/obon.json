@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north":  { "model": "tsuki:block/obon" },
+    "facing=south":  { "model": "tsuki:block/obon", "y": 180 },
+    "facing=west":  { "model": "tsuki:block/obon", "y": 270 },
+    "facing=east":  { "model": "tsuki:block/obon", "y": 90 }
+  }
+}

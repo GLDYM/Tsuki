@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:lumber_bamboo"
+      "tsuki:lumber_bamboo"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:lumber_bamboo"
+        "recipe": "tsuki:lumber_bamboo"
       }
     }
   },

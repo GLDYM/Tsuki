@@ -5,7 +5,7 @@
   "experience": 0.5,
   "group": "sakura",
   "ingredient": {
-    "item": "sakura:boiled_bonito"
+    "item": "tsuki:boiled_bonito"
   },
-  "result": "sakura:dried_bonito"
+  "result": "tsuki:dried_bonito"
 }

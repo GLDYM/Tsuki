@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:bamboo_block"
+      "tsuki:bamboo_block"
     ]
   },
   "criteria": {
@@ -12,7 +12,7 @@
         "items": [
           {
             "items": [
-              "sakura:bamboo"
+              "tsuki:bamboo"
             ]
           }
         ]
@@ -24,7 +24,7 @@
         "items": [
           {
             "items": [
-              "sakura:bamboo"
+              "tsuki:bamboo"
             ]
           }
         ]
@@ -33,7 +33,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:bamboo_block"
+        "recipe": "tsuki:bamboo_block"
       }
     }
   },

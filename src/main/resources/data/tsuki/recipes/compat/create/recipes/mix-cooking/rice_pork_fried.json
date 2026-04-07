@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "tsuki:rice/rice"
+    },
+    {
+      "item": "tsuki:katsu"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:rice_pork_fried"
+    }
+  ]
+}

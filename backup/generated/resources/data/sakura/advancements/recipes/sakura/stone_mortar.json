@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:stone_mortar"
+      "tsuki:stone_mortar"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:stone_mortar"
+        "recipe": "tsuki:stone_mortar"
       }
     }
   },

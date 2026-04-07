@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:bamboo_charcoal_block_from_smelt"
+      "tsuki:bamboo_charcoal_block_from_smelt"
     ]
   },
   "criteria": {
-    "has_sakura:bamboo_block": {
+    "has_tsuki:bamboo_block": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "sakura:bamboo_block"
+              "tsuki:bamboo_block"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:bamboo_charcoal_block_from_smelt"
+        "recipe": "tsuki:bamboo_charcoal_block_from_smelt"
       }
     }
   },
   "requirements": [
     [
-      "has_sakura:bamboo_block",
+      "has_tsuki:bamboo_block",
       "has_the_recipe"
     ]
   ]

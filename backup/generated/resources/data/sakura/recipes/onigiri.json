@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "sakura:rice_cooked"
+      "item": "tsuki:rice_cooked"
     },
     {
       "item": "minecraft:dried_kelp"
     }
   ],
   "result": {
-    "item": "sakura:onigiri"
+    "item": "tsuki:onigiri"
   }
 }

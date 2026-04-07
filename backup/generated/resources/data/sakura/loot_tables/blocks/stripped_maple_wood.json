@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "sakura:stripped_maple_wood"
+          "name": "tsuki:stripped_maple_wood"
         }
       ],
       "conditions": [

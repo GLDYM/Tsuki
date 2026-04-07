@@ -1,8 +1,8 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "tag": "sakura:rice/rice"
+      "tag": "tsuki:rice/rice"
     },
     {
       "tag": "forge:raw_chicken"
@@ -16,7 +16,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:rice_oyako"
+    "item": "tsuki:rice_oyako"
   },
   "recipeTime": 200
 }

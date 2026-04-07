@@ -1,5 +1,5 @@
 {
-  "type": "sakura:stone_mortar",
+  "type": "tsuki:stone_mortar",
   "ingredients": [
     {
       "tag": "forge:fishes"
@@ -16,11 +16,11 @@
   ],
   "results": [
     {
-      "item": "sakura:fishcake",
+      "item": "tsuki:fishcake",
       "count": 4
     },
     {
-      "item": "sakura:fishcake",
+      "item": "tsuki:fishcake",
       "count": 4
     }
   ],

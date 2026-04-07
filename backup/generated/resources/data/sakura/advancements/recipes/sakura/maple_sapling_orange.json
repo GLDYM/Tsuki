@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:maple_sapling_orange"
+      "tsuki:maple_sapling_orange"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:maple_sapling_orange"
+        "recipe": "tsuki:maple_sapling_orange"
       }
     }
   },

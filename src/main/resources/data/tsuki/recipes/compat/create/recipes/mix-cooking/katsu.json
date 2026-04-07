@@ -1,0 +1,25 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:raw_pork"
+    },
+    {
+      "item": "tsuki:breadcrumbs"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "forge:food_oil"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:katsu",
+      "count": 2
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
   "type": "minecraft:campfire_cooking",
   "ingredient": {
-    "item": "sakura:eggplant"
+    "item": "tsuki:eggplant"
   },
-  "result": "sakura:eggplant_baked",
+  "result": "tsuki:eggplant_baked",
   "experience": 0.5,
   "cookingtime": 600
 }

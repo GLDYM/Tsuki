@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "tsuki:sakuraleaves"
+    },
+    "L": {
+      "tag": "forge:lumber"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "L#L"
+  ],
+  "result": {
+    "item": "tsuki:obon"
+  },
+  "show_notification": true
+}

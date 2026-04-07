@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "tsuki:block/redbean_crop_stage1"
+  }
+}

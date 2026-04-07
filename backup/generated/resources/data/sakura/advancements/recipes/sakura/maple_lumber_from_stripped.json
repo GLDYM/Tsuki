@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:maple_lumber_from_stripped"
+      "tsuki:maple_lumber_from_stripped"
     ]
   },
   "criteria": {
@@ -12,7 +12,7 @@
         "items": [
           {
             "items": [
-              "sakura:maple_log"
+              "tsuki:maple_log"
             ]
           }
         ]
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:maple_lumber_from_stripped"
+        "recipe": "tsuki:maple_lumber_from_stripped"
       }
     }
   },

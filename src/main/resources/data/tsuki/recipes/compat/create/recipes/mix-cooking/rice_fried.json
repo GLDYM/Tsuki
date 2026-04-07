@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "tsuki:rice/rice"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "forge:food_oil"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:rice_fried"
+    }
+  ]
+}

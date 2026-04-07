@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "sakura:taro"
+    "item": "tsuki:taro"
   },
-  "result": "sakura:taro_baked",
+  "result": "tsuki:taro_baked",
   "experience": 0.5,
   "cookingtime": 200
 }

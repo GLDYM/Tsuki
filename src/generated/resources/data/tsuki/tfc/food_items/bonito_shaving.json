@@ -1,0 +1,14 @@
+{
+  "dairy": 0.0,
+  "decayModifier": 0.0,
+  "fruit": 0.0,
+  "grain": 0.0,
+  "hunger": 1,
+  "ingredient": {
+    "item": "tsuki:bonito_shaving"
+  },
+  "protein": 1.0,
+  "saturation": 0.1,
+  "vegetables": 0.0,
+  "water": 0.0
+}

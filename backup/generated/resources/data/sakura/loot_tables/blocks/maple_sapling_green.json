@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "sakura:maple_sapling_green"
+          "name": "tsuki:maple_sapling_green"
         }
       ],
       "conditions": [

@@ -1,7 +1,7 @@
 {
   "values": [
-    "sakura:machined_bonito",
-    "sakura:machined_fish",
+    "tsuki:machined_bonito",
+    "tsuki:machined_fish",
     "#forge:slices/raw_fishes/cod",
     "#forge:slices/raw_fishes/salmon"
   ]

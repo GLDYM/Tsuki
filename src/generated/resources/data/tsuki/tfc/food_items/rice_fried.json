@@ -1,0 +1,14 @@
+{
+  "dairy": 0.0,
+  "decayModifier": 2.5,
+  "fruit": 0.0,
+  "grain": 1.5,
+  "hunger": 8,
+  "ingredient": {
+    "item": "tsuki:rice_fried"
+  },
+  "protein": 2.0,
+  "saturation": 0.6,
+  "vegetables": 2.0,
+  "water": 0.5
+}

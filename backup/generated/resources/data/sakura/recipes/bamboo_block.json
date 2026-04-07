@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "sakura:bamboo"
+      "item": "tsuki:bamboo"
     }
   },
   "result": {
-    "item": "sakura:bamboo_block"
+    "item": "tsuki:bamboo_block"
   }
 }

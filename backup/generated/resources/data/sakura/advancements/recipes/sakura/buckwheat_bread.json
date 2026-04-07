@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:buckwheat_bread"
+      "tsuki:buckwheat_bread"
     ]
   },
   "criteria": {
-    "has_sakura:dough_buckwheat": {
+    "has_tsuki:dough_buckwheat": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "sakura:dough_buckwheat"
+              "tsuki:dough_buckwheat"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:buckwheat_bread"
+        "recipe": "tsuki:buckwheat_bread"
       }
     }
   },
   "requirements": [
     [
-      "has_sakura:dough_buckwheat",
+      "has_tsuki:dough_buckwheat",
       "has_the_recipe"
     ]
   ]

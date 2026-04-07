@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "tsuki:block/maple_sapling_red"
+    },
+    "stage=1": {
+      "model": "tsuki:block/maple_sapling_red"
+    }
+  }
+}

@@ -13,17 +13,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "sakura:taro_crop",
+                  "block": "tsuki:taro_crop",
                   "properties": {
                     "age": "3"
                   }
                 }
               ],
-              "name": "sakura:imogara"
+              "name": "tsuki:imogara"
             },
             {
               "type": "minecraft:item",
-              "name": "sakura:taro"
+              "name": "tsuki:taro"
             }
           ]
         }
@@ -46,13 +46,13 @@
               }
             }
           ],
-          "name": "sakura:taro"
+          "name": "tsuki:taro"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "sakura:taro_crop",
+          "block": "tsuki:taro_crop",
           "properties": {
             "age": "3"
           }

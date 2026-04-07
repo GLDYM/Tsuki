@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "sakura:block/rapeseed_crop_stage1"
-  }
-}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "forge:slices/raw_fishes"
+    },
+    {
+      "tag": "forge:slices/raw_fishes"
+    },
+    {
+      "tag": "forge:soysauce"
+    }
+  ],
+  "result": {
+    "item": "tsuki:sashimi"
+  }
+}

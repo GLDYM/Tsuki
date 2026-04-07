@@ -1,0 +1,18 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "item": "minecraft:beetroot"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "tsuki:molasses"
+    }
+  ]
+}

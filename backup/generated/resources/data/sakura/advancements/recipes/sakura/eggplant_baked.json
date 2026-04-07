@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:eggplant_baked"
+      "tsuki:eggplant_baked"
     ]
   },
   "criteria": {
-    "has_sakura:eggplant": {
+    "has_tsuki:eggplant": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "sakura:eggplant"
+              "tsuki:eggplant"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:eggplant_baked"
+        "recipe": "tsuki:eggplant_baked"
       }
     }
   },
   "requirements": [
     [
-      "has_sakura:eggplant",
+      "has_tsuki:eggplant",
       "has_the_recipe"
     ]
   ]

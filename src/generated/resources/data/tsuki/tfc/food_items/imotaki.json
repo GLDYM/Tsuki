@@ -1,0 +1,14 @@
+{
+  "dairy": 5.0,
+  "decayModifier": 5.0,
+  "fruit": 5.0,
+  "grain": 0.0,
+  "hunger": 12,
+  "ingredient": {
+    "item": "tsuki:imotaki"
+  },
+  "protein": 5.0,
+  "saturation": 1.0,
+  "vegetables": 5.0,
+  "water": 5.0
+}

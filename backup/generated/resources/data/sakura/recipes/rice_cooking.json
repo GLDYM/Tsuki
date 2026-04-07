@@ -1,8 +1,8 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "tag": "sakura:rice/rice"
+      "tag": "tsuki:rice/rice"
     }
   ],
   "fluid": {
@@ -10,7 +10,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:rice_cooked"
+    "item": "tsuki:rice_cooked"
   },
   "recipeTime": 200
 }

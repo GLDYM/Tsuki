@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "item": "sakura:bamboo_charcoal"
+      "item": "tsuki:bamboo_charcoal"
     }
   },
   "result": {
-    "item": "sakura:bamboo_charcoal_block"
+    "item": "tsuki:bamboo_charcoal_block"
   }
 }

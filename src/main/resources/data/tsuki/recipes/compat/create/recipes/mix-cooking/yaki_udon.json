@@ -1,0 +1,27 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "tsuki:udon_raw"
+    },
+    {
+      "item": "tsuki:kaeshi"
+    },
+    {
+      "item": "tsuki:worcester_sauce"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "forge:food_oil"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:yaki_udon"
+    }
+  ]
+}

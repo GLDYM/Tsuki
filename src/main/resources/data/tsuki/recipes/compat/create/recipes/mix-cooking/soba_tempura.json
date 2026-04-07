@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "tsuki:soba_raw"
+    },
+    {
+      "item": "tsuki:noodle_soup"
+    },
+    {
+      "item": "tsuki:tempura"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:soba_tempura"
+    }
+  ]
+}

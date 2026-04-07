@@ -1,0 +1,14 @@
+{
+  "dairy": 0.5,
+  "decayModifier": 2.25,
+  "fruit": 0.0,
+  "grain": 2.0,
+  "hunger": 7,
+  "ingredient": {
+    "item": "tsuki:onigiri_seaweed"
+  },
+  "protein": 0.0,
+  "saturation": 0.7,
+  "vegetables": 2.0,
+  "water": 0.5
+}

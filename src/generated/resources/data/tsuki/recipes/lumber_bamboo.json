@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "forge:bamboo"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "item": "tsuki:lumber_bamboo"
+  }
+}

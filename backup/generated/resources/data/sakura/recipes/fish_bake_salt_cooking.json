@@ -1,5 +1,5 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
       "tag": "forge:salt"
@@ -13,7 +13,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:fish_bake_salt"
+    "item": "tsuki:fish_bake_salt"
   },
   "recipeTime": 200
 }

@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:maple_lumber_from_wood"
+      "tsuki:maple_lumber_from_wood"
     ]
   },
   "criteria": {
@@ -12,7 +12,7 @@
         "items": [
           {
             "items": [
-              "sakura:maple_log"
+              "tsuki:maple_log"
             ]
           }
         ]
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:maple_lumber_from_wood"
+        "recipe": "tsuki:maple_lumber_from_wood"
       }
     }
   },

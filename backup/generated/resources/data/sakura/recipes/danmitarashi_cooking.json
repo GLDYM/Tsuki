@@ -1,8 +1,8 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "item": "sakura:dango"
+      "item": "tsuki:dango"
     },
     {
       "tag": "forge:sugar"
@@ -16,7 +16,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:danmitarashi"
+    "item": "tsuki:danmitarashi"
   },
   "recipeTime": 200
 }

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north":  { "model": "tsuki:block/teishoku_finished" },
+    "facing=south":  { "model": "tsuki:block/teishoku_finished", "y": 180 },
+    "facing=west":  { "model": "tsuki:block/teishoku_finished", "y": 270 },
+    "facing=east":  { "model": "tsuki:block/teishoku_finished", "y": 90 }
+  }
+}

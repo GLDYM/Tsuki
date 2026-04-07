@@ -1,0 +1,31 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "farmersdelight"
+        }
+      ],
+      "recipe": {
+        "type": "tsuki:stone_mortar",
+        "experience": 0.0,
+        "ingredients": [
+          {
+            "item": "farmersdelight:rice_panicle"
+          }
+        ],
+        "recipeTime": 200,
+        "results": [
+          {
+            "item": "farmersdelight:rice"
+          },
+          {
+            "item": "tsuki:straw"
+          }
+        ]
+      }
+    }
+  ]
+}

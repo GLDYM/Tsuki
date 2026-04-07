@@ -1,5 +1,5 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
       "tag": "forge:raw_beef"
@@ -9,7 +9,7 @@
     }
   ],
   "result": {
-    "item": "sakura:beef_stick",
+    "item": "tsuki:beef_stick",
     "count": 2
   },
   "recipeTime": 200

@@ -1,8 +1,8 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "tag": "sakura:rice/rice"
+      "tag": "tsuki:rice/rice"
     },
     {
       "tag": "forge:raw_fishes"
@@ -16,7 +16,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:rice_oyako_fish"
+    "item": "tsuki:rice_oyako_fish"
   },
   "recipeTime": 200
 }

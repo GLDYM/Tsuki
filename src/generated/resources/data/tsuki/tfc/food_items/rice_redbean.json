@@ -1,0 +1,14 @@
+{
+  "dairy": 0.0,
+  "decayModifier": 3.0,
+  "fruit": 0.0,
+  "grain": 4.0,
+  "hunger": 6,
+  "ingredient": {
+    "item": "tsuki:rice_redbean"
+  },
+  "protein": 0.0,
+  "saturation": 0.6,
+  "vegetables": 2.0,
+  "water": 0.5
+}

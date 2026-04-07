@@ -1,5 +1,5 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
       "tag": "forge:raw_chicken"
@@ -9,7 +9,7 @@
     }
   ],
   "result": {
-    "item": "sakura:chicken_stick",
+    "item": "tsuki:chicken_stick",
     "count": 2
   },
   "recipeTime": 200

@@ -1,5 +1,5 @@
 {
-  "type": "sakura:stone_mortar",
+  "type": "tsuki:stone_mortar",
   "ingredients": [
     {
       "tag": "forge:grain/wheat"
@@ -7,7 +7,7 @@
   ],
   "results": [
     {
-      "item": "sakura:flour"
+      "item": "tsuki:flour"
     }
   ],
   "recipeTime": 200

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "sakura:stripped_sakura_log"
+          "name": "tsuki:stripped_sakura_log"
         }
       ],
       "conditions": [

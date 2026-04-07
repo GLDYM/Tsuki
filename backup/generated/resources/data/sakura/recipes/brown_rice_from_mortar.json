@@ -1,5 +1,5 @@
 {
-  "type": "sakura:stone_mortar",
+  "type": "tsuki:stone_mortar",
   "ingredients": [
     {
       "tag": "forge:seeds/rice"
@@ -16,10 +16,10 @@
   ],
   "results": [
     {
-      "item": "sakura:brown_rice"
+      "item": "tsuki:brown_rice"
     },
     {
-      "item": "sakura:brown_rice"
+      "item": "tsuki:brown_rice"
     }
   ],
   "recipeTime": 200

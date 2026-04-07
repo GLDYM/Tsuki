@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "sakura:block/bamboo_charcoal_block_top",
-    "side": "sakura:block/bamboo_charcoal_block"
-  }
-}

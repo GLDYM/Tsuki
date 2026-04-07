@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:mochi_sakura"
+      "tsuki:mochi_sakura"
     ]
   },
   "criteria": {
@@ -12,7 +12,7 @@
         "items": [
           {
             "items": [
-              "sakura:mochi"
+              "tsuki:mochi"
             ]
           }
         ]
@@ -21,7 +21,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:mochi_sakura"
+        "recipe": "tsuki:mochi_sakura"
       }
     }
   },

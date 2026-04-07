@@ -1,5 +1,5 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
       "tag": "forge:crops/redbean"
@@ -16,7 +16,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:red_bean_paste",
+    "item": "tsuki:red_bean_paste",
     "count": 2
   },
   "recipeTime": 200

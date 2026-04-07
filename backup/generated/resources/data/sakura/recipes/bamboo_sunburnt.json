@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "sakura:bamboo_block_sunburnt"
+      "item": "tsuki:bamboo_block_sunburnt"
     }
   ],
   "result": {
-    "item": "sakura:bamboo_sunburnt",
+    "item": "tsuki:bamboo_sunburnt",
     "count": 9
   }
 }

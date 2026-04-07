@@ -1,7 +1,7 @@
 {
   "values": [
-    "sakura:food_oil",
-    "sakura:food_oil_flowing",
+    "tsuki:food_oil",
+    "tsuki:food_oil_flowing",
     {
       "id": "tfc:flowing_olive_oil",
       "required": false

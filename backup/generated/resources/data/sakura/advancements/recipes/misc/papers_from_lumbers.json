@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:papers_from_lumbers"
+      "tsuki:papers_from_lumbers"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:papers_from_lumbers"
+        "recipe": "tsuki:papers_from_lumbers"
       }
     }
   },

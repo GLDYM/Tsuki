@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "item": "tsuki:rice_cooked"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "item": "tsuki:mochi"
+  }
+}

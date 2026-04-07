@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "sakura:sakura_sapling",
-    "sakura:maple_sapling_red",
-    "sakura:maple_sapling_green",
-    "sakura:maple_sapling_orange",
-    "sakura:maple_sapling_yellow"
+    "tsuki:sakura_sapling",
+    "tsuki:maple_sapling_red",
+    "tsuki:maple_sapling_green",
+    "tsuki:maple_sapling_orange",
+    "tsuki:maple_sapling_yellow"
   ]
 }

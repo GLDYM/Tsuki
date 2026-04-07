@@ -1,0 +1,18 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:raw_beef"
+    },
+    {
+      "tag": "forge:bamboo"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:beef_stick",
+      "count": 2
+    }
+  ]
+}

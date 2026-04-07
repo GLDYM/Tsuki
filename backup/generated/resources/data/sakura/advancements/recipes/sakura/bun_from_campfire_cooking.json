@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:bun_from_campfire_cooking"
+      "tsuki:bun_from_campfire_cooking"
     ]
   },
   "criteria": {
-    "has_sakura:dough": {
+    "has_tsuki:dough": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "sakura:dough"
+              "tsuki:dough"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:bun_from_campfire_cooking"
+        "recipe": "tsuki:bun_from_campfire_cooking"
       }
     }
   },
   "requirements": [
     [
-      "has_sakura:dough",
+      "has_tsuki:dough",
       "has_the_recipe"
     ]
   ]

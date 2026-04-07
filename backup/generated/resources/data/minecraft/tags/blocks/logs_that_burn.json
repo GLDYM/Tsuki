@@ -1,14 +1,14 @@
 {
   "replace": false,
   "values": [
-    "sakura:stripped_sakura_wood",
-    "sakura:stripped_maple_wood",
-    "sakura:sakura_wood",
-    "sakura:maple_wood",
-    "sakura:stripped_sakura_log",
-    "sakura:stripped_maple_log",
-    "sakura:sakura_log",
-    "sakura:maple_log",
-    "sakura:maple_sap_log"
+    "tsuki:stripped_sakura_wood",
+    "tsuki:stripped_maple_wood",
+    "tsuki:sakura_wood",
+    "tsuki:maple_wood",
+    "tsuki:stripped_sakura_log",
+    "tsuki:stripped_maple_log",
+    "tsuki:sakura_log",
+    "tsuki:maple_log",
+    "tsuki:maple_sap_log"
   ]
 }

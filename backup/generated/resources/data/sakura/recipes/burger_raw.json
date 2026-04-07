@@ -1,5 +1,5 @@
 {
-  "type": "sakura:stone_mortar",
+  "type": "tsuki:stone_mortar",
   "ingredients": [
     {
       "tag": "forge:raw_beef"
@@ -16,11 +16,11 @@
   ],
   "results": [
     {
-      "item": "sakura:burger_raw",
+      "item": "tsuki:burger_raw",
       "count": 2
     },
     {
-      "item": "sakura:burger_raw",
+      "item": "tsuki:burger_raw",
       "count": 2
     }
   ],

@@ -1,11 +1,11 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "item": "sakura:dango"
+      "item": "tsuki:dango"
     },
     {
-      "item": "sakura:red_bean_paste"
+      "item": "tsuki:red_bean_paste"
     }
   ],
   "fluid": {
@@ -13,7 +13,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:dananko"
+    "item": "tsuki:dananko"
   },
   "recipeTime": 200
 }

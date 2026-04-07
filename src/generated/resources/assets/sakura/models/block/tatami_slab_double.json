@@ -1,8 +1,0 @@
-{
-  "parent": "mysterious_mountain_lib:block/facing_block",
-  "textures": {
-    "bottom": "sakura:block/tatami",
-    "side": "sakura:block/tatami",
-    "top": "sakura:block/tatami"
-  }
-}

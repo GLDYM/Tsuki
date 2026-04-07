@@ -13,17 +13,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "sakura:tomato_crop",
+                  "block": "tsuki:tomato_crop",
                   "properties": {
                     "age": "3"
                   }
                 }
               ],
-              "name": "sakura:tomato"
+              "name": "tsuki:tomato"
             },
             {
               "type": "minecraft:item",
-              "name": "sakura:tomato_seeds"
+              "name": "tsuki:tomato_seeds"
             }
           ]
         }
@@ -46,13 +46,13 @@
               }
             }
           ],
-          "name": "sakura:tomato_seeds"
+          "name": "tsuki:tomato_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "sakura:tomato_crop",
+          "block": "tsuki:tomato_crop",
           "properties": {
             "age": "3"
           }

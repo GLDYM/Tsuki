@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:rice_curry_cheese"
+    },
+    {
+      "item": "tsuki:katsu"
+    }
+  ],
+  "result": {
+    "item": "tsuki:rice_curry_cheese_katsu"
+  }
+}

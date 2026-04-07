@@ -1,5 +1,5 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
       "tag": "forge:salad_ingredients/cabbage"
@@ -27,7 +27,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:cabbage_roll"
+    "item": "tsuki:cabbage_roll"
   },
   "recipeTime": 200
 }

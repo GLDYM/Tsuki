@@ -1,0 +1,8 @@
+{
+  "parent": "mysterious_mountain_lib:block/facing_slab_top",
+  "textures": {
+    "bottom": "tsuki:block/tatami_tan",
+    "side": "tsuki:block/tatami_tan",
+    "top": "tsuki:block/tatami_tan"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "tsuki:fermenting",
+  "experience": 0.0,
+  "fluid": {
+    "amount": 200,
+    "fluidTag": "forge:water/water"
+  },
+  "ingredients": [
+    {
+      "tag": "forge:grain"
+    },
+    {
+      "tag": "forge:grain"
+    },
+    {
+      "tag": "forge:yeast"
+    }
+  ],
+  "recipeTime": 400,
+  "result_fluid": {
+    "amount": 200,
+    "fluid": "tsuki:beer"
+  },
+  "results": []
+}

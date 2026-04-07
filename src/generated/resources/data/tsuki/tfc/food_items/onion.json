@@ -1,0 +1,14 @@
+{
+  "dairy": 0.0,
+  "decayModifier": 2.5,
+  "fruit": 0.0,
+  "grain": 0.0,
+  "hunger": 2,
+  "ingredient": {
+    "item": "tsuki:onion"
+  },
+  "protein": 0.0,
+  "saturation": 0.2,
+  "vegetables": 2.0,
+  "water": 5.0
+}

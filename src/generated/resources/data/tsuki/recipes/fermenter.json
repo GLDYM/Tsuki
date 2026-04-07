@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "tag": "minecraft:logs"
+    },
+    "S": {
+      "tag": "forge:lumber"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "PPP",
+    "SSS"
+  ],
+  "result": {
+    "item": "tsuki:fermenter"
+  },
+  "show_notification": true
+}

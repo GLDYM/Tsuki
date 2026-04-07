@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:bun"
+      "tsuki:bun"
     ]
   },
   "criteria": {
-    "has_sakura:dough": {
+    "has_tsuki:dough": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "sakura:dough"
+              "tsuki:dough"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:bun"
+        "recipe": "tsuki:bun"
       }
     }
   },
   "requirements": [
     [
-      "has_sakura:dough",
+      "has_tsuki:dough",
       "has_the_recipe"
     ]
   ]

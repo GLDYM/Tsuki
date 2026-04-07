@@ -1,0 +1,25 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "tsuki:fried_chicken"
+    },
+    {
+      "item": "tsuki:kaeshi"
+    },
+    {
+      "item": "tsuki:mayo"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "forge:food_oil"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:chicken_nanban",
+      "count": 2
+    }
+  ]
+}

@@ -13,17 +13,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "sakura:redbean_crop",
+                  "block": "tsuki:redbean_crop",
                   "properties": {
                     "age": "3"
                   }
                 }
               ],
-              "name": "sakura:red_bean"
+              "name": "tsuki:red_bean"
             },
             {
               "type": "minecraft:item",
-              "name": "sakura:red_bean"
+              "name": "tsuki:red_bean"
             }
           ]
         }
@@ -46,13 +46,13 @@
               }
             }
           ],
-          "name": "sakura:red_bean"
+          "name": "tsuki:red_bean"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "sakura:redbean_crop",
+          "block": "tsuki:redbean_crop",
           "properties": {
             "age": "3"
           }

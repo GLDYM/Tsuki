@@ -38,7 +38,7 @@
                   ]
                 }
               ],
-              "name": "sakura:mapleleaves_yellow"
+              "name": "tsuki:mapleleaves_yellow"
             },
             {
               "type": "minecraft:item",
@@ -57,7 +57,7 @@
                   ]
                 }
               ],
-              "name": "sakura:maple_sapling_yellow"
+              "name": "tsuki:maple_sapling_yellow"
             }
           ]
         }

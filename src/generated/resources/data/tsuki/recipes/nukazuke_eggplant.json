@@ -1,0 +1,30 @@
+{
+  "type": "tsuki:fermenting",
+  "experience": 0.0,
+  "fluid": {
+    "amount": 100,
+    "fluidTag": "forge:water/water"
+  },
+  "ingredients": [
+    {
+      "tag": "forge:crops/eggplant"
+    },
+    {
+      "item": "tsuki:nuka"
+    },
+    {
+      "tag": "forge:salt"
+    }
+  ],
+  "recipeTime": 400,
+  "result_fluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:pickled_eggplant"
+    }
+  ]
+}

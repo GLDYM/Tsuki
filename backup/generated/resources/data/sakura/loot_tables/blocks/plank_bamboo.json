@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "sakura:plank_bamboo"
+          "name": "tsuki:plank_bamboo"
         }
       ],
       "conditions": [

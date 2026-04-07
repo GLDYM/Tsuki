@@ -10,13 +10,13 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "sakura:teishoku_fish_cooked",
+              "block": "tsuki:teishoku_fish_cooked",
               "properties": {
                 "bites": "0"
               }
             }
           ],
-          "name": "sakura:teishoku_fish_cooked"
+          "name": "tsuki:teishoku_fish_cooked"
         }
       ]
     },
@@ -26,7 +26,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "sakura:obon"
+          "name": "tsuki:obon"
         }
       ],
       "conditions": [
@@ -34,7 +34,7 @@
           "condition": "minecraft:inverted",
           "term": {
             "condition": "minecraft:block_state_property",
-            "block": "sakura:teishoku_fish_cooked",
+            "block": "tsuki:teishoku_fish_cooked",
             "properties": {
               "bites": "0"
             }

@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "sakura:bamboo_block"
+      "item": "tsuki:bamboo_block"
     }
   ],
   "result": {
-    "item": "sakura:bamboo",
+    "item": "tsuki:bamboo",
     "count": 9
   }
 }

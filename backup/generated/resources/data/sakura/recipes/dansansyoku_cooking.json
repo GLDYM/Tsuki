@@ -1,11 +1,11 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "item": "sakura:dango"
+      "item": "tsuki:dango"
     },
     {
-      "item": "sakura:sakuraleaves"
+      "item": "tsuki:sakuraleaves"
     },
     {
       "item": "minecraft:grass"
@@ -16,7 +16,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:dansansyoku"
+    "item": "tsuki:dansansyoku"
   },
   "recipeTime": 200
 }

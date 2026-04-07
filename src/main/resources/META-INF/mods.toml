@@ -3,9 +3,9 @@ modLoader="javafml"
 loaderVersion="[47,)"
 license="MIT License"
 [[mods]]
-modId="sakura"
+modId="tsuki"
 version="${mod_version}"
-displayName="Sakura Mod" 
+displayName="Tsuki" 
 displayURL="https://www.curseforge.com/minecraft/mc-mods/sakura" 
 logoFile="logo.png"
 credits="MCMOD Modding Group, MMF-Group"
@@ -18,19 +18,19 @@ New battle styles with your katana and kodachi, Cooking with campfire and cookin
 New illager with his katana spawn in Bamboo forest and maple forest!
 New dress: Kimono, yukata and Haori.
 '''
-[[dependencies.sakura]]
+[[dependencies.tsuki]]
     modId="forge"
     mandatory=true
     versionRange="[47,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.sakura]]
+[[dependencies.tsuki]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.20,1.21)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.sakura]]
+[[dependencies.tsuki]]
     modId="mysterious_mountain_lib"
     mandatory=true
     versionRange="[1.5.18-1.20.1,)"

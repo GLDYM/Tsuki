@@ -1,15 +1,15 @@
 {
   "values": [
-    "sakura:rice_crop",
-    "sakura:buckwheat_crop",
-    "sakura:cabbage_crop",
-    "sakura:eggplant_crop",
-    "sakura:onion_crop",
-    "sakura:radish_crop",
-    "sakura:rapeseed_crop",
-    "sakura:redbean_crop",
-    "sakura:rice_crop_root",
-    "sakura:taro_crop",
-    "sakura:tomato_crop"
+    "tsuki:rice_crop",
+    "tsuki:buckwheat_crop",
+    "tsuki:cabbage_crop",
+    "tsuki:eggplant_crop",
+    "tsuki:onion_crop",
+    "tsuki:radish_crop",
+    "tsuki:rapeseed_crop",
+    "tsuki:redbean_crop",
+    "tsuki:rice_crop_root",
+    "tsuki:taro_crop",
+    "tsuki:tomato_crop"
   ]
 }

@@ -13,17 +13,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "sakura:soybean_crop",
+                  "block": "tsuki:soybean_crop",
                   "properties": {
                     "age": "3"
                   }
                 }
               ],
-              "name": "sakura:soybean"
+              "name": "tsuki:soybean"
             },
             {
               "type": "minecraft:item",
-              "name": "sakura:soybean"
+              "name": "tsuki:soybean"
             }
           ]
         }
@@ -46,13 +46,13 @@
               }
             }
           ],
-          "name": "sakura:soybean"
+          "name": "tsuki:soybean"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "sakura:soybean_crop",
+          "block": "tsuki:soybean_crop",
           "properties": {
             "age": "3"
           }

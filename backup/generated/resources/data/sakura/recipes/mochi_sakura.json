@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "sakura:mochi"
+      "item": "tsuki:mochi"
     },
     {
-      "item": "sakura:sakuraleaves"
+      "item": "tsuki:sakuraleaves"
     }
   ],
   "result": {
-    "item": "sakura:mochi_sakura"
+    "item": "tsuki:mochi_sakura"
   }
 }

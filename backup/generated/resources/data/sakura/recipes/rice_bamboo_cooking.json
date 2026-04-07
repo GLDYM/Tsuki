@@ -1,11 +1,11 @@
 {
-  "type": "sakura:cooking",
+  "type": "tsuki:cooking",
   "ingredients": [
     {
-      "tag": "sakura:rice/rice"
+      "tag": "tsuki:rice/rice"
     },
     {
-      "item": "sakura:bamboo_shoot"
+      "item": "tsuki:bamboo_shoot"
     }
   ],
   "fluid": {
@@ -13,7 +13,7 @@
     "amount": 125
   },
   "result": {
-    "item": "sakura:rice_bamboo"
+    "item": "tsuki:rice_bamboo"
   },
   "recipeTime": 200
 }

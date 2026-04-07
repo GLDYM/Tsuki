@@ -13,17 +13,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "sakura:radish_crop",
+                  "block": "tsuki:radish_crop",
                   "properties": {
                     "age": "3"
                   }
                 }
               ],
-              "name": "sakura:radish"
+              "name": "tsuki:radish"
             },
             {
               "type": "minecraft:item",
-              "name": "sakura:radish_seeds"
+              "name": "tsuki:radish_seeds"
             }
           ]
         }
@@ -46,13 +46,13 @@
               }
             }
           ],
-          "name": "sakura:radish_seeds"
+          "name": "tsuki:radish_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "sakura:radish_crop",
+          "block": "tsuki:radish_crop",
           "properties": {
             "age": "3"
           }

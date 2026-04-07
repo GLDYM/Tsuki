@@ -2,17 +2,17 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "sakura:taro_baked"
+      "tsuki:taro_baked"
     ]
   },
   "criteria": {
-    "has_sakura:taro": {
+    "has_tsuki:taro": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "sakura:taro"
+              "tsuki:taro"
             ]
           }
         ]
@@ -21,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "sakura:taro_baked"
+        "recipe": "tsuki:taro_baked"
       }
     }
   },
   "requirements": [
     [
-      "has_sakura:taro",
+      "has_tsuki:taro",
       "has_the_recipe"
     ]
   ]

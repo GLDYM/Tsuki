@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smoking",
   "ingredient": {
-    "item": "sakura:dough"
+    "item": "tsuki:dough"
   },
-  "result": "sakura:bun",
+  "result": "tsuki:bun",
   "experience": 0.5,
   "cookingtime": 100
 }

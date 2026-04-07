@@ -1,0 +1,19 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0.0,
+  "ingredients": [
+    {
+      "tag": "forge:cobblestone"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "count": 2,
+      "item": "tsuki:salt"
+    }
+  ]
+}

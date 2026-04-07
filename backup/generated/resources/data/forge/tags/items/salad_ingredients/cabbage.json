@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "sakura:cabbage",
-    "sakura:sliced_cabbage"
+    "tsuki:cabbage",
+    "tsuki:sliced_cabbage"
   ]
 }

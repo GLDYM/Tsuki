@@ -9,7 +9,7 @@
         }
       ],
       "recipe": {
-        "type": "sakura:stone_mortar",
+        "type": "tsuki:stone_mortar",
         "ingredients": [
           {
             "item": "farmersdelight:rice_panicle"
@@ -20,7 +20,7 @@
             "item": "farmersdelight:rice"
           },
           {
-            "item": "sakura:straw"
+            "item": "tsuki:straw"
           }
         ],
         "recipeTime": 200

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "sakura:obon"
+          "name": "tsuki:obon"
         }
       ],
       "conditions": [
