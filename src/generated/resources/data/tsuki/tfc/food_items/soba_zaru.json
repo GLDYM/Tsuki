@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 2.0,
   "hunger": 6,
-  "ingredient": {
-    "item": "tsuki:soba_zaru"
-  },
   "protein": 0.0,
   "saturation": 0.7,
   "vegetables": 0.0,

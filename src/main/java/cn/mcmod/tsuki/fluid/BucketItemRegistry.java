@@ -2,42 +2,41 @@ package cn.mcmod.tsuki.fluid;
 
 import cn.mcmod.tsuki.Tsuki;
 import net.minecraft.world.item.*;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-@Mod.EventBusSubscriber(modid = Tsuki.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Tsuki.MODID)
 public class BucketItemRegistry {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Tsuki.MODID);
-    public static final RegistryObject<Item> FOOD_OIL_BUCKET = ITEMS.register("food_oil_bucket", () -> 
-        new BucketItem(FluidRegistry.FOOD_OIL, new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tsuki.MODID);
+    public static final DeferredItem<Item> FOOD_OIL_BUCKET = ITEMS.register("food_oil_bucket", () ->
+        new BucketItem(FluidRegistry.FOOD_OIL.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
 
-    public static final RegistryObject<Item> DOBUROKU_BUCKET = ITEMS.register("doburoku_bucket", () -> 
-        new BucketItem(FluidRegistry.DOBUROKU, new Item.Properties().craftRemainder(Items.BUCKET)));
-    public static final RegistryObject<Item> SAKE_BUCKET = ITEMS.register("sake_bucket", () -> 
-        new BucketItem(FluidRegistry.SAKE, new Item.Properties().craftRemainder(Items.BUCKET)));
-    public static final RegistryObject<Item> SHOUCHU_BUCKET = ITEMS.register("shouchu_bucket", () -> 
-        new BucketItem(FluidRegistry.SHOUCHU, new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> DOBUROKU_BUCKET = ITEMS.register("doburoku_bucket", () ->
+        new BucketItem(FluidRegistry.DOBUROKU.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> SAKE_BUCKET = ITEMS.register("sake_bucket", () ->
+        new BucketItem(FluidRegistry.SAKE.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> SHOUCHU_BUCKET = ITEMS.register("shouchu_bucket", () ->
+        new BucketItem(FluidRegistry.SHOUCHU.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     
-    public static final RegistryObject<Item> BEER_BUCKET = ITEMS.register("beer_bucket", () -> 
-        new BucketItem(FluidRegistry.BEER, new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> BEER_BUCKET = ITEMS.register("beer_bucket", () ->
+        new BucketItem(FluidRegistry.BEER.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     
-    public static final RegistryObject<Item> WHISKEY_BUCKET = ITEMS.register("whiskey_bucket", () -> 
-        new BucketItem(FluidRegistry.WHISKEY, new Item.Properties().craftRemainder(Items.BUCKET)));
-    public static final RegistryObject<Item> RED_WINE_BUCKET = ITEMS.register("red_wine_bucket", () -> 
-        new BucketItem(FluidRegistry.RED_WINE, new Item.Properties().craftRemainder(Items.BUCKET)));
-    public static final RegistryObject<Item> WHITE_WINE_BUCKET = ITEMS.register("white_wine_bucket", () -> 
-        new BucketItem(FluidRegistry.WHITE_WINE, new Item.Properties().craftRemainder(Items.BUCKET)));
-    public static final RegistryObject<Item> CHAMPAGNE_BUCKET = ITEMS.register("champagne_bucket", () -> 
-        new BucketItem(FluidRegistry.CHAMPAGNE, new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> WHISKEY_BUCKET = ITEMS.register("whiskey_bucket", () ->
+        new BucketItem(FluidRegistry.WHISKEY.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> RED_WINE_BUCKET = ITEMS.register("red_wine_bucket", () ->
+        new BucketItem(FluidRegistry.RED_WINE.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> WHITE_WINE_BUCKET = ITEMS.register("white_wine_bucket", () ->
+        new BucketItem(FluidRegistry.WHITE_WINE.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> CHAMPAGNE_BUCKET = ITEMS.register("champagne_bucket", () ->
+        new BucketItem(FluidRegistry.CHAMPAGNE.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     
-    public static final RegistryObject<Item> RUM_BUCKET = ITEMS.register("rum_bucket", () -> 
-        new BucketItem(FluidRegistry.RUM, new Item.Properties().craftRemainder(Items.BUCKET)));
-    public static final RegistryObject<Item> BRANDY_BUCKET = ITEMS.register("brandy_bucket", () -> 
-        new BucketItem(FluidRegistry.BRANDY, new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> RUM_BUCKET = ITEMS.register("rum_bucket", () ->
+        new BucketItem(FluidRegistry.RUM.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> BRANDY_BUCKET = ITEMS.register("brandy_bucket", () ->
+        new BucketItem(FluidRegistry.BRANDY.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     
     
     @SubscribeEvent
@@ -47,3 +46,6 @@ public class BucketItemRegistry {
         }
     }
 }
+
+
+

@@ -1,11 +1,12 @@
 package cn.mcmod.tsuki.compat.jei.category;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+
+import cn.mcmod.mmlib.recipe.ChanceResult;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
 import cn.mcmod.tsuki.recipes.ChoppingRecipe;
-import cn.mcmod_mmf.mmlib.recipe.ChanceResult;
 import cn.mcmod_mmf.mmlib.utils.I18nUtils;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -27,7 +28,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(Tsuki.MODID, "chopping");
+    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chopping");
     private final Component title;
     private final IDrawable background;
     private final IDrawable icon;
@@ -35,7 +36,7 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
     private final IDrawable chancedSlot;
     public ChoppingCategory(IGuiHelper helper) {
         title = Component.translatable("sakura.jei.chopping");
-        ResourceLocation backgroundImage = new ResourceLocation(Tsuki.MODID, "textures/gui/jei_chopping.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/jei_chopping.png");
         background = helper.createDrawable(backgroundImage, 4, 4, 92, 74);
         chancedSlot = helper.createDrawable(backgroundImage, 100, 0, 18, 18);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,

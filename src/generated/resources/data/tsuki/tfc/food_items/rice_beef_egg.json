@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 1.5,
   "hunger": 10,
-  "ingredient": {
-    "item": "tsuki:rice_beef_egg"
-  },
   "protein": 3.5,
   "saturation": 1.0,
   "vegetables": 0.0,

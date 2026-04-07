@@ -2,7 +2,7 @@ package cn.mcmod.tsuki.item.enums;
 
 import cn.mcmod.tsuki.item.ItemRegistry;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.RegistryObject;
+import java.util.function.Supplier;
 
 public enum TsukiNormalItemSet {
     BAMBOO("bamboo"),
@@ -55,7 +55,9 @@ public enum TsukiNormalItemSet {
     public String getName() {
         return name;
     }
-    public RegistryObject<Item> getItem() {
+    public Supplier<Item> getItem() {
        return ItemRegistry.MATERIALS.get(this);
     }
 }
+
+

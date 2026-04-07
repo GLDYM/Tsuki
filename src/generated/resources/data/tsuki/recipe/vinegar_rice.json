@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "tag": "c:vinegar"
+    },
+    {
+      "tag": "c:sugar"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:vinegar_rice"
+  }
+}

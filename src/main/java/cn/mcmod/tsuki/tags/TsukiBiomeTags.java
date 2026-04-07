@@ -7,5 +7,5 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 
 public class TsukiBiomeTags {
-    public static final TagKey<Biome> CAN_SPAWN_BAMBOO = TagKey.create(Registries.BIOME, new ResourceLocation(Tsuki.MODID,"can_spawn_bamboo"));
+    public static final TagKey<Biome> CAN_SPAWN_BAMBOO = TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "can_spawn_bamboo"));
 }

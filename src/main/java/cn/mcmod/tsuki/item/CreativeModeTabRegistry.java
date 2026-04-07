@@ -8,13 +8,13 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class CreativeModeTabRegistry {
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Tsuki.MODID);
-    public static final RegistryObject<CreativeModeTab> GROUP = TABS.register(
+        public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GROUP = TABS.register(
             Tsuki.MODID,
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI).get()))
@@ -38,3 +38,5 @@ public class CreativeModeTabRegistry {
                     .build()
     );
 }
+
+

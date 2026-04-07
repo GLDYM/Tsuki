@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:soba"
+    },
+    {
+      "item": "tsuki:kaeshi"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:soba_zaru"
+  }
+}

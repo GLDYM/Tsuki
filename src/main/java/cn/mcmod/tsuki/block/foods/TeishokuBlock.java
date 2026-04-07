@@ -1,11 +1,14 @@
+
 package cn.mcmod.tsuki.block.foods;
+
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -30,7 +33,7 @@ public class TeishokuBlock extends Block {
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
     private final FoodInfo info;
     public TeishokuBlock(FoodInfo info) {
-        super(Properties.copy(Blocks.OAK_SLAB));
+        super(BlockBehaviour.Properties.of());
         this.info = info;
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
@@ -50,15 +53,14 @@ public class TeishokuBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
-            BlockHitResult hitResult) {
-        ItemStack itemstack = player.getItemInHand(hand);
+    protected ItemInteractionResult useItemOn(ItemStack itemstack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (level.isClientSide) {
             if (eat(level, pos, state, player).consumesAction()) {
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.SUCCESS;
             }
             if (itemstack.isEmpty()) {
-                return InteractionResult.CONSUME;
+                return ItemInteractionResult.CONSUME;
             }
         }
         return eat(level, pos, state, player);
@@ -69,9 +71,9 @@ public class TeishokuBlock extends Block {
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
-    protected InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
+    protected ItemInteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
         if (!player.canEat(false)) {
-            return InteractionResult.PASS;
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         } else {
             player.getFoodData().eat(this.getFoodInfo().getAmount(), this.getFoodInfo().getCalories());
             int i = state.getValue(BITES);
@@ -82,7 +84,8 @@ public class TeishokuBlock extends Block {
                 level.setBlock(pos, BlockRegistry.TEISHOUKU_FINISHED.get().defaultBlockState().setValue(FACING, state.getValue(FACING)), 3);
             }
 
-            return InteractionResult.SUCCESS;
+            return level.isClientSide() ? ItemInteractionResult.SUCCESS : ItemInteractionResult.CONSUME;
         }
     }
 }
+

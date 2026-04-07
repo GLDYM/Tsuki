@@ -1,5 +1,9 @@
+
 package cn.mcmod.tsuki.block;
 
+import net.minecraft.world.level.block.state.BlockBehaviour;
+
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
@@ -17,14 +21,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BambooLeaves;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 
 @SuppressWarnings("deprecation")
 public class BambooShoot extends BushBlock implements BonemealableBlock {
+    public static final MapCodec<BambooShoot> CODEC = simpleCodec(BambooShoot::new);
     private static final VoxelShape SHAPE = Block.box(6D, 0.0D, 6D, 10D, 4.0D, 10D);
 
+    public BambooShoot(Properties properties) {
+        super(properties);
+    }
+
     public BambooShoot() {
-        super(Properties.copy(Blocks.BAMBOO_SAPLING));
+        this(BlockBehaviour.Properties.of());
+    }
+
+    @Override
+    protected MapCodec<? extends BushBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -41,9 +55,9 @@ public class BambooShoot extends BushBlock implements BonemealableBlock {
         if (worldIn.getRawBrightness(pos.above(), 0) > 6) {
             if (worldIn.getBrightness(LightLayer.BLOCK, pos) > 0) {
                 if (rand.nextInt(3) == 0) {
-                    if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, true)) {
+                    if (CommonHooks.canCropGrow(worldIn, pos, state, true)) {
                         growBamboo(worldIn, pos);
-                        ForgeHooks.onCropsGrowPost(worldIn, pos, state);
+                        CommonHooks.fireCropGrowPost(worldIn, pos, state);
                     }
                 }
             }
@@ -59,8 +73,7 @@ public class BambooShoot extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader p_50897_, BlockPos p_50898_, BlockState p_50899_,
-            boolean p_50900_) {
+    public boolean isValidBonemealTarget(LevelReader p_50897_, BlockPos p_50898_, BlockState p_50899_) {
         return true;
     }
 
@@ -87,3 +100,6 @@ public class BambooShoot extends BushBlock implements BonemealableBlock {
         worldIn.setBlockAndUpdate(pos, BlockRegistry.BAMBOO_PLANT.get().defaultBlockState());
     }
 }
+
+
+

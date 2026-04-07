@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:mochi"
+    },
+    {
+      "item": "tsuki:sakuraleaves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:mochi_sakura"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:lumber"
+    },
+    "L": {
+      "tag": "c:straw"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "L#L",
+    "LLL"
+  ],
+  "result": {
+    "count": 6,
+    "id": "tsuki:tatami"
+  }
+}

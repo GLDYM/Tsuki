@@ -6,7 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import java.util.concurrent.CompletableFuture;
 
 public class TsukiBiomeTagProvider extends BiomeTagsProvider {
@@ -35,3 +35,4 @@ public class TsukiBiomeTagProvider extends BiomeTagsProvider {
 
     }
 }
+

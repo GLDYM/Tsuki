@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 0.0,
   "hunger": 2,
-  "ingredient": {
-    "item": "tsuki:tofu"
-  },
   "protein": 0.0,
   "saturation": 0.4,
   "vegetables": 2.0,

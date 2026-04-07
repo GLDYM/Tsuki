@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 2.0,
   "hunger": 10,
-  "ingredient": {
-    "item": "tsuki:onigiri_tempura"
-  },
   "protein": 4.0,
   "saturation": 0.8,
   "vegetables": 2.0,

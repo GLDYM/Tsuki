@@ -1,0 +1,30 @@
+{
+  "type": "tsuki:fermenting",
+  "experience": 0,
+  "fluid": {
+    "amount": 100,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "tag": "c:yeast"
+    },
+    {
+      "tag": "c:sugar/sugar"
+    },
+    {
+      "tag": "c:sugar/sugar"
+    }
+  ],
+  "recipeTime": 200,
+  "result_fluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "count": 4,
+      "item": "tsuki:yeast"
+    }
+  ]
+}

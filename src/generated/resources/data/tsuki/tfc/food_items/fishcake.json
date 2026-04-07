@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 1.0,
   "hunger": 4,
-  "ingredient": {
-    "item": "tsuki:fishcake"
-  },
   "protein": 2.0,
   "saturation": 0.6,
   "vegetables": 1.0,

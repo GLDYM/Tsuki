@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 2.0,
   "hunger": 6,
-  "ingredient": {
-    "item": "tsuki:soup_red_bean"
-  },
   "protein": 0.0,
   "saturation": 0.6,
   "vegetables": 2.0,

@@ -1,22 +1,14 @@
 package cn.mcmod.tsuki.data.builder;
 
-import java.util.function.Consumer;
-
-import javax.annotation.Nullable;
-
-import com.google.gson.JsonObject;
-
+import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.recipes.CookingPotRecipe;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod_mmf.mmlib.fluid.FluidIngredient;
 import net.minecraft.core.NonNullList;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 
 public class CookingPotRecipeBuilder {
@@ -76,55 +68,15 @@ public class CookingPotRecipeBuilder {
         return this;
     }
 
-    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
-        consumer.accept(new CookingPotRecipeBuilder.Result(id, this.fluid, this.result, this.ingredients,
-                this.experience, this.recipeTime));
-    }
-
-    public static class Result implements FinishedRecipe {
-        private final CookingPotRecipe recipe = new CookingPotRecipe();
-
-        public Result(ResourceLocation id, FluidIngredient fluid, ItemStack result, NonNullList<Ingredient> ingredients,
-                float exp, int time) {
-            recipe.setId(id);
-            recipe.output = result;
-            recipe.fluidInput = fluid;
-            recipe.inputItems = ingredients;
-            recipe.experience = exp;
-            recipe.recipeTime = time;
-        }
-
-        @Override
-        public void serializeRecipeData(JsonObject json) {
-            JsonObject recipeJson = RecipeTypeRegistry.COOKING_RECIPE_SERIALIZER.get().toJson(recipe);
-            json.add("ingredients", recipeJson.get("ingredients"));
-            json.add("fluid", recipeJson.get("fluid"));
-            json.add("result", recipeJson.get("result"));
-            json.add("experience", recipeJson.get("experience"));
-            json.add("recipeTime", recipeJson.get("recipeTime"));
-        }
-
-        @Override
-        public RecipeSerializer<?> getType() {
-            return RecipeTypeRegistry.COOKING_RECIPE_SERIALIZER.get();
-        }
-
-        @Override
-        public ResourceLocation getId() {
-            return recipe.getId();
-        }
-
-        @Nullable
-        @Override
-        public JsonObject serializeAdvancement() {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public ResourceLocation getAdvancementId() {
-            return null;
-        }
+    public void save(RecipeOutput output, ResourceLocation id) {
+        CookingPotRecipe recipe = new CookingPotRecipe();
+        recipe.setId(id);
+        recipe.output = this.result;
+        recipe.fluidInput = this.fluid;
+        recipe.inputItems = this.ingredients;
+        recipe.experience = this.experience;
+        recipe.recipeTime = this.recipeTime;
+        output.accept(id, recipe, null);
     }
 
 }

@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 1.5,
   "hunger": 7,
-  "ingredient": {
-    "item": "tsuki:rice_fish"
-  },
   "protein": 2.0,
   "saturation": 0.7,
   "vegetables": 0.0,

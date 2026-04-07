@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:cooking_pot"
+    },
+    {
+      "tag": "c:soysauce"
+    },
+    {
+      "item": "tsuki:mirin"
+    },
+    {
+      "tag": "c:raw_beef"
+    },
+    {
+      "tag": "c:crops/carrot"
+    },
+    {
+      "tag": "c:mushrooms"
+    },
+    {
+      "tag": "c:vegetables"
+    },
+    {
+      "tag": "c:vegetables"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:nabe_sukiyaki"
+  }
+}

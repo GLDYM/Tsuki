@@ -1,13 +1,13 @@
 package cn.mcmod.tsuki.compat.jei.category;
 
+import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.DistillerBlockEntity;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
 import cn.mcmod.tsuki.recipes.DistillerRecipe;
-import cn.mcmod_mmf.mmlib.fluid.FluidIngredient;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.forge.ForgeTypes;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -26,7 +26,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(Tsuki.MODID, "distillation");
+    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "distillation");
     protected final IDrawable heatIndicator;
     protected final IDrawableAnimated arrow;
     protected final IDrawableAnimated bubbles;
@@ -36,7 +36,7 @@ public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
 
     public DistillerCategory(IGuiHelper helper) {
         title = Component.translatable("sakura.jei.distillation");
-        ResourceLocation backgroundImage = new ResourceLocation(Tsuki.MODID, "textures/gui/distiller.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/distiller.png");
         background = helper.createDrawable(backgroundImage, 32, 16, 110, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.DISTILLER.get()));
         heatIndicator = helper.createDrawable(backgroundImage, 176, 17, 18, 18);
@@ -78,7 +78,7 @@ public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
         if(recipe.getRequiredFluid() != FluidIngredient.EMPTY)
             builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
             .setFluidRenderer(DistillerBlockEntity.TANK_CAPACITY, true, 16, 52)
-            .addIngredients(ForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
+            .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
         
         for (int row = 0; row < 3; ++row) {
             int inputIndex = row;
@@ -90,7 +90,7 @@ public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
         if(!recipe.getResultFluid().isEmpty())
             builder.addSlot(RecipeIngredientRole.INPUT, 93, 1)
             .setFluidRenderer(DistillerBlockEntity.TANK_CAPACITY, true, 16, 52)
-            .addIngredient(ForgeTypes.FLUID_STACK, recipe.getResultFluid());
+            .addIngredient(NeoForgeTypes.FLUID_STACK, recipe.getResultFluid());
     }
 
     @Override

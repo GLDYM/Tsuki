@@ -4,10 +4,16 @@ import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod_mmf.mmlib.data.AbstractItemModelProvider;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.BushBlock;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
+
+import java.util.function.Supplier;
 
 public class TsukiItemModelProvider extends AbstractItemModelProvider {
 
@@ -38,4 +44,21 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
 
     }
 
+    private void normalItem(DeferredHolder<Item, ? extends Item> item) {
+        singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0",
+                modLoc("item/" + item.getId().getPath()));
+    }
+
+    private void bushItem(DeferredHolder<Item, ? extends Item> item) {
+        singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0",
+                modLoc("block/" + item.getId().getPath()));
+    }
+
+    private void itemBlock(Supplier<? extends Block> blockSupplier) {
+        Block block = blockSupplier.get();
+        String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
+        withExistingParent(name, modLoc("block/" + name));
+    }
+
 }
+

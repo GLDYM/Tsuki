@@ -6,24 +6,24 @@ plugins {
 //    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 
     // Apply the plugin. You can find the latest version at https://projects.neoforged.net/neoforged/ModDevGradle
-    id 'net.neoforged.moddev.legacyforge' version '2.0.78'
+    id 'net.neoforged.moddev' version '2.0.78'
 }
 
-version = '1.0.16-1.20.1'
+version = '1.0.16-1.21.1'
 group = 'cn.mcmod.tsuki' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 base {
     archivesName = 'Tsuki'
 }
 
-// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+// Mojang ships Java 21 to end users in 1.21+, so your mod should target Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
 
-legacyForge {
-    // Develop against MinecraftForge version 47.3.0 for 1.20.1 (the versions can be found at https://files.minecraftforge.net/)
-    version = "1.20.1-47.3.0"
+neoForge {
+    // Develop against NeoForge for Minecraft 1.21.1
+    version = "21.1.224"
 
     // Validate AT files and raise errors when they have invalid targets
     // This option is false by default, but turning it on is recommended
@@ -32,8 +32,8 @@ legacyForge {
     parchment {
         // Get versions from https://parchmentmc.org/docs/getting-started
         // Omit the "v"-prefix in mappingsVersion
-        minecraftVersion = "1.20.1"
-        mappingsVersion = "2023.09.03"
+        minecraftVersion = "1.21"
+        mappingsVersion = "2024.11.10"
     }
 
     runs {
@@ -42,7 +42,7 @@ legacyForge {
         }
         data {
             data()
-            programArguments.addAll '--mod', "sakura", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'mysterious_mountain_lib'
+            programArguments.addAll '--mod', "tsuki", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'mysterious_mountain_lib'
         }
         server {
             server()
@@ -56,7 +56,7 @@ legacyForge {
     }
 
     mods {
-        "sakura" {
+        "tsuki" {
             sourceSet sourceSets.main
         }
     }
@@ -67,7 +67,7 @@ tasks.withType(ProcessResources).configureEach {
     ]
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/mods.toml']) {
+    filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
         expand replaceProperties
     }
 }
@@ -77,7 +77,10 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     // Put repositories for dependencies here
-    // ForgeGradle automatically adds the Forge maven and Maven Central for you
+    // Keep explicit core repositories for stable dependency resolution.
+    mavenCentral()
+    maven { url = 'https://maven.neoforged.net/releases' }
+    maven { url = 'https://maven.parchmentmc.org' }
 
     maven { url = "https://raw.github.com/0999312/MMMaven/main/repository" }
     maven {
@@ -94,24 +97,25 @@ repositories {
 
 dependencies {
 
-    modCompileOnly ("cn.mcmod_mmf.mysterious_mountain_lib:MMLib:1.5.18-1.20.1")
-    modRuntimeOnly ("cn.mcmod_mmf.mysterious_mountain_lib:MMLib:1.5.18-1.20.1")
+    // Use local MMLib jar from project libs/ to match current source API.
+    compileOnly files('libs/mysterious_mountain_lib-1.2.15-1.21.1.jar')
+    runtimeOnly files('libs/mysterious_mountain_lib-1.2.15-1.21.1.jar')
     // Compile against only the API artifact
-    modCompileOnly(("top.theillusivec4.curios:curios-forge:5.4.5+1.20.1:api"))
+    compileOnly(("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api"))
     // Use the full Curios API jar at runtime
-    modRuntimeOnly(("top.theillusivec4.curios:curios-forge:5.4.5+1.20.1"))
-    modCompileOnly ("vazkii.patchouli:Patchouli:1.20.1-83-FORGE")
-    modRuntimeOnly ("vazkii.patchouli:Patchouli:1.20.1-83-FORGE")
+    runtimeOnly(("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1"))
+    compileOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
+    runtimeOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
 
     // compile against the JEI API but do not include it at runtime
-    modCompileOnly(("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
-    modCompileOnly(("mezz.jei:jei-${mc_version}-forge-api:${jei_version}"))
-    // at runtime, use the full JEI jar for Forge
-    modRuntimeOnly(("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
+    compileOnly(("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
+    compileOnly(("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"))
+    // at runtime, use the full JEI jar for NeoForge
+    runtimeOnly(("mezz.jei:jei-${mc_version}-neoforge:${jei_version}"))
 
     //implementation ("maven.modrinth:epic-fight:20.9.2")
-    modCompileOnly ("maven.modrinth:farmers-delight:1.20.1-1.2.7")
-    modRuntimeOnly ("maven.modrinth:farmers-delight:1.20.1-1.2.7")
+    compileOnly ("maven.modrinth:farmers-delight:1.21.1-1.2.11")
+    runtimeOnly ("maven.modrinth:farmers-delight:1.21.1-1.2.11")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
@@ -129,8 +133,6 @@ jar {
     }
 }
 
-jar.finalizedBy('reobfJar')
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -146,5 +148,5 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    options.compilerArgs += ['-Xlint:deprecation', '-Xlint:unchecked']
+    // options.compilerArgs += ['-Xlint:deprecation', '-Xlint:unchecked']
 }

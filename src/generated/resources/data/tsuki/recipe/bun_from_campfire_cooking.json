@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.5,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:dough"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:bun"
+  }
+}

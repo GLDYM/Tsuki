@@ -24,37 +24,41 @@ import oshi.util.tuples.Pair;
 
 public class TsukiTreeFeatures {
 
-    public static List<Pair<ResourceKey<ConfiguredFeature<?, ?>>, ConfiguredFeature<?, ?>>> ENTRY = new ArrayList<>();
+    public static final List<Pair<ResourceKey<ConfiguredFeature<?, ?>>, ConfiguredFeature<?, ?>>> ENTRY = new ArrayList<>();
+    private static boolean initialized;
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SAKURA_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "sakura"));
-    public static final ConfiguredFeature<?, ?> SAKURA = registryTree(SAKURA_KEY, createSimpleBlobTree(BlockRegistry.SAKURA_LOG.get(), BlockRegistry.SAKURA_LEAVES.get()).ignoreVines());
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SAKURA_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_SAKURA_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fancy_sakura"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_RED_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_red"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_RED_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fancy_maple_red"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_YELLOW_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_yellow"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_YELLOW_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fancy_maple_yellow"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_ORANGE_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_orange"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_ORANGE_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fancy_maple_orange"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_GREEN_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_green"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_GREEN_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fancy_maple_green"));
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_SAKURA_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "fancy_sakura"));
-    public static final ConfiguredFeature<?, ?> FANCY_SAKURA = registryTree(FANCY_SAKURA_KEY, createFancyTree(BlockRegistry.SAKURA_LOG.get(), BlockRegistry.SAKURA_LEAVES.get()));
+    public static synchronized void bootstrapEntries() {
+        if (initialized) {
+            return;
+        }
+        initialized = true;
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_RED_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "maple_red"));
-    public static final ConfiguredFeature<?, ?> MAPLE_RED = registryTree(MAPLE_RED_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_RED.get(), 5, 2, 0, 2).ignoreVines());
+        registryTree(SAKURA_KEY, createSimpleBlobTree(BlockRegistry.SAKURA_LOG.get(), BlockRegistry.SAKURA_LEAVES.get()).ignoreVines());
+        registryTree(FANCY_SAKURA_KEY, createFancyTree(BlockRegistry.SAKURA_LOG.get(), BlockRegistry.SAKURA_LEAVES.get()));
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_RED_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "fancy_maple_red"));
-    public static final ConfiguredFeature<?, ?> FANCY_MAPLE_RED = registryTree(FANCY_MAPLE_RED_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_RED.get()));
+        registryTree(MAPLE_RED_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_RED.get(), 5, 2, 0, 2).ignoreVines());
+        registryTree(FANCY_MAPLE_RED_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_RED.get()));
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_YELLOW_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "maple_yellow"));
-    public static final ConfiguredFeature<?, ?> MAPLE_YELLOW = registryTree(MAPLE_YELLOW_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_YELLOW.get(), 5, 2, 0, 2).ignoreVines());
+        registryTree(MAPLE_YELLOW_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_YELLOW.get(), 5, 2, 0, 2).ignoreVines());
+        registryTree(FANCY_MAPLE_YELLOW_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_YELLOW.get()));
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_YELLOW_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "fancy_maple_yellow"));
-    public static final ConfiguredFeature<?, ?> FANCY_MAPLE_YELLOW = registryTree(FANCY_MAPLE_YELLOW_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_YELLOW.get()));
+        registryTree(MAPLE_ORANGE_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_ORANGE.get(), 5, 2, 0, 2).ignoreVines());
+        registryTree(FANCY_MAPLE_ORANGE_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_ORANGE.get()));
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_ORANGE_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "maple_orange"));
-    public static final ConfiguredFeature<?, ?> MAPLE_ORANGE = registryTree(MAPLE_ORANGE_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_ORANGE.get(), 5, 2, 0, 2).ignoreVines());
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_ORANGE_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "fancy_maple_orange"));
-    public static final ConfiguredFeature<?, ?> FANCY_MAPLE_ORANGE = registryTree(FANCY_MAPLE_ORANGE_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_ORANGE.get()));
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MAPLE_GREEN_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "maple_green"));
-    public static final ConfiguredFeature<?, ?> MAPLE_GREEN = registryTree(MAPLE_GREEN_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_GREEN.get(), 5, 2, 0, 2).ignoreVines());
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_MAPLE_GREEN_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Tsuki.MODID, "fancy_maple_green"));
-    public static final ConfiguredFeature<?, ?> FANCY_MAPLE_GREEN = registryTree(FANCY_MAPLE_GREEN_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_GREEN.get()));
+        registryTree(MAPLE_GREEN_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_GREEN.get(), 5, 2, 0, 2).ignoreVines());
+        registryTree(FANCY_MAPLE_GREEN_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_GREEN.get()));
+    }
 
     private static ConfiguredFeature<?, ?> registryTree(ResourceKey<ConfiguredFeature<?, ?>> key, TreeConfiguration.TreeConfigurationBuilder tree) {
         ConfiguredFeature<TreeConfiguration, Feature<TreeConfiguration>> feature = new ConfiguredFeature<>(Feature.TREE, tree.build());

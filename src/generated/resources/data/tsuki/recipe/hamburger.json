@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:bun"
+    },
+    {
+      "item": "tsuki:burger"
+    },
+    {
+      "tag": "c:tomatosauce"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:hamburger"
+  }
+}

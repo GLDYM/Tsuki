@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:lumber"
+    },
+    "I": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "###",
+    "I I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:chopping_board"
+  }
+}

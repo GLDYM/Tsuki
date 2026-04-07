@@ -16,8 +16,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class TsukiItemTagsProvider extends ItemTagsProvider {
    public TsukiItemTagsProvider(
@@ -62,8 +62,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          .add(FoodRegistry.FOODSET.get(TsukiFoodSet.MACHINED_FISH).get())
          .addTag(TsukiItemTags.SLICES_RAW_FISHES_COD)
          .addTag(TsukiItemTags.SLICES_RAW_FISHES_SALMON);
-      this.tag(TsukiItemTags.SLICES_RAW_FISHES_COD).addOptional(new ResourceLocation("farmersdelight:cod_slice"));
-      this.tag(TsukiItemTags.SLICES_RAW_FISHES_SALMON).addOptional(new ResourceLocation("farmersdelight:salmon_slice"));
+      this.tag(TsukiItemTags.SLICES_RAW_FISHES_COD).addOptional(ResourceLocation.parse("farmersdelight:cod_slice"));
+      this.tag(TsukiItemTags.SLICES_RAW_FISHES_SALMON).addOptional(ResourceLocation.parse("farmersdelight:salmon_slice"));
       this.tag(TsukiItemTags.SLICES_CABBAGE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get());
       this.tag(TsukiItemTags.DUST_CHARCOAL).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHARCOAL_POWDER).get());
       this.tag(TsukiItemTags.OFFHAND_EQUIPMENT).add(Items.SHIELD);
@@ -110,7 +110,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.RICE_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RICE).get());
       this.tag(TsukiItemTags.STRAW)
          .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get())
-         .addOptional(new ResourceLocation("farmersdelight:straw"));
+         .addOptional(ResourceLocation.parse("farmersdelight:straw"));
       this.tag(TsukiItemTags.RICE).addTag(TsukiItemTags.RICE_BROWN).addTag(TsukiItemTags.RICE_RICE);
       this.tag(TsukiItemTags.LUMBER).addTag(TsukiItemTags.LUMBER_BAMBOO).addTag(TsukiItemTags.LUMBER_MAPLE).addTag(TsukiItemTags.LUMBER_SAKURA);
       this.tag(TsukiItemTags.LUMBER_TFC).addTag(TsukiItemTags.LUMBER);
@@ -263,3 +263,4 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       return "Tsuki Items' Tags";
    }
 }
+

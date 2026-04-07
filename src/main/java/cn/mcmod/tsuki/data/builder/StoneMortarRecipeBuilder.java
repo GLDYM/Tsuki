@@ -1,21 +1,13 @@
 package cn.mcmod.tsuki.data.builder;
 
-import java.util.function.Consumer;
-
-import javax.annotation.Nullable;
-
-import com.google.gson.JsonObject;
-
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
 import net.minecraft.core.NonNullList;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 
 public class StoneMortarRecipeBuilder {
@@ -81,53 +73,14 @@ public class StoneMortarRecipeBuilder {
         return this;
     }
 
-    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
-        consumer.accept(new StoneMortarRecipeBuilder.Result(id, this.result, this.ingredients, this.experience,
-                this.recipeTime));
-    }
-
-    public static class Result implements FinishedRecipe {
-
-        private final StoneMortarRecipe recipe = new StoneMortarRecipe();
-
-        public Result(ResourceLocation id, NonNullList<ItemStack> results, NonNullList<Ingredient> ingredients, float exp, int time) {
-            recipe.setId(id);
-            recipe.output = results;
-            recipe.inputItems = ingredients;
-            recipe.experience = exp;
-            recipe.recipeTime = time;
-        }
-
-        @Override
-        public void serializeRecipeData(JsonObject json) {
-            JsonObject recipeJson = RecipeTypeRegistry.STONE_MORTAR_RECIPE_SERIALIZER.get().toJson(recipe);
-            json.add("ingredients", recipeJson.get("ingredients"));
-            json.add("results", recipeJson.get("results"));
-            json.add("experience", recipeJson.get("experience"));
-            json.add("recipeTime", recipeJson.get("recipeTime"));
-        }
-
-        @Override
-        public RecipeSerializer<?> getType() {
-            return RecipeTypeRegistry.STONE_MORTAR_RECIPE_SERIALIZER.get();
-        }
-
-        @Override
-        public ResourceLocation getId() {
-            return recipe.getId();
-        }
-
-        @Nullable
-        @Override
-        public JsonObject serializeAdvancement() {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public ResourceLocation getAdvancementId() {
-            return null;
-        }
+    public void save(RecipeOutput output, ResourceLocation id) {
+        StoneMortarRecipe recipe = new StoneMortarRecipe();
+        recipe.setId(id);
+        recipe.output = this.result;
+        recipe.inputItems = this.ingredients;
+        recipe.experience = this.experience;
+        recipe.recipeTime = this.recipeTime;
+        output.accept(id, recipe, null);
     }
 
 }

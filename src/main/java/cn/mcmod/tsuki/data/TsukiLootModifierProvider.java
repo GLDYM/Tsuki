@@ -1,11 +1,14 @@
 package cn.mcmod.tsuki.data;
 
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import net.minecraft.core.HolderLookup;
+import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
+
+import java.util.concurrent.CompletableFuture;
 
 public class TsukiLootModifierProvider extends GlobalLootModifierProvider {
-    public TsukiLootModifierProvider(PackOutput output, String modid) {
-        super(output, modid);
+    public TsukiLootModifierProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, String modid) {
+        super(output, provider, modid);
     }
 
     @Override
@@ -20,3 +23,4 @@ public class TsukiLootModifierProvider extends GlobalLootModifierProvider {
 //        );
     }
 }
+

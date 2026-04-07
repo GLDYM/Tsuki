@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 0.0,
   "hunger": 10,
-  "ingredient": {
-    "item": "tsuki:yakiniku"
-  },
   "protein": 4.0,
   "saturation": 0.8,
   "vegetables": 0.0,

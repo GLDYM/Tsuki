@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 0.0,
   "hunger": 4,
-  "ingredient": {
-    "item": "tsuki:cabbage_roll"
-  },
   "protein": 0.0,
   "saturation": 0.4,
   "vegetables": 4.0,

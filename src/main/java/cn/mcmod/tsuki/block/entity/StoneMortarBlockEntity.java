@@ -15,6 +15,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -25,24 +26,21 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuProvider {
 
     private final ItemStackHandler inventory;
-    private final LazyOptional<IItemHandler> inputHandler;
-    private final LazyOptional<IItemHandler> outputHandler;
+    private final IItemHandler inputHandler;
+    private final IItemHandler outputHandler;
 
     protected final ContainerData tileData;
     private final Object2IntOpenHashMap<ResourceLocation> experienceTracker;
@@ -57,8 +55,8 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         super(BlockEntityRegistry.STONE_MORTAR.get(), pos, state);
 
         this.inventory = createHandler();
-        this.inputHandler = LazyOptional.of(() -> new StoneMortarItemHandler(inventory, Direction.UP));
-        this.outputHandler = LazyOptional.of(() -> new StoneMortarItemHandler(inventory, Direction.DOWN));
+        this.inputHandler = new StoneMortarItemHandler(inventory, Direction.UP);
+        this.outputHandler = new StoneMortarItemHandler(inventory, Direction.DOWN);
         this.tileData = createIntArray();
         this.experienceTracker = new Object2IntOpenHashMap<>();
         this.checkNewRecipe = true;
@@ -99,21 +97,23 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         }
 
         if (lastRecipeID != null) {
-            Recipe<RecipeWrapper> recipe = level.getRecipeManager().getAllRecipesFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get()).stream()
-                    .filter(now -> now.getId().equals(lastRecipeID)).findFirst().get();
-            if (recipe instanceof StoneMortarRecipe) {
+            Optional<RecipeHolder<StoneMortarRecipe>> recipeHolder = level.getRecipeManager()
+                    .getAllRecipesFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get()).stream()
+                    .filter(now -> now.id().equals(lastRecipeID)).findFirst();
+            if (recipeHolder.isPresent()) {
+                StoneMortarRecipe recipe = recipeHolder.get().value();
                 if (recipe.matches(inventoryWrapper, level)) {
-                    return Optional.of((StoneMortarRecipe) recipe);
+                    return Optional.of(recipe);
                 }
             }
         }
 
         if (checkNewRecipe) {
-            Optional<StoneMortarRecipe> recipe = level.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get(),
+            Optional<RecipeHolder<StoneMortarRecipe>> recipeHolder = level.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get(),
                     inventoryWrapper, level);
-            if (recipe.isPresent()) {
-                lastRecipeID = recipe.get().getId();
-                return recipe;
+            if (recipeHolder.isPresent()) {
+                lastRecipeID = recipeHolder.get().id();
+                return Optional.of(recipeHolder.get().value());
             }
         }
 
@@ -192,7 +192,9 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
             }
         }
 
-        trackRecipeExperience(recipe);
+        if (lastRecipeID != null) {
+            trackRecipeExperience(lastRecipeID);
+        }
 
         for (int i = 0; i < 4; ++i) {
             ItemStack slotStack = inventory.getStackInSlot(i);
@@ -210,10 +212,9 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         return true;
     }
 
-    public void trackRecipeExperience(@Nullable Recipe<?> recipe) {
-        if (recipe != null) {
-            ResourceLocation recipeID = recipe.getId();
-            experienceTracker.addTo(recipeID, 1);
+    public void trackRecipeExperience(@Nullable ResourceLocation recipeId) {
+        if (recipeId != null) {
+            experienceTracker.addTo(recipeId, 1);
         }
     }
 
@@ -224,22 +225,17 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
 
     public void grantStoredRecipeExperience(Level world, Vec3 pos) {
         for (Object2IntMap.Entry<ResourceLocation> entry : experienceTracker.object2IntEntrySet()) {
-            world.getRecipeManager().byKey(entry.getKey()).ifPresent(recipe -> LevelUtils.splitAndSpawnExperience(world,
-                    pos, entry.getIntValue(), ((StoneMortarRecipe) recipe).getExperience()));
+            world.getRecipeManager().byKey(entry.getKey()).ifPresent(holder -> {
+                if (holder.value() instanceof StoneMortarRecipe recipe) {
+                    LevelUtils.splitAndSpawnExperience(world, pos, entry.getIntValue(), recipe.getExperience());
+                }
+            });
         }
     }
 
-    @Override
     @Nonnull
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-        if (cap.equals(ForgeCapabilities.ITEM_HANDLER)) {
-            if (side == null || side.equals(Direction.UP)) {
-                return inputHandler.cast();
-            } else {
-                return outputHandler.cast();
-            }
-        }
-        return super.getCapability(cap, side);
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        return side == null || side.equals(Direction.UP) ? inputHandler : outputHandler;
     }
 
     public ItemStackHandler getInventory() {
@@ -255,45 +251,38 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     }
 
     @Override
-    public void setRemoved() {
-        super.setRemoved();
-        inputHandler.invalidate();
-        outputHandler.invalidate();
-    }
-
-    @Override
-    public void load(CompoundTag compound) {
-        super.load(compound);
-        inventory.deserializeNBT(compound.getCompound("Inventory"));
+    protected void loadAdditional(CompoundTag compound, HolderLookup.Provider registries) {
+        super.loadAdditional(compound, registries);
+        inventory.deserializeNBT(registries, compound.getCompound("Inventory"));
         recipeTime = compound.getInt("RecipeTime");
         recipeTimeTotal = compound.getInt("RecipeTimeTotal");
         CompoundTag compoundRecipes = compound.getCompound("RecipesUsed");
         for (String key : compoundRecipes.getAllKeys()) {
-            experienceTracker.put(new ResourceLocation(key), compoundRecipes.getInt(key));
+            experienceTracker.put(ResourceLocation.parse(key), compoundRecipes.getInt(key));
         }
     }
 
     @Override
-    public void saveAdditional(CompoundTag compound) {
-        super.saveAdditional(compound);
+    protected void saveAdditional(CompoundTag compound, HolderLookup.Provider registries) {
+        super.saveAdditional(compound, registries);
         compound.putInt("RecipeTime", recipeTime);
         compound.putInt("RecipeTimeTotal", recipeTimeTotal);
-        compound.put("Inventory", inventory.serializeNBT());
+        compound.put("Inventory", inventory.serializeNBT(registries));
         CompoundTag compoundRecipes = new CompoundTag();
         experienceTracker
                 .forEach((recipeId, craftedAmount) -> compoundRecipes.putInt(recipeId.toString(), craftedAmount));
         compound.put("RecipesUsed", compoundRecipes);
     }
 
-    private CompoundTag writeItems(CompoundTag compound) {
-        super.saveAdditional(compound);
-        compound.put("Inventory", inventory.serializeNBT());
+    private CompoundTag writeItems(CompoundTag compound, HolderLookup.Provider registries) {
+        super.saveAdditional(compound, registries);
+        compound.put("Inventory", inventory.serializeNBT(registries));
         return compound;
     }
 
     @Override
-    public CompoundTag getUpdateTag() {
-        return writeItems(new CompoundTag());
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return writeItems(new CompoundTag(), registries);
     }
 
     private ItemStackHandler createHandler() {
@@ -357,3 +346,4 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     }
 
 }
+

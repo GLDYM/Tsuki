@@ -4,9 +4,6 @@
   "fruit": 5.0,
   "grain": 0.0,
   "hunger": 12,
-  "ingredient": {
-    "item": "tsuki:noppei_jiru"
-  },
   "protein": 5.0,
   "saturation": 1.0,
   "vegetables": 5.0,

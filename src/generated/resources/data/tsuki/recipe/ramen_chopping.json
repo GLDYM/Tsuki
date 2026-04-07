@@ -1,0 +1,16 @@
+{
+  "type": "tsuki:chopping",
+  "byproducts": [],
+  "experience": 1,
+  "ingredient": {
+    "item": "tsuki:ramen_block"
+  },
+  "recipeTime": 4,
+  "result": {
+    "count": 2,
+    "item": "tsuki:ramen_raw"
+  },
+  "tool": {
+    "tag": "tsuki:tools/knives/noodle"
+  }
+}

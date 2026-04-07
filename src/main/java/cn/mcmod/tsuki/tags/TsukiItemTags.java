@@ -4,7 +4,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod_mmf.mmlib.utils.TagUtils;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 
 public class TsukiItemTags {
     public static final TagKey<Item> OFFHAND_EQUIPMENT = TagUtils.modItemTag(Tsuki.MODID,"offhand_equipment");
@@ -192,3 +192,4 @@ public class TsukiItemTags {
     public static final TagKey<Item> TOOLS_PICKAXES = TagUtils.forgeItemTag("tools/pickaxes");
     public static final TagKey<Item> TOOLS_SHOVELS = TagUtils.forgeItemTag("tools/shovels");
 }
+

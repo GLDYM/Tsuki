@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
 import cn.mcmod.tsuki.tags.TsukiBlockTags;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -12,7 +13,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -36,13 +37,12 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fluids.capability.IFluidHandlerItem;
-import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
-import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.fluids.FluidUtil;
+import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
+import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 
 public class CookingPotBlock extends BaseEntityBlock {
+    public static final MapCodec<CookingPotBlock> CODEC = simpleCodec(CookingPotBlock::new);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty TRAY_SUPPORT = BooleanProperty.create("tray_support");
     public static final BooleanProperty OPEN = BooleanProperty.create("open");
@@ -51,10 +51,19 @@ public class CookingPotBlock extends BaseEntityBlock {
     protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE,
             Block.box(0.0D, -1.0D, 0.0D, 16.0D, 0.0D, 16.0D));
 
+    public CookingPotBlock(Properties properties) {
+        super(properties);
+    }
+
     public CookingPotBlock() {
-        super(Properties.of().noOcclusion().strength(0.5F, 5.0F).sound(SoundType.LANTERN));
+        this(Properties.of().noOcclusion().strength(0.5F, 5.0F).sound(SoundType.LANTERN));
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH)
                 .setValue(TRAY_SUPPORT, false).setValue(OPEN, false));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -88,29 +97,27 @@ public class CookingPotBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn,
-            BlockHitResult result) {
-        ItemStack stack = player.getItemInHand(handIn);
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand handIn, BlockHitResult result) {
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (!(blockentity instanceof CookingPotBlockEntity cookingPot)) {
-            return InteractionResult.FAIL;
+            return ItemInteractionResult.FAIL;
         }
-        IFluidHandlerItem handler = FluidUtil.getFluidHandler(ItemHandlerHelper.copyStackWithSize(stack, 1))
+        IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1))
                 .orElse(null);
         if (handler != null && handler instanceof FluidBucketWrapper) {
-            FluidUtil.interactWithFluidHandler(player, handIn, cookingPot.getFluidTank().orElse(null));
+            FluidUtil.interactWithFluidHandler(player, handIn, cookingPot.getFluidTank());
             cookingPot.inventoryChanged();
-            return InteractionResult.SUCCESS;
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        ItemStack heldStack = player.getItemInHand(handIn);
-        if (heldStack.isEmpty() && player.isShiftKeyDown()) {
+        if (stack.isEmpty() && player.isShiftKeyDown()) {
             level.setBlockAndUpdate(pos, state.setValue(OPEN, state.getValue(OPEN) ? false : true));
             level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 0.7F, 1.0F);
         } else if (!level.isClientSide()) {
-        	NetworkHooks.openScreen((ServerPlayer) player, cookingPot, pos);
+	        ((ServerPlayer) player).openMenu(cookingPot, pos);
         }
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
     @SuppressWarnings("deprecation")
@@ -148,3 +155,4 @@ public class CookingPotBlock extends BaseEntityBlock {
                 CookingPotBlockEntity::workingTick);
     }
 }
+

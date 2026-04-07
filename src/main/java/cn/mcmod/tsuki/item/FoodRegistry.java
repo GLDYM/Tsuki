@@ -10,17 +10,16 @@ import cn.mcmod_mmf.mmlib.item.ItemFoodBase;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
 import cn.mcmod_mmf.mmlib.registry.ItemRegistryUtil;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class FoodRegistry {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Tsuki.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tsuki.MODID);
 
-    public static final Map<TsukiFoodSet, RegistryObject<ItemFoodBase>> FOODSET = ItemRegistryUtil.mapOfKeys(
+    public static final Map<TsukiFoodSet, DeferredItem<ItemFoodBase>> FOODSET = ItemRegistryUtil.mapOfKeys(
             TsukiFoodSet.class, info -> register(info.getFoodInfo().getName(), () -> normalFood(info.getFoodInfo())));
 
-    public static final Map<TsukiCuisineSet, RegistryObject<ItemFoodBase>> CUISINES = ItemRegistryUtil.mapOfKeys(
+    public static final Map<TsukiCuisineSet, DeferredItem<ItemFoodBase>> CUISINES = ItemRegistryUtil.mapOfKeys(
             TsukiCuisineSet.class,
             info -> register(info.getFoodInfo().getName(), () -> normalFood(info.getFoodInfo(), info.getContainer().get())));
 
@@ -34,7 +33,9 @@ public class FoodRegistry {
         return new ItemFoodBase(Tsuki.defaultItemProperties().craftRemainder(container), info);
     }
 
-    private static <V extends Item> RegistryObject<V> register(String name, Supplier<V> item) {
+    private static <V extends Item> DeferredItem<V> register(String name, Supplier<V> item) {
         return ITEMS.register(name, item);
     }
 }
+
+

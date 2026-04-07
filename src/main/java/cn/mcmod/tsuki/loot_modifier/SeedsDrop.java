@@ -14,8 +14,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 
 public class SeedsDrop {
 	public static class SeedDropModifier extends LootModifier {
@@ -23,8 +23,8 @@ public class SeedsDrop {
 			super(conditionsIn);
 		}
 
-		public static final Codec<SeedDropModifier> CODEC = RecordCodecBuilder
-				.create(inst -> codecStart(inst).apply(inst, SeedDropModifier::new));
+		public static final MapCodec<SeedDropModifier> CODEC = RecordCodecBuilder
+				.mapCodec(inst -> codecStart(inst).apply(inst, SeedDropModifier::new));
 
 		@Nonnull
 		@Override
@@ -38,9 +38,10 @@ public class SeedsDrop {
 		}
 
 		@Override
-		public Codec<? extends IGlobalLootModifier> codec() {
+		public MapCodec<? extends IGlobalLootModifier> codec() {
 			return CODEC;
 		}
 	}
 
 }
+

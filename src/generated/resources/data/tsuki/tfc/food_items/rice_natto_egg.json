@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 2.5,
   "hunger": 6,
-  "ingredient": {
-    "item": "tsuki:rice_natto_egg"
-  },
   "protein": 0.0,
   "saturation": 0.6,
   "vegetables": 3.0,

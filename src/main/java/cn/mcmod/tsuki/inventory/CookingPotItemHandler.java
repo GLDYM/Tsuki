@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandler;
 
 public class CookingPotItemHandler implements IItemHandler {
     private static final int SLOTS_INPUT = 9;
@@ -59,3 +59,4 @@ public class CookingPotItemHandler implements IItemHandler {
         return itemHandler.getSlotLimit(slot);
     }
 }
+

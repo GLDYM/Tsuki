@@ -1,16 +1,23 @@
 package cn.mcmod.tsuki.data.client;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod_mmf.mmlib.data.AbstractBlockStateProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-public class TsukiBlockStateProvider extends AbstractBlockStateProvider {
+public class TsukiBlockStateProvider extends BlockStateProvider {
+        private final String modid;
 
     public TsukiBlockStateProvider(PackOutput packOutput, String modid, ExistingFileHelper exFileHelper) {
         super(packOutput, modid, exFileHelper);
+                this.modid = modid;
     }
 
     @Override
@@ -27,25 +34,25 @@ public class TsukiBlockStateProvider extends AbstractBlockStateProvider {
         simpleBlock(BlockRegistry.MAPLE_LEAVES_GREEN.get());
         simpleBlock(BlockRegistry.MAPLE_LEAVES_ORANGE.get());
 
-        log(BlockRegistry.SAKURA_LOG);
-        log(BlockRegistry.STRIPPED_SAKURA_LOG);
-        log(BlockRegistry.MAPLE_LOG);
-        log(BlockRegistry.STRIPPED_MAPLE_LOG);
-        log(BlockRegistry.BAMBOO_BLOCK);
-        log(BlockRegistry.BAMBOO_BLOCK_SUNBURNT);
-        log(BlockRegistry.BAMBOO_CHARCOAL_BLOCK);
+        log(BlockRegistry.SAKURA_LOG.get());
+        log(BlockRegistry.STRIPPED_SAKURA_LOG.get());
+        log(BlockRegistry.MAPLE_LOG.get());
+        log(BlockRegistry.STRIPPED_MAPLE_LOG.get());
+        log(BlockRegistry.BAMBOO_BLOCK.get());
+        log(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get());
+        log(BlockRegistry.BAMBOO_CHARCOAL_BLOCK.get());
 
-        horizontalBlock(BlockRegistry.FERMENTER.get(), models().getExistingFile(new ResourceLocation("tsuki:block/fermenter")));
-        crossBlock(BlockRegistry.SAKURA_SAPLING);
-        crossBlock(BlockRegistry.MAPLE_SAPLING_RED);
-        crossBlock(BlockRegistry.MAPLE_SAPLING_YELLOW);
-        crossBlock(BlockRegistry.MAPLE_SAPLING_GREEN);
-        crossBlock(BlockRegistry.MAPLE_SAPLING_ORANGE);
+        horizontalBlock(BlockRegistry.FERMENTER.get(), models().getExistingFile(ResourceLocation.parse("tsuki:block/fermenter")));
+        crossBlock(BlockRegistry.SAKURA_SAPLING.get());
+        crossBlock(BlockRegistry.MAPLE_SAPLING_RED.get());
+        crossBlock(BlockRegistry.MAPLE_SAPLING_YELLOW.get());
+        crossBlock(BlockRegistry.MAPLE_SAPLING_GREEN.get());
+        crossBlock(BlockRegistry.MAPLE_SAPLING_ORANGE.get());
 
-        stageBlock(BlockRegistry.BUCKWHEAT_CROP, BlockStateProperties.AGE_7);
-        stageBlock(BlockRegistry.RAPESEED_CROP, BlockStateProperties.AGE_7);
-        stageBlock(BlockRegistry.REDBEAN_CROP, BlockStateProperties.AGE_3);
-        stageBlock(BlockRegistry.TARO_CROP, BlockStateProperties.AGE_3);
+        stageBlock(BlockRegistry.BUCKWHEAT_CROP.get(), BlockStateProperties.AGE_7);
+        stageBlock(BlockRegistry.RAPESEED_CROP.get(), BlockStateProperties.AGE_7);
+        stageBlock(BlockRegistry.REDBEAN_CROP.get(), BlockStateProperties.AGE_3);
+        stageBlock(BlockRegistry.TARO_CROP.get(), BlockStateProperties.AGE_3);
         
         horizontalBlock(BlockRegistry.TATAMI.get(), 
                 texture("tatami"), 
@@ -57,7 +64,7 @@ public class TsukiBlockStateProvider extends AbstractBlockStateProvider {
                 texture("tatami"), 
                 texture("tatami"));
         
-        facingSlabBlock(BlockRegistry.TATAMI_SLAB_WAXED, 
+        facingSlabBlock(BlockRegistry.TATAMI_SLAB_WAXED.get(), 
                 texture("tatami"), 
                 texture("tatami"), 
                 texture("tatami")
@@ -68,16 +75,55 @@ public class TsukiBlockStateProvider extends AbstractBlockStateProvider {
                 texture("tatami_tan"), 
                 texture("tatami_tan"));
         
-        facingSlabBlock(BlockRegistry.TATAMI_SLAB, 
+        facingSlabBlock(BlockRegistry.TATAMI_SLAB.get(), 
                 texture("tatami"), 
                 texture("tatami"), 
                 texture("tatami")
         );
-        facingSlabBlock(BlockRegistry.TATAMI_SLAB_SUNBURNT, 
+        facingSlabBlock(BlockRegistry.TATAMI_SLAB_SUNBURNT.get(), 
                 texture("tatami_tan"), 
                 texture("tatami_tan"), 
                 texture("tatami_tan")
         );
     }
 
+        private void log(RotatedPillarBlock block) {
+                String name = name(block);
+                axisBlock(block, texture(name), texture(name + "_top"));
+        }
+
+        private void stageBlock(Block crop, IntegerProperty ageProperty) {
+                String cropName = name(crop);
+                getVariantBuilder(crop).forAllStates(state -> ConfiguredModel.builder()
+                                .modelFile(models().crop(cropName + "_stage" + state.getValue(ageProperty),
+                                                texture(cropName + "_stage" + state.getValue(ageProperty))))
+                                .build());
+        }
+
+        private void facingSlabBlock(Block slab,
+                                                                 ResourceLocation side,
+                                                                 ResourceLocation top,
+                                                                 ResourceLocation bottom) {
+                simpleBlock(slab, models().slab(name(slab), side, bottom, top));
+                simpleBlockItem(slab, models().slab(name(slab), side, bottom, top));
+        }
+
+        private void crossBlock(Block block) {
+                String name = name(block);
+                ResourceLocation texture = texture(name);
+                simpleBlock(block, models().cross(name, texture));
+                itemModels().getBuilder(name)
+                                .parent(itemModels().getExistingFile(mcLoc("item/generated")))
+                                .texture("layer0", texture);
+        }
+
+        private String name(Block block) {
+                return BuiltInRegistries.BLOCK.getKey(block).getPath();
+        }
+
+        private ResourceLocation texture(String name) {
+                return ResourceLocation.fromNamespaceAndPath(modid, "block/" + name);
+        }
+
 }
+

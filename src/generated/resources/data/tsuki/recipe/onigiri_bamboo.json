@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "tsuki:bamboo_shoot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:onigiri_bamboo"
+  }
+}

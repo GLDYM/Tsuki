@@ -1,0 +1,19 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0,
+  "ingredients": [
+    {
+      "tag": "c:stones"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "item": "minecraft:cobblestone"
+    },
+    {
+      "count": 2,
+      "item": "tsuki:alkaline"
+    }
+  ]
+}

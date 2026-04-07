@@ -31,8 +31,6 @@ public class RiceSeedsItem extends ItemNameBlockItem {
                         Component.translatable(Tsuki.MODID + "." + "block.rice.invalid_placement"), true);
             }
         }
-        return !result.consumesAction() && this.isEdible()
-                ? this.use(context.getLevel(), context.getPlayer(), context.getHand()).getResult()
-                : result;
+        return result;
     }
 }

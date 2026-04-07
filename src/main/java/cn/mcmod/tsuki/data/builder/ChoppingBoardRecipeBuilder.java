@@ -1,22 +1,14 @@
 package cn.mcmod.tsuki.data.builder;
 
-import java.util.function.Consumer;
-
-import javax.annotation.Nullable;
-
-import com.google.gson.JsonObject;
-
+import cn.mcmod.mmlib.recipe.ChanceResult;
 import cn.mcmod.tsuki.recipes.ChoppingRecipe;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod_mmf.mmlib.recipe.ChanceResult;
 import net.minecraft.core.NonNullList;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 
 public class ChoppingBoardRecipeBuilder {
@@ -95,57 +87,16 @@ public class ChoppingBoardRecipeBuilder {
         return this;
     }
 
-    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
-        consumer.accept(new ChoppingBoardRecipeBuilder.Result(id, this.item, this.tool, this.result, this.byproduces, this.experience,
-                this.recipeTime));
-    }
-
-    public static class Result implements FinishedRecipe {
-
-        private final ChoppingRecipe recipe = new ChoppingRecipe();
-
-        public Result(ResourceLocation id, Ingredient input, Ingredient tool, ItemStack result, NonNullList<ChanceResult> byproduces, float exp, int time) {
-            recipe.setId(id);
-            recipe.input = input;
-            recipe.tool = tool;
-            recipe.output = result;
-            recipe.extraOutput = byproduces;
-            recipe.experience = exp;
-            recipe.recipeTime = time;
-        }
-
-        @Override
-        public void serializeRecipeData(JsonObject json) {
-            JsonObject recipeJson = RecipeTypeRegistry.CHOPPING_RECIPE_SERIALIZER.get().toJson(recipe);
-            json.add("ingredient", recipeJson.get("ingredient"));
-            json.add("tool", recipeJson.get("tool"));
-            json.add("result", recipeJson.get("result"));
-            json.add("byproducts", recipeJson.get("byproducts"));
-            json.add("experience", recipeJson.get("experience"));
-            json.add("recipeTime", recipeJson.get("recipeTime"));
-        }
-
-        @Override
-        public RecipeSerializer<?> getType() {
-            return RecipeTypeRegistry.CHOPPING_RECIPE_SERIALIZER.get();
-        }
-
-        @Override
-        public ResourceLocation getId() {
-            return recipe.getId();
-        }
-
-        @Nullable
-        @Override
-        public JsonObject serializeAdvancement() {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public ResourceLocation getAdvancementId() {
-            return null;
-        }
+    public void save(RecipeOutput output, ResourceLocation id) {
+        ChoppingRecipe recipe = new ChoppingRecipe();
+        recipe.setId(id);
+        recipe.input = this.item;
+        recipe.tool = this.tool;
+        recipe.output = this.result;
+        recipe.extraOutput = this.byproduces;
+        recipe.experience = this.experience;
+        recipe.recipeTime = this.recipeTime;
+        output.accept(id, recipe, null);
     }
 
 }

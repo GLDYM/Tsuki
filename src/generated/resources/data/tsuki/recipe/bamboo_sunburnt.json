@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "tsuki",
+  "ingredients": [
+    {
+      "item": "tsuki:bamboo_block_sunburnt"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "tsuki:bamboo_sunburnt"
+  }
+}

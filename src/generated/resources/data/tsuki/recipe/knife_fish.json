@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "L": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "  I",
+    " I ",
+    "L  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:knife_fish"
+  }
+}

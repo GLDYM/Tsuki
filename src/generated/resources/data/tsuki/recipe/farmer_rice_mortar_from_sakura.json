@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "tsuki:stone_mortar",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "farmersdelight:rice_panicle"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "item": "farmersdelight:rice"
+    },
+    {
+      "item": "tsuki:straw"
+    }
+  ]
+}

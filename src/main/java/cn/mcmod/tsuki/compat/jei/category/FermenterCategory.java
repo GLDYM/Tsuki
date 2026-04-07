@@ -1,13 +1,13 @@
 package cn.mcmod.tsuki.compat.jei.category;
 
+import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.FermenterBlockEntity;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
 import cn.mcmod.tsuki.recipes.FermenterRecipe;
-import cn.mcmod_mmf.mmlib.fluid.FluidIngredient;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.forge.ForgeTypes;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -26,7 +26,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(Tsuki.MODID, "fermenting");
+    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fermenting");
     protected final IDrawableAnimated arrow;
     protected final IDrawableAnimated bubbles;
     private final Component title;
@@ -35,7 +35,7 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
 
     public FermenterCategory(IGuiHelper helper) {
         title = Component.translatable("sakura.jei.fermenting");
-        ResourceLocation backgroundImage = new ResourceLocation(Tsuki.MODID, "textures/gui/barrel.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/barrel.png");
         background = helper.createDrawable(backgroundImage, 32, 16, 110, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.FERMENTER.get()));
         arrow = helper.drawableBuilder(backgroundImage, 176, 0, 24, 17).buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
@@ -76,7 +76,7 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
         if(recipe.getRequiredFluid() != FluidIngredient.EMPTY)
             builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
             .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
-            .addIngredients(ForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
+            .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
         
         for (int row = 0; row < 3; ++row) {
             int inputIndex = row;
@@ -88,7 +88,7 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
         if(!recipe.getResultFluid().isEmpty())
             builder.addSlot(RecipeIngredientRole.INPUT, 93, 1)
             .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
-            .addIngredient(ForgeTypes.FLUID_STACK, recipe.getResultFluid());
+            .addIngredient(NeoForgeTypes.FLUID_STACK, recipe.getResultFluid());
     }
 
     @Override

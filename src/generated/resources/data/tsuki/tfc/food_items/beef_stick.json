@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 0.0,
   "hunger": 8,
-  "ingredient": {
-    "item": "tsuki:beef_stick"
-  },
   "protein": 4.0,
   "saturation": 0.8,
   "vegetables": 0.0,

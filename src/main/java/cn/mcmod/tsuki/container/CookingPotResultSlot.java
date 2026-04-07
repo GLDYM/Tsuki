@@ -6,8 +6,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 
 @ParametersAreNonnullByDefault
 public class CookingPotResultSlot extends SlotItemHandler {
@@ -60,3 +60,4 @@ public class CookingPotResultSlot extends SlotItemHandler {
         this.removeCount = 0;
     }
 }
+

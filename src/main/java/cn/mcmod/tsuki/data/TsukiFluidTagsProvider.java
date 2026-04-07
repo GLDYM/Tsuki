@@ -8,7 +8,7 @@ import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,12 +33,13 @@ public class TsukiFluidTagsProvider extends FluidTagsProvider {
         tag(FluidTags.WATER).add(FluidRegistry.CHAMPAGNE.get(),FluidRegistry.CHAMPAGNE_FLOWING.get());
         tag(FluidTags.WATER).add(FluidRegistry.BRANDY.get(),FluidRegistry.BRANDY.get());
         
-        tag(TsukiFluidTags.WATER_WATER).add(Fluids.WATER, Fluids.FLOWING_WATER).addOptional(new ResourceLocation("tfc:river_water"));
+        tag(TsukiFluidTags.WATER_WATER).add(Fluids.WATER, Fluids.FLOWING_WATER).addOptional(ResourceLocation.parse("tfc:river_water"));
         tag(TsukiFluidTags.BREWERS_ALCOHOL)
             .add(FluidRegistry.RUM.get(),FluidRegistry.RUM_FLOWING.get())
             .add(FluidRegistry.WHISKEY.get(),FluidRegistry.WHISKEY_FLOWING.get())
             .add(FluidRegistry.SHOUCHU.get(),FluidRegistry.SHOUCHU_FLOWING.get());
         tag(TsukiFluidTags.FOOD_OIL).addTag(TsukiFluidTags.PLANTOIL);
-        tag(TsukiFluidTags.PLANTOIL).add(FluidRegistry.FOOD_OIL.get(),FluidRegistry.FOOD_OIL_FLOWING.get()).addOptional(new ResourceLocation("tfc:flowing_olive_oil")).addOptional(new ResourceLocation("tfc:olive_oil"));
+        tag(TsukiFluidTags.PLANTOIL).add(FluidRegistry.FOOD_OIL.get(),FluidRegistry.FOOD_OIL_FLOWING.get()).addOptional(ResourceLocation.parse("tfc:flowing_olive_oil")).addOptional(ResourceLocation.parse("tfc:olive_oil"));
     }
 }
+

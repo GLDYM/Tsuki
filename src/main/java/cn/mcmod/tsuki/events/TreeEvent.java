@@ -5,17 +5,18 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.event.level.BlockEvent.BlockToolModificationEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.event.level.BlockEvent.BlockToolModificationEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 
-@Mod.EventBusSubscriber()
+@EventBusSubscriber()
 public class TreeEvent {
 
     @SubscribeEvent
     public static void onAxeStrippingLog(BlockToolModificationEvent event) {
-        if (ToolActions.AXE_STRIP.equals(event.getToolAction())) {
+        if (ItemAbilities.AXE_STRIP.equals(event.getItemAbility())) {
             stripLog(event, BlockRegistry.SAKURA_LOG.get(), BlockRegistry.STRIPPED_SAKURA_LOG.get());
             stripLog(event, BlockRegistry.MAPLE_LOG.get(), BlockRegistry.STRIPPED_MAPLE_LOG.get());
             stripLog(event, BlockRegistry.MAPLE_SAP_LOG.get(), BlockRegistry.STRIPPED_MAPLE_LOG.get());
@@ -34,3 +35,5 @@ public class TreeEvent {
         }
     }
 }
+
+

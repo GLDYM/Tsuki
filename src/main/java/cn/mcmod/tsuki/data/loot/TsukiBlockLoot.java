@@ -1,7 +1,5 @@
 package cn.mcmod.tsuki.data.loot;
 
-import java.util.Set;
-
 import cn.mcmod.tsuki.block.BambooPlant;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.BlockRegistry;
@@ -14,6 +12,7 @@ import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod_mmf.mmlib.data.loot.AbstartctBlockLoot;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -26,13 +25,8 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 
 public class TsukiBlockLoot extends AbstartctBlockLoot {
 
-    public TsukiBlockLoot(Set<Item> pExplosionResistant) {
-		super(pExplosionResistant);
-		// TODO Auto-generated constructor stub
-	}
-
-    public TsukiBlockLoot() {
-        super(Set.of());
+        public TsukiBlockLoot(HolderLookup.Provider provider) {
+                super(provider);
     }
 
     @Override

@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 3.0,
   "hunger": 12,
-  "ingredient": {
-    "item": "tsuki:rice_curry_cheese_burger"
-  },
   "protein": 4.0,
   "saturation": 0.8,
   "vegetables": 1.0,

@@ -1,15 +1,19 @@
+
 package cn.mcmod.tsuki.block;
+
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.block.entity.ObonBlockEntity;
 import cn.mcmod.tsuki.tags.TsukiItemTags;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -30,11 +34,22 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class ObonBlock extends BaseEntityBlock {
+    public static final MapCodec<ObonBlock> CODEC = simpleCodec(ObonBlock::new);
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+
+    public ObonBlock(Properties properties) {
+        super(properties);
+    }
+
     public ObonBlock() {
-        super(Properties.copy(Blocks.OAK_SLAB).noOcclusion());
+        this(BlockBehaviour.Properties.of().noOcclusion());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
     
     @Override
@@ -43,8 +58,8 @@ public class ObonBlock extends BaseEntityBlock {
     }
     
     @Override
-    public boolean isCollisionShapeFullBlock(BlockState state, BlockGetter level, BlockPos pos) {
-        return false;
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
     
     @Override
@@ -53,26 +68,26 @@ public class ObonBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack heldStack, BlockState state, Level worldIn, BlockPos pos,
+            Player player, InteractionHand handIn, BlockHitResult hit) {
         BlockEntity tileEntity = worldIn.getBlockEntity(pos);
         if (tileEntity instanceof ObonBlockEntity obon) {
-            ItemStack heldStack = player.getItemInHand(handIn);
             ItemStack offhandStack = player.getOffhandItem();
 
             if (obon.isEmpty()) {
                 if (!offhandStack.isEmpty()) {
                     if (handIn.equals(InteractionHand.MAIN_HAND) && !offhandStack.is(TsukiItemTags.OFFHAND_EQUIPMENT) && !(heldStack.getItem() instanceof BlockItem)) {
-                        return InteractionResult.PASS; // Pass to off-hand if that item is placeable
+                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Pass to off-hand if that item is placeable
                     }
                     if (handIn.equals(InteractionHand.OFF_HAND) && offhandStack.is(TsukiItemTags.OFFHAND_EQUIPMENT)) {
-                        return InteractionResult.PASS; // Items in this tag should not be placed from the off-hand
+                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Items in this tag should not be placed from the off-hand
                     }
                 }
                 if (heldStack.isEmpty()) {
-                    return InteractionResult.PASS;
+                    return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
                 } else if (obon.addItem(player.getAbilities().instabuild ? heldStack.copy() : heldStack)) {
                     worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F);
-                    return InteractionResult.SUCCESS;
+                    return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
                 }
 
             } else if (handIn.equals(InteractionHand.MAIN_HAND)) {
@@ -84,10 +99,10 @@ public class ObonBlock extends BaseEntityBlock {
                     obon.removeItem();
                 }
                 worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_HIT, SoundSource.BLOCKS, 0.25F, 0.5F);
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
             }
         }
-        return InteractionResult.PASS;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
     
     @SuppressWarnings("deprecation")
@@ -124,3 +139,4 @@ public class ObonBlock extends BaseEntityBlock {
         builder.add(FACING);
     }
 }
+

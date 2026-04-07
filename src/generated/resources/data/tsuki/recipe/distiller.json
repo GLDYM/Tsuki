@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "P": {
+      "tag": "minecraft:logs"
+    },
+    "S": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "ISI",
+    "PPP",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:distiller"
+  }
+}

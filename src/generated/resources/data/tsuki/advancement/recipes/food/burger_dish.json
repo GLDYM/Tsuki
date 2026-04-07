@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_burger": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:burger"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:burger_dish"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_burger"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:burger_dish"
+    ]
+  }
+}

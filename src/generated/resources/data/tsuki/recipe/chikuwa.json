@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:chikuwa_raw"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:chikuwa"
+  }
+}

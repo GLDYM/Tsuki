@@ -1,23 +1,25 @@
 package cn.mcmod.tsuki.client.particle;
 
 import cn.mcmod.tsuki.Tsuki;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ParticleRegistry {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister
-            .create(ForgeRegistries.PARTICLE_TYPES, Tsuki.MODID);
-    public static final RegistryObject<SimpleParticleType> SAKURA_LEAF = PARTICLE_TYPES.register(Tsuki.MODID,
+                        .create(Registries.PARTICLE_TYPE, Tsuki.MODID);
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SAKURA_LEAF = PARTICLE_TYPES.register(Tsuki.MODID,
             () -> new SimpleParticleType(false));
-    public static final RegistryObject<SimpleParticleType> RED_MAPLE_LEAF = PARTICLE_TYPES.register("red_maple",
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> RED_MAPLE_LEAF = PARTICLE_TYPES.register("red_maple",
             () -> new SimpleParticleType(false));
-    public static final RegistryObject<SimpleParticleType> YELLOW_MAPLE_LEAF = PARTICLE_TYPES.register("yellow_maple",
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> YELLOW_MAPLE_LEAF = PARTICLE_TYPES.register("yellow_maple",
             () -> new SimpleParticleType(false));
-    public static final RegistryObject<SimpleParticleType> GREEN_MAPLE_LEAF = PARTICLE_TYPES.register("green_maple",
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> GREEN_MAPLE_LEAF = PARTICLE_TYPES.register("green_maple",
             () -> new SimpleParticleType(false));
-    public static final RegistryObject<SimpleParticleType> ORANGE_MAPLE_LEAF = PARTICLE_TYPES.register("orange_maple",
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ORANGE_MAPLE_LEAF = PARTICLE_TYPES.register("orange_maple",
             () -> new SimpleParticleType(false));
 }
+
+

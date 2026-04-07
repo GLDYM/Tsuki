@@ -22,7 +22,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 public class StoneMortarCategory implements IRecipeCategory<StoneMortarRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(Tsuki.MODID, "stone_mortar");
+    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "stone_mortar");
     private final Component title;
     private final IDrawable background;
     private final IDrawable icon;
@@ -31,7 +31,7 @@ public class StoneMortarCategory implements IRecipeCategory<StoneMortarRecipe> {
 
     public StoneMortarCategory(IGuiHelper helper) {
         title = Component.translatable("sakura.jei.stone_mortar");
-        ResourceLocation backgroundImage = new ResourceLocation(Tsuki.MODID, "textures/gui/stonemortar.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/stonemortar.png");
         background = helper.createDrawable(backgroundImage, 39, 13, 87, 62);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.STONE_MORTAR.get()));
         mortar = helper.createDrawable(backgroundImage, 176, 0, 14, 16);

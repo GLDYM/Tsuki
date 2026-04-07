@@ -1,0 +1,27 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0,
+  "ingredients": [
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "tag": "minecraft:leaves"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "item": "minecraft:green_dye"
+    },
+    {
+      "item": "minecraft:green_dye"
+    }
+  ]
+}

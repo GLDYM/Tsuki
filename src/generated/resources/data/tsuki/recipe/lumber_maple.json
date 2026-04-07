@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "tsuki:maple_log"
+    }
+  ],
+  "result": {
+    "count": 8,
+    "id": "tsuki:lumber_maple"
+  }
+}

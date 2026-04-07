@@ -3,7 +3,7 @@ package cn.mcmod.tsuki.item.enums;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
 import cn.mcmod_mmf.mmlib.item.ItemFoodBase;
 import cn.mcmod.tsuki.item.FoodRegistry;
-import net.minecraftforge.registries.RegistryObject;
+import java.util.function.Supplier;
 
 
 public enum TsukiFoodSet {
@@ -1776,7 +1776,9 @@ public enum TsukiFoodSet {
     public FoodInfo getFoodInfo() {
         return info;
     }
-    public RegistryObject<ItemFoodBase> getItem() {
+    public Supplier<ItemFoodBase> getItem() {
        return FoodRegistry.FOODSET.get(this);
     }
 }
+
+

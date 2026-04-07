@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:flour/buckwheat"
+    },
+    {
+      "tag": "c:flour/buckwheat"
+    },
+    {
+      "tag": "c:flour/buckwheat"
+    },
+    {
+      "tag": "c:flour/buckwheat"
+    },
+    {
+      "tag": "c:flour/wheat"
+    },
+    {
+      "tag": "c:water"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:soba_block"
+  }
+}

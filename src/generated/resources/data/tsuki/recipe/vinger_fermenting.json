@@ -1,0 +1,24 @@
+{
+  "type": "tsuki:fermenting",
+  "experience": 0,
+  "fluid": {
+    "amount": 500,
+    "fluidTag": "tsuki:brewers_alcohol"
+  },
+  "ingredients": [
+    {
+      "tag": "c:kouji"
+    }
+  ],
+  "recipeTime": 800,
+  "result_fluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "count": 8,
+      "item": "tsuki:vinegar"
+    }
+  ]
+}

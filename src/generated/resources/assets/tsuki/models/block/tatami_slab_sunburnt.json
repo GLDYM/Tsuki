@@ -1,5 +1,5 @@
 {
-  "parent": "mysterious_mountain_lib:block/facing_slab",
+  "parent": "minecraft:block/slab",
   "textures": {
     "bottom": "tsuki:block/tatami_tan",
     "side": "tsuki:block/tatami_tan",

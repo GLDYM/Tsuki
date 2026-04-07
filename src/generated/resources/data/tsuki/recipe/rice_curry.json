@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "item": "tsuki:curry_sauce"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:rice_curry"
+  }
+}

@@ -30,20 +30,26 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
-    public static final ResourceLocation PLUGIN_ID = new ResourceLocation(Tsuki.MODID, "jei_plugin");
+    public static final ResourceLocation PLUGIN_ID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "jei_plugin");
 
     private static final Minecraft MC = Minecraft.getInstance();
 
-    private static <C extends Container, T extends Recipe<C>> List<T> findRecipesByType(RecipeType<T> type) {
-        return MC.level.getRecipeManager().getAllRecipesFor(type);
+    private static <I extends RecipeInput, T extends Recipe<I>> List<T> findRecipesByType(RecipeType<T> type) {
+        if (MC.level == null) {
+            return List.of();
+        }
+        return MC.level.getRecipeManager().getAllRecipesFor(type).stream()
+                .map(RecipeHolder::value)
+                .toList();
     }
     
     public static final mezz.jei.api.recipe.RecipeType<CookingPotRecipe> COOKING_POT_JEI_TYPE = 

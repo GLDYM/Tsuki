@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 0.5,
   "hunger": 10,
-  "ingredient": {
-    "item": "tsuki:burger_dish"
-  },
   "protein": 4.0,
   "saturation": 0.8,
   "vegetables": 2.0,

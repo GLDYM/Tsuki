@@ -17,7 +17,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 public class StoneMortarItem extends BlockItem {
 
@@ -57,3 +57,4 @@ public class StoneMortarItem extends BlockItem {
 		});
 	}
 }
+

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tsuki",
+  "key": {
+    "#": {
+      "item": "tsuki:bamboo_sunburnt"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:bamboo_block_sunburnt"
+  }
+}

@@ -1,12 +1,16 @@
+
 package cn.mcmod.tsuki.block.foods;
+
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -23,26 +27,26 @@ public class TeishokuFinishedBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
     public TeishokuFinishedBlock() {
-        super(Properties.copy(Blocks.OAK_SLAB));
+        super(BlockBehaviour.Properties.of());
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn,
-            BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level worldIn, BlockPos pos,
+            Player player, InteractionHand handIn, BlockHitResult hit) {
         if (worldIn.isClientSide) {
             if (this.takePlates(worldIn, pos, state, player, handIn).consumesAction()) {
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.SUCCESS;
             }
         }
         return this.takePlates(worldIn, pos, state, player, handIn);
     }
 
-    private InteractionResult takePlates(Level worldIn, BlockPos pos, BlockState state, Player player,
+    private ItemInteractionResult takePlates(Level worldIn, BlockPos pos, BlockState state, Player player,
             InteractionHand handIn) {
         worldIn.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
         worldIn.destroyBlock(pos, true);
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
     }
 
     @Override
@@ -56,3 +60,4 @@ public class TeishokuFinishedBlock extends Block {
         builder.add(FACING);
     }
 }
+

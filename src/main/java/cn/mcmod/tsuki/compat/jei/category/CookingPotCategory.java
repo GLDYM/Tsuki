@@ -1,13 +1,13 @@
 package cn.mcmod.tsuki.compat.jei.category;
 
+import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
 import cn.mcmod.tsuki.recipes.CookingPotRecipe;
-import cn.mcmod_mmf.mmlib.fluid.FluidIngredient;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.forge.ForgeTypes;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -27,7 +27,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(Tsuki.MODID, "cooking");
+    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cooking");
     protected final IDrawable heatIndicator;
     protected final IDrawableAnimated arrow;
     private final Component title;
@@ -36,7 +36,7 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
 
     public CookingPotCategory(IGuiHelper helper) {
         title = Component.translatable("sakura.jei.cooking");
-        ResourceLocation backgroundImage = new ResourceLocation(Tsuki.MODID, "textures/gui/pot.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/pot.png");
         background = helper.createDrawable(backgroundImage, 16, 16, 144, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.COOKING_POT.get()));
         heatIndicator = helper.createDrawable(backgroundImage, 176, 0, 18, 18);
@@ -79,7 +79,7 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
         if(recipe.getRequiredFluid() != FluidIngredient.EMPTY)
             builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
             .setFluidRenderer(CookingPotBlockEntity.TANK_CAPACITY, true, 16, 52)
-            .addIngredients(ForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
+            .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
         Minecraft minecraft = Minecraft.getInstance();
         builder.addSlot(RecipeIngredientRole.OUTPUT, 120, 22).addItemStack(recipe.getResultItem(minecraft.level.registryAccess()));
     }

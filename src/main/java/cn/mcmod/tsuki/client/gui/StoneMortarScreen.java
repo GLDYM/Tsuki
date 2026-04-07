@@ -10,8 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class StoneMortarScreen extends AbstractContainerScreen<StoneMortarContainer> {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(Tsuki.MODID,
-            "textures/gui/stonemortar.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/stonemortar.png");
 
     public StoneMortarScreen(StoneMortarContainer screenContainer, Inventory inv, Component titleIn) {
         super(screenContainer, inv, titleIn);
@@ -23,7 +22,7 @@ public class StoneMortarScreen extends AbstractContainerScreen<StoneMortarContai
 
     @Override
     public void render(GuiGraphics ms, final int mouseX, final int mouseY, float partialTicks) {
-        this.renderBackground(ms);
+        this.renderBackground(ms, mouseX, mouseY, partialTicks);
         super.render(ms, mouseX, mouseY, partialTicks);
         this.renderTooltip(ms, mouseX, mouseY);
     }

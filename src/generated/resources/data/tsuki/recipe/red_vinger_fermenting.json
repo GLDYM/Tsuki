@@ -1,0 +1,30 @@
+{
+  "type": "tsuki:fermenting",
+  "experience": 0,
+  "fluid": {
+    "amount": 1000,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:sake_kasu"
+    },
+    {
+      "item": "tsuki:sake_kasu"
+    },
+    {
+      "tag": "c:kouji"
+    }
+  ],
+  "recipeTime": 800,
+  "result_fluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "count": 8,
+      "item": "tsuki:red_vinegar"
+    }
+  ]
+}

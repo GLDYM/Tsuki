@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 0.25,
   "hunger": 1,
-  "ingredient": {
-    "item": "tsuki:breadcrumbs"
-  },
   "protein": 0.0,
   "saturation": 0.1,
   "vegetables": 0.0,

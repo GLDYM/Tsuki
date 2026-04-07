@@ -8,9 +8,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -18,13 +18,14 @@ import java.util.concurrent.CompletableFuture;
 public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
 
     public static final ResourceKey<BiomeModifier> ADD_FEATURES = ResourceKey.create(
-            ForgeRegistries.Keys.BIOME_MODIFIERS, // The registry this key is for
-            new ResourceLocation(Tsuki.MODID, "add_features") // The registry name
+            NeoForgeRegistries.Keys.BIOME_MODIFIERS, // The registry this key is for
+            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "add_features") // The registry name
     );
 
     public TsukiFeatureProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
         super(packOutput, registries, new RegistrySetBuilder()
                         .add(Registries.CONFIGURED_FEATURE, bootstrap -> {
+                            TsukiTreeFeatures.bootstrapEntries();
                             TsukiTreeFeatures.ENTRY.forEach(
                                     e -> bootstrap.register(e.getA(), e.getB())
                             );
@@ -37,3 +38,4 @@ public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
     }
 
 }
+

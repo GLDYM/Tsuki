@@ -5,7 +5,7 @@ import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod_mmf.mmlib.data.compat.TFCFoodDefinitionProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class TsukiTFCFoodCompatProvider extends TFCFoodDefinitionProvider {
 
@@ -28,3 +28,4 @@ public class TsukiTFCFoodCompatProvider extends TFCFoodDefinitionProvider {
         return "Tsuki TFC FoodDefinition Provider";
     }
 }
+

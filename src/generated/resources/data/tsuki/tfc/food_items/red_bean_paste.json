@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 0.25,
   "hunger": 4,
-  "ingredient": {
-    "item": "tsuki:red_bean_paste"
-  },
   "protein": 0.0,
   "saturation": 0.25,
   "vegetables": 1.0,

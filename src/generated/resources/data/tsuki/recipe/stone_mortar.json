@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:cobblestones"
+    },
+    "L": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "L  ",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:stone_mortar"
+  }
+}

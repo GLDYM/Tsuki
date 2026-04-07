@@ -4,9 +4,6 @@
   "fruit": 3.0,
   "grain": 3.0,
   "hunger": 10,
-  "ingredient": {
-    "item": "tsuki:okinoyaki_plus"
-  },
   "protein": 3.0,
   "saturation": 1.0,
   "vegetables": 3.0,

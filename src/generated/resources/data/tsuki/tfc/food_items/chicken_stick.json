@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 0.0,
   "hunger": 6,
-  "ingredient": {
-    "item": "tsuki:chicken_stick"
-  },
   "protein": 4.0,
   "saturation": 0.4,
   "vegetables": 0.0,

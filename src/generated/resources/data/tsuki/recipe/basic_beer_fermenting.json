@@ -1,0 +1,25 @@
+{
+  "type": "tsuki:fermenting",
+  "experience": 0,
+  "fluid": {
+    "amount": 200,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "tag": "c:grain"
+    },
+    {
+      "tag": "c:mushrooms/brownmushroom"
+    },
+    {
+      "tag": "c:sugar/sugar"
+    }
+  ],
+  "recipeTime": 800,
+  "result_fluid": {
+    "amount": 100,
+    "fluid": "tsuki:beer"
+  },
+  "results": []
+}

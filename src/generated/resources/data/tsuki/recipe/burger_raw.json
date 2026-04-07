@@ -1,0 +1,29 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:minced_meat"
+    },
+    {
+      "item": "tsuki:breadcrumbs"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:eggs"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:burger_raw"
+    },
+    {
+      "count": 2,
+      "item": "tsuki:burger_raw"
+    }
+  ]
+}

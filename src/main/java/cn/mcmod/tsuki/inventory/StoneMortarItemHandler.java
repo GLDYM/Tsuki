@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandler;
 
 public class StoneMortarItemHandler implements IItemHandler {
     private static final int SLOTS_INPUT = 4;
@@ -61,3 +61,4 @@ public class StoneMortarItemHandler implements IItemHandler {
         return itemHandler.getSlotLimit(slot);
     }
 }
+

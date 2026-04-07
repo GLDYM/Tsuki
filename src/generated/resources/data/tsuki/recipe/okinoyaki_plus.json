@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:okinoyaki"
+    },
+    {
+      "item": "tsuki:worcester_sauce"
+    },
+    {
+      "item": "tsuki:mayo"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:okinoyaki_plus"
+  }
+}

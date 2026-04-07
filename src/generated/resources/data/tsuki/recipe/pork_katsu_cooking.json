@@ -1,0 +1,24 @@
+{
+  "type": "tsuki:cooking",
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:food_oil"
+  },
+  "ingredients": [
+    {
+      "tag": "c:raw_pork"
+    },
+    {
+      "item": "tsuki:breadcrumbs"
+    },
+    {
+      "tag": "c:eggs"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "count": 2,
+    "item": "tsuki:katsu"
+  }
+}

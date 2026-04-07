@@ -7,13 +7,13 @@ import cn.mcmod.tsuki.data.compat.TsukiTFCFoodCompatProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(modid = Tsuki.MODID,bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Tsuki.MODID)
 public class DataGen {
     @SubscribeEvent
     public static void dataGen(GatherDataEvent event) {
@@ -28,10 +28,12 @@ public class DataGen {
         dataGenerator.addProvider(event.includeServer(),new TsukiItemTagsProvider(packOutput, provider, block_tag, Tsuki.MODID, existingFileHelper));
         dataGenerator.addProvider(event.includeServer(),new TsukiFluidTagsProvider(packOutput, provider, Tsuki.MODID, existingFileHelper));
         dataGenerator.addProvider(event.includeServer(),new TsukiBiomeTagProvider(packOutput, provider, Tsuki.MODID, existingFileHelper));
-        dataGenerator.addProvider(event.includeServer(),new TsukiRecipeProvider(packOutput));
-        dataGenerator.addProvider(event.includeServer(),new TsukiLootTableProvider(packOutput));
+        dataGenerator.addProvider(event.includeServer(),new TsukiRecipeProvider(packOutput, provider));
+        dataGenerator.addProvider(event.includeServer(),new TsukiLootTableProvider(packOutput, provider));
         dataGenerator.addProvider(event.includeServer(),new TsukiFeatureProvider(packOutput, provider));
-//        dataGenerator.addProvider(event.includeServer(),new TsukiLootModifierProvider(packOutput, Tsuki.MODID));
+    //        dataGenerator.addProvider(event.includeServer(),new TsukiLootModifierProvider(packOutput, provider, Tsuki.MODID));
         dataGenerator.addProvider(event.includeServer(),new TsukiTFCFoodCompatProvider(packOutput, existingFileHelper));
     }
 }
+
+

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#c:slices/raw_fishes",
+    "#c:raw_fishes/cod",
+    "#c:raw_fishes/salmon",
+    "#c:raw_fishes/tropical_fish",
+    "#c:raw_fishes/bonito",
+    "#tsuki:fishcake"
+  ]
+}

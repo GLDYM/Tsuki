@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 2.0,
   "hunger": 9,
-  "ingredient": {
-    "item": "tsuki:ramen_friedtofu"
-  },
   "protein": 3.0,
   "saturation": 0.7,
   "vegetables": 0.0,

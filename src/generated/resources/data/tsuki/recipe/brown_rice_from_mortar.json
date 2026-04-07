@@ -1,0 +1,27 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0,
+  "ingredients": [
+    {
+      "tag": "c:seeds/rice"
+    },
+    {
+      "tag": "c:seeds/rice"
+    },
+    {
+      "tag": "c:seeds/rice"
+    },
+    {
+      "tag": "c:seeds/rice"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "item": "tsuki:brown_rice"
+    },
+    {
+      "item": "tsuki:brown_rice"
+    }
+  ]
+}

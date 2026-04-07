@@ -1,0 +1,27 @@
+{
+  "type": "tsuki:fermenting",
+  "experience": 0,
+  "fluid": {
+    "amount": 500,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "recipeTime": 800,
+  "result_fluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:kouji"
+    }
+  ]
+}

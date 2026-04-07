@@ -1,0 +1,15 @@
+{
+  "values": [
+    "#c:crops/cabbage",
+    "#c:crops/onion",
+    "#c:crops/buckwheat",
+    "#c:crops/eggplant",
+    "#c:crops/radish",
+    "#c:crops/rice",
+    "#c:crops/tomato",
+    "#c:crops/taro",
+    "#c:seeds/rapeseed",
+    "#c:crops/redbean",
+    "#c:crops/pumpkin"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "tsuki:cooking",
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:food_oil"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:tofu_fried"
+    },
+    {
+      "item": "tsuki:kaeshi"
+    },
+    {
+      "item": "tsuki:mayo"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "count": 2,
+    "item": "tsuki:tofu_nanban"
+  }
+}

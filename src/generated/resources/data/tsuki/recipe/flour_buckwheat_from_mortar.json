@@ -1,0 +1,15 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0,
+  "ingredients": [
+    {
+      "tag": "c:grain/buckwheat"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "item": "tsuki:flour_buckwheat"
+    }
+  ]
+}

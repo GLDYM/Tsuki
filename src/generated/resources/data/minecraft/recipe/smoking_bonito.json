@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.5,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:boiled_bonito"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:dried_bonito"
+  }
+}

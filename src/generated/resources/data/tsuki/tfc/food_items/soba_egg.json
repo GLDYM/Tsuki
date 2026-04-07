@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 1.5,
   "hunger": 5,
-  "ingredient": {
-    "item": "tsuki:soba_egg"
-  },
   "protein": 0.0,
   "saturation": 0.6,
   "vegetables": 0.0,

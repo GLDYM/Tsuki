@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 1.5,
   "hunger": 9,
-  "ingredient": {
-    "item": "tsuki:yaki_udon"
-  },
   "protein": 2.0,
   "saturation": 0.7,
   "vegetables": 4.0,

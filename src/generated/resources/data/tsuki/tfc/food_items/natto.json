@@ -4,9 +4,6 @@
   "fruit": 0.0,
   "grain": 1.0,
   "hunger": 2,
-  "ingredient": {
-    "item": "tsuki:natto"
-  },
   "protein": 0.0,
   "saturation": 0.5,
   "vegetables": 2.0,

@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#c:vegetables/cabbage",
+    "#c:vegetables/beetroot",
+    "#c:vegetables/carrot",
+    "#c:vegetables/eggplant",
+    "#c:vegetables/onion",
+    "#c:vegetables/potato",
+    "#c:vegetables/radish",
+    "#c:vegetables/tomato",
+    "#c:vegetables/pumpkin",
+    "tsuki:imogara"
+  ]
+}

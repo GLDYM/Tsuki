@@ -13,7 +13,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -44,7 +44,7 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
     protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE, Block.box(0.0, -1.0, 0.0, 16.0, 0.0, 16.0));
     private final FoodInfo info;
     public NabeBlock(FoodInfo info) {
-        super(Properties.copy(BlockRegistry.COOKING_POT.get()));
+        super(BlockBehaviour.Properties.of());
         this.info = info;
         this.registerDefaultState(this.stateDefinition.any().setValue(TRAY_SUPPORT, false).setValue(FACING, Direction.NORTH).setValue(BITES, 0));
     }
@@ -80,15 +80,14 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand,
-            BlockHitResult hitResult) {
-        ItemStack itemstack = player.getItemInHand(hand);
+    protected ItemInteractionResult useItemOn(ItemStack itemstack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (level.isClientSide) {
             if (eat(level, pos, state, player).consumesAction()) {
-                return InteractionResult.SUCCESS;
+                return ItemInteractionResult.SUCCESS;
             }
             if (itemstack.isEmpty()) {
-                return InteractionResult.CONSUME;
+                return ItemInteractionResult.CONSUME;
             }
         }
         return eat(level, pos, state, player);
@@ -109,12 +108,12 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
        return (BlockState)state.setValue(TRAY_SUPPORT, belowBlock.is(TsukiBlockTags.TRAY_HEAT_SOURCES));
     }
     
-    protected InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
+    protected ItemInteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
         if (!isHeated(level, pos)) {
             player.displayClientMessage(Component.translatable("sakura.block.nabe.not_cooked"), true);
-            return InteractionResult.FAIL;
+            return ItemInteractionResult.FAIL;
         }else if (!player.canEat(false)) {
-            return InteractionResult.PASS;
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         } else {
             player.getFoodData().eat(this.getFoodInfo().getAmount(), this.getFoodInfo().getCalories());
             int i = state.getValue(BITES);
@@ -133,7 +132,7 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
                 );
             }
 
-            return InteractionResult.SUCCESS;
+            return level.isClientSide() ? ItemInteractionResult.SUCCESS : ItemInteractionResult.CONSUME;
         }
     }
     private boolean isHeated(LevelAccessor level, BlockPos pos) {
@@ -156,3 +155,4 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
        }
     }
 }
+

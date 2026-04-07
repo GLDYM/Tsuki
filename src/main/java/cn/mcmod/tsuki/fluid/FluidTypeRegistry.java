@@ -3,31 +3,32 @@ package cn.mcmod.tsuki.fluid;
 import cn.mcmod.tsuki.Tsuki;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.minecraftforge.common.SoundActions;
-import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.common.SoundActions;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import java.util.function.Supplier;
 
 import java.util.function.Consumer;
 
 public class FluidTypeRegistry {
-    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, Tsuki.MODID);
+    public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.FLUID_TYPES, Tsuki.MODID);
 
-    public static final RegistryObject<FluidType> FOOD_OIL = register("food_oil",0xFFFFF050);
-    public static final RegistryObject<FluidType> DOBUROKU = register("doburoku",0xFFCCC299);
-    public static final RegistryObject<FluidType> SAKE = register("sake",0xDDFFF8CC);
-    public static final RegistryObject<FluidType> SHOUCHU =  register("shouchu",0xBBFFFCF2);
-    public static final RegistryObject<FluidType> BEER = register("beer",0xFFF2A918);
-    public static final RegistryObject<FluidType> WHISKEY = register("whiskey",0xFFA52121);
-    public static final RegistryObject<FluidType> RUM = register("rum",0xFFFFAA32);
-    public static final RegistryObject<FluidType> RED_WINE = register("red_wine",0xFFA71844);
-    public static final RegistryObject<FluidType> WHITE_WINE = register("white_wine",0xFFFFF8B2);
-    public static final RegistryObject<FluidType> CHAMPAGNE = register("champagne",0xFFFFE772);
-    public static final RegistryObject<FluidType> BRANDY = register("brandy",0xFFBF2F00);
+    public static final DeferredHolder<FluidType, FluidType> FOOD_OIL = register("food_oil",0xFFFFF050);
+    public static final DeferredHolder<FluidType, FluidType> DOBUROKU = register("doburoku",0xFFCCC299);
+    public static final DeferredHolder<FluidType, FluidType> SAKE = register("sake",0xDDFFF8CC);
+    public static final DeferredHolder<FluidType, FluidType> SHOUCHU =  register("shouchu",0xBBFFFCF2);
+    public static final DeferredHolder<FluidType, FluidType> BEER = register("beer",0xFFF2A918);
+    public static final DeferredHolder<FluidType, FluidType> WHISKEY = register("whiskey",0xFFA52121);
+    public static final DeferredHolder<FluidType, FluidType> RUM = register("rum",0xFFFFAA32);
+    public static final DeferredHolder<FluidType, FluidType> RED_WINE = register("red_wine",0xFFA71844);
+    public static final DeferredHolder<FluidType, FluidType> WHITE_WINE = register("white_wine",0xFFFFF8B2);
+    public static final DeferredHolder<FluidType, FluidType> CHAMPAGNE = register("champagne",0xFFFFE772);
+    public static final DeferredHolder<FluidType, FluidType> BRANDY = register("brandy",0xFFBF2F00);
             
-    private static RegistryObject<FluidType> register(String name,int color){
+    private static DeferredHolder<FluidType, FluidType> register(String name,int color){
         return FLUID_TYPES.register(name,()->create(color));
     }
 
@@ -47,15 +48,17 @@ public class FluidTypeRegistry {
 
                     @Override
                     public ResourceLocation getStillTexture() {
-                        return new ResourceLocation("block/water_still");
+                        return ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_still");
                     }
 
                     @Override
                     public ResourceLocation getFlowingTexture() {
-                        return new ResourceLocation("block/water_flow");
+                        return ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_flow");
                     }
                 });
             }
         };
     }
 }
+
+

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:flour/wheat"
+    },
+    {
+      "tag": "c:flour/wheat"
+    },
+    {
+      "tag": "c:flour/wheat"
+    },
+    {
+      "tag": "c:flour/wheat"
+    },
+    {
+      "tag": "c:salt"
+    },
+    {
+      "tag": "c:salt"
+    },
+    {
+      "tag": "c:water"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:udon_block"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "tsuki:soups"
+    },
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "item": "tsuki:obon"
+    },
+    {
+      "item": "tsuki:fish_bake"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:teishoku_fish_cooked"
+  }
+}

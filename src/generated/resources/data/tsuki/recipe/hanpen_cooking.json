@@ -1,0 +1,32 @@
+{
+  "type": "tsuki:cooking",
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "tag": "c:salt"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    [
+      {
+        "tag": "c:crops/taro"
+      },
+      {
+        "tag": "c:crops/potato"
+      }
+    ],
+    {
+      "item": "tsuki:surimi"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "count": 4,
+    "item": "tsuki:fishcake"
+  }
+}

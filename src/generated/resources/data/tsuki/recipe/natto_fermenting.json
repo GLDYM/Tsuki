@@ -1,0 +1,26 @@
+{
+  "type": "tsuki:fermenting",
+  "experience": 0,
+  "fluid": {
+    "amount": 0
+  },
+  "ingredients": [
+    {
+      "tag": "c:crops/soybean"
+    },
+    {
+      "tag": "c:straw"
+    }
+  ],
+  "recipeTime": 600,
+  "result_fluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:natto"
+    }
+  ]
+}

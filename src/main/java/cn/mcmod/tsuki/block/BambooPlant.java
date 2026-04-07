@@ -1,4 +1,7 @@
+
 package cn.mcmod.tsuki.block;
+
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,8 +24,8 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.CommonHooks;
+import net.neoforged.neoforge.common.ItemAbilities;
 
 @SuppressWarnings("deprecation")
 public class BambooPlant extends Block implements BonemealableBlock {
@@ -35,7 +38,7 @@ public class BambooPlant extends Block implements BonemealableBlock {
     public static final int AGE_THICK_BAMBOO = 1;
 
     public BambooPlant() {
-        super(Properties.copy(Blocks.BAMBOO));
+        super(BlockBehaviour.Properties.of());
         this.registerDefaultState(this.stateDefinition.any().setValue(LEAVES, BambooLeaves.NONE));
     }
 
@@ -56,14 +59,14 @@ public class BambooPlant extends Block implements BonemealableBlock {
     }
 
     @Override
-    public boolean isPathfindable(BlockState p_48906_, BlockGetter p_48907_, BlockPos p_48908_,
-            PathComputationType p_48909_) {
+    protected boolean isPathfindable(BlockState p_48906_, PathComputationType p_48909_) {
         return false;
     }
 
     @Override
-    public boolean isCollisionShapeFullBlock(BlockState p_181159_, BlockGetter p_181160_, BlockPos p_181161_) {
-        return false;
+    public VoxelShape getCollisionShape(BlockState p_181159_, BlockGetter p_181160_, BlockPos p_181161_,
+            CollisionContext p_48948_) {
+        return SHAPE;
     }
 
     @Override
@@ -81,11 +84,11 @@ public class BambooPlant extends Block implements BonemealableBlock {
 
     @Override
     public void randomTick(BlockState state, ServerLevel levelIn, BlockPos pos, RandomSource random) {
-        if(ForgeHooks.onCropsGrowPre(levelIn, pos, state, random.nextInt(3) == 0)) {
+        if(CommonHooks.canCropGrow(levelIn, pos, state, random.nextInt(3) == 0)) {
             if (levelIn.getRawBrightness(pos.above(), 0) >= 6) {
                 growingTick(state, levelIn, pos, random); 
                 spreadingTick(levelIn, pos, random);
-                ForgeHooks.onCropsGrowPost(levelIn, pos, state);
+                CommonHooks.fireCropGrowPost(levelIn, pos, state);
             }
         }
     }
@@ -123,8 +126,7 @@ public class BambooPlant extends Block implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader p_48886_, BlockPos p_48887_, BlockState p_48888_,
-            boolean p_48889_) {
+    public boolean isValidBonemealTarget(LevelReader p_48886_, BlockPos p_48887_, BlockState p_48888_) {
         return true;
     }
 
@@ -158,7 +160,7 @@ public class BambooPlant extends Block implements BonemealableBlock {
 
     @Override
     public float getDestroyProgress(BlockState p_48901_, Player p_48902_, BlockGetter p_48903_, BlockPos p_48904_) {
-        return p_48902_.getMainHandItem().canPerformAction(ToolActions.AXE_DIG) ? 1.0F
+        return p_48902_.getMainHandItem().canPerformAction(ItemAbilities.AXE_DIG) ? 1.0F
                 : super.getDestroyProgress(p_48901_, p_48902_, p_48903_, p_48904_);
     }
 
@@ -210,3 +212,6 @@ public class BambooPlant extends Block implements BonemealableBlock {
         return 1F;
     }
 }
+
+
+

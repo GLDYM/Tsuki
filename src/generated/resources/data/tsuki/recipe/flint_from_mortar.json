@@ -1,0 +1,18 @@
+{
+  "type": "tsuki:stone_mortar",
+  "experience": 0,
+  "ingredients": [
+    {
+      "tag": "c:gravels"
+    }
+  ],
+  "recipeTime": 200,
+  "results": [
+    {
+      "item": "minecraft:sand"
+    },
+    {
+      "item": "minecraft:flint"
+    }
+  ]
+}

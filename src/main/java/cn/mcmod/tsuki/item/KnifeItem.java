@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class KnifeItem extends DiggerItem {
 
     public KnifeItem(Tier tier, float attackDamageIn, float attackSpeedIn, Properties properties) {
-        super(attackDamageIn, attackSpeedIn, tier, TsukiBlockTags.MINEABLE_WITH_KNIFE, properties);
+        super(tier, TsukiBlockTags.MINEABLE_WITH_KNIFE, properties.attributes(DiggerItem.createAttributes(tier, attackDamageIn, attackSpeedIn)));
     }
     
     @Override
@@ -24,7 +24,7 @@ public class KnifeItem extends DiggerItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.hurtAndBreak(1, attacker, (user) -> user.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+        stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
         return true;
     }
 
