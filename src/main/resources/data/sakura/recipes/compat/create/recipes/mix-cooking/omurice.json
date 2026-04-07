@@ -1,0 +1,41 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "sakura:rice/rice"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    [
+      {
+        "tag": "forge:raw_chicken"
+      },
+      {
+        "tag": "forge:raw_pork"
+      },
+      {
+        "tag": "forge:raw_beef"
+      },
+      {
+        "tag": "forge:raw_mutton"
+      },
+      {
+        "tag": "forge:fishes"
+      }
+    ],
+    {
+      "item": "sakura:tomato_sauce"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "forge:food_oil"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:omurice"
+    }
+  ]
+}

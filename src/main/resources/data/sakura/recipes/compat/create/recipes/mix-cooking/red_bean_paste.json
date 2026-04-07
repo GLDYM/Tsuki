@@ -1,0 +1,25 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:crops/redbean"
+    },
+    {
+      "tag": "forge:crops/redbean"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:red_bean_paste",
+      "count": 2
+    }
+  ]
+}

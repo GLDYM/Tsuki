@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:dango"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "tag": "forge:sugar"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:danmitarashi"
+    }
+  ]
+}

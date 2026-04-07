@@ -1,0 +1,30 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:udon_raw"
+    },
+    {
+      "item": "sakura:noodle_soup"
+    },
+    {
+      "tag": "forge:foods/raw_meat"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:udon_large"
+    }
+  ]
+}

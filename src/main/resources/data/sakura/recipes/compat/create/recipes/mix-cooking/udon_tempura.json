@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:udon_raw"
+    },
+    {
+      "item": "sakura:noodle_soup"
+    },
+    {
+      "item": "sakura:tempura"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:udon_tempura"
+    }
+  ]
+}

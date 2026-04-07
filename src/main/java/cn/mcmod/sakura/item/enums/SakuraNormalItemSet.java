@@ -1,5 +1,9 @@
 package cn.mcmod.sakura.item.enums;
 
+import cn.mcmod.sakura.item.ItemRegistry;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.registries.RegistryObject;
+
 public enum SakuraNormalItemSet {
     BAMBOO("bamboo"),
     BAMBOO_SUNBURNT("bamboo_sunburnt"),
@@ -32,12 +36,26 @@ public enum SakuraNormalItemSet {
     KAESHI("kaeshi"),
     NOODLE_SOUP("noodle_soup"),
     NUKA("nuka"),
-    MIRIN_KASU("mirin_kasu"),;
+    MIRIN_KASU("mirin_kasu"),
+    RAMEN_BLOCK("ramen_block"),
+    UDON_BLOCK("udon_block"),
+    SOBA_BLOCK("soba_block"),
+    RAMEN_RAW("ramen_raw"),
+    UDON_RAW("udon_raw"),
+    SOBA_RAW("soba_raw"),
+    WORCESTER_SAUCE("worcester_sauce"),
+    CURRY_POWDER("curry_powder"),
+    CURRY_SAUCE("curry_sauce"),
+    VINEGAR("vinegar"),
+    RED_VINEGAR("red_vinegar");
     private final String name;
     private SakuraNormalItemSet(String name) {
         this.name = name;
     }
     public String getName() {
         return name;
+    }
+    public RegistryObject<Item> getItem() {
+       return ItemRegistry.MATERIALS.get(this);
     }
 }

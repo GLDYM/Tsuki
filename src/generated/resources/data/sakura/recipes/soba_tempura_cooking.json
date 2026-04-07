@@ -1,0 +1,23 @@
+{
+  "type": "sakura:cooking",
+  "experience": 0.0,
+  "fluid": {
+    "amount": 250,
+    "fluidTag": "forge:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "sakura:soba_raw"
+    },
+    {
+      "item": "sakura:noodle_soup"
+    },
+    {
+      "item": "sakura:tempura"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "item": "sakura:soba_tempura"
+  }
+}

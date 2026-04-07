@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:soysauce"
+    },
+    {
+      "tag": "forge:raw_fishes"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "forge:food_oil"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:fish_bake"
+    }
+  ]
+}

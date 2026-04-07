@@ -1,0 +1,31 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    [
+      {
+        "item": "sakura:bonito_shaving"
+      },
+      {
+        "item": "minecraft:dried_kelp"
+      }
+    ],
+    [
+      {
+        "item": "sakura:bonito_shaving"
+      },
+      {
+        "item": "minecraft:dried_kelp"
+      }
+    ],
+    {
+      "amount": 500,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:dashi"
+    }
+  ]
+}

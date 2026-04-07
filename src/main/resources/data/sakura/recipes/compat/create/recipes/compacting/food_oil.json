@@ -1,0 +1,19 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    [
+      {
+        "item": "sakura:rapeseeds"
+      },
+      {
+        "item": "minecraft:sunflower"
+      }
+    ]
+  ],
+  "results": [
+    {
+      "fluid": "sakura:food_oil",
+      "amount": 125
+    }
+  ]
+}

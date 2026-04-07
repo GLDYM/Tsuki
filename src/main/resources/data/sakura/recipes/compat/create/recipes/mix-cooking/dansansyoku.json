@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:dango"
+    },
+    {
+      "item": "sakura:sakuraleaves"
+    },
+    {
+      "item": "minecraft:grass"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:dansansyoku"
+    }
+  ]
+}

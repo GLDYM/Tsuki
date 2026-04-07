@@ -1,0 +1,22 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:kaeshi"
+    },
+    {
+      "item": "sakura:dashi"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:noodle_soup",
+      "count": 2
+    }
+  ]
+}

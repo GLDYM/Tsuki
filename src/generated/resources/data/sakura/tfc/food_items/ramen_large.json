@@ -1,0 +1,14 @@
+{
+  "dairy": 2.0,
+  "decayModifier": 5.0,
+  "fruit": 0.0,
+  "grain": 2.0,
+  "hunger": 12,
+  "ingredient": {
+    "item": "sakura:ramen_large"
+  },
+  "protein": 5.0,
+  "saturation": 1.0,
+  "vegetables": 5.0,
+  "water": 35.0
+}

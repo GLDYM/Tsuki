@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:dango"
+    },
+    {
+      "item": "sakura:red_bean_paste"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:dananko"
+    }
+  ]
+}

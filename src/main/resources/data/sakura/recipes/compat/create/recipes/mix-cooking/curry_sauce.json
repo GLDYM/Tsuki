@@ -1,0 +1,41 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:curry_powder"
+    },
+    [
+      {
+        "tag": "forge:vegetables"
+      },
+      {
+        "tag": "forge:foods/raw_meat"
+      }
+    ],
+    [
+      {
+        "tag": "forge:vegetables"
+      },
+      {
+        "tag": "forge:foods/raw_meat"
+      }
+    ],
+    {
+      "tag": "forge:flour"
+    },
+    {
+      "tag": "forge:dashi"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:curry_sauce",
+      "count": 2
+    }
+  ]
+}

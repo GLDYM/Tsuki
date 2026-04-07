@@ -1,0 +1,14 @@
+{
+  "dairy": 0.0,
+  "decayModifier": 5.0,
+  "fruit": 0.0,
+  "grain": 2.0,
+  "hunger": 10,
+  "ingredient": {
+    "item": "sakura:udon_katsu"
+  },
+  "protein": 4.0,
+  "saturation": 0.8,
+  "vegetables": 0.0,
+  "water": 35.0
+}

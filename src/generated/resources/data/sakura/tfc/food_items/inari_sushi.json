@@ -1,0 +1,14 @@
+{
+  "dairy": 2.0,
+  "decayModifier": 4.0,
+  "fruit": 0.0,
+  "grain": 2.0,
+  "hunger": 5,
+  "ingredient": {
+    "item": "sakura:inari_sushi"
+  },
+  "protein": 0.0,
+  "saturation": 0.6,
+  "vegetables": 0.0,
+  "water": 1.0
+}

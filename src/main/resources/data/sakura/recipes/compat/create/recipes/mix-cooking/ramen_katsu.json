@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:ramen_raw"
+    },
+    {
+      "item": "sakura:noodle_soup"
+    },
+    {
+      "item": "sakura:katsu"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:ramen_katsu"
+    }
+  ]
+}

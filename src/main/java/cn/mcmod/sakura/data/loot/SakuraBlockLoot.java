@@ -38,22 +38,25 @@ public class SakuraBlockLoot extends AbstartctBlockLoot {
     @Override
     public void addTables() {
         dropSelf(BlockRegistry.BAMBOO_BLOCK.get());
-        BlockRegistry.BLOCKS.getEntries().forEach(block -> {
-            if (block.get() instanceof LeavesBlock)
-                ;
-            else if (block.get() instanceof CropBlock)
-                ;
-            else if (block.get() instanceof TeishokuBlock)
-                ;
-            else if (block.get() instanceof RiceCropRoot)
-                ;
-            else if (block.get() instanceof BambooPlant)
-                dropOther(block.get(), ItemRegistry.MATERIALS.get(SakuraNormalItemSet.BAMBOO).get());
-            else if (block.get() instanceof TeishokuFinishedBlock)
-                dropOther(block.get(), BlockItemRegistry.OBON.get());
-            else
-                dropSelf(block.get());
-        });
+       BlockRegistry.BLOCKS
+          .getEntries()
+          .forEach(
+             block -> {
+                if (!(block.get() instanceof LeavesBlock)
+                   && !(block.get() instanceof CropBlock)
+                   && !(block.get() instanceof TeishokuBlock)
+                   && !(block.get() instanceof RiceCropRoot)) {
+                   if (block.get() instanceof BambooPlant) {
+                      this.dropOther((Block)block.get(), ItemRegistry.MATERIALS.get(SakuraNormalItemSet.BAMBOO).get());
+                   } else if (block.get() instanceof TeishokuFinishedBlock) {
+                      this.dropOther((Block)block.get(), BlockItemRegistry.OBON.get());
+                   } else {
+                      this.dropSelf((Block)block.get());
+                   }
+                }
+             }
+          );
+
         this.add(BlockRegistry.MAPLE_LEAVES_RED.get(), createLeavesDrops(BlockRegistry.MAPLE_LEAVES_RED.get(),
                 BlockRegistry.MAPLE_SAPLING_RED.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.add(BlockRegistry.MAPLE_LEAVES_ORANGE.get(), createLeavesDrops(BlockRegistry.MAPLE_LEAVES_ORANGE.get(),

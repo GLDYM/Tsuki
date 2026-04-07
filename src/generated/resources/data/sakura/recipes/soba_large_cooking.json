@@ -1,0 +1,29 @@
+{
+  "type": "sakura:cooking",
+  "experience": 0.0,
+  "fluid": {
+    "amount": 250,
+    "fluidTag": "forge:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "sakura:soba_raw"
+    },
+    {
+      "item": "sakura:noodle_soup"
+    },
+    {
+      "tag": "forge:foods/raw_meat"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "tag": "forge:eggs"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "item": "sakura:soba_large"
+  }
+}

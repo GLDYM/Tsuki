@@ -1,0 +1,23 @@
+{
+  "type": "sakura:cooking",
+  "experience": 0.0,
+  "fluid": {
+    "amount": 250,
+    "fluidTag": "forge:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "sakura:ramen_raw"
+    },
+    {
+      "item": "sakura:noodle_soup"
+    },
+    {
+      "item": "sakura:fried_chicken"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "item": "sakura:ramen_chicken"
+  }
+}

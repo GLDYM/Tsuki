@@ -1,0 +1,25 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:dough_rice"
+    },
+    {
+      "item": "minecraft:grass"
+    },
+    {
+      "item": "sakura:red_bean_paste"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:kusa_daifuku",
+      "count": 2
+    }
+  ]
+}

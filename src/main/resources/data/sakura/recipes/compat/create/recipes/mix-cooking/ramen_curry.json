@@ -1,0 +1,32 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:ramen_raw"
+    },
+    {
+      "item": "sakura:dashi"
+    },
+    [
+      {
+        "tag": "forge:vegetables"
+      },
+      {
+        "tag": "forge:foods/raw_meat"
+      }
+    ],
+    {
+      "item": "sakura:curry_powder"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:ramen_curry"
+    }
+  ]
+}

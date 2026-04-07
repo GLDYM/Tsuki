@@ -64,7 +64,10 @@ public class SakuraItemTags {
     public static final TagKey<Item> DOUGH_WHEAT = TagUtils.forgeItemTag("dough/wheat");
     public static final TagKey<Item> DOUGH_BUCKWHEAT = TagUtils.forgeItemTag("dough/buckwheat");
     public static final TagKey<Item> DOUGH_RICE = TagUtils.forgeItemTag("dough/rice");
-
+    public static final TagKey<Item> FOODS_COOKED_MEAT = TagUtils.forgeItemTag("foods/cooked_meat");
+    public static final TagKey<Item> FOODS_COOKED_MEATS = TagUtils.forgeItemTag("foods/cooked_meats");
+    public static final TagKey<Item> FOODS_RAW_MEAT = TagUtils.forgeItemTag("foods/raw_meat");
+    public static final TagKey<Item> FOODS_RAW_MEATS = TagUtils.forgeItemTag("foods/raw_meats");
     public static final TagKey<Item> COOKED_BACON = TagUtils.forgeItemTag("cooked_bacon");
     public static final TagKey<Item> COOKED_BEEF = TagUtils.forgeItemTag("cooked_beef");
     public static final TagKey<Item> COOKED_CHICKEN = TagUtils.forgeItemTag("cooked_chicken");
@@ -119,6 +122,7 @@ public class SakuraItemTags {
     public static final TagKey<Item> RAW_FISHES = TagUtils.forgeItemTag("raw_fishes");
     public static final TagKey<Item> RAW_FISHES_COD = TagUtils.forgeItemTag("raw_fishes/cod");
     public static final TagKey<Item> RAW_FISHES_SALMON = TagUtils.forgeItemTag("raw_fishes/salmon");
+    public static final TagKey<Item> RAW_FISHES_BONITO = TagUtils.forgeItemTag("raw_fishes/bonito");
     public static final TagKey<Item> RAW_FISHES_TROPICAL = TagUtils.forgeItemTag("raw_fishes/tropical_fish");
     
     public static final TagKey<Item> SLICES = TagUtils.forgeItemTag("slices");
@@ -162,14 +166,17 @@ public class SakuraItemTags {
     public static final TagKey<Item> LEAFYVEGETABLES_CABBAGE = TagUtils
             .forgeItemTag("leafyvegetables/cabbage");
 
-//    public static final TagKey<Item> FRUITS = TagUtils.forgeItemTag("fruits");
-//    public static final TagKey<Item> FRUITS_LEMON = TagUtils.forgeItemTag("fruits/lemon");
-//    public static final TagKey<Item> FRUITS_GRAPE = TagUtils.forgeItemTag("fruits/grape");
-//    public static final TagKey<Item> FRUITS_GREENGRAPE = TagUtils.forgeItemTag("fruits/greengrape");
-//    public static final TagKey<Item> FRUITS_UME = TagUtils.forgeItemTag("fruits/ume");
+    public static final TagKey<Item> FRUITS = TagUtils.forgeItemTag("fruits");
+    public static final TagKey<Item> FRUITS_APPLE = TagUtils.forgeItemTag("fruits/apple");
+    public static final TagKey<Item> FRUITS_MELON_SLICE = TagUtils.forgeItemTag("fruits/melon_slice");
+    public static final TagKey<Item> FRUITS_BERRIES = TagUtils.forgeItemTag("fruits/berries");
+    public static final TagKey<Item> FOODS_FRUITS = TagUtils.forgeItemTag("foods/fruits");
+    public static final TagKey<Item> FOODS_FRUITS_APPLE = TagUtils.forgeItemTag("foods/fruits/apple");
+    public static final TagKey<Item> FOODS_FRUITS_MELON_SLICE = TagUtils.forgeItemTag("foods/fruits/melon_slice");
+    public static final TagKey<Item> FOODS_FRUITS_BERRIES = TagUtils.forgeItemTag("foods/fruits/berries");
 
     public static final TagKey<Item> BAMBOO = TagUtils.forgeItemTag("bamboo");
-
+    public static final TagKey<Item> VINEGAR = TagUtils.forgeItemTag("vinegar");
     public static final TagKey<Item> LUMBER = TagUtils.forgeItemTag("lumber");
     public static final TagKey<Item> LUMBER_TFC = TagUtils.modItemTag("tfc", "lumber");
     public static final TagKey<Item> LUMBER_BAMBOO = TagUtils.forgeItemTag("lumber/bamboo");

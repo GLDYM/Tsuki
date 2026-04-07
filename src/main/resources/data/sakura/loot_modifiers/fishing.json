@@ -3,14 +3,14 @@
   "conditions": [
     {
       "condition": "minecraft:random_chance",
-      "chance": 0.125
+      "chance": 0.25
     },
     {
-      "condition": "minecraft:alternative",
+      "condition": "minecraft:any_of",
       "terms": [
         {
           "condition": "forge:loot_table_id",
-          "loot_table_id": "minecraft:gameplay/fishing"
+          "loot_table_id": "minecraft:gameplay/fishing/fish"
         },
         {
           "condition": "forge:loot_table_id",

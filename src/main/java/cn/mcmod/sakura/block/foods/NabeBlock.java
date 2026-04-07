@@ -1,6 +1,7 @@
 package cn.mcmod.sakura.block.foods;
 
 import cn.mcmod.sakura.block.BlockRegistry;
+import cn.mcmod.sakura.tags.SakuraBlockTags;
 import cn.mcmod_mmf.mmlib.block.entity.HeatableBlockEntity;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
 import net.minecraft.core.BlockPos;
@@ -20,47 +21,38 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class NabeBlock extends Block implements HeatableBlockEntity{
-    public static final BooleanProperty IS_COOKED = BooleanProperty.create("is_cooked");
+    public static final BooleanProperty TRAY_SUPPORT = BooleanProperty.create("tray_support");
     public static final IntegerProperty BITES = IntegerProperty.create("bites", 0, 3);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     protected static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);
+    protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE, Block.box(0.0, -1.0, 0.0, 16.0, 0.0, 16.0));
     private final FoodInfo info;
     public NabeBlock(FoodInfo info) {
         super(Properties.copy(BlockRegistry.COOKING_POT.get()));
         this.info = info;
-        this.registerDefaultState(this.stateDefinition.any().setValue(IS_COOKED, false).setValue(FACING, Direction.NORTH).setValue(BITES, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(TRAY_SUPPORT, false).setValue(FACING, Direction.NORTH).setValue(BITES, 0));
     }
-    
-    @Override
-    public boolean isRandomlyTicking(BlockState state) {
-        return !state.getValue(IS_COOKED);
-    }
-    
-    @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
-        if(state.getValue(IS_COOKED)) return;
-        if(this.isHeated(level, pos) && rand.nextInt(10) == 0) {
-            level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1F, 0.8F);
-            level.setBlock(pos, state.setValue(IS_COOKED, true), UPDATE_ALL);
-        }
-    }
-    
+
+
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
-        if(state.getValue(IS_COOKED)) return;
-        if(this.isHeated(level, pos) && rand.nextInt(4) == 0) {
+        if(this.isHeated(level, pos) && rand.nextInt(8) == 0) {
             double x = (double) pos.getX() + 0.5D + (rand.nextDouble() * 0.6D - 0.3D);
             double y = (double) pos.getY() + 0.75D;
             double z = (double) pos.getZ() + 0.5D + (rand.nextDouble() * 0.6D - 0.3D);
@@ -73,10 +65,15 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
         return SHAPE;
     }
     
+	@Override
+	public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+       return state.getValue(TRAY_SUPPORT) ? SHAPE_WITH_TRAY : SHAPE;
+    }
+   
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(IS_COOKED, FACING, BITES);
+        builder.add(TRAY_SUPPORT, FACING, BITES);
     }
     public FoodInfo getFoodInfo() {
         return this.info;
@@ -99,11 +96,21 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
     
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
-    }
+       BlockPos pos = context.getClickedPos();
+       Level world = context.getLevel();
+       BlockState belowBlock = world.getBlockState(pos.below());
+       BlockState state = defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+       return state.setValue(TRAY_SUPPORT, belowBlock.is(SakuraBlockTags.TRAY_HEAT_SOURCES));
+   }
 
+    @Override
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {
+       BlockState belowBlock = world.getBlockState(currentPos.below());
+       return (BlockState)state.setValue(TRAY_SUPPORT, belowBlock.is(SakuraBlockTags.TRAY_HEAT_SOURCES));
+    }
+    
     protected InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
-        if (!state.getValue(IS_COOKED)) {
+        if (!isHeated(level, pos)) {
             player.displayClientMessage(Component.translatable("sakura.block.nabe.not_cooked"), true);
             return InteractionResult.FAIL;
         }else if (!player.canEat(false)) {
@@ -116,10 +123,36 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
                 level.setBlock(pos, state.setValue(BITES, Integer.valueOf(i + 1)), 3);
             } else {
                 level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.PLAYERS, 0.8F, 0.8F);
-                level.setBlock(pos, BlockRegistry.COOKING_POT.get().defaultBlockState().setValue(FACING, state.getValue(FACING)), UPDATE_ALL);
+                level.setBlock(
+                   pos,
+                   BlockRegistry.COOKING_POT.get()
+                      .defaultBlockState()
+                      .setValue(TRAY_SUPPORT, state.getValue(TRAY_SUPPORT))
+                      .setValue(FACING, (Direction)state.getValue(FACING)),
+                   3
+                );
             }
 
             return InteractionResult.SUCCESS;
         }
+    }
+    private boolean isHeated(LevelAccessor level, BlockPos pos) {
+       BlockState stateBelow = level.getBlockState(pos.below());
+       if (stateBelow.is(this.heatSourceTag())) {
+          return stateBelow.hasProperty(BlockStateProperties.LIT) ? (Boolean)stateBelow.getValue(BlockStateProperties.LIT) : true;
+       } else {
+          if (!this.requiresDirectHeat() && stateBelow.is(this.heatConductorTag())) {
+             BlockState stateFurtherBelow = level.getBlockState(pos.below(2));
+             if (stateBelow.is(this.heatSourceTag())) {
+                if (stateFurtherBelow.hasProperty(BlockStateProperties.LIT)) {
+                   return (Boolean)stateFurtherBelow.getValue(BlockStateProperties.LIT);
+                }
+
+                return true;
+             }
+          }
+
+          return false;
+       }
     }
 }

@@ -6,12 +6,22 @@
     "fluidTag": "forge:water/water"
   },
   "ingredients": [
-    {
-      "tag": "forge:raw_fishes"
-    },
-    {
-      "item": "minecraft:dried_kelp"
-    }
+    [
+      {
+        "item": "sakura:bonito_shaving"
+      },
+      {
+        "item": "minecraft:dried_kelp"
+      }
+    ],
+    [
+      {
+        "item": "sakura:bonito_shaving"
+      },
+      {
+        "item": "minecraft:dried_kelp"
+      }
+    ]
   ],
   "recipeTime": 200,
   "result": {

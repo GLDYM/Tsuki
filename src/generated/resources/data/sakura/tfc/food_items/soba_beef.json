@@ -1,0 +1,14 @@
+{
+  "dairy": 0.0,
+  "decayModifier": 5.0,
+  "fruit": 0.0,
+  "grain": 1.5,
+  "hunger": 9,
+  "ingredient": {
+    "item": "sakura:soba_beef"
+  },
+  "protein": 3.0,
+  "saturation": 0.8,
+  "vegetables": 0.0,
+  "water": 35.0
+}

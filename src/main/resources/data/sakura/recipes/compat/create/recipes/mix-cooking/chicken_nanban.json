@@ -1,0 +1,25 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "sakura:fried_chicken"
+    },
+    {
+      "item": "sakura:kaeshi"
+    },
+    {
+      "item": "sakura:mayo"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "forge:food_oil"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:chicken_nanban",
+      "count": 2
+    }
+  ]
+}

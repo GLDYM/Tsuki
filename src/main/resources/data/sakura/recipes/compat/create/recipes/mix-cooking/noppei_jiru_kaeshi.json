@@ -1,0 +1,28 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:raw_chicken"
+    },
+    {
+      "tag": "forge:crops/taro"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "item": "sakura:kaeshi"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:noppei_jiru",
+      "count": 2
+    }
+  ]
+}

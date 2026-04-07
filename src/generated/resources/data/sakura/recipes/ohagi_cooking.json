@@ -1,0 +1,23 @@
+{
+  "type": "sakura:cooking",
+  "experience": 0.0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "forge:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "sakura:mochi"
+    },
+    {
+      "item": "sakura:red_bean_paste"
+    },
+    {
+      "tag": "forge:sugar"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "item": "sakura:ohagi"
+  }
+}

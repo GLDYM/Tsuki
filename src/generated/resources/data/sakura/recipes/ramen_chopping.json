@@ -1,0 +1,16 @@
+{
+  "type": "sakura:chopping",
+  "byproducts": [],
+  "experience": 1.0,
+  "ingredient": {
+    "item": "sakura:ramen_block"
+  },
+  "recipeTime": 4,
+  "result": {
+    "count": 2,
+    "item": "sakura:ramen_raw"
+  },
+  "tool": {
+    "tag": "sakura:tools/knives/noodle"
+  }
+}

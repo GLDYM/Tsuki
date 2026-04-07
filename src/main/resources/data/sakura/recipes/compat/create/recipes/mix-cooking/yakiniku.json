@@ -1,0 +1,29 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    [
+      {
+        "tag": "forge:raw_pork"
+      },
+      {
+        "tag": "forge:raw_beef"
+      },
+      {
+        "tag": "forge:raw_mutton"
+      }
+    ],
+    {
+      "tag": "forge:soysauce"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "forge:food_oil"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:yakiniku"
+    }
+  ]
+}

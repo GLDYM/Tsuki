@@ -19,7 +19,7 @@
 	"block.sakura.tatami_slab_waxed":"榻榻米台阶（涂蜡）",
 	
 	"block.sakura.bamboo_door": "竹门",
-
+	"block.sakura.bamboo_plant": "竹",
 	"block.sakura.bamboo_shoot": "竹笋",
 	"block.sakura.bamboo_lantern": "竹灯笼",
 	"block.sakura.bamboo_block": "竹块",
@@ -86,9 +86,6 @@
 	"block.sakura.bamboo_fence": "竹栅栏",
 	"block.sakura.bamboo_slab_sunburnt": "日晒竹台阶",
 	"block.sakura.bamboo_block_sunburnt": "日晒竹块",
-	"block.sakura.soba_block": "荞麦面团",
-	"block.sakura.udon_unfinished_block": "未完成的乌冬面团",
-	"block.sakura.ramen_block": "拉面面团",
 	"block.sakura.taiko": "太鼓",
 	"block.sakura.maple_spile": "枫糖龙头",
 	"block.sakura.slab_plank_bamboo": "竹板台阶",
@@ -182,6 +179,16 @@
 	"item.sakura.bento_1": "便当",
 	"item.sakura.bento_2": "蛋包饭便当",
 	"item.sakura.bento_3": "便当",
+	
+	"item.sakura.ramen_block": "拉面面团",
+	"item.sakura.soba_block": "荞麦面团",
+	"item.sakura.udon_block": "乌冬面团",
+
+	"item.sakura.ramen_curry": "咖喱拉面",
+	"item.sakura.soba_curry": "咖喱荞麦",
+	"item.sakura.udon_curry": "咖喱乌冬",
+
+	"item.sakura.red_vinegar":"红醋",
 
 	"item.sakura.yakiniku":"日式烤肉",
 	"item.sakura.dango":"白团子",
@@ -641,6 +648,31 @@
 	"item.sakura.yeast_liquid_bucket":"酵母液桶",
 	"fluid_type.sakura.hot_spring_water": "温泉水",
 	"item.sakura.hot_spring_water_bucket":"温泉水桶",
+	
+	"block.sakura.food_oil": "食用油",
+	"block.sakura.grape_fluid": "葡萄汁",
+	"block.sakura.red_wine": "红葡萄酒",
+	"block.sakura.green_grape_fluid": "绿葡萄汁",
+	"block.sakura.white_wine": "白葡萄酒",
+	"block.sakura.champagne": "香槟",
+	"block.sakura.doburoku": "浊酒",
+	"block.sakura.sake": "清酒",
+	"block.sakura.shouchu": "日本烧酒",
+	"block.sakura.beer": "啤酒",
+	"block.sakura.vodka": "伏特加",
+	"block.sakura.rum": "朗姆酒",
+	"block.sakura.brandy": "白兰地",
+	"block.sakura.whiskey": "威士忌",
+	"block.sakura.liqueur": "利口酒",
+	"block.sakura.cocoa_liqueur": "可可利口酒",
+	"block.sakura.maple_syrup": "枫糖浆",
+	"block.sakura.yeast_liquid": "酵母液",
+	"block.sakura.hot_spring_water": "温泉水",
+	
+	"item.sakura.vinegar_rice":"醋饭",
+	"item.sakura.chicken_nanban":"南蛮鸡",
+	"item.sakura.tofu_nanban":"南蛮豆腐",
+	"item.sakura.inari_sushi":"稻荷寿司",
 
 	"sakurakimono.texture": "和服材质",
 	"sakurahaori.texture": "羽织材质",
@@ -683,6 +715,11 @@
 	"sakura.jei.chopping.count":"需要切%s刀",
 
 	"itemGroup.sakura": "樱",
+	
+	"sakura.block.chopping_board.has_chopped": "还需要再切几刀",
+	"sakura.block.chopping_board.invalid_item": "这个物品无法在砧板上处理",
+	"sakura.block.chopping_board.invalid_tool": "手持工具不适合处理这个物品",
+	"sakura.block.rice.invalid_placement": "这地方无法种植水稻",
 
 	"wailaharvestability.toolclass.forging_hammer": "锻造锤",
 

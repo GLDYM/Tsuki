@@ -3,13 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "sakura:rice_cooked"
+      "item": "sakura:vinegar_rice"
     },
     {
       "item": "sakura:tamagoyaki"
-    },
-    {
-      "item": "minecraft:dried_kelp"
     }
   ],
   "result": {

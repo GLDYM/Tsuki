@@ -15,7 +15,7 @@ public class CreativeModeTabRegistry {
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, SakuraMod.MODID);
     public static final RegistryObject<CreativeModeTab> GROUP = TABS.register(
-            "sakura",
+            SakuraMod.MODID,
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(FoodRegistry.FOODSET.get(SakuraFoodSet.ONIGIRI).get()))
                     .title(Component.translatable("itemGroup.sakura"))

@@ -1,0 +1,31 @@
+{
+  "type": "sakura:cooking",
+  "experience": 0.0,
+  "fluid": {
+    "amount": 250,
+    "fluidTag": "forge:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "sakura:soba_raw"
+    },
+    {
+      "item": "sakura:dashi"
+    },
+    [
+      {
+        "tag": "forge:vegetables"
+      },
+      {
+        "tag": "forge:foods/raw_meat"
+      }
+    ],
+    {
+      "item": "sakura:curry_powder"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "item": "sakura:soba_curry"
+  }
+}

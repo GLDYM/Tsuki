@@ -1,6 +1,6 @@
 {
-  "type": "sakura:cooking",
-  "experience": 1.0,
+  "type": "sakura:fermenting",
+  "experience": 0.0,
   "fluid": {
     "null_fluid": true
   },
@@ -13,8 +13,14 @@
     }
   ],
   "recipeTime": 600,
-  "result": {
-    "count": 2,
-    "item": "sakura:natto"
-  }
+  "result_fluid": {
+    "amount": 0,
+    "fluid": "minecraft:empty"
+  },
+  "results": [
+    {
+      "count": 2,
+      "item": "sakura:natto"
+    }
+  ]
 }

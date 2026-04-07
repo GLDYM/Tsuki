@@ -9,7 +9,7 @@ plugins {
     id 'net.neoforged.moddev.legacyforge' version '2.0.78'
 }
 
-version = '1.0.10-1.20.1'
+version = '1.0.16-1.20.1'
 group = 'cn.mcmod.sakura' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Sakura'
 
@@ -40,7 +40,7 @@ legacyForge {
         }
         data {
             data()
-            programArguments.addAll '--mod', "sakura", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+            programArguments.addAll '--mod', "sakura", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'mysterious_mountain_lib'
         }
         server {
             server()

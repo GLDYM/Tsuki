@@ -1,0 +1,33 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "forge:salt"
+    },
+    {
+      "tag": "forge:eggs"
+    },
+    [
+      {
+        "tag": "forge:crops/taro"
+      },
+      {
+        "tag": "forge:crops/potato"
+      }
+    ],
+    {
+      "item": "sakura:surimi"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "sakura:fishcake",
+      "count": 4
+    }
+  ]
+}

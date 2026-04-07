@@ -1,0 +1,56 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "sakura:block/soba",
+		"particle": "sakura:block/soba"
+	},
+	"elements": [
+		{
+			"from": [1, 0, 2],
+			"to": [15, 4, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 1]},
+			"faces": {
+				"north": {"uv": [9, 14, 16, 16], "texture": "#0"},
+				"east": {"uv": [9, 14, 15, 16], "texture": "#0"},
+				"south": {"uv": [8.5, 14, 15.5, 16], "texture": "#0"},
+				"west": {"uv": [9, 14, 15, 16], "texture": "#0"},
+				"up": {"uv": [8.5, 0, 15.5, 5.5], "texture": "#0"},
+				"down": {"uv": [8.5, 0, 15.5, 5], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [90, 0, 0],
+			"translation": [0, -0.25, 2.25],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [90, 0, 0],
+			"translation": [0, -0.25, 2.25],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 25, 0],
+			"translation": [0, 6, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 25, 0],
+			"translation": [0, 6, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [30, 45, 0],
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"fixed": {
+			"translation": [0, 2.5, 0],
+			"scale": [0.8, 0.8, 0.8]
+		}
+	}
+}

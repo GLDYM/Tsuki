@@ -1,0 +1,28 @@
+{
+  "type": "create:compacting",
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "forge:tag_empty",
+        "tag": "forge:seeds/corn"
+      }
+    },
+
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "corn_delight:corn_seeds"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "sakura:food_oil",
+      "amount": 125
+    }
+  ]
+}

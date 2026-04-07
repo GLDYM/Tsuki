@@ -2,26 +2,22 @@
   "type": "sakura:cooking",
   "experience": 0.0,
   "fluid": {
-    "amount": 125,
+    "amount": 250,
     "fluidTag": "forge:water/water"
   },
   "ingredients": [
     {
-      "tag": "forge:salt"
+      "item": "sakura:udon_raw"
     },
     {
-      "tag": "forge:eggs"
+      "item": "sakura:noodle_soup"
     },
     {
-      "tag": "forge:crops/taro"
-    },
-    {
-      "item": "sakura:surimi"
+      "item": "sakura:fried_chicken"
     }
   ],
   "recipeTime": 200,
   "result": {
-    "count": 4,
-    "item": "sakura:fishcake"
+    "item": "sakura:udon_chicken"
   }
 }
