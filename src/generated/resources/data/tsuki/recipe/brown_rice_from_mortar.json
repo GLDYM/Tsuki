@@ -18,10 +18,10 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "tsuki:brown_rice"
+      "id": "tsuki:brown_rice"
     },
     {
-      "item": "tsuki:brown_rice"
+      "id": "tsuki:brown_rice"
     }
   ]
 }

@@ -18,6 +18,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:ramen_tempura"
+    "id": "tsuki:ramen_tempura"
   }
 }

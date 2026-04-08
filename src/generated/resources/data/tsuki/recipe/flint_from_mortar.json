@@ -9,10 +9,10 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "minecraft:sand"
+      "id": "minecraft:sand"
     },
     {
-      "item": "minecraft:flint"
+      "id": "minecraft:flint"
     }
   ]
 }

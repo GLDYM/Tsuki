@@ -1,5 +1,9 @@
 package cn.mcmod.tsuki.compat.jei.category;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
@@ -81,12 +85,43 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
             .setFluidRenderer(CookingPotBlockEntity.TANK_CAPACITY, true, 16, 52)
             .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
         Minecraft minecraft = Minecraft.getInstance();
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 127, 11).addItemStack(recipe.getResultItem(minecraft.level.registryAccess()));
+        ItemStack resultStack = recipe.getResultItem(minecraft.level.registryAccess());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 127, 11).addItemStack(resultStack);
+
+        ItemStack containerStack = resultStack.hasCraftingRemainingItem() ? resultStack.getCraftingRemainingItem() : ItemStack.EMPTY;
+        if (!containerStack.isEmpty()) {
+            builder.addSlot(RecipeIngredientRole.CATALYST, 95, 37).addItemStack(containerStack);
+        }
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 127, 37).addItemStack(resultStack);
     }
 
     @Override
     public void draw(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         arrow.draw(guiGraphics, 81, 12);
         heatIndicator.draw(guiGraphics, 86, 0);
+    }
+
+    @Override
+    public List<Component> getTooltipStrings(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+        if (isCursorInsideBounds(81, 0, 34, 29, mouseX, mouseY)) {
+            List<Component> tooltip = new ArrayList<>();
+
+            int recipeTime = recipe.getRecipeTime();
+            if (recipeTime > 0) {
+                tooltip.add(Component.translatable("gui.jei.category.smelting.time.seconds", recipeTime / 20));
+            }
+
+            float experience = recipe.getExperience();
+            if (experience > 0) {
+                tooltip.add(Component.translatable("gui.jei.category.smelting.experience", experience));
+            }
+            return tooltip;
+        }
+        return Collections.emptyList();
+    }
+
+    private static boolean isCursorInsideBounds(int x, int y, int width, int height, double mouseX, double mouseY) {
+        return mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height;
     }
 }

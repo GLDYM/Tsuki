@@ -15,6 +15,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:udon"
+    "id": "tsuki:udon"
   }
 }

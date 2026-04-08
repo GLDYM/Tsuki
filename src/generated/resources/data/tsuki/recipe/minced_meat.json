@@ -35,11 +35,11 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:minced_meat"
+      "id": "tsuki:minced_meat"
     },
     {
       "count": 2,
-      "item": "tsuki:minced_meat"
+      "id": "tsuki:minced_meat"
     }
   ]
 }

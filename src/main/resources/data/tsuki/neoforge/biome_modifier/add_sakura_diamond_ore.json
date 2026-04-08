@@ -1,0 +1,6 @@
+{
+  "biomes": "#tsuki:can_spawn_sakura_diamond_ore",
+  "features": "tsuki:ore_sakura_diamond",
+  "step": "underground_ores",
+  "type": "neoforge:add_features"
+}

@@ -18,6 +18,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:soba_egg"
+    "id": "tsuki:soba_egg"
   }
 }

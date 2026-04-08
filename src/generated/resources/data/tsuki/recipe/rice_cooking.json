@@ -12,6 +12,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:rice_cooked"
+    "id": "tsuki:rice_cooked"
   }
 }

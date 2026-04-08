@@ -9,10 +9,10 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "tsuki:flour"
+      "id": "tsuki:flour"
     },
     {
-      "item": "tsuki:straw"
+      "id": "tsuki:straw"
     }
   ]
 }

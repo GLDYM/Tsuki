@@ -1,5 +1,9 @@
 package cn.mcmod.tsuki.compat.jei.category;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
@@ -98,5 +102,28 @@ public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
         bubbles.draw(guiGraphics, 46, 0);
         arrow.draw(guiGraphics, 44, 18);
         heatIndicator.draw(guiGraphics, 47, 37);
+    }
+
+    @Override
+    public List<Component> getTooltipStrings(DistillerRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+        if (isCursorInsideBounds(43, 9, 24, 36, mouseX, mouseY)) {
+            List<Component> tooltip = new ArrayList<>();
+
+            int recipeTime = recipe.getRecipeTime();
+            if (recipeTime > 0) {
+                tooltip.add(Component.translatable("gui.jei.category.smelting.time.seconds", recipeTime / 20));
+            }
+
+            float experience = recipe.getExperience();
+            if (experience > 0) {
+                tooltip.add(Component.translatable("gui.jei.category.smelting.experience", experience));
+            }
+            return tooltip;
+        }
+        return Collections.emptyList();
+    }
+
+    private static boolean isCursorInsideBounds(int x, int y, int width, int height, double mouseX, double mouseY) {
+        return mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height;
     }
 }

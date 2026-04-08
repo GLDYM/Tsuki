@@ -33,6 +33,10 @@ public class TsukiBiomeTagProvider extends BiomeTagsProvider {
         tagAppender.add(Biomes.BAMBOO_JUNGLE);
         tagAppender.add(Biomes.SPARSE_JUNGLE);
 
+        TagAppender<Biome> sakuraDiamondOreTag = this.tag(TsukiBiomeTags.CAN_SPAWN_SAKURA_DIAMOND_ORE);
+        sakuraDiamondOreTag.add(Biomes.BAMBOO_JUNGLE);
+        sakuraDiamondOreTag.add(Biomes.CHERRY_GROVE);
+
     }
 }
 

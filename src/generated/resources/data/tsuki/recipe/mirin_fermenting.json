@@ -24,10 +24,10 @@
   "results": [
     {
       "count": 8,
-      "item": "tsuki:mirin"
+      "id": "tsuki:mirin"
     },
     {
-      "item": "tsuki:mirin_kasu"
+      "id": "tsuki:mirin_kasu"
     }
   ]
 }

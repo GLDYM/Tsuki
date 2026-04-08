@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ParticleRegistry {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister
                         .create(Registries.PARTICLE_TYPE, Tsuki.MODID);
-    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SAKURA_LEAF = PARTICLE_TYPES.register(Tsuki.MODID,
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SAKURA_LEAF = PARTICLE_TYPES.register("sakura",
             () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> RED_MAPLE_LEAF = PARTICLE_TYPES.register("red_maple",
             () -> new SimpleParticleType(false));

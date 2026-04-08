@@ -26,6 +26,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:soba_curry"
+    "id": "tsuki:soba_curry"
   }
 }

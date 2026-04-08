@@ -9,7 +9,7 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "tsuki:flour_buckwheat"
+      "id": "tsuki:flour_buckwheat"
     }
   ]
 }

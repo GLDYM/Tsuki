@@ -24,12 +24,14 @@ import java.util.Optional;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -152,6 +154,11 @@ public class BlockRegistry {
     
     public static final DeferredBlock<Block> STRAW_BLOCK = BLOCKS.register("straw_block",
             () -> new Block(BlockBehaviour.Properties.of()));
+
+    public static final DeferredBlock<DropExperienceBlock> SAKURA_DIAMOND_ORE = BLOCKS.register("sakura_diamond_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE)));
+    public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_SAKURA_DIAMOND_ORE = BLOCKS.register("deepslate_sakura_diamond_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE)));
 
     public static final DeferredBlock<Block> TATAMI = BLOCKS.register("tatami",
             () -> new TatamiBlock(BlockBehaviour.Properties.of()));

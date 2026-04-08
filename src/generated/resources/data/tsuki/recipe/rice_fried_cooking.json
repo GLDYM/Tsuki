@@ -21,6 +21,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:rice_fried"
+    "id": "tsuki:rice_fried"
   }
 }

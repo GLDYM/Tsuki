@@ -43,7 +43,13 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                (Block)BlockRegistry.MAPLE_SAP_LOG.get()
             }
          );
-      this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add((Block)BlockRegistry.STONE_MORTAR.get());
+            this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+               .add((Block) BlockRegistry.STONE_MORTAR.get())
+               .add((Block) BlockRegistry.SAKURA_DIAMOND_ORE.get())
+               .add((Block) BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
+            this.tag(BlockTags.NEEDS_IRON_TOOL)
+               .add((Block) BlockRegistry.SAKURA_DIAMOND_ORE.get())
+               .add((Block) BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
       this.tag(BlockTags.LEAVES)
          .add(
             new Block[]{

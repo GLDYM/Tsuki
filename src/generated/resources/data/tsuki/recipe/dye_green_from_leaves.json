@@ -18,10 +18,10 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "minecraft:green_dye"
+      "id": "minecraft:green_dye"
     },
     {
-      "item": "minecraft:green_dye"
+      "id": "minecraft:green_dye"
     }
   ]
 }

@@ -9,11 +9,11 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "minecraft:cobblestone"
+      "id": "minecraft:cobblestone"
     },
     {
       "count": 2,
-      "item": "tsuki:alkaline"
+      "id": "tsuki:alkaline"
     }
   ]
 }

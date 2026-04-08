@@ -40,8 +40,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          );
       this.tag(ItemTags.COALS).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get());
       this.tag(TsukiItemTags.TOOLS_KNIVES).addTag(TsukiItemTags.TOOLS_KNIVES_FISH).addTag(TsukiItemTags.TOOLS_KNIVES_NOODLE);
-      this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).add(ItemRegistry.IRON_FISH_KNIFE.get());
-      this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE).add(ItemRegistry.IRON_NOODLE_KNIFE.get());
+      this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).add(ItemRegistry.IRON_FISH_KNIFE.get(), ItemRegistry.SAKURA_FISH_KNIFE.get());
+      this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE).add(ItemRegistry.IRON_NOODLE_KNIFE.get(), ItemRegistry.SAKURA_NOODLE_KNIFE.get());
       this.tag(TsukiItemTags.SEEDS_RICE).add(ItemRegistry.RICE_SEEDS.get());
       this.tag(TsukiItemTags.SEEDS_CABBAGE).add(ItemRegistry.CABBAGE_SEEDS.get());
       this.tag(TsukiItemTags.SEEDS_EGGPLANT).add(ItemRegistry.EGGPLANT_SEEDS.get());

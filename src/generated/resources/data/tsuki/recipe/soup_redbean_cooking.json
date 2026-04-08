@@ -16,6 +16,6 @@
   "recipeTime": 200,
   "result": {
     "count": 2,
-    "item": "tsuki:soup_red_bean"
+    "id": "tsuki:soup_red_bean"
   }
 }

@@ -16,6 +16,6 @@
   "recipeTime": 200,
   "result": {
     "count": 2,
-    "item": "tsuki:tofu_fried"
+    "id": "tsuki:tofu_fried"
   }
 }

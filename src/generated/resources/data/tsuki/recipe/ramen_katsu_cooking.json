@@ -18,6 +18,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:ramen_katsu"
+    "id": "tsuki:ramen_katsu"
   }
 }

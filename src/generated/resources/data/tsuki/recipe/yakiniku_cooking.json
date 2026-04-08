@@ -23,6 +23,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:yakiniku"
+    "id": "tsuki:yakiniku"
   }
 }

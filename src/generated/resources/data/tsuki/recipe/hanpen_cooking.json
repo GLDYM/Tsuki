@@ -27,6 +27,6 @@
   "recipeTime": 200,
   "result": {
     "count": 4,
-    "item": "tsuki:fishcake"
+    "id": "tsuki:fishcake"
   }
 }

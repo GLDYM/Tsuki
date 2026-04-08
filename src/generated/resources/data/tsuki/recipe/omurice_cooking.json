@@ -35,6 +35,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:omurice"
+    "id": "tsuki:omurice"
   }
 }

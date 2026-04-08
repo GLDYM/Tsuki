@@ -75,6 +75,11 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> STRAW_BLOCK = ITEMS.register("straw_block",
             () -> new BlockItem(BlockRegistry.STRAW_BLOCK.get(), Tsuki.defaultItemProperties()));
 
+    public static final DeferredItem<Item> SAKURA_DIAMOND_ORE = ITEMS.register("sakura_diamond_ore",
+            () -> new BlockItem(BlockRegistry.SAKURA_DIAMOND_ORE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> DEEPSLATE_SAKURA_DIAMOND_ORE = ITEMS.register("deepslate_sakura_diamond_ore",
+            () -> new BlockItem(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), Tsuki.defaultItemProperties()));
+
     public static final DeferredItem<Item> BAMBOOSHOOT = ITEMS.register("bamboo_shoot",
             () -> new BlockItem(BlockRegistry.BAMBOOSHOOT.get(), Tsuki.defaultItemProperties()));
 

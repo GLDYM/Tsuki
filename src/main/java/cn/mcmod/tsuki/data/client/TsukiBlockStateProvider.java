@@ -28,6 +28,8 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.BAMBOO_PLANK.get());
         
         simpleBlock(BlockRegistry.STRAW_BLOCK.get());
+        simpleBlock(BlockRegistry.SAKURA_DIAMOND_ORE.get());
+        simpleBlock(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
 
         simpleBlock(BlockRegistry.MAPLE_LEAVES_RED.get());
         simpleBlock(BlockRegistry.MAPLE_LEAVES_YELLOW.get());

@@ -9,10 +9,10 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "tsuki:surimi"
+      "id": "tsuki:surimi"
     },
     {
-      "item": "tsuki:surimi"
+      "id": "tsuki:surimi"
     }
   ]
 }

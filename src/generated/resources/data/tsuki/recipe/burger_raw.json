@@ -19,11 +19,11 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:burger_raw"
+      "id": "tsuki:burger_raw"
     },
     {
       "count": 2,
-      "item": "tsuki:burger_raw"
+      "id": "tsuki:burger_raw"
     }
   ]
 }

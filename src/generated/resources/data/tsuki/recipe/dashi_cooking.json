@@ -25,6 +25,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:dashi"
+    "id": "tsuki:dashi"
   }
 }

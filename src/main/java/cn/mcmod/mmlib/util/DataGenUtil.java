@@ -61,7 +61,8 @@ public final class DataGenUtil {
         @Override
         public ItemStack deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             JsonObject object = json.getAsJsonObject();
-            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(object.get("item").getAsString()));
+            String itemId = object.has("id") ? object.get("id").getAsString() : object.get("item").getAsString();
+            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
             int count = object.has("count") ? object.get("count").getAsInt() : 1;
             return new ItemStack(item, count);
         }
@@ -69,7 +70,7 @@ public final class DataGenUtil {
         @Override
         public JsonElement serialize(ItemStack src, Type typeOfSrc, JsonSerializationContext context) {
             JsonObject object = new JsonObject();
-            object.addProperty("item", BuiltInRegistries.ITEM.getKey(src.getItem()).toString());
+            object.addProperty("id", BuiltInRegistries.ITEM.getKey(src.getItem()).toString());
             if (src.getCount() != 1) {
                 object.addProperty("count", src.getCount());
             }
@@ -105,7 +106,8 @@ public final class DataGenUtil {
             if (object.has("stack")) {
                 stack = context.deserialize(object.get("stack"), ItemStack.class);
             } else {
-                Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(object.get("item").getAsString()));
+                String itemId = object.has("id") ? object.get("id").getAsString() : object.get("item").getAsString();
+                Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
                 int count = object.has("count") ? object.get("count").getAsInt() : 1;
                 stack = new ItemStack(item, count);
             }
@@ -115,7 +117,7 @@ public final class DataGenUtil {
         @Override
         public JsonElement serialize(ChanceResult src, Type typeOfSrc, JsonSerializationContext context) {
             JsonObject object = new JsonObject();
-            object.addProperty("item", BuiltInRegistries.ITEM.getKey(src.stack().getItem()).toString());
+            object.addProperty("id", BuiltInRegistries.ITEM.getKey(src.stack().getItem()).toString());
             if (src.stack().getCount() != 1) {
                 object.addProperty("count", src.stack().getCount());
             }

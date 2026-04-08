@@ -26,6 +26,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:ramen_curry"
+    "id": "tsuki:ramen_curry"
   }
 }

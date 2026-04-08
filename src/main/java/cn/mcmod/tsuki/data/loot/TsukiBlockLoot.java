@@ -37,19 +37,24 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
           .forEach(
              block -> {
                 if (!(block.get() instanceof LeavesBlock)
-                   && !(block.get() instanceof CropBlock)
-                   && !(block.get() instanceof TeishokuBlock)
-                   && !(block.get() instanceof RiceCropRoot)) {
-                   if (block.get() instanceof BambooPlant) {
-                      this.dropOther((Block)block.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
-                   } else if (block.get() instanceof TeishokuFinishedBlock) {
-                      this.dropOther((Block)block.get(), BlockItemRegistry.OBON.get());
-                   } else {
-                      this.dropSelf((Block)block.get());
+                    && !(block.get() instanceof CropBlock)
+                    && !(block.get() instanceof TeishokuBlock)
+                    && !(block.get() instanceof RiceCropRoot)
+                    && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
+                    && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()) {
+                    if (block.get() instanceof BambooPlant) {
+                        this.dropOther((Block)block.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
+                    } else if (block.get() instanceof TeishokuFinishedBlock) {
+                        this.dropOther((Block)block.get(), BlockItemRegistry.OBON.get());
+                    } else {
+                        this.dropSelf((Block)block.get());
                    }
                 }
              }
           );
+
+                                this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(), ItemRegistry.SAKURA_DIAMOND.get()));
+                                this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), ItemRegistry.SAKURA_DIAMOND.get()));
 
         this.add(BlockRegistry.MAPLE_LEAVES_RED.get(), createLeavesDrops(BlockRegistry.MAPLE_LEAVES_RED.get(),
                 BlockRegistry.MAPLE_SAPLING_RED.get(), NORMAL_LEAVES_SAPLING_CHANCES));

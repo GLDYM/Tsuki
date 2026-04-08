@@ -12,10 +12,10 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "tsuki:rice"
+      "id": "tsuki:rice"
     },
     {
-      "item": "tsuki:nuka"
+      "id": "tsuki:nuka"
     }
   ]
 }

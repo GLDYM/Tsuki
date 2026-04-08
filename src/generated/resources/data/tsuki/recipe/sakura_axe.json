@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "tsuki:sakura_diamond"
+    },
+    "L": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "DD ",
+    "DL ",
+    " L "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:sakura_axe"
+  }
+}

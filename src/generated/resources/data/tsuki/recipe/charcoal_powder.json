@@ -22,7 +22,7 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "tsuki:charcoal_powder"
+      "id": "tsuki:charcoal_powder"
     }
   ]
 }

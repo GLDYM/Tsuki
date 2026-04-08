@@ -10,11 +10,11 @@
   "results": [
     {
       "count": 3,
-      "item": "minecraft:bone_meal"
+      "id": "minecraft:bone_meal"
     },
     {
       "count": 3,
-      "item": "minecraft:bone_meal"
+      "id": "minecraft:bone_meal"
     }
   ]
 }

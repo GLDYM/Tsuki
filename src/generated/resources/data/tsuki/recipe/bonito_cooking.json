@@ -12,6 +12,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:boiled_bonito"
+    "id": "tsuki:boiled_bonito"
   }
 }

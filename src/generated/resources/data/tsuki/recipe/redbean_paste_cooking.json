@@ -19,6 +19,6 @@
   "recipeTime": 200,
   "result": {
     "count": 2,
-    "item": "tsuki:red_bean_paste"
+    "id": "tsuki:red_bean_paste"
   }
 }

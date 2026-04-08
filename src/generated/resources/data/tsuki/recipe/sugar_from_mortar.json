@@ -10,10 +10,10 @@
   "results": [
     {
       "count": 3,
-      "item": "minecraft:sugar"
+      "id": "minecraft:sugar"
     },
     {
-      "item": "tsuki:molasses"
+      "id": "tsuki:molasses"
     }
   ]
 }

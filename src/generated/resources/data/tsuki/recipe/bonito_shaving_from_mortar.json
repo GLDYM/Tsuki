@@ -9,10 +9,10 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "tsuki:bonito_shaving"
+      "id": "tsuki:bonito_shaving"
     },
     {
-      "item": "tsuki:bonito_shaving"
+      "id": "tsuki:bonito_shaving"
     }
   ]
 }

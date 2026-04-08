@@ -15,6 +15,6 @@
   "recipeTime": 200,
   "result": {
     "count": 2,
-    "item": "tsuki:pork_stick"
+    "id": "tsuki:pork_stick"
   }
 }

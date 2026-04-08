@@ -35,6 +35,6 @@
   "recipeTime": 200,
   "result": {
     "count": 2,
-    "item": "tsuki:curry_sauce"
+    "id": "tsuki:curry_sauce"
   }
 }

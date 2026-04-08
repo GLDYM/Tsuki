@@ -21,6 +21,12 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 
 public class CookingPotContainer extends AbstractContainerMenu {
 
+    private static final int MACHINE_SLOT_COUNT = CookingPotBlockEntity.SLOT_COUNT;
+    private static final int PLAYER_INV_START = MACHINE_SLOT_COUNT;
+    private static final int PLAYER_INV_END = PLAYER_INV_START + 27;
+    private static final int HOTBAR_START = PLAYER_INV_END;
+    private static final int HOTBAR_END = HOTBAR_START + 9;
+
     public final CookingPotBlockEntity tileEntity;
     public final ItemStackHandler inventory;
     private final ContainerData containerData;
@@ -41,7 +47,9 @@ public class CookingPotContainer extends AbstractContainerMenu {
             }
         }
 
-        this.addSlot(new CookingPotResultSlot(playerInventory.player, tileEntity, inventory, 9, 140, 27));
+        this.addSlot(new CookingPotMealDisplaySlot(inventory, CookingPotBlockEntity.SLOT_MEAL_DISPLAY, 140, 27));
+        this.addSlot(new SlotItemHandler(inventory, CookingPotBlockEntity.SLOT_CONTAINER_INPUT, 108, 53));
+        this.addSlot(new CookingPotResultSlot(playerInventory.player, tileEntity, inventory, CookingPotBlockEntity.SLOT_OUTPUT, 140, 53));
 
         // Main Player Inventory
         int startPlayerInvY = startY * 4 + 12;
@@ -62,10 +70,6 @@ public class CookingPotContainer extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
-        // 0-9: Contain inventory
-        // 10-36: Player inventory
-        // 37-46: Hot bar in the player inventory
-
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
 
@@ -73,23 +77,27 @@ public class CookingPotContainer extends AbstractContainerMenu {
             ItemStack itemStack1 = slot.getItem();
             itemStack = itemStack1.copy();
 
-            if (index >= 0 && index <= 9) {
-                if (!this.moveItemStackTo(itemStack1, 10, 46, true)) {
+            if (index == CookingPotBlockEntity.SLOT_OUTPUT) {
+                if (!this.moveItemStackTo(itemStack1, PLAYER_INV_START, HOTBAR_END, true)) {
                     return ItemStack.EMPTY;
                 }
-
                 slot.onQuickCraft(itemStack1, itemStack);
-            } else if (index >= 10) {
-            	if (!this.moveItemStackTo(itemStack1, 0, 9, true)) {
-	                if (index >= 10 && index < 37) {
-	                    if (!this.moveItemStackTo(itemStack1, 37, 46, false)) {
-	                        return ItemStack.EMPTY;
-	                    }
-	                } else if (index >= 37 && index < 46 && !this.moveItemStackTo(itemStack1, 10, 37, false)) {
-	                    return ItemStack.EMPTY;
-	                }
+            } else if (index >= PLAYER_INV_START) {
+                boolean movedToContainer = tileEntity.isServingContainer(itemStack1)
+                        && this.moveItemStackTo(itemStack1, CookingPotBlockEntity.SLOT_CONTAINER_INPUT,
+                                CookingPotBlockEntity.SLOT_CONTAINER_INPUT + 1, false);
+                if (!movedToContainer && !this.moveItemStackTo(itemStack1, CookingPotBlockEntity.SLOT_INPUT_START,
+                        CookingPotBlockEntity.SLOT_INPUT_START + CookingPotBlockEntity.SLOT_INPUT_COUNT, false)) {
+                    if (index >= PLAYER_INV_START && index < PLAYER_INV_END) {
+                        if (!this.moveItemStackTo(itemStack1, HOTBAR_START, HOTBAR_END, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (index >= HOTBAR_START && index < HOTBAR_END
+                            && !this.moveItemStackTo(itemStack1, PLAYER_INV_START, PLAYER_INV_END, false)) {
+                        return ItemStack.EMPTY;
+                    }
                 }
-            } else if (!this.moveItemStackTo(itemStack1, 10, 47, false)) {
+            } else if (!this.moveItemStackTo(itemStack1, PLAYER_INV_START, HOTBAR_END, false)) {
                 return ItemStack.EMPTY;
             }
 

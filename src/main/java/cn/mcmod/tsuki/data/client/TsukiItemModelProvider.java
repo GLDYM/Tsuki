@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.data.client;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
+import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod_mmf.mmlib.data.AbstractItemModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -37,11 +38,9 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
             }
         });
         
-        BucketItemRegistry.ITEMS.getEntries().forEach((item)->{
-            normalItem(item);
-            
-        });
+        BucketItemRegistry.ITEMS.getEntries().forEach(this::normalItem);
 
+        // ItemRegistry.ITEMS.getEntries().forEach(this::normalItem);
     }
 
     private void normalItem(DeferredHolder<Item, ? extends Item> item) {

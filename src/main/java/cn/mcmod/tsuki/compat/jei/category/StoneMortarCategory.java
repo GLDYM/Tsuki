@@ -1,5 +1,9 @@
 package cn.mcmod.tsuki.compat.jei.category;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
@@ -81,5 +85,28 @@ public class StoneMortarCategory implements IRecipeCategory<StoneMortarRecipe> {
     public void draw(StoneMortarRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         mortar.draw(guiGraphics, 42, 20);
         basket.draw(guiGraphics, 41, 36);
+    }
+
+    @Override
+    public List<Component> getTooltipStrings(StoneMortarRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+        if (isCursorInsideBounds(40, 19, 18, 24, mouseX, mouseY)) {
+            List<Component> tooltip = new ArrayList<>();
+
+            int recipeTime = recipe.getRecipeTime();
+            if (recipeTime > 0) {
+                tooltip.add(Component.translatable("gui.jei.category.smelting.time.seconds", recipeTime / 20));
+            }
+
+            float experience = recipe.getExperience();
+            if (experience > 0) {
+                tooltip.add(Component.translatable("gui.jei.category.smelting.experience", experience));
+            }
+            return tooltip;
+        }
+        return Collections.emptyList();
+    }
+
+    private static boolean isCursorInsideBounds(int x, int y, int width, int height, double mouseX, double mouseY) {
+        return mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height;
     }
 }

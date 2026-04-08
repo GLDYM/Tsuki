@@ -9,11 +9,11 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "minecraft:gravel"
+      "id": "minecraft:gravel"
     },
     {
       "count": 2,
-      "item": "tsuki:salt"
+      "id": "tsuki:salt"
     }
   ]
 }

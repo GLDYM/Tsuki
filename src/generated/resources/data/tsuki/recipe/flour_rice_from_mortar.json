@@ -9,7 +9,7 @@
   "recipeTime": 200,
   "results": [
     {
-      "item": "tsuki:flour_rice"
+      "id": "tsuki:flour_rice"
     }
   ]
 }

@@ -29,6 +29,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:cabbage_roll"
+    "id": "tsuki:cabbage_roll"
   }
 }

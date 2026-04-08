@@ -2,11 +2,11 @@
   "type": "tsuki:chopping",
   "byproducts": [
     {
-      "item": "tsuki:machined_bonito"
+      "id": "tsuki:machined_bonito"
     },
     {
       "chance": 0.5,
-      "item": "minecraft:bone_meal"
+      "id": "minecraft:bone_meal"
     }
   ],
   "experience": 1,
@@ -15,7 +15,7 @@
   },
   "recipeTime": 1,
   "result": {
-    "item": "tsuki:machined_bonito"
+    "id": "tsuki:machined_bonito"
   },
   "tool": {
     "tag": "tsuki:tools/knives/fish"

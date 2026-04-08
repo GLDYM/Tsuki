@@ -15,6 +15,6 @@
   ],
   "recipeTime": 200,
   "result": {
-    "item": "tsuki:fish_bake"
+    "id": "tsuki:fish_bake"
   }
 }
