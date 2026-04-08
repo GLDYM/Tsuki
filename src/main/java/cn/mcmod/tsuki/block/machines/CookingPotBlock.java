@@ -112,9 +112,23 @@ public class CookingPotBlock extends BaseEntityBlock {
         }
 
         if (stack.isEmpty() && player.isShiftKeyDown()) {
-            level.setBlockAndUpdate(pos, state.setValue(OPEN, state.getValue(OPEN) ? false : true));
-            level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 0.7F, 1.0F);
-        } else if (!level.isClientSide()) {
+            if (!level.isClientSide()) {
+                boolean open = state.getValue(OPEN);
+                level.setBlockAndUpdate(pos, state.setValue(OPEN, !open));
+                level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 0.7F, 1.0F);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        if (!level.isClientSide()) {
+            if (cookingPot.tryTakeMealWithContainer(player, handIn)) {
+                return ItemInteractionResult.SUCCESS;
+            }
+
+            if (!stack.isEmpty() && state.getValue(OPEN) && cookingPot.tryInsertHeldItem(player, handIn)) {
+                return ItemInteractionResult.SUCCESS;
+            }
+
 	        ((ServerPlayer) player).openMenu(cookingPot, pos);
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide);

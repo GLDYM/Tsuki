@@ -648,6 +648,11 @@ wailaharvestability.toolclass.forging_hammer=锻造锤
 sakura.tooltip.campfire.fire_remain=剩余燃料: %1$s Ticks
 sakura.tooltip.campfire.item_in=篝火里的物品: %1$s
 
+sakura.tooltip.fluid.empty=空
+sakura.tooltip.fluid.capacity=容量: %s mB
+sakura.tooltip.fluid.amount=%s / %s mB
+sakura.tooltip.fluid.percentage=%d%%
+
 #药水效果
 sakura.effect.scorpion=蝎毒
 sakura.effect.cannon=大炮

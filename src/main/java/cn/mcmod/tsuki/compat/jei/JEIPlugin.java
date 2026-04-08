@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.client.gui.DistillerScreen;
 import cn.mcmod.tsuki.client.gui.FermenterScreen;
 import cn.mcmod.tsuki.client.gui.StoneMortarScreen;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
+import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.compat.jei.category.ChoppingCategory;
 import cn.mcmod.tsuki.compat.jei.category.CookingPotCategory;
 import cn.mcmod.tsuki.compat.jei.category.DistillerCategory;
@@ -81,6 +82,7 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         List<CookingPotRecipe> cookingRecipes = new java.util.ArrayList<>(findRecipesByType(RecipeTypeRegistry.COOKING_RECIPE_TYPE.get()));
         cookingRecipes.addAll(FDCookingPotCompat.getAllForJei(MC.level));
+        cookingRecipes.addAll(KCCookingPotCompat.getAllForJei(MC.level));
         registration.addRecipes(COOKING_POT_JEI_TYPE, cookingRecipes);
         registration.addRecipes(STONE_MORTAR_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get()));
         registration.addRecipes(FERMENTER_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.FERMENTER_RECIPE_TYPE.get()));

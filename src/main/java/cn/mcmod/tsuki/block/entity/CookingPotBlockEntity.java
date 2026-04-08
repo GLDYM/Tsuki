@@ -10,6 +10,7 @@ import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.machines.CookingPotBlock;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
+import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.container.CookingPotContainer;
 import cn.mcmod.tsuki.inventory.CookingPotItemHandler;
 import cn.mcmod.tsuki.recipes.CookingPotRecipe;
@@ -26,6 +27,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -151,6 +153,13 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 // Compat recipe is generated at runtime and has no holder in this recipe manager.
                 lastRecipeID = null;
                 return fdCompatRecipe;
+            }
+
+            Optional<CookingPotRecipe> kcCompatRecipe = KCCookingPotCompat.findMatching(level, inventoryWrapper, this.fluidTank.getFluid());
+            if (kcCompatRecipe.isPresent()) {
+                // Compat recipe is generated at runtime and has no holder in this recipe manager.
+                lastRecipeID = null;
+                return kcCompatRecipe;
             }
         }
 
@@ -293,6 +302,83 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
 
     public ItemStack getCurrentMealContainer() {
         return this.mealContainer;
+    }
+
+    public boolean tryTakeMealWithContainer(Player player, InteractionHand hand) {
+        ItemStack handStack = player.getItemInHand(hand);
+        if (handStack.isEmpty() || !isServingContainer(handStack)) {
+            return false;
+        }
+
+        ItemStack mealStack = inventory.getStackInSlot(SLOT_MEAL_DISPLAY);
+        if (mealStack.isEmpty()) {
+            return false;
+        }
+
+        ItemStack requiredContainer = getServingContainerForMeal(mealStack);
+        if (!requiredContainer.isEmpty() && !ItemStack.isSameItemSameComponents(handStack, requiredContainer)) {
+            return false;
+        }
+
+        ItemStack servedMeal = mealStack.copy();
+        servedMeal.setCount(1);
+        if (!player.getInventory().add(servedMeal)) {
+            player.drop(servedMeal, false);
+        }
+
+        if (!player.getAbilities().instabuild) {
+            handStack.shrink(1);
+        }
+
+        mealStack.shrink(1);
+        if (mealStack.isEmpty()) {
+            this.mealContainer = ItemStack.EMPTY;
+        }
+
+        inventoryChanged();
+        return true;
+    }
+
+    public boolean tryInsertHeldItem(Player player, InteractionHand hand) {
+        ItemStack handStack = player.getItemInHand(hand);
+        if (handStack.isEmpty()) {
+            return false;
+        }
+
+        ItemStack single = handStack.copyWithCount(1);
+        boolean inserted = false;
+
+        if (isServingContainer(handStack)) {
+            ItemStack remaining = inventory.insertItem(SLOT_CONTAINER_INPUT, single, false);
+            inserted = remaining.isEmpty();
+        } else {
+            for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
+                if (!inventory.getStackInSlot(i).isEmpty()) {
+                    continue;
+                }
+                ItemStack remaining = inventory.insertItem(i, single, false);
+                inserted = remaining.isEmpty();
+            }
+
+            for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
+                if (inventory.getStackInSlot(i).isEmpty()) {
+                    continue;
+                }
+                ItemStack remaining = inventory.insertItem(i, single, false);
+                inserted = remaining.isEmpty();
+            }
+        }
+
+        if (!inserted) {
+            return false;
+        }
+
+        if (!player.getAbilities().instabuild) {
+            handStack.shrink(1);
+        }
+        player.setItemInHand(hand, handStack);
+        inventoryChanged();
+        return true;
     }
 
     public void trackRecipeExperience(@Nullable ResourceLocation recipeId) {

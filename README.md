@@ -12,7 +12,7 @@
 
 Tsuki is a Japanese-styled Minecraft mod.
 
-Tsuki forks from Sakura and aims to bring the content of those mod into higher Minecraft version (1.21.1 & 26.1).
+Tsuki forks from Sakura and aims to bring the content of those mods into higher Minecraft versions (1.21.1 & 26.1).
 
 - Sakura 1.20.1
 - Sakura 1.12.2
@@ -20,7 +20,7 @@ Tsuki forks from Sakura and aims to bring the content of those mod into higher M
 - Bamboo 1.7.10
 - WA 1.7.10
 
-Tsuki also focuses on the compatability with other mods to have a better performance in Modpack. Tsuki plans to support these mods:
+Tsuki also focuses on the compatibility with other mods to have a better performance in the Modpack. Tsuki plans to support these mods:
 
 - TerraFirmaCraft: The Next Generation (From Sakura, WIP)
 - Create (From Sakura)
@@ -28,3 +28,4 @@ Tsuki also focuses on the compatability with other mods to have a better perform
 - Kaleidoscope Cookery (WIP)
 
 **THIS MOD IS STILL ALPHA, Use at your own risk.**
+

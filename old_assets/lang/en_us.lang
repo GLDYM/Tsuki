@@ -644,6 +644,11 @@ sakura.config.every_where_sakura_diamond=Sakura Diamond Generated Everywhere
 sakura.tooltip.campfire.fire_remain=Remaining fuel: %1$s Ticks
 sakura.tooltip.campfire.item_in=Item in campfire: %1$s
 
+sakura.tooltip.fluid.empty=Empty
+sakura.tooltip.fluid.capacity=Capacity: %s mB
+sakura.tooltip.fluid.amount=%s / %s mB
+sakura.tooltip.fluid.percentage=%d%%
+
 #Warning
 sakura.warning.harder_iron_recipe_enabled=Hardcore Japan-flavored iron smelting mechanics is enabled. Enjoy Forging!
 
