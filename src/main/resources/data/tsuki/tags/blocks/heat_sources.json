@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:magma_block",
-    "#tsuki:tray_heat_sources",
-    "#farmersdelight:heat_sources"
-  ]
-}

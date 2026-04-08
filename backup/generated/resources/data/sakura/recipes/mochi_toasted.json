@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "tsuki:mochi"
-  },
-  "result": "tsuki:mochi_toasted",
-  "experience": 0.5,
-  "cookingtime": 200
-}

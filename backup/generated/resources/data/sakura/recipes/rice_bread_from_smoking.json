@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smoking",
-  "ingredient": {
-    "item": "tsuki:dough_rice"
-  },
-  "result": "tsuki:rice_bread",
-  "experience": 0.5,
-  "cookingtime": 100
-}

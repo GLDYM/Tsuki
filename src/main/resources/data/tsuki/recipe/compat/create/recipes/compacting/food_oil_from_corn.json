@@ -1,0 +1,27 @@
+{
+    "ingredients":  [
+                        {
+                            "item":  "corn_delight:corn_seeds"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "amount":  125,
+                        "fluid":  "tsuki:food_oil"
+                    }
+                ],
+    "type":  "create:compacting",
+    "neoforge:conditions":  [
+                                {
+                                    "type":  "neoforge:not",
+                                    "value":  {
+                                                  "tag":  "c:seeds/corn",
+                                                  "type":  "neoforge:tag_empty"
+                                              }
+                                },
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

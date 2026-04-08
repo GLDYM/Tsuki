@@ -37,11 +37,11 @@ public class CookingPotContainer extends AbstractContainerMenu {
         int startY = 18;
         for (int row = 0; row < 3; ++row) {
             for (int column = 0; column < 3; ++column) {
-                this.addSlot(new SlotItemHandler(inventory, (row * 3) + column, 39 + (column * 18), 17 + (row * 18)));
+                this.addSlot(new SlotItemHandler(inventory, (row * 3) + column, 36 + (column * 18), 17 + (row * 18)));
             }
         }
 
-        this.addSlot(new CookingPotResultSlot(playerInventory.player, tileEntity, inventory, 9, 136, 38));
+        this.addSlot(new CookingPotResultSlot(playerInventory.player, tileEntity, inventory, 9, 140, 27));
 
         // Main Player Inventory
         int startPlayerInvY = startY * 4 + 12;
@@ -128,14 +128,12 @@ public class CookingPotContainer extends AbstractContainerMenu {
         return stillValid(canInteractWithCallable, playerIn, BlockRegistry.COOKING_POT.get());
     }
 
-    @OnlyIn(Dist.CLIENT)
     public int getCookProgressionScaled() {
         int i = this.containerData.get(0);
         int j = this.containerData.get(1);
-        return j != 0 && i != 0 ? i * 24 / j : 0;
+        return j != 0 && i != 0 ? i * 34 / j : 0;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public boolean isHeated() {
         return this.tileEntity.isHeated();
     }

@@ -1,1 +1,6 @@
-{"parent":"item/generated","textures":{"layer0":"tsuki:item/kusa_daifuku"}}
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tsuki:item/kusa_daifuku"
+  }
+}

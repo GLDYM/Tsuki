@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:lava",
+    "#minecraft:campfires",
+    "#minecraft:fire",
+    {
+      "id": "#mmlib:tray_heat_sources",
+      "required": false
+    },
+    {
+      "id": "#mysterious_mountain_lib:tray_heat_sources",
+      "required": false
+    },
+    {
+      "id": "#farmersdelight:tray_heat_sources",
+      "required": false
+    }
+  ]
+}

@@ -23,11 +23,14 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class StoneMortarBlock extends BaseEntityBlock {
     public static final MapCodec<StoneMortarBlock> CODEC = simpleCodec(StoneMortarBlock::new);
+    public static final BooleanProperty WORKING = BooleanProperty.create("working");
 
     public StoneMortarBlock(Properties properties) {
         super(properties);
@@ -35,6 +38,7 @@ public class StoneMortarBlock extends BaseEntityBlock {
 
     public StoneMortarBlock() {
         this(BlockBehaviour.Properties.of().noOcclusion());
+        this.registerDefaultState(this.stateDefinition.any().setValue(WORKING, false));
     }
 
     @Override
@@ -76,6 +80,12 @@ public class StoneMortarBlock extends BaseEntityBlock {
             }
             super.onRemove(state, worldIn, pos, newState, isMoving);
         }
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(WORKING);
     }
 
     @Override

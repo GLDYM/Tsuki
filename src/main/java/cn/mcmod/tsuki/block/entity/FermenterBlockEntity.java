@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.block.entity;
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.container.FermenterContainer;
 import cn.mcmod.tsuki.inventory.FermenterItemHandler;
+import cn.mcmod.tsuki.block.machines.FermenterBlock;
 import cn.mcmod.tsuki.recipes.FermenterRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
@@ -247,10 +248,17 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
 
     @Nonnull
     public FluidTank getFluidHandler(@Nullable Direction side) {
-        if (side == null || !(side.equals(Direction.NORTH) || side.equals(Direction.SOUTH))) {
+        if (side == null) {
             return this.inputfluidTank;
         }
-        return this.outputfluidTank;
+        BlockState state = getBlockState();
+        if (state.getBlock() instanceof FermenterBlock) {
+            Direction facing = state.getValue(FermenterBlock.FACING);
+            if (side == facing || side == facing.getOpposite() || side == Direction.DOWN) {
+                return this.outputfluidTank;
+            }
+        }
+        return this.inputfluidTank;
     }
 
     public ItemStackHandler getInventory() {

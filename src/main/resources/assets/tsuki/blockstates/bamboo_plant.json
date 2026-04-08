@@ -1,7 +1,13 @@
 {
   "variants": {
-    "leaves=none":  { "model": "tsuki:block/bamboo" },
-    "leaves=small":  { "model": "tsuki:block/bamboo_leaves_small" },
-    "leaves=large":  { "model": "tsuki:block/bamboo_leaves_large" }
+    "leaves=large": {
+      "model": "tsuki:block/bamboo_leaves_large"
+    },
+    "leaves=none": {
+      "model": "tsuki:block/bamboo"
+    },
+    "leaves=small": {
+      "model": "tsuki:block/bamboo_leaves_small"
+    }
   }
 }

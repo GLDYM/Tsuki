@@ -1,1 +1,6 @@
-{"parent":"item/generated","textures":{"layer0":"tsuki:item/brown_rice"}}
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tsuki:item/brown_rice"
+  }
+}

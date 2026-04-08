@@ -3,9 +3,10 @@ package cn.mcmod.tsuki.block.entity;
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.container.DistillerContainer;
 import cn.mcmod.tsuki.inventory.FermenterItemHandler;
+import cn.mcmod.tsuki.block.machines.DistillerBlock;
 import cn.mcmod.tsuki.recipes.DistillerRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod_mmf.mmlib.block.entity.HeatableBlockEntity;
+import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
 import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
 import cn.mcmod_mmf.mmlib.utils.LevelUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -241,10 +242,19 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
 
     @Nonnull
     public FluidTank getFluidHandler(@Nullable Direction side) {
-        if (side == null || !(side.equals(Direction.NORTH) || side.equals(Direction.SOUTH))) {
+        if (side == null) {
             return this.inputfluidTank;
         }
-        return this.outputfluidTank;
+
+        BlockState state = getBlockState();
+        if (state.getBlock() instanceof DistillerBlock) {
+            Direction facing = state.getValue(DistillerBlock.FACING);
+            if (side == facing || side == facing.getOpposite() || side == Direction.DOWN) {
+                return this.outputfluidTank;
+            }
+        }
+
+        return this.inputfluidTank;
     }
 
     public ItemStackHandler getInventory() {

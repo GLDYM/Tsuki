@@ -79,15 +79,17 @@ public class DistillerContainer extends AbstractContainerMenu {
                 }
 
                 slot.onQuickCraft(itemStack1, itemStack);
-            } else if (index >= 7) {
-                if (index >= 7 && index < 34) {
-                    if (!this.moveItemStackTo(itemStack1, 33, 42, false)) {
+            } else if (index >= 6) {
+                if (!this.moveItemStackTo(itemStack1, 0, 3, false)) {
+                    if (index >= 6 && index < 33) {
+                        if (!this.moveItemStackTo(itemStack1, 33, 42, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (index >= 33 && index < 42 && !this.moveItemStackTo(itemStack1, 6, 33, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (index >= 33 && index < 42 && !this.moveItemStackTo(itemStack1, 7, 33, false)) {
-                    return ItemStack.EMPTY;
                 }
-            } else if (!this.moveItemStackTo(itemStack1, 7, 42, false)) {
+            } else if (!this.moveItemStackTo(itemStack1, 6, 43, false)) {
                 return ItemStack.EMPTY;
             }
 
@@ -126,20 +128,17 @@ public class DistillerContainer extends AbstractContainerMenu {
         return stillValid(canInteractWithCallable, playerIn, BlockRegistry.DISTILLER.get());
     }
 
-    @OnlyIn(Dist.CLIENT)
     public int getCookProgressionScaled() {
         int i = this.containerData.get(0);
         int j = this.containerData.get(1);
         return j != 0 && i != 0 ? i * 24 / j : 0;
     }
 
-    @OnlyIn(Dist.CLIENT)
     public int getWorking() {
         int i = this.containerData.get(0);
         return i != 0 ? i % 18 : 0;
     }
     
-    @OnlyIn(Dist.CLIENT)
     public boolean isHeated() {
         return this.tileEntity.isHeated();
     }

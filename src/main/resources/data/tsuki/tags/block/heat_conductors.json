@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:hopper",
+    {
+      "id": "#mmlib:heat_conductors",
+      "required": false
+    },
+    {
+      "id": "#mysterious_mountain_lib:heat_conductors",
+      "required": false
+    },
+    {
+      "id": "#farmersdelight:heat_conductors",
+      "required": false
+    }
+  ]
+}

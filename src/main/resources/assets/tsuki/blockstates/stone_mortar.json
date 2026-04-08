@@ -1,6 +1,9 @@
 {
   "variants": {
-    "": {
+    "working=false": {
+      "model": "tsuki:block/stone_mortar"
+    },
+    "working=true": {
       "model": "tsuki:block/stone_mortar"
     }
   }

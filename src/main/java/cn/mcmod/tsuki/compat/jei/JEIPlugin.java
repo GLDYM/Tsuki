@@ -96,10 +96,10 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-        registration.addRecipeClickArea(CookingPotScreen.class, 94, 16, 32, 54, COOKING_POT_JEI_TYPE);
+        registration.addRecipeClickArea(CookingPotScreen.class, 94, 16, 34, 29, COOKING_POT_JEI_TYPE);
         registration.addRecipeClickArea(StoneMortarScreen.class, 79, 32, 18, 24, STONE_MORTAR_JEI_TYPE);
-        registration.addRecipeClickArea(FermenterScreen.class, 75, 34, 18, 24, FERMENTER_JEI_TYPE);
-        registration.addRecipeClickArea(DistillerScreen.class, 75, 34, 18, 24, DISTILLER_JEI_TYPE);
+        registration.addRecipeClickArea(FermenterScreen.class, 75, 34, 24, 17, FERMENTER_JEI_TYPE);
+        registration.addRecipeClickArea(DistillerScreen.class, 75, 34, 24, 17, DISTILLER_JEI_TYPE);
     }
 
     @Override

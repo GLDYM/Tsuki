@@ -1,8 +1,9 @@
 package cn.mcmod.tsuki.block.foods;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.block.machines.CookingPotBlock;
 import cn.mcmod.tsuki.tags.TsukiBlockTags;
-import cn.mcmod_mmf.mmlib.block.entity.HeatableBlockEntity;
+import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -126,8 +127,9 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
                    pos,
                    BlockRegistry.COOKING_POT.get()
                       .defaultBlockState()
-                      .setValue(TRAY_SUPPORT, state.getValue(TRAY_SUPPORT))
-                      .setValue(FACING, (Direction)state.getValue(FACING)),
+                             .setValue(CookingPotBlock.TRAY_SUPPORT, state.getValue(TRAY_SUPPORT))
+                             .setValue(CookingPotBlock.FACING, state.getValue(FACING))
+                             .setValue(CookingPotBlock.OPEN, true),
                    3
                 );
             }
@@ -142,7 +144,7 @@ public class NabeBlock extends Block implements HeatableBlockEntity{
        } else {
           if (!this.requiresDirectHeat() && stateBelow.is(this.heatConductorTag())) {
              BlockState stateFurtherBelow = level.getBlockState(pos.below(2));
-             if (stateBelow.is(this.heatSourceTag())) {
+                 if (stateFurtherBelow.is(this.heatSourceTag())) {
                 if (stateFurtherBelow.hasProperty(BlockStateProperties.LIT)) {
                    return (Boolean)stateFurtherBelow.getValue(BlockStateProperties.LIT);
                 }

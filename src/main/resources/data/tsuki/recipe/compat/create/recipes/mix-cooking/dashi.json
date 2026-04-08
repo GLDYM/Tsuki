@@ -1,0 +1,37 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        [
+                            {
+                                "item":  "tsuki:bonito_shaving"
+                            },
+                            {
+                                "item":  "minecraft:dried_kelp"
+                            }
+                        ],
+                        [
+                            {
+                                "item":  "tsuki:bonito_shaving"
+                            },
+                            {
+                                "item":  "minecraft:dried_kelp"
+                            }
+                        ],
+                        {
+                            "amount":  500,
+                            "fluid":  "minecraft:water"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "item":  "tsuki:dashi"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

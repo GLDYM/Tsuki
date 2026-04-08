@@ -1,0 +1,6 @@
+{
+  "biomes": "#tsuki:can_spawn_bamboo",
+  "features": "tsuki:patch_bambooshoot",
+  "step": "vegetal_decoration",
+  "type": "neoforge:add_features"
+}

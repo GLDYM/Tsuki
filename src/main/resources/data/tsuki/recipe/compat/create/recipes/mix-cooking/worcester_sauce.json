@@ -1,0 +1,31 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "tag":  "c:sugar"
+                        },
+                        {
+                            "tag":  "c:fruits"
+                        },
+                        {
+                            "tag":  "c:soysauce"
+                        },
+                        {
+                            "amount":  250,
+                            "fluid":  "minecraft:water"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "count":  2,
+                        "item":  "tsuki:worcester_sauce"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

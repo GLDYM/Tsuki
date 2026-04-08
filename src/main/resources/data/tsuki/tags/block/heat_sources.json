@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:magma_block",
+    "#tsuki:tray_heat_sources",
+    {
+      "id": "#mmlib:heat_sources",
+      "required": false
+    },
+    {
+      "id": "#mysterious_mountain_lib:heat_sources",
+      "required": false
+    },
+    {
+      "id": "#farmersdelight:heat_sources",
+      "required": false
+    }
+  ]
+}

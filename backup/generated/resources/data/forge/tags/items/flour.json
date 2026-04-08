@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#forge:flour/wheat",
-    "#forge:flour/buckwheat",
-    "#forge:flour/rice"
-  ]
-}

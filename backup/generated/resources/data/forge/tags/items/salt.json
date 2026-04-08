@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#forge:dust/salt",
-    "#forge:salt/salt"
-  ]
-}

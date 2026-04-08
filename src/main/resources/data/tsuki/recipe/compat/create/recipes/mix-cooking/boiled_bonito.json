@@ -1,0 +1,24 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "item":  "tsuki:machined_bonito"
+                        },
+                        {
+                            "amount":  250,
+                            "fluid":  "minecraft:water"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "item":  "tsuki:boiled_bonito"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

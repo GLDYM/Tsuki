@@ -1,0 +1,27 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "item":  "tsuki:tempura_batter"
+                        },
+                        {
+                            "tag":  "c:shrimp"
+                        },
+                        {
+                            "amount":  125,
+                            "fluidTag":  "c:food_oil"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "item":  "tsuki:tempura"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

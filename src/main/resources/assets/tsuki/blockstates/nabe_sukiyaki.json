@@ -1,37 +1,124 @@
 {
   "variants": {
-	"tray_support=false,facing=north,bites=0":  { "model": "tsuki:block/nabe_sukiyaki" },
-	"tray_support=false,facing=south,bites=0":  { "model": "tsuki:block/nabe_sukiyaki", "y": 180 },
-	"tray_support=false,facing=west,bites=0":  { "model": "tsuki:block/nabe_sukiyaki", "y": 270 },
-	"tray_support=false,facing=east,bites=0":  { "model": "tsuki:block/nabe_sukiyaki", "y": 90 },
-	"tray_support=false,facing=north,bites=1":  { "model": "tsuki:block/nabe_sukiyaki_1" },
-	"tray_support=false,facing=south,bites=1":  { "model": "tsuki:block/nabe_sukiyaki_1", "y": 180 },
-	"tray_support=false,facing=west,bites=1":  { "model": "tsuki:block/nabe_sukiyaki_1", "y": 270 },
-	"tray_support=false,facing=east,bites=1":  { "model": "tsuki:block/nabe_sukiyaki_1", "y": 90 },
-	"tray_support=false,facing=north,bites=2":  { "model": "tsuki:block/nabe_sukiyaki_2" },
-	"tray_support=false,facing=south,bites=2":  { "model": "tsuki:block/nabe_sukiyaki_2", "y": 180 },
-	"tray_support=false,facing=west,bites=2":  { "model": "tsuki:block/nabe_sukiyaki_2", "y": 270 },
-	"tray_support=false,facing=east,bites=2":  { "model": "tsuki:block/nabe_sukiyaki_2", "y": 90 },
-	"tray_support=false,facing=north,bites=3":  { "model": "tsuki:block/nabe_sukiyaki_3" },
-	"tray_support=false,facing=south,bites=3":  { "model": "tsuki:block/nabe_sukiyaki_3", "y": 180 },
-	"tray_support=false,facing=west,bites=3":  { "model": "tsuki:block/nabe_sukiyaki_3", "y": 270 },
-	"tray_support=false,facing=east,bites=3":  { "model": "tsuki:block/nabe_sukiyaki_3", "y": 90 },
-
-    "tray_support=true,facing=north,bites=0":  { "model": "tsuki:block/nabe_sukiyaki_tray" },
-    "tray_support=true,facing=south,bites=0":  { "model": "tsuki:block/nabe_sukiyaki_tray", "y": 180 },
-    "tray_support=true,facing=west,bites=0":  { "model": "tsuki:block/nabe_sukiyaki_tray", "y": 270 },
-    "tray_support=true,facing=east,bites=0":  { "model": "tsuki:block/nabe_sukiyaki_tray", "y": 90 },
-    "tray_support=true,facing=north,bites=1":  { "model": "tsuki:block/nabe_sukiyaki_1_tray" },
-    "tray_support=true,facing=south,bites=1":  { "model": "tsuki:block/nabe_sukiyaki_1_tray", "y": 180 },
-    "tray_support=true,facing=west,bites=1":  { "model": "tsuki:block/nabe_sukiyaki_1_tray", "y": 270 },
-    "tray_support=true,facing=east,bites=1":  { "model": "tsuki:block/nabe_sukiyaki_1_tray", "y": 90 },
-    "tray_support=true,facing=north,bites=2":  { "model": "tsuki:block/nabe_sukiyaki_2_tray" },
-    "tray_support=true,facing=south,bites=2":  { "model": "tsuki:block/nabe_sukiyaki_2_tray", "y": 180 },
-    "tray_support=true,facing=west,bites=2":  { "model": "tsuki:block/nabe_sukiyaki_2_tray", "y": 270 },
-    "tray_support=true,facing=east,bites=2":  { "model": "tsuki:block/nabe_sukiyaki_2_tray", "y": 90 },
-    "tray_support=true,facing=north,bites=3":  { "model": "tsuki:block/nabe_sukiyaki_3_tray" },
-    "tray_support=true,facing=south,bites=3":  { "model": "tsuki:block/nabe_sukiyaki_3_tray", "y": 180 },
-    "tray_support=true,facing=west,bites=3":  { "model": "tsuki:block/nabe_sukiyaki_3_tray", "y": 270 },
-    "tray_support=true,facing=east,bites=3":  { "model": "tsuki:block/nabe_sukiyaki_3_tray", "y": 90 }
+    "tray_support=false,facing=east,bites=0": {
+      "model": "tsuki:block/nabe_sukiyaki",
+      "y": 90
+    },
+    "tray_support=false,facing=east,bites=1": {
+      "model": "tsuki:block/nabe_sukiyaki_1",
+      "y": 90
+    },
+    "tray_support=false,facing=east,bites=2": {
+      "model": "tsuki:block/nabe_sukiyaki_2",
+      "y": 90
+    },
+    "tray_support=false,facing=east,bites=3": {
+      "model": "tsuki:block/nabe_sukiyaki_3",
+      "y": 90
+    },
+    "tray_support=false,facing=north,bites=0": {
+      "model": "tsuki:block/nabe_sukiyaki"
+    },
+    "tray_support=false,facing=north,bites=1": {
+      "model": "tsuki:block/nabe_sukiyaki_1"
+    },
+    "tray_support=false,facing=north,bites=2": {
+      "model": "tsuki:block/nabe_sukiyaki_2"
+    },
+    "tray_support=false,facing=north,bites=3": {
+      "model": "tsuki:block/nabe_sukiyaki_3"
+    },
+    "tray_support=false,facing=south,bites=0": {
+      "model": "tsuki:block/nabe_sukiyaki",
+      "y": 180
+    },
+    "tray_support=false,facing=south,bites=1": {
+      "model": "tsuki:block/nabe_sukiyaki_1",
+      "y": 180
+    },
+    "tray_support=false,facing=south,bites=2": {
+      "model": "tsuki:block/nabe_sukiyaki_2",
+      "y": 180
+    },
+    "tray_support=false,facing=south,bites=3": {
+      "model": "tsuki:block/nabe_sukiyaki_3",
+      "y": 180
+    },
+    "tray_support=false,facing=west,bites=0": {
+      "model": "tsuki:block/nabe_sukiyaki",
+      "y": 270
+    },
+    "tray_support=false,facing=west,bites=1": {
+      "model": "tsuki:block/nabe_sukiyaki_1",
+      "y": 270
+    },
+    "tray_support=false,facing=west,bites=2": {
+      "model": "tsuki:block/nabe_sukiyaki_2",
+      "y": 270
+    },
+    "tray_support=false,facing=west,bites=3": {
+      "model": "tsuki:block/nabe_sukiyaki_3",
+      "y": 270
+    },
+    "tray_support=true,facing=east,bites=0": {
+      "model": "tsuki:block/nabe_sukiyaki_tray",
+      "y": 90
+    },
+    "tray_support=true,facing=east,bites=1": {
+      "model": "tsuki:block/nabe_sukiyaki_1_tray",
+      "y": 90
+    },
+    "tray_support=true,facing=east,bites=2": {
+      "model": "tsuki:block/nabe_sukiyaki_2_tray",
+      "y": 90
+    },
+    "tray_support=true,facing=east,bites=3": {
+      "model": "tsuki:block/nabe_sukiyaki_3_tray",
+      "y": 90
+    },
+    "tray_support=true,facing=north,bites=0": {
+      "model": "tsuki:block/nabe_sukiyaki_tray"
+    },
+    "tray_support=true,facing=north,bites=1": {
+      "model": "tsuki:block/nabe_sukiyaki_1_tray"
+    },
+    "tray_support=true,facing=north,bites=2": {
+      "model": "tsuki:block/nabe_sukiyaki_2_tray"
+    },
+    "tray_support=true,facing=north,bites=3": {
+      "model": "tsuki:block/nabe_sukiyaki_3_tray"
+    },
+    "tray_support=true,facing=south,bites=0": {
+      "model": "tsuki:block/nabe_sukiyaki_tray",
+      "y": 180
+    },
+    "tray_support=true,facing=south,bites=1": {
+      "model": "tsuki:block/nabe_sukiyaki_1_tray",
+      "y": 180
+    },
+    "tray_support=true,facing=south,bites=2": {
+      "model": "tsuki:block/nabe_sukiyaki_2_tray",
+      "y": 180
+    },
+    "tray_support=true,facing=south,bites=3": {
+      "model": "tsuki:block/nabe_sukiyaki_3_tray",
+      "y": 180
+    },
+    "tray_support=true,facing=west,bites=0": {
+      "model": "tsuki:block/nabe_sukiyaki_tray",
+      "y": 270
+    },
+    "tray_support=true,facing=west,bites=1": {
+      "model": "tsuki:block/nabe_sukiyaki_1_tray",
+      "y": 270
+    },
+    "tray_support=true,facing=west,bites=2": {
+      "model": "tsuki:block/nabe_sukiyaki_2_tray",
+      "y": 270
+    },
+    "tray_support=true,facing=west,bites=3": {
+      "model": "tsuki:block/nabe_sukiyaki_3_tray",
+      "y": 270
+    }
   }
 }

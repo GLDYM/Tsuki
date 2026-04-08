@@ -1,0 +1,28 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "item":  "tsuki:tofu"
+                        },
+                        {
+                            "tag":  "c:flour"
+                        },
+                        {
+                            "amount":  125,
+                            "fluidTag":  "c:food_oil"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "count":  2,
+                        "item":  "tsuki:tofu_fried"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

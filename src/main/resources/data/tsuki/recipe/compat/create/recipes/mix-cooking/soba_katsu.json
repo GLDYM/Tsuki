@@ -1,0 +1,30 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "item":  "tsuki:soba_raw"
+                        },
+                        {
+                            "item":  "tsuki:noodle_soup"
+                        },
+                        {
+                            "item":  "tsuki:katsu"
+                        },
+                        {
+                            "amount":  250,
+                            "fluid":  "minecraft:water"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "item":  "tsuki:soba_katsu"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

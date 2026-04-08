@@ -1,0 +1,31 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "tag":  "c:foods/raw_pork"
+                        },
+                        {
+                            "item":  "tsuki:breadcrumbs"
+                        },
+                        {
+                            "tag":  "c:eggs"
+                        },
+                        {
+                            "amount":  125,
+                            "fluidTag":  "c:food_oil"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "count":  2,
+                        "item":  "tsuki:katsu"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

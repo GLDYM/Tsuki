@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import cn.mcmod.tsuki.container.StoneMortarContainer;
 import cn.mcmod.tsuki.inventory.StoneMortarItemHandler;
+import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
 import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
@@ -30,8 +31,6 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
@@ -64,11 +63,13 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
 
     public static void workingTick(Level level, BlockPos pos, BlockState state, StoneMortarBlockEntity blockEntity) {
         boolean didInventoryChange = false;
+        boolean isWorking = false;
 
         if (blockEntity.hasInput()) {
             Optional<StoneMortarRecipe> recipe = blockEntity
                     .getMatchingRecipe(new RecipeWrapper(blockEntity.inventory), level);
             if (recipe.isPresent() && blockEntity.canWork(recipe.get(), level)) {
+                isWorking = true;
                 didInventoryChange = blockEntity.processRecipe(recipe.get(), level);
             } else {
                 blockEntity.recipeTime = 0;
@@ -77,8 +78,19 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
             blockEntity.recipeTime = 0;
         }
 
+        blockEntity.updateWorkingState(level, pos, state, isWorking);
+
         if (didInventoryChange) {
             blockEntity.inventoryChanged();
+        }
+    }
+
+    private void updateWorkingState(Level level, BlockPos pos, BlockState state, boolean isWorking) {
+        if (level.isClientSide() || !(state.getBlock() instanceof StoneMortarBlock)) {
+            return;
+        }
+        if (state.getValue(StoneMortarBlock.WORKING) != isWorking) {
+            level.setBlock(pos, state.setValue(StoneMortarBlock.WORKING, isWorking), 3);
         }
     }
 
@@ -97,26 +109,26 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         }
 
         if (lastRecipeID != null) {
-            Optional<RecipeHolder<StoneMortarRecipe>> recipeHolder = level.getRecipeManager()
-                    .getAllRecipesFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get()).stream()
-                    .filter(now -> now.id().equals(lastRecipeID)).findFirst();
-            if (recipeHolder.isPresent()) {
-                StoneMortarRecipe recipe = recipeHolder.get().value();
-                if (recipe.matches(inventoryWrapper, level)) {
-                    return Optional.of(recipe);
-                }
+            Optional<RecipeHolder<?>> holder = level.getRecipeManager().byKey(lastRecipeID);
+            if (holder.isPresent() && holder.get().value() instanceof StoneMortarRecipe recipe
+                    && recipe.matches(inventoryWrapper, level)) {
+                return Optional.of(recipe);
             }
         }
 
-        if (checkNewRecipe) {
-            Optional<RecipeHolder<StoneMortarRecipe>> recipeHolder = level.getRecipeManager().getRecipeFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get(),
-                    inventoryWrapper, level);
-            if (recipeHolder.isPresent()) {
-                lastRecipeID = recipeHolder.get().id();
-                return Optional.of(recipeHolder.get().value());
-            }
+        if (!checkNewRecipe) {
+            return Optional.empty();
         }
 
+        Optional<RecipeHolder<StoneMortarRecipe>> recipeHolder = level.getRecipeManager()
+                .getRecipeFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get(), inventoryWrapper, level);
+        checkNewRecipe = false;
+        if (recipeHolder.isPresent()) {
+            lastRecipeID = recipeHolder.get().id();
+            return Optional.of(recipeHolder.get().value());
+        }
+
+        lastRecipeID = null;
         checkNewRecipe = false;
         return Optional.empty();
     }
@@ -338,11 +350,6 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     @Override
     public Component getDisplayName() {
         return Component.translatable("container.tsuki.stone_mortar");
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    public int getRotation() {
-        return this.recipeTime != 0 ? 360 * this.recipeTime / this.recipeTimeTotal : 0;
     }
 
 }

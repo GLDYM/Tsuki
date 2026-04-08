@@ -1,6 +1,6 @@
 {
-    "parent": "block/cross",
-    "textures": {
-        "cross": "tsuki:block/bamboo_shoot"
-    }
+  "parent": "block/cross",
+  "textures": {
+    "cross": "tsuki:block/bamboo_shoot"
+  }
 }

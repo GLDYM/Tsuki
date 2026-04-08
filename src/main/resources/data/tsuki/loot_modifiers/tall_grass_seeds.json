@@ -1,9 +1,8 @@
 {
-  "type": "tsuki:grass_drops",
   "conditions": [
     {
-      "condition": "minecraft:random_chance",
-      "chance": 0.0625
+      "chance": 0.0625,
+      "condition": "minecraft:random_chance"
     },
     {
       "condition": "minecraft:inverted",
@@ -17,8 +16,9 @@
       }
     },
     {
-      "condition": "block_state_property",
-      "block": "minecraft:tall_grass"
+      "block": "minecraft:tall_grass",
+      "condition": "block_state_property"
     }
-  ]
+  ],
+  "type": "tsuki:grass_drops"
 }

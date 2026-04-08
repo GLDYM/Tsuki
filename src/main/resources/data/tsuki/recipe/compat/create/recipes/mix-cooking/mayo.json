@@ -1,0 +1,31 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "tag":  "c:eggs"
+                        },
+                        {
+                            "tag":  "c:eggs"
+                        },
+                        {
+                            "tag":  "c:vinegar"
+                        },
+                        {
+                            "amount":  250,
+                            "fluid":  "minecraft:water"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "count":  2,
+                        "item":  "tsuki:mayo"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

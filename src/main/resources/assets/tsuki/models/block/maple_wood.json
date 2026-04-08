@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "tsuki:block/maple_log",
-    "end": "tsuki:block/maple_log"
+    "end": "tsuki:block/maple_log",
+    "side": "tsuki:block/maple_log"
   }
 }

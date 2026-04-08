@@ -1,0 +1,39 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "tag":  "c:salt"
+                        },
+                        {
+                            "tag":  "c:eggs"
+                        },
+                        [
+                            {
+                                "tag":  "c:crops/taro"
+                            },
+                            {
+                                "tag":  "c:crops/potato"
+                            }
+                        ],
+                        {
+                            "item":  "tsuki:surimi"
+                        },
+                        {
+                            "amount":  125,
+                            "fluid":  "minecraft:water"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "count":  4,
+                        "item":  "tsuki:fishcake"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

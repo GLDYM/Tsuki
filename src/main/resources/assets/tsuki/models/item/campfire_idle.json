@@ -1,1 +1,3 @@
-{"parent":"tsuki:block/campfire"}
+{
+  "parent": "tsuki:block/campfire"
+}

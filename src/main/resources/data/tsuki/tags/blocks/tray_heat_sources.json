@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:lava",
-    "#minecraft:campfires",
-    "#minecraft:fire",
-    "#farmersdelight:tray_heat_sources"
-  ]
-}

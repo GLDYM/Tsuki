@@ -1,0 +1,31 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "item":  "tsuki:mashed_potato"
+                        },
+                        {
+                            "item":  "tsuki:breadcrumbs"
+                        },
+                        {
+                            "tag":  "c:milk"
+                        },
+                        {
+                            "amount":  125,
+                            "fluidTag":  "c:food_oil"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "count":  2,
+                        "item":  "tsuki:croquette"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

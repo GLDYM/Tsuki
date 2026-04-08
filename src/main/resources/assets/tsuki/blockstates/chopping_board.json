@@ -1,8 +1,19 @@
 {
   "variants": {
-    "facing=north":  { "model": "tsuki:block/chopping_board" },
-    "facing=south":  { "model": "tsuki:block/chopping_board", "y": 180 },
-    "facing=west":  { "model": "tsuki:block/chopping_board", "y": 270 },
-    "facing=east":  { "model": "tsuki:block/chopping_board", "y": 90 }
+    "facing=east": {
+      "model": "tsuki:block/chopping_board",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "tsuki:block/chopping_board"
+    },
+    "facing=south": {
+      "model": "tsuki:block/chopping_board",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tsuki:block/chopping_board",
+      "y": 270
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
-   "parent" : "item/handheld",
-   "textures" : {
-      "layer0" : "tsuki:item/hammer_sakura"
-   }
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "tsuki:item/hammer_sakura"
+  }
 }

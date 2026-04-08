@@ -5,20 +5,20 @@
       "x": 90,
       "y": 90
     },
-    "axis=y,exhaustion=false": {
-      "model": "tsuki:block/maple_sap_log"
-    },
-    "axis=z,exhaustion=false": {
-      "model": "tsuki:block/maple_sap_log_horizontal",
-      "x": 90
-    },
     "axis=x,exhaustion=true": {
       "model": "tsuki:block/maple_nosap_log_horizontal",
       "x": 90,
       "y": 90
     },
+    "axis=y,exhaustion=false": {
+      "model": "tsuki:block/maple_sap_log"
+    },
     "axis=y,exhaustion=true": {
       "model": "tsuki:block/maple_nosap_log"
+    },
+    "axis=z,exhaustion=false": {
+      "model": "tsuki:block/maple_sap_log_horizontal",
+      "x": 90
     },
     "axis=z,exhaustion=true": {
       "model": "tsuki:block/maple_nosap_log_horizontal",

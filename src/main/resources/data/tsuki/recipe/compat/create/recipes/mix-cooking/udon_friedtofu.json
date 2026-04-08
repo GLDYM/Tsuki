@@ -1,0 +1,30 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "item":  "tsuki:udon_raw"
+                        },
+                        {
+                            "item":  "tsuki:noodle_soup"
+                        },
+                        {
+                            "item":  "tsuki:tofu_fried"
+                        },
+                        {
+                            "amount":  250,
+                            "fluid":  "minecraft:water"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "item":  "tsuki:udon_friedtofu"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}

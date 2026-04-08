@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "tsuki:block/maple_log_nosap",
-    "end": "tsuki:block/maple_log_top"
+    "end": "tsuki:block/maple_log_top",
+    "side": "tsuki:block/maple_log_nosap"
   }
 }

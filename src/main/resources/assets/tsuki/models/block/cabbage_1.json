@@ -1,26 +1,82 @@
 {
-	"credit": "Made with Blockbench",
-	"textures": {
-		"0": "tsuki:block/cabbage_bottom",
-		"2": "tsuki:block/cabbage_side1",
-		"3": "tsuki:block/cabbage_side2",
-		"4": "tsuki:block/cabbage_side3",
-		"5": "tsuki:block/cabbage_side4",
-		"6": "tsuki:block/cabbage_top",
-		"particle": "tsuki:block/cabbage_bottom"
-	},
-	"elements": [
-		{
-			"from": [6, 0, 6],
-			"to": [10, 2, 10],
-			"faces": {
-				"north": {"uv": [0, 0, 16, 16], "texture": "#2"},
-				"east": {"uv": [0, 0, 16, 16], "texture": "#5"},
-				"south": {"uv": [0, 0, 16, 16], "texture": "#3"},
-				"west": {"uv": [0, 0, 16, 16], "texture": "#4"},
-				"up": {"uv": [0, 0, 16, 16], "texture": "#6"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
-			}
-		}
-	]
+  "credit": "Made with Blockbench",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#0",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#5",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "north": {
+          "texture": "#2",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#3",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#6",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#4",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      },
+      "from": [
+        6,
+        0,
+        6
+      ],
+      "to": [
+        10,
+        2,
+        10
+      ]
+    }
+  ],
+  "textures": {
+    "0": "tsuki:block/cabbage_bottom",
+    "2": "tsuki:block/cabbage_side1",
+    "3": "tsuki:block/cabbage_side2",
+    "4": "tsuki:block/cabbage_side3",
+    "5": "tsuki:block/cabbage_side4",
+    "6": "tsuki:block/cabbage_top",
+    "particle": "tsuki:block/cabbage_bottom"
+  }
 }

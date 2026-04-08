@@ -37,10 +37,10 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
     public CookingPotCategory(IGuiHelper helper) {
         title = Component.translatable("sakura.jei.cooking");
         ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/pot.png");
-        background = helper.createDrawable(backgroundImage, 16, 16, 144, 54);
+        background = helper.createDrawable(backgroundImage, 13, 16, 151, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.COOKING_POT.get()));
-        heatIndicator = helper.createDrawable(backgroundImage, 176, 0, 18, 18);
-        arrow = helper.drawableBuilder(backgroundImage, 176, 18, 24, 17).buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
+        heatIndicator = helper.createDrawable(backgroundImage, 176, 0, 17, 15);
+        arrow = helper.drawableBuilder(backgroundImage, 176, 15, 34, 17).buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
     }
 
     @Override
@@ -81,12 +81,12 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
             .setFluidRenderer(CookingPotBlockEntity.TANK_CAPACITY, true, 16, 52)
             .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
         Minecraft minecraft = Minecraft.getInstance();
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 120, 22).addItemStack(recipe.getResultItem(minecraft.level.registryAccess()));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 127, 11).addItemStack(recipe.getResultItem(minecraft.level.registryAccess()));
     }
 
     @Override
     public void draw(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        arrow.draw(guiGraphics, 82, 18);
-        heatIndicator.draw(guiGraphics, 85, 36);
+        arrow.draw(guiGraphics, 81, 12);
+        heatIndicator.draw(guiGraphics, 86, 0);
     }
 }

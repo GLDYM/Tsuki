@@ -13,7 +13,7 @@ import cn.mcmod.tsuki.container.CookingPotContainer;
 import cn.mcmod.tsuki.inventory.CookingPotItemHandler;
 import cn.mcmod.tsuki.recipes.CookingPotRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod_mmf.mmlib.block.entity.HeatableBlockEntity;
+import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
 import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
 import cn.mcmod_mmf.mmlib.utils.LevelUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;

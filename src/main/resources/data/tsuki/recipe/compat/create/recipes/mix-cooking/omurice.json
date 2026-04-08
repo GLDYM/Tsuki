@@ -1,0 +1,47 @@
+{
+    "heatRequirement":  "heated",
+    "ingredients":  [
+                        {
+                            "tag":  "tsuki:rice/rice"
+                        },
+                        {
+                            "tag":  "c:eggs"
+                        },
+                        [
+                            {
+                                "tag":  "c:foods/raw_chicken"
+                            },
+                            {
+                                "tag":  "c:foods/raw_pork"
+                            },
+                            {
+                                "tag":  "c:foods/raw_beef"
+                            },
+                            {
+                                "tag":  "c:foods/raw_mutton"
+                            },
+                            {
+                                "tag":  "c:foods/fishes"
+                            }
+                        ],
+                        {
+                            "item":  "tsuki:tomato_sauce"
+                        },
+                        {
+                            "amount":  125,
+                            "fluidTag":  "c:food_oil"
+                        }
+                    ],
+    "results":  [
+                    {
+                        "item":  "tsuki:omurice"
+                    }
+                ],
+    "type":  "create:mixing",
+    "neoforge:conditions":  [
+                                {
+                                    "modid":  "create",
+                                    "type":  "neoforge:mod_loaded"
+                                }
+                            ]
+}
