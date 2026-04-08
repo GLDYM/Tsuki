@@ -1,0 +1,24 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "count": 0,
+    "id": "minecraft:air"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 0
+  },
+  "ingredients": [
+    {
+      "tag": "c:raw_chicken"
+    },
+    {
+      "tag": "c:bamboo"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "count": 2,
+    "id": "tsuki:chicken_stick"
+  }
+}

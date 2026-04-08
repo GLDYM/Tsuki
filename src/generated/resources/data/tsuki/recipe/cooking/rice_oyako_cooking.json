@@ -1,0 +1,26 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "tag": "tsuki:rice/rice"
+    },
+    {
+      "tag": "c:raw_chicken"
+    },
+    {
+      "tag": "c:eggs"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:rice_oyako"
+  }
+}

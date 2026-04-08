@@ -1,0 +1,24 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "count": 0,
+    "id": "minecraft:air"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:dango"
+    },
+    {
+      "item": "tsuki:red_bean_paste"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:dananko"
+  }
+}

@@ -1,4 +1,14 @@
+<div align="center">
+
+![icon](icon.png)
+
 # Tsuki
+
+🌕 🌸 Call of Sakura 🌸 🌕
+
+![Counter](https://count.getloli.com/@TSUKI?name=TSUKI&theme=miku&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
+
+</div>
 
 Tsuki is a Japanese-styled Minecraft mod.
 

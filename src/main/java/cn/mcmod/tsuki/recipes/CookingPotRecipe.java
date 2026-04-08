@@ -29,6 +29,9 @@ public class CookingPotRecipe extends AbstractRecipe {
     @Expose
     @SerializedName("result")
     public ItemStack output;
+    @Expose
+    @SerializedName("container")
+    public ItemStack container = ItemStack.EMPTY;
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
@@ -42,6 +45,10 @@ public class CookingPotRecipe extends AbstractRecipe {
 
     public FluidIngredient getRequiredFluid() {
         return fluidInput;
+    }
+
+    public ItemStack getContainer() {
+        return container == null ? ItemStack.EMPTY : container;
     }
 
     public boolean matchesWithFluid(FluidStack fluid, RecipeWrapper inv, Level worldIn) {

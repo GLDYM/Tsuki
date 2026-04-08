@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.data;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod.tsuki.tags.TsukiItemTags;
@@ -86,9 +87,9 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.MISO).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MISO).get());
       this.tag(TsukiItemTags.DASHI).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DASHI).get());
       this.tag(TsukiItemTags.SOUPS)
-         .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SOUP_MISO).get())
-         .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SOUP_REDBEAN).get())
-         .add(FoodRegistry.FOODSET.get(TsukiFoodSet.OSUIMONO).get());
+         .add(FoodRegistry.CUISINES.get(TsukiCuisineSet.SOUP_MISO).get())
+         .add(FoodRegistry.CUISINES.get(TsukiCuisineSet.SOUP_REDBEAN).get())
+         .add(FoodRegistry.CUISINES.get(TsukiCuisineSet.OSUIMONO).get());
       this.tag(TsukiItemTags.CROPS_SOYBEAN).add(ItemRegistry.SOYBEAN.get());
       this.tag(TsukiItemTags.CROPS_REDBEAN).add(ItemRegistry.RED_BEAN.get());
       this.tag(TsukiItemTags.CROPS_BUCKWHEAT).add(ItemRegistry.BUCKWHEAT.get());

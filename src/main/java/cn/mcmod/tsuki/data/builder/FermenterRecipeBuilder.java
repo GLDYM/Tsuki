@@ -96,15 +96,24 @@ public class FermenterRecipeBuilder {
     }
 
     public void save(RecipeOutput output, ResourceLocation id) {
+        ResourceLocation resolvedId = withTypeFolder(id, "fermenting");
         FermenterRecipe recipe = new FermenterRecipe();
-        recipe.setId(id);
+        recipe.setId(resolvedId);
         recipe.outputItems = this.result;
         recipe.inputFluid = this.fluid;
         recipe.inputItems = this.ingredients;
         recipe.outputFluid = this.result_fluid;
         recipe.experience = this.experience;
         recipe.recipeTime = this.recipeTime;
-        output.accept(id, recipe, null);
+        output.accept(resolvedId, recipe, null);
+    }
+
+    private static ResourceLocation withTypeFolder(ResourceLocation id, String folder) {
+        String path = id.getPath();
+        if (path.startsWith(folder + "/")) {
+            return id;
+        }
+        return ResourceLocation.fromNamespaceAndPath(id.getNamespace(), folder + "/" + path);
     }
 
 }

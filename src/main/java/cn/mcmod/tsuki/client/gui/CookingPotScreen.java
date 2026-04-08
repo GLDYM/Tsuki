@@ -1,16 +1,23 @@
 package cn.mcmod.tsuki.client.gui;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
 import cn.mcmod.tsuki.container.CookingPotContainer;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CookingPotScreen extends AbstractContainerScreen<CookingPotContainer> {
 
@@ -28,7 +35,10 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotContaine
     public void render(GuiGraphics ms, final int mouseX, final int mouseY, float partialTicks) {
         this.renderBackground(ms, mouseX, mouseY, partialTicks);
         super.render(ms, mouseX, mouseY, partialTicks);
-        this.renderTooltip(ms, mouseX, mouseY);
+        boolean renderedMealDisplayTooltip = this.renderMealDisplayTooltip(ms, mouseX, mouseY);
+        if (!renderedMealDisplayTooltip) {
+            this.renderTooltip(ms, mouseX, mouseY);
+        }
     }
 
     @Override
@@ -87,6 +97,36 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotContaine
         }
 
         graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+    private boolean renderMealDisplayTooltip(GuiGraphics graphics, int mouseX, int mouseY) {
+        if (this.minecraft == null || this.minecraft.player == null || !this.menu.getCarried().isEmpty()) {
+            return false;
+        }
+
+        Slot slot = this.hoveredSlot;
+        if (slot == null || slot.index != CookingPotBlockEntity.SLOT_MEAL_DISPLAY) {
+            return false;
+        }
+
+        if (slot.hasItem()) {
+            ItemStack mealStack = slot.getItem();
+            List<Component> tooltip = new ArrayList<>();
+            MutableComponent mealName = mealStack.getHoverName().copy().withStyle(mealStack.getRarity().color());
+            tooltip.add(mealName);
+
+            ItemStack containerStack = this.menu.tileEntity.getCurrentMealContainer();
+            if (!containerStack.isEmpty()) {
+                tooltip.add(Component.translatable("gui.tsuki.cooking_pot.served_on", containerStack.getHoverName())
+                        .withColor(0x7F7F7F));
+            }
+
+            graphics.renderComponentTooltip(this.font, tooltip, mouseX, mouseY);
+            return true;
+        }
+
+        // graphics.renderTooltip(this.font, Component.translatable("gui.tsuki.cooking_pot.meal_display"), mouseX, mouseY);
+        return true;
     }
 
 }

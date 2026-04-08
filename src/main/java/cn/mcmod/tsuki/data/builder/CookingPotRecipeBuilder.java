@@ -15,6 +15,7 @@ public class CookingPotRecipeBuilder {
     private final ItemStack result;
     private final NonNullList<Ingredient> ingredients = NonNullList.create();
     private final FluidIngredient fluid;
+    private ItemStack container = ItemStack.EMPTY;
     private final float experience;
     private final int recipeTime;
 
@@ -68,15 +69,40 @@ public class CookingPotRecipeBuilder {
         return this;
     }
 
+    public CookingPotRecipeBuilder container(ItemLike item) {
+        this.container = new ItemStack(item);
+        return this;
+    }
+
+    public CookingPotRecipeBuilder container(ItemLike item, int count) {
+        this.container = new ItemStack(item, count);
+        return this;
+    }
+
+    public CookingPotRecipeBuilder container(ItemStack stack) {
+        this.container = stack.copy();
+        return this;
+    }
+
     public void save(RecipeOutput output, ResourceLocation id) {
+        ResourceLocation resolvedId = withTypeFolder(id, "cooking");
         CookingPotRecipe recipe = new CookingPotRecipe();
-        recipe.setId(id);
+        recipe.setId(resolvedId);
         recipe.output = this.result;
+        recipe.container = this.container.copy();
         recipe.fluidInput = this.fluid;
         recipe.inputItems = this.ingredients;
         recipe.experience = this.experience;
         recipe.recipeTime = this.recipeTime;
-        output.accept(id, recipe, null);
+        output.accept(resolvedId, recipe, null);
+    }
+
+    private static ResourceLocation withTypeFolder(ResourceLocation id, String folder) {
+        String path = id.getPath();
+        if (path.startsWith(folder + "/")) {
+            return id;
+        }
+        return ResourceLocation.fromNamespaceAndPath(id.getNamespace(), folder + "/" + path);
     }
 
 }

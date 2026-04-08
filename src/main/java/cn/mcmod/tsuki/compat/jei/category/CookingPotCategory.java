@@ -88,7 +88,7 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
         ItemStack resultStack = recipe.getResultItem(minecraft.level.registryAccess());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 127, 11).addItemStack(resultStack);
 
-        ItemStack containerStack = resultStack.hasCraftingRemainingItem() ? resultStack.getCraftingRemainingItem() : ItemStack.EMPTY;
+        ItemStack containerStack = recipe.getContainer();
         if (!containerStack.isEmpty()) {
             builder.addSlot(RecipeIngredientRole.CATALYST, 95, 37).addItemStack(containerStack);
         }

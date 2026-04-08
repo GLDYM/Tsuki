@@ -1,0 +1,31 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "count": 0,
+    "id": "minecraft:air"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:food_oil"
+  },
+  "ingredients": [
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:dashi"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "count": 2,
+    "id": "tsuki:tamagoyaki"
+  }
+}

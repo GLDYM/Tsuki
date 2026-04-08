@@ -1,0 +1,37 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "tag": "c:salad_ingredients/cabbage"
+    },
+    [
+      {
+        "tag": "c:raw_chicken"
+      },
+      {
+        "tag": "c:raw_pork"
+      },
+      {
+        "tag": "c:raw_beef"
+      },
+      {
+        "tag": "c:raw_mutton"
+      },
+      {
+        "tag": "c:fishes"
+      }
+    ]
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:cabbage_roll"
+  }
+}

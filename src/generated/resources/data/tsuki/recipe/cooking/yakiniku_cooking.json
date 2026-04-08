@@ -1,0 +1,32 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "count": 0,
+    "id": "minecraft:air"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:food_oil"
+  },
+  "ingredients": [
+    [
+      {
+        "tag": "c:raw_pork"
+      },
+      {
+        "tag": "c:raw_beef"
+      },
+      {
+        "tag": "c:raw_mutton"
+      }
+    ],
+    {
+      "tag": "c:soysauce"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:yakiniku"
+  }
+}

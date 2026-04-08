@@ -1,0 +1,27 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "count": 0,
+    "id": "minecraft:air"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:mochi"
+    },
+    {
+      "item": "tsuki:red_bean_paste"
+    },
+    {
+      "tag": "c:sugar"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:ohagi"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:food_oil"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:udon_raw"
+    },
+    {
+      "item": "tsuki:kaeshi"
+    },
+    {
+      "item": "tsuki:worcester_sauce"
+    },
+    {
+      "tag": "c:vegetables"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:yaki_udon"
+  }
+}

@@ -88,15 +88,24 @@ public class ChoppingBoardRecipeBuilder {
     }
 
     public void save(RecipeOutput output, ResourceLocation id) {
+        ResourceLocation resolvedId = withTypeFolder(id, "chopping");
         ChoppingRecipe recipe = new ChoppingRecipe();
-        recipe.setId(id);
+        recipe.setId(resolvedId);
         recipe.input = this.item;
         recipe.tool = this.tool;
         recipe.output = this.result;
         recipe.extraOutput = this.byproduces;
         recipe.experience = this.experience;
         recipe.recipeTime = this.recipeTime;
-        output.accept(id, recipe, null);
+        output.accept(resolvedId, recipe, null);
+    }
+
+    private static ResourceLocation withTypeFolder(ResourceLocation id, String folder) {
+        String path = id.getPath();
+        if (path.startsWith(folder + "/")) {
+            return id;
+        }
+        return ResourceLocation.fromNamespaceAndPath(id.getNamespace(), folder + "/" + path);
     }
 
 }

@@ -74,13 +74,22 @@ public class StoneMortarRecipeBuilder {
     }
 
     public void save(RecipeOutput output, ResourceLocation id) {
+        ResourceLocation resolvedId = withTypeFolder(id, "stone_mortar");
         StoneMortarRecipe recipe = new StoneMortarRecipe();
-        recipe.setId(id);
+        recipe.setId(resolvedId);
         recipe.output = this.result;
         recipe.inputItems = this.ingredients;
         recipe.experience = this.experience;
         recipe.recipeTime = this.recipeTime;
-        output.accept(id, recipe, null);
+        output.accept(resolvedId, recipe, null);
+    }
+
+    private static ResourceLocation withTypeFolder(ResourceLocation id, String folder) {
+        String path = id.getPath();
+        if (path.startsWith(folder + "/")) {
+            return id;
+        }
+        return ResourceLocation.fromNamespaceAndPath(id.getNamespace(), folder + "/" + path);
     }
 
 }

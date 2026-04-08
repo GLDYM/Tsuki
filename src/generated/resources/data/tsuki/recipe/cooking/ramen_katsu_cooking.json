@@ -1,0 +1,26 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 250,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:ramen_raw"
+    },
+    {
+      "item": "tsuki:noodle_soup"
+    },
+    {
+      "item": "tsuki:katsu"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:ramen_katsu"
+  }
+}
