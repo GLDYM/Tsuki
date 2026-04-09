@@ -1,0 +1,7 @@
+{
+  "parent": "tsuki:block/fallen_leaves",
+  "textures": {
+    "0": "tsuki:block/mapleleaves_red",
+    "particle": "#0"
+  }
+}

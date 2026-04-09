@@ -5,6 +5,10 @@
       {
         "type": "tsuki:maple_sap_log",
         "probability": 0.33
+      },
+      {
+        "type": "tsuki:maple_fallen_leaves",
+        "fallen_block": "tsuki:fallen_leaves_orange"
       }
     ],
     "dirt_provider": {

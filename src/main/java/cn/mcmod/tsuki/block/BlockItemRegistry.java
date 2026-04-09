@@ -97,6 +97,15 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> MAPLE_SAPLING_GREEN = ITEMS.register("maple_sapling_green",
             () -> new BlockItem(BlockRegistry.MAPLE_SAPLING_GREEN.get(), Tsuki.defaultItemProperties()));
 
+    public static final DeferredItem<Item> FALLEN_LEAVES_RED = ITEMS.register("fallen_leaves_red",
+            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_RED.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> FALLEN_LEAVES_ORANGE = ITEMS.register("fallen_leaves_orange",
+            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_ORANGE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> FALLEN_LEAVES_YELLOW = ITEMS.register("fallen_leaves_yellow",
+            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_YELLOW.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> FALLEN_LEAVES_GREEN = ITEMS.register("fallen_leaves_green",
+            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
+
     public static final DeferredItem<Item> KITUNEBI = ITEMS.register("kitunebi",
             () -> new BlockItem(BlockRegistry.KITUNEBI.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> MAPLE_SPILE = ITEMS.register("maple_spile",

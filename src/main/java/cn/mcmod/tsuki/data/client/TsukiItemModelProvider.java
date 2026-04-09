@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.data.client;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.block.FallenLeavesBlock;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
@@ -28,8 +29,13 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         BlockItemRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof BlockItem) {
                 BlockItem blockItem = (BlockItem) item.get();
-                if (blockItem.getBlock() instanceof StoneMortarBlock)
+                if (blockItem.getBlock() instanceof StoneMortarBlock) {
                     return;
+                }
+                if (blockItem.getBlock() instanceof FallenLeavesBlock) {
+                    itemBlock(blockItem::getBlock);
+                    return;
+                }
                 if (blockItem.getBlock() == BlockRegistry.KITUNEBI.get()) {
                     singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/ghost_fire_0"));
                     return;
@@ -63,6 +69,5 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
         withExistingParent(name, modLoc("block/" + name));
     }
-
 }
 

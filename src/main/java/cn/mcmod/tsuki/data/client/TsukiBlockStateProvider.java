@@ -35,6 +35,10 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.MAPLE_LEAVES_YELLOW.get());
         simpleBlock(BlockRegistry.MAPLE_LEAVES_GREEN.get());
         simpleBlock(BlockRegistry.MAPLE_LEAVES_ORANGE.get());
+        simpleBlock(BlockRegistry.FALLEN_LEAVES_RED.get(), models().getExistingFile(modLoc("block/fallen_leaves_red")));
+        simpleBlock(BlockRegistry.FALLEN_LEAVES_ORANGE.get(), models().getExistingFile(modLoc("block/fallen_leaves_orange")));
+        simpleBlock(BlockRegistry.FALLEN_LEAVES_YELLOW.get(), models().getExistingFile(modLoc("block/fallen_leaves_yellow")));
+        simpleBlock(BlockRegistry.FALLEN_LEAVES_GREEN.get(), models().getExistingFile(modLoc("block/fallen_leaves_green")));
 
         log(BlockRegistry.SAKURA_LOG.get());
         log(BlockRegistry.STRIPPED_SAKURA_LOG.get());

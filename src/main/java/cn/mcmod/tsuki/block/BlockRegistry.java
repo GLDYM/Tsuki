@@ -142,6 +142,19 @@ public class BlockRegistry {
                     Optional.empty(),
                     Optional.empty())));
 
+    public static final DeferredBlock<Block> FALLEN_LEAVES_RED = BLOCKS.register("fallen_leaves_red",
+            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+                    .sound(SoundType.GRASS).noOcclusion()));
+    public static final DeferredBlock<Block> FALLEN_LEAVES_ORANGE = BLOCKS.register("fallen_leaves_orange",
+            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+                    .sound(SoundType.GRASS).noOcclusion()));
+    public static final DeferredBlock<Block> FALLEN_LEAVES_YELLOW = BLOCKS.register("fallen_leaves_yellow",
+            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+                    .sound(SoundType.GRASS).noOcclusion()));
+    public static final DeferredBlock<Block> FALLEN_LEAVES_GREEN = BLOCKS.register("fallen_leaves_green",
+            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+                    .sound(SoundType.GRASS).noOcclusion()));
+
     public static final DeferredBlock<Block> BAMBOO_PLANT = BLOCKS.register("bamboo_plant", () -> new BambooPlant());
     public static final DeferredBlock<Block> BAMBOOSHOOT = BLOCKS.register("bamboo_shoot", () -> new BambooShoot());
 
