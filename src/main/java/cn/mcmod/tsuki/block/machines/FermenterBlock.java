@@ -99,10 +99,10 @@ public class FermenterBlock extends BaseEntityBlock {
     @Override
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
-            BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-            if (tileEntity instanceof FermenterBlockEntity blockEntity) {
-                Containers.dropContents(worldIn, pos, blockEntity.getDroppableInventory());
-                blockEntity.grantStoredRecipeExperience(worldIn, Vec3.atCenterOf(pos));
+            BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+            if (blockEntity instanceof FermenterBlockEntity fermenterBlockEntity) {
+                Containers.dropContents(worldIn, pos, fermenterBlockEntity.getDroppableInventory());
+                fermenterBlockEntity.grantStoredRecipeExperience(worldIn, Vec3.atCenterOf(pos));
                 worldIn.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(state, worldIn, pos, newState, isMoving);

@@ -39,7 +39,7 @@ public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
     private final IDrawable icon;
 
     public DistillerCategory(IGuiHelper helper) {
-        title = Component.translatable("sakura.jei.distillation");
+        title = Component.translatable("tsuki.jei.distillation");
         ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/distiller.png");
         background = helper.createDrawable(backgroundImage, 32, 16, 110, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.DISTILLER.get()));

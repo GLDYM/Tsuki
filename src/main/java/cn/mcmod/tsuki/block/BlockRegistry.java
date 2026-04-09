@@ -142,8 +142,8 @@ public class BlockRegistry {
                     Optional.empty(),
                     Optional.empty())));
 
-        public static final DeferredBlock<Block> BAMBOO_PLANT = BLOCKS.register("bamboo_plant", () -> new BambooPlant());
-        public static final DeferredBlock<Block> BAMBOOSHOOT = BLOCKS.register("bamboo_shoot", () -> new BambooShoot());
+    public static final DeferredBlock<Block> BAMBOO_PLANT = BLOCKS.register("bamboo_plant", () -> new BambooPlant());
+    public static final DeferredBlock<Block> BAMBOOSHOOT = BLOCKS.register("bamboo_shoot", () -> new BambooShoot());
 
     public static final DeferredBlock<Block> SAKURA_PLANK = BLOCKS.register("plank_sakura",
             () -> plank(MapColor.WOOD));
@@ -208,12 +208,17 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> EGGPLANT_CROP = BLOCKS.register("eggplant_crop",
             () -> new HighCropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.EGGPLANT_SEEDS));
 
-        public static final DeferredBlock<Block> STONE_MORTAR = BLOCKS.register("stone_mortar", () -> new StoneMortarBlock());
-        public static final DeferredBlock<Block> COOKING_POT = BLOCKS.register("cooking_pot", () -> new CookingPotBlock());
-        public static final DeferredBlock<Block> FERMENTER = BLOCKS.register("fermenter", () -> new FermenterBlock());
-        public static final DeferredBlock<Block> DISTILLER = BLOCKS.register("distiller", () -> new DistillerBlock());
-        public static final DeferredBlock<Block> OBON = BLOCKS.register("obon", () -> new ObonBlock());
-        public static final DeferredBlock<Block> CHOPPING_BOARD = BLOCKS.register("chopping_board", () -> new ChoppingBoardBlock());
+            
+    public static final DeferredBlock<Block> KITUNEBI = BLOCKS.register("kitunebi", () -> new KitunebiBlock());
+    public static final DeferredBlock<Block> MAPLE_SPILE = BLOCKS.register("maple_spile", () -> new MapleSpileBlock());
+    public static final DeferredBlock<Block> MAPLE_CAULDRON = BLOCKS.register("maple_cauldron", () -> new MapleCauldronBlock());
+
+    public static final DeferredBlock<Block> STONE_MORTAR = BLOCKS.register("stone_mortar", () -> new StoneMortarBlock());
+    public static final DeferredBlock<Block> COOKING_POT = BLOCKS.register("cooking_pot", () -> new CookingPotBlock());
+    public static final DeferredBlock<Block> FERMENTER = BLOCKS.register("fermenter", () -> new FermenterBlock());
+    public static final DeferredBlock<Block> DISTILLER = BLOCKS.register("distiller", () -> new DistillerBlock());
+    public static final DeferredBlock<Block> OBON = BLOCKS.register("obon", () -> new ObonBlock());
+    public static final DeferredBlock<Block> CHOPPING_BOARD = BLOCKS.register("chopping_board", () -> new ChoppingBoardBlock());
     public static final DeferredBlock<Block> TEISHOUKU_FINISHED = BLOCKS.register("teishoku_finished", TeishokuFinishedBlock::new);
     public static final DeferredBlock<Block> TEISHOUKU_FISH_SALT = BLOCKS.register("teishoku_fish_salt", 
             ()->new TeishokuBlock(FoodInfo.builder().amountAndCalories(8, 0.8f).build()));

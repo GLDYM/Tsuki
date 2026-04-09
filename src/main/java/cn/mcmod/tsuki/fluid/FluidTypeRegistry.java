@@ -27,6 +27,7 @@ public class FluidTypeRegistry {
     public static final DeferredHolder<FluidType, FluidType> WHITE_WINE = register("white_wine",0xFFFFF8B2);
     public static final DeferredHolder<FluidType, FluidType> CHAMPAGNE = register("champagne",0xFFFFE772);
     public static final DeferredHolder<FluidType, FluidType> BRANDY = register("brandy",0xFFBF2F00);
+    public static final DeferredHolder<FluidType, FluidType> MAPLE_SYRUP = register("maple_syrup",0xFFB46B1F);
             
     private static DeferredHolder<FluidType, FluidType> register(String name,int color){
         return FLUID_TYPES.register(name,()->create(color));

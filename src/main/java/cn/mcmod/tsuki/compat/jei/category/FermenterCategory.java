@@ -38,7 +38,7 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
     private final IDrawable icon;
 
     public FermenterCategory(IGuiHelper helper) {
-        title = Component.translatable("sakura.jei.fermenting");
+        title = Component.translatable("tsuki.jei.fermenting");
         ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/barrel.png");
         background = helper.createDrawable(backgroundImage, 32, 16, 110, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.FERMENTER.get()));

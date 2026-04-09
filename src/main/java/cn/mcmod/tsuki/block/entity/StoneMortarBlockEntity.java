@@ -41,7 +41,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     private final IItemHandler inputHandler;
     private final IItemHandler outputHandler;
 
-    protected final ContainerData tileData;
+    protected final ContainerData blockData;
     private final Object2IntOpenHashMap<ResourceLocation> experienceTracker;
 
     private int recipeTime;
@@ -56,7 +56,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         this.inventory = createHandler();
         this.inputHandler = new StoneMortarItemHandler(inventory, Direction.UP);
         this.outputHandler = new StoneMortarItemHandler(inventory, Direction.DOWN);
-        this.tileData = createIntArray();
+        this.blockData = createIntArray();
         this.experienceTracker = new Object2IntOpenHashMap<>();
         this.checkNewRecipe = true;
     }
@@ -344,7 +344,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
 
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory player, Player entity) {
-        return new StoneMortarContainer(id, player, this, tileData);
+        return new StoneMortarContainer(id, player, this, blockData);
     }
 
     @Override

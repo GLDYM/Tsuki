@@ -50,7 +50,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
 
     private final FluidTank inputfluidTank;
     private final FluidTank outputfluidTank;
-    protected final ContainerData tileData;
+    protected final ContainerData blockData;
     private final Object2IntOpenHashMap<ResourceLocation> experienceTracker;
 
     private int recipeTime;
@@ -65,7 +65,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
         this.inventory = createHandler();
         this.inputHandler = new FermenterItemHandler(inventory, Direction.UP);
         this.outputHandler = new FermenterItemHandler(inventory, Direction.DOWN);
-        this.tileData = createIntArray();
+        this.blockData = createIntArray();
         this.inputfluidTank = createInputFluidHandler();
         this.outputfluidTank = createFluidHandler();
         this.experienceTracker = new Object2IntOpenHashMap<>();
@@ -377,7 +377,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
 
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory player, Player entity) {
-        return new DistillerContainer(id, player, this, this.tileData);
+        return new DistillerContainer(id, player, this, this.blockData);
     }
     
     public boolean isHeated() {

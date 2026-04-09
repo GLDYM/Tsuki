@@ -63,7 +63,7 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotContaine
         int l = this.menu.getCookProgressionScaled();
         ms.blit(BACKGROUND_TEXTURE, this.leftPos + 94, this.topPos + 28, 176, 15, l + 1, 17);
 
-        var fluidTank = this.menu.tileEntity.getFluidTank();
+        var fluidTank = this.menu.blockEntity.getFluidTank();
         int heightInd = (int) (52.0F * ((float) fluidTank.getFluidAmount() / (float) fluidTank.getCapacity()));
         if (heightInd > 0) {
             int tankX = this.leftPos + 14;
@@ -115,7 +115,7 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotContaine
             MutableComponent mealName = mealStack.getHoverName().copy().withStyle(mealStack.getRarity().color());
             tooltip.add(mealName);
 
-            ItemStack containerStack = this.menu.tileEntity.getCurrentMealContainer();
+            ItemStack containerStack = this.menu.blockEntity.getCurrentMealContainer();
             if (!containerStack.isEmpty()) {
                 tooltip.add(Component.translatable("gui.tsuki.cooking_pot.served_on", containerStack.getHoverName())
                         .withColor(0x7F7F7F));

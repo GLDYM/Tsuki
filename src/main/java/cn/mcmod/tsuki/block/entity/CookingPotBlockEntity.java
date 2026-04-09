@@ -61,7 +61,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     private final IItemHandler outputHandler;
 
     private final FluidTank fluidTank;
-    protected final ContainerData tileData;
+    protected final ContainerData blockData;
     private final Object2IntOpenHashMap<ResourceLocation> experienceTracker;
 
     private int recipeTime;
@@ -78,7 +78,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         this.inputHandler = new CookingPotItemHandler(inventory, Direction.UP);
         this.containerHandler = new CookingPotItemHandler(inventory, Direction.NORTH);
         this.outputHandler = new CookingPotItemHandler(inventory, Direction.DOWN);
-        this.tileData = createIntArray();
+        this.blockData = createIntArray();
         this.fluidTank = createFluidHandler();
         this.experienceTracker = new Object2IntOpenHashMap<>();
         this.checkNewRecipe = true;
@@ -539,7 +539,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
 
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory player, Player entity) {
-        return new CookingPotContainer(id, player, this, this.tileData);
+        return new CookingPotContainer(id, player, this, this.blockData);
     }
 
     @Override

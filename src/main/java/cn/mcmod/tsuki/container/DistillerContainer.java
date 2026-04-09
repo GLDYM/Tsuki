@@ -21,18 +21,18 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 
 public class DistillerContainer extends AbstractContainerMenu {
 
-    public final DistillerBlockEntity tileEntity;
+    public final DistillerBlockEntity blockEntity;
     public final ItemStackHandler inventory;
     private final ContainerData containerData;
     private final ContainerLevelAccess canInteractWithCallable;
 
     public DistillerContainer(final int windowId, final Inventory playerInventory,
-            final DistillerBlockEntity tileEntity, ContainerData cookingPotDataIn) {
+            final DistillerBlockEntity blockEntity, ContainerData cookingPotDataIn) {
         super(ContainerRegistry.DISTILLER.get(), windowId);
-        this.tileEntity = tileEntity;
-        this.inventory = tileEntity.getInventory();
+        this.blockEntity = blockEntity;
+        this.inventory = blockEntity.getInventory();
         this.containerData = cookingPotDataIn;
-        this.canInteractWithCallable = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
+        this.canInteractWithCallable = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
         int startX = 8;
         int startY = 18;
         for (int row = 0; row < 3; ++row) {
@@ -40,7 +40,7 @@ public class DistillerContainer extends AbstractContainerMenu {
         }
         
         for (int row = 0; row < 3; ++row) {
-            this.addSlot(new DistillerResultSlot(playerInventory.player, tileEntity, inventory, 3 + row, 103, 17 + (row * 18)));
+            this.addSlot(new DistillerResultSlot(playerInventory.player, blockEntity, inventory, 3 + row, 103, 17 + (row * 18)));
         }
 
         // Main Player Inventory
@@ -112,11 +112,11 @@ public class DistillerContainer extends AbstractContainerMenu {
     private static DistillerBlockEntity getTileEntity(final Inventory playerInventory, final FriendlyByteBuf data) {
         Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
         Objects.requireNonNull(data, "data cannot be null");
-        final BlockEntity tileAtPos = playerInventory.player.level().getBlockEntity(data.readBlockPos());
-        if (tileAtPos instanceof DistillerBlockEntity) {
-            return (DistillerBlockEntity) tileAtPos;
+        final BlockEntity blockAtPos = playerInventory.player.level().getBlockEntity(data.readBlockPos());
+        if (blockAtPos instanceof DistillerBlockEntity) {
+            return (DistillerBlockEntity) blockAtPos;
         }
-        throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
+        throw new IllegalStateException("Tile entity is not correct! " + blockAtPos);
     }
 
     public DistillerContainer(final int windowId, final Inventory playerInventory, final FriendlyByteBuf data) {
@@ -140,7 +140,7 @@ public class DistillerContainer extends AbstractContainerMenu {
     }
     
     public boolean isHeated() {
-        return this.tileEntity.isHeated();
+        return this.blockEntity.isHeated();
     }
 }
 

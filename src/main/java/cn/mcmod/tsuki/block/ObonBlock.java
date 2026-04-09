@@ -70,8 +70,8 @@ public class ObonBlock extends BaseEntityBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack heldStack, BlockState state, Level worldIn, BlockPos pos,
             Player player, InteractionHand handIn, BlockHitResult hit) {
-        BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-        if (tileEntity instanceof ObonBlockEntity obon) {
+        BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+        if (blockEntity instanceof ObonBlockEntity obon) {
             ItemStack offhandStack = player.getOffhandItem();
 
             if (obon.isEmpty()) {
@@ -109,8 +109,8 @@ public class ObonBlock extends BaseEntityBlock {
     @Override
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
-            BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-            if (tileEntity instanceof ObonBlockEntity obon) {
+            BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+            if (blockEntity instanceof ObonBlockEntity obon) {
                 Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), obon.getStoredItem());
                 worldIn.updateNeighbourForOutputSignal(pos, this);
             }

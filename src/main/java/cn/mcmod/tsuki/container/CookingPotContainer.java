@@ -27,18 +27,18 @@ public class CookingPotContainer extends AbstractContainerMenu {
     private static final int HOTBAR_START = PLAYER_INV_END;
     private static final int HOTBAR_END = HOTBAR_START + 9;
 
-    public final CookingPotBlockEntity tileEntity;
+    public final CookingPotBlockEntity blockEntity;
     public final ItemStackHandler inventory;
     private final ContainerData containerData;
     private final ContainerLevelAccess canInteractWithCallable;
 
     public CookingPotContainer(final int windowId, final Inventory playerInventory,
-            final CookingPotBlockEntity tileEntity, ContainerData cookingPotDataIn) {
+            final CookingPotBlockEntity blockEntity, ContainerData cookingPotDataIn) {
         super(ContainerRegistry.COOKING_POT.get(), windowId);
-        this.tileEntity = tileEntity;
-        this.inventory = tileEntity.getInventory();
+        this.blockEntity = blockEntity;
+        this.inventory = blockEntity.getInventory();
         this.containerData = cookingPotDataIn;
-        this.canInteractWithCallable = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
+        this.canInteractWithCallable = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
         int startX = 8;
         int startY = 18;
         for (int row = 0; row < 3; ++row) {
@@ -49,7 +49,7 @@ public class CookingPotContainer extends AbstractContainerMenu {
 
         this.addSlot(new CookingPotMealDisplaySlot(inventory, CookingPotBlockEntity.SLOT_MEAL_DISPLAY, 140, 27));
         this.addSlot(new SlotItemHandler(inventory, CookingPotBlockEntity.SLOT_CONTAINER_INPUT, 108, 53));
-        this.addSlot(new CookingPotResultSlot(playerInventory.player, tileEntity, inventory, CookingPotBlockEntity.SLOT_OUTPUT, 140, 53));
+        this.addSlot(new CookingPotResultSlot(playerInventory.player, blockEntity, inventory, CookingPotBlockEntity.SLOT_OUTPUT, 140, 53));
 
         // Main Player Inventory
         int startPlayerInvY = startY * 4 + 12;
@@ -83,7 +83,7 @@ public class CookingPotContainer extends AbstractContainerMenu {
                 }
                 slot.onQuickCraft(itemStack1, itemStack);
             } else if (index >= PLAYER_INV_START) {
-                boolean movedToContainer = tileEntity.isServingContainer(itemStack1)
+                boolean movedToContainer = blockEntity.isServingContainer(itemStack1)
                         && this.moveItemStackTo(itemStack1, CookingPotBlockEntity.SLOT_CONTAINER_INPUT,
                                 CookingPotBlockEntity.SLOT_CONTAINER_INPUT + 1, false);
                 if (!movedToContainer && !this.moveItemStackTo(itemStack1, CookingPotBlockEntity.SLOT_INPUT_START,
@@ -120,11 +120,11 @@ public class CookingPotContainer extends AbstractContainerMenu {
     private static CookingPotBlockEntity getTileEntity(final Inventory playerInventory, final FriendlyByteBuf data) {
         Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
         Objects.requireNonNull(data, "data cannot be null");
-        final BlockEntity tileAtPos = playerInventory.player.level().getBlockEntity(data.readBlockPos());
-        if (tileAtPos instanceof CookingPotBlockEntity) {
-            return (CookingPotBlockEntity) tileAtPos;
+        final BlockEntity blockAtPos = playerInventory.player.level().getBlockEntity(data.readBlockPos());
+        if (blockAtPos instanceof CookingPotBlockEntity) {
+            return (CookingPotBlockEntity) blockAtPos;
         }
-        throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
+        throw new IllegalStateException("Tile entity is not correct! " + blockAtPos);
     }
 
     public CookingPotContainer(final int windowId, final Inventory playerInventory, final FriendlyByteBuf data) {
@@ -143,7 +143,7 @@ public class CookingPotContainer extends AbstractContainerMenu {
     }
 
     public boolean isHeated() {
-        return this.tileEntity.isHeated();
+        return this.blockEntity.isHeated();
     }
 }
 

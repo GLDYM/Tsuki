@@ -39,7 +39,7 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
     private final IDrawable icon;
 
     public CookingPotCategory(IGuiHelper helper) {
-        title = Component.translatable("sakura.jei.cooking");
+        title = Component.translatable("tsuki.jei.cooking");
         ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/pot.png");
         background = helper.createDrawable(backgroundImage, 13, 16, 151, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.COOKING_POT.get()));

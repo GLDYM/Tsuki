@@ -20,6 +20,10 @@ public class ParticleRegistry {
             () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ORANGE_MAPLE_LEAF = PARTICLE_TYPES.register("orange_maple",
             () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SYRUP_DROP = PARTICLE_TYPES.register("syrup_drop",
+            () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> KITUNEBI_FIRE = PARTICLE_TYPES.register("kitunebi_fire",
+            () -> new SimpleParticleType(false));
 }
 
 

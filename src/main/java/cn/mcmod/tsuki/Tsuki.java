@@ -18,12 +18,13 @@ import cn.mcmod.tsuki.fluid.FluidRegistry;
 import cn.mcmod.tsuki.item.ComposterRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.level.tree.TsukiTreeDecoratorTypes;
 import cn.mcmod.tsuki.loot_modifier.LootModifiterRegistry;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModLoadingContext;
+import net.minecraft.world.level.block.LightBlock;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -55,6 +56,7 @@ public class Tsuki {
         LootModifiterRegistry.GLM.register(modEventBus);
         RecipeTypeRegistry.RECIPE_TYPES.register(modEventBus);
         RecipeTypeRegistry.RECIPE_SERIALIZERS.register(modEventBus);
+        TsukiTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(modEventBus);
         CreativeModeTabRegistry.TABS.register(modEventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, TsukiConfig.COMMON_CONFIG);
 

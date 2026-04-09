@@ -35,6 +35,8 @@ public class BlockItemRegistry {
 
     public static final DeferredItem<Item> MAPLE_LOG = ITEMS.register("maple_log",
             () -> new BlockItem(BlockRegistry.MAPLE_LOG.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_SAP_LOG = ITEMS.register("maple_sap_log",
+            () -> new BlockItem(BlockRegistry.MAPLE_SAP_LOG.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> STRIPPED_MAPLE_LOG = ITEMS.register("stripped_maple_log",
             () -> new BlockItem(BlockRegistry.STRIPPED_MAPLE_LOG.get(), Tsuki.defaultItemProperties()));
 
@@ -95,7 +97,14 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> MAPLE_SAPLING_GREEN = ITEMS.register("maple_sapling_green",
             () -> new BlockItem(BlockRegistry.MAPLE_SAPLING_GREEN.get(), Tsuki.defaultItemProperties()));
 
-    public static final DeferredItem<Item> STONE_MORTAR = ITEMS.register("stone_mortar", StoneMortarItem::new);
+    public static final DeferredItem<Item> KITUNEBI = ITEMS.register("kitunebi",
+            () -> new BlockItem(BlockRegistry.KITUNEBI.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_SPILE = ITEMS.register("maple_spile",
+            () -> new BlockItem(BlockRegistry.MAPLE_SPILE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_CAULDRON = ITEMS.register("maple_cauldron",
+            () -> new BlockItem(BlockRegistry.MAPLE_CAULDRON.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> STONE_MORTAR = ITEMS.register("stone_mortar", 
+            StoneMortarItem::new);
 
     public static final DeferredItem<Item> COOKING_POT = ITEMS.register("cooking_pot",
             () -> new BlockItem(BlockRegistry.COOKING_POT.get(), Tsuki.defaultItemProperties()));

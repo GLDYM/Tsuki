@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "level=0": { "model": "tsuki:block/maple_cauldron" },
+    "level=1": { "model": "tsuki:block/cauldron_level1" },
+    "level=2": { "model": "tsuki:block/cauldron_level2" },
+    "level=3": { "model": "tsuki:block/cauldron_level3" },
+    "level=4": { "model": "tsuki:block/cauldron_level4" },
+    "level=5": { "model": "tsuki:block/cauldron_level5" },
+    "level=6": { "model": "tsuki:block/cauldron_level6" },
+    "level=7": { "model": "tsuki:block/cauldron_level7" }
+  }
+}

@@ -49,11 +49,11 @@ public class StoneMortarRenderer implements BlockEntityRenderer<StoneMortarBlock
     }
 
     @Override
-    public void render(StoneMortarBlockEntity tileEntity, float partialTicks, PoseStack poseStack,
+    public void render(StoneMortarBlockEntity blockEntity, float partialTicks, PoseStack poseStack,
             MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
-        Level world = tileEntity.getLevel();
+        Level world = blockEntity.getLevel();
         boolean flag = world != null;
-        BlockState blockstate = flag ? tileEntity.getBlockState()
+        BlockState blockstate = flag ? blockEntity.getBlockState()
                 : BlockRegistry.STONE_MORTAR.get().defaultBlockState();
         if (blockstate.getBlock() instanceof StoneMortarBlock) {
             poseStack.pushPose();
@@ -65,7 +65,7 @@ public class StoneMortarRenderer implements BlockEntityRenderer<StoneMortarBlock
                 rotation = ((world.getGameTime() + partialTicks) * degreesPerTick) % 360.0F;
             }
             top.setRotation(0F, ((float) Math.PI * rotation) / 180.0F, 0F);
-            ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/entity/tileentity/mortar.png");
+            ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/entity/blockentity/mortar.png");
             this.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entitySolid(TEXTURE)), combinedLight,
                     combinedOverlay);
             poseStack.popPose();

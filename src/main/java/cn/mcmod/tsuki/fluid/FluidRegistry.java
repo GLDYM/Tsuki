@@ -71,6 +71,11 @@ public class FluidRegistry {
             () -> new BaseFlowingFluid.Source(FluidRegistry.BRANDY_PROP));
     public static final DeferredHolder<Fluid, FlowingFluid> BRANDY_FLOWING = FLUIDS.register("brandy_flowing",
             () -> new BaseFlowingFluid.Flowing(FluidRegistry.BRANDY_PROP));
+
+    public static final DeferredHolder<Fluid, FlowingFluid> MAPLE_SYRUP = FLUIDS.register("maple_syrup",
+            () -> new BaseFlowingFluid.Source(FluidRegistry.MAPLE_SYRUP_PROP));
+    public static final DeferredHolder<Fluid, FlowingFluid> MAPLE_SYRUP_FLOWING = FLUIDS.register("maple_syrup_flowing",
+            () -> new BaseFlowingFluid.Flowing(FluidRegistry.MAPLE_SYRUP_PROP));
     
 
     private static final BaseFlowingFluid.Properties FOOD_OIL_PROP = 
@@ -105,6 +110,9 @@ public class FluidRegistry {
     
     private static final BaseFlowingFluid.Properties CHAMPAGNE_PROP = 
             createProp(CHAMPAGNE, CHAMPAGNE_FLOWING, FluidTypeRegistry.CHAMPAGNE, FluidBlockRegistry.CHAMPAGNE_BLOCK,BucketItemRegistry.CHAMPAGNE_BUCKET);
+
+    private static final BaseFlowingFluid.Properties MAPLE_SYRUP_PROP =
+            createProp(MAPLE_SYRUP, MAPLE_SYRUP_FLOWING, FluidTypeRegistry.MAPLE_SYRUP, FluidBlockRegistry.MAPLE_SYRUP_BLOCK, BucketItemRegistry.MAPLE_SYRUP_BUCKET);
     
     private static BaseFlowingFluid.Properties createProp(
             Supplier<? extends Fluid> still, 

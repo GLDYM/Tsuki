@@ -35,7 +35,7 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
 
     private final IDrawable chancedSlot;
     public ChoppingCategory(IGuiHelper helper) {
-        title = Component.translatable("sakura.jei.chopping");
+        title = Component.translatable("tsuki.jei.chopping");
         ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/jei_chopping.png");
         background = helper.createDrawable(backgroundImage, 4, 4, 92, 74);
         chancedSlot = helper.createDrawable(backgroundImage, 100, 0, 18, 18);
@@ -98,7 +98,7 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
         }
         Minecraft minecraft = Minecraft.getInstance();
         Font fontRenderer = minecraft.font;
-        guiGraphics.drawString(fontRenderer, Component.translatable("sakura.jei.chopping.count", recipe.getRecipeTime()), 33, 32, 0xFEFEFE,true);
+        guiGraphics.drawString(fontRenderer, Component.translatable("tsuki.jei.chopping.count", recipe.getRecipeTime()), 33, 32, 0xFEFEFE,true);
         RenderSystem.setShaderColor(1, 1, 1, 1);
     }
 

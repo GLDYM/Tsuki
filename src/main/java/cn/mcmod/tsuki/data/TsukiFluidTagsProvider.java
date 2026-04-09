@@ -32,6 +32,7 @@ public class TsukiFluidTagsProvider extends FluidTagsProvider {
         tag(FluidTags.WATER).add(FluidRegistry.RUM.get(),FluidRegistry.RUM.get());
         tag(FluidTags.WATER).add(FluidRegistry.CHAMPAGNE.get(),FluidRegistry.CHAMPAGNE_FLOWING.get());
         tag(FluidTags.WATER).add(FluidRegistry.BRANDY.get(),FluidRegistry.BRANDY.get());
+        tag(FluidTags.WATER).add(FluidRegistry.MAPLE_SYRUP.get(), FluidRegistry.MAPLE_SYRUP_FLOWING.get());
         
         tag(TsukiFluidTags.WATER_WATER).add(Fluids.WATER, Fluids.FLOWING_WATER).addOptional(ResourceLocation.parse("tfc:river_water"));
         tag(TsukiFluidTags.BREWERS_ALCOHOL)

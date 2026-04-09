@@ -40,6 +40,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                     && !(block.get() instanceof CropBlock)
                     && !(block.get() instanceof TeishokuBlock)
                     && !(block.get() instanceof RiceCropRoot)
+                    && block.get() != BlockRegistry.MAPLE_SAP_LOG.get()
                     && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
                     && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()) {
                     if (block.get() instanceof BambooPlant) {
@@ -53,8 +54,10 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
              }
           );
 
-                                this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(), ItemRegistry.SAKURA_DIAMOND.get()));
-                                this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), ItemRegistry.SAKURA_DIAMOND.get()));
+        this.dropOther(BlockRegistry.MAPLE_SAP_LOG.get(), BlockItemRegistry.MAPLE_LOG.get());
+
+        this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(), ItemRegistry.SAKURA_DIAMOND.get()));
+        this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), ItemRegistry.SAKURA_DIAMOND.get()));
 
         this.add(BlockRegistry.MAPLE_LEAVES_RED.get(), createLeavesDrops(BlockRegistry.MAPLE_LEAVES_RED.get(),
                 BlockRegistry.MAPLE_SAPLING_RED.get(), NORMAL_LEAVES_SAPLING_CHANCES));

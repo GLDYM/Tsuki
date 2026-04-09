@@ -37,6 +37,8 @@ public class BucketItemRegistry {
         new BucketItem(FluidRegistry.RUM.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     public static final DeferredItem<Item> BRANDY_BUCKET = ITEMS.register("brandy_bucket", () ->
         new BucketItem(FluidRegistry.BRANDY.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> MAPLE_SYRUP_BUCKET = ITEMS.register("maple_syrup_bucket", () ->
+        new BucketItem(FluidRegistry.MAPLE_SYRUP.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     
     
     @SubscribeEvent

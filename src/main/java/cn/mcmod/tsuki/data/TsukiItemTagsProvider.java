@@ -33,6 +33,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(ItemTags.LOGS)
          .add(
             BlockItemRegistry.MAPLE_LOG.get(),
+            BlockItemRegistry.MAPLE_SAP_LOG.get(),
             BlockItemRegistry.SAKURA_LOG.get(),
             BlockItemRegistry.MAPLE_WOOD.get(),
             BlockItemRegistry.SAKURA_WOOD.get(),

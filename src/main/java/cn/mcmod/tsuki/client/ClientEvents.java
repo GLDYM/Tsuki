@@ -5,6 +5,7 @@ import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.client.particle.FallenLeafParticle;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
+import cn.mcmod.tsuki.client.particle.SyrupDropParticle;
 import cn.mcmod.tsuki.client.render.ChoppingBoardRender;
 import cn.mcmod.tsuki.client.render.ObonRender;
 import cn.mcmod.tsuki.client.render.StoneMortarRenderer;
@@ -31,6 +32,7 @@ public class ClientEvents {
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BAMBOO_PLANT.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BAMBOOSHOOT.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.COOKING_POT.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.KITUNEBI.get(), RenderType.cutoutMipped());
             
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_ODEN.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_SUKIYAKI.get(), RenderType.cutoutMipped());
@@ -62,6 +64,8 @@ public class ClientEvents {
                 FallenLeafParticle.Factory::new);
         event.registerSpriteSet(ParticleRegistry.ORANGE_MAPLE_LEAF.get(),
                 FallenLeafParticle.Factory::new);
+        event.registerSpriteSet(ParticleRegistry.SYRUP_DROP.get(),
+            SyrupDropParticle.Factory::new);
     }
 
 }

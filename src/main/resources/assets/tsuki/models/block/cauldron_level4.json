@@ -1,4 +1,4 @@
-{
+﻿{
   "ambientocclusion": false,
   "credit": "Made with Blockbench",
   "elements": [
@@ -932,11 +932,11 @@
     }
   ],
   "textures": {
-    "bottom": "block/cauldron_bottom",
-    "inside": "block/cauldron_inner",
-    "particle": "block/cauldron_side",
-    "side": "block/cauldron_side",
-    "top": "block/cauldron_top",
+    "bottom": "tsuki:block/pot",
+    "inside": "tsuki:block/pot",
+    "particle": "tsuki:block/pot",
+    "side": "tsuki:block/pot",
+    "top": "tsuki:block/pot",
     "water": "tsuki:block/maple_syrup_still"
   }
 }

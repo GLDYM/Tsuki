@@ -47,17 +47,17 @@ public class TsukiTreeFeatures {
         registryTree(SAKURA_KEY, createSimpleBlobTree(BlockRegistry.SAKURA_LOG.get(), BlockRegistry.SAKURA_LEAVES.get()).ignoreVines());
         registryTree(FANCY_SAKURA_KEY, createFancyTree(BlockRegistry.SAKURA_LOG.get(), BlockRegistry.SAKURA_LEAVES.get()));
 
-        registryTree(MAPLE_RED_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_RED.get(), 5, 2, 0, 2).ignoreVines());
-        registryTree(FANCY_MAPLE_RED_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_RED.get()));
+        registryTree(MAPLE_RED_KEY, createMapleStraightTree(BlockRegistry.MAPLE_LEAVES_RED.get()));
+        registryTree(FANCY_MAPLE_RED_KEY, createMapleFancyTree(BlockRegistry.MAPLE_LEAVES_RED.get()));
 
-        registryTree(MAPLE_YELLOW_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_YELLOW.get(), 5, 2, 0, 2).ignoreVines());
-        registryTree(FANCY_MAPLE_YELLOW_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_YELLOW.get()));
+        registryTree(MAPLE_YELLOW_KEY, createMapleStraightTree(BlockRegistry.MAPLE_LEAVES_YELLOW.get()));
+        registryTree(FANCY_MAPLE_YELLOW_KEY, createMapleFancyTree(BlockRegistry.MAPLE_LEAVES_YELLOW.get()));
 
-        registryTree(MAPLE_ORANGE_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_ORANGE.get(), 5, 2, 0, 2).ignoreVines());
-        registryTree(FANCY_MAPLE_ORANGE_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_ORANGE.get()));
+        registryTree(MAPLE_ORANGE_KEY, createMapleStraightTree(BlockRegistry.MAPLE_LEAVES_ORANGE.get()));
+        registryTree(FANCY_MAPLE_ORANGE_KEY, createMapleFancyTree(BlockRegistry.MAPLE_LEAVES_ORANGE.get()));
 
-        registryTree(MAPLE_GREEN_KEY, createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_GREEN.get(), 5, 2, 0, 2).ignoreVines());
-        registryTree(FANCY_MAPLE_GREEN_KEY, createFancyTree(BlockRegistry.MAPLE_LOG.get(), BlockRegistry.MAPLE_LEAVES_GREEN.get()));
+        registryTree(MAPLE_GREEN_KEY, createMapleStraightTree(BlockRegistry.MAPLE_LEAVES_GREEN.get()));
+        registryTree(FANCY_MAPLE_GREEN_KEY, createMapleFancyTree(BlockRegistry.MAPLE_LEAVES_GREEN.get()));
     }
 
     private static ConfiguredFeature<?, ?> registryTree(ResourceKey<ConfiguredFeature<?, ?>> key, TreeConfiguration.TreeConfigurationBuilder tree) {
@@ -76,6 +76,17 @@ public class TsukiTreeFeatures {
                 new StraightTrunkPlacer(baseHeight, heightRandA, heightRandB), BlockStateProvider.simple(leaves),
                 new BlobFoliagePlacer(ConstantInt.of(leaves_radius), ConstantInt.of(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1));
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createMapleStraightTree(Block leaves) {
+        return createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), leaves, 5, 2, 0, 2)
+                .decorators(List.of(new MapleSapLogDecorator(0.25F)))
+                .ignoreVines();
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createMapleFancyTree(Block leaves) {
+        return createFancyTree(BlockRegistry.MAPLE_LOG.get(), leaves)
+                .decorators(List.of(new MapleSapLogDecorator(0.33F)));
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createFancyTree(Block log, Block leaves) {

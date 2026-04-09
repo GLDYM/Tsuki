@@ -35,6 +35,8 @@ public class FluidBlockRegistry {
         new LiquidBlock(FluidRegistry.RUM.get(), BlockBehaviour.Properties.of()));
     public static final DeferredBlock<LiquidBlock> CHAMPAGNE_BLOCK = BLOCKS.register("champagne", () ->
         new LiquidBlock(FluidRegistry.CHAMPAGNE.get(), BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<LiquidBlock> MAPLE_SYRUP_BLOCK = BLOCKS.register("maple_syrup", () ->
+        new LiquidBlock(FluidRegistry.MAPLE_SYRUP.get(), BlockBehaviour.Properties.of()));
 
 }
 

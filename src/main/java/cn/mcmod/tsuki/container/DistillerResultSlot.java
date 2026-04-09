@@ -11,14 +11,14 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 
 @ParametersAreNonnullByDefault
 public class DistillerResultSlot extends SlotItemHandler {
-    public final DistillerBlockEntity tileEntity;
+    public final DistillerBlockEntity blockEntity;
     private final Player player;
     private int removeCount;
 
-    public DistillerResultSlot(Player player, DistillerBlockEntity tile, IItemHandler inventoryIn, int index,
+    public DistillerResultSlot(Player player, DistillerBlockEntity block, IItemHandler inventoryIn, int index,
             int xPosition, int yPosition) {
         super(inventoryIn, index, xPosition, yPosition);
-        this.tileEntity = tile;
+        this.blockEntity = block;
         this.player = player;
     }
 
@@ -54,7 +54,7 @@ public class DistillerResultSlot extends SlotItemHandler {
         stack.onCraftedBy(this.player.level(), this.player, this.removeCount);
 
         if (!this.player.level().isClientSide()) {
-            tileEntity.clearUsedRecipes(this.player);
+            blockEntity.clearUsedRecipes(this.player);
         }
 
         this.removeCount = 0;

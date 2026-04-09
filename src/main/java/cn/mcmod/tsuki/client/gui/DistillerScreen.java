@@ -57,7 +57,7 @@ public class DistillerScreen extends AbstractContainerScreen<DistillerContainer>
             ms.blit(BACKGROUND_TEXTURE, this.leftPos + 78, this.topPos + 52, 176, 17, 18, 18);
         }
         
-        var inputFluidTank = this.menu.tileEntity.getInputFluidTank();
+        var inputFluidTank = this.menu.blockEntity.getInputFluidTank();
         int inputHeight = (int) (52.0F * ((float) inputFluidTank.getFluidAmount() / (float) inputFluidTank.getCapacity()));
         if (inputHeight > 0) {
             int tankX = this.leftPos + 33;
@@ -65,7 +65,7 @@ public class DistillerScreen extends AbstractContainerScreen<DistillerContainer>
             renderFluid(ms, inputFluidTank.getFluid(), tankX, tankY, 16, inputHeight);
         }
 
-        var outputFluidTank = this.menu.tileEntity.getOutputFluidTank();
+        var outputFluidTank = this.menu.blockEntity.getOutputFluidTank();
         int outputHeight = (int) (52.0F * ((float) outputFluidTank.getFluidAmount() / (float) outputFluidTank.getCapacity()));
         if (outputHeight > 0) {
             int tankX = this.leftPos + 125;

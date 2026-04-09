@@ -21,18 +21,18 @@ import net.neoforged.neoforge.items.SlotItemHandler;
 
 public class StoneMortarContainer extends AbstractContainerMenu {
 
-    public final StoneMortarBlockEntity tileEntity;
+    public final StoneMortarBlockEntity blockEntity;
     public final ItemStackHandler inventory;
     private final ContainerData containerData;
     private final ContainerLevelAccess canInteractWithCallable;
 
     public StoneMortarContainer(final int windowId, final Inventory playerInventory,
-            final StoneMortarBlockEntity tileEntity, ContainerData cookingPotDataIn) {
+            final StoneMortarBlockEntity blockEntity, ContainerData cookingPotDataIn) {
         super(ContainerRegistry.STONE_MORTAR.get(), windowId);
-        this.tileEntity = tileEntity;
-        this.inventory = tileEntity.getInventory();
+        this.blockEntity = blockEntity;
+        this.inventory = blockEntity.getInventory();
         this.containerData = cookingPotDataIn;
-        this.canInteractWithCallable = ContainerLevelAccess.create(tileEntity.getLevel(), tileEntity.getBlockPos());
+        this.canInteractWithCallable = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
         int startX = 8;
         int startY = 18;
         for (int row = 0; row < 2; ++row) {
@@ -41,8 +41,8 @@ public class StoneMortarContainer extends AbstractContainerMenu {
             }
         }
 
-        this.addSlot(new StoneMortarResultSlot(playerInventory.player, tileEntity, inventory, 4, 105, 18));
-        this.addSlot(new StoneMortarResultSlot(playerInventory.player, tileEntity, inventory, 5, 105, 54));
+        this.addSlot(new StoneMortarResultSlot(playerInventory.player, blockEntity, inventory, 4, 105, 18));
+        this.addSlot(new StoneMortarResultSlot(playerInventory.player, blockEntity, inventory, 5, 105, 54));
 
         // Main Player Inventory
         int startPlayerInvY = startY * 4 + 12;
@@ -111,11 +111,11 @@ public class StoneMortarContainer extends AbstractContainerMenu {
     private static StoneMortarBlockEntity getTileEntity(final Inventory playerInventory, final FriendlyByteBuf data) {
         Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
         Objects.requireNonNull(data, "data cannot be null");
-        final BlockEntity tileAtPos = playerInventory.player.level().getBlockEntity(data.readBlockPos());
-        if (tileAtPos instanceof StoneMortarBlockEntity) {
-            return (StoneMortarBlockEntity) tileAtPos;
+        final BlockEntity blockAtPos = playerInventory.player.level().getBlockEntity(data.readBlockPos());
+        if (blockAtPos instanceof StoneMortarBlockEntity) {
+            return (StoneMortarBlockEntity) blockAtPos;
         }
-        throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
+        throw new IllegalStateException("Tile entity is not correct! " + blockAtPos);
     }
 
     public StoneMortarContainer(final int windowId, final Inventory playerInventory, final FriendlyByteBuf data) {

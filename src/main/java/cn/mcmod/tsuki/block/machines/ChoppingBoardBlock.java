@@ -66,8 +66,8 @@ public class ChoppingBoardBlock extends BaseEntityBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack heldStack, BlockState state, Level worldIn, BlockPos pos,
             Player player, InteractionHand handIn, BlockHitResult hit) {
-        BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-        if (tileEntity instanceof ChoppingBoardBlockEntity board) {
+        BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+        if (blockEntity instanceof ChoppingBoardBlockEntity board) {
             ItemStack offhandStack = player.getOffhandItem();
 
             if (board.isEmpty()) {
@@ -97,7 +97,7 @@ public class ChoppingBoardBlock extends BaseEntityBlock {
                 return ItemInteractionResult.CONSUME;
             } else if (board.getRecipeTime() > 0) {
                 if (player != null)
-                    player.displayClientMessage(Component.translatable("sakura.block.chopping_board.has_chopped"),
+                    player.displayClientMessage(Component.translatable("tsuki.block.chopping_board.has_chopped"),
                             true);
                 return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
             } else if (handIn.equals(InteractionHand.MAIN_HAND)) {
@@ -134,8 +134,8 @@ public class ChoppingBoardBlock extends BaseEntityBlock {
     @Override
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
-            BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-            if (tileEntity instanceof ChoppingBoardBlockEntity board) {
+            BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+            if (blockEntity instanceof ChoppingBoardBlockEntity board) {
                 Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), board.getStoredItem());
                 worldIn.updateNeighbourForOutputSignal(pos, this);
             }

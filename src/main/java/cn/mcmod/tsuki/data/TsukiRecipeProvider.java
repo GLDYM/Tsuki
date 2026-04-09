@@ -79,6 +79,11 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
          .requires(Items.HONEYCOMB)
          .unlockedBy("has_tatami", has(BlockRegistry.TATAMI.get()))
          .save(consumer);
+      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.HONEY_BOTTLE)
+         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get())
+         .requires(Items.GLASS_BOTTLE)
+         .unlockedBy("has_maple_syrup", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get()))
+         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "honey_bottle_from_maple_syrup"));
       ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.DOUGH_OKINOYAKI.getItem().get(), 2)
          .requires(TsukiItemTags.DOUGH)
          .requires(TsukiItemTags.EGGS)
@@ -284,6 +289,15 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
          .pattern("###")
          .define('#', net.neoforged.neoforge.common.Tags.Items.COBBLESTONES)
          .define('L', TsukiItemTags.LUMBER)
+         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+         .save(consumer);
+      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.KITUNEBI.get(), 16)
+         .pattern("###")
+         .pattern("LJL")
+         .pattern("###")
+         .define('L', TsukiItemTags.LUMBER)
+         .define('#', Items.LAPIS_LAZULI)
+         .define('J', Items.JACK_O_LANTERN)
          .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
          .save(consumer);
       this.foodSmeltingRecipes(

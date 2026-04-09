@@ -56,5 +56,16 @@ public final class BlockEntityCapabilityRegistry {
                 BlockEntityRegistry.OBON.get(),
                 (blockEntity, side) -> blockEntity.getItemHandler(side)
         );
+
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                BlockEntityRegistry.MAPLE_CAULDRON.get(),
+                (blockEntity, side) -> blockEntity.getItemHandler(side)
+        );
+        event.registerBlockEntity(
+                Capabilities.FluidHandler.BLOCK,
+                BlockEntityRegistry.MAPLE_CAULDRON.get(),
+                (blockEntity, side) -> blockEntity.getFluidHandler(side)
+        );
     }
 }

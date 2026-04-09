@@ -60,9 +60,9 @@ public class StoneMortarBlock extends BaseEntityBlock {
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos,
             Player player, InteractionHand handIn, BlockHitResult result) {
         if (!world.isClientSide()) {
-            BlockEntity tileEntity = world.getBlockEntity(pos);
-            if (tileEntity instanceof StoneMortarBlockEntity blockEntity) {
-	            ((ServerPlayer) player).openMenu(blockEntity, pos);
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof StoneMortarBlockEntity mortarBlockEntity) {
+	            ((ServerPlayer) player).openMenu(mortarBlockEntity, pos);
             }
         }
         return ItemInteractionResult.sidedSuccess(world.isClientSide);
@@ -72,10 +72,10 @@ public class StoneMortarBlock extends BaseEntityBlock {
     @Override
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
-            BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-            if (tileEntity instanceof StoneMortarBlockEntity blockEntity) {
-                Containers.dropContents(worldIn, pos, blockEntity.getDroppableInventory());
-                blockEntity.grantStoredRecipeExperience(worldIn, Vec3.atCenterOf(pos));
+            BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+            if (blockEntity instanceof StoneMortarBlockEntity mortarBlockEntity) {
+                Containers.dropContents(worldIn, pos, mortarBlockEntity.getDroppableInventory());
+                mortarBlockEntity.grantStoredRecipeExperience(worldIn, Vec3.atCenterOf(pos));
                 worldIn.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(state, worldIn, pos, newState, isMoving);

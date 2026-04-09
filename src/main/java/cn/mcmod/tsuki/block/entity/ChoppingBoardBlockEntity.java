@@ -128,14 +128,14 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
                 .getRecipesFor(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get(), recipeWrapper, level);
         if (recipeList.isEmpty()) {
             if (player != null)
-                player.displayClientMessage(Component.translatable("sakura.block.chopping_board.invalid_item"), true);
+                player.displayClientMessage(Component.translatable("tsuki.block.chopping_board.invalid_item"), true);
             return Optional.empty();
         }
         Optional<RecipeHolder<ChoppingRecipe>> recipe = recipeList.stream()
                 .filter(holder -> holder.value().getTool().test(toolStack)).findFirst();
         if (!recipe.isPresent()) {
             if (player != null)
-                player.displayClientMessage(Component.translatable("sakura.block.chopping_board.invalid_tool"), true);
+                player.displayClientMessage(Component.translatable("tsuki.block.chopping_board.invalid_tool"), true);
             return Optional.empty();
         }
         lastRecipeID = recipe.get().id();
