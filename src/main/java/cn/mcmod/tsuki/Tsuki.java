@@ -15,7 +15,6 @@ import cn.mcmod.tsuki.container.ContainerRegistry;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.fluid.FluidBlockRegistry;
 import cn.mcmod.tsuki.fluid.FluidRegistry;
-import cn.mcmod.tsuki.item.ComposterRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.level.tree.TsukiTreeDecoratorTypes;
@@ -27,7 +26,6 @@ import net.neoforged.fml.ModContainer;
 import net.minecraft.world.level.block.LightBlock;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod(Tsuki.MODID)
 public class Tsuki {
@@ -39,7 +37,6 @@ public class Tsuki {
     }
 
     public Tsuki(IEventBus modEventBus, ModContainer modContainer) {
-        modEventBus.addListener(this::setup);
         modEventBus.addListener(BlockEntityCapabilityRegistry::register);
 
         BlockRegistry.BLOCKS.register(modEventBus);
@@ -60,12 +57,6 @@ public class Tsuki {
         CreativeModeTabRegistry.TABS.register(modEventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, TsukiConfig.COMMON_CONFIG);
 
-    }
-
-    private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            ComposterRegistry.registerCompost();
-        });
     }
 
     public static Logger getLogger() {

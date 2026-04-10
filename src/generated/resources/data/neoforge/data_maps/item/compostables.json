@@ -1,0 +1,517 @@
+{
+  "values": {
+    "tsuki:boiled_bonito": {
+      "chance": 0.3
+    },
+    "tsuki:bonito": {
+      "chance": 0.3
+    },
+    "tsuki:bonito_shaving": {
+      "chance": 0.3
+    },
+    "tsuki:breadcrumbs": {
+      "chance": 0.5
+    },
+    "tsuki:brown_rice_cooked": {
+      "chance": 0.5
+    },
+    "tsuki:buckwheat": {
+      "chance": 0.3
+    },
+    "tsuki:buckwheat_bread": {
+      "chance": 0.5
+    },
+    "tsuki:bun": {
+      "chance": 0.5
+    },
+    "tsuki:burger": {
+      "chance": 0.5
+    },
+    "tsuki:burger_dish": {
+      "chance": 1.0
+    },
+    "tsuki:burger_raw": {
+      "chance": 0.5
+    },
+    "tsuki:cabbage": {
+      "chance": 0.3
+    },
+    "tsuki:cabbage_roll": {
+      "chance": 1.0
+    },
+    "tsuki:cabbage_seeds": {
+      "chance": 0.3
+    },
+    "tsuki:cheese": {
+      "chance": 0.5
+    },
+    "tsuki:cheese_burger": {
+      "chance": 1.0
+    },
+    "tsuki:chicken_nanban": {
+      "chance": 1.0
+    },
+    "tsuki:chikuwa": {
+      "chance": 0.5
+    },
+    "tsuki:chikuwa_raw": {
+      "chance": 0.5
+    },
+    "tsuki:chikuzenni": {
+      "chance": 1.0
+    },
+    "tsuki:daifuku": {
+      "chance": 0.85
+    },
+    "tsuki:dananko": {
+      "chance": 0.85
+    },
+    "tsuki:dango": {
+      "chance": 0.5
+    },
+    "tsuki:danmitarashi": {
+      "chance": 0.85
+    },
+    "tsuki:dansansyoku": {
+      "chance": 0.85
+    },
+    "tsuki:dough": {
+      "chance": 0.5
+    },
+    "tsuki:dough_buckwheat": {
+      "chance": 0.5
+    },
+    "tsuki:dough_okinoyaki": {
+      "chance": 0.5
+    },
+    "tsuki:dough_rice": {
+      "chance": 0.5
+    },
+    "tsuki:dried_bonito": {
+      "chance": 0.3
+    },
+    "tsuki:eggplant": {
+      "chance": 0.3
+    },
+    "tsuki:eggplant_baked": {
+      "chance": 0.5
+    },
+    "tsuki:eggplant_seeds": {
+      "chance": 0.3
+    },
+    "tsuki:fallen_leaves_green": {
+      "chance": 0.3
+    },
+    "tsuki:fallen_leaves_orange": {
+      "chance": 0.3
+    },
+    "tsuki:fallen_leaves_red": {
+      "chance": 0.3
+    },
+    "tsuki:fallen_leaves_yellow": {
+      "chance": 0.3
+    },
+    "tsuki:fish_bake": {
+      "chance": 1.0
+    },
+    "tsuki:fish_bake_salt": {
+      "chance": 1.0
+    },
+    "tsuki:fishcake": {
+      "chance": 0.5
+    },
+    "tsuki:furofuki_daikon": {
+      "chance": 1.0
+    },
+    "tsuki:hamburger": {
+      "chance": 1.0
+    },
+    "tsuki:hyorogan": {
+      "chance": 1.0
+    },
+    "tsuki:imotaki": {
+      "chance": 1.0
+    },
+    "tsuki:inari_sushi": {
+      "chance": 0.85
+    },
+    "tsuki:kaeshi": {
+      "chance": 0.3
+    },
+    "tsuki:kamaboko": {
+      "chance": 0.5
+    },
+    "tsuki:kusa_daifuku": {
+      "chance": 0.85
+    },
+    "tsuki:machined_bonito": {
+      "chance": 0.25
+    },
+    "tsuki:machined_fish": {
+      "chance": 0.25
+    },
+    "tsuki:mapleleaves_green": {
+      "chance": 0.3
+    },
+    "tsuki:mapleleaves_orange": {
+      "chance": 0.3
+    },
+    "tsuki:mapleleaves_red": {
+      "chance": 0.3
+    },
+    "tsuki:mapleleaves_yellow": {
+      "chance": 0.3
+    },
+    "tsuki:mashed_potato": {
+      "chance": 0.5
+    },
+    "tsuki:mayo": {
+      "chance": 0.25
+    },
+    "tsuki:minced_meat": {
+      "chance": 0.25
+    },
+    "tsuki:mirin": {
+      "chance": 0.3
+    },
+    "tsuki:mochi": {
+      "chance": 0.5
+    },
+    "tsuki:mochi_sakura": {
+      "chance": 0.85
+    },
+    "tsuki:mochi_toasted": {
+      "chance": 0.75
+    },
+    "tsuki:natto": {
+      "chance": 0.5
+    },
+    "tsuki:nikujaga": {
+      "chance": 1.0
+    },
+    "tsuki:nimono_fish": {
+      "chance": 1.0
+    },
+    "tsuki:nimono_pumpkin": {
+      "chance": 1.0
+    },
+    "tsuki:nimono_radish": {
+      "chance": 1.0
+    },
+    "tsuki:noodle_soup": {
+      "chance": 0.3
+    },
+    "tsuki:noppei_jiru": {
+      "chance": 1.0
+    },
+    "tsuki:nuka": {
+      "chance": 0.3
+    },
+    "tsuki:ohagi": {
+      "chance": 0.85
+    },
+    "tsuki:okinoyaki": {
+      "chance": 1.0
+    },
+    "tsuki:okinoyaki_final": {
+      "chance": 1.0
+    },
+    "tsuki:okinoyaki_plus": {
+      "chance": 1.0
+    },
+    "tsuki:omurice": {
+      "chance": 1.0
+    },
+    "tsuki:onigiri": {
+      "chance": 0.85
+    },
+    "tsuki:onigiri_bamboo": {
+      "chance": 0.85
+    },
+    "tsuki:onigiri_fish": {
+      "chance": 1.0
+    },
+    "tsuki:onigiri_mushroom": {
+      "chance": 1.0
+    },
+    "tsuki:onigiri_seaweed": {
+      "chance": 1.0
+    },
+    "tsuki:onigiri_tempura": {
+      "chance": 1.0
+    },
+    "tsuki:onion": {
+      "chance": 0.3
+    },
+    "tsuki:onion_seeds": {
+      "chance": 0.3
+    },
+    "tsuki:osuimono": {
+      "chance": 0.5
+    },
+    "tsuki:pickled_eggplant": {
+      "chance": 0.5
+    },
+    "tsuki:pickled_radish": {
+      "chance": 0.5
+    },
+    "tsuki:radish": {
+      "chance": 0.3
+    },
+    "tsuki:radish_seeds": {
+      "chance": 0.3
+    },
+    "tsuki:ramen": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_beef": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_chicken": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_croquette": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_curry": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_egg": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_friedtofu": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_katsu": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_large": {
+      "chance": 1.0
+    },
+    "tsuki:ramen_tempura": {
+      "chance": 1.0
+    },
+    "tsuki:red_bean": {
+      "chance": 0.3
+    },
+    "tsuki:red_bean_paste": {
+      "chance": 0.5
+    },
+    "tsuki:rice_bamboo": {
+      "chance": 0.85
+    },
+    "tsuki:rice_beef": {
+      "chance": 1.0
+    },
+    "tsuki:rice_beef_egg": {
+      "chance": 1.0
+    },
+    "tsuki:rice_bread": {
+      "chance": 0.5
+    },
+    "tsuki:rice_cooked": {
+      "chance": 0.5
+    },
+    "tsuki:rice_curry": {
+      "chance": 1.0
+    },
+    "tsuki:rice_curry_burger": {
+      "chance": 1.0
+    },
+    "tsuki:rice_curry_cheese": {
+      "chance": 1.0
+    },
+    "tsuki:rice_curry_cheese_burger": {
+      "chance": 1.0
+    },
+    "tsuki:rice_curry_cheese_katsu": {
+      "chance": 1.0
+    },
+    "tsuki:rice_curry_katsu": {
+      "chance": 1.0
+    },
+    "tsuki:rice_egg": {
+      "chance": 0.85
+    },
+    "tsuki:rice_fish": {
+      "chance": 1.0
+    },
+    "tsuki:rice_fried": {
+      "chance": 1.0
+    },
+    "tsuki:rice_mushroom": {
+      "chance": 1.0
+    },
+    "tsuki:rice_natto": {
+      "chance": 0.85
+    },
+    "tsuki:rice_natto_egg": {
+      "chance": 1.0
+    },
+    "tsuki:rice_oyako": {
+      "chance": 1.0
+    },
+    "tsuki:rice_oyako_fish": {
+      "chance": 1.0
+    },
+    "tsuki:rice_pork": {
+      "chance": 1.0
+    },
+    "tsuki:rice_pork_egg": {
+      "chance": 1.0
+    },
+    "tsuki:rice_redbean": {
+      "chance": 0.85
+    },
+    "tsuki:rice_seeds": {
+      "chance": 0.3
+    },
+    "tsuki:sakuraleaves": {
+      "chance": 0.3
+    },
+    "tsuki:sashimi": {
+      "chance": 1.0
+    },
+    "tsuki:satsumaage": {
+      "chance": 0.5
+    },
+    "tsuki:shrimp": {
+      "chance": 0.2
+    },
+    "tsuki:sliced_cabbage": {
+      "chance": 0.3
+    },
+    "tsuki:soba": {
+      "chance": 1.0
+    },
+    "tsuki:soba_beef": {
+      "chance": 1.0
+    },
+    "tsuki:soba_chicken": {
+      "chance": 1.0
+    },
+    "tsuki:soba_croquette": {
+      "chance": 1.0
+    },
+    "tsuki:soba_curry": {
+      "chance": 1.0
+    },
+    "tsuki:soba_egg": {
+      "chance": 1.0
+    },
+    "tsuki:soba_friedtofu": {
+      "chance": 1.0
+    },
+    "tsuki:soba_katsu": {
+      "chance": 1.0
+    },
+    "tsuki:soba_large": {
+      "chance": 1.0
+    },
+    "tsuki:soba_tempura": {
+      "chance": 1.0
+    },
+    "tsuki:soba_zaru": {
+      "chance": 1.0
+    },
+    "tsuki:soup_miso": {
+      "chance": 0.5
+    },
+    "tsuki:soup_red_bean": {
+      "chance": 0.5
+    },
+    "tsuki:soybean": {
+      "chance": 0.3
+    },
+    "tsuki:soysauce": {
+      "chance": 0.3
+    },
+    "tsuki:straw": {
+      "chance": 0.3
+    },
+    "tsuki:surimi": {
+      "chance": 0.25
+    },
+    "tsuki:sushi": {
+      "chance": 0.85
+    },
+    "tsuki:sushi_shrimp": {
+      "chance": 0.85
+    },
+    "tsuki:sushi_tamago": {
+      "chance": 0.85
+    },
+    "tsuki:tamagoyaki": {
+      "chance": 0.75
+    },
+    "tsuki:taro": {
+      "chance": 0.3
+    },
+    "tsuki:taro_baked": {
+      "chance": 0.5
+    },
+    "tsuki:tempura": {
+      "chance": 0.5
+    },
+    "tsuki:tofu": {
+      "chance": 0.5
+    },
+    "tsuki:tofu_fried": {
+      "chance": 0.5
+    },
+    "tsuki:tofu_nanban": {
+      "chance": 1.0
+    },
+    "tsuki:tomato": {
+      "chance": 0.3
+    },
+    "tsuki:tomato_sauce": {
+      "chance": 0.25
+    },
+    "tsuki:tomato_seeds": {
+      "chance": 0.3
+    },
+    "tsuki:udon": {
+      "chance": 1.0
+    },
+    "tsuki:udon_beef": {
+      "chance": 1.0
+    },
+    "tsuki:udon_chicken": {
+      "chance": 1.0
+    },
+    "tsuki:udon_croquette": {
+      "chance": 1.0
+    },
+    "tsuki:udon_curry": {
+      "chance": 1.0
+    },
+    "tsuki:udon_egg": {
+      "chance": 1.0
+    },
+    "tsuki:udon_friedtofu": {
+      "chance": 1.0
+    },
+    "tsuki:udon_katsu": {
+      "chance": 1.0
+    },
+    "tsuki:udon_large": {
+      "chance": 1.0
+    },
+    "tsuki:udon_tempura": {
+      "chance": 1.0
+    },
+    "tsuki:vinegar_rice": {
+      "chance": 0.5
+    },
+    "tsuki:worcester_sauce": {
+      "chance": 0.3
+    },
+    "tsuki:yaki_udon": {
+      "chance": 1.0
+    },
+    "tsuki:yakiniku": {
+      "chance": 1.0
+    }
+  }
+}
