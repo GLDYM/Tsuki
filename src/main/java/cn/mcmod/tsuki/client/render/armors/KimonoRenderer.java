@@ -2,7 +2,6 @@ package cn.mcmod.tsuki.client.render.armors;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.item.armors.KimonoItem;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import software.bernie.geckolib.animatable.GeoAnimatable;

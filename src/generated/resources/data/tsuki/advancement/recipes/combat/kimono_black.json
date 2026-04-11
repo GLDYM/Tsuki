@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "tsuki:kimono_white"
+            "items": "#tsuki:kimono"
           }
         ]
       },

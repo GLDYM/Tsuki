@@ -1,7 +1,7 @@
 {
   "parent": "tsuki:item/kimono",
   "textures": {
-    "1": "tsuki:item/armor/yukata_lime",
+    "0": "tsuki:item/armor/yukata_lime",
     "particle": "tsuki:item/armor/kimono_lime"
   }
 }

@@ -193,5 +193,6 @@ public class TsukiItemTags {
     public static final TagKey<Item> TOOLS_SHOVELS = TagUtils.forgeItemTag("tools/shovels");
 
     public static final TagKey<Item> KIMONO = TagUtils.modItemTag(Tsuki.MODID, "kimono");
+    public static final TagKey<Item> HAORI = TagUtils.modItemTag(Tsuki.MODID, "haori");
 }
 

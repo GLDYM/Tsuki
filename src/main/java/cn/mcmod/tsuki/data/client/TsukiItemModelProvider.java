@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.armors.HaoriItem;
 import cn.mcmod.tsuki.item.armors.KimonoItem;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
@@ -57,7 +58,8 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         
         BucketItemRegistry.ITEMS.getEntries().forEach(this::normalItem);
         TsukiArmorToolRegistry.ITEMS.getEntries().forEach(item -> {
-            if (item.get() instanceof KimonoItem) {
+            if (item.get() instanceof KimonoItem
+                || item.get() instanceof HaoriItem) {
                 return;
             } else {
                 normalItem(item);

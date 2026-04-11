@@ -1,0 +1,38 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.haori_armor",
+				"texture_width": 64,
+				"texture_height": 16,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "armorBody",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-3.5, 11, -1.4], "size": [7, 12, 3], "inflate": 1.45, "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "armorRightArm",
+					"pivot": [-5, 22, 0],
+					"cubes": [
+						{"origin": [-7.5, 11.4, -1.6], "size": [3, 12, 3], "inflate": 1.2, "uv": [24, 0]}
+					]
+				},
+				{
+					"name": "armorLeftArm",
+					"pivot": [5, 22, 0],
+					"cubes": [
+						{"origin": [4.5, 11.4, -1.5], "size": [3, 12, 3], "inflate": 1.2, "uv": [40, 0]}
+					]
+				}
+			]
+		}
+	]
+}

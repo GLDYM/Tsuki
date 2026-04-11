@@ -21,7 +21,7 @@ public class TsukiArmorMaterials {
     public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = 
         DeferredRegister.create(BuiltInRegistries.ARMOR_MATERIAL, Tsuki.MODID);
 
-    public static final Holder<ArmorMaterial> KIMONO = ARMOR_MATERIALS.register("kimono",
+    public static final Holder<ArmorMaterial> KIMONO_AND_HAORI = ARMOR_MATERIALS.register("kimono_and_haori",
         () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
                 map.put(ArmorItem.Type.BOOTS, 1);

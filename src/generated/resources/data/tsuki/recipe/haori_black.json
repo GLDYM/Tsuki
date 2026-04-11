@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "tsuki:silk"
+    },
+    "B": {
+      "tag": "c:dyes/black"
+    },
+    "S": {
+      "tag": "c:strings"
+    }
+  },
+  "pattern": [
+    "# #",
+    "#S#",
+    "#B#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:haori_black"
+  }
+}

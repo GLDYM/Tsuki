@@ -5,10 +5,10 @@ license="MIT License"
 modId="tsuki"
 version="${mod_version}"
 displayName="Tsuki"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/sakura"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/tsuki"
 logoFile="logo.png"
 credits="MCMOD Modding Group, MMF-Group"
-authors="Syameimaru Zheng, Bagu_chan"
+authors="Polaris_Light, Syameimaru Zheng, Bagu_chan"
 description='''
 A mod that mix Bamboo, WA and MapleTree.
 
@@ -33,5 +33,11 @@ New dress: Kimono, yukata and Haori.
     modId="mysterious_mountain_lib"
     mandatory=true
     versionRange="[1.2.11-1.21.1,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tsuki]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[4.8.0,)"
     ordering="AFTER"
     side="BOTH"

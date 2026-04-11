@@ -154,6 +154,13 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         TsukiArmorToolRegistry.YUKATA_YELLOW.get(),
         TsukiArmorToolRegistry.YUKATA_MAGENTA.get()
       );
+      this.tag(TsukiItemTags.HAORI).add(
+        TsukiArmorToolRegistry.HAORI_BLACK.get(),
+        TsukiArmorToolRegistry.HAORI_GREEN.get(),
+        TsukiArmorToolRegistry.HAORI_BROWN.get(),
+        TsukiArmorToolRegistry.HAORI_CYAN.get(),
+        TsukiArmorToolRegistry.HAORI_LIGHT_BLUE.get()
+      );
       this.registerForgeTags();
    }
 

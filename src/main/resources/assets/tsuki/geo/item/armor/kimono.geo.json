@@ -24,14 +24,14 @@
 					"name": "armorRightArm",
 					"pivot": [-5, 22, 0],
 					"cubes": [
-						{"origin": [-7.6, 12.2, -1.6], "size": [3, 12, 3], "inflate": 1.025, "uv": [24, 16]}
+						{"origin": [-7.6, 11.2, -1.6], "size": [3, 12, 3], "inflate": 1.025, "uv": [24, 16]}
 					]
 				},
 				{
 					"name": "armorLeftArm",
 					"pivot": [5, 22, 0],
 					"cubes": [
-						{"origin": [4.6, 12.2, -1.6], "size": [3, 12, 3], "inflate": 1.025, "uv": [40, 16]}
+						{"origin": [4.6, 11.2, -1.6], "size": [3, 12, 3], "inflate": 1.025, "uv": [40, 16]}
 					]
 				},
 				{
