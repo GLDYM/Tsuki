@@ -13,6 +13,7 @@ import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.fluid.FluidRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
@@ -41,9 +42,11 @@ import net.minecraft.world.item.crafting.Ingredient.TagValue;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.crafting.CompoundIngredient;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.fluids.FluidStack;
+
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 public class TsukiRecipeProvider extends AbstractRecipeProvider {
@@ -61,658 +64,778 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
    }
 
    private void registerCraftingRecipe(RecipeOutput consumer) {
-      SimpleCookingRecipeBuilder.smoking(
+        SimpleCookingRecipeBuilder.smoking(
             Ingredient.of(TsukiFoodSet.BOILED_BONITO.getItem().get()),
             RecipeCategory.FOOD,
             TsukiFoodSet.DRIED_BONITO.getItem().get(),
             0.5F,
             100
-         )
-         .unlockedBy("has_ingredient", has(TsukiFoodSet.BOILED_BONITO.getItem().get()))
-         .group(Tsuki.MODID)
-         .save(consumer, "smoking_bonito");
-      this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB, BlockRegistry.TATAMI);
-      this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_WAXED, BlockRegistry.TATAMI_WAXED);
-      this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_SUNBURNT, BlockRegistry.TATAMI_SUNBURNT);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TATAMI_WAXED.get(), 1)
-         .requires(BlockRegistry.TATAMI.get())
-         .requires(Items.HONEYCOMB)
-         .unlockedBy("has_tatami", has(BlockRegistry.TATAMI.get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.HONEY_BOTTLE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get())
-         .requires(Items.GLASS_BOTTLE)
-         .unlockedBy("has_maple_syrup", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "honey_bottle_from_maple_syrup"));
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.DOUGH_OKINOYAKI.getItem().get(), 2)
-         .requires(TsukiItemTags.DOUGH)
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.FOODS_RAW_MEAT)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(TsukiItemTags.SALT)
-         .unlockedBy("has_egg", has(TsukiItemTags.EGGS))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY.getItem().get())
-         .requires(TsukiCuisineSet.RICE_COOKED.getItem().get())
-         .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
-         .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_KATSU.getItem().get())
-         .requires(TsukiCuisineSet.RICE_CURRY.getItem().get())
-         .requires(TsukiFoodSet.KATSU.getItem().get())
-         .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE_KATSU.getItem().get())
-         .requires(TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
-         .requires(TsukiFoodSet.KATSU.getItem().get())
-         .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_BURGER.getItem().get())
-         .requires(TsukiCuisineSet.RICE_CURRY.getItem().get())
-         .requires(TsukiFoodSet.BURGER.getItem().get())
-         .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE_BURGER.getItem().get())
-         .requires(TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
-         .requires(TsukiFoodSet.BURGER.getItem().get())
-         .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
-         .requires(TsukiCuisineSet.RICE_CURRY.getItem().get())
-         .requires(TsukiItemTags.CHEESE)
-         .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
-         .requires(TsukiCuisineSet.RICE_COOKED.getItem().get())
-         .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
-         .requires(TsukiItemTags.CHEESE)
-         .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "alter_rice_curry_cheese"));
-      this.foodCooking(TsukiFoodSet.DOUGH_OKINOYAKI.getItem(), TsukiFoodSet.OKINOYAKI.getItem(), 1.0F, consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.OKINOYAKI_PLUS.getItem().get())
-         .requires(TsukiFoodSet.OKINOYAKI.getItem().get())
-         .requires(TsukiNormalItemSet.WORCESTER_SAUCE.getItem().get())
-         .requires(TsukiFoodSet.MAYONAISE.getItem().get())
-         .unlockedBy("has_okinoyaki", has(TsukiFoodSet.OKINOYAKI.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.OKINOYAKI_FINAL.getItem().get())
-         .requires(TsukiFoodSet.OKINOYAKI.getItem().get())
-         .requires(TsukiNormalItemSet.WORCESTER_SAUCE.getItem().get())
-         .requires(TsukiFoodSet.MAYONAISE.getItem().get())
-         .requires(TsukiFoodSet.BONITO_SHAVING.getItem().get())
-         .unlockedBy("has_okinoyaki", has(TsukiFoodSet.OKINOYAKI.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.OKINOYAKI_FINAL.getItem().get())
-         .requires(TsukiFoodSet.OKINOYAKI_PLUS.getItem().get())
-         .requires(TsukiFoodSet.BONITO_SHAVING.getItem().get())
-         .unlockedBy("has_okinoyaki", has(TsukiFoodSet.OKINOYAKI_PLUS.getItem().get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "alter_okinoyaki_final"));
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.STRAW_BLOCK.get(), 4)
-         .pattern("LLL")
-         .pattern("LLL")
-         .pattern("LLL")
-         .define('L', TsukiItemTags.STRAW)
-         .unlockedBy("has_item", has(TsukiItemTags.STRAW))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemRegistry.IRON_FISH_KNIFE.get())
-         .pattern("  I")
-         .pattern(" I ")
-         .pattern("L  ")
-         .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemRegistry.IRON_NOODLE_KNIFE.get())
-         .pattern("II")
-         .pattern("II")
-         .pattern("IL")
-         .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemRegistry.SAKURA_AXE.get())
-         .pattern("DD ")
-         .pattern("DL ")
-         .pattern(" L ")
-         .define('D', ItemRegistry.SAKURA_DIAMOND.get())
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(ItemRegistry.SAKURA_DIAMOND.get()))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemRegistry.SAKURA_PICKAXE.get())
-         .pattern("DDD")
-         .pattern(" L ")
-         .pattern(" L ")
-         .define('D', ItemRegistry.SAKURA_DIAMOND.get())
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(ItemRegistry.SAKURA_DIAMOND.get()))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemRegistry.SAKURA_SHOVEL.get())
-         .pattern("D")
-         .pattern("L")
-         .pattern("L")
-         .define('D', ItemRegistry.SAKURA_DIAMOND.get())
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(ItemRegistry.SAKURA_DIAMOND.get()))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemRegistry.SAKURA_HOE.get())
-         .pattern("DD ")
-         .pattern(" L ")
-         .pattern(" L ")
-         .define('D', ItemRegistry.SAKURA_DIAMOND.get())
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(ItemRegistry.SAKURA_DIAMOND.get()))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemRegistry.SAKURA_FISH_KNIFE.get())
-         .pattern("  D")
-         .pattern(" D ")
-         .pattern("L  ")
-         .define('D', ItemRegistry.SAKURA_DIAMOND.get())
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(ItemRegistry.SAKURA_DIAMOND.get()))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ItemRegistry.SAKURA_NOODLE_KNIFE.get())
-         .pattern("DD")
-         .pattern("DD")
-         .pattern("DL")
-         .define('D', ItemRegistry.SAKURA_DIAMOND.get())
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(ItemRegistry.SAKURA_DIAMOND.get()))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.TATAMI.get(), 6)
-         .pattern("LLL")
-         .pattern("L#L")
-         .pattern("LLL")
-         .define('#', TsukiItemTags.LUMBER)
-         .define('L', TsukiItemTags.STRAW)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.TORCH, 4)
-         .pattern("C")
-         .pattern("#")
-         .define('C', ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get())
-         .define('#', net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN)
-         .unlockedBy("has_item", has(net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "torchs_from_charcoal"));
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.STICK, 4)
-         .pattern("#")
-         .pattern("#")
-         .define('#', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sticks_from_lumbers"));
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.OBON.get())
-         .pattern("LLL")
-         .pattern("L#L")
-         .define('#', BlockRegistry.SAKURA_LEAVES.get())
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.PAPER, 4)
-         .pattern("###")
-         .define('#', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "papers_from_lumbers"));
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.CHOPPING_BOARD.get())
-         .pattern("###")
-         .pattern("I I")
-         .define('#', TsukiItemTags.LUMBER)
-         .define('I', net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chopping_board"));
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.FERMENTER.get())
-         .pattern("SSS")
-         .pattern("PPP")
-         .pattern("SSS")
-         .define('S', TsukiItemTags.LUMBER)
-         .define('P', ItemTags.LOGS)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fermenter"));
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.DISTILLER.get())
-         .pattern("ISI")
-         .pattern("PPP")
-         .pattern("III")
-         .define('S', TsukiItemTags.LUMBER)
-         .define('P', ItemTags.LOGS)
-         .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "distiller"));
-      this.registerFarmerDelightRecipes(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.COOKING_POT.get())
-         .pattern("#L#")
-         .pattern("###")
-         .define('#', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.STONE_MORTAR.get())
-         .pattern("L  ")
-         .pattern("###")
-         .pattern("###")
-         .define('#', net.neoforged.neoforge.common.Tags.Items.COBBLESTONES)
-         .define('L', TsukiItemTags.LUMBER)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.KITUNEBI.get(), 16)
-         .pattern("###")
-         .pattern("LJL")
-         .pattern("###")
-         .define('L', TsukiItemTags.LUMBER)
-         .define('#', Items.LAPIS_LAZULI)
-         .define('J', Items.JACK_O_LANTERN)
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      this.foodSmeltingRecipes(
-         "eggplant_bake",
-         FoodRegistry.FOODSET.get(TsukiFoodSet.EGGPLANT).get(),
-         FoodRegistry.FOODSET.get(TsukiFoodSet.EGGPLANT_BAKED).get(),
-         0.5F,
-         consumer
-      );
-      this.foodSmeltingRecipes(
-         "taro_bake", ItemRegistry.TARO.get(), FoodRegistry.FOODSET.get(TsukiFoodSet.TARO_BAKED).get(), 0.5F, consumer
-      );
-      this.foodSmeltingRecipes(
-         "burger",
-         FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(),
-         FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get(),
-         0.5F,
-         consumer
-      );
-      this.foodSmeltingRecipes(
-         "chikuwa",
-         FoodRegistry.FOODSET.get(TsukiFoodSet.CHIKUWA_RAW).get(),
-         FoodRegistry.FOODSET.get(TsukiFoodSet.CHIKUWA).get(),
-         0.5F,
-         consumer
-      );
-      this.foodSmeltingRecipes(
-         "bun",
-         ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get(),
-         FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get(),
-         0.5F,
-         consumer
-      );
-      this.foodSmeltingRecipes(
-         "buckwheat_bread",
-         ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_BUCKWHEAT).get(),
-         FoodRegistry.FOODSET.get(TsukiFoodSet.BUCKWHEAT_BREAD).get(),
-         0.5F,
-         consumer
-      );
-      this.foodSmeltingRecipes(
-         "rice_bread",
-         ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_RICE).get(),
-         FoodRegistry.FOODSET.get(TsukiFoodSet.RICE_BREAD).get(),
-         0.5F,
-         consumer
-      );
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get(), 3)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.WATER)
-         .unlockedBy("has_flour", has(TsukiItemTags.FLOUR_WHEAT))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockItemRegistry.NABE_SUKIYAKI.get())
-         .requires(BlockItemRegistry.COOKING_POT.get())
-         .requires(TsukiItemTags.SOYSAUCE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .requires(TsukiItemTags.RAW_BEEF)
-         .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_CARROT)
-         .requires(TsukiItemTags.MUSHROOMS)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(TsukiItemTags.VEGETABLES)
-         .unlockedBy("has_pot", has(BlockItemRegistry.COOKING_POT.get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockItemRegistry.NABE_ODEN.get())
-         .requires(BlockItemRegistry.COOKING_POT.get())
-         .requires(TsukiItemTags.FISHCAKE)
-         .requires(TsukiItemTags.FISHCAKE)
-         .requires(TsukiItemTags.FISHCAKE)
-         .requires(TsukiItemTags.FISHCAKE)
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.DASHI)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .unlockedBy("has_pot", has(BlockItemRegistry.COOKING_POT.get()))
-         .save(consumer);
-      this.makeItemToBucket(BucketItemRegistry.FOOD_OIL_BUCKET, Ingredient.of(TsukiItemTags.SEEDS_RAPESEED))
-         .unlockedBy("has_seeds", has(TsukiItemTags.SEEDS_RAPESEED))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_BUCKWHEAT).get(), 3)
-         .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
-         .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
-         .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
-         .requires(TsukiItemTags.WATER)
-         .unlockedBy("has_flour", has(TsukiItemTags.FLOUR_BUCKWHEAT))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_RICE).get(), 3)
-         .requires(TsukiItemTags.FLOUR_RICE)
-         .requires(TsukiItemTags.FLOUR_RICE)
-         .requires(TsukiItemTags.FLOUR_RICE)
-         .requires(TsukiItemTags.WATER)
-         .unlockedBy("has_flour", has(TsukiItemTags.FLOUR_RICE))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOKO_TAMAGOYAKI.get())
-         .requires(TsukiItemTags.SOUPS)
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(BlockRegistry.OBON.get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TAMAGOYAKI).get())
-         .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOUKU_FISH_COOKED.get())
-         .requires(TsukiItemTags.SOUPS)
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(BlockRegistry.OBON.get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.FISH_BAKE).get())
-         .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOUKU_FISH_SALT.get())
-         .requires(TsukiItemTags.SOUPS)
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(BlockRegistry.OBON.get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.FISH_BAKE_SALT).get())
-         .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOUKU_FISH_RAW.get())
-         .requires(TsukiItemTags.SOUPS)
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(BlockRegistry.OBON.get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SASHIMI).get())
-         .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOKO_YAKINIKU.get())
-         .requires(TsukiItemTags.SOUPS)
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(BlockRegistry.OBON.get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.YAKINIKU).get())
-         .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, FoodRegistry.FOODSET.get(TsukiFoodSet.SASHIMI).get())
-         .requires(TsukiItemTags.SLICES_RAW_FISHES)
-         .requires(TsukiItemTags.SLICES_RAW_FISHES)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .unlockedBy("has_fish", has(TsukiItemTags.SLICES_RAW_FISHES))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, FoodRegistry.FOODSET.get(TsukiFoodSet.CHIKUWA_RAW).get(), 2)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get())
-         .requires(TsukiItemTags.SALT)
-         .unlockedBy("has_fish", has(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.SAKURA_SAPLING.get())
-         .requires(ItemTags.SAPLINGS)
-         .requires(net.neoforged.neoforge.common.Tags.Items.DYES_PINK)
-         .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_RED.get())
-         .requires(ItemTags.SAPLINGS)
-         .requires(net.neoforged.neoforge.common.Tags.Items.DYES_RED)
-         .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_GREEN.get())
-         .requires(ItemTags.SAPLINGS)
-         .requires(net.neoforged.neoforge.common.Tags.Items.DYES_GREEN)
-         .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_YELLOW.get())
-         .requires(ItemTags.SAPLINGS)
-         .requires(net.neoforged.neoforge.common.Tags.Items.DYES_YELLOW)
-         .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_ORANGE.get())
-         .requires(ItemTags.SAPLINGS)
-         .requires(net.neoforged.neoforge.common.Tags.Items.DYES_ORANGE)
-         .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(Items.DRIED_KELP)
-         .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_BAMBOO).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(Items.DRIED_KELP)
-         .requires(BlockRegistry.BAMBOOSHOOT.get())
-         .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_SEAWEED).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(Items.DRIED_KELP)
-         .requires(Items.DRIED_KELP)
-         .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_MUSHROOM).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(Items.DRIED_KELP)
-         .requires(TsukiItemTags.MUSHROOMS)
-         .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_TEMPURA).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(Items.DRIED_KELP)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TEMPURA).get())
-         .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(TsukiItemTags.VINEGAR)
-         .requires(TsukiItemTags.SUGAR)
-         .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI).get(), 2)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
-         .requires(TsukiItemTags.SLICES_RAW_FISHES)
-         .unlockedBy("has_rice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI_SHRIMP).get(), 2)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
-         .requires(TsukiItemTags.SHRIMP)
-         .unlockedBy("has_rice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI_TAMAGO).get(), 3)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TAMAGOYAKI).get())
-         .unlockedBy("has_rice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI_INARI).get(), 2)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TOFU_FRIED).get())
-         .unlockedBy("has_rice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.TEMPURA_BATTER).get(), 8)
-         .requires(TsukiItemTags.FLOUR)
-         .requires(TsukiItemTags.SALT)
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.WATER)
-         .unlockedBy("has_flour", has(TsukiItemTags.FLOUR))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.HAMBURGER).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get())
-         .requires(TsukiItemTags.TOMATOSAUCE)
-         .unlockedBy("has_bun", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE).get())
-         .requires(TsukiItemTags.MILK)
-         .requires(TsukiItemTags.SALT)
-         .unlockedBy("has_salt", has(TsukiItemTags.SALT))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_DISH).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get())
-         .requires(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
-         .unlockedBy("has_burger", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE_BURGER).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO_SAUCE).get())
-         .requires(TsukiItemTags.CHEESE)
-         .unlockedBy("has_bun", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE_BURGER).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.HAMBURGER).get())
-         .requires(TsukiItemTags.CHEESE)
-         .unlockedBy("has_bun", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cheese_burger_from_hamburger"));
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get(), 8)
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
-         .save(consumer);
-      this.foodSmeltingRecipes(
-         "mochi_toasted",
-         FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get(),
-         FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI_TOASTED).get(),
-         0.5F,
-         consumer
-      );
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI_SAKURA).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get())
-         .requires(BlockRegistry.SAKURA_LEAVES.get())
-         .unlockedBy("has_mochi", has(FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get()))
-         .save(consumer);
-      this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO))
-         .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()))
-         .save(consumer);
-      this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, () -> Items.BAMBOO)
-         .unlockedBy("has_item", has(Items.BAMBOO))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_from_vanilla_bamboo"));
-      this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT))
-         .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()))
-         .save(consumer);
-      this.makeIngotToBlock(BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL))
-         .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
-         .save(consumer);
-      this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO), BlockItemRegistry.BAMBOO_BLOCK).save(consumer);
-      this.makeBlockToIngot(() -> Items.BAMBOO, BlockItemRegistry.BAMBOO_BLOCK)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_to_vanilla_bamboo"));
-      this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL), BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK)
-         .save(consumer);
-      this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT), BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT)
-         .save(consumer);
-      this.makeLumber((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_BAMBOO), Ingredient.of(TsukiItemTags.BAMBOO))
-         .unlockedBy("has_item", has(TsukiItemTags.BAMBOO))
-         .save(consumer);
-      this.makeLumber(
+            )
+            .unlockedBy("has_ingredient", has(TsukiFoodSet.BOILED_BONITO.getItem().get()))
+            .group(Tsuki.MODID)
+            .save(consumer, "smoking_bonito");
+        this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB, BlockRegistry.TATAMI);
+        this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_WAXED, BlockRegistry.TATAMI_WAXED);
+        this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_SUNBURNT, BlockRegistry.TATAMI_SUNBURNT);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TATAMI_WAXED.get(), 1)
+            .requires(BlockRegistry.TATAMI.get())
+            .requires(Items.HONEYCOMB)
+            .unlockedBy("has_tatami", has(BlockRegistry.TATAMI.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.HONEY_BOTTLE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get())
+            .requires(Items.GLASS_BOTTLE)
+            .unlockedBy("has_maple_syrup", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "honey_bottle_from_maple_syrup"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.DOUGH_OKINOYAKI.getItem().get(), 2)
+            .requires(TsukiItemTags.DOUGH)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.FOODS_RAW_MEAT)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.SALT)
+            .unlockedBy("has_egg", has(TsukiItemTags.EGGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY.getItem().get())
+            .requires(TsukiCuisineSet.RICE_COOKED.getItem().get())
+            .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
+            .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_KATSU.getItem().get())
+            .requires(TsukiCuisineSet.RICE_CURRY.getItem().get())
+            .requires(TsukiFoodSet.KATSU.getItem().get())
+            .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE_KATSU.getItem().get())
+            .requires(TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
+            .requires(TsukiFoodSet.KATSU.getItem().get())
+            .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_BURGER.getItem().get())
+            .requires(TsukiCuisineSet.RICE_CURRY.getItem().get())
+            .requires(TsukiFoodSet.BURGER.getItem().get())
+            .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE_BURGER.getItem().get())
+            .requires(TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
+            .requires(TsukiFoodSet.BURGER.getItem().get())
+            .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
+            .requires(TsukiCuisineSet.RICE_CURRY.getItem().get())
+            .requires(TsukiItemTags.CHEESE)
+            .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
+            .requires(TsukiCuisineSet.RICE_COOKED.getItem().get())
+            .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
+            .requires(TsukiItemTags.CHEESE)
+            .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "alter_rice_curry_cheese"));
+        this.foodCooking(TsukiFoodSet.DOUGH_OKINOYAKI.getItem(), TsukiFoodSet.OKINOYAKI.getItem(), 1.0F, consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.OKINOYAKI_PLUS.getItem().get())
+            .requires(TsukiFoodSet.OKINOYAKI.getItem().get())
+            .requires(TsukiNormalItemSet.WORCESTER_SAUCE.getItem().get())
+            .requires(TsukiFoodSet.MAYONAISE.getItem().get())
+            .unlockedBy("has_okinoyaki", has(TsukiFoodSet.OKINOYAKI.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.OKINOYAKI_FINAL.getItem().get())
+            .requires(TsukiFoodSet.OKINOYAKI.getItem().get())
+            .requires(TsukiNormalItemSet.WORCESTER_SAUCE.getItem().get())
+            .requires(TsukiFoodSet.MAYONAISE.getItem().get())
+            .requires(TsukiFoodSet.BONITO_SHAVING.getItem().get())
+            .unlockedBy("has_okinoyaki", has(TsukiFoodSet.OKINOYAKI.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.OKINOYAKI_FINAL.getItem().get())
+            .requires(TsukiFoodSet.OKINOYAKI_PLUS.getItem().get())
+            .requires(TsukiFoodSet.BONITO_SHAVING.getItem().get())
+            .unlockedBy("has_okinoyaki", has(TsukiFoodSet.OKINOYAKI_PLUS.getItem().get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "alter_okinoyaki_final"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.STRAW_BLOCK.get(), 4)
+            .pattern("LLL")
+            .pattern("LLL")
+            .pattern("LLL")
+            .define('L', TsukiItemTags.STRAW)
+            .unlockedBy("has_item", has(TsukiItemTags.STRAW))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.TATAMI.get(), 6)
+            .pattern("LLL")
+            .pattern("L#L")
+            .pattern("LLL")
+            .define('#', TsukiItemTags.LUMBER)
+            .define('L', TsukiItemTags.STRAW)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.TORCH, 4)
+            .pattern("C")
+            .pattern("#")
+            .define('C', ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get())
+            .define('#', net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN)
+            .unlockedBy("has_item", has(net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "torchs_from_charcoal"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.STICK, 4)
+            .pattern("#")
+            .pattern("#")
+            .define('#', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sticks_from_lumbers"));
+
+        // Working Stations
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.OBON.get())
+            .pattern("LLL")
+            .pattern("L#L")
+            .define('#', BlockRegistry.SAKURA_LEAVES.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.PAPER, 4)
+            .pattern("###")
+            .define('#', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "papers_from_lumbers"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.CHOPPING_BOARD.get())
+            .pattern("###")
+            .pattern("I I")
+            .define('#', TsukiItemTags.LUMBER)
+            .define('I', net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chopping_board"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.FERMENTER.get())
+            .pattern("SSS")
+            .pattern("PPP")
+            .pattern("SSS")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', ItemTags.LOGS)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fermenter"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.DISTILLER.get())
+            .pattern("ISI")
+            .pattern("PPP")
+            .pattern("III")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', ItemTags.LOGS)
+            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "distiller"));
+        this.registerFarmerDelightRecipes(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.COOKING_POT.get())
+            .pattern("#L#")
+            .pattern("###")
+            .define('#', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.STONE_MORTAR.get())
+            .pattern("L  ")
+            .pattern("###")
+            .pattern("###")
+            .define('#', net.neoforged.neoforge.common.Tags.Items.COBBLESTONES)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.KITUNEBI.get(), 16)
+            .pattern("###")
+            .pattern("LJL")
+            .pattern("###")
+            .define('L', TsukiItemTags.LUMBER)
+            .define('#', Items.LAPIS_LAZULI)
+            .define('J', Items.JACK_O_LANTERN)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+
+        // Recipes for tools
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, TsukiNormalItemSet.SILK.getItem().get(), 4)
+                .pattern("#S#")
+                .pattern("SLS")
+                .pattern("#S#")
+                .define('L', TsukiItemTags.LUMBER)
+                .define('S', Tags.Items.STRINGS)
+                .define('#', ItemTags.WOOL)
+                .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.IRON_FISH_KNIFE.get())
+            .pattern("  I")
+            .pattern(" I ")
+            .pattern("L  ")
+            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.IRON_NOODLE_KNIFE.get())
+            .pattern("II")
+            .pattern("II")
+            .pattern("IL")
+            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_AXE.get())
+            .pattern("DD ")
+            .pattern("DL ")
+            .pattern(" L ")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_PICKAXE.get())
+            .pattern("DDD")
+            .pattern(" L ")
+            .pattern(" L ")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,  TsukiArmorToolRegistry.SAKURA_SHOVEL.get())
+            .pattern("D")
+            .pattern("L")
+            .pattern("L")
+            .define('D',  TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has( TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer); ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,  TsukiArmorToolRegistry.SAKURA_HOE.get())
+            .pattern("DD ")
+            .pattern(" L ")
+            .pattern(" L ")
+            .define('D',  TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has( TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,  TsukiArmorToolRegistry.SAKURA_FISH_KNIFE.get())
+            .pattern("  D")
+            .pattern(" D ")
+            .pattern("L  ")
+            .define('D',  TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has( TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_NOODLE_KNIFE.get())
+            .pattern("DD")
+            .pattern("DD")
+            .pattern("DL")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+
+        // Kimono
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, 
+            TsukiArmorToolRegistry.KIMONO_WHITE.get())
+            .pattern("# #")
+            .pattern("S#S")
+            .pattern("###")
+            .define('S', Tags.Items.STRINGS)
+            .define('#', TsukiNormalItemSet.SILK.getItem().get())
+            .unlockedBy("has_item", has(TsukiNormalItemSet.SILK.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_WHITE.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Tags.Items.DYES_WHITE)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kimono_white_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_BLACK.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_CYAN.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Tags.Items.DYES_CYAN)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_PURPLE.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Tags.Items.DYES_PURPLE)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_BROWN.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Tags.Items.DYES_BROWN)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_GREEN.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Tags.Items.DYES_GREEN)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_SAKURA.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Tags.Items.DYES_PINK)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_MIKO.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Tags.Items.DYES_WHITE)
+            .requires(Tags.Items.DYES_RED)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.KIMONO_ENE.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(Items.NETHER_STAR)
+            .requires(Tags.Items.DYES_CYAN)
+            .requires(Tags.Items.DYES_BLUE)
+            .requires(Tags.Items.DYES_PINK)
+            .requires(Tags.Items.DYES_WHITE)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_WHITE.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.YUKATA_RED.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(TsukiNormalItemSet.SILK.getItem().get())
+            .requires(Tags.Items.DYES_RED)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_MIKO.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.YUKATA_MAGENTA.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(TsukiNormalItemSet.SILK.getItem().get())
+            .requires(Tags.Items.DYES_MAGENTA)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_MIKO.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.YUKATA_BLUE.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(TsukiNormalItemSet.SILK.getItem().get())
+            .requires(Tags.Items.DYES_BLUE)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_MIKO.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.YUKATA_LIME.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(TsukiNormalItemSet.SILK.getItem().get())
+            .requires(Tags.Items.DYES_LIME)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_MIKO.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.YUKATA_YELLOW.get())
+            .requires(TsukiItemTags.KIMONO)
+            .requires(TsukiNormalItemSet.SILK.getItem().get())
+            .requires(Tags.Items.DYES_YELLOW)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.KIMONO_MIKO.get()))
+            .save(consumer);
+
+
+        this.foodSmeltingRecipes(
+            "eggplant_bake",
+            FoodRegistry.FOODSET.get(TsukiFoodSet.EGGPLANT).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.EGGPLANT_BAKED).get(),
+            0.5F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "taro_bake", ItemRegistry.TARO.get(), FoodRegistry.FOODSET.get(TsukiFoodSet.TARO_BAKED).get(), 0.5F, consumer
+        );
+        this.foodSmeltingRecipes(
+            "burger",
+            FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get(),
+            0.5F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "chikuwa",
+            FoodRegistry.FOODSET.get(TsukiFoodSet.CHIKUWA_RAW).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.CHIKUWA).get(),
+            0.5F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "bun",
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get(),
+            0.5F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "buckwheat_bread",
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_BUCKWHEAT).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.BUCKWHEAT_BREAD).get(),
+            0.5F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "rice_bread",
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_RICE).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.RICE_BREAD).get(),
+            0.5F,
+            consumer
+        );
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get(), 3)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_flour", has(TsukiItemTags.FLOUR_WHEAT))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockItemRegistry.NABE_SUKIYAKI.get())
+            .requires(BlockItemRegistry.COOKING_POT.get())
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .requires(TsukiItemTags.RAW_BEEF)
+            .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_CARROT)
+            .requires(TsukiItemTags.MUSHROOMS)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.VEGETABLES)
+            .unlockedBy("has_pot", has(BlockItemRegistry.COOKING_POT.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockItemRegistry.NABE_ODEN.get())
+            .requires(BlockItemRegistry.COOKING_POT.get())
+            .requires(TsukiItemTags.FISHCAKE)
+            .requires(TsukiItemTags.FISHCAKE)
+            .requires(TsukiItemTags.FISHCAKE)
+            .requires(TsukiItemTags.FISHCAKE)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.DASHI)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .unlockedBy("has_pot", has(BlockItemRegistry.COOKING_POT.get()))
+            .save(consumer);
+        this.makeItemToBucket(BucketItemRegistry.FOOD_OIL_BUCKET, Ingredient.of(TsukiItemTags.SEEDS_RAPESEED))
+            .unlockedBy("has_seeds", has(TsukiItemTags.SEEDS_RAPESEED))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_BUCKWHEAT).get(), 3)
+            .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
+            .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
+            .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_flour", has(TsukiItemTags.FLOUR_BUCKWHEAT))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_RICE).get(), 3)
+            .requires(TsukiItemTags.FLOUR_RICE)
+            .requires(TsukiItemTags.FLOUR_RICE)
+            .requires(TsukiItemTags.FLOUR_RICE)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_flour", has(TsukiItemTags.FLOUR_RICE))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOKO_TAMAGOYAKI.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TAMAGOYAKI).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOUKU_FISH_COOKED.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.FISH_BAKE).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOUKU_FISH_SALT.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.FISH_BAKE_SALT).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOUKU_FISH_RAW.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SASHIMI).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOKO_YAKINIKU.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.YAKINIKU).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, FoodRegistry.FOODSET.get(TsukiFoodSet.SASHIMI).get())
+            .requires(TsukiItemTags.SLICES_RAW_FISHES)
+            .requires(TsukiItemTags.SLICES_RAW_FISHES)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .unlockedBy("has_fish", has(TsukiItemTags.SLICES_RAW_FISHES))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, FoodRegistry.FOODSET.get(TsukiFoodSet.CHIKUWA_RAW).get(), 2)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get())
+            .requires(TsukiItemTags.SALT)
+            .unlockedBy("has_fish", has(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.SAKURA_SAPLING.get())
+            .requires(ItemTags.SAPLINGS)
+            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_PINK)
+            .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_RED.get())
+            .requires(ItemTags.SAPLINGS)
+            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_RED)
+            .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_GREEN.get())
+            .requires(ItemTags.SAPLINGS)
+            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_GREEN)
+            .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_YELLOW.get())
+            .requires(ItemTags.SAPLINGS)
+            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_YELLOW)
+            .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_ORANGE.get())
+            .requires(ItemTags.SAPLINGS)
+            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_ORANGE)
+            .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(Items.DRIED_KELP)
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_BAMBOO).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(Items.DRIED_KELP)
+            .requires(BlockRegistry.BAMBOOSHOOT.get())
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_SEAWEED).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(Items.DRIED_KELP)
+            .requires(Items.DRIED_KELP)
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_MUSHROOM).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(Items.DRIED_KELP)
+            .requires(TsukiItemTags.MUSHROOMS)
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_TEMPURA).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(Items.DRIED_KELP)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TEMPURA).get())
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(TsukiItemTags.VINEGAR)
+            .requires(TsukiItemTags.SUGAR)
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI).get(), 2)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
+            .requires(TsukiItemTags.SLICES_RAW_FISHES)
+            .unlockedBy("has_rice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI_SHRIMP).get(), 2)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
+            .requires(TsukiItemTags.SHRIMP)
+            .unlockedBy("has_rice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI_TAMAGO).get(), 3)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TAMAGOYAKI).get())
+            .unlockedBy("has_rice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI_INARI).get(), 2)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TOFU_FRIED).get())
+            .unlockedBy("has_rice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.TEMPURA_BATTER).get(), 8)
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.SALT)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_flour", has(TsukiItemTags.FLOUR))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.HAMBURGER).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get())
+            .requires(TsukiItemTags.TOMATOSAUCE)
+            .unlockedBy("has_bun", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE).get())
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.SALT)
+            .unlockedBy("has_salt", has(TsukiItemTags.SALT))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_DISH).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get())
+            .requires(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
+            .unlockedBy("has_burger", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE_BURGER).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO_SAUCE).get())
+            .requires(TsukiItemTags.CHEESE)
+            .unlockedBy("has_bun", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE_BURGER).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.HAMBURGER).get())
+            .requires(TsukiItemTags.CHEESE)
+            .unlockedBy("has_bun", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cheese_burger_from_hamburger"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get(), 8)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer);
+        this.foodSmeltingRecipes(
+            "mochi_toasted",
+            FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI_TOASTED).get(),
+            0.5F,
+            consumer
+        );
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI_SAKURA).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get())
+            .requires(BlockRegistry.SAKURA_LEAVES.get())
+            .unlockedBy("has_mochi", has(FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get()))
+            .save(consumer);
+        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO))
+            .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()))
+            .save(consumer);
+        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, () -> Items.BAMBOO)
+            .unlockedBy("has_item", has(Items.BAMBOO))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_from_vanilla_bamboo"));
+        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT))
+            .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()))
+            .save(consumer);
+        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL))
+            .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
+            .save(consumer);
+        this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO), BlockItemRegistry.BAMBOO_BLOCK).save(consumer);
+        this.makeBlockToIngot(() -> Items.BAMBOO, BlockItemRegistry.BAMBOO_BLOCK)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_to_vanilla_bamboo"));
+        this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL), BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK)
+            .save(consumer);
+        this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT), BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT)
+            .save(consumer);
+        this.makeLumber((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_BAMBOO), Ingredient.of(TsukiItemTags.BAMBOO))
+            .unlockedBy("has_item", has(TsukiItemTags.BAMBOO))
+            .save(consumer);
+        this.makeLumber(
             (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
             Ingredient.of(BlockRegistry.MAPLE_LOG.get())
-         )
-         .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
-         .save(consumer);
-      this.makeLumber(
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
+            .save(consumer);
+        this.makeLumber(
             (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
             Ingredient.of(BlockRegistry.SAKURA_LOG.get())
-         )
-         .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
-         .save(consumer);
-      this.makeLumber(
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
+            .save(consumer);
+        this.makeLumber(
             (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
             Ingredient.of(BlockRegistry.MAPLE_WOOD.get())
-         )
-         .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_lumber_from_wood"));
-      this.makeLumber(
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_lumber_from_wood"));
+        this.makeLumber(
             (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
             Ingredient.of(BlockRegistry.SAKURA_WOOD.get())
-         )
-         .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_lumber_from_wood"));
-      this.makeLumber(
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_lumber_from_wood"));
+        this.makeLumber(
             (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
             Ingredient.of(BlockRegistry.STRIPPED_MAPLE_LOG.get())
-         )
-         .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_lumber_from_stripped"));
-      this.makeLumber(
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_lumber_from_stripped"));
+        this.makeLumber(
             (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
             Ingredient.of(BlockRegistry.STRIPPED_SAKURA_LOG.get())
-         )
-         .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_lumber_from_stripped"));
-      this.makeLumberToPlank(BlockRegistry.BAMBOO_PLANK, Ingredient.of(TsukiItemTags.LUMBER_BAMBOO))
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      this.makeLumberToPlank(BlockRegistry.MAPLE_PLANK, Ingredient.of(TsukiItemTags.LUMBER_MAPLE))
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      this.makeLumberToPlank(BlockRegistry.SAKURA_PLANK, Ingredient.of(TsukiItemTags.LUMBER_SAKURA))
-         .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-         .save(consumer);
-      SimpleCookingRecipeBuilder.smelting(
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_lumber_from_stripped"));
+        this.makeLumberToPlank(BlockRegistry.BAMBOO_PLANK, Ingredient.of(TsukiItemTags.LUMBER_BAMBOO))
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        this.makeLumberToPlank(BlockRegistry.MAPLE_PLANK, Ingredient.of(TsukiItemTags.LUMBER_MAPLE))
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        this.makeLumberToPlank(BlockRegistry.SAKURA_PLANK, Ingredient.of(TsukiItemTags.LUMBER_SAKURA))
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        SimpleCookingRecipeBuilder.smelting(
             Ingredient.of(BlockRegistry.BAMBOO_BLOCK.get()),
             RecipeCategory.MISC,
             BlockRegistry.BAMBOO_CHARCOAL_BLOCK.get(),
             0.5F,
             200
-         )
-         .group(Tsuki.MODID)
-         .unlockedBy("has_item", has(BlockRegistry.BAMBOO_BLOCK.get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_from_smelt"));
-      SimpleCookingRecipeBuilder.smelting(
+            )
+            .group(Tsuki.MODID)
+            .unlockedBy("has_item", has(BlockRegistry.BAMBOO_BLOCK.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_from_smelt"));
+        SimpleCookingRecipeBuilder.smelting(
             Ingredient.of(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get()),
             RecipeCategory.MISC,
             BlockRegistry.BAMBOO_CHARCOAL_BLOCK.get(),
             0.5F,
             200
-         )
-         .group(Tsuki.MODID)
-         .unlockedBy("has_item", has(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_sunburnt_from_smelt"));
-      SimpleCookingRecipeBuilder.smelting(
+            )
+            .group(Tsuki.MODID)
+            .unlockedBy("has_item", has(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_sunburnt_from_smelt"));
+        SimpleCookingRecipeBuilder.smelting(
             Ingredient.of(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()),
             RecipeCategory.MISC,
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get(),
             0.5F,
             200
-         )
-         .group(Tsuki.MODID)
-         .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_charcoal_from_smelt"));
-      SimpleCookingRecipeBuilder.smelting(
+            )
+            .group(Tsuki.MODID)
+            .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_charcoal_from_smelt"));
+        SimpleCookingRecipeBuilder.smelting(
             Ingredient.of(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()),
             RecipeCategory.MISC,
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get(),
             0.5F,
             200
-         )
-         .group(Tsuki.MODID)
-         .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_charcoal_sunburnt_from_smelt"));
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiCuisineSet.SOBA_ZARU.getItem().get())
-         .requires(TsukiCuisineSet.SOBA.getItem().get())
-         .requires(TsukiNormalItemSet.KAESHI.getItem().get())
-         .unlockedBy("has_soba", has(TsukiCuisineSet.SOBA.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiNormalItemSet.SOBA_BLOCK.getItem().get())
-         .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
-         .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
-         .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
-         .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.WATER)
-         .unlockedBy("has_soba", has(TsukiNormalItemSet.FLOUR_BUCKWHEAT.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiNormalItemSet.RAMEN_BLOCK.getItem().get())
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiNormalItemSet.ALKALINE.getItem().get())
-         .requires(TsukiItemTags.SALT)
-         .requires(TsukiItemTags.WATER)
-         .unlockedBy("has_ramen", has(TsukiNormalItemSet.ALKALINE.getItem().get()))
-         .save(consumer);
-      ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiNormalItemSet.UDON_BLOCK.getItem().get())
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.FLOUR_WHEAT)
-         .requires(TsukiItemTags.SALT)
-         .requires(TsukiItemTags.SALT)
-         .requires(TsukiItemTags.WATER)
-         .unlockedBy("has_udon", has(TsukiNormalItemSet.FLOUR.getItem().get()))
-         .save(consumer);
+            )
+            .group(Tsuki.MODID)
+            .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_charcoal_sunburnt_from_smelt"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiCuisineSet.SOBA_ZARU.getItem().get())
+            .requires(TsukiCuisineSet.SOBA.getItem().get())
+            .requires(TsukiNormalItemSet.KAESHI.getItem().get())
+            .unlockedBy("has_soba", has(TsukiCuisineSet.SOBA.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiNormalItemSet.SOBA_BLOCK.getItem().get())
+            .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
+            .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
+            .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
+            .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_soba", has(TsukiNormalItemSet.FLOUR_BUCKWHEAT.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiNormalItemSet.RAMEN_BLOCK.getItem().get())
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiNormalItemSet.ALKALINE.getItem().get())
+            .requires(TsukiItemTags.SALT)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_ramen", has(TsukiNormalItemSet.ALKALINE.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiNormalItemSet.UDON_BLOCK.getItem().get())
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.SALT)
+            .requires(TsukiItemTags.SALT)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_udon", has(TsukiNormalItemSet.FLOUR.getItem().get()))
+            .save(consumer);
    }
 
    private void registerMortarRecipe(RecipeOutput consumer) {

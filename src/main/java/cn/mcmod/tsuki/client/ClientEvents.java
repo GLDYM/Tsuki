@@ -65,7 +65,7 @@ public class ClientEvents {
         event.registerSpriteSet(ParticleRegistry.ORANGE_MAPLE_LEAF.get(),
                 FallenLeafParticle.Factory::new);
         event.registerSpriteSet(ParticleRegistry.SYRUP_DROP.get(),
-            SyrupDropParticle.Factory::new);
+                SyrupDropParticle.Factory::new);
     }
 
 }

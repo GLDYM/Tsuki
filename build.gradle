@@ -9,7 +9,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.78'
 }
 
-version = '1.0.1'
+version = '1.0.2'
 group = 'cn.mcmod.tsuki' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 base {
     archivesName = 'Tsuki'
@@ -81,14 +81,18 @@ repositories {
     mavenCentral()
     maven { url = 'https://maven.neoforged.net/releases' }
     maven { url = 'https://maven.parchmentmc.org' }
-
-    maven { url = "https://raw.github.com/0999312/MMMaven/main/repository" }
     maven {
         url = "https://maven.theillusivec4.top/"
     }
+    maven {
+        name = "Geckolib"
+        url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
+    }
 
     // Patchouli
-    maven { url = 'https://maven.blamejared.com' }
+    maven { 
+        url = 'https://maven.blamejared.com'
+    }
 
     maven {
         url = "https://api.modrinth.com/maven"
@@ -115,6 +119,9 @@ dependencies {
     compileOnly(("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"))
     // at runtime, use the full JEI jar for NeoForge
     runtimeOnly(("mezz.jei:jei-${mc_version}-neoforge:${jei_version}"))
+
+    compileOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
+    runtimeOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
 
     //implementation ("maven.modrinth:epic-fight:20.9.2")
     compileOnly ("maven.modrinth:farmers-delight:1.21.1-1.2.11")

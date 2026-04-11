@@ -12,6 +12,7 @@ public enum TsukiNormalItemSet {
     LUMBER_SAKURA("lumber_sakura"),
     LUMBER_MAPLE("lumber_maple"),
     STRAW("straw"),
+    SILK("silk"),
     CHARCOAL_POWDER("charcoal_powder"),
     SALT("salt"),
     ALKALINE("alkaline"),

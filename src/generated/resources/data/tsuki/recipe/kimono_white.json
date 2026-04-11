@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "tsuki:silk"
+    },
+    "S": {
+      "tag": "c:strings"
+    }
+  },
+  "pattern": [
+    "# #",
+    "S#S",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:kimono_white"
+  }
+}

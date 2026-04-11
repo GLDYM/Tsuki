@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:wool"
+    },
+    "L": {
+      "tag": "c:lumber"
+    },
+    "S": {
+      "tag": "c:strings"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "SLS",
+    "#S#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "tsuki:silk"
+  }
+}

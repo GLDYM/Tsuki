@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.block.foods.TeishokuBlock;
 import cn.mcmod.tsuki.block.foods.TeishokuFinishedBlock;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod_mmf.mmlib.data.loot.AbstartctBlockLoot;
@@ -56,8 +57,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
 
         this.dropOther(BlockRegistry.MAPLE_SAP_LOG.get(), BlockItemRegistry.MAPLE_LOG.get());
 
-        this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(), ItemRegistry.SAKURA_DIAMOND.get()));
-        this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), ItemRegistry.SAKURA_DIAMOND.get()));
+        this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(),  TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
+        this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(),  TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
 
         this.add(BlockRegistry.MAPLE_LEAVES_RED.get(), createLeavesDrops(BlockRegistry.MAPLE_LEAVES_RED.get(),
                 BlockRegistry.MAPLE_SAPLING_RED.get(), NORMAL_LEAVES_SAPLING_CHANCES));

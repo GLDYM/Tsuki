@@ -8,19 +8,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class BlockItemRegistry {
-        public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tsuki.MODID);
-
-        public static final DeferredItem<Item> SAKURA_LEAVES = ITEMS.register("sakuraleaves",
-            () -> new BlockItem(BlockRegistry.SAKURA_LEAVES.get(), Tsuki.defaultItemProperties()));
-
-    public static final DeferredItem<Item> MAPLE_LEAVES_RED = ITEMS.register("mapleleaves_red",
-            () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_RED.get(), Tsuki.defaultItemProperties()));
-    public static final DeferredItem<Item> MAPLE_LEAVES_YELLOW = ITEMS.register("mapleleaves_yellow",
-            () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_YELLOW.get(), Tsuki.defaultItemProperties()));
-    public static final DeferredItem<Item> MAPLE_LEAVES_ORANGE = ITEMS.register("mapleleaves_orange",
-            () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_ORANGE.get(), Tsuki.defaultItemProperties()));
-    public static final DeferredItem<Item> MAPLE_LEAVES_GREEN = ITEMS.register("mapleleaves_green",
-            () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tsuki.MODID);
 
     public static final DeferredItem<Item> SAKURA_LOG = ITEMS.register("sakura_log",
             () -> new BlockItem(BlockRegistry.SAKURA_LOG.get(), Tsuki.defaultItemProperties()));
@@ -82,6 +70,27 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> DEEPSLATE_SAKURA_DIAMOND_ORE = ITEMS.register("deepslate_sakura_diamond_ore",
             () -> new BlockItem(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), Tsuki.defaultItemProperties()));
 
+    public static final DeferredItem<Item> SAKURA_LEAVES = ITEMS.register("sakuraleaves",
+            () -> new BlockItem(BlockRegistry.SAKURA_LEAVES.get(), Tsuki.defaultItemProperties()));
+
+    public static final DeferredItem<Item> MAPLE_LEAVES_RED = ITEMS.register("mapleleaves_red",
+            () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_RED.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_LEAVES_YELLOW = ITEMS.register("mapleleaves_yellow",
+            () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_YELLOW.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_LEAVES_ORANGE = ITEMS.register("mapleleaves_orange",
+            () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_ORANGE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_LEAVES_GREEN = ITEMS.register("mapleleaves_green",
+            () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
+
+    public static final DeferredItem<Item> FALLEN_LEAVES_RED = ITEMS.register("fallen_leaves_red",
+            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_RED.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> FALLEN_LEAVES_ORANGE = ITEMS.register("fallen_leaves_orange",
+            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_ORANGE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> FALLEN_LEAVES_YELLOW = ITEMS.register("fallen_leaves_yellow",
+            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_YELLOW.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> FALLEN_LEAVES_GREEN = ITEMS.register("fallen_leaves_green",
+            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
+
     public static final DeferredItem<Item> BAMBOOSHOOT = ITEMS.register("bamboo_shoot",
             () -> new BlockItem(BlockRegistry.BAMBOOSHOOT.get(), Tsuki.defaultItemProperties()));
 
@@ -97,14 +106,6 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> MAPLE_SAPLING_GREEN = ITEMS.register("maple_sapling_green",
             () -> new BlockItem(BlockRegistry.MAPLE_SAPLING_GREEN.get(), Tsuki.defaultItemProperties()));
 
-    public static final DeferredItem<Item> FALLEN_LEAVES_RED = ITEMS.register("fallen_leaves_red",
-            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_RED.get(), Tsuki.defaultItemProperties()));
-    public static final DeferredItem<Item> FALLEN_LEAVES_ORANGE = ITEMS.register("fallen_leaves_orange",
-            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_ORANGE.get(), Tsuki.defaultItemProperties()));
-    public static final DeferredItem<Item> FALLEN_LEAVES_YELLOW = ITEMS.register("fallen_leaves_yellow",
-            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_YELLOW.get(), Tsuki.defaultItemProperties()));
-    public static final DeferredItem<Item> FALLEN_LEAVES_GREEN = ITEMS.register("fallen_leaves_green",
-            () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> KITUNEBI = ITEMS.register("kitunebi",
             () -> new BlockItem(BlockRegistry.KITUNEBI.get(), Tsuki.defaultItemProperties()));

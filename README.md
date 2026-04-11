@@ -1,6 +1,6 @@
 <div align="center">
 
-![logo](logo.png)
+![logo](./logo.png)
 
 # Tsuki
 

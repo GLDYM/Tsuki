@@ -2,10 +2,16 @@ package cn.mcmod.tsuki.data.client;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.FallenLeavesBlock;
+import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
+import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.armors.KimonoItem;
+import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
+import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
+import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod_mmf.mmlib.data.AbstractItemModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -50,6 +56,29 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         });
         
         BucketItemRegistry.ITEMS.getEntries().forEach(this::normalItem);
+        TsukiArmorToolRegistry.ITEMS.getEntries().forEach(item -> {
+            if (item.get() instanceof KimonoItem) {
+                return;
+            } else {
+                normalItem(item);
+            }
+        });
+        FoodRegistry.ITEMS.getEntries().forEach(item -> {
+            if (item.get() == TsukiFoodSet.CABBAGE.getItem().get()
+                || item.get() == TsukiFoodSet.DANANKO.getItem().get()
+                || item.get() == TsukiFoodSet.DANMITARASHI.getItem().get()
+                || item.get() == TsukiFoodSet.DANSANSYOKU.getItem().get()
+            ) {
+                return;
+            }
+            if (item.get() == TsukiCuisineSet.BEEF_STICK.getItem().get()
+                    || item.get() == TsukiCuisineSet.CHICKEN_STICK.getItem().get()
+                    || item.get() == TsukiCuisineSet.PORK_STICK.getItem().get()
+            ) {
+                return;
+            }
+            normalItem(item);
+        });
 
         // ItemRegistry.ITEMS.getEntries().forEach(this::normalItem);
     }

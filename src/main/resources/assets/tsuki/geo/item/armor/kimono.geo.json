@@ -1,0 +1,56 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.kimono_armor",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
+			},
+			"bones": [
+				{
+					"name": "armorBody",
+					"pivot": [0, 17, 0],
+					"cubes": [
+						{"origin": [-3.5, 13, -1.35], "size": [7, 10, 3], "inflate": 1, "uv": [0, 16]},
+						{"origin": [-4.5, 13, -2.275], "size": [9, 3, 5], "inflate": 0.25, "uv": [28, 32]},
+						{"origin": [-3, 12.5, 2], "size": [6, 4, 1], "uv": [28, 40]}
+					]
+				},
+				{
+					"name": "armorRightArm",
+					"pivot": [-5, 22, 0],
+					"cubes": [
+						{"origin": [-7.6, 12.2, -1.6], "size": [3, 12, 3], "inflate": 1.025, "uv": [24, 16]}
+					]
+				},
+				{
+					"name": "armorLeftArm",
+					"pivot": [5, 22, 0],
+					"cubes": [
+						{"origin": [4.6, 12.2, -1.6], "size": [3, 12, 3], "inflate": 1.025, "uv": [40, 16]}
+					]
+				},
+				{
+					"name": "armorRightLeg",
+					"pivot": [-1.9, 12, 0],
+					"cubes": [
+						{"origin": [-4.15, 2, -2.5], "size": [5, 10, 5], "uv": [0, 48]},
+						{"origin": [-3.4, 1.6, -1.5], "size": [3, 10, 3], "inflate": 0.6, "uv": [0, 32]}
+					]
+				},
+				{
+					"name": "armorLeftLeg",
+					"pivot": [1.9, 12, 0],
+					"cubes": [
+						{"origin": [-0.35, 2, -2.5], "size": [5, 10, 5], "uv": [21, 48]},
+						{"origin": [0.4, 1.6, -1.5], "size": [3, 10, 3], "inflate": 0.6, "uv": [16, 32]}
+					]
+				}
+			]
+		}
+	]
+}

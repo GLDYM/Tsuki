@@ -6,6 +6,7 @@ import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.tags.TsukiItemTags;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup.Provider;
@@ -15,7 +16,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -42,8 +42,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          );
       this.tag(ItemTags.COALS).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get());
       this.tag(TsukiItemTags.TOOLS_KNIVES).addTag(TsukiItemTags.TOOLS_KNIVES_FISH).addTag(TsukiItemTags.TOOLS_KNIVES_NOODLE);
-      this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).add(ItemRegistry.IRON_FISH_KNIFE.get(), ItemRegistry.SAKURA_FISH_KNIFE.get());
-      this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE).add(ItemRegistry.IRON_NOODLE_KNIFE.get(), ItemRegistry.SAKURA_NOODLE_KNIFE.get());
+      this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).add(TsukiArmorToolRegistry.IRON_FISH_KNIFE.get(), TsukiArmorToolRegistry.SAKURA_FISH_KNIFE.get());
+      this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE).add(TsukiArmorToolRegistry.IRON_NOODLE_KNIFE.get(), TsukiArmorToolRegistry.SAKURA_NOODLE_KNIFE.get());
       this.tag(TsukiItemTags.SEEDS_RICE).add(ItemRegistry.RICE_SEEDS.get());
       this.tag(TsukiItemTags.SEEDS_CABBAGE).add(ItemRegistry.CABBAGE_SEEDS.get());
       this.tag(TsukiItemTags.SEEDS_EGGPLANT).add(ItemRegistry.EGGPLANT_SEEDS.get());
@@ -138,6 +138,22 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.DOUGH_WHEAT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get());
       this.tag(TsukiItemTags.DOUGH_BUCKWHEAT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_BUCKWHEAT).get());
       this.tag(TsukiItemTags.DOUGH_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_RICE).get());
+      this.tag(TsukiItemTags.KIMONO).add(
+        TsukiArmorToolRegistry.KIMONO_BLACK.get(),
+        TsukiArmorToolRegistry.KIMONO_GREEN.get(),
+        TsukiArmorToolRegistry.KIMONO_CYAN.get(),
+        TsukiArmorToolRegistry.KIMONO_PURPLE.get(),
+        TsukiArmorToolRegistry.KIMONO_SAKURA.get(),
+        TsukiArmorToolRegistry.KIMONO_WHITE.get(),
+        TsukiArmorToolRegistry.KIMONO_BROWN.get(),
+        TsukiArmorToolRegistry.KIMONO_ENE.get(),
+        TsukiArmorToolRegistry.KIMONO_MIKO.get(),
+        TsukiArmorToolRegistry.YUKATA_BLUE.get(),
+        TsukiArmorToolRegistry.YUKATA_RED.get(),
+        TsukiArmorToolRegistry.YUKATA_LIME.get(),
+        TsukiArmorToolRegistry.YUKATA_YELLOW.get(),
+        TsukiArmorToolRegistry.YUKATA_MAGENTA.get()
+      );
       this.registerForgeTags();
    }
 
