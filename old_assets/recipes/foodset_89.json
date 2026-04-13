@@ -11,9 +11,9 @@
     {
       "item": "#FOODSOYSAUCE"
     },
-	{
-	"item": "#CROPRADISH"
-	}
+    {
+    "item": "#CROPRADISH"
+    }
   ],
   "type": "forge:ore_shapeless"
 }

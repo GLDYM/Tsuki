@@ -194,5 +194,9 @@ public class TsukiItemTags {
 
     public static final TagKey<Item> KIMONO = TagUtils.modItemTag(Tsuki.MODID, "kimono");
     public static final TagKey<Item> HAORI = TagUtils.modItemTag(Tsuki.MODID, "haori");
+    public static final TagKey<Item> SAMURAI_HELMET = TagUtils.modItemTag(Tsuki.MODID, "samurai_helmet");
+    public static final TagKey<Item> SAMURAI_CHESTPLATE = TagUtils.modItemTag(Tsuki.MODID, "samurai_chestplate");
+    public static final TagKey<Item> SAMURAI_LEGGINGS = TagUtils.modItemTag(Tsuki.MODID, "samurai_leggings");
+    public static final TagKey<Item> SAMURAI_BOOTS = TagUtils.modItemTag(Tsuki.MODID, "samurai_boots");
 }
 

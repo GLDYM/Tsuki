@@ -109,7 +109,7 @@ public class DistillerBlock extends BaseEntityBlock {
         }
 
         if (!level.isClientSide()) {
-	        ((ServerPlayer) player).openMenu(cookingPot, pos);
+            ((ServerPlayer) player).openMenu(cookingPot, pos);
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }

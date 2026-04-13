@@ -40,6 +40,6 @@
             "uvlock" : true},
         "facing=north,shape=inner_left": { "model": "sakura:kawara_inner", "y": 0 ,
             "uvlock" : true},
-		"inventory":{ "model": "sakura:kawara","uvlock" : true}
+        "inventory":{ "model": "sakura:kawara","uvlock" : true}
     }
 }

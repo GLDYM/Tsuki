@@ -23,10 +23,11 @@ import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.level.tree.TsukiTreeDecoratorTypes;
 import cn.mcmod.tsuki.loot_modifier.LootModifiterRegistry;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
+import cn.mcmod.tsuki.sound.SoundEventRegistry;
+import cn.mcmod.tsuki.sound.JukeboxSongRegistry;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
-import net.minecraft.world.level.block.LightBlock;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 
@@ -54,6 +55,9 @@ public class Tsuki {
         FluidBlockRegistry.BLOCKS.register(modEventBus);
         FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
         BucketItemRegistry.ITEMS.register(modEventBus);
+        SoundEventRegistry.SOUND_EVENTS.register(modEventBus);
+        // JukeboxSongRegistry.JUKEBOX_SONGS.register(modEventBus);
+        JukeboxSongRegistry.register();
         ParticleRegistry.PARTICLE_TYPES.register(modEventBus);
         ContainerRegistry.CONTAINER_TYPES.register(modEventBus);
         LootModifiterRegistry.GLM.register(modEventBus);

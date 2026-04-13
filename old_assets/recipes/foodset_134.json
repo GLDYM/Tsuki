@@ -6,10 +6,10 @@
   },
   "ingredients": [
     {
-		"type" : "forge:ore_dict",
+        "type" : "forge:ore_dict",
         "ore" : "listAllfishfresh"
     },
-	{
+    {
       "item": "#TOOLKNIFEFISH"
     }
 

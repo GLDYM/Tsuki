@@ -69,7 +69,7 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
         builder.addSlot(RecipeIngredientRole.INPUT, 14, 7).addIngredients(recipeIngredients.get(0));
         builder.addSlot(RecipeIngredientRole.INPUT, 14, 29).addIngredients(recipe.getTool());
         Minecraft minecraft = Minecraft.getInstance();
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 62, 7).addItemStack(recipe.getResultItem(minecraft.level.registryAccess()));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 62, 7).addItemStack(recipe.getResultItem(minecraft.level.registryAccess()));
 
         NonNullList<ChanceResult> byproducts = recipe.getByproducts();
         for (int i = 0; i < Math.min(4, byproducts.size()); i++) {

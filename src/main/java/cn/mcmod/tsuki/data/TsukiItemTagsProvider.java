@@ -124,7 +124,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.SALT).addTag(TsukiItemTags.DUST_SALT);
       this.tag(TsukiItemTags.DUST_SALT).addTag(TsukiItemTags.SALT_SALT);
       this.tag(TsukiItemTags.SALT_SALT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SALT).get());
-      this.tag(TsukiItemTags.SUGAR).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN_KASU).get()).addTag(TsukiItemTags.SUGAR_SUGAR);
+      this.tag(TsukiItemTags.SUGAR)
+        .add(TsukiNormalItemSet.MIRIN_KASU.getItem().get())
+        .add(TsukiNormalItemSet.MAPLE_SYRUP.getItem().get())
+        .addTag(TsukiItemTags.SUGAR_SUGAR);
       this.tag(TsukiItemTags.SUGAR_SUGAR).add(Items.SUGAR);
       this.tag(TsukiItemTags.CHEESE).addTag(TsukiItemTags.CHEESE_CHEESE);
       this.tag(TsukiItemTags.CHEESE_CHEESE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE).get());
@@ -160,6 +163,26 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         TsukiArmorToolRegistry.HAORI_BROWN.get(),
         TsukiArmorToolRegistry.HAORI_CYAN.get(),
         TsukiArmorToolRegistry.HAORI_LIGHT_BLUE.get()
+      );
+      this.tag(TsukiItemTags.SAMURAI_HELMET).add(
+        TsukiArmorToolRegistry.SAMURAI_HELMET_RED.get(),
+        TsukiArmorToolRegistry.SAMURAI_HELMET_GREEN.get(),
+        TsukiArmorToolRegistry.SAMURAI_HELMET_BLACK.get()
+      );
+      this.tag(TsukiItemTags.SAMURAI_CHESTPLATE).add(
+        TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_RED.get(),
+        TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_GREEN.get(),
+        TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_BLACK.get()
+      );
+      this.tag(TsukiItemTags.SAMURAI_LEGGINGS).add(
+        TsukiArmorToolRegistry.SAMURAI_LEGGINGS_RED.get(),
+        TsukiArmorToolRegistry.SAMURAI_LEGGINGS_GREEN.get(),
+        TsukiArmorToolRegistry.SAMURAI_LEGGINGS_BLACK.get()
+      );
+      this.tag(TsukiItemTags.SAMURAI_BOOTS).add(
+        TsukiArmorToolRegistry.SAMURAI_BOOTS_RED.get(),
+        TsukiArmorToolRegistry.SAMURAI_BOOTS_GREEN.get(),
+        TsukiArmorToolRegistry.SAMURAI_BOOTS_BLACK.get()
       );
       this.registerForgeTags();
    }

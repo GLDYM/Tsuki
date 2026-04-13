@@ -101,6 +101,33 @@ public class TsukiArmorToolRegistry {
     public static final DeferredItem<Item> STRAW_HAT = register("straw_hat",
             () -> new StrawHatItem(TsukiArmorMaterials.KIMONO_AND_HAORI, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
 
+    public static final DeferredItem<Item> SAMURAI_HELMET_RED = register("samurai_helmet_red",
+            () -> new SamuraiItem("samurai_red", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_CHESTPLATE_RED = register("samurai_chestplate_red",
+            () -> new SamuraiItem("samurai_red", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.CHESTPLATE, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_LEGGINGS_RED = register("samurai_leggings_red",
+            () -> new SamuraiItem("samurai_red", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.LEGGINGS, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_BOOTS_RED = register("samurai_boots_red",
+            () -> new SamuraiItem("samurai_red", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.BOOTS, Tsuki.defaultItemProperties()));
+
+    public static final DeferredItem<Item> SAMURAI_HELMET_GREEN = register("samurai_helmet_green",
+            () -> new SamuraiItem("samurai_green", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_CHESTPLATE_GREEN = register("samurai_chestplate_green",
+            () -> new SamuraiItem("samurai_green", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.CHESTPLATE, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_LEGGINGS_GREEN = register("samurai_leggings_green",
+            () -> new SamuraiItem("samurai_green", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.LEGGINGS, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_BOOTS_GREEN = register("samurai_boots_green",
+            () -> new SamuraiItem("samurai_green", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.BOOTS, Tsuki.defaultItemProperties()));
+
+    public static final DeferredItem<Item> SAMURAI_HELMET_BLACK = register("samurai_helmet_black",
+            () -> new SamuraiItem("samurai_black", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_CHESTPLATE_BLACK = register("samurai_chestplate_black",
+            () -> new SamuraiItem("samurai_black", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.CHESTPLATE, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_LEGGINGS_BLACK = register("samurai_leggings_black",
+            () -> new SamuraiItem("samurai_black", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.LEGGINGS, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAMURAI_BOOTS_BLACK = register("samurai_boots_black",
+            () -> new SamuraiItem("samurai_black", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.BOOTS, Tsuki.defaultItemProperties()));
+
     private static <V extends Item> DeferredItem<V> register(String name, Supplier<V> item) {
         return ITEMS.register(name, item);
     }

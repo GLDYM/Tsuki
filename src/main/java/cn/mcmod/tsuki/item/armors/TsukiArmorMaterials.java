@@ -42,4 +42,26 @@ public class TsukiArmorMaterials {
             0.0F
         )
     );
+
+    public static final Holder<ArmorMaterial> SAMURAI = ARMOR_MATERIALS.register("samurai",
+        () -> new ArmorMaterial(
+            Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                map.put(ArmorItem.Type.BOOTS, 5);
+                map.put(ArmorItem.Type.LEGGINGS, 9);
+                map.put(ArmorItem.Type.CHESTPLATE, 10);
+                map.put(ArmorItem.Type.HELMET, 6);
+                map.put(ArmorItem.Type.BODY, 10);
+            }),
+            25,
+            SoundEvents.ARMOR_EQUIP_DIAMOND, 
+            () -> Ingredient.of(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()),
+            List.of(
+                new ArmorMaterial.Layer(
+                    ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "samurai")
+                )
+            ),
+            5.0F, 
+            0.1F
+        )
+    );
 }

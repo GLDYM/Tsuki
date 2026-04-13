@@ -24,7 +24,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 public class ClientEvents {
 
     @SuppressWarnings("deprecation")
-	@SubscribeEvent
+    @SubscribeEvent
     public static void clientStuff(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SAKURA_SAPLING.get(), RenderType.cutoutMipped());

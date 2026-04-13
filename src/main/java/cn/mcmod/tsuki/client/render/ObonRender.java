@@ -15,58 +15,58 @@ import net.minecraft.world.item.ItemStack;
 
 public class ObonRender implements BlockEntityRenderer<ObonBlockEntity> {
 
-	public ObonRender(BlockEntityRendererProvider.Context pContext) {
-	}
+    public ObonRender(BlockEntityRendererProvider.Context pContext) {
+    }
 
-	@Override
-	public void render(ObonBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer,
-			int combinedLight, int combinedOverlay) {
-		Direction direction = blockEntity.getBlockState().getValue(ObonBlock.FACING).getOpposite();
-		ItemStack boardStack = blockEntity.getStoredItem();
-		int posLong = (int) blockEntity.getBlockPos().asLong();
+    @Override
+    public void render(ObonBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer,
+            int combinedLight, int combinedOverlay) {
+        Direction direction = blockEntity.getBlockState().getValue(ObonBlock.FACING).getOpposite();
+        ItemStack boardStack = blockEntity.getStoredItem();
+        int posLong = (int) blockEntity.getBlockPos().asLong();
 
-		if (!boardStack.isEmpty()) {
-			poseStack.pushPose();
+        if (!boardStack.isEmpty()) {
+            poseStack.pushPose();
 
-			ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-			boolean isBlockItem = itemRenderer.getModel(boardStack, blockEntity.getLevel(), null, 0).isGui3d();
+            ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+            boolean isBlockItem = itemRenderer.getModel(boardStack, blockEntity.getLevel(), null, 0).isGui3d();
 
-			if (isBlockItem) {
-				renderBlock(poseStack, direction);
-			} else {
-				renderItemLayingDown(poseStack, direction);
-			}
+            if (isBlockItem) {
+                renderBlock(poseStack, direction);
+            } else {
+                renderItemLayingDown(poseStack, direction);
+            }
 
-			Minecraft.getInstance().getItemRenderer().renderStatic(boardStack, ItemDisplayContext.FIXED, combinedLight,
-					combinedOverlay, poseStack, buffer, blockEntity.getLevel(), posLong);
-			poseStack.popPose();
-		}
-	}
+            Minecraft.getInstance().getItemRenderer().renderStatic(boardStack, ItemDisplayContext.FIXED, combinedLight,
+                    combinedOverlay, poseStack, buffer, blockEntity.getLevel(), posLong);
+            poseStack.popPose();
+        }
+    }
 
-	public void renderItemLayingDown(PoseStack matrixStackIn, Direction direction) {
-		// Center item above the cutting board
-		matrixStackIn.translate(0.5D, 0.16D, 0.5D);
+    public void renderItemLayingDown(PoseStack matrixStackIn, Direction direction) {
+        // Center item above the cutting board
+        matrixStackIn.translate(0.5D, 0.16D, 0.5D);
 
-		// Rotate item to face the cutting board's front side
-		float f = -direction.toYRot();
-		matrixStackIn.mulPose(Axis.YP.rotationDegrees(f));
+        // Rotate item to face the cutting board's front side
+        float f = -direction.toYRot();
+        matrixStackIn.mulPose(Axis.YP.rotationDegrees(f));
 
-		// Rotate item flat on the cutting board. Use X and Y from now on
-		matrixStackIn.mulPose(Axis.XP.rotationDegrees(90.0F));
+        // Rotate item flat on the cutting board. Use X and Y from now on
+        matrixStackIn.mulPose(Axis.XP.rotationDegrees(90.0F));
 
-		// Resize the item
-		matrixStackIn.scale(0.6F, 0.6F, 0.6F);
-	}
+        // Resize the item
+        matrixStackIn.scale(0.6F, 0.6F, 0.6F);
+    }
 
-	public void renderBlock(PoseStack matrixStackIn, Direction direction) {
-		// Center block above the cutting board
-		matrixStackIn.translate(0.5D, 0.27D, 0.5D);
+    public void renderBlock(PoseStack matrixStackIn, Direction direction) {
+        // Center block above the cutting board
+        matrixStackIn.translate(0.5D, 0.27D, 0.5D);
 
-		// Rotate block to face the cutting board's front side
-		float f = -direction.toYRot();
-		matrixStackIn.mulPose(Axis.YP.rotationDegrees(f));
+        // Rotate block to face the cutting board's front side
+        float f = -direction.toYRot();
+        matrixStackIn.mulPose(Axis.YP.rotationDegrees(f));
 
-		// Resize the block
-		matrixStackIn.scale(0.8F, 0.8F, 0.8F);
-	}
+        // Resize the block
+        matrixStackIn.scale(0.8F, 0.8F, 0.8F);
+    }
 }

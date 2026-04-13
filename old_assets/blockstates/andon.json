@@ -1,8 +1,8 @@
 {
     "variants": {
-	"inventory" : {
-			 "model" : "sakura:andon"
-		  },
+    "inventory" : {
+             "model" : "sakura:andon"
+          },
         "facing=north": { "model": "sakura:andon" },
         "facing=south": { "model": "sakura:andon", "y": 180 },
         "facing=west":  { "model": "sakura:andon", "y": 270 },

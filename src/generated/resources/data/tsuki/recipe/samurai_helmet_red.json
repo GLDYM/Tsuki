@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "tsuki:sakura_diamond"
+    },
+    "G": {
+      "tag": "c:ingots/gold"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "DGD",
+    "DID"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:samurai_helmet_red"
+  }
+}

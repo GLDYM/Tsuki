@@ -6,11 +6,11 @@ pluginManagement {
             url = 'https://maven.minecraftforge.net/'
         }
         maven { 
-        	name = 'Parchment'
-        	url = 'https://maven.parchmentmc.org' 
+            name = 'Parchment'
+            url = 'https://maven.parchmentmc.org' 
         } 
         maven {
-        	name = 'SpongeMC'
+            name = 'SpongeMC'
             url "https://repo.spongepowered.org/repository/maven-public/"
         }
 

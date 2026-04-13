@@ -261,6 +261,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.IRON_FISH_KNIFE.get())
+            .pattern("I  ")
+            .pattern(" I ")
+            .pattern("  L")
+            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "iron_fish_knife_mirror"));
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.IRON_NOODLE_KNIFE.get())
             .pattern("II")
             .pattern("II")
@@ -269,6 +277,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.IRON_NOODLE_KNIFE.get())
+            .pattern("II")
+            .pattern("II")
+            .pattern("LI")
+            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "iron_noodle_knife_mirror"));
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_AXE.get())
             .pattern("DD ")
             .pattern("DL ")
@@ -277,6 +293,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
             .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_AXE.get())
+            .pattern(" DD")
+            .pattern(" LD")
+            .pattern(" L ")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_axe_mirror"));
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_PICKAXE.get())
             .pattern("DDD")
             .pattern(" L ")
@@ -292,7 +316,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('D',  TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has( TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
-            .save(consumer); ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,  TsukiArmorToolRegistry.SAKURA_HOE.get())
+            .save(consumer); 
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,  TsukiArmorToolRegistry.SAKURA_HOE.get())
             .pattern("DD ")
             .pattern(" L ")
             .pattern(" L ")
@@ -300,6 +325,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has( TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
             .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,  TsukiArmorToolRegistry.SAKURA_HOE.get())
+            .pattern(" DD")
+            .pattern(" L ")
+            .pattern(" L ")
+            .define('D',  TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has( TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_hoe_mirror"));
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,  TsukiArmorToolRegistry.SAKURA_FISH_KNIFE.get())
             .pattern("  D")
             .pattern(" D ")
@@ -308,12 +341,36 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has( TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
             .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS,  TsukiArmorToolRegistry.SAKURA_FISH_KNIFE.get())
+            .pattern("D  ")
+            .pattern(" D ")
+            .pattern("  L")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has( TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_fish_knife_mirror"));
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_NOODLE_KNIFE.get())
             .pattern("DD")
             .pattern("DD")
             .pattern("DL")
             .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
             .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_NOODLE_KNIFE.get())
+            .pattern("DD")
+            .pattern("DD")
+            .pattern("LD")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_noodle_knife_mirror"));
+
+        // SP
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
+            ItemRegistry.MUSIC_DISC_MIKO.get())
+            .requires(TsukiArmorToolRegistry.KIMONO_MIKO.get())
+            .requires(TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
             .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
             .save(consumer);
 
@@ -464,6 +521,113 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .unlockedBy("has_item", has(TsukiItemTags.HAORI))
             .save(consumer);
 
+        // Samurai
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, 
+            TsukiArmorToolRegistry.SAMURAI_HELMET_RED.get())
+            .pattern("DGD")
+            .pattern("DID")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('G', Tags.Items.INGOTS_GOLD)
+            .define('I', Tags.Items.INGOTS_IRON)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, 
+            TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_RED.get())
+            .pattern("D D")
+            .pattern("DID")
+            .pattern("DDD")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('I', Tags.Items.INGOTS_IRON)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_LEGGINGS_RED.get())
+            .pattern("DID")
+            .pattern("DID")
+            .pattern("I I")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .define('I', Tags.Items.INGOTS_IRON)
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_BOOTS_RED.get())
+            .pattern("D D")
+            .pattern("D D")
+            .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_HELMET_RED.get())
+            .requires(TsukiItemTags.SAMURAI_HELMET)
+            .requires(Tags.Items.DYES_RED)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_HELMET))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "samurai_helmet_red_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_RED.get())
+            .requires(TsukiItemTags.SAMURAI_CHESTPLATE)
+            .requires(Tags.Items.DYES_RED)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_CHESTPLATE))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "samurai_chestplate_red_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_LEGGINGS_RED.get())
+            .requires(TsukiItemTags.SAMURAI_LEGGINGS)
+            .requires(Tags.Items.DYES_RED)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_LEGGINGS))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "samurai_leggings_red_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_BOOTS_RED.get())
+            .requires(TsukiItemTags.SAMURAI_BOOTS)
+            .requires(Tags.Items.DYES_RED)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_BOOTS))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "samurai_boots_red_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_HELMET_GREEN.get())
+            .requires(TsukiItemTags.SAMURAI_HELMET)
+            .requires(Tags.Items.DYES_GREEN)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_HELMET))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_GREEN.get())
+            .requires(TsukiItemTags.SAMURAI_CHESTPLATE)
+            .requires(Tags.Items.DYES_GREEN)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_CHESTPLATE))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_LEGGINGS_GREEN.get())
+            .requires(TsukiItemTags.SAMURAI_LEGGINGS)
+            .requires(Tags.Items.DYES_GREEN)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_LEGGINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_BOOTS_GREEN.get())
+            .requires(TsukiItemTags.SAMURAI_BOOTS)
+            .requires(Tags.Items.DYES_GREEN)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_BOOTS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_HELMET_BLACK.get())
+            .requires(TsukiItemTags.SAMURAI_HELMET)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_HELMET))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_BLACK.get())
+            .requires(TsukiItemTags.SAMURAI_CHESTPLATE)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_CHESTPLATE))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_LEGGINGS_BLACK.get())
+            .requires(TsukiItemTags.SAMURAI_LEGGINGS)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_LEGGINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SAMURAI_BOOTS_BLACK.get())
+            .requires(TsukiItemTags.SAMURAI_BOOTS)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_BOOTS))
+            .save(consumer);
 
         this.foodSmeltingRecipes(
             "eggplant_bake",

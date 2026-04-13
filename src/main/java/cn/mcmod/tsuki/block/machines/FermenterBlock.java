@@ -90,7 +90,7 @@ public class FermenterBlock extends BaseEntityBlock {
         }
 
         if (!level.isClientSide()) {
-	        ((ServerPlayer) player).openMenu(cookingPot, pos);
+            ((ServerPlayer) player).openMenu(cookingPot, pos);
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }

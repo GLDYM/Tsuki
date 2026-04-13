@@ -15,21 +15,21 @@
 					"name": "armorBody",
 					"pivot": [0, 24, 0],
 					"cubes": [
-						{"origin": [-3.5, 11, -1.4], "size": [7, 12, 3], "inflate": 1.45, "uv": [0, 0]}
+						{"origin": [-4, 11.6, -1.9], "size": [8, 12, 4], "inflate": 1, "uv": [0, 0]}
 					]
 				},
 				{
 					"name": "armorRightArm",
 					"pivot": [-5, 22, 0],
 					"cubes": [
-						{"origin": [-7.5, 11.4, -1.6], "size": [3, 12, 3], "inflate": 1.2, "uv": [24, 0]}
+						{"origin": [-7.5, 11.4, -1.5], "size": [3, 12, 3], "inflate": 1.2, "uv": [28, 0]}
 					]
 				},
 				{
 					"name": "armorLeftArm",
 					"pivot": [5, 22, 0],
 					"cubes": [
-						{"origin": [4.5, 11.4, -1.5], "size": [3, 12, 3], "inflate": 1.2, "uv": [40, 0]}
+						{"origin": [4.5, 11.4, -1.5], "size": [3, 12, 3], "inflate": 1.2, "uv": [44, 0]}
 					]
 				}
 			]

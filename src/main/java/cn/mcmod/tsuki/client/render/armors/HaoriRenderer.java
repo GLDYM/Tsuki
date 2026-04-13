@@ -17,9 +17,9 @@ public class HaoriRenderer extends GeoArmorRenderer<HaoriItem> {
     }
 
     @Override
-	protected void applyBoneVisibilityBySlot(EquipmentSlot currentSlot) {
+    protected void applyBoneVisibilityBySlot(EquipmentSlot currentSlot) {
         // no-op
-	}
+    }
 
     public static class HaoriModel<T extends GeoAnimatable> extends DefaultedItemGeoModel<T> {
         private final String base;

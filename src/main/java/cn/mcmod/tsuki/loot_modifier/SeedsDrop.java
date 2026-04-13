@@ -18,30 +18,30 @@ import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 
 public class SeedsDrop {
-	public static class SeedDropModifier extends LootModifier {
-		public SeedDropModifier(LootItemCondition[] conditionsIn) {
-			super(conditionsIn);
-		}
+    public static class SeedDropModifier extends LootModifier {
+        public SeedDropModifier(LootItemCondition[] conditionsIn) {
+            super(conditionsIn);
+        }
 
-		public static final MapCodec<SeedDropModifier> CODEC = RecordCodecBuilder
-				.mapCodec(inst -> codecStart(inst).apply(inst, SeedDropModifier::new));
+        public static final MapCodec<SeedDropModifier> CODEC = RecordCodecBuilder
+                .mapCodec(inst -> codecStart(inst).apply(inst, SeedDropModifier::new));
 
-		@Nonnull
-		@Override
-		protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-			List<Item> seeds = Lists.newArrayList(ItemRegistry.CABBAGE_SEEDS.get(), ItemRegistry.EGGPLANT_SEEDS.get(),
-					ItemRegistry.ONION_SEEDS.get(), ItemRegistry.RADISH_SEEDS.get(), ItemRegistry.TOMATO_SEEDS.get(),
-					ItemRegistry.RICE_SEEDS.get(), ItemRegistry.RAPESEEDS.get(), ItemRegistry.TARO.get(),
-					ItemRegistry.BUCKWHEAT.get(), ItemRegistry.SOYBEAN.get(), ItemRegistry.RED_BEAN.get());
-			generatedLoot.add(new ItemStack(seeds.get(context.getRandom().nextInt(seeds.size()))));
-			return generatedLoot;
-		}
+        @Nonnull
+        @Override
+        protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+            List<Item> seeds = Lists.newArrayList(ItemRegistry.CABBAGE_SEEDS.get(), ItemRegistry.EGGPLANT_SEEDS.get(),
+                    ItemRegistry.ONION_SEEDS.get(), ItemRegistry.RADISH_SEEDS.get(), ItemRegistry.TOMATO_SEEDS.get(),
+                    ItemRegistry.RICE_SEEDS.get(), ItemRegistry.RAPESEEDS.get(), ItemRegistry.TARO.get(),
+                    ItemRegistry.BUCKWHEAT.get(), ItemRegistry.SOYBEAN.get(), ItemRegistry.RED_BEAN.get());
+            generatedLoot.add(new ItemStack(seeds.get(context.getRandom().nextInt(seeds.size()))));
+            return generatedLoot;
+        }
 
-		@Override
-		public MapCodec<? extends IGlobalLootModifier> codec() {
-			return CODEC;
-		}
-	}
+        @Override
+        public MapCodec<? extends IGlobalLootModifier> codec() {
+            return CODEC;
+        }
+    }
 
 }
 

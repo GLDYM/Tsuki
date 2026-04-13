@@ -3,10 +3,12 @@ package cn.mcmod.tsuki.item;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.sound.JukeboxSongRegistry;
 import cn.mcmod_mmf.mmlib.item.ItemFoodSeeds;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
 import cn.mcmod_mmf.mmlib.registry.ItemRegistryUtil;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -47,6 +49,14 @@ public class ItemRegistry {
 
     public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = ItemRegistryUtil
             .mapOfKeys(TsukiNormalItemSet.class, material -> register(material.getName(), ItemRegistry::normalItem));
+
+    public static final DeferredItem<Item> MUSIC_DISC_MIKO = register("music_disc_miko", 
+        () -> new Item(Tsuki.defaultItemProperties()
+            .stacksTo(1)
+            .rarity(Rarity.EPIC)
+            .jukeboxPlayable(JukeboxSongRegistry.DISC_MUSIC_MIKO)
+        )
+    );
 
     private static Item normalItem() {
         return new Item(Tsuki.defaultItemProperties());

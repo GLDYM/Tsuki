@@ -1,0 +1,8 @@
+{
+  "comparator_output": 15,
+  "description": {
+    "translate": "jukebox_song.tsuki.music_disc.miko"
+  },
+  "length_in_seconds": 374.0,
+  "sound_event": "tsuki:music_disc.miko"
+}

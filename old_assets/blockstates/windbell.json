@@ -1,8 +1,8 @@
 {
     "variants": {
-	"inventory" : {
-			 "model" : "sakura:windbell"
-		  },
+    "inventory" : {
+             "model" : "sakura:windbell"
+          },
         "facing=north": { "model": "sakura:windbell" },
         "facing=south": { "model": "sakura:windbell", "y": 180 },
         "facing=west":  { "model": "sakura:windbell", "y": 270 },

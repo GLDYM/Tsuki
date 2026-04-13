@@ -11,7 +11,7 @@
   "type": "forge:ore_shaped",
   "key": {
     "P": {
-	"item": "sakura:sakura_diamond"
+    "item": "sakura:sakura_diamond"
     },
     "S": {
       "item": "#WOODLUMBER"

@@ -8,12 +8,12 @@
          "model" : "sakura:kitunebi"
       },
       "isvisible" : {
-		"true":{
-		"model" : "sakura:kitunebi"
-		},
-		"false":{
-		"model" : "sakura:kitunebi_false"
-		}
+        "true":{
+        "model" : "sakura:kitunebi"
+        },
+        "false":{
+        "model" : "sakura:kitunebi_false"
+        }
       }
    }
 }

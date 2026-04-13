@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "tsuki:sakura_diamond"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "DID",
+    "DID",
+    "I I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:samurai_leggings_red"
+  }
+}

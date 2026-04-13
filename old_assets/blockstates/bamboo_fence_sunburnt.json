@@ -1,7 +1,7 @@
 {
     "multipart": [
         {   "apply": { "model": "sakura:bamboo_sunburnt" },
-			"when": { "up": "true" }},
+            "when": { "up": "true" }},
         {   "when": { "north": "true" },
             "apply": { "model": "sakura:bamboo_fence_sunburnt", "uvlock": false }
         },

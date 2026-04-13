@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:kimono_miko"
+    },
+    {
+      "item": "tsuki:sakura_diamond"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:music_disc_miko"
+  }
+}

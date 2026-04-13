@@ -62,7 +62,7 @@ public class StoneMortarBlock extends BaseEntityBlock {
         if (!world.isClientSide()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof StoneMortarBlockEntity mortarBlockEntity) {
-	            ((ServerPlayer) player).openMenu(mortarBlockEntity, pos);
+                ((ServerPlayer) player).openMenu(mortarBlockEntity, pos);
             }
         }
         return ItemInteractionResult.sidedSuccess(world.isClientSide);

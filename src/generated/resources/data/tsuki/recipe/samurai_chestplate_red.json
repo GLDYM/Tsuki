@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "tsuki:sakura_diamond"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    }
+  },
+  "pattern": [
+    "D D",
+    "DID",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:samurai_chestplate_red"
+  }
+}

@@ -129,7 +129,7 @@ public class CookingPotBlock extends BaseEntityBlock {
                 return ItemInteractionResult.SUCCESS;
             }
 
-	        ((ServerPlayer) player).openMenu(cookingPot, pos);
+            ((ServerPlayer) player).openMenu(cookingPot, pos);
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }

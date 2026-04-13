@@ -38,9 +38,9 @@ public class ChoppingBoardRender implements BlockEntityRenderer<ChoppingBoardBlo
                 renderItemLayingDown(poseStack, direction);
             }
 
-			Minecraft.getInstance().getItemRenderer().renderStatic(boardStack, ItemDisplayContext.FIXED, combinedLight,
-					combinedOverlay, poseStack, buffer, blockEntity.getLevel(), posLong);
-			poseStack.popPose();
+            Minecraft.getInstance().getItemRenderer().renderStatic(boardStack, ItemDisplayContext.FIXED, combinedLight,
+                    combinedOverlay, poseStack, buffer, blockEntity.getLevel(), posLong);
+            poseStack.popPose();
         }
     }
 
