@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "tsuki:block/noren_blue",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "tsuki:block/noren_blue"
+    },
+    "facing=south": {
+      "model": "tsuki:block/noren_blue",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tsuki:block/noren_blue",
+      "y": 270
+    }
+  }
+}

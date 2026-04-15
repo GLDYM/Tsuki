@@ -90,7 +90,7 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
             }
         }
         if(!recipe.getResultFluid().isEmpty())
-            builder.addSlot(RecipeIngredientRole.INPUT, 93, 1)
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 93, 1)
             .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
             .addIngredient(NeoForgeTypes.FLUID_STACK, recipe.getResultFluid());
     }

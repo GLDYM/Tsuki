@@ -1,31 +1,31 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "tag":  "c:crops/redbean"
-                        },
-                        {
-                            "tag":  "c:crops/redbean"
-                        },
-                        {
-                            "tag":  "c:sugar"
-                        },
-                        {
-                            "amount":  125,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "count":  2,
-                        "item":  "tsuki:red_bean_paste"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:crops/redbean"
+    },
+    {
+      "tag": "c:crops/redbean"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:red_bean_paste"
+    }
+  ],
+  "type": "create:mixing"
 }

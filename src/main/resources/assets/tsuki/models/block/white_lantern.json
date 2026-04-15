@@ -1,0 +1,7 @@
+{
+  "parent": "tsuki:block/lantern",
+  "textures": {
+    "0": "tsuki:block/models/white_lantern",
+    "particle": "tsuki:block/models/white_lantern"
+  }
+}

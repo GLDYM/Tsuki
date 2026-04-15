@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "tag": "c:rods/wooden"
+    },
+    "S": {
+      "tag": "c:cobblestones"
+    }
+  },
+  "pattern": [
+    "SS",
+    " L"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:stone_hammer"
+  }
+}

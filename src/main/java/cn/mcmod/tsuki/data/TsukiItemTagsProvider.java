@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.data;
 
 import cn.mcmod.tsuki.block.BlockItemRegistry;
+import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
@@ -9,6 +10,9 @@ import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.tags.TsukiItemTags;
 import java.util.concurrent.CompletableFuture;
+
+import com.jcraft.jorbis.Block;
+
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -16,6 +20,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -42,8 +47,16 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          );
       this.tag(ItemTags.COALS).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get());
       this.tag(TsukiItemTags.TOOLS_KNIVES).addTag(TsukiItemTags.TOOLS_KNIVES_FISH).addTag(TsukiItemTags.TOOLS_KNIVES_NOODLE);
+      this.tag(TsukiItemTags.TOOLS_HAMMERS).add(
+              TsukiArmorToolRegistry.STONE_HAMMER.get(),
+              TsukiArmorToolRegistry.IRON_HAMMER.get(),
+              TsukiArmorToolRegistry.STEEL_HAMMER.get(),
+              TsukiArmorToolRegistry.SAKURA_HAMMER.get()
+      );
       this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).add(TsukiArmorToolRegistry.IRON_FISH_KNIFE.get(), TsukiArmorToolRegistry.SAKURA_FISH_KNIFE.get());
       this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE).add(TsukiArmorToolRegistry.IRON_NOODLE_KNIFE.get(), TsukiArmorToolRegistry.SAKURA_NOODLE_KNIFE.get());
+      this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).addOptionalTag(ResourceLocation.parse("farmersdelight:tools/knives"));
+      this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE).addOptionalTag(ResourceLocation.parse("farmersdelight:tools/knives"));
       this.tag(TsukiItemTags.SEEDS_RICE).add(ItemRegistry.RICE_SEEDS.get());
       this.tag(TsukiItemTags.SEEDS_CABBAGE).add(ItemRegistry.CABBAGE_SEEDS.get());
       this.tag(TsukiItemTags.SEEDS_EGGPLANT).add(ItemRegistry.EGGPLANT_SEEDS.get());
@@ -298,7 +311,16 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          .add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get())
          .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get());
       this.tag(TsukiItemTags.SALAD_INGREDIENTS_TOMATO).add(FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO).get());
-      this.tag(TsukiItemTags.TOOLS).addTags(TsukiItemTags.TOOLS_AXES, TsukiItemTags.TOOLS_PICKAXES, TsukiItemTags.TOOLS_SHOVELS);
+      this.tag(TsukiItemTags.ORES)
+          .add(BlockItemRegistry.SAKURA_DIAMOND_ORE.get())
+          .add(BlockItemRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()) 
+          .add(BlockItemRegistry.IRON_SAND.get());
+      this.tag(TsukiItemTags.ORES_SAKURA_DIAMOND)
+          .add(BlockItemRegistry.SAKURA_DIAMOND_ORE.get())
+          .add(BlockItemRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
+      this.tag(TsukiItemTags.ORES_IRON)
+          .add(BlockItemRegistry.IRON_SAND.get());
+      this.tag(TsukiItemTags.TOOLS).addTags(TsukiItemTags.TOOLS_AXES, TsukiItemTags.TOOLS_PICKAXES, TsukiItemTags.TOOLS_SHOVELS, TsukiItemTags.TOOLS_HAMMERS, TsukiItemTags.TOOLS_KNIVES);
       this.tag(TsukiItemTags.TOOLS_AXES)
          .add(Items.WOODEN_AXE, Items.STONE_AXE, Items.IRON_AXE, Items.DIAMOND_AXE, Items.GOLDEN_AXE, Items.NETHERITE_AXE);
       this.tag(TsukiItemTags.TOOLS_PICKAXES)
@@ -311,4 +333,3 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       return "Tsuki Items' Tags";
    }
 }
-

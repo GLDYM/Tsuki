@@ -1,0 +1,6 @@
+{
+  "parent": "tsuki:block/noren",
+  "textures": {
+    "1": "tsuki:block/noren_blue"
+  }
+}

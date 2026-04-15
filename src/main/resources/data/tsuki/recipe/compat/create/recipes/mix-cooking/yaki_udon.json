@@ -1,33 +1,33 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "item":  "tsuki:udon_raw"
-                        },
-                        {
-                            "item":  "tsuki:kaeshi"
-                        },
-                        {
-                            "item":  "tsuki:worcester_sauce"
-                        },
-                        {
-                            "tag":  "c:vegetables"
-                        },
-                        {
-                            "amount":  125,
-                            "fluidTag":  "c:food_oil"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "item":  "tsuki:yaki_udon"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "tsuki:udon_raw"
+    },
+    {
+      "item": "tsuki:kaeshi"
+    },
+    {
+      "item": "tsuki:worcester_sauce"
+    },
+    {
+      "tag": "c:vegetables"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "c:food_oil"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:yaki_udon"
+    }
+  ],
+  "type": "create:mixing"
 }

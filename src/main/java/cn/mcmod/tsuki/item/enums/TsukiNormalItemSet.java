@@ -49,7 +49,14 @@ public enum TsukiNormalItemSet {
     CURRY_POWDER("curry_powder"),
     CURRY_SAUCE("curry_sauce"),
     VINEGAR("vinegar"),
-    RED_VINEGAR("red_vinegar");
+    RED_VINEGAR("red_vinegar"),
+    SAKURA_COIN("sakura_coin"),
+    ZUKU("zuku"),
+    ZUKU_INGOT("zuku_ingot"),
+    SAGEGANE("sagegane"),
+    TAMAHAGANE("tamahagane"),
+    STEEL_INGOT("steel_ingot");
+
     private final String name;
     private TsukiNormalItemSet(String name) {
         this.name = name;
@@ -57,9 +64,17 @@ public enum TsukiNormalItemSet {
     public String getName() {
         return name;
     }
+    public boolean isArmorToolMaterial() {
+        return switch (this) {
+            case ZUKU, ZUKU_INGOT, SAGEGANE, TAMAHAGANE, STEEL_INGOT -> true;
+            default -> false;
+        };
+    }
+
     public Supplier<Item> getItem() {
-       return ItemRegistry.MATERIALS.get(this);
+        if (isArmorToolMaterial()) {
+            throw new IllegalStateException("Use TsukiArmorToolRegistry directly for " + this.name());
+        }
+        return ItemRegistry.MATERIALS.get(this);
     }
 }
-
-

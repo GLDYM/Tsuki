@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "lit=false,timer=0": {
+      "model": "tsuki:block/tatara"
+    },
+    "lit=false,timer=1": {
+      "model": "tsuki:block/tatara"
+    },
+    "lit=false,timer=2": {
+      "model": "tsuki:block/tatara"
+    },
+    "lit=false,timer=3": {
+      "model": "tsuki:block/tatara"
+    },
+    "lit=true,timer=0": {
+      "model": "tsuki:block/tatara_smelting"
+    },
+    "lit=true,timer=1": {
+      "model": "tsuki:block/tatara_smelting"
+    },
+    "lit=true,timer=2": {
+      "model": "tsuki:block/tatara_smelting"
+    },
+    "lit=true,timer=3": {
+      "model": "tsuki:block/tatara_finished"
+    }
+  }
+}

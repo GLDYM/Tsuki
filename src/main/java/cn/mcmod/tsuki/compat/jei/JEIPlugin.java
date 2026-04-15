@@ -14,6 +14,9 @@ import cn.mcmod.tsuki.compat.jei.category.CookingPotCategory;
 import cn.mcmod.tsuki.compat.jei.category.DistillerCategory;
 import cn.mcmod.tsuki.compat.jei.category.FermenterCategory;
 import cn.mcmod.tsuki.compat.jei.category.StoneMortarCategory;
+import cn.mcmod.tsuki.compat.jei.category.TataraCategory;
+import cn.mcmod.tsuki.compat.jei.recipe.TataraJeiRecipe;
+import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.container.CookingPotContainer;
 import cn.mcmod.tsuki.container.DistillerContainer;
 import cn.mcmod.tsuki.container.FermenterContainer;
@@ -69,6 +72,9 @@ public class JEIPlugin implements IModPlugin {
     public static final mezz.jei.api.recipe.RecipeType<ChoppingRecipe> CHOPPING_JEI_TYPE = 
             mezz.jei.api.recipe.RecipeType.create(Tsuki.MODID, "chopping", ChoppingRecipe.class);
 
+    public static final mezz.jei.api.recipe.RecipeType<TataraJeiRecipe> TATARA_JEI_TYPE =
+            mezz.jei.api.recipe.RecipeType.create(Tsuki.MODID, "tatara", TataraJeiRecipe.class);
+
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
         registry.addRecipeCategories(new CookingPotCategory(registry.getJeiHelpers().getGuiHelper()));
@@ -76,6 +82,7 @@ public class JEIPlugin implements IModPlugin {
         registry.addRecipeCategories(new FermenterCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new DistillerCategory(registry.getJeiHelpers().getGuiHelper()));
         registry.addRecipeCategories(new ChoppingCategory(registry.getJeiHelpers().getGuiHelper()));
+        registry.addRecipeCategories(new TataraCategory(registry.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -88,6 +95,12 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipes(FERMENTER_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.FERMENTER_RECIPE_TYPE.get()));
         registration.addRecipes(DISTILLER_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.DISTILLER_RECIPE_TYPE.get()));
         registration.addRecipes(CHOPPING_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get()));
+        registration.addRecipes(TATARA_JEI_TYPE, List.of(TataraJeiRecipe.create(
+                new ItemStack(BlockRegistry.TATARA.get()),
+                new ItemStack(net.minecraft.world.item.Items.FLINT_AND_STEEL),
+                new ItemStack(net.minecraft.world.item.Items.IRON_INGOT),
+                new ItemStack(TsukiArmorToolRegistry.TAMAHAGANE.get())
+        )));
     }
 
     @Override
@@ -97,6 +110,10 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.FERMENTER.get()), FERMENTER_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.DISTILLER.get()), DISTILLER_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CHOPPING_BOARD.get()), CHOPPING_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.STONE_HAMMER.get()), TATARA_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.IRON_HAMMER.get()), TATARA_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.STEEL_HAMMER.get()), TATARA_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.SAKURA_HAMMER.get()), TATARA_JEI_TYPE);
     }
 
     @Override

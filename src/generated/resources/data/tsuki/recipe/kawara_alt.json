@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "tsuki:kawara_block"
+    },
+    "L": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "  #",
+    " #L",
+    "#LL"
+  ],
+  "result": {
+    "count": 4,
+    "id": "tsuki:kawara"
+  }
+}

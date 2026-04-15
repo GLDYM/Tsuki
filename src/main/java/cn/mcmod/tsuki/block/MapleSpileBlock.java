@@ -7,10 +7,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SoundType;
@@ -59,7 +61,7 @@ public class MapleSpileBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, net.minecraft.world.level.BlockGetter level, BlockPos pos,
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos,
             CollisionContext context) {
         return switch (state.getValue(FACING)) {
             case EAST -> AABB_E;
@@ -105,7 +107,7 @@ public class MapleSpileBlock extends HorizontalDirectionalBlock {
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level,
             BlockPos currentPos, BlockPos neighborPos) {
-        return state.canSurvive(level, currentPos) ? state : net.minecraft.world.level.block.Blocks.AIR.defaultBlockState();
+        return state.canSurvive(level, currentPos) ? state : Blocks.AIR.defaultBlockState();
     }
 
     @Override

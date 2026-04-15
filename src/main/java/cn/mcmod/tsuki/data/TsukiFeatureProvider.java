@@ -31,13 +31,14 @@ public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
                             );
                             bootstrap.register(WorldGenerationRegistry.FEATURE_PATCH_BAMBOOSHOOT_KEY, WorldGenerationRegistry.FEATURE_PATCH_BAMBOOSHOOT);
                             bootstrap.register(WorldGenerationRegistry.FEATURE_ORE_SAKURA_DIAMOND_KEY, WorldGenerationRegistry.FEATURE_ORE_SAKURA_DIAMOND);
+                            bootstrap.register(WorldGenerationRegistry.FEATURE_ORE_IRON_SAND_KEY, WorldGenerationRegistry.FEATURE_ORE_IRON_SAND);
                         })
                         .add(Registries.PLACED_FEATURE, bootstrap -> {
                             bootstrap.register(WorldGenerationRegistry.PATCH_BAMBOOSHOOT_KEY, WorldGenerationRegistry.PATCH_BAMBOOSHOOT);
                             bootstrap.register(WorldGenerationRegistry.ORE_SAKURA_DIAMOND_KEY, WorldGenerationRegistry.ORE_SAKURA_DIAMOND);
+                            bootstrap.register(WorldGenerationRegistry.ORE_IRON_SAND_KEY, WorldGenerationRegistry.ORE_IRON_SAND);
                         })
                 , Set.of(Tsuki.MODID));
     }
 
 }
-

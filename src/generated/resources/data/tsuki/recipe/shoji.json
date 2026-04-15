@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "S": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "SPP",
+    "SPP",
+    "SPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:shoji"
+  }
+}

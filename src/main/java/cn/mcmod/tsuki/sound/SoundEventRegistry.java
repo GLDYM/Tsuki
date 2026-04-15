@@ -15,4 +15,9 @@ public class SoundEventRegistry {
             SOUND_EVENTS.register("music_disc.miko",
                     () -> SoundEvent.createVariableRangeEvent(
                             ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "music_disc.miko")));
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> TAIKO =
+            SOUND_EVENTS.register("taiko",
+                    () -> SoundEvent.createVariableRangeEvent(
+                            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "taiko")));
 }

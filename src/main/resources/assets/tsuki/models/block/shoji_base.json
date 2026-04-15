@@ -1,0 +1,94 @@
+{
+  "credit": "Made with Blockbench",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "rotation": 90,
+          "texture": "#0",
+          "uv": [
+            4.5,
+            0,
+            8.5,
+            0.5
+          ]
+        },
+        "east": {
+          "texture": "#0",
+          "uv": [
+            4.5,
+            0.5,
+            5,
+            8.5
+          ]
+        },
+        "north": {
+          "texture": "#0",
+          "uv": [
+            0.5,
+            0.5,
+            4.5,
+            8.5
+          ]
+        },
+        "south": {
+          "texture": "#0",
+          "uv": [
+            5,
+            0.5,
+            9,
+            8.5
+          ]
+        },
+        "up": {
+          "rotation": 90,
+          "texture": "#0",
+          "uv": [
+            0.5,
+            0,
+            4.5,
+            0.5
+          ]
+        },
+        "west": {
+          "texture": "#0",
+          "uv": [
+            0,
+            0.5,
+            0.5,
+            8.5
+          ]
+        }
+      },
+      "from": [
+        0,
+        0,
+        7
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          0,
+          0,
+          16
+        ]
+      },
+      "to": [
+        16,
+        32,
+        9
+      ]
+    }
+  ],
+  "format_version": "1.21.1",
+  "parent": "minecraft:block/block",
+  "texture_size": [
+    64,
+    64
+  ],
+  "textures": {
+    "0": "tsuki:block/shoji/shoji_type_0",
+    "particle": "tsuki:block/shoji/shoji_type_0"
+  }
+}

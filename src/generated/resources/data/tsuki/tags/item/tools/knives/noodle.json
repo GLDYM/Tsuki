@@ -1,6 +1,10 @@
 {
   "values": [
     "tsuki:knife_noodle",
-    "tsuki:sakura_knife_noodle"
+    "tsuki:sakura_knife_noodle",
+    {
+      "id": "#farmersdelight:tools/knives",
+      "required": false
+    }
   ]
 }

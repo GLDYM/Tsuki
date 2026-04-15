@@ -1,25 +1,65 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.strawhat_armor",
-				"texture_width": 64,
-				"texture_height": 64,
-				"visible_bounds_width": 5,
-				"visible_bounds_height": 5,
-				"visible_bounds_offset": [0, 2, 0]
-			},
-			"bones": [
-				{
-					"name": "armorHead",
-					"pivot": [0, 24, 0],
-					"cubes": [
-						{"origin": [-4, 29, -4], "size": [8, 4, 8], "inflate": 0.1, "uv": [0, 0]},
-						{"origin": [-8, 29, -8], "size": [16, 1, 16], "inflate": 0.1, "uv": [0, 12]}
-					]
-				}
-			]
-		}
-	]
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "bones": [
+        {
+          "cubes": [
+            {
+              "inflate": 0.1,
+              "origin": [
+                -4,
+                29,
+                -4
+              ],
+              "size": [
+                8,
+                4,
+                8
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            },
+            {
+              "inflate": 0.1,
+              "origin": [
+                -8,
+                29,
+                -8
+              ],
+              "size": [
+                16,
+                1,
+                16
+              ],
+              "uv": [
+                0,
+                12
+              ]
+            }
+          ],
+          "name": "armorHead",
+          "pivot": [
+            0,
+            24,
+            0
+          ]
+        }
+      ],
+      "description": {
+        "identifier": "geometry.strawhat_armor",
+        "texture_height": 64,
+        "texture_width": 64,
+        "visible_bounds_height": 5,
+        "visible_bounds_offset": [
+          0,
+          2,
+          0
+        ],
+        "visible_bounds_width": 5
+      }
+    }
+  ]
 }

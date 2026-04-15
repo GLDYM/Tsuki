@@ -1,28 +1,28 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "item":  "minecraft:dried_kelp"
-                        },
-                        {
-                            "tag":  "c:soysauce"
-                        },
-                        {
-                            "amount":  250,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "count":  2,
-                        "item":  "tsuki:osuimono"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "tag": "c:soysauce"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:osuimono"
+    }
+  ],
+  "type": "create:mixing"
 }

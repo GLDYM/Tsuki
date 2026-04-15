@@ -1,31 +1,31 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "tag":  "c:crops/radish"
-                        },
-                        {
-                            "item":  "tsuki:miso"
-                        },
-                        {
-                            "tag":  "c:salt"
-                        },
-                        {
-                            "amount":  250,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "count":  2,
-                        "item":  "tsuki:furofuki_daikon"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:crops/radish"
+    },
+    {
+      "item": "tsuki:miso"
+    },
+    {
+      "tag": "c:salt"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:furofuki_daikon"
+    }
+  ],
+  "type": "create:mixing"
 }

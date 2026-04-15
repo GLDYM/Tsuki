@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:dyes/blue"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "S": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "SPP",
+    "SPP",
+    "SII"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:shoji_1"
+  }
+}

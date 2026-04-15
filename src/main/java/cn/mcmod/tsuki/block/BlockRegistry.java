@@ -11,26 +11,34 @@ import cn.mcmod.tsuki.block.machines.CookingPotBlock;
 import cn.mcmod.tsuki.block.machines.DistillerBlock;
 import cn.mcmod.tsuki.block.machines.FermenterBlock;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
+import cn.mcmod.tsuki.block.machines.TataraBlock;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.level.tree.TsukiTreeFeatures;
-import cn.mcmod_mmf.mmlib.block.Age3CropBlock;
-import cn.mcmod_mmf.mmlib.block.BaseCropBlock;
+import cn.mcmod.mmlib.block.Age3CropBlock;
+import cn.mcmod.mmlib.block.BaseCropBlock;
 import cn.mcmod_mmf.mmlib.block.BaseHorizonBlock;
 import cn.mcmod_mmf.mmlib.block.FacingSlab;
-import cn.mcmod_mmf.mmlib.block.HighCropBlock;
+import cn.mcmod.mmlib.block.HighCropBlock;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
 import java.util.Optional;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CarpetBlock;
+import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -172,6 +180,8 @@ public class BlockRegistry {
             () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE)));
     public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_SAKURA_DIAMOND_ORE = BLOCKS.register("deepslate_sakura_diamond_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE)));
+    public static final DeferredBlock<Block> IRON_SAND = BLOCKS.register("iron_sand",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.COLOR_GRAY)));
 
     public static final DeferredBlock<Block> TATAMI = BLOCKS.register("tatami",
             () -> new TatamiBlock(BlockBehaviour.Properties.of()));
@@ -185,44 +195,170 @@ public class BlockRegistry {
             () -> new FacingSlab(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<FacingSlab> TATAMI_SLAB_SUNBURNT = BLOCKS.register("tatami_slab_sunburnt",
             () -> new FacingSlab(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> TATAMI_CARPET = BLOCKS.register("tatami_carpet",
+            () -> new CarpetBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND).sound(SoundType.GRASS)));
+    public static final DeferredBlock<Block> TATAMI_CARPET_WAXED = BLOCKS.register("tatami_ns_carpet",
+            () -> new CarpetBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND).sound(SoundType.GRASS)));
+    public static final DeferredBlock<Block> TATAMI_CARPET_TAN = BLOCKS.register("tatami_tan_carpet",
+            () -> new CarpetBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND).sound(SoundType.GRASS)));
+    public static final DeferredBlock<Block> TATAMI_CARPET_TAN_WAXED = BLOCKS.register("tatami_tan_ns_carpet",
+            () -> new CarpetBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND).sound(SoundType.GRASS)));
 
     public static final DeferredBlock<Block> RICE_CROP_ROOT = BLOCKS.register("rice_crop_root",
-            () -> new RiceCropRoot(BlockBehaviour.Properties.of().strength(0.2F)));
+            () -> new RiceCropRoot(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F)));
     public static final DeferredBlock<Block> RICE_CROP = BLOCKS.register("rice_crop",
-            () -> new RiceCrop(BlockBehaviour.Properties.of().strength(0.2F)));
+            () -> new RiceCrop(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F)));
 
     public static final DeferredBlock<Block> CABBAGE_CROP = BLOCKS.register("cabbage_crop",
-            () -> new BaseCropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.CABBAGE_SEEDS));
+            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.CABBAGE_SEEDS));
 
     public static final DeferredBlock<Block> RADISH_CROP = BLOCKS.register("radish_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.RADISH_SEEDS));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.RADISH_SEEDS));
 
     public static final DeferredBlock<Block> ONION_CROP = BLOCKS.register("onion_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.ONION_SEEDS));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.ONION_SEEDS));
 
     public static final DeferredBlock<Block> REDBEAN_CROP = BLOCKS.register("redbean_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.RED_BEAN));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.RED_BEAN));
     
     public static final DeferredBlock<Block> SOYBEAN_CROP = BLOCKS.register("soybean_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.SOYBEAN));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.SOYBEAN));
 
     public static final DeferredBlock<Block> RAPESEED_CROP = BLOCKS.register("rapeseed_crop",
-            () -> new BaseCropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.RAPESEEDS));
+            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.RAPESEEDS));
 
     public static final DeferredBlock<Block> BUCKWHEAT_CROP = BLOCKS.register("buckwheat_crop",
-            () -> new BaseCropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.BUCKWHEAT));
+            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.BUCKWHEAT));
 
     public static final DeferredBlock<Block> TARO_CROP = BLOCKS.register("taro_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.TARO));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.TARO));
 
     public static final DeferredBlock<Block> TOMATO_CROP = BLOCKS.register("tomato_crop",
-            () -> new HighCropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.TOMATO_SEEDS));
+            () -> new HighCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.TOMATO_SEEDS));
 
     public static final DeferredBlock<Block> EGGPLANT_CROP = BLOCKS.register("eggplant_crop",
-            () -> new HighCropBlock(BlockBehaviour.Properties.of().strength(0.2F), ItemRegistry.EGGPLANT_SEEDS));
+            () -> new HighCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.EGGPLANT_SEEDS));
 
-            
+    public static final DeferredBlock<Block> SHOJI = BLOCKS.register("shoji", ShojiBlock::new);
+    public static final DeferredBlock<Block> SHOJI_1 = BLOCKS.register("shoji_1", ShojiBlock::new);
+    public static final DeferredBlock<Block> SHOJI_2 = BLOCKS.register("shoji_2", ShojiBlock::new);
+    public static final DeferredBlock<Block> SHOJI_3 = BLOCKS.register("shoji_3", ShojiBlock::new);
+    public static final DeferredBlock<Block> SHOJI_4 = BLOCKS.register("shoji_4", ShojiBlock::new);
+    public static final DeferredBlock<Block> SHOJI_5 = BLOCKS.register("shoji_5", ShojiBlock::new);
+    public static final DeferredBlock<Block> KAWARA_BLOCK = BLOCKS.register("kawara_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.5F, 6.0F)
+                    .sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> KAWARA = BLOCKS.register("kawara",
+            () -> new StairBlock(KAWARA_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                            .mapColor(MapColor.COLOR_GRAY)
+                            .strength(1.5F, 6.0F)
+                            .sound(SoundType.STONE)));
+    // Kawara block variants
+    public static final DeferredBlock<Block> KAWARA_BLOCK_ALTER = BLOCKS.register("kawara_block_alter",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.5F, 6.0F)
+                    .sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> KAWARA_STAIRS = BLOCKS.register("kawara_stairs",
+            () -> new StairBlock(KAWARA_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                            .mapColor(MapColor.COLOR_GRAY)
+                            .strength(1.5F, 6.0F)
+                            .sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> KAWARA_STAIRS_ALTER = BLOCKS.register("kawara_stairs_alter",
+            () -> new StairBlock(KAWARA_BLOCK_ALTER.get().defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                            .mapColor(MapColor.COLOR_GRAY)
+                            .strength(1.5F, 6.0F)
+                            .sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> KAWARA_SLAB = BLOCKS.register("kawara_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.5F, 6.0F)
+                    .sound(SoundType.STONE)));
+    public static final DeferredBlock<Block> KAWARA_SLAB_ALTER = BLOCKS.register("kawara_slab_alter",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                    .mapColor(MapColor.COLOR_GRAY)
+                    .strength(1.5F, 6.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final DeferredBlock<Block> STONE_LANTERN = BLOCKS.register("stone_lantern",
+            () -> new CustomLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
+                    .mapColor(MapColor.STONE)
+                    .sound(SoundType.STONE)
+                    .lightLevel(state -> 15),
+                    Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D)));
+    public static final DeferredBlock<Block> COBBLESTONE_LANTERN = BLOCKS.register("cobblestone_lantern",
+            () -> new CustomLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
+                    .mapColor(MapColor.STONE)
+                    .sound(SoundType.STONE)
+                    .lightLevel(state -> 15),
+                    Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D)));
+    public static final DeferredBlock<Block> MOSSY_STONE_LANTERN = BLOCKS.register("mossy_stone_lantern",
+            () -> new CustomLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
+                    .mapColor(MapColor.STONE)
+                    .sound(SoundType.STONE)
+                    .lightLevel(state -> 15),
+                    Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D)));
+    public static final DeferredBlock<Block> RED_LANTERN = BLOCKS.register("red_lantern",
+            () -> new CustomLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
+                    .mapColor(MapColor.COLOR_RED)
+                    .lightLevel(state -> 15),
+                    Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D)));
+    public static final DeferredBlock<Block> WHITE_LANTERN = BLOCKS.register("white_lantern",
+            () -> new CustomLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
+                    .mapColor(MapColor.SNOW)
+                    .lightLevel(state -> 15),
+                    Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D)));
+    public static final DeferredBlock<Block> BAMBOO_LANTERN = BLOCKS.register("bamboo_lantern",
+            () -> new FloorMountedLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
+                    .mapColor(MapColor.SAND)
+                    .sound(SoundType.BAMBOO)
+                    .lightLevel(state -> 15),
+                    Block.box(5.0D, 0.0D, 5.0D, 11.0D, 8.0D, 11.0D)));
+    public static final DeferredBlock<Block> WINDBELL = BLOCKS.register("windbell",
+            () -> new WindBellBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
+                    .mapColor(MapColor.METAL)
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .noCollission(),
+                    Block.box(6.0D, 8.0D, 6.0D, 10.0D, 16.0D, 10.0D),
+                    Shapes.empty()));
+    public static final DeferredBlock<Block> ANDON = BLOCKS.register("andon",
+            () -> new CustomLanternBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(0.5F)
+                    .sound(SoundType.WOOD)
+                    .lightLevel(state -> 14)
+                    .noOcclusion(),
+                    Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D)));
+    public static final DeferredBlock<Block> ZABUTON = BLOCKS.register("zabuton",
+            () -> new ZabutonBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_CARPET)
+                    .mapColor(MapColor.COLOR_RED)));
+    public static final DeferredBlock<Block> TAIKO = BLOCKS.register("taiko", TaikoBlock::new);
+    public static final DeferredBlock<Block> NOREN_WHITE = BLOCKS.register("noren_white", () -> new NorenBlock(MapColor.SNOW));
+    public static final DeferredBlock<Block> NOREN_BLUE = BLOCKS.register("noren_blue", () -> new NorenBlock(MapColor.COLOR_BLUE));
+    public static final DeferredBlock<Block> NOREN_PINK = BLOCKS.register("noren_pink", () -> new NorenBlock(MapColor.COLOR_PINK));
+    public static final DeferredBlock<Block> BAMBOO_FENCE = BLOCKS.register("bamboo_fence",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_FENCE_SUNBURNT = BLOCKS.register("bamboo_fence_sunburnt",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_DOOR = BLOCKS.register("bamboo_door",
+            () -> new DoorBlock(
+                    BlockSetType.BAMBOO,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_DOOR)));
+
     public static final DeferredBlock<Block> KITUNEBI = BLOCKS.register("kitunebi", () -> new KitunebiBlock());
+
+    public static final DeferredBlock<Block> TATARA = BLOCKS.register("tatara", () -> new TataraBlock());
+
     public static final DeferredBlock<Block> MAPLE_SPILE = BLOCKS.register("maple_spile", () -> new MapleSpileBlock());
     public static final DeferredBlock<Block> MAPLE_CAULDRON = BLOCKS.register("maple_cauldron", () -> new MapleCauldronBlock());
 
@@ -273,6 +409,3 @@ public class BlockRegistry {
     }
 
 }
-
-
-

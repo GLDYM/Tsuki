@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.data;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.tags.TsukiBlockTags;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -46,7 +47,28 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
             this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                .add((Block) BlockRegistry.STONE_MORTAR.get())
                .add((Block) BlockRegistry.SAKURA_DIAMOND_ORE.get())
-               .add((Block) BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
+               .add((Block) BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get())
+               .add((Block) BlockRegistry.IRON_SAND.get())
+               .add((Block) BlockRegistry.TATARA.get())
+               .add((Block) BlockRegistry.KAWARA_BLOCK.get())
+               .add((Block) BlockRegistry.KAWARA_BLOCK_ALTER.get())
+               .add((Block) BlockRegistry.KAWARA.get())
+               .add((Block) BlockRegistry.KAWARA_STAIRS.get())
+               .add((Block) BlockRegistry.KAWARA_STAIRS_ALTER.get())
+               .add((Block) BlockRegistry.KAWARA_SLAB.get())
+               .add((Block) BlockRegistry.KAWARA_SLAB_ALTER.get())
+               .add((Block) BlockRegistry.STONE_LANTERN.get())
+               .add((Block) BlockRegistry.COBBLESTONE_LANTERN.get())
+               .add((Block) BlockRegistry.MOSSY_STONE_LANTERN.get());
+            this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
+               .add((Block) BlockRegistry.IRON_SAND.get())
+               .add((Block) BlockRegistry.TATAMI_CARPET.get())
+               .add((Block) BlockRegistry.TATAMI_CARPET_WAXED.get())
+               .add((Block) BlockRegistry.TATAMI_CARPET_TAN.get())
+               .add((Block) BlockRegistry.TATAMI_CARPET_TAN_WAXED.get())
+               .add((Block) BlockRegistry.ZABUTON.get());
+            this.tag(TsukiBlockTags.MINEABLE_WITH_HAMMER)
+               .add((Block) BlockRegistry.TATARA.get());
             this.tag(BlockTags.NEEDS_IRON_TOOL)
                .add((Block) BlockRegistry.SAKURA_DIAMOND_ORE.get())
                .add((Block) BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
@@ -88,10 +110,17 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
          );
       this.tag(BlockTags.PLANKS)
          .add(new Block[]{(Block)BlockRegistry.SAKURA_PLANK.get(), (Block)BlockRegistry.BAMBOO_PLANK.get(), (Block)BlockRegistry.MAPLE_PLANK.get()});
+      this.tag(BlockTags.FENCES)
+         .add(new Block[]{(Block)BlockRegistry.BAMBOO_FENCE.get(), (Block)BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()});
+      this.tag(BlockTags.WOODEN_FENCES)
+         .add(new Block[]{(Block)BlockRegistry.BAMBOO_FENCE.get(), (Block)BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()});
+      this.tag(BlockTags.DOORS)
+         .add((Block) BlockRegistry.BAMBOO_DOOR.get());
+      this.tag(BlockTags.WOODEN_DOORS)
+         .add((Block) BlockRegistry.BAMBOO_DOOR.get());
    }
 
    public String getName() {
-      return "Tsuki Blocks' Tags";
+       return "Tsuki Blocks' Tags";
    }
 }
-

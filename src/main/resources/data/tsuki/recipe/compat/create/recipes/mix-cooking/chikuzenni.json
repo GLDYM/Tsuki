@@ -1,37 +1,37 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "tag":  "c:foods/raw_chicken"
-                        },
-                        {
-                            "tag":  "c:mushrooms"
-                        },
-                        {
-                            "tag":  "c:vegetables"
-                        },
-                        {
-                            "tag":  "c:soysauce"
-                        },
-                        {
-                            "item":  "tsuki:mirin"
-                        },
-                        {
-                            "amount":  250,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "count":  2,
-                        "item":  "tsuki:chikuzenni"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:foods/raw_chicken"
+    },
+    {
+      "tag": "c:mushrooms"
+    },
+    {
+      "tag": "c:vegetables"
+    },
+    {
+      "tag": "c:soysauce"
+    },
+    {
+      "item": "tsuki:mirin"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:chikuzenni"
+    }
+  ],
+  "type": "create:mixing"
 }

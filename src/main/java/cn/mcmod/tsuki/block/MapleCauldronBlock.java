@@ -6,6 +6,7 @@ import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.block.entity.MapleCauldronBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
@@ -72,7 +73,7 @@ public class MapleCauldronBlock extends BaseEntityBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, net.minecraft.core.Direction direction, BlockState neighborState,
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
             LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         return state.canSurvive(level, currentPos) ? state : Blocks.AIR.defaultBlockState();
     }

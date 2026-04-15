@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "tag": "c:rods/wooden"
+    },
+    "S": {
+      "item": "tsuki:steel_ingot"
+    }
+  },
+  "pattern": [
+    "SS",
+    " L"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:steel_hammer"
+  }
+}

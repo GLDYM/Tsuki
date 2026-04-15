@@ -19,6 +19,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
@@ -26,7 +27,7 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
-public class MapleCauldronBlockEntity extends net.minecraft.world.level.block.entity.BlockEntity implements HeatableBlockEntity {
+public class MapleCauldronBlockEntity extends BlockEntity implements HeatableBlockEntity {
     public static final int TANK_CAPACITY = 5000;
 
     private final ItemStackHandler inventory;

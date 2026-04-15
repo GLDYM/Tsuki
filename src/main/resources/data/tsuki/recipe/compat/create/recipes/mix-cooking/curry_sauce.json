@@ -1,47 +1,47 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "item":  "tsuki:curry_powder"
-                        },
-                        [
-                            {
-                                "tag":  "c:vegetables"
-                            },
-                            {
-                                "tag":  "c:foods/raw_meat"
-                            }
-                        ],
-                        [
-                            {
-                                "tag":  "c:vegetables"
-                            },
-                            {
-                                "tag":  "c:foods/raw_meat"
-                            }
-                        ],
-                        {
-                            "tag":  "c:flour"
-                        },
-                        {
-                            "tag":  "c:dashi"
-                        },
-                        {
-                            "amount":  250,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "count":  2,
-                        "item":  "tsuki:curry_sauce"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "tsuki:curry_powder"
+    },
+    [
+      {
+        "tag": "c:vegetables"
+      },
+      {
+        "tag": "c:foods/raw_meat"
+      }
+    ],
+    [
+      {
+        "tag": "c:vegetables"
+      },
+      {
+        "tag": "c:foods/raw_meat"
+      }
+    ],
+    {
+      "tag": "c:flour"
+    },
+    {
+      "tag": "c:dashi"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:curry_sauce"
+    }
+  ],
+  "type": "create:mixing"
 }

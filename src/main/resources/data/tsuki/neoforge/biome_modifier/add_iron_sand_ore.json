@@ -1,0 +1,6 @@
+{
+  "biomes": "#tsuki:can_spawn_iron_sand_ore",
+  "features": "tsuki:ore_iron_sand",
+  "step": "underground_ores",
+  "type": "neoforge:add_features"
+}

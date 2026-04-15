@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "tsuki:block/kawara_slab"
+    },
+    "type=double": {
+      "model": "tsuki:block/kawara_block"
+    },
+    "type=top": {
+      "model": "tsuki:block/kawara_slab_top"
+    }
+  }
+}

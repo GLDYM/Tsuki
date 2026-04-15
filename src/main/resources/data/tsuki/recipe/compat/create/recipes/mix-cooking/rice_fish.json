@@ -1,27 +1,27 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "tag":  "tsuki:rice/rice"
-                        },
-                        {
-                            "tag":  "c:foods/raw_fishes"
-                        },
-                        {
-                            "amount":  125,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "item":  "tsuki:rice_fish"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "tsuki:rice/rice"
+    },
+    {
+      "tag": "c:foods/raw_fishes"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:rice_fish"
+    }
+  ],
+  "type": "create:mixing"
 }

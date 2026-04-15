@@ -12,6 +12,7 @@ import cn.mcmod.tsuki.block.entity.BlockEntityCapabilityRegistry;
 import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.container.ContainerRegistry;
+import cn.mcmod.tsuki.entity.EntityRegistry;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.fluid.FluidBlockRegistry;
 import cn.mcmod.tsuki.fluid.FluidRegistry;
@@ -46,6 +47,7 @@ public class Tsuki {
         BlockRegistry.BLOCKS.register(modEventBus);
         BlockItemRegistry.ITEMS.register(modEventBus);
         BlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
+        EntityRegistry.ENTITY_TYPES.register(modEventBus);
         // TsukiDataComponentRegistry.COMPONENTS.register(modEventBus);
         ItemRegistry.ITEMS.register(modEventBus);
         FoodRegistry.ITEMS.register(modEventBus);
@@ -73,4 +75,3 @@ public class Tsuki {
         return LOGGER;
     }
 }
-

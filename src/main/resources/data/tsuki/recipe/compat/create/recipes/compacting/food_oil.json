@@ -1,25 +1,25 @@
 {
-    "ingredients":  [
-                        [
-                            {
-                                "item":  "tsuki:rapeseeds"
-                            },
-                            {
-                                "item":  "minecraft:sunflower"
-                            }
-                        ]
-                    ],
-    "results":  [
-                    {
-                        "amount":  125,
-                        "fluid":  "tsuki:food_oil"
-                    }
-                ],
-    "type":  "create:compacting",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "ingredients": [
+    [
+      {
+        "item": "tsuki:rapeseeds"
+      },
+      {
+        "item": "minecraft:sunflower"
+      }
+    ]
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "amount": 125,
+      "fluid": "tsuki:food_oil"
+    }
+  ],
+  "type": "create:compacting"
 }

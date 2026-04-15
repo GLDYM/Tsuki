@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tsuki:block/kawara_block_alter"
+    }
+  }
+}

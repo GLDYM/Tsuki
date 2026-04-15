@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "tag": "c:dyes"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "S": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "SPS",
+    "PMP",
+    "SPS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:shoji_3"
+  }
+}

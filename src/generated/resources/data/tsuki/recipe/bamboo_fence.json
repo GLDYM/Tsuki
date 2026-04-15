@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:bamboo"
+    },
+    "I": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "#I#",
+    "#I#"
+  ],
+  "result": {
+    "count": 3,
+    "id": "tsuki:bamboo_fence"
+  }
+}

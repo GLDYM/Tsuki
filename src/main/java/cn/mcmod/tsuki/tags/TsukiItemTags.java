@@ -183,9 +183,15 @@ public class TsukiItemTags {
     public static final TagKey<Item> LUMBER_MAPLE = TagUtils.forgeItemTag("lumber/maple");
     public static final TagKey<Item> LUMBER_SAKURA = TagUtils.forgeItemTag("lumber/sakura");
 
+    public static final TagKey<Item> ORES = TagUtils.forgeItemTag("ores");
+    public static final TagKey<Item> ORES_IRON = TagUtils.forgeItemTag("ores/iron");
+    public static final TagKey<Item> ORES_SAKURA_DIAMOND = TagUtils.forgeItemTag("ores/sakura_diamond");
+
+
     public static final TagKey<Item> TOOLS = TagUtils.forgeItemTag("tools");
     public static final TagKey<Item> TOOLS_AXES = TagUtils.forgeItemTag("tools/axes");
     public static final TagKey<Item> TOOLS_HOES = TagUtils.forgeItemTag("tools/hoes");
+    public static final TagKey<Item> TOOLS_HAMMERS = TagUtils.forgeItemTag("tools/hammers");
     public static final TagKey<Item> TOOLS_KNIVES = TagUtils.forgeItemTag("tools/knives");
     public static final TagKey<Item> TOOLS_KNIVES_FISH = TagUtils.modItemTag(Tsuki.MODID,"tools/knives/fish");
     public static final TagKey<Item> TOOLS_KNIVES_NOODLE = TagUtils.modItemTag(Tsuki.MODID,"tools/knives/noodle");
@@ -199,4 +205,3 @@ public class TsukiItemTags {
     public static final TagKey<Item> SAMURAI_LEGGINGS = TagUtils.modItemTag(Tsuki.MODID, "samurai_leggings");
     public static final TagKey<Item> SAMURAI_BOOTS = TagUtils.modItemTag(Tsuki.MODID, "samurai_boots");
 }
-

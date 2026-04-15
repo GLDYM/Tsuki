@@ -1,28 +1,28 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "tag":  "c:vegetables/potato"
-                        },
-                        {
-                            "tag":  "c:salt"
-                        },
-                        {
-                            "amount":  125,
-                            "fluidTag":  "c:food_oil"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "count":  2,
-                        "item":  "tsuki:fries"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:vegetables/potato"
+    },
+    {
+      "tag": "c:salt"
+    },
+    {
+      "amount": 125,
+      "fluidTag": "c:food_oil"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:fries"
+    }
+  ],
+  "type": "create:mixing"
 }

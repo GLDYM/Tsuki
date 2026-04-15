@@ -1,39 +1,39 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "tag":  "c:flour"
-                        },
-                        {
-                            "item":  "tsuki:rice"
-                        },
-                        [
-                            {
-                                "tag":  "c:crops/taro"
-                            },
-                            {
-                                "tag":  "c:crops/potato"
-                            }
-                        ],
-                        {
-                            "tag":  "c:sugar"
-                        },
-                        {
-                            "amount":  125,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "count":  2,
-                        "item":  "tsuki:hyorogan"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:flour"
+    },
+    {
+      "item": "tsuki:rice"
+    },
+    [
+      {
+        "tag": "c:crops/taro"
+      },
+      {
+        "tag": "c:crops/potato"
+      }
+    ],
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "tsuki:hyorogan"
+    }
+  ],
+  "type": "create:mixing"
 }

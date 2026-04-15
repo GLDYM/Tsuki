@@ -2,6 +2,18 @@
   "values": [
     "tsuki:stone_mortar",
     "tsuki:sakura_diamond_ore",
-    "tsuki:deepslate_sakura_diamond_ore"
+    "tsuki:deepslate_sakura_diamond_ore",
+    "tsuki:iron_sand",
+    "tsuki:tatara",
+    "tsuki:kawara_block",
+    "tsuki:kawara_block_alter",
+    "tsuki:kawara",
+    "tsuki:kawara_stairs",
+    "tsuki:kawara_stairs_alter",
+    "tsuki:kawara_slab",
+    "tsuki:kawara_slab_alter",
+    "tsuki:stone_lantern",
+    "tsuki:cobblestone_lantern",
+    "tsuki:mossy_stone_lantern"
   ]
 }

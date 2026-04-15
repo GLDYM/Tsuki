@@ -9,7 +9,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.78'
 }
 
-version = '1.0.3'
+version = '1.0.4'
 group = 'cn.mcmod.tsuki' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 base {
     archivesName = 'Tsuki'
@@ -111,6 +111,7 @@ dependencies {
     compileOnly(("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api"))
     // Use the full Curios API jar at runtime
     runtimeOnly(("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1"))
+    // Patchouli will be removed in the future, but not now
     compileOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
     runtimeOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
 
@@ -123,19 +124,23 @@ dependencies {
     compileOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
     runtimeOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
 
+    // Compact
     //implementation ("maven.modrinth:epic-fight:20.9.2")
     compileOnly ("maven.modrinth:farmers-delight:1.21.1-1.2.11")
     runtimeOnly ("maven.modrinth:farmers-delight:1.21.1-1.2.11")
 
     compileOnly ("curse.maven:kaleidoscope-cookery-1309203:7738871")
     runtimeOnly ("curse.maven:kaleidoscope-cookery-1309203:7738871")
+
+    // Dev Tools
+    runtimeOnly "curse.maven:let-me-see-see-your-code-1229018:6777654"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "sakura",
+                "Specification-Title"     : "tsuki",
                 "Specification-Vendor"    : "tracen_minecraft_group",
                 "Specification-Version"   : "0.0.2",
                 "Implementation-Title"    : project.name,

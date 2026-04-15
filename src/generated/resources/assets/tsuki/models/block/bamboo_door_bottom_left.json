@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "tsuki:block/bamboo_door_upper",
+    "top": "tsuki:block/bamboo_door_upper"
+  }
+}

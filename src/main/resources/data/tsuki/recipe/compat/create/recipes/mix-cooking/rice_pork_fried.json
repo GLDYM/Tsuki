@@ -1,30 +1,30 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "tag":  "tsuki:rice/rice"
-                        },
-                        {
-                            "item":  "tsuki:katsu"
-                        },
-                        {
-                            "tag":  "c:eggs"
-                        },
-                        {
-                            "amount":  125,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "item":  "tsuki:rice_pork_fried"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "tsuki:rice/rice"
+    },
+    {
+      "item": "tsuki:katsu"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "amount": 125,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:rice_pork_fried"
+    }
+  ],
+  "type": "create:mixing"
 }

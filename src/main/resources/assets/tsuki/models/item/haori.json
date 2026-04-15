@@ -1,67 +1,248 @@
 {
-	"format_version": "1.21.11",
-	"credit": "Made with Blockbench",
-	"texture_size": [64, 16],
-	"textures": {
-		"0": "tsuki:item/armor/haori_light_blue",
-		"particle": "tsuki:item/armor/haori_light_blue"
-	},
-	"elements": [
-		{
-			"from": [2, 0, 1],
-			"to": [12, 2, 13],
-			"faces": {
-				"north": {"uv": [0.75, 2, 3.25, 4], "texture": "#0"},
-				"east": {"uv": [3.25, 4, 3.75, 16], "rotation": 90, "texture": "#0"},
-				"south": {"uv": [3.75, 2, 6, 4], "texture": "#0"},
-				"west": {"uv": [0, 4, 0.5, 16], "rotation": 270, "texture": "#0"},
-				"up": {"uv": [0.75, 4, 3.25, 16], "texture": "#0"},
-				"down": {"uv": [3.5, 4, 6, 16], "texture": "#0"}
-			}
-		},
-		{
-			"from": [2.1, 0.1, 1.1],
-			"to": [11.9, 1.9, 12.9],
-			"faces": {
-				"north": {"uv": [3.75, 4, 5.95, 5.8], "texture": "#0"},
-				"east": {"uv": [5.75, 4, 6, 5], "texture": "#0"},
-				"south": {"uv": [3.75, 4, 5.95, 5.8], "texture": "#0"},
-				"west": {"uv": [5.75, 4, 6, 5], "texture": "#0"},
-				"up": {"uv": [3.5, 4, 5.95, 15.8], "texture": "#0"},
-				"down": {"uv": [5.75, 4, 6, 5], "texture": "#0"}
-			}
-		}
-	],
-	"display": {
-		"thirdperson_righthand": {
-			"rotation": [91, 0, 0],
-			"translation": [0, 0, 1.5],
-			"scale": [0.35, 0.35, 0.5]
-		},
-		"thirdperson_lefthand": {
-			"rotation": [91, 0, 0],
-			"translation": [0, 0, 1.5],
-			"scale": [0.35, 0.35, 0.5]
-		},
-		"firstperson_righthand": {
-			"rotation": [91, 0, 77],
-			"scale": [0.69, 0.69, 0.86]
-		},
-		"firstperson_lefthand": {
-			"rotation": [91, 0, 77],
-			"scale": [0.69, 0.69, 0.86]
-		},
-		"ground": {
-			"scale": [0.49, 0.49, 0.62]
-		},
-		"gui": {
-			"rotation": [45, -45, 0],
-			"scale": [0.5, 0.5, 0.65]
-		},
-		"fixed": {
-			"rotation": [90, 0, -180],
-			"translation": [0, 0, -3.25],
-			"scale": [0.49, 0.49, 0.62]
-		}
-	}
+  "credit": "Made with Blockbench",
+  "display": {
+    "firstperson_lefthand": {
+      "rotation": [
+        91,
+        0,
+        77
+      ],
+      "scale": [
+        0.69,
+        0.69,
+        0.86
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        91,
+        0,
+        77
+      ],
+      "scale": [
+        0.69,
+        0.69,
+        0.86
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        90,
+        0,
+        -180
+      ],
+      "scale": [
+        0.49,
+        0.49,
+        0.62
+      ],
+      "translation": [
+        0,
+        0,
+        -3.25
+      ]
+    },
+    "ground": {
+      "scale": [
+        0.49,
+        0.49,
+        0.62
+      ]
+    },
+    "gui": {
+      "rotation": [
+        45,
+        -45,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.65
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        91,
+        0,
+        0
+      ],
+      "scale": [
+        0.35,
+        0.35,
+        0.5
+      ],
+      "translation": [
+        0,
+        0,
+        1.5
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        91,
+        0,
+        0
+      ],
+      "scale": [
+        0.35,
+        0.35,
+        0.5
+      ],
+      "translation": [
+        0,
+        0,
+        1.5
+      ]
+    }
+  },
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#0",
+          "uv": [
+            3.5,
+            4,
+            6,
+            16
+          ]
+        },
+        "east": {
+          "rotation": 90,
+          "texture": "#0",
+          "uv": [
+            3.25,
+            4,
+            3.75,
+            16
+          ]
+        },
+        "north": {
+          "texture": "#0",
+          "uv": [
+            0.75,
+            2,
+            3.25,
+            4
+          ]
+        },
+        "south": {
+          "texture": "#0",
+          "uv": [
+            3.75,
+            2,
+            6,
+            4
+          ]
+        },
+        "up": {
+          "texture": "#0",
+          "uv": [
+            0.75,
+            4,
+            3.25,
+            16
+          ]
+        },
+        "west": {
+          "rotation": 270,
+          "texture": "#0",
+          "uv": [
+            0,
+            4,
+            0.5,
+            16
+          ]
+        }
+      },
+      "from": [
+        2,
+        0,
+        1
+      ],
+      "to": [
+        12,
+        2,
+        13
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "texture": "#0",
+          "uv": [
+            5.75,
+            4,
+            6,
+            5
+          ]
+        },
+        "east": {
+          "texture": "#0",
+          "uv": [
+            5.75,
+            4,
+            6,
+            5
+          ]
+        },
+        "north": {
+          "texture": "#0",
+          "uv": [
+            3.75,
+            4,
+            5.95,
+            5.8
+          ]
+        },
+        "south": {
+          "texture": "#0",
+          "uv": [
+            3.75,
+            4,
+            5.95,
+            5.8
+          ]
+        },
+        "up": {
+          "texture": "#0",
+          "uv": [
+            3.5,
+            4,
+            5.95,
+            15.8
+          ]
+        },
+        "west": {
+          "texture": "#0",
+          "uv": [
+            5.75,
+            4,
+            6,
+            5
+          ]
+        }
+      },
+      "from": [
+        2.1,
+        0.1,
+        1.1
+      ],
+      "to": [
+        11.9,
+        1.9,
+        12.9
+      ]
+    }
+  ],
+  "format_version": "1.21.11",
+  "texture_size": [
+    64,
+    16
+  ],
+  "textures": {
+    "0": "tsuki:item/armor/haori_light_blue",
+    "particle": "tsuki:item/armor/haori_light_blue"
+  }
 }

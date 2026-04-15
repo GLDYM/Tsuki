@@ -1,4 +1,13 @@
 {
+  "music_disc.miko": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "tsuki:miko",
+        "stream": true
+      }
+    ]
+  },
   "taiko": {
     "category": "block",
     "sounds": [
@@ -8,14 +17,5 @@
       "tsuki:taiko_4"
     ],
     "subtitle": "tsuki.sound.taiko"
-  },
-  "music_disc.miko": {
-    "category": "record",
-    "sounds": [
-        {
-          "name": "tsuki:miko",
-          "stream": true
-        }
-    ]
   }
 }

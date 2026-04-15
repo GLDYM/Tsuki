@@ -3,17 +3,15 @@ package cn.mcmod.tsuki.item;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
-import cn.mcmod.tsuki.sound.JukeboxSongRegistry;
 import cn.mcmod_mmf.mmlib.item.ItemFoodSeeds;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
-import cn.mcmod_mmf.mmlib.registry.ItemRegistryUtil;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -47,16 +45,18 @@ public class ItemRegistry {
                     FoodInfo.builder().name("taro").amountAndCalories(2, 0.2F).water(0F).nutrients(2F, 2F, 0F, 0F, 0F)
                             .decayModifier(2F).heatCapacity(1F).cookingTemp(480F).build()));
 
-    public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = ItemRegistryUtil
-            .mapOfKeys(TsukiNormalItemSet.class, material -> register(material.getName(), ItemRegistry::normalItem));
+    public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = createMaterials();
 
-    public static final DeferredItem<Item> MUSIC_DISC_MIKO = register("music_disc_miko", 
-        () -> new Item(Tsuki.defaultItemProperties()
-            .stacksTo(1)
-            .rarity(Rarity.EPIC)
-            .jukeboxPlayable(JukeboxSongRegistry.DISC_MUSIC_MIKO)
-        )
-    );
+    private static Map<TsukiNormalItemSet, DeferredItem<Item>> createMaterials() {
+        Map<TsukiNormalItemSet, DeferredItem<Item>> materials = new EnumMap<>(TsukiNormalItemSet.class);
+        for (TsukiNormalItemSet material : TsukiNormalItemSet.values()) {
+            if (material.isArmorToolMaterial()) {
+                continue;
+            }
+            materials.put(material, register(material.getName(), ItemRegistry::normalItem));
+        }
+        return materials;
+    }
 
     private static Item normalItem() {
         return new Item(Tsuki.defaultItemProperties());
@@ -74,5 +74,3 @@ public class ItemRegistry {
         return ITEMS.register(name, item);
     }
 }
-
-

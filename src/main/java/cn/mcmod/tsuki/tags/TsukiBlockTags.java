@@ -10,4 +10,5 @@ public class TsukiBlockTags {
     public static final TagKey<Block> HEAT_CONDUCTORS = TagUtils.modBlockTag(Tsuki.MODID, "heat_conductors");
     public static final TagKey<Block> TRAY_HEAT_SOURCES = TagUtils.modBlockTag(Tsuki.MODID, "tray_heat_sources");
     public static final TagKey<Block> MINEABLE_WITH_KNIFE = TagUtils.modBlockTag(Tsuki.MODID, "mineable_with_knife");
+    public static final TagKey<Block> MINEABLE_WITH_HAMMER = TagUtils.modBlockTag(Tsuki.MODID, "mineable_with_hammer");
 }

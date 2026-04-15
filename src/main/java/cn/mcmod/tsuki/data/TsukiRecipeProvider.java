@@ -50,20 +50,21 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
 public class TsukiRecipeProvider extends AbstractRecipeProvider {
-   public TsukiRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
-      super(packOutput, Tsuki.MODID, provider);
-   }
+    public TsukiRecipeProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
+        super(packOutput, Tsuki.MODID, provider);
+    }
 
-   protected void buildRecipes(RecipeOutput consumer) {
-      this.registerCraftingRecipe(consumer);
-      this.registerMortarRecipe(consumer);
-      this.registerCookingRecipe(consumer);
-      this.registerFermenterRecipe(consumer);
-      this.registerDistillerRecipe(consumer);
-      this.registerChoppingRecipes(consumer);
-   }
+    protected void buildRecipes(RecipeOutput consumer) {
+        this.registerCraftingRecipe(consumer);
+        this.registerDecorativeBlockRecipes(consumer);
+        this.registerMortarRecipe(consumer);
+        this.registerCookingRecipe(consumer);
+        this.registerFermenterRecipe(consumer);
+        this.registerDistillerRecipe(consumer);
+        this.registerChoppingRecipes(consumer);
+    }
 
-   private void registerCraftingRecipe(RecipeOutput consumer) {
+    private void registerCraftingRecipe(RecipeOutput consumer) {
         SimpleCookingRecipeBuilder.smoking(
             Ingredient.of(TsukiFoodSet.BOILED_BONITO.getItem().get()),
             RecipeCategory.FOOD,
@@ -169,8 +170,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("C")
             .pattern("#")
             .define('C', ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get())
-            .define('#', net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN)
-            .unlockedBy("has_item", has(net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN))
+            .define('#', Tags.Items.RODS_WOODEN)
+            .unlockedBy("has_item", has(Tags.Items.RODS_WOODEN))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "torchs_from_charcoal"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.STICK, 4)
             .pattern("#")
@@ -178,6 +179,12 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('#', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sticks_from_lumbers"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.PAPER, 4)
+            .pattern("###")
+            .define('#', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "papers_from_lumbers"));
+
 
         // Working Stations
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.OBON.get())
@@ -187,16 +194,17 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.PAPER, 4)
-            .pattern("###")
-            .define('#', TsukiItemTags.LUMBER)
-            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
-            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "papers_from_lumbers"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistry.TATARA.get())
+            .requires(Tags.Items.ORES_IRON) // Accepting all iron ores
+            .requires(BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK.get())
+            .requires(TsukiItemTags.TOOLS_HAMMERS)
+            .unlockedBy("has_iron_ore", has(Items.IRON_ORE))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tatara"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.CHOPPING_BOARD.get())
             .pattern("###")
             .pattern("I I")
             .define('#', TsukiItemTags.LUMBER)
-            .define('I', net.neoforged.neoforge.common.Tags.Items.RODS_WOODEN)
+            .define('I', Tags.Items.RODS_WOODEN)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chopping_board"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.FERMENTER.get())
@@ -213,14 +221,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("III")
             .define('S', TsukiItemTags.LUMBER)
             .define('P', ItemTags.LOGS)
-            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('I', Tags.Items.INGOTS_IRON)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "distiller"));
         this.registerFarmerDelightRecipes(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.COOKING_POT.get())
             .pattern("#L#")
             .pattern("###")
-            .define('#', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('#', Tags.Items.INGOTS_IRON)
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
@@ -228,7 +236,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("L  ")
             .pattern("###")
             .pattern("###")
-            .define('#', net.neoforged.neoforge.common.Tags.Items.COBBLESTONES)
+            .define('#', Tags.Items.COBBLESTONES)
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
@@ -252,12 +260,40 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('#', ItemTags.WOOL)
                 .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.STONE_HAMMER.get())
+                .pattern("SS")
+                .pattern(" L")
+                .define('S', Tags.Items.COBBLESTONES)
+                .define('L', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_cobblestone", has(Tags.Items.COBBLESTONES))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.IRON_HAMMER.get())
+                .pattern("II")
+                .pattern(" L")
+                .define('I', Tags.Items.INGOTS_IRON)
+                .define('L', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_iron", has(Tags.Items.INGOTS_IRON))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.STEEL_HAMMER.get())
+                .pattern("SS")
+                .pattern(" L")
+                .define('S', TsukiArmorToolRegistry.STEEL_INGOT.get())
+                .define('L', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_steel_ingot", has(TsukiArmorToolRegistry.STEEL_INGOT.get()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_HAMMER.get())
+                .pattern("DD")
+                .pattern(" L")
+                .define('D', TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+                .define('L', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_sakura_diamond", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+                .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.IRON_FISH_KNIFE.get())
             .pattern("  I")
             .pattern(" I ")
             .pattern("L  ")
-            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('I', Tags.Items.INGOTS_IRON)
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
@@ -265,7 +301,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("I  ")
             .pattern(" I ")
             .pattern("  L")
-            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('I', Tags.Items.INGOTS_IRON)
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "iron_fish_knife_mirror"));
@@ -273,7 +309,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("II")
             .pattern("II")
             .pattern("IL")
-            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('I', Tags.Items.INGOTS_IRON)
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
@@ -281,7 +317,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("II")
             .pattern("II")
             .pattern("LI")
-            .define('I', net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON)
+            .define('I', Tags.Items.INGOTS_IRON)
             .define('L', TsukiItemTags.LUMBER)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "iron_noodle_knife_mirror"));
@@ -368,7 +404,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
 
         // SP
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
-            ItemRegistry.MUSIC_DISC_MIKO.get())
+            TsukiArmorToolRegistry.MUSIC_DISC_MIKO.get())
             .requires(TsukiArmorToolRegistry.KIMONO_MIKO.get())
             .requires(TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
             .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
@@ -686,7 +722,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.SOYSAUCE)
             .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
             .requires(TsukiItemTags.RAW_BEEF)
-            .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_CARROT)
+            .requires(Tags.Items.CROPS_CARROT)
             .requires(TsukiItemTags.MUSHROOMS)
             .requires(TsukiItemTags.VEGETABLES)
             .requires(TsukiItemTags.VEGETABLES)
@@ -768,27 +804,27 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.SAKURA_SAPLING.get())
             .requires(ItemTags.SAPLINGS)
-            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_PINK)
+            .requires(Tags.Items.DYES_PINK)
             .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
             .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_RED.get())
             .requires(ItemTags.SAPLINGS)
-            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_RED)
+            .requires(Tags.Items.DYES_RED)
             .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
             .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_GREEN.get())
             .requires(ItemTags.SAPLINGS)
-            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_GREEN)
+            .requires(Tags.Items.DYES_GREEN)
             .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
             .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_YELLOW.get())
             .requires(ItemTags.SAPLINGS)
-            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_YELLOW)
+            .requires(Tags.Items.DYES_YELLOW)
             .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
             .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_ORANGE.get())
             .requires(ItemTags.SAPLINGS)
-            .requires(net.neoforged.neoforge.common.Tags.Items.DYES_ORANGE)
+            .requires(Tags.Items.DYES_ORANGE)
             .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
             .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI).get())
@@ -1008,6 +1044,33 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .group(Tsuki.MODID)
             .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_charcoal_sunburnt_from_smelt"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(BlockRegistry.IRON_SAND.get()), RecipeCategory.MISC, Items.IRON_INGOT, 0.7F, 200)
+            .group(Tsuki.MODID)
+            .unlockedBy("has_iron_sand", has(BlockRegistry.IRON_SAND.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "iron_ingot_from_iron_sand"));
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(BlockRegistry.IRON_SAND.get()), RecipeCategory.MISC, Items.IRON_INGOT, 0.7F, 100)
+            .group(Tsuki.MODID)
+            .unlockedBy("has_iron_sand", has(BlockRegistry.IRON_SAND.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "iron_ingot_from_iron_sand_blasting"));
+        // Actuallly Zuku cannot be gotten, because Iron Farm is very easy to build after Minecraft 1.14
+        // Those rubbish is only useful for modpack creators. LOL 
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(TsukiArmorToolRegistry.ZUKU.get()), RecipeCategory.MISC, TsukiArmorToolRegistry.ZUKU_INGOT.get(), 0.5F, 200)
+            .group(Tsuki.MODID)
+            .unlockedBy("has_zuku", has(TsukiArmorToolRegistry.ZUKU.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "zuku_ingot_from_smelting"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(TsukiArmorToolRegistry.ZUKU_INGOT.get()), RecipeCategory.MISC, TsukiArmorToolRegistry.SAGEGANE.get(), 0.7F, 200)
+            .group(Tsuki.MODID)
+            .unlockedBy("has_zuku_ingot", has(TsukiArmorToolRegistry.ZUKU_INGOT.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sagegane_from_smelting"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(TsukiArmorToolRegistry.SAGEGANE.get()), RecipeCategory.MISC, Items.IRON_INGOT, 0.7F, 200)
+            .group(Tsuki.MODID)
+            .unlockedBy("has_sagegane", has(TsukiArmorToolRegistry.SAGEGANE.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sagegane_to_iron_ingot_from_smelting"));
+        // End Annotation
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(TsukiArmorToolRegistry.TAMAHAGANE.get()), RecipeCategory.MISC, TsukiArmorToolRegistry.STEEL_INGOT.get(), 0.7F, 200)
+            .group(Tsuki.MODID)
+            .unlockedBy("has_tamahagane", has(TsukiArmorToolRegistry.TAMAHAGANE.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "steel_ingot_from_smelting"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiCuisineSet.SOBA_ZARU.getItem().get())
             .requires(TsukiCuisineSet.SOBA.getItem().get())
             .requires(TsukiNormalItemSet.KAESHI.getItem().get())
@@ -1042,1177 +1105,1458 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.WATER)
             .unlockedBy("has_udon", has(TsukiNormalItemSet.FLOUR.getItem().get()))
             .save(consumer);
-   }
+    }
 
-   private void registerMortarRecipe(RecipeOutput consumer) {
-      StoneMortarRecipeBuilder.mortar(Items.BONE_MEAL, 3)
-         .addResult(Items.BONE_MEAL, 3)
-         .requires(net.neoforged.neoforge.common.Tags.Items.BONES)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bonemeal_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(Items.SAND)
-         .addResult(Items.FLINT)
-         .requires(net.neoforged.neoforge.common.Tags.Items.GRAVELS)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flint_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(Items.GRAVEL)
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SALT).get(), 2)
-         .requires(net.neoforged.neoforge.common.Tags.Items.COBBLESTONES)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "salt_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(Items.COBBLESTONE)
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.ALKALINE).get(), 2)
-         .requires(net.neoforged.neoforge.common.Tags.Items.STONES)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "alkaline_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHARCOAL_POWDER).get(), 1)
-         .requires(Ingredient.of(Items.CHARCOAL, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
-         .requires(Ingredient.of(Items.CHARCOAL, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "charcoal_powder"));
-      StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get(), 1)
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get(), 1)
-         .requires(TsukiItemTags.SEEDS_RICE)
-         .requires(TsukiItemTags.SEEDS_RICE)
-         .requires(TsukiItemTags.SEEDS_RICE)
-         .requires(TsukiItemTags.SEEDS_RICE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "brown_rice_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(Items.GREEN_DYE, 1)
-         .addResult(Items.GREEN_DYE, 1)
-         .requires(ItemTags.LEAVES)
-         .requires(ItemTags.LEAVES)
-         .requires(ItemTags.LEAVES)
-         .requires(ItemTags.LEAVES)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dye_green_from_leaves"));
-      StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get(), 2)
-         .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get(), 2)
-         .requires(
-            Ingredient.fromValues(
-               Stream.of(
-                  new TagValue(TsukiItemTags.RAW_CHICKEN),
-                  new TagValue(TsukiItemTags.RAW_PORK),
-                  new TagValue(TsukiItemTags.RAW_BEEF),
-                  new TagValue(TsukiItemTags.RAW_MUTTON)
-               )
-            )
-         )
-         .requires(
-            Ingredient.fromValues(
-               Stream.of(
-                  new TagValue(TsukiItemTags.RAW_CHICKEN),
-                  new TagValue(TsukiItemTags.RAW_PORK),
-                  new TagValue(TsukiItemTags.RAW_BEEF),
-                  new TagValue(TsukiItemTags.RAW_MUTTON)
-               )
-            )
-         )
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "minced_meat"));
-      StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(), 2)
-         .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(), 2)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
-         .requires(TsukiItemTags.CROPS_ONION)
-         .requires(TsukiItemTags.EGGS)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "burger_raw"));
-      StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get(), 1)
-         .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get(), 1)
-         .requires(TsukiItemTags.FISHES)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "surimi_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.BONITO_SHAVING).get(), 1)
-         .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.BONITO_SHAVING).get(), 1)
-         .requires(TsukiFoodSet.DRIED_BONITO.getItem().get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bonito_shaving_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get(), 2)
-         .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get(), 2)
-         .requires(TsukiItemTags.BREAD)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "breadcrumbs_from_breads"));
-      StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RICE).get(), 1)
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.NUKA).get())
-         .requires(TsukiItemTags.RICE_BROWN)
-         .requires(TsukiItemTags.RICE_BROWN)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(Items.SUGAR, 3)
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
-         .requires(Items.SUGAR_CANE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sugar_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(Items.SUGAR, 1)
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
-         .requires(Items.BEETROOT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "beetsugar_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR).get(), 1)
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get(), 1)
-         .requires(TsukiItemTags.GRAIN_WHEAT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR_BUCKWHEAT).get(), 1)
-         .requires(TsukiItemTags.GRAIN_BUCKWHEAT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_buckwheat_from_mortar"));
-      StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR_RICE).get(), 1)
-         .requires(TsukiItemTags.RICE_RICE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_rice_from_mortar"));
-   }
+    private void registerDecorativeBlockRecipes(RecipeOutput consumer) {
 
-   private void registerFarmerDelightRecipes(RecipeOutput consumer) {
-      this.whenModLoaded(
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_BLOCK.get(), 8)
+            .pattern("###")
+            .pattern("#L#")
+            .pattern("###")
+            .define('#', Items.BRICK)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_block"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA.get(), 4)
+            .pattern("#  ")
+            .pattern("L# ")
+            .pattern("LL#")
+            .define('#', BlockRegistry.KAWARA_BLOCK.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA.get(), 4)
+            .pattern("  #")
+            .pattern(" #L")
+            .pattern("#LL")
+            .define('#', BlockRegistry.KAWARA_BLOCK.get())
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_alt"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_STAIRS.get(), 4)
+            .pattern("#  ")
+            .pattern("## ")
+            .pattern("###")
+            .define('#', BlockRegistry.KAWARA_BLOCK.get())
+            .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_stairs"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_STAIRS.get(), 4)
+            .pattern("  #")
+            .pattern(" ##")
+            .pattern("###")
+            .define('#', BlockRegistry.KAWARA_BLOCK.get())
+            .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_stairs_alt"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_SLAB.get(), 6)
+            .pattern("###")
+            .define('#', BlockRegistry.KAWARA_BLOCK.get())
+            .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_slab"));
+
+        // Kawara block conversion recipes
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_BLOCK_ALTER.get())
+                .requires(BlockRegistry.KAWARA_BLOCK.get())
+                .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_block_to_alter"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_BLOCK.get())
+                .requires(BlockRegistry.KAWARA_BLOCK_ALTER.get())
+                .unlockedBy("has_kawara_block_alter", has(BlockRegistry.KAWARA_BLOCK_ALTER.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_block_from_alter"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_STAIRS_ALTER.get())
+                .requires(BlockRegistry.KAWARA_STAIRS.get())
+                .unlockedBy("has_kawara_stairs", has(BlockRegistry.KAWARA_STAIRS.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_stairs_to_alter"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_STAIRS.get())
+                .requires(BlockRegistry.KAWARA_STAIRS_ALTER.get())
+                .unlockedBy("has_kawara_stairs_alter", has(BlockRegistry.KAWARA_STAIRS_ALTER.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_stairs_from_alter"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_SLAB_ALTER.get())
+                .requires(BlockRegistry.KAWARA_SLAB.get())
+                .unlockedBy("has_kawara_slab", has(BlockRegistry.KAWARA_SLAB.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_slab_to_alter"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_SLAB.get())
+                .requires(BlockRegistry.KAWARA_SLAB_ALTER.get())
+                .unlockedBy("has_kawara_slab_alter", has(BlockRegistry.KAWARA_SLAB_ALTER.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_slab_from_alter"));
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.STONE_LANTERN.get())
+            .pattern(" S ")
+            .pattern("SLS")
+            .pattern(" S ")
+            .define('S', Items.STONE)
+            .define('L', Items.LANTERN)
+            .unlockedBy("has_stone", has(Items.STONE))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "stone_lantern"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.COBBLESTONE_LANTERN.get())
+            .pattern(" C ")
+            .pattern("CLC")
+            .pattern(" C ")
+            .define('C', Items.COBBLESTONE)
+            .define('L', Items.LANTERN)
+            .unlockedBy("has_cobblestone", has(Items.COBBLESTONE))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cobblestone_lantern"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MOSSY_STONE_LANTERN.get())
+            .requires(BlockRegistry.STONE_LANTERN.get())
+            .requires(Items.VINE)
+            .unlockedBy("has_stone_lantern", has(BlockRegistry.STONE_LANTERN.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mossy_stone_lantern"));
+    
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.RED_LANTERN.get())
+            .pattern(" I ")
+            .pattern("PTP")
+            .pattern(" I ")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('P', Items.RED_WOOL)
+            .define('T', Items.TORCH)
+            .unlockedBy("has_red_wool", has(Items.RED_WOOL))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "red_lantern"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.WHITE_LANTERN.get())
+            .pattern(" I ")
+            .pattern("PTP")
+            .pattern(" I ")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('P', Items.WHITE_WOOL)
+            .define('T', Items.TORCH)
+            .unlockedBy("has_white_wool", has(Items.WHITE_WOOL))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "white_lantern"));
+  
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.BAMBOO_LANTERN.get())
+            .pattern(" B ")
+            .pattern("BTB")
+            .pattern(" B ")
+            .define('B', TsukiItemTags.BAMBOO)
+            .define('T', Items.TORCH)
+            .unlockedBy("has_bamboo", has(TsukiItemTags.BAMBOO))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_lantern"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.ANDON.get())
+            .pattern("PPP")
+            .pattern("PTP")
+            .pattern("LLL")
+            .define('P', Items.PAPER)
+            .define('T', Items.TORCH)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "andon"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.WINDBELL.get())
+            .pattern(" S ")
+            .pattern("IGI")
+            .pattern(" I ")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('G', Items.GLASS)
+            .define('S', Items.STRING)
+            .unlockedBy("has_iron_ingot", has(Tags.Items.INGOTS_IRON))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "windbell"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.ZABUTON.get())
+            .pattern("LLL")
+            .pattern("WWW")
+            .define('W', Items.BLUE_WOOL)
+            .define('L', Items.LAPIS_LAZULI)
+            .unlockedBy("has_blue_wool", has(Items.BLUE_WOOL))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "zabuton"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.TAIKO.get())
+            .pattern("LLL")
+            .pattern("LSL")
+            .pattern("LLL")
+            .define('L', TsukiItemTags.LUMBER)
+            .define('S', Items.LEATHER)
+            .unlockedBy("has_leather", has(Items.LEATHER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "taiko"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.BAMBOO_DOOR.get(), 3)
+            .pattern("##")
+            .pattern("##")
+            .pattern("##")
+            .define('#', TsukiItemTags.BAMBOO)
+            .unlockedBy("has_bamboo", has(TsukiItemTags.BAMBOO))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_door"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.BAMBOO_FENCE.get(), 3)
+            .pattern("#I#")
+            .pattern("#I#")
+            .define('#', TsukiItemTags.BAMBOO)
+            .define('I', Tags.Items.RODS_WOODEN)
+            .unlockedBy("has_bamboo", has(TsukiItemTags.BAMBOO))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_fence"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.BAMBOO_FENCE_SUNBURNT.get(), 3)
+            .pattern("#I#")
+            .pattern("#I#")
+            .define('#', ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get())
+            .define('I', Tags.Items.RODS_WOODEN)
+            .unlockedBy("has_bamboo_sunburnt", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_fence_sunburnt"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SHOJI.get())
+            .pattern("SPP")
+            .pattern("SPP")
+            .pattern("SPP")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', Items.PAPER)
+            .unlockedBy("has_paper", has(Items.PAPER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoji"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SHOJI.get())
+            .pattern("PPS")
+            .pattern("PPS")
+            .pattern("PPS")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', Items.PAPER)
+            .unlockedBy("has_paper", has(Items.PAPER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoji_alt"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SHOJI_1.get())
+            .pattern("SPP")
+            .pattern("SPP")
+            .pattern("SII")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', Items.PAPER)
+            .define('I', Tags.Items.DYES_BLUE)
+            .unlockedBy("has_blue_dye", has(Tags.Items.DYES_BLUE))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoji_1"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SHOJI_1.get())
+            .pattern("PPS")
+            .pattern("PPS")
+            .pattern("IIS")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', Items.PAPER)
+            .define('I', Tags.Items.DYES_BLUE)
+            .unlockedBy("has_blue_dye", has(Tags.Items.DYES_BLUE))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoji_1_alt"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SHOJI_2.get())
+            .pattern("SPS")
+            .pattern("SPS")
+            .pattern("SSS")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', Items.PAPER)
+            .unlockedBy("has_paper", has(Items.PAPER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoji_2"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SHOJI_3.get())
+            .pattern("SPS")
+            .pattern("PMP")
+            .pattern("SPS")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', Items.PAPER)
+            .define('M', Tags.Items.DYES)
+            .unlockedBy("has_dye", has(Tags.Items.DYES))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoji_3"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SHOJI_4.get())
+            .pattern("SSS")
+            .pattern("PPP")
+            .pattern("SSS")
+            .define('S', TsukiItemTags.LUMBER)
+            .define('P', Items.PAPER)
+            .unlockedBy("has_paper", has(Items.PAPER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoji_4"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SHOJI_5.get())
+            .pattern("SS")
+            .pattern("SS")
+            .pattern("SS")
+            .define('S', TsukiItemTags.LUMBER)
+            .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoji_5"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.NOREN_WHITE.get())
+            .pattern("LLL")
+            .pattern("W W")
+            .pattern("W W")
+            .define('L', TsukiItemTags.LUMBER)
+            .define('W', Items.WHITE_WOOL)
+            .unlockedBy("has_white_wool", has(Items.WHITE_WOOL))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noren_white"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.NOREN_BLUE.get())
+            .pattern("LLL")
+            .pattern("W W")
+            .pattern("W W")
+            .define('L', TsukiItemTags.LUMBER)
+            .define('W', Items.BLUE_WOOL)
+            .unlockedBy("has_blue_wool", has(Items.BLUE_WOOL))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noren_blue"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.NOREN_PINK.get())
+            .pattern("LLL")
+            .pattern("W W")
+            .pattern("W W")
+            .define('L', TsukiItemTags.LUMBER)
+            .define('W', Items.PINK_WOOL)
+            .unlockedBy("has_pink_wool", has(Items.PINK_WOOL))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noren_pink"));
+    }
+
+    private void registerMortarRecipe(RecipeOutput consumer) {
+        StoneMortarRecipeBuilder.mortar(Items.BONE_MEAL, 3)
+            .addResult(Items.BONE_MEAL, 3)
+            .requires(Tags.Items.BONES)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bonemeal_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(Items.SAND)
+            .addResult(Items.FLINT)
+            .requires(Tags.Items.GRAVELS)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flint_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(Items.GRAVEL)
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SALT).get(), 2)
+            .requires(Tags.Items.COBBLESTONES)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "salt_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(Items.COBBLESTONE)
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.ALKALINE).get(), 2)
+            .requires(Tags.Items.STONES)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "alkaline_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHARCOAL_POWDER).get(), 1)
+            .requires(Ingredient.of(Items.CHARCOAL, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
+            .requires(Ingredient.of(Items.CHARCOAL, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "charcoal_powder"));
+        StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get(), 1)
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get(), 1)
+            .requires(TsukiItemTags.SEEDS_RICE)
+            .requires(TsukiItemTags.SEEDS_RICE)
+            .requires(TsukiItemTags.SEEDS_RICE)
+            .requires(TsukiItemTags.SEEDS_RICE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "brown_rice_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(Items.GREEN_DYE, 1)
+            .addResult(Items.GREEN_DYE, 1)
+            .requires(ItemTags.LEAVES)
+            .requires(ItemTags.LEAVES)
+            .requires(ItemTags.LEAVES)
+            .requires(ItemTags.LEAVES)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dye_green_from_leaves"));
+        StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get(), 2)
+            .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get(), 2)
+            .requires(
+            Ingredient.fromValues(
+                Stream.of(
+                    new TagValue(TsukiItemTags.RAW_CHICKEN),
+                    new TagValue(TsukiItemTags.RAW_PORK),
+                    new TagValue(TsukiItemTags.RAW_BEEF),
+                    new TagValue(TsukiItemTags.RAW_MUTTON)
+                )
+            )
+            )
+            .requires(
+            Ingredient.fromValues(
+                Stream.of(
+                    new TagValue(TsukiItemTags.RAW_CHICKEN),
+                    new TagValue(TsukiItemTags.RAW_PORK),
+                    new TagValue(TsukiItemTags.RAW_BEEF),
+                    new TagValue(TsukiItemTags.RAW_MUTTON)
+                )
+            )
+            )
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "minced_meat"));
+        StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(), 2)
+            .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(), 2)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
+            .requires(TsukiItemTags.CROPS_ONION)
+            .requires(TsukiItemTags.EGGS)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "burger_raw"));
+        StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get(), 1)
+            .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get(), 1)
+            .requires(TsukiItemTags.FISHES)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "surimi_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.BONITO_SHAVING).get(), 1)
+            .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.BONITO_SHAVING).get(), 1)
+            .requires(TsukiFoodSet.DRIED_BONITO.getItem().get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bonito_shaving_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get(), 2)
+            .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get(), 2)
+            .requires(TsukiItemTags.BREAD)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "breadcrumbs_from_breads"));
+        StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RICE).get(), 1)
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.NUKA).get())
+            .requires(TsukiItemTags.RICE_BROWN)
+            .requires(TsukiItemTags.RICE_BROWN)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(Items.SUGAR, 3)
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
+            .requires(Items.SUGAR_CANE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sugar_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(Items.SUGAR, 1)
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
+            .requires(Items.BEETROOT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "beetsugar_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR).get(), 1)
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get(), 1)
+            .requires(TsukiItemTags.GRAIN_WHEAT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR_BUCKWHEAT).get(), 1)
+            .requires(TsukiItemTags.GRAIN_BUCKWHEAT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_buckwheat_from_mortar"));
+        StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR_RICE).get(), 1)
+            .requires(TsukiItemTags.RICE_RICE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_rice_from_mortar"));
+    }
+
+    private void registerFarmerDelightRecipes(RecipeOutput consumer) {
+        this.whenModLoaded(
             StoneMortarRecipeBuilder.mortar(ModItems.RICE.get())
-               .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get())
-               .requires(ModItems.RICE_PANICLE.get()),
+                .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get())
+                .requires(ModItems.RICE_PANICLE.get()),
             consumer,
             "farmersdelight",
             "farmer_rice_mortar_from_sakura"
-         );
-      this.whenModLoaded(
+            );
+        this.whenModLoaded(
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CANVAS.get())
-               .pattern("##")
-               .pattern("##")
-               .define('#', TsukiItemTags.STRAW)
-               .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
+                .pattern("##")
+                .pattern("##")
+                .define('#', TsukiItemTags.STRAW)
+                .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
             consumer,
             "farmersdelight",
             "canvas_from_sakura"
-         );
-      this.whenModLoaded(
+            );
+        this.whenModLoaded(
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TATAMI.get(), 2)
-               .pattern("S#")
-               .pattern("#S")
-               .define('#', TsukiItemTags.STRAW)
-               .define('S', ModItems.CANVAS.get())
-               .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
+                .pattern("S#")
+                .pattern("#S")
+                .define('#', TsukiItemTags.STRAW)
+                .define('S', ModItems.CANVAS.get())
+                .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
             consumer,
             "farmersdelight",
             "farmer_tatami_from_sakura"
-         );
-      this.whenModLoaded(
+            );
+        this.whenModLoaded(
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ROPE.get(), 3)
-               .pattern("s")
-               .pattern("s")
-               .pattern("s")
-               .define('s', TsukiItemTags.STRAW)
-               .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
+                .pattern("s")
+                .pattern("s")
+                .pattern("s")
+                .define('s', TsukiItemTags.STRAW)
+                .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
             consumer,
             "farmersdelight",
             "rope_from_sakura"
-         );
-      this.whenModLoaded(
+            );
+        this.whenModLoaded(
             ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ORGANIC_COMPOST.get(), 1)
-               .requires(Items.DIRT)
-               .requires(Items.ROTTEN_FLESH)
-               .requires(Items.ROTTEN_FLESH)
-               .requires(TsukiItemTags.STRAW)
-               .requires(TsukiItemTags.STRAW)
-               .requires(Items.BONE_MEAL)
-               .requires(Items.BONE_MEAL)
-               .requires(Items.BONE_MEAL)
-               .requires(Items.BONE_MEAL)
-               .unlockedBy("has_rotten_flesh", TriggerInstance.hasItems(Items.ROTTEN_FLESH))
-               .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
+                .requires(Items.DIRT)
+                .requires(Items.ROTTEN_FLESH)
+                .requires(Items.ROTTEN_FLESH)
+                .requires(TsukiItemTags.STRAW)
+                .requires(TsukiItemTags.STRAW)
+                .requires(Items.BONE_MEAL)
+                .requires(Items.BONE_MEAL)
+                .requires(Items.BONE_MEAL)
+                .requires(Items.BONE_MEAL)
+                .unlockedBy("has_rotten_flesh", TriggerInstance.hasItems(Items.ROTTEN_FLESH))
+                .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
             consumer,
             "farmersdelight",
             "organic_compost_rotten_flesh_from_sakura"
-         );
-      this.whenModLoaded(
+            );
+        this.whenModLoaded(
             ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ORGANIC_COMPOST.get(), 1)
-               .requires(Items.DIRT)
-               .requires(TsukiItemTags.STRAW)
-               .requires(TsukiItemTags.STRAW)
-               .requires(Items.BONE_MEAL)
-               .requires(Items.BONE_MEAL)
-               .requires(ModItems.TREE_BARK.get())
-               .requires(ModItems.TREE_BARK.get())
-               .requires(ModItems.TREE_BARK.get())
-               .requires(ModItems.TREE_BARK.get())
-               .unlockedBy("has_tree_bark", TriggerInstance.hasItems(ModItems.TREE_BARK.get()))
-               .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
+                .requires(Items.DIRT)
+                .requires(TsukiItemTags.STRAW)
+                .requires(TsukiItemTags.STRAW)
+                .requires(Items.BONE_MEAL)
+                .requires(Items.BONE_MEAL)
+                .requires(ModItems.TREE_BARK.get())
+                .requires(ModItems.TREE_BARK.get())
+                .requires(ModItems.TREE_BARK.get())
+                .requires(ModItems.TREE_BARK.get())
+                .unlockedBy("has_tree_bark", TriggerInstance.hasItems(ModItems.TREE_BARK.get()))
+                .unlockedBy("has_straw", has(TsukiItemTags.STRAW)),
             consumer,
             "farmersdelight",
             "organic_compost_bark_from_sakura"
-         );
-   }
+            );
+    }
 
-   private void registerCookingRecipe(RecipeOutput consumer) {
-      CookingPotRecipeBuilder.cooking(FluidIngredient.EMPTY, FoodRegistry.CUISINES.get(TsukiCuisineSet.BEEF_STICK).get(), 2)
-         .requires(TsukiItemTags.RAW_BEEF)
-         .requires(TsukiItemTags.BAMBOO)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "beef_stick_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.EMPTY, FoodRegistry.CUISINES.get(TsukiCuisineSet.CHICKEN_STICK).get(), 2)
-         .requires(TsukiItemTags.RAW_CHICKEN)
-         .requires(TsukiItemTags.BAMBOO)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chicken_stick_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.EMPTY, FoodRegistry.CUISINES.get(TsukiCuisineSet.PORK_STICK).get(), 2)
-         .requires(TsukiItemTags.RAW_PORK)
-         .requires(TsukiItemTags.BAMBOO)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pork_stick_cooking"));
-      CookingPotRecipeBuilder.cooking(
+    private void registerCookingRecipe(RecipeOutput consumer) {
+        CookingPotRecipeBuilder.cooking(FluidIngredient.EMPTY, FoodRegistry.CUISINES.get(TsukiCuisineSet.BEEF_STICK).get(), 2)
+            .requires(TsukiItemTags.RAW_BEEF)
+            .requires(TsukiItemTags.BAMBOO)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "beef_stick_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.EMPTY, FoodRegistry.CUISINES.get(TsukiCuisineSet.CHICKEN_STICK).get(), 2)
+            .requires(TsukiItemTags.RAW_CHICKEN)
+            .requires(TsukiItemTags.BAMBOO)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chicken_stick_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.EMPTY, FoodRegistry.CUISINES.get(TsukiCuisineSet.PORK_STICK).get(), 2)
+            .requires(TsukiItemTags.RAW_PORK)
+            .requires(TsukiItemTags.BAMBOO)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pork_stick_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.FOODSET.get(TsukiFoodSet.TOFU).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_SOYBEAN)
-         .requires(TsukiItemTags.SALT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tofu_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.CROPS_SOYBEAN)
+            .requires(TsukiItemTags.SALT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tofu_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.FOODSET.get(TsukiFoodSet.MAYONAISE).get(), 2
-         )
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.VINEGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mayo_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiNormalItemSet.CURRY_SAUCE.getItem().get(), 2)
-         .requires(TsukiNormalItemSet.CURRY_POWDER.getItem().get())
-         .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
-         .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
-         .requires(TsukiItemTags.FLOUR)
-         .requires(TsukiItemTags.DASHI)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "curry_sauce_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiFoodSet.BOILED_BONITO.getItem().get())
-         .requires(TsukiFoodSet.MACHINED_BONITO.getItem().get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bonito_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiNormalItemSet.NOODLE_SOUP.getItem().get(), 2)
-         .requires(TsukiNormalItemSet.KAESHI.getItem().get())
-         .requires(TsukiNormalItemSet.DASHI.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noodle_soup_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.VINEGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mayo_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiNormalItemSet.CURRY_SAUCE.getItem().get(), 2)
+            .requires(TsukiNormalItemSet.CURRY_POWDER.getItem().get())
+            .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
+            .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.DASHI)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "curry_sauce_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiFoodSet.BOILED_BONITO.getItem().get())
+            .requires(TsukiFoodSet.MACHINED_BONITO.getItem().get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bonito_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiNormalItemSet.NOODLE_SOUP.getItem().get(), 2)
+            .requires(TsukiNormalItemSet.KAESHI.getItem().get())
+            .requires(TsukiNormalItemSet.DASHI.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noodle_soup_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.RAMEN).get(), 1
-         )
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_BEEF.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.RAW_BEEF)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_beef_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_EGG.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_eggs_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_FRIEDTOFU.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.TOFU_FRIED.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_friedtofu_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_KATSU.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.KATSU.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_katsu_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_TEMPURA.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.TEMPURA.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_tempura_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_FRIEDCHICKEN.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.FRIED_CHICKEN.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_chicken_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_CROQUETTE.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.CROQUETTE.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_croquette_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_LARGE.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.FOODS_RAW_MEAT)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_large_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_BEEF.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.RAW_BEEF)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_beef_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_EGG.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_eggs_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_FRIEDTOFU.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.TOFU_FRIED.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_friedtofu_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_KATSU.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.KATSU.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_katsu_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_TEMPURA.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.TEMPURA.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_tempura_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_FRIEDCHICKEN.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.FRIED_CHICKEN.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_chicken_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_CROQUETTE.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.CROQUETTE.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_croquette_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_LARGE.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.FOODS_RAW_MEAT)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_large_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.UDON).get(), 1
-         )
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_BEEF.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.RAW_BEEF)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_beef_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_EGG.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_eggs_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_FRIEDTOFU.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.TOFU_FRIED.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_friedtofu_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_KATSU.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.KATSU.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_katsu_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_TEMPURA.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.TEMPURA.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_tempura_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_FRIEDCHICKEN.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.FRIED_CHICKEN.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_chicken_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_CROQUETTE.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.CROQUETTE.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_croquette_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_LARGE.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.FOODS_RAW_MEAT)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_large_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_BEEF.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.RAW_BEEF)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_beef_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_EGG.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_eggs_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_FRIEDTOFU.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.TOFU_FRIED.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_friedtofu_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_KATSU.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.KATSU.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_katsu_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_TEMPURA.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.TEMPURA.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_tempura_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_FRIEDCHICKEN.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.FRIED_CHICKEN.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_chicken_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_CROQUETTE.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.CROQUETTE.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_croquette_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_LARGE.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.FOODS_RAW_MEAT)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_large_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.SOBA).get(), 1
-         )
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_BEEF.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.RAW_BEEF)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_beef_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_EGG.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_eggs_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_FRIEDTOFU.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.TOFU_FRIED.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_friedtofu_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_KATSU.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.KATSU.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_katsu_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_TEMPURA.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.TEMPURA.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_tempura_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_FRIEDCHICKEN.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.FRIED_CHICKEN.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_chicken_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_CROQUETTE.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiFoodSet.CROQUETTE.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_croquette_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_LARGE.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
-         .requires(TsukiItemTags.FOODS_RAW_MEAT)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_large_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), TsukiCuisineSet.YAKI_UDON.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.KAESHI.getItem().get())
-         .requires(TsukiNormalItemSet.WORCESTER_SAUCE.getItem().get())
-         .requires(TsukiItemTags.VEGETABLES)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yaki_udon_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_BEEF.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.RAW_BEEF)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_beef_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_EGG.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_eggs_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_FRIEDTOFU.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.TOFU_FRIED.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_friedtofu_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_KATSU.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.KATSU.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_katsu_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_TEMPURA.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.TEMPURA.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_tempura_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_FRIEDCHICKEN.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.FRIED_CHICKEN.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_chicken_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_CROQUETTE.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiFoodSet.CROQUETTE.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_croquette_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_LARGE.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .requires(TsukiItemTags.FOODS_RAW_MEAT)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_large_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), TsukiCuisineSet.YAKI_UDON.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.KAESHI.getItem().get())
+            .requires(TsukiNormalItemSet.WORCESTER_SAUCE.getItem().get())
+            .requires(TsukiItemTags.VEGETABLES)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yaki_udon_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiNormalItemSet.WORCESTER_SAUCE.getItem().get(), 2
-         )
-         .requires(TsukiItemTags.SUGAR)
-         .requires(TsukiItemTags.FRUITS)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "worcester_sauce_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.SUGAR)
+            .requires(TsukiItemTags.FRUITS)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "worcester_sauce_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.TOFU_FRIED).get(), 2
-         )
-         .requires(TsukiItemTags.TOFU)
-         .requires(TsukiItemTags.FLOUR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tofu_fried_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.TOFU)
+            .requires(TsukiItemTags.FLOUR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tofu_fried_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.KAMABOKO).get(), 2
-         )
-         .requires(TsukiItemTags.SALT)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kamaboko_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.SALT)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kamaboko_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.HYOROGAN).get(), 2
-         )
-         .requires(TsukiItemTags.FLOUR)
-         .requires(TsukiNormalItemSet.RICE.getItem().get())
-         .requires(Ingredient.fromValues(Stream.of(new TagValue(TsukiItemTags.CROPS_TARO), new TagValue(net.neoforged.neoforge.common.Tags.Items.CROPS_POTATO))))
-         .requires(TsukiItemTags.SUGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "hyorogan_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiNormalItemSet.RICE.getItem().get())
+            .requires(Ingredient.fromValues(Stream.of(new TagValue(TsukiItemTags.CROPS_TARO), new TagValue(Tags.Items.CROPS_POTATO))))
+            .requires(TsukiItemTags.SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "hyorogan_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.SATSUMAAGE).get(), 2
-         )
-         .requires(TsukiItemTags.SALT)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "satsumaage_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU).get(), 2)
-         .requires(TsukiItemTags.RAW_PORK)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
-         .requires(TsukiItemTags.EGGS)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pork_katsu_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.SALT)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "satsumaage_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU).get(), 2)
+            .requires(TsukiItemTags.RAW_PORK)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
+            .requires(TsukiItemTags.EGGS)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pork_katsu_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.CHICKEN_NANBAN).get(), 2
-         )
-         .requires(TsukiFoodSet.FRIED_CHICKEN.getItem().get())
-         .requires(TsukiNormalItemSet.KAESHI.getItem().get())
-         .requires(TsukiFoodSet.MAYONAISE.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chicken_nanban_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiFoodSet.FRIED_CHICKEN.getItem().get())
+            .requires(TsukiNormalItemSet.KAESHI.getItem().get())
+            .requires(TsukiFoodSet.MAYONAISE.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chicken_nanban_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.TOFU_NANBAN).get(), 2
-         )
-         .requires(TsukiFoodSet.TOFU_FRIED.getItem().get())
-         .requires(TsukiNormalItemSet.KAESHI.getItem().get())
-         .requires(TsukiFoodSet.MAYONAISE.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tofu_nanban_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiFoodSet.TOFU_FRIED.getItem().get())
+            .requires(TsukiNormalItemSet.KAESHI.getItem().get())
+            .requires(TsukiFoodSet.MAYONAISE.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tofu_nanban_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.FRIED_CHICKEN).get(), 2
-         )
-         .requires(TsukiItemTags.RAW_CHICKEN)
-         .requires(
-            Ingredient.fromValues(
-               Stream.of(new ItemValue(new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())), new TagValue(TsukiItemTags.FLOUR))
             )
-         )
-         .requires(TsukiItemTags.EGGS)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fried_chicken_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            .requires(TsukiItemTags.RAW_CHICKEN)
+            .requires(
+            Ingredient.fromValues(
+                Stream.of(new ItemValue(new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())), new TagValue(TsukiItemTags.FLOUR))
+            )
+            )
+            .requires(TsukiItemTags.EGGS)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fried_chicken_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.CROQUETTE).get(), 2
-         )
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MASHED_POTATO).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
-         .requires(TsukiItemTags.MILK)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "croquette_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MASHED_POTATO).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
+            .requires(TsukiItemTags.MILK)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "croquette_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get(), 4
-         )
-         .requires(TsukiItemTags.SUGAR)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kaeshi_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.SUGAR)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kaeshi_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.FISHCAKE).get(), 4
-         )
-         .requires(TsukiItemTags.SALT)
-         .requires(TsukiItemTags.EGGS)
-         .requires(Ingredient.fromValues(Stream.of(new TagValue(TsukiItemTags.CROPS_TARO), new TagValue(net.neoforged.neoforge.common.Tags.Items.CROPS_POTATO))))
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "hanpen_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.SALT)
+            .requires(TsukiItemTags.EGGS)
+            .requires(Ingredient.fromValues(Stream.of(new TagValue(TsukiItemTags.CROPS_TARO), new TagValue(Tags.Items.CROPS_POTATO))))
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "hanpen_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.SOUP_REDBEAN).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_REDBEAN)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soup_redbean_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.CROPS_REDBEAN)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soup_redbean_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.CABBAGE_ROLL).get()
-         )
-         .requires(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
-         .requires(
-            Ingredient.fromValues(
-               Stream.of(
-                  new TagValue(TsukiItemTags.RAW_CHICKEN),
-                  new TagValue(TsukiItemTags.RAW_PORK),
-                  new TagValue(TsukiItemTags.RAW_BEEF),
-                  new TagValue(TsukiItemTags.RAW_MUTTON),
-                  new TagValue(TsukiItemTags.FISHES)
-               )
             )
-         )
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cabbage_roll_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            .requires(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
+            .requires(
+            Ingredient.fromValues(
+                Stream.of(
+                    new TagValue(TsukiItemTags.RAW_CHICKEN),
+                    new TagValue(TsukiItemTags.RAW_PORK),
+                    new TagValue(TsukiItemTags.RAW_BEEF),
+                    new TagValue(TsukiItemTags.RAW_MUTTON),
+                    new TagValue(TsukiItemTags.FISHES)
+                )
+            )
+            )
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cabbage_roll_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_REDBEAN)
-         .requires(TsukiItemTags.CROPS_REDBEAN)
-         .requires(TsukiItemTags.SUGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "redbean_paste_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.CROPS_REDBEAN)
+            .requires(TsukiItemTags.CROPS_REDBEAN)
+            .requires(TsukiItemTags.SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "redbean_paste_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO_SAUCE).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_TOMATO)
-         .requires(TsukiItemTags.CROPS_TOMATO)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tomato_sauce_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.CROPS_TOMATO)
+            .requires(TsukiItemTags.CROPS_TOMATO)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tomato_sauce_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get(), 2
-         )
-         .requires(TsukiItemTags.DOUGH_RICE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dango_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.DOUGH_RICE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dango_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DANANKO).get()
-         )
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dananko_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dananko_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DANMITARASHI).get()
-         )
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
-         .requires(TsukiItemTags.SUGAR)
-         .requires(TsukiItemTags.SUGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "danmitarashi_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
+            .requires(TsukiItemTags.SUGAR)
+            .requires(TsukiItemTags.SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "danmitarashi_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DANSANSYOKU).get()
-         )
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
-         .requires(BlockRegistry.SAKURA_LEAVES.get())
-         .requires(Items.SHORT_GRASS)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dansansyoku_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
+            .requires(BlockRegistry.SAKURA_LEAVES.get())
+            .requires(Items.SHORT_GRASS)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dansansyoku_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DAIFUKU).get(), 2
-         )
-         .requires(TsukiItemTags.DOUGH_RICE)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "daifuku_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.DOUGH_RICE)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "daifuku_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.KUSA_DAIFUKU).get(), 2
-         )
-         .requires(TsukiItemTags.DOUGH_RICE)
-         .requires(Items.SHORT_GRASS)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kusa_daifuku_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.DOUGH_RICE)
+            .requires(Items.SHORT_GRASS)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kusa_daifuku_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.BROWN_RICE_COOKED).get()
-         )
-         .requires(TsukiItemTags.RICE_BROWN)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "brown_rice_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_BROWN)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "brown_rice_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_REDBEAN).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.CROPS_REDBEAN)
-         .requires(TsukiItemTags.SUGAR)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_redbean_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), TsukiFoodSet.OHAGI.getItem().get())
-         .requires(TsukiFoodSet.MOCHI.getItem().get())
-         .requires(TsukiFoodSet.REDBEAN_PASTE.getItem().get())
-         .requires(TsukiItemTags.SUGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ohagi_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.CROPS_REDBEAN)
+            .requires(TsukiItemTags.SUGAR)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_redbean_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), TsukiFoodSet.OHAGI.getItem().get())
+            .requires(TsukiFoodSet.MOCHI.getItem().get())
+            .requires(TsukiFoodSet.REDBEAN_PASTE.getItem().get())
+            .requires(TsukiItemTags.SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ohagi_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_NATTO).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.NATTO)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_natto_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.NATTO)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_natto_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_NATTO_EGG).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.NATTO)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_natto_egg_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.NATTO)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_natto_egg_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_BAMBOO).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(BlockRegistry.BAMBOOSHOOT.get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_bamboo_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(BlockRegistry.BAMBOOSHOOT.get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_bamboo_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_MUSHROOM).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.MUSHROOMS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_mushrooms_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.MUSHROOMS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_mushrooms_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_BEEF).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.RAW_BEEF)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_beef_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.RAW_BEEF)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_beef_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_PORK).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.RAW_PORK)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_pork_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.RAW_PORK)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_pork_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_FISH).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.RAW_FISHES)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_fish_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.RAW_FISHES)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_fish_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_EGG).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_eggs_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_eggs_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_BEEF_EGG).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.RAW_BEEF)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_beef_eggs_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.RAW_BEEF)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_beef_eggs_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_PORK_EGG).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.RAW_PORK)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_pork_eggs_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.RAW_PORK)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_pork_eggs_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_KATSU).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU).get())
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_katsu_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU).get())
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_katsu_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_OYAKO).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.RAW_CHICKEN)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_oyako_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.RAW_CHICKEN)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_oyako_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_OYAKO_FISH).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.RAW_FISHES)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_oyako_fish_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.OMURICE).get())
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(
-            Ingredient.fromValues(
-               Stream.of(
-                  new TagValue(TsukiItemTags.RAW_CHICKEN),
-                  new TagValue(TsukiItemTags.RAW_PORK),
-                  new TagValue(TsukiItemTags.RAW_BEEF),
-                  new TagValue(TsukiItemTags.RAW_MUTTON),
-                  new TagValue(TsukiItemTags.FISHES)
-               )
             )
-         )
-         .requires(TsukiItemTags.TOMATOSAUCE)
-         .requires(TsukiItemTags.EGGS)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "omurice_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.TEMPURA).get())
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.TEMPURA_BATTER).get())
-         .requires(TsukiItemTags.SHRIMP)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tempura_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.FRIES).get(), 2)
-         .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_POTATO)
-         .requires(TsukiItemTags.SALT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fries_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.RAW_FISHES)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_oyako_fish_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.OMURICE).get())
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(
+            Ingredient.fromValues(
+                Stream.of(
+                    new TagValue(TsukiItemTags.RAW_CHICKEN),
+                    new TagValue(TsukiItemTags.RAW_PORK),
+                    new TagValue(TsukiItemTags.RAW_BEEF),
+                    new TagValue(TsukiItemTags.RAW_MUTTON),
+                    new TagValue(TsukiItemTags.FISHES)
+                )
+            )
+            )
+            .requires(TsukiItemTags.TOMATOSAUCE)
+            .requires(TsukiItemTags.EGGS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "omurice_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.TEMPURA).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.TEMPURA_BATTER).get())
+            .requires(TsukiItemTags.SHRIMP)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tempura_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.FRIES).get(), 2)
+            .requires(Tags.Items.CROPS_POTATO)
+            .requires(TsukiItemTags.SALT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fries_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.MASHED_POTATO).get(), 2
-         )
-         .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_POTATO)
-         .requires(TsukiItemTags.SALT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mashed_potato_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.FISH_BAKE_SALT).get()
-         )
-         .requires(TsukiItemTags.SALT)
-         .requires(TsukiItemTags.RAW_FISHES)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fish_bake_salt_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.FISH_BAKE).get())
-         .requires(TsukiItemTags.RAW_FISHES)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fish_bake_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.TAMAGOYAKI).get(), 2
-         )
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.SUGAR)
-         .requires(TsukiItemTags.DASHI)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tamagoyaki_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.OSUIMONO).get(), 2
-         )
-         .requires(Items.DRIED_KELP)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "osuimono_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.SOUP_MISO).get(), 2
-         )
-         .requires(TsukiItemTags.MISO)
-         .requires(TsukiItemTags.TOFU)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soup_miso_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIKUJAGA).get(), 2
-         )
-         .requires(Ingredient.fromValues(Stream.of(new TagValue(TsukiItemTags.RAW_PORK), new TagValue(TsukiItemTags.RAW_BEEF))))
-         .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_CARROT)
-         .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_POTATO)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nikujaga_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_PUMPKIN).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_PUMPKIN)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_pumpkin_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_RADISH).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_RADISH)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_radish_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.IMOTAKI).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_TARO)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "imotaki_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.CHIKUZENNI).get(), 2
-         )
-         .requires(TsukiItemTags.RAW_CHICKEN)
-         .requires(TsukiItemTags.MUSHROOMS)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chikuzenni_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NOPPEI_JIRU).get(), 2
-         )
-         .requires(TsukiItemTags.RAW_CHICKEN)
-         .requires(TsukiItemTags.CROPS_TARO)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(TsukiItemTags.SOYSAUCE)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noppei_jiru_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_FISH).get(), 2
-         )
-         .requires(TsukiItemTags.RAW_FISHES)
-         .requires(TsukiItemTags.MISO)
-         .requires(TsukiItemTags.SALT)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_fish_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIKUJAGA).get(), 2
-         )
-         .requires(Ingredient.fromValues(Stream.of(new TagValue(TsukiItemTags.RAW_PORK), new TagValue(TsukiItemTags.RAW_BEEF))))
-         .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_CARROT)
-         .requires(net.neoforged.neoforge.common.Tags.Items.CROPS_POTATO)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nikujaga_cooking_kaeshi"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_PUMPKIN).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_PUMPKIN)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_pumpkin_cooking_kaeshi"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_RADISH).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_RADISH)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_radish_cooking_kaeshi"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.IMOTAKI).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_TARO)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "imotaki_cooking_kaeshi"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.CHIKUZENNI).get(), 2
-         )
-         .requires(TsukiItemTags.RAW_CHICKEN)
-         .requires(TsukiItemTags.MUSHROOMS)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chikuzenni_cooking_kaeshi"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NOPPEI_JIRU).get(), 2
-         )
-         .requires(TsukiItemTags.RAW_CHICKEN)
-         .requires(TsukiItemTags.CROPS_TARO)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noppei_jiru_cooking_kaeshi"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.FUROFUKI_DAIKON).get(), 2
-         )
-         .requires(TsukiItemTags.CROPS_RADISH)
-         .requires(TsukiItemTags.MISO)
-         .requires(TsukiItemTags.SALT)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "furofuki_daikon_cooking"));
-      CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DASHI).get(), 1
-         )
-         .requires(Ingredient.of(TsukiFoodSet.BONITO_SHAVING.getItem().get(), Items.DRIED_KELP))
-         .requires(Ingredient.of(TsukiFoodSet.BONITO_SHAVING.getItem().get(), Items.DRIED_KELP))
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dashi_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.YAKINIKU).get())
-         .requires(
-            Ingredient.fromValues(
-               Stream.of(new TagValue(TsukiItemTags.RAW_PORK), new TagValue(TsukiItemTags.RAW_BEEF), new TagValue(TsukiItemTags.RAW_MUTTON))
             )
-         )
-         .requires(TsukiItemTags.SOYSAUCE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yakiniku_cooking"));
-      CookingPotRecipeBuilder.cooking(
+            .requires(Tags.Items.CROPS_POTATO)
+            .requires(TsukiItemTags.SALT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mashed_potato_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.FISH_BAKE_SALT).get()
+            )
+            .requires(TsukiItemTags.SALT)
+            .requires(TsukiItemTags.RAW_FISHES)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fish_bake_salt_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.FISH_BAKE).get())
+            .requires(TsukiItemTags.RAW_FISHES)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fish_bake_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.TAMAGOYAKI).get(), 2
+            )
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.SUGAR)
+            .requires(TsukiItemTags.DASHI)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tamagoyaki_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.OSUIMONO).get(), 2
+            )
+            .requires(Items.DRIED_KELP)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "osuimono_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.SOUP_MISO).get(), 2
+            )
+            .requires(TsukiItemTags.MISO)
+            .requires(TsukiItemTags.TOFU)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soup_miso_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIKUJAGA).get(), 2
+            )
+            .requires(Ingredient.fromValues(Stream.of(new TagValue(TsukiItemTags.RAW_PORK), new TagValue(TsukiItemTags.RAW_BEEF))))
+            .requires(Tags.Items.CROPS_CARROT)
+            .requires(Tags.Items.CROPS_POTATO)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nikujaga_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_PUMPKIN).get(), 2
+            )
+            .requires(TsukiItemTags.CROPS_PUMPKIN)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_pumpkin_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_RADISH).get(), 2
+            )
+            .requires(TsukiItemTags.CROPS_RADISH)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_radish_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.IMOTAKI).get(), 2
+            )
+            .requires(TsukiItemTags.CROPS_TARO)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "imotaki_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.CHIKUZENNI).get(), 2
+            )
+            .requires(TsukiItemTags.RAW_CHICKEN)
+            .requires(TsukiItemTags.MUSHROOMS)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chikuzenni_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NOPPEI_JIRU).get(), 2
+            )
+            .requires(TsukiItemTags.RAW_CHICKEN)
+            .requires(TsukiItemTags.CROPS_TARO)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noppei_jiru_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_FISH).get(), 2
+            )
+            .requires(TsukiItemTags.RAW_FISHES)
+            .requires(TsukiItemTags.MISO)
+            .requires(TsukiItemTags.SALT)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_fish_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIKUJAGA).get(), 2
+            )
+            .requires(Ingredient.fromValues(Stream.of(new TagValue(TsukiItemTags.RAW_PORK), new TagValue(TsukiItemTags.RAW_BEEF))))
+            .requires(Tags.Items.CROPS_CARROT)
+            .requires(Tags.Items.CROPS_POTATO)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nikujaga_cooking_kaeshi"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_PUMPKIN).get(), 2
+            )
+            .requires(TsukiItemTags.CROPS_PUMPKIN)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_pumpkin_cooking_kaeshi"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NIMONO_RADISH).get(), 2
+            )
+            .requires(TsukiItemTags.CROPS_RADISH)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nimono_radish_cooking_kaeshi"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.IMOTAKI).get(), 2
+            )
+            .requires(TsukiItemTags.CROPS_TARO)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "imotaki_cooking_kaeshi"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.CHIKUZENNI).get(), 2
+            )
+            .requires(TsukiItemTags.RAW_CHICKEN)
+            .requires(TsukiItemTags.MUSHROOMS)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chikuzenni_cooking_kaeshi"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.NOPPEI_JIRU).get(), 2
+            )
+            .requires(TsukiItemTags.RAW_CHICKEN)
+            .requires(TsukiItemTags.CROPS_TARO)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KAESHI).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "noppei_jiru_cooking_kaeshi"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.FUROFUKI_DAIKON).get(), 2
+            )
+            .requires(TsukiItemTags.CROPS_RADISH)
+            .requires(TsukiItemTags.MISO)
+            .requires(TsukiItemTags.SALT)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "furofuki_daikon_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DASHI).get(), 1
+            )
+            .requires(Ingredient.of(TsukiFoodSet.BONITO_SHAVING.getItem().get(), Items.DRIED_KELP))
+            .requires(Ingredient.of(TsukiFoodSet.BONITO_SHAVING.getItem().get(), Items.DRIED_KELP))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dashi_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.YAKINIKU).get())
+            .requires(
+            Ingredient.fromValues(
+                Stream.of(new TagValue(TsukiItemTags.RAW_PORK), new TagValue(TsukiItemTags.RAW_BEEF), new TagValue(TsukiItemTags.RAW_MUTTON))
+            )
+            )
+            .requires(TsukiItemTags.SOYSAUCE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yakiniku_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_FRIED).get()
-         )
-         .requires(TsukiItemTags.RICE_RICE)
-         .requires(TsukiItemTags.EGGS)
-         .requires(TsukiItemTags.VEGETABLES)
-         .requires(TsukiItemTags.SALT)
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_fried_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_CURRY.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.DASHI.getItem().get())
-         .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
-         .requires(TsukiNormalItemSet.CURRY_POWDER.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_curry_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_CURRY.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.DASHI.getItem().get())
-         .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
-         .requires(TsukiNormalItemSet.CURRY_POWDER.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_curry_cooking"));
-      CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_CURRY.getItem().get(), 1)
-         .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
-         .requires(TsukiNormalItemSet.DASHI.getItem().get())
-         .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
-         .requires(TsukiNormalItemSet.CURRY_POWDER.getItem().get())
-         .container(Items.BOWL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_curry_cooking"));
-   }
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.SALT)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_fried_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_CURRY.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.DASHI.getItem().get())
+            .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
+            .requires(TsukiNormalItemSet.CURRY_POWDER.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_curry_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.UDON_CURRY.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.UDON_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.DASHI.getItem().get())
+            .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
+            .requires(TsukiNormalItemSet.CURRY_POWDER.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_curry_cooking"));
+        CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.SOBA_CURRY.getItem().get(), 1)
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiNormalItemSet.DASHI.getItem().get())
+            .requires(CompoundIngredient.of(new Ingredient[]{Ingredient.of(TsukiItemTags.VEGETABLES), Ingredient.of(TsukiItemTags.FOODS_RAW_MEAT)}))
+            .requires(TsukiNormalItemSet.CURRY_POWDER.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_curry_cooking"));
+    }
 
-   private void registerFermenterRecipe(RecipeOutput consumer) {
-      FermenterRecipeBuilder.fermenting(
+    private void registerFermenterRecipe(RecipeOutput consumer) {
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100),
             FoodRegistry.FOODSET.get(TsukiFoodSet.PICKELD_RADISH).get(),
             2,
             FluidStack.EMPTY,
             0.0F,
             400
-         )
-         .requires(TsukiItemTags.CROPS_RADISH)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.NUKA).get())
-         .requires(TsukiItemTags.SALT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nukazuke_radish"));
-      FermenterRecipeBuilder.fermenting(FluidIngredient.EMPTY, FoodRegistry.FOODSET.get(TsukiFoodSet.NATTO).get(), 2, FluidStack.EMPTY, 0.0F, 600)
-         .requires(TsukiItemTags.CROPS_SOYBEAN)
-         .requires(TsukiItemTags.STRAW)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "natto_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .requires(TsukiItemTags.CROPS_RADISH)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.NUKA).get())
+            .requires(TsukiItemTags.SALT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nukazuke_radish"));
+        FermenterRecipeBuilder.fermenting(FluidIngredient.EMPTY, FoodRegistry.FOODSET.get(TsukiFoodSet.NATTO).get(), 2, FluidStack.EMPTY, 0.0F, 600)
+            .requires(TsukiItemTags.CROPS_SOYBEAN)
+            .requires(TsukiItemTags.STRAW)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "natto_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100),
             FoodRegistry.FOODSET.get(TsukiFoodSet.PICKELD_EGGPLANT).get(),
             2,
             FluidStack.EMPTY,
             0.0F,
             400
-         )
-         .requires(TsukiItemTags.CROPS_EGGPLANT)
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.NUKA).get())
-         .requires(TsukiItemTags.SALT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nukazuke_eggplant"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .requires(TsukiItemTags.CROPS_EGGPLANT)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.NUKA).get())
+            .requires(TsukiItemTags.SALT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "nukazuke_eggplant"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.KOUJI).get(),
             2,
             FluidStack.EMPTY
-         )
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(TsukiItemTags.SALT)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kouji_fermenting"));
-      FermenterRecipeBuilder.fermenting(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000), new FluidStack((Fluid)FluidRegistry.DOBUROKU.get(), 500))
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(TsukiItemTags.KOUJI)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "doburoku_fermenting"));
-      FermenterRecipeBuilder.fermenting(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), new FluidStack((Fluid)FluidRegistry.BEER.get(), 100))
-         .requires(TsukiItemTags.GRAIN)
-         .requires(TsukiItemTags.BROWN_MUSHROOMS)
-         .requires(TsukiItemTags.SUGAR_SUGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "basic_beer_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(TsukiItemTags.SALT)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kouji_fermenting"));
+        FermenterRecipeBuilder.fermenting(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000), new FluidStack((Fluid)FluidRegistry.DOBUROKU.get(), 500))
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(TsukiItemTags.KOUJI)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "doburoku_fermenting"));
+        FermenterRecipeBuilder.fermenting(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), new FluidStack((Fluid)FluidRegistry.BEER.get(), 100))
+            .requires(TsukiItemTags.GRAIN)
+            .requires(TsukiItemTags.BROWN_MUSHROOMS)
+            .requires(TsukiItemTags.SUGAR_SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "basic_beer_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), new FluidStack((Fluid)FluidRegistry.BEER.get(), 200), 0.0F, 400
-         )
-         .requires(TsukiItemTags.GRAIN)
-         .requires(TsukiItemTags.GRAIN)
-         .requires(TsukiItemTags.YEAST)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "beer_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .requires(TsukiItemTags.GRAIN)
+            .requires(TsukiItemTags.GRAIN)
+            .requires(TsukiItemTags.YEAST)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "beer_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.YEAST).get(),
             4,
             FluidStack.EMPTY,
             0.0F,
             400
-         )
-         .requires(TsukiItemTags.BROWN_MUSHROOMS)
-         .requires(TsukiItemTags.SUGAR_SUGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yeast_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .requires(TsukiItemTags.BROWN_MUSHROOMS)
+            .requires(TsukiItemTags.SUGAR_SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yeast_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.YEAST).get(),
             4,
             FluidStack.EMPTY,
             0.0F,
             200
-         )
-         .requires(TsukiItemTags.YEAST)
-         .requires(TsukiItemTags.SUGAR_SUGAR)
-         .requires(TsukiItemTags.SUGAR_SUGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yeast_multiply"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .requires(TsukiItemTags.YEAST)
+            .requires(TsukiItemTags.SUGAR_SUGAR)
+            .requires(TsukiItemTags.SUGAR_SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yeast_multiply"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.BREWERS_ALCOHOL, 500),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get(),
             8,
             FluidStack.EMPTY
-         )
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN_KASU).get(), 1)
-         .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-         .requires(TsukiItemTags.KOUJI)
-         .requires(TsukiItemTags.SUGAR)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mirin_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN_KASU).get(), 1)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(TsukiItemTags.KOUJI)
+            .requires(TsukiItemTags.SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mirin_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.BREWERS_ALCOHOL, 500),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VINEGAR).get(),
             8,
             FluidStack.EMPTY
-         )
-         .requires(TsukiItemTags.KOUJI)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "vinger_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .requires(TsukiItemTags.KOUJI)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "vinger_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromFluid((Fluid)FluidRegistry.DOBUROKU.get(), 500),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKE_KASU).get(),
             2,
             new FluidStack((Fluid)FluidRegistry.SAKE.get(), 250),
             10.0F,
             500
-         )
-         .requires(TsukiItemTags.DUST_CHARCOAL)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sake_charcoal_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .requires(TsukiItemTags.DUST_CHARCOAL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sake_charcoal_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromFluid((Fluid)FluidRegistry.DOBUROKU.get(), 500), new FluidStack((Fluid)FluidRegistry.SAKE.get(), 100), 10.0F, 1000
-         )
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sake_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sake_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MISO).get(),
             4,
             FluidStack.EMPTY
-         )
-         .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SOYSAUCE).get(), 4)
-         .requires(TsukiItemTags.CROPS_SOYBEAN)
-         .requires(TsukiItemTags.CROPS_SOYBEAN)
-         .requires(TsukiItemTags.KOUJI)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "miso_fermenting"));
-      FermenterRecipeBuilder.fermenting(
+            )
+            .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SOYSAUCE).get(), 4)
+            .requires(TsukiItemTags.CROPS_SOYBEAN)
+            .requires(TsukiItemTags.CROPS_SOYBEAN)
+            .requires(TsukiItemTags.KOUJI)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "miso_fermenting"));
+        FermenterRecipeBuilder.fermenting(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RED_VINEGAR).get(),
             8,
             FluidStack.EMPTY
-         )
-         .requires(TsukiNormalItemSet.SAKE_KASU.getItem().get())
-         .requires(TsukiNormalItemSet.SAKE_KASU.getItem().get())
-         .requires(TsukiItemTags.KOUJI)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "red_vinger_fermenting"));
-   }
-
-   private void registerDistillerRecipe(RecipeOutput consumer) {
-      DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromFluid((Fluid)FluidRegistry.SAKE.get(), 1000), new FluidStack((Fluid)FluidRegistry.SHOUCHU.get(), 500)
-         )
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shouchu_from_sake_distillation"));
-      DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromFluid((Fluid)FluidRegistry.BEER.get(), 1000), new FluidStack((Fluid)FluidRegistry.WHISKEY.get(), 500)
-         )
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "whiskey_from_beer_distillation"));
-      DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500), new FluidStack((Fluid)FluidRegistry.RUM.get(), 100))
-         .requires(Items.SUGAR_CANE)
-         .requires(Items.SUGAR_CANE)
-         .requires(TsukiItemTags.YEAST)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rum_cane_distillation"));
-      DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500), new FluidStack((Fluid)FluidRegistry.RUM.get(), 100))
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
-         .requires(TsukiItemTags.YEAST)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rum_molasses_distillation"));
-      DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500), new FluidStack((Fluid)FluidRegistry.SHOUCHU.get(), 100))
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKE_KASU).get())
-         .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKE_KASU).get())
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shouchu_from_sakekasu_distillation"));
-   }
-
-   private void registerChoppingRecipes(RecipeOutput consumer) {
-      ChoppingBoardRecipeBuilder.chop(FoodRegistry.FOODSET.get(TsukiFoodSet.MACHINED_FISH).get())
-         .requires(
-            Ingredient.fromValues(
-               Stream.of(new ItemValue(new ItemStack(Items.COD)), new ItemValue(new ItemStack(Items.SALMON)), new ItemValue(new ItemStack(Items.TROPICAL_FISH)))
             )
-         )
-         .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
-         .addByproduce(FoodRegistry.FOODSET.get(TsukiFoodSet.MACHINED_FISH).get())
-         .addByproduceWithChance(Items.BONE_MEAL, 0.5F)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "machined_fish_chopping"));
-      ChoppingBoardRecipeBuilder.chop(FoodRegistry.FOODSET.get(TsukiFoodSet.MACHINED_BONITO).get())
-         .requires(TsukiFoodSet.BONITO.getItem().get())
-         .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
-         .addByproduce(TsukiFoodSet.MACHINED_BONITO.getItem().get())
-         .addByproduceWithChance(Items.BONE_MEAL, 0.5F)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "machined_bonito_chopping"));
-      ChoppingBoardRecipeBuilder.chop(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get())
-         .requires(TsukiItemTags.CROPS_CABBAGE)
-         .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
-         .addByproduce(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get())
-         .addByproduceWithChance(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get(), 0.5F)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sliced_cabbage_chopping"));
-      ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.SOBA_RAW.getItem().get(), 2, 1.0F, 4)
-         .requires(TsukiNormalItemSet.SOBA_BLOCK.getItem().get())
-         .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_chopping"));
-      ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.RAMEN_RAW.getItem().get(), 2, 1.0F, 4)
-         .requires(TsukiNormalItemSet.RAMEN_BLOCK.getItem().get())
-         .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_chopping"));
-      ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.UDON_RAW.getItem().get(), 2, 1.0F, 4)
-         .requires(TsukiNormalItemSet.UDON_BLOCK.getItem().get())
-         .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
-         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_chopping"));
-   }
+            .requires(TsukiNormalItemSet.SAKE_KASU.getItem().get())
+            .requires(TsukiNormalItemSet.SAKE_KASU.getItem().get())
+            .requires(TsukiItemTags.KOUJI)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "red_vinger_fermenting"));
+    }
 
-   private void foodSmeltingRecipes(String name, ItemLike ingredient, ItemLike result, float experience, RecipeOutput consumer) {
-      String namePrefix = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, name).toString();
-      SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.FOOD, result, experience, 200)
-         .unlockedBy("has_ingredient", has(ingredient))
-         .group(Tsuki.MODID)
-         .save(consumer);
-      SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), RecipeCategory.FOOD, result, experience, 600)
-         .unlockedBy("has_ingredient", has(ingredient))
-         .group(Tsuki.MODID)
-         .save(consumer, namePrefix + "_from_campfire_cooking");
-      SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), RecipeCategory.FOOD, result, experience, 100)
-         .unlockedBy("has_ingredient", has(ingredient))
-         .group(Tsuki.MODID)
-         .save(consumer, namePrefix + "_from_smoking");
-   }
+    private void registerDistillerRecipe(RecipeOutput consumer) {
+        DistillerRecipeBuilder.distillation(
+            FluidIngredient.fromFluid((Fluid)FluidRegistry.SAKE.get(), 1000), new FluidStack((Fluid)FluidRegistry.SHOUCHU.get(), 500)
+            )
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shouchu_from_sake_distillation"));
+        DistillerRecipeBuilder.distillation(
+            FluidIngredient.fromFluid((Fluid)FluidRegistry.BEER.get(), 1000), new FluidStack((Fluid)FluidRegistry.WHISKEY.get(), 500)
+            )
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "whiskey_from_beer_distillation"));
+        DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500), new FluidStack((Fluid)FluidRegistry.RUM.get(), 100))
+            .requires(Items.SUGAR_CANE)
+            .requires(Items.SUGAR_CANE)
+            .requires(TsukiItemTags.YEAST)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rum_cane_distillation"));
+        DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500), new FluidStack((Fluid)FluidRegistry.RUM.get(), 100))
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
+            .requires(TsukiItemTags.YEAST)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rum_molasses_distillation"));
+        DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500), new FluidStack((Fluid)FluidRegistry.SHOUCHU.get(), 100))
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKE_KASU).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKE_KASU).get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shouchu_from_sakekasu_distillation"));
+    }
 
-   public ShapedRecipeBuilder makeLumberToPlank(Supplier<? extends Block> blockOut, Ingredient ingreIn) {
-      return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockOut.get()).pattern("##").pattern("##").define('#', ingreIn);
-   }
+    private void registerChoppingRecipes(RecipeOutput consumer) {
+        ChoppingBoardRecipeBuilder.chop(FoodRegistry.FOODSET.get(TsukiFoodSet.MACHINED_FISH).get())
+            .requires(
+            Ingredient.fromValues(
+                Stream.of(new ItemValue(new ItemStack(Items.COD)), new ItemValue(new ItemStack(Items.SALMON)), new ItemValue(new ItemStack(Items.TROPICAL_FISH)))
+            )
+            )
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
+            .addByproduce(FoodRegistry.FOODSET.get(TsukiFoodSet.MACHINED_FISH).get())
+            .addByproduceWithChance(Items.BONE_MEAL, 0.5F)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "machined_fish_chopping"));
+        ChoppingBoardRecipeBuilder.chop(FoodRegistry.FOODSET.get(TsukiFoodSet.MACHINED_BONITO).get())
+            .requires(TsukiFoodSet.BONITO.getItem().get())
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
+            .addByproduce(TsukiFoodSet.MACHINED_BONITO.getItem().get())
+            .addByproduceWithChance(Items.BONE_MEAL, 0.5F)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "machined_bonito_chopping"));
+        ChoppingBoardRecipeBuilder.chop(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get())
+            .requires(TsukiItemTags.CROPS_CABBAGE)
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
+            .addByproduce(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get())
+            .addByproduceWithChance(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get(), 0.5F)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sliced_cabbage_chopping"));
+        ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.SOBA_RAW.getItem().get(), 2, 1.0F, 4)
+            .requires(TsukiNormalItemSet.SOBA_BLOCK.getItem().get())
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soba_chopping"));
+        ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.RAMEN_RAW.getItem().get(), 2, 1.0F, 4)
+            .requires(TsukiNormalItemSet.RAMEN_BLOCK.getItem().get())
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ramen_chopping"));
+        ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.UDON_RAW.getItem().get(), 2, 1.0F, 4)
+            .requires(TsukiNormalItemSet.UDON_BLOCK.getItem().get())
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_chopping"));
+    }
 
-   public ShapelessRecipeBuilder makeLumber(Supplier<? extends Item> ingotOut, Ingredient ingreIn) {
-      return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ingotOut.get(), 8).requires(ingreIn);
-   }
+    private void foodSmeltingRecipes(String name, ItemLike ingredient, ItemLike result, float experience, RecipeOutput consumer) {
+        String namePrefix = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, name).toString();
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.FOOD, result, experience, 200)
+            .unlockedBy("has_ingredient", has(ingredient))
+            .group(Tsuki.MODID)
+            .save(consumer);
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ingredient), RecipeCategory.FOOD, result, experience, 600)
+            .unlockedBy("has_ingredient", has(ingredient))
+            .group(Tsuki.MODID)
+            .save(consumer, namePrefix + "_from_campfire_cooking");
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ingredient), RecipeCategory.FOOD, result, experience, 100)
+            .unlockedBy("has_ingredient", has(ingredient))
+            .group(Tsuki.MODID)
+            .save(consumer, namePrefix + "_from_smoking");
+    }
 
-   public ShapelessRecipeBuilder makeItemToBucket(Supplier<? extends Item> ingotOut, Ingredient ingreIn) {
-      return ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ingotOut.get())
-         .requires(ingreIn)
-         .requires(ingreIn)
-         .requires(ingreIn)
-         .requires(ingreIn)
-         .requires(ingreIn)
-         .requires(ingreIn)
-         .requires(ingreIn)
-         .requires(ingreIn)
-         .requires(Items.BUCKET);
-   }
+    public ShapedRecipeBuilder makeLumberToPlank(Supplier<? extends Block> blockOut, Ingredient ingreIn) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockOut.get()).pattern("##").pattern("##").define('#', ingreIn);
+    }
 
-   public void whenModLoaded(ShapedRecipeBuilder recipe, RecipeOutput consumer, String modid, String path) {
-      recipe.save(consumer.withConditions(new ModLoadedCondition(modid)), ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
-   }
+    public ShapelessRecipeBuilder makeLumber(Supplier<? extends Item> ingotOut, Ingredient ingreIn) {
+        return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ingotOut.get(), 8).requires(ingreIn);
+    }
 
-   public void whenModLoaded(ShapelessRecipeBuilder recipe, RecipeOutput consumer, String modid, String path) {
-      recipe.save(consumer.withConditions(new ModLoadedCondition(modid)), ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
-   }
+    public ShapelessRecipeBuilder makeItemToBucket(Supplier<? extends Item> ingotOut, Ingredient ingreIn) {
+        return ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ingotOut.get())
+            .requires(ingreIn)
+            .requires(ingreIn)
+            .requires(ingreIn)
+            .requires(ingreIn)
+            .requires(ingreIn)
+            .requires(ingreIn)
+            .requires(ingreIn)
+            .requires(ingreIn)
+            .requires(Items.BUCKET);
+    }
 
-   public void whenModLoaded(StoneMortarRecipeBuilder recipe, RecipeOutput consumer, String modid, String path) {
-      recipe.save(consumer.withConditions(new ModLoadedCondition(modid)), ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
-   }
+    public void whenModLoaded(ShapedRecipeBuilder recipe, RecipeOutput consumer, String modid, String path) {
+        recipe.save(consumer.withConditions(new ModLoadedCondition(modid)), ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
+    }
 
-   public ShapedRecipeBuilder makeIngotToBlock(Supplier<? extends Item> result, Supplier<? extends Item> ingredient) {
-      return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result.get(), 1)
-         .pattern("###")
-         .pattern("###")
-         .pattern("###")
-         .define('#', ingredient.get())
-         .group(Tsuki.MODID)
-         .unlockedBy("has_ingredient", has(ingredient.get()));
-   }
+    public void whenModLoaded(ShapelessRecipeBuilder recipe, RecipeOutput consumer, String modid, String path) {
+        recipe.save(consumer.withConditions(new ModLoadedCondition(modid)), ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
+    }
 
-   public ShapelessRecipeBuilder makeBlockToIngot(Supplier<? extends Item> result, Supplier<? extends Item> ingredient) {
-      return ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result.get(), 9)
-         .requires(ingredient.get())
-         .group(Tsuki.MODID)
-         .unlockedBy("has_ingredient", has(ingredient.get()));
-   }
+    public void whenModLoaded(StoneMortarRecipeBuilder recipe, RecipeOutput consumer, String modid, String path) {
+        recipe.save(consumer.withConditions(new ModLoadedCondition(modid)), ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
+    }
+
+    public ShapedRecipeBuilder makeIngotToBlock(Supplier<? extends Item> result, Supplier<? extends Item> ingredient) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result.get(), 1)
+            .pattern("###")
+            .pattern("###")
+            .pattern("###")
+            .define('#', ingredient.get())
+            .group(Tsuki.MODID)
+            .unlockedBy("has_ingredient", has(ingredient.get()));
+    }
+
+    public ShapelessRecipeBuilder makeBlockToIngot(Supplier<? extends Item> result, Supplier<? extends Item> ingredient) {
+        return ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result.get(), 9)
+            .requires(ingredient.get())
+            .group(Tsuki.MODID)
+            .unlockedBy("has_ingredient", has(ingredient.get()));
+    }
 }
-
-

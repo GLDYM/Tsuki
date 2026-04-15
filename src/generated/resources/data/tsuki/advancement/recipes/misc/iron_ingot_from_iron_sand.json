@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_iron_sand": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:iron_sand"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:iron_ingot_from_iron_sand"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_iron_sand"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:iron_ingot_from_iron_sand"
+    ]
+  }
+}

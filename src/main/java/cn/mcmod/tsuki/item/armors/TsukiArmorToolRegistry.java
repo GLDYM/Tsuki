@@ -1,8 +1,10 @@
 package cn.mcmod.tsuki.item.armors;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.item.HammerItem;
 import cn.mcmod.tsuki.item.KnifeItem;
 import cn.mcmod.tsuki.item.SakuraDiamondItem;
+import cn.mcmod.tsuki.sound.JukeboxSongRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -11,6 +13,7 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
@@ -24,6 +27,11 @@ import java.util.function.Supplier;
 public class TsukiArmorToolRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tsuki.MODID);
 
+    public static final DeferredItem<Item> ZUKU = register("zuku", () -> new Item(Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> ZUKU_INGOT = register("zuku_ingot", () -> new Item(Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAGEGANE = register("sagegane", () -> new Item(Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> TAMAHAGANE = register("tamahagane", () -> new Item(Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> STEEL_INGOT = register("steel_ingot", () -> new Item(Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> SAKURA_DIAMOND = register("sakura_diamond", SakuraDiamondItem::new);
     
     public static final Tier SAKURA_TOOL_TIER = new SimpleTier(
@@ -35,6 +43,15 @@ public class TsukiArmorToolRegistry {
             25,
             () -> Ingredient.of(SAKURA_DIAMOND.get())
         );
+    public static final Tier STEEL_TOOL_TIER = new SimpleTier(
+            TagKey.create(Registries.BLOCK,
+                    ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "incorrect_for_sakura_tool")),
+            2031,
+            (Tiers.IRON.getSpeed() + SAKURA_TOOL_TIER.getSpeed()) / 2.0F,
+            (Tiers.IRON.getAttackDamageBonus() + SAKURA_TOOL_TIER.getAttackDamageBonus()) / 2.0F,
+            Math.round((Tiers.IRON.getEnchantmentValue() + SAKURA_TOOL_TIER.getEnchantmentValue()) / 2.0F),
+            () -> Ingredient.of(STEEL_INGOT.get())
+    );
 
     public static final DeferredItem<Item> SAKURA_AXE = register("sakura_axe",
             () -> new AxeItem(SAKURA_TOOL_TIER,
@@ -57,6 +74,18 @@ public class TsukiArmorToolRegistry {
             () -> new KnifeItem(SAKURA_TOOL_TIER, 1F, -2.0F, Tsuki.defaultItemProperties().stacksTo(1)));
     public static final DeferredItem<Item> SAKURA_NOODLE_KNIFE = register("sakura_knife_noodle",
             () -> new KnifeItem(SAKURA_TOOL_TIER, 2F, -3.0F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> STONE_HAMMER = register("stone_hammer",
+            () -> new HammerItem(Tiers.STONE, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> IRON_HAMMER = register("iron_hammer",
+            () -> new HammerItem(Tiers.IRON, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> STEEL_HAMMER = register("steel_hammer",
+            () -> new HammerItem(STEEL_TOOL_TIER, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> SAKURA_HAMMER = register("sakura_hammer",
+            () -> new HammerItem(SAKURA_TOOL_TIER, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
+
+            
+    public static final DeferredItem<Item> STRAW_HAT = register("straw_hat",
+            () -> new StrawHatItem(TsukiArmorMaterials.KIMONO_AND_HAORI, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> KIMONO_WHITE = register("kimono_white",
             () -> new KimonoItem("kimono_white", TsukiArmorMaterials.KIMONO_AND_HAORI, ArmorItem.Type.LEGGINGS, Tsuki.defaultItemProperties()));
@@ -98,9 +127,6 @@ public class TsukiArmorToolRegistry {
     public static final DeferredItem<Item> HAORI_BROWN = register("haori_brown",
             () -> new HaoriItem("haori_brown", TsukiArmorMaterials.KIMONO_AND_HAORI, ArmorItem.Type.CHESTPLATE, Tsuki.defaultItemProperties()));
 
-    public static final DeferredItem<Item> STRAW_HAT = register("straw_hat",
-            () -> new StrawHatItem(TsukiArmorMaterials.KIMONO_AND_HAORI, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
-
     public static final DeferredItem<Item> SAMURAI_HELMET_RED = register("samurai_helmet_red",
             () -> new SamuraiItem("samurai_red", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> SAMURAI_CHESTPLATE_RED = register("samurai_chestplate_red",
@@ -127,6 +153,14 @@ public class TsukiArmorToolRegistry {
             () -> new SamuraiItem("samurai_black", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.LEGGINGS, Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> SAMURAI_BOOTS_BLACK = register("samurai_boots_black",
             () -> new SamuraiItem("samurai_black", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.BOOTS, Tsuki.defaultItemProperties()));
+
+    public static final DeferredItem<Item> MUSIC_DISC_MIKO = register("music_disc_miko", 
+        () -> new Item(Tsuki.defaultItemProperties()
+            .stacksTo(1)
+            .rarity(Rarity.EPIC)
+            .jukeboxPlayable(JukeboxSongRegistry.DISC_MUSIC_MIKO)
+        )
+    );
 
     private static <V extends Item> DeferredItem<V> register(String name, Supplier<V> item) {
         return ITEMS.register(name, item);

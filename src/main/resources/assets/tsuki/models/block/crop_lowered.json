@@ -1,0 +1,8 @@
+{
+  "parent": "tsuki:block/cross_lowered",
+  "render_type": "cutout",
+  "textures": {
+    "cross": "#crop",
+    "particle": "#crop"
+  }
+}

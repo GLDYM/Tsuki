@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "c:bamboo"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BTB",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:bamboo_lantern"
+  }
+}

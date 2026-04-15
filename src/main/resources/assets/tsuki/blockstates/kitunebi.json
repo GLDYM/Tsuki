@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "tsuki:block/kitunebi" }
+    "": {
+      "model": "tsuki:block/kitunebi"
+    }
   }
 }

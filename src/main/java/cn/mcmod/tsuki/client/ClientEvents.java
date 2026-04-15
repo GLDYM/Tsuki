@@ -8,11 +8,14 @@ import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.client.particle.SyrupDropParticle;
 import cn.mcmod.tsuki.client.render.ChoppingBoardRender;
 import cn.mcmod.tsuki.client.render.ObonRender;
+import cn.mcmod.tsuki.client.render.SeatEntityRenderer;
 import cn.mcmod.tsuki.client.render.StoneMortarRenderer;
+import cn.mcmod.tsuki.entity.EntityRegistry;
 import cn.mcmod.tsuki.fluid.FluidRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.BushBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
@@ -33,6 +36,23 @@ public class ClientEvents {
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BAMBOOSHOOT.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.COOKING_POT.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.KITUNEBI.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BAMBOO_DOOR.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SHOJI.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SHOJI_1.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SHOJI_2.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SHOJI_3.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SHOJI_4.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SHOJI_5.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NOREN_WHITE.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NOREN_BLUE.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NOREN_PINK.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.STONE_LANTERN.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.COBBLESTONE_LANTERN.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.MOSSY_STONE_LANTERN.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.RED_LANTERN.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.WHITE_LANTERN.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BAMBOO_LANTERN.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.WINDBELL.get(), RenderType.cutoutMipped());
             
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_ODEN.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_SUKIYAKI.get(), RenderType.cutoutMipped());
@@ -49,6 +69,7 @@ public class ClientEvents {
             BlockEntityRenderers.register(BlockEntityRegistry.STONE_MORTAR.get(), StoneMortarRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.CHOPPING_BOARD.get(), ChoppingBoardRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.OBON.get(), ObonRender::new);
+            EntityRenderers.register(EntityRegistry.SEAT.get(), SeatEntityRenderer::new);
         });
     }
 
@@ -69,5 +90,3 @@ public class ClientEvents {
     }
 
 }
-
-

@@ -1,0 +1,7 @@
+{
+  "parent": "tsuki:block/shoji_base",
+  "textures": {
+    "0": "tsuki:block/shoji/shoji_type_4",
+    "particle": "tsuki:block/shoji/shoji_type_4"
+  }
+}

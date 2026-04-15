@@ -1,5 +1,5 @@
 {
-  "parent": "block/cross",
+  "parent": "tsuki:block/cross_lowered",
   "textures": {
     "cross": "tsuki:block/eggplant_0"
   }

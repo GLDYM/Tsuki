@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:sagegane_from_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zuku_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:zuku_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zuku_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:sagegane_from_smelting"
+    ]
+  }
+}

@@ -1,31 +1,31 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "tag":  "c:sugar"
-                        },
-                        {
-                            "tag":  "c:soysauce"
-                        },
-                        {
-                            "item":  "tsuki:mirin"
-                        },
-                        {
-                            "amount":  250,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "count":  4,
-                        "item":  "tsuki:kaeshi"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:soysauce"
+    },
+    {
+      "item": "tsuki:mirin"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "count": 4,
+      "item": "tsuki:kaeshi"
+    }
+  ],
+  "type": "create:mixing"
 }

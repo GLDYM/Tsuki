@@ -4,6 +4,7 @@ import cn.mcmod.tsuki.tags.TsukiBiomeTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -37,6 +38,9 @@ public class TsukiBiomeTagProvider extends BiomeTagsProvider {
         sakuraDiamondOreTag.add(Biomes.BAMBOO_JUNGLE);
         sakuraDiamondOreTag.add(Biomes.CHERRY_GROVE);
 
+        TagAppender<Biome> ironSandOreTag = this.tag(TsukiBiomeTags.CAN_SPAWN_IRON_SAND_ORE);
+        ironSandOreTag.addTag(BiomeTags.IS_BEACH);
+        ironSandOreTag.addTag(BiomeTags.IS_RIVER);
+
     }
 }
-

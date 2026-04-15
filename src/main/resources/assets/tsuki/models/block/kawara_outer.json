@@ -1550,10 +1550,11 @@
       ]
     }
   ],
+  "format_version": "1.21.11",
   "textures": {
     "0": "tsuki:block/kawara",
     "1": "tsuki:block/white_bg",
-    "2": "tsuki:block/kawara_1",
+    "2": "tsuki:block/kawara_alter",
     "particle": "tsuki:block/kawara"
   }
 }

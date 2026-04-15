@@ -17,6 +17,7 @@ import cn.mcmod_mmf.mmlib.data.AbstractItemModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.Block;
@@ -36,7 +37,10 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         BlockItemRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof BlockItem) {
                 BlockItem blockItem = (BlockItem) item.get();
-                if (blockItem.getBlock() instanceof StoneMortarBlock) {
+                if (blockItem.getBlock() instanceof StoneMortarBlock
+                    || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
+                    || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get())
+                {
                     return;
                 }
                 if (blockItem.getBlock() instanceof FallenLeavesBlock) {
@@ -45,6 +49,29 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                 }
                 if (blockItem.getBlock() == BlockRegistry.KITUNEBI.get()) {
                     singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/ghost_fire_0"));
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.BAMBOO_DOOR.get()) {
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.KAWARA.get()) {
+                    withExistingParent(item.getId().getPath(), modLoc("block/" + item.getId().getPath()))
+                            .transforms()
+                            .transform(ItemDisplayContext.GUI)
+                            .rotation(30, 45, 0)
+                            .translation(0, 0, 0)
+                            .scale(0.5F)
+                            .end()
+                            .end();
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.SHOJI.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_1.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_2.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_3.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_4.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_5.get()) {
+                    normalItem(item);
                     return;
                 }
                 if (blockItem.getBlock() instanceof BushBlock)
@@ -101,4 +128,3 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         withExistingParent(name, modLoc("block/" + name));
     }
 }
-

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stone_lantern": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:stone_lantern"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:mossy_stone_lantern"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stone_lantern"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:mossy_stone_lantern"
+    ]
+  }
+}

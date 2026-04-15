@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.level;
 
 import java.util.List;
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.TsukiConfig;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -41,6 +42,9 @@ public class WorldGenerationRegistry {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_ORE_SAKURA_DIAMOND_KEY = ResourceKey.create(
             Registries.CONFIGURED_FEATURE,
             ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ore_sakura_diamond"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_ORE_IRON_SAND_KEY = ResourceKey.create(
+            Registries.CONFIGURED_FEATURE,
+            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ore_iron_sand"));
     public static final ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>> FEATURE_ORE_SAKURA_DIAMOND = new ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>>(
             Feature.ORE,
             new OreConfiguration(List.of(
@@ -52,6 +56,9 @@ public class WorldGenerationRegistry {
     public static final ResourceKey<PlacedFeature> ORE_SAKURA_DIAMOND_KEY = ResourceKey.create(
             Registries.PLACED_FEATURE,
             ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ore_sakura_diamond"));
+    public static final ResourceKey<PlacedFeature> ORE_IRON_SAND_KEY = ResourceKey.create(
+            Registries.PLACED_FEATURE,
+            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ore_iron_sand"));
     public static final PlacedFeature ORE_SAKURA_DIAMOND = new PlacedFeature(
             Holder.direct(FEATURE_ORE_SAKURA_DIAMOND),
             List.of(
@@ -59,6 +66,26 @@ public class WorldGenerationRegistry {
                     InSquarePlacement.spread(),
                     HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.bottom(), VerticalAnchor.absolute(-1), 1)),
                     BiomeFilter.biome()));
+    public static final ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>> FEATURE_ORE_IRON_SAND =
+            new ConfiguredFeature<>(Feature.ORE,
+                    new OreConfiguration(List.of(
+                            OreConfiguration.target(new TagMatchTest(BlockTags.SAND), BlockRegistry.IRON_SAND.get().defaultBlockState())),
+                            12));
+    public static final PlacedFeature ORE_IRON_SAND = new PlacedFeature(
+            Holder.direct(FEATURE_ORE_IRON_SAND),
+            List.of(
+                    CountPlacement.of(resolveIronSandCount()),
+                    InSquarePlacement.spread(),
+                    HeightRangePlacement.uniform(VerticalAnchor.absolute(58), VerticalAnchor.absolute(66)),
+                    BiomeFilter.biome()));
+
+    private static int resolveIronSandCount() {
+        try {
+            return Math.max(1, TsukiConfig.IRON_SAND_AMOUNT.get() / 64);
+        } catch (IllegalStateException ignored) {
+            return Math.max(1, TsukiConfig.IRON_SAND_AMOUNT.getDefault() / 64);
+        }
+    }
 
 //    public static final BlockPos BLOCK_BELOW = new BlockPos(0, -1, 0);
 //

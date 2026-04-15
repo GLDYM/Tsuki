@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:zuku_ingot"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:sagegane"
+  }
+}

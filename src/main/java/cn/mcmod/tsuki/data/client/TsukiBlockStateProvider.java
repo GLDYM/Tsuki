@@ -1,15 +1,24 @@
 package cn.mcmod.tsuki.data.client;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.block.machines.TataraBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.core.Direction;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class TsukiBlockStateProvider extends BlockStateProvider {
@@ -30,6 +39,7 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.STRAW_BLOCK.get());
         simpleBlock(BlockRegistry.SAKURA_DIAMOND_ORE.get());
         simpleBlock(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
+        simpleBlock(BlockRegistry.IRON_SAND.get());
 
         simpleBlock(BlockRegistry.MAPLE_LEAVES_RED.get());
         simpleBlock(BlockRegistry.MAPLE_LEAVES_YELLOW.get());
@@ -91,6 +101,80 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 texture("tatami_tan"), 
                 texture("tatami_tan")
         );
+        carpet(BlockRegistry.TATAMI_CARPET.get(), "tatami");
+        carpet(BlockRegistry.TATAMI_CARPET_WAXED.get(), "tatami_ns");
+        carpet(BlockRegistry.TATAMI_CARPET_TAN.get(), "tatami_tan");
+        carpet(BlockRegistry.TATAMI_CARPET_TAN_WAXED.get(), "tatami_tan_ns");
+
+        ModelFile kawaraCube = models().cubeAll("kawara_block", texture("kawara"));
+        ModelFile kawaraAlterCube = models().cubeAll("kawara_block_alter", texture("kawara_alter"));
+        simpleBlock(BlockRegistry.KAWARA_BLOCK.get(), kawaraCube);
+        simpleBlock(BlockRegistry.KAWARA_BLOCK_ALTER.get(), kawaraAlterCube);
+        stairsBlock((StairBlock) BlockRegistry.KAWARA_STAIRS.get(),
+                texture("kawara"), texture("kawara"), texture("kawara"));
+        stairsBlock((StairBlock) BlockRegistry.KAWARA_STAIRS_ALTER.get(),
+                texture("kawara_alter"), texture("kawara_alter"), texture("kawara_alter"));
+        ModelFile kawaraSlab = models().slab("kawara_slab",
+                texture("kawara"), texture("kawara"), texture("kawara"));
+        ModelFile kawaraSlabTop = models().slabTop("kawara_slab_top",
+                texture("kawara"), texture("kawara"), texture("kawara"));
+        ModelFile kawaraAlterSlab = models().slab("kawara_slab_alter",
+                texture("kawara_alter"), texture("kawara_alter"), texture("kawara_alter"));
+        ModelFile kawaraAlterSlabTop = models().slabTop("kawara_slab_alter_top",
+                texture("kawara_alter"), texture("kawara_alter"), texture("kawara_alter"));
+        slabBlock((SlabBlock) BlockRegistry.KAWARA_SLAB.get(),
+                kawaraSlab, kawaraSlabTop, kawaraCube);
+        slabBlock((SlabBlock) BlockRegistry.KAWARA_SLAB_ALTER.get(),
+                kawaraAlterSlab, kawaraAlterSlabTop, kawaraAlterCube);
+        simpleBlockItem(BlockRegistry.KAWARA.get(), models().getExistingFile(modLoc("block/kawara")));
+        simpleBlockItem(BlockRegistry.KAWARA_BLOCK_ALTER.get(), models().getExistingFile(modLoc("block/kawara_block_alter")));
+        simpleBlockItem(BlockRegistry.KAWARA_STAIRS.get(), models().getExistingFile(modLoc("block/kawara_stairs")));
+        simpleBlockItem(BlockRegistry.KAWARA_STAIRS_ALTER.get(), models().getExistingFile(modLoc("block/kawara_stairs_alter")));
+        simpleBlockItem(BlockRegistry.KAWARA_SLAB.get(), models().getExistingFile(modLoc("block/kawara_slab")));
+        simpleBlockItem(BlockRegistry.KAWARA_SLAB_ALTER.get(), models().getExistingFile(modLoc("block/kawara_slab_alter")));
+
+        simpleBlock(BlockRegistry.STONE_LANTERN.get(), models().getExistingFile(modLoc("block/stone_lantern")));
+        simpleBlock(BlockRegistry.COBBLESTONE_LANTERN.get(), models().getExistingFile(modLoc("block/cobblestone_lantern")));
+        simpleBlock(BlockRegistry.MOSSY_STONE_LANTERN.get(), models().getExistingFile(modLoc("block/mossy_stone_lantern")));
+        simpleBlock(BlockRegistry.RED_LANTERN.get(), models().getExistingFile(modLoc("block/red_lantern")));
+        simpleBlock(BlockRegistry.WHITE_LANTERN.get(), models().getExistingFile(modLoc("block/white_lantern")));
+        simpleBlock(BlockRegistry.BAMBOO_LANTERN.get(), models().getExistingFile(modLoc("block/bamboo_lantern")));
+        simpleBlock(BlockRegistry.WINDBELL.get(), models().getExistingFile(modLoc("block/windbell")));
+        simpleBlock(BlockRegistry.ANDON.get(), models().getExistingFile(modLoc("block/andon")));
+        simpleBlock(BlockRegistry.ZABUTON.get(), models().getExistingFile(modLoc("block/zabuton")));
+        simpleBlock(BlockRegistry.TAIKO.get(), models().getExistingFile(modLoc("block/taiko")));
+
+        customFenceBlock(
+                (FenceBlock) BlockRegistry.BAMBOO_FENCE.get(),
+                "bamboo",
+                "bamboo_fence"
+        );
+        customFenceBlock(
+                (FenceBlock) BlockRegistry.BAMBOO_FENCE_SUNBURNT.get(),
+                "bamboo_sunburnt",
+                "bamboo_fence_sunburnt"
+        );
+        doorBlockWithRenderType((DoorBlock) BlockRegistry.BAMBOO_DOOR.get(),
+                texture("bamboo_door_upper"), texture("bamboo_door_upper"), "cutout");
+
+        shoji(BlockRegistry.SHOJI.get());
+        shoji(BlockRegistry.SHOJI_1.get());
+        shoji(BlockRegistry.SHOJI_2.get());
+        shoji(BlockRegistry.SHOJI_3.get());
+        shoji(BlockRegistry.SHOJI_4.get());
+        shoji(BlockRegistry.SHOJI_5.get());
+        noren(BlockRegistry.NOREN_WHITE.get(), "noren_white");
+        noren(BlockRegistry.NOREN_BLUE.get(), "noren_blue");
+        noren(BlockRegistry.NOREN_PINK.get(), "noren_pink");
+
+        getVariantBuilder(BlockRegistry.TATARA.get()).forAllStates(state -> {
+                boolean lit = state.getValue(TataraBlock.LIT);
+                int timer = state.getValue(TataraBlock.TIMER);
+                String modelName = !lit ? "tatara" : (timer >= 3 ? "tatara_finished" : "tatara_smelting");
+                return ConfiguredModel.builder()
+                        .modelFile(models().cubeAll(modelName, texture(modelName)))
+                        .build();
+        });
     }
 
         private void log(RotatedPillarBlock block) {
@@ -101,8 +185,10 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         private void stageBlock(Block crop, IntegerProperty ageProperty) {
                 String cropName = name(crop);
                 getVariantBuilder(crop).forAllStates(state -> ConfiguredModel.builder()
-                                .modelFile(models().crop(cropName + "_stage" + state.getValue(ageProperty),
-                                                texture(cropName + "_stage" + state.getValue(ageProperty))))
+                                .modelFile(models().withExistingParent(
+                                                cropName + "_stage" + state.getValue(ageProperty),
+                                                modLoc("block/crop_lowered"))
+                                                .texture("crop", texture(cropName + "_stage" + state.getValue(ageProperty))))
                                 .build());
         }
 
@@ -118,9 +204,57 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 String name = name(block);
                 ResourceLocation texture = texture(name);
                 simpleBlock(block, models().cross(name, texture));
-                itemModels().getBuilder(name)
+        itemModels().getBuilder(name)
                                 .parent(itemModels().getExistingFile(mcLoc("item/generated")))
                                 .texture("layer0", texture);
+        }
+
+        private void carpet(Block block, String texture) {
+                String name = name(block);
+                simpleBlock(block, models().carpet(name, modLoc("block/" + texture)));
+        }
+
+        private void noren(Block block, String modelName) {
+                getVariantBuilder(block).forAllStates(state -> {
+                        Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+                        int yRot = ((int) facing.toYRot() + 180) % 360;
+                        return ConfiguredModel.builder()
+                                .modelFile(models().getExistingFile(modLoc("block/" + modelName)))
+                                .rotationY(yRot)
+                                .build();
+                });
+        }
+
+        private void shoji(Block block) {
+                getVariantBuilder(block).forAllStates(state -> {
+                        boolean open = state.getValue(BlockStateProperties.OPEN);
+                        boolean top = state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER;
+                        Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+                        if (top) {
+                                return ConfiguredModel.builder()
+                                        .modelFile(models().getExistingFile(modLoc("block/" + name(block) + "_empty")))
+                                        .build();
+                        }
+                        int yRot = ((int) facing.toYRot() + 180) % 360;
+                        String base = name(block);
+                        String model = open ? base + "_open" : base;
+                        return ConfiguredModel.builder()
+                                        .modelFile(models().getExistingFile(modLoc("block/" + model)))
+                                        .rotationY(yRot)
+                                        .build();
+                });
+        }
+
+        private void customFenceBlock(FenceBlock block, String postModelName, String sideModelName) {
+                ModelFile postModel = models().getExistingFile(modLoc("block/" + postModelName));
+                ModelFile sideModel = models().getExistingFile(modLoc("block/" + sideModelName));
+
+                getMultipartBuilder(block)
+                        .part().modelFile(postModel).addModel().end()
+                        .part().modelFile(sideModel).addModel().condition(FenceBlock.NORTH, true).end()
+                        .part().modelFile(sideModel).rotationY(90).addModel().condition(FenceBlock.EAST, true).end()
+                        .part().modelFile(sideModel).rotationY(180).addModel().condition(FenceBlock.SOUTH, true).end()
+                        .part().modelFile(sideModel).rotationY(270).addModel().condition(FenceBlock.WEST, true).end();
         }
 
         private String name(Block block) {
@@ -132,4 +266,3 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         }
 
 }
-

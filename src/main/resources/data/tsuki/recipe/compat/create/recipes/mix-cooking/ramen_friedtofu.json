@@ -1,30 +1,30 @@
 {
-    "heatRequirement":  "heated",
-    "ingredients":  [
-                        {
-                            "item":  "tsuki:ramen_raw"
-                        },
-                        {
-                            "item":  "tsuki:noodle_soup"
-                        },
-                        {
-                            "item":  "tsuki:tofu_fried"
-                        },
-                        {
-                            "amount":  250,
-                            "fluid":  "minecraft:water"
-                        }
-                    ],
-    "results":  [
-                    {
-                        "item":  "tsuki:ramen_friedtofu"
-                    }
-                ],
-    "type":  "create:mixing",
-    "neoforge:conditions":  [
-                                {
-                                    "modid":  "create",
-                                    "type":  "neoforge:mod_loaded"
-                                }
-                            ]
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "tsuki:ramen_raw"
+    },
+    {
+      "item": "tsuki:noodle_soup"
+    },
+    {
+      "item": "tsuki:tofu_fried"
+    },
+    {
+      "amount": 250,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "results": [
+    {
+      "item": "tsuki:ramen_friedtofu"
+    }
+  ],
+  "type": "create:mixing"
 }

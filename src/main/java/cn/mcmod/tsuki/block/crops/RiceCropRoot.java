@@ -31,16 +31,17 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.CommonHooks;
 
 public class RiceCropRoot extends BushBlock implements BonemealableBlock, LiquidBlockContainer {
     public static final MapCodec<RiceCropRoot> CODEC = simpleCodec(RiceCropRoot::new);
     public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
     public static final BooleanProperty SUPPORTING = BooleanProperty.create("supporting");
-    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] { Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D),
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D) };
+    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] { Block.box(0.0D, -1.0D, 0.0D, 16.0D, 1.0D, 16.0D),
+            Block.box(0.0D, -1.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 5.0D, 16.0D),
+            Block.box(0.0D, -1.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 9.0D, 16.0D),
+            Block.box(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 13.0D, 16.0D),
+            Block.box(0.0D, -1.0D, 0.0D, 16.0D, 15.0D, 16.0D) };
 
     public RiceCropRoot(Properties p_i48437_1_) {
         super(p_i48437_1_);
@@ -84,18 +85,18 @@ public class RiceCropRoot extends BushBlock implements BonemealableBlock, Liquid
             int age = this.getAge(state);
             if (age <= this.getMaxAge()) {
                 float chance = 10;
-                if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(worldIn, pos, state,
+                if (CommonHooks.canCropGrow(worldIn, pos, state,
                         rand.nextInt((int) (25.0F / chance) + 1) == 0)) {
                     if (age == this.getMaxAge()) {
                         RiceCrop riceUpper = (RiceCrop) BlockRegistry.RICE_CROP.get();
                         if (riceUpper.defaultBlockState().canSurvive(worldIn, pos.above())
                                 && worldIn.isEmptyBlock(pos.above())) {
                             worldIn.setBlockAndUpdate(pos.above(), riceUpper.defaultBlockState());
-                            net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(worldIn, pos, state);
+                            CommonHooks.fireCropGrowPost(worldIn, pos, state);
                         }
                     } else {
                         worldIn.setBlock(pos, this.withAge(age + 1), 2);
-                        net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(worldIn, pos, state);
+                        CommonHooks.fireCropGrowPost(worldIn, pos, state);
                     }
                 }
             }
@@ -204,5 +205,3 @@ public class RiceCropRoot extends BushBlock implements BonemealableBlock, Liquid
         return topState.getBlock() instanceof RiceCrop;
     }
 }
-
-

@@ -1,6 +1,10 @@
 {
   "values": [
     "tsuki:knife_fish",
-    "tsuki:sakura_knife_fish"
+    "tsuki:sakura_knife_fish",
+    {
+      "id": "#farmersdelight:tools/knives",
+      "required": false
+    }
   ]
 }
