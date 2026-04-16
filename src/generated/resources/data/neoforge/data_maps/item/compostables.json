@@ -48,6 +48,9 @@
     "tsuki:cheese_burger": {
       "chance": 1.0
     },
+    "tsuki:chestnut_toasted": {
+      "chance": 0.4
+    },
     "tsuki:chicken_nanban": {
       "chance": 1.0
     },

@@ -1,6 +1,8 @@
 package cn.mcmod.tsuki.data.client;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.block.ChestnutBurrBlock;
+import cn.mcmod.tsuki.block.FutonBlock;
 import cn.mcmod.tsuki.block.UmeLeavesBlock;
 import cn.mcmod.tsuki.block.machines.TataraBlock;
 import net.minecraft.data.PackOutput;
@@ -50,6 +52,7 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.FALLEN_LEAVES_ORANGE.get(), models().getExistingFile(modLoc("block/fallen_leaves_orange")));
         simpleBlock(BlockRegistry.FALLEN_LEAVES_YELLOW.get(), models().getExistingFile(modLoc("block/fallen_leaves_yellow")));
         simpleBlock(BlockRegistry.FALLEN_LEAVES_GREEN.get(), models().getExistingFile(modLoc("block/fallen_leaves_green")));
+        chestnutBurr(BlockRegistry.CHESTNUT_BURR.get());
 
         log(BlockRegistry.SAKURA_LOG.get());
         log(BlockRegistry.STRIPPED_SAKURA_LOG.get());
@@ -148,6 +151,7 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.WINDBELL.get(), models().getExistingFile(modLoc("block/windbell")));
         simpleBlock(BlockRegistry.ANDON.get(), models().getExistingFile(modLoc("block/andon")));
         simpleBlock(BlockRegistry.ZABUTON.get(), models().getExistingFile(modLoc("block/zabuton")));
+        futon(BlockRegistry.FUTON.get());
         simpleBlock(BlockRegistry.TAIKO.get(), models().getExistingFile(modLoc("block/taiko")));
 
         customFenceBlock(
@@ -239,6 +243,37 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                                         .modelFile(models().getExistingFile(modLoc("block/" + name(block) + "_empty")))
                                         .rotationY(yRot)
                                         .build();
+                });
+        }
+
+        private void futon(Block block) {
+                ModelFile foot = models().getExistingFile(modLoc("block/futon_bottom"));
+                ModelFile head = models().getExistingFile(modLoc("block/futon_top"));
+                getVariantBuilder(block).forAllStates(state -> {
+                        Direction facing = state.getValue(FutonBlock.FACING);
+                        int yRot = switch (facing) {
+                                case NORTH -> 180;
+                                case EAST -> 270;
+                                case WEST -> 90;
+                                default -> 0;
+                        };
+                        ModelFile model = state.getValue(FutonBlock.PART) == FutonBlock.BedPart.HEAD ? head : foot;
+                        return ConfiguredModel.builder()
+                                .modelFile(model)
+                                .rotationY(yRot)
+                                .build();
+                });
+        }
+
+        private void chestnutBurr(Block block) {
+                getVariantBuilder(block).forAllStates(state -> {
+                        int age = state.getValue(ChestnutBurrBlock.AGE);
+                        String modelName = switch (age) {
+                                case 1, 2, 3 -> "chestnut_burrs_" + age;
+                                default -> "chestnut_burr_0";
+                        };
+                        ModelFile model = models().cross(modelName, texture(modelName)).renderType("cutout");
+                        return ConfiguredModel.builder().modelFile(model).build();
                 });
         }
 

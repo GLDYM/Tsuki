@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.15,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:chestnut_burrs"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:chestnut"
+  }
+}

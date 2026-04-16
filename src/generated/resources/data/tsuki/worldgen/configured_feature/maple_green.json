@@ -9,6 +9,10 @@
       {
         "type": "tsuki:maple_fallen_leaves",
         "fallen_block": "tsuki:fallen_leaves_green"
+      },
+      {
+        "type": "tsuki:chestnut_burr",
+        "probability": 0.25
       }
     ],
     "dirt_provider": {

@@ -54,6 +54,7 @@ public class ClientEvents {
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.WHITE_LANTERN.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BAMBOO_LANTERN.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.WINDBELL.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.FUTON.get(), RenderType.cutoutMipped());
             
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_ODEN.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_SUKIYAKI.get(), RenderType.cutoutMipped());

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:chestnut"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:chestnut_toasted"
+  }
+}

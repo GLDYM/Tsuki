@@ -3,6 +3,8 @@ package cn.mcmod.tsuki.data.loot;
 import cn.mcmod.tsuki.block.BambooPlant;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.block.ChestnutBurrBlock;
+import cn.mcmod.tsuki.block.FutonBlock;
 import cn.mcmod.tsuki.block.crops.RiceCropRoot;
 import cn.mcmod.tsuki.block.foods.TeishokuBlock;
 import cn.mcmod.tsuki.block.foods.TeishokuFinishedBlock;
@@ -21,8 +23,10 @@ import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 public class TsukiBlockLoot extends AbstartctBlockLoot {
 
@@ -42,6 +46,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                     && !(block.get() instanceof TeishokuBlock)
                     && !(block.get() instanceof RiceCropRoot)
                     && block.get() != BlockRegistry.MAPLE_SAP_LOG.get()
+                    && block.get() != BlockRegistry.CHESTNUT_BURR.get()
+                    && block.get() != BlockRegistry.FUTON.get()
                     && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
                     && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()) {
                     if (block.get() instanceof BambooPlant) {
@@ -59,6 +65,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
 
         this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(),  TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
         this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(),  TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
+        this.add(BlockRegistry.FUTON.get(), createFutonDrops(BlockRegistry.FUTON.get()));
+        this.add(BlockRegistry.CHESTNUT_BURR.get(), createChestnutBurrDrops(BlockRegistry.CHESTNUT_BURR.get()));
 
         this.add(BlockRegistry.MAPLE_LEAVES_RED.get(), createLeavesDrops(BlockRegistry.MAPLE_LEAVES_RED.get(),
                 BlockRegistry.MAPLE_SAPLING_RED.get(), NORMAL_LEAVES_SAPLING_CHANCES));
@@ -129,5 +137,23 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         LootItemCondition.Builder builder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, age));
         this.add(block, createCropDrops(block, crop, seeds, builder));
+    }
+
+    private LootTable.Builder createFutonDrops(Block block) {
+        LootItemCondition.Builder footPart = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(FutonBlock.PART, FutonBlock.BedPart.FOOT));
+        return applyExplosionDecay(block, LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .add(LootItem.lootTableItem(BlockItemRegistry.FUTON.get()).when(footPart))));
+    }
+
+    private LootTable.Builder createChestnutBurrDrops(Block block) {
+        LootItemCondition.Builder mature = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ChestnutBurrBlock.AGE, 3));
+        return applyExplosionDecay(block, LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .add(LootItem.lootTableItem(BlockItemRegistry.CHESTNUT_BURRS.get())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
+                                .when(mature))));
     }
 }

@@ -43,7 +43,8 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                 BlockItem blockItem = (BlockItem) item.get();
                 if (blockItem.getBlock() instanceof StoneMortarBlock
                     || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
-                    || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get())
+                    || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()
+                    || blockItem.getBlock() == BlockRegistry.FUTON.get())
                 {
                     return;
                 }
@@ -53,9 +54,6 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                 }
                 if (blockItem.getBlock() == BlockRegistry.KITUNEBI.get()) {
                     singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/ghost_fire_0"));
-                    return;
-                }
-                if (blockItem.getBlock() == BlockRegistry.BAMBOO_DOOR.get()) {
                     return;
                 }
                 if (blockItem.getBlock() == BlockRegistry.KAWARA.get()) {
@@ -70,11 +68,13 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                     return;
                 }
                 if (blockItem.getBlock() == BlockRegistry.SHOJI.get()
-                        || blockItem.getBlock() == BlockRegistry.SHOJI_1.get()
-                        || blockItem.getBlock() == BlockRegistry.SHOJI_2.get()
-                        || blockItem.getBlock() == BlockRegistry.SHOJI_3.get()
-                        || blockItem.getBlock() == BlockRegistry.SHOJI_4.get()
-                        || blockItem.getBlock() == BlockRegistry.SHOJI_5.get()) {
+                    || blockItem.getBlock() == BlockRegistry.SHOJI_1.get()
+                    || blockItem.getBlock() == BlockRegistry.SHOJI_2.get()
+                    || blockItem.getBlock() == BlockRegistry.SHOJI_3.get()
+                    || blockItem.getBlock() == BlockRegistry.SHOJI_4.get()
+                    || blockItem.getBlock() == BlockRegistry.SHOJI_5.get()
+                    || blockItem.getBlock() == BlockRegistry.BAMBOO_DOOR.get()
+                    || blockItem.getBlock() == BlockRegistry.CHESTNUT_BURR.get()) {
                     normalItem(item);
                     return;
                 }

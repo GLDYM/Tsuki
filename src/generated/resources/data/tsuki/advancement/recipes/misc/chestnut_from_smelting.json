@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chestnut_burrs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:chestnut_burrs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:chestnut_from_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chestnut_burrs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:chestnut_from_smelting"
+    ]
+  }
+}

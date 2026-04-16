@@ -58,8 +58,8 @@ public class TsukiTreeFeatures {
         registryTree(MAPLE_ORANGE_KEY, createMapleStraightTree(BlockRegistry.MAPLE_LEAVES_ORANGE.get(), BlockRegistry.FALLEN_LEAVES_ORANGE.get()));
         registryTree(FANCY_MAPLE_ORANGE_KEY, createMapleFancyTree(BlockRegistry.MAPLE_LEAVES_ORANGE.get(), BlockRegistry.FALLEN_LEAVES_ORANGE.get()));
 
-        registryTree(MAPLE_GREEN_KEY, createMapleStraightTree(BlockRegistry.MAPLE_LEAVES_GREEN.get(), BlockRegistry.FALLEN_LEAVES_GREEN.get()));
-        registryTree(FANCY_MAPLE_GREEN_KEY, createMapleFancyTree(BlockRegistry.MAPLE_LEAVES_GREEN.get(), BlockRegistry.FALLEN_LEAVES_GREEN.get()));
+        registryTree(MAPLE_GREEN_KEY, createGreenMapleStraightTree(BlockRegistry.MAPLE_LEAVES_GREEN.get(), BlockRegistry.FALLEN_LEAVES_GREEN.get()));
+        registryTree(FANCY_MAPLE_GREEN_KEY, createGreenMapleFancyTree(BlockRegistry.MAPLE_LEAVES_GREEN.get(), BlockRegistry.FALLEN_LEAVES_GREEN.get()));
 
         registryTree(UME_KEY, createSimpleBlobTree(BlockRegistry.UME_LOG.get(), BlockRegistry.UME_LEAVES.get()).ignoreVines());
         registryTree(FANCY_UME_KEY, createFancyTree(BlockRegistry.UME_LOG.get(), BlockRegistry.UME_LEAVES.get()));
@@ -89,9 +89,26 @@ public class TsukiTreeFeatures {
                 .ignoreVines();
     }
 
+    private static TreeConfiguration.TreeConfigurationBuilder createGreenMapleStraightTree(Block leaves, Block fallenLeaves) {
+        return createStraightBlobTree(BlockRegistry.MAPLE_LOG.get(), leaves, 5, 2, 0, 2)
+                .decorators(List.of(
+                        new MapleSapLogDecorator(0.25F),
+                        new MapleFallenLeavesDecorator(fallenLeaves),
+                        new ChestnutBurrDecorator(0.25F)))
+                .ignoreVines();
+    }
+
     private static TreeConfiguration.TreeConfigurationBuilder createMapleFancyTree(Block leaves, Block fallenLeaves) {
         return createFancyTree(BlockRegistry.MAPLE_LOG.get(), leaves)
                 .decorators(List.of(new MapleSapLogDecorator(0.33F), new MapleFallenLeavesDecorator(fallenLeaves)));
+    }
+
+    private static TreeConfiguration.TreeConfigurationBuilder createGreenMapleFancyTree(Block leaves, Block fallenLeaves) {
+        return createFancyTree(BlockRegistry.MAPLE_LOG.get(), leaves)
+                .decorators(List.of(
+                        new MapleSapLogDecorator(0.33F),
+                        new MapleFallenLeavesDecorator(fallenLeaves),
+                        new ChestnutBurrDecorator(0.25F)));
     }
 
     private static TreeConfiguration.TreeConfigurationBuilder createFancyTree(Block log, Block leaves) {

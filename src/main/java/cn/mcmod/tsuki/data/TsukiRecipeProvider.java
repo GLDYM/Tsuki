@@ -171,6 +171,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('L', TsukiItemTags.STRAW)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.FUTON.get(), 1)
+            .pattern("WWW")
+            .pattern("SSS")
+            .define('W', Items.WHITE_WOOL)
+            .define('S', TsukiItemTags.STRAW)
+            .unlockedBy("has_straw", has(TsukiItemTags.STRAW))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "futon"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.TORCH, 4)
             .pattern("C")
             .pattern("#")
@@ -748,6 +755,23 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.foodSmeltingRecipes(
             "taro_bake", ItemRegistry.TARO.get(), FoodRegistry.FOODSET.get(TsukiFoodSet.TARO_BAKED).get(), 0.5F, consumer
         );
+        this.foodSmeltingRecipes(
+            "chestnut_toasted",
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHESTNUT).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.CHESTNUT_TOASTED).get(),
+            0.35F,
+            consumer
+        );
+        SimpleCookingRecipeBuilder.smelting(
+                Ingredient.of(BlockItemRegistry.CHESTNUT_BURRS.get()),
+                RecipeCategory.MISC,
+                ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHESTNUT).get(),
+                0.15F,
+                200
+            )
+            .group(Tsuki.MODID)
+            .unlockedBy("has_chestnut_burrs", has(BlockItemRegistry.CHESTNUT_BURRS.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chestnut_from_smelting"));
         this.foodSmeltingRecipes(
             "burger",
             FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(),
@@ -2582,6 +2606,10 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .addByproduce(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get())
             .addByproduceWithChance(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get(), 0.5F)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sliced_cabbage_chopping"));
+        ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.CHESTNUT.getItem().get(), 2)
+            .requires(BlockItemRegistry.CHESTNUT_BURRS.get())
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chestnut_chopping"));
         ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.SOBA_RAW.getItem().get(), 2, 1.0F, 4)
             .requires(TsukiNormalItemSet.SOBA_BLOCK.getItem().get())
             .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)

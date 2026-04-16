@@ -343,6 +343,18 @@ public enum TsukiFoodSet {
          .cookingTemp(480.0F)
          .build()
    ),
+   CHESTNUT_TOASTED(
+      FoodInfo.builder()
+         .name("chestnut_toasted")
+         .amountAndCalories(4, 0.4F)
+         .water(0.5F)
+         .nutrients(2.0F, 0.0F, 2.0F, 0.0F, 0.0F)
+         .compostChance(0.4F)
+         .decayModifier(2.5F)
+         .heatCapacity(1.0F)
+         .cookingTemp(480.0F)
+         .build()
+   ),
    CHEESE(
       FoodInfo.builder()
          .name("cheese")
@@ -965,4 +977,3 @@ public enum TsukiFoodSet {
        return FoodRegistry.FOODSET.get(this);
     }
 }
-

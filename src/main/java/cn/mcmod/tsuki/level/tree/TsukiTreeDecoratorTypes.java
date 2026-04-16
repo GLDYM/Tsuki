@@ -18,4 +18,8 @@ public class TsukiTreeDecoratorTypes {
     public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<MapleFallenLeavesDecorator>> MAPLE_FALLEN_LEAVES =
             TREE_DECORATOR_TYPES.register("maple_fallen_leaves",
                     () -> new TreeDecoratorType<>(MapleFallenLeavesDecorator.CODEC));
+
+    public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<ChestnutBurrDecorator>> CHESTNUT_BURR =
+            TREE_DECORATOR_TYPES.register("chestnut_burr",
+                    () -> new TreeDecoratorType<>(ChestnutBurrDecorator.CODEC));
 }

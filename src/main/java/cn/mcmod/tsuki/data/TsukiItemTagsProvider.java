@@ -289,6 +289,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.RAW_MUTTON).add(Items.MUTTON);
       this.tag(TsukiItemTags.FISHES).addTag(TsukiItemTags.RAW_FISHES);
       this.tag(TsukiItemTags.FRUITS).addTag(TsukiItemTags.FRUITS_APPLE).addTag(TsukiItemTags.FRUITS_BERRIES).addTag(TsukiItemTags.FRUITS_MELON_SLICE).addTag(TsukiItemTags.FRUITS_UME);
+      this.tag(TsukiItemTags.FRUITS).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHESTNUT).get());
       this.tag(TsukiItemTags.FOODS_FRUITS)
          .addTag(TsukiItemTags.FOODS_FRUITS_APPLE)
          .addTag(TsukiItemTags.FOODS_FRUITS_BERRIES)

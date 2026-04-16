@@ -94,6 +94,8 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                .add((Block) BlockRegistry.TATAMI_CARPET_TAN.get())
                .add((Block) BlockRegistry.TATAMI_CARPET_TAN_WAXED.get())
                .add((Block) BlockRegistry.ZABUTON.get());
+            this.tag(BlockTags.MINEABLE_WITH_AXE)
+               .add((Block) BlockRegistry.FUTON.get());
             this.tag(TsukiBlockTags.MINEABLE_WITH_HAMMER)
                .add((Block) BlockRegistry.TATARA.get());
             this.tag(BlockTags.NEEDS_IRON_TOOL)

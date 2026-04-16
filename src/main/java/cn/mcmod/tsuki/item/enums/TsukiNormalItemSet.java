@@ -32,6 +32,7 @@ public enum TsukiNormalItemSet {
     MIRIN("mirin"),
     SAKE_KASU("sake_kasu"),
     TEMPURA_BATTER("tempura_batter"),
+    CHESTNUT("chestnut"),
     MAPLE_SYRUP("maple_syrup"),
     MOLASSES("molasses"),
     YEAST("yeast"),

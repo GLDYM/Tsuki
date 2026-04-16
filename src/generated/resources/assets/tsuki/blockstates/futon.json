@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=east,occupied=false,part=foot": {
+      "model": "tsuki:block/futon_bottom",
+      "y": 270
+    },
+    "facing=east,occupied=false,part=head": {
+      "model": "tsuki:block/futon_top",
+      "y": 270
+    },
+    "facing=east,occupied=true,part=foot": {
+      "model": "tsuki:block/futon_bottom",
+      "y": 270
+    },
+    "facing=east,occupied=true,part=head": {
+      "model": "tsuki:block/futon_top",
+      "y": 270
+    },
+    "facing=north,occupied=false,part=foot": {
+      "model": "tsuki:block/futon_bottom",
+      "y": 180
+    },
+    "facing=north,occupied=false,part=head": {
+      "model": "tsuki:block/futon_top",
+      "y": 180
+    },
+    "facing=north,occupied=true,part=foot": {
+      "model": "tsuki:block/futon_bottom",
+      "y": 180
+    },
+    "facing=north,occupied=true,part=head": {
+      "model": "tsuki:block/futon_top",
+      "y": 180
+    },
+    "facing=south,occupied=false,part=foot": {
+      "model": "tsuki:block/futon_bottom"
+    },
+    "facing=south,occupied=false,part=head": {
+      "model": "tsuki:block/futon_top"
+    },
+    "facing=south,occupied=true,part=foot": {
+      "model": "tsuki:block/futon_bottom"
+    },
+    "facing=south,occupied=true,part=head": {
+      "model": "tsuki:block/futon_top"
+    },
+    "facing=west,occupied=false,part=foot": {
+      "model": "tsuki:block/futon_bottom",
+      "y": 90
+    },
+    "facing=west,occupied=false,part=head": {
+      "model": "tsuki:block/futon_top",
+      "y": 90
+    },
+    "facing=west,occupied=true,part=foot": {
+      "model": "tsuki:block/futon_bottom",
+      "y": 90
+    },
+    "facing=west,occupied=true,part=head": {
+      "model": "tsuki:block/futon_top",
+      "y": 90
+    }
+  }
+}

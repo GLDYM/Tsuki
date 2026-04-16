@@ -183,6 +183,13 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> FALLEN_LEAVES_GREEN = BLOCKS.register("fallen_leaves_green",
             () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion()));
+    public static final DeferredBlock<Block> CHESTNUT_BURR = BLOCKS.register("chestnut_burr",
+            () -> new ChestnutBurrBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollission()
+                    .instabreak()
+                    .sound(SoundType.GRASS)
+                    .randomTicks()));
 
     public static final DeferredBlock<Block> BAMBOO_PLANT = BLOCKS.register("bamboo_plant", () -> new BambooPlant());
     public static final DeferredBlock<Block> BAMBOOSHOOT = BLOCKS.register("bamboo_shoot", () -> new BambooShoot());
@@ -368,6 +375,7 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> ZABUTON = BLOCKS.register("zabuton",
             () -> new ZabutonBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RED_CARPET)
                     .mapColor(MapColor.COLOR_RED)));
+    public static final DeferredBlock<Block> FUTON = BLOCKS.register("futon", FutonBlock::new);
     public static final DeferredBlock<Block> TAIKO = BLOCKS.register("taiko", TaikoBlock::new);
     public static final DeferredBlock<Block> NOREN_WHITE = BLOCKS.register("noren_white", () -> new NorenBlock(MapColor.SNOW));
     public static final DeferredBlock<Block> NOREN_BLUE = BLOCKS.register("noren_blue", () -> new NorenBlock(MapColor.COLOR_BLUE));

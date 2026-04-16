@@ -110,6 +110,8 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_YELLOW.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> FALLEN_LEAVES_GREEN = ITEMS.register("fallen_leaves_green",
             () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> CHESTNUT_BURRS = ITEMS.register("chestnut_burrs",
+            () -> new BlockItem(BlockRegistry.CHESTNUT_BURR.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> BAMBOOSHOOT = ITEMS.register("bamboo_shoot",
             () -> new BlockItem(BlockRegistry.BAMBOOSHOOT.get(), Tsuki.defaultItemProperties()));
@@ -173,6 +175,8 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.ANDON.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> ZABUTON = ITEMS.register("zabuton",
             () -> new BlockItem(BlockRegistry.ZABUTON.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> FUTON = ITEMS.register("futon",
+            () -> new BlockItem(BlockRegistry.FUTON.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> TAIKO = ITEMS.register("taiko",
             () -> new BlockItem(BlockRegistry.TAIKO.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> NOREN_WHITE = ITEMS.register("noren_white",
