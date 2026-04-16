@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "H": {
+      "tag": "c:tools/hammers"
+    },
+    "L": {
+      "tag": "c:lumber"
+    },
+    "M": {
+      "item": "tsuki:steel_ingot"
+    }
+  },
+  "pattern": [
+    " M",
+    "LH"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:kodachi"
+  }
+}

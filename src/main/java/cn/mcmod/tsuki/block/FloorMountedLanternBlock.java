@@ -3,7 +3,10 @@ package cn.mcmod.tsuki.block;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -53,5 +56,14 @@ public class FloorMountedLanternBlock extends CustomLanternBlock {
             return Blocks.AIR.defaultBlockState();
         }
         return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        double centerX = pos.getX() + 0.5D;
+        double centerY = pos.getY() + 0.65D;
+        double centerZ = pos.getZ() + 0.5D;
+        level.addParticle(ParticleTypes.SMOKE, centerX, centerY, centerZ, 0.0D, 0.0D, 0.0D);
+        level.addParticle(ParticleTypes.FLAME, centerX, centerY, centerZ, 0.0D, 0.0D, 0.0D);
     }
 }

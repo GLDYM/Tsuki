@@ -10,6 +10,8 @@ public class TsukiItemTags {
     public static final TagKey<Item> OFFHAND_EQUIPMENT = TagUtils.modItemTag(Tsuki.MODID,"offhand_equipment");
     public static final TagKey<Item> SOUPS = TagUtils.modItemTag(Tsuki.MODID,"soups");
     public static final TagKey<Item> KAWARA_BLOCK = TagUtils.modItemTag(Tsuki.MODID, "kawara_block");
+    public static final TagKey<Item> STRIPPED_LOG = TagUtils.forgeItemTag("stripped_log");
+    public static final TagKey<Item> STRIPPED_WOOD = TagUtils.forgeItemTag("stripped_wood");
     
     public static final TagKey<Item> SALT = TagUtils.forgeItemTag("salt");
     public static final TagKey<Item> DUST_SALT = TagUtils.forgeItemTag("dust/salt");
@@ -171,6 +173,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> FRUITS_APPLE = TagUtils.forgeItemTag("fruits/apple");
     public static final TagKey<Item> FRUITS_MELON_SLICE = TagUtils.forgeItemTag("fruits/melon_slice");
     public static final TagKey<Item> FRUITS_BERRIES = TagUtils.forgeItemTag("fruits/berries");
+    public static final TagKey<Item> FRUITS_UME = TagUtils.forgeItemTag("fruits/ume");
     public static final TagKey<Item> FOODS_FRUITS = TagUtils.forgeItemTag("foods/fruits");
     public static final TagKey<Item> FOODS_FRUITS_APPLE = TagUtils.forgeItemTag("foods/fruits/apple");
     public static final TagKey<Item> FOODS_FRUITS_MELON_SLICE = TagUtils.forgeItemTag("foods/fruits/melon_slice");
@@ -194,6 +197,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> TOOLS_HOES = TagUtils.forgeItemTag("tools/hoes");
     public static final TagKey<Item> TOOLS_HAMMERS = TagUtils.forgeItemTag("tools/hammers");
     public static final TagKey<Item> TOOLS_KNIVES = TagUtils.forgeItemTag("tools/knives");
+    public static final TagKey<Item> TOOLS_KATANAS = TagUtils.forgeItemTag("tools/katanas");
     public static final TagKey<Item> TOOLS_KNIVES_FISH = TagUtils.modItemTag(Tsuki.MODID,"tools/knives/fish");
     public static final TagKey<Item> TOOLS_KNIVES_NOODLE = TagUtils.modItemTag(Tsuki.MODID,"tools/knives/noodle");
     public static final TagKey<Item> TOOLS_PICKAXES = TagUtils.forgeItemTag("tools/pickaxes");

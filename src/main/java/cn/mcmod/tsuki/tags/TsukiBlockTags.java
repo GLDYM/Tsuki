@@ -7,6 +7,8 @@ import net.minecraft.world.level.block.Block;
 
 public class TsukiBlockTags {
     public static final TagKey<Block> KAWARA_BLOCK = TagUtils.modBlockTag(Tsuki.MODID, "kawara_block");
+    public static final TagKey<Block> STRIPPED_LOG = TagUtils.forgeBlockTag("stripped_log");
+    public static final TagKey<Block> STRIPPED_WOOD = TagUtils.forgeBlockTag("stripped_wood");
     public static final TagKey<Block> HEAT_SOURCES = TagUtils.modBlockTag(Tsuki.MODID, "heat_sources");
     public static final TagKey<Block> HEAT_CONDUCTORS = TagUtils.modBlockTag(Tsuki.MODID, "heat_conductors");
     public static final TagKey<Block> TRAY_HEAT_SOURCES = TagUtils.modBlockTag(Tsuki.MODID, "tray_heat_sources");

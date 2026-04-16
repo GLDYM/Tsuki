@@ -501,6 +501,12 @@
     "tsuki:udon_tempura": {
       "chance": 1.0
     },
+    "tsuki:ume": {
+      "chance": 0.3
+    },
+    "tsuki:umeboshi": {
+      "chance": 0.3
+    },
     "tsuki:vinegar_rice": {
       "chance": 0.5
     },

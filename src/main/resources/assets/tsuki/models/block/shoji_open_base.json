@@ -86,7 +86,7 @@
     64
   ],
   "textures": {
-    "0": "tsuki:block/shoji/shoji_type_0",
-    "particle": "tsuki:block/shoji/shoji_type_0"
+    "0": "tsuki:entity/blockentity/shoji_type_0",
+    "particle": "tsuki:entity/blockentity/shoji_type_0"
   }
 }

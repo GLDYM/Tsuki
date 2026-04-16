@@ -8,10 +8,15 @@ import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+@EventBusSubscriber(modid = Tsuki.MODID)
 public class CreativeModeTabRegistry {
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Tsuki.MODID);
@@ -66,6 +71,19 @@ public class CreativeModeTabRegistry {
                 )
                 .build()
     );
-}
 
+    @SubscribeEvent
+    public static void onBuildVanillaTabs(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            event.accept(BlockItemRegistry.UME_LOG.get());
+            event.accept(BlockItemRegistry.STRIPPED_UME_LOG.get());
+            event.accept(BlockItemRegistry.UME_WOOD.get());
+            event.accept(BlockItemRegistry.STRIPPED_UME_WOOD.get());
+        }
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            event.accept(BlockItemRegistry.UME_LEAVES.get());
+            event.accept(BlockItemRegistry.UME_SAPLING.get());
+        }
+    }
+}
 

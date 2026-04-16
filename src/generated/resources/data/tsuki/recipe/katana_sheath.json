@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "tsuki:katana"
+    },
+    {
+      "item": "tsuki:sheath"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:katana_sheath"
+  }
+}

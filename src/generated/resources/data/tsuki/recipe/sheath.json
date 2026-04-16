@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "W": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "L",
+    "W"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:sheath"
+  }
+}

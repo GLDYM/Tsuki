@@ -35,9 +35,20 @@ public class BlockEntityRegistry {
             "chopping_board",
             () -> BlockEntityType.Builder.of(ChoppingBoardBlockEntity::new, BlockRegistry.CHOPPING_BOARD.get()).build(null));
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShojiBlockEntity>> SHOJI = BLOCK_ENTITIES.register(
+            "shoji",
+            () -> BlockEntityType.Builder.of(
+                    ShojiBlockEntity::new,
+                    BlockRegistry.SHOJI.get(),
+                    BlockRegistry.SHOJI_1.get(),
+                    BlockRegistry.SHOJI_2.get(),
+                    BlockRegistry.SHOJI_3.get(),
+                    BlockRegistry.SHOJI_4.get(),
+                    BlockRegistry.SHOJI_5.get()
+            ).build(null));
+
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<MapleCauldronBlockEntity>> MAPLE_CAULDRON = BLOCK_ENTITIES.register(
             "maple_cauldron",
             () -> BlockEntityType.Builder.of(MapleCauldronBlockEntity::new, BlockRegistry.MAPLE_CAULDRON.get()).build(null));
 }
-
 

@@ -62,6 +62,9 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> MAPLE_LEAVES_ORANGE = BLOCKS.register("mapleleaves_orange",
             () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion(), ParticleRegistry.ORANGE_MAPLE_LEAF));
+    public static final DeferredBlock<Block> UME_LEAVES = BLOCKS.register("umeleaves",
+            () -> new UmeLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+                    .sound(SoundType.GRASS).noOcclusion(), ParticleRegistry.GREEN_MAPLE_LEAF));
 
     public static final DeferredBlock<RotatedPillarBlock> SAKURA_LOG = BLOCKS.register("sakura_log",
             () -> log(MapColor.WOOD, MapColor.PODZOL));
@@ -100,6 +103,14 @@ public class BlockRegistry {
             () -> log(MapColor.PODZOL, MapColor.PODZOL));
 
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_MAPLE_WOOD = BLOCKS.register("stripped_maple_wood",
+            () -> log(MapColor.WOOD, MapColor.WOOD));
+    public static final DeferredBlock<RotatedPillarBlock> UME_LOG = BLOCKS.register("ume_log",
+            () -> log(MapColor.WOOD, MapColor.PODZOL));
+    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_UME_LOG = BLOCKS.register("stripped_ume_log",
+            () -> log(MapColor.WOOD, MapColor.WOOD));
+    public static final DeferredBlock<RotatedPillarBlock> UME_WOOD = BLOCKS.register("ume_wood",
+            () -> log(MapColor.PODZOL, MapColor.PODZOL));
+    public static final DeferredBlock<RotatedPillarBlock> STRIPPED_UME_WOOD = BLOCKS.register("stripped_ume_wood",
             () -> log(MapColor.WOOD, MapColor.WOOD));
 
     public static final DeferredBlock<RotatedPillarBlock> BAMBOO_BLOCK = BLOCKS.register("bamboo_block",
@@ -147,6 +158,16 @@ public class BlockRegistry {
                     Optional.empty(),
                     Optional.of(TsukiTreeFeatures.MAPLE_ORANGE_KEY),
                     Optional.of(TsukiTreeFeatures.FANCY_MAPLE_ORANGE_KEY),
+                    Optional.empty(),
+                    Optional.empty())));
+    public static final DeferredBlock<SaplingBlock> UME_SAPLING = BLOCKS.register("ume_sapling",
+            () -> sapling(new TreeGrower(
+                    "ume",
+                    0.1F,
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(TsukiTreeFeatures.UME_KEY),
+                    Optional.of(TsukiTreeFeatures.FANCY_UME_KEY),
                     Optional.empty(),
                     Optional.empty())));
 
@@ -243,12 +264,12 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> EGGPLANT_CROP = BLOCKS.register("eggplant_crop",
             () -> new HighCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.EGGPLANT_SEEDS));
 
-    public static final DeferredBlock<Block> SHOJI = BLOCKS.register("shoji", ShojiBlock::new);
-    public static final DeferredBlock<Block> SHOJI_1 = BLOCKS.register("shoji_1", ShojiBlock::new);
-    public static final DeferredBlock<Block> SHOJI_2 = BLOCKS.register("shoji_2", ShojiBlock::new);
-    public static final DeferredBlock<Block> SHOJI_3 = BLOCKS.register("shoji_3", ShojiBlock::new);
-    public static final DeferredBlock<Block> SHOJI_4 = BLOCKS.register("shoji_4", ShojiBlock::new);
-    public static final DeferredBlock<Block> SHOJI_5 = BLOCKS.register("shoji_5", ShojiBlock::new);
+    public static final DeferredBlock<Block> SHOJI = BLOCKS.register("shoji", () -> new ShojiBlock(0));
+    public static final DeferredBlock<Block> SHOJI_1 = BLOCKS.register("shoji_1", () -> new ShojiBlock(1));
+    public static final DeferredBlock<Block> SHOJI_2 = BLOCKS.register("shoji_2", () -> new ShojiBlock(2));
+    public static final DeferredBlock<Block> SHOJI_3 = BLOCKS.register("shoji_3", () -> new ShojiBlock(3));
+    public static final DeferredBlock<Block> SHOJI_4 = BLOCKS.register("shoji_4", () -> new ShojiBlock(4));
+    public static final DeferredBlock<Block> SHOJI_5 = BLOCKS.register("shoji_5", () -> new ShojiBlock(5));
     public static final DeferredBlock<Block> KAWARA_BLOCK = BLOCKS.register("kawara_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
                     .mapColor(MapColor.COLOR_GRAY)
@@ -256,10 +277,15 @@ public class BlockRegistry {
                     .sound(SoundType.STONE)));
     public static final DeferredBlock<Block> KAWARA = BLOCKS.register("kawara",
             () -> new StairBlock(KAWARA_BLOCK.get().defaultBlockState(),
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS) // Weird
                             .mapColor(MapColor.COLOR_GRAY)
                             .strength(1.5F, 6.0F)
-                            .sound(SoundType.STONE)));
+                            .sound(SoundType.STONE)
+                            .isValidSpawn((state, level, pos, type) -> false)
+                            .isRedstoneConductor((state, level, pos) -> false)
+                            .isSuffocating((state, level, pos) -> false)
+                            .isViewBlocking((state, level, pos) -> false)
+                        ));
     // Kawara block variants
     public static final DeferredBlock<Block> KAWARA_BLOCK_ALTER = BLOCKS.register("kawara_block_alter",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)

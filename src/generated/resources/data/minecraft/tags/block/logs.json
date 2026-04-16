@@ -8,6 +8,10 @@
     "tsuki:stripped_maple_log",
     "tsuki:sakura_log",
     "tsuki:maple_log",
-    "tsuki:maple_sap_log"
+    "tsuki:maple_sap_log",
+    "tsuki:ume_log",
+    "tsuki:stripped_ume_log",
+    "tsuki:ume_wood",
+    "tsuki:stripped_ume_wood"
   ]
 }

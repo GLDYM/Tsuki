@@ -1,5 +1,8 @@
 {
   "values": [
-    "minecraft:shield"
+    "minecraft:shield",
+    "tsuki:sheath",
+    "tsuki:katana_sheath",
+    "tsuki:sakura_katana_sheath"
   ]
 }

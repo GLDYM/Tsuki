@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "particle": "tsuki:block/shoji_1"
+    "particle": "tsuki:entity/blockentity/shoji_type_1"
   }
 }

@@ -8,6 +8,10 @@ import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.ShinaiItem;
+import cn.mcmod.tsuki.item.KatanaItem;
+import cn.mcmod.tsuki.item.SheathItem;
+import cn.mcmod.tsuki.item.SheathKatanaItem;
 import cn.mcmod.tsuki.item.armors.HaoriItem;
 import cn.mcmod.tsuki.item.armors.KimonoItem;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
@@ -86,7 +90,11 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         BucketItemRegistry.ITEMS.getEntries().forEach(this::normalItem);
         TsukiArmorToolRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof KimonoItem
-                || item.get() instanceof HaoriItem) {
+                || item.get() instanceof HaoriItem
+                || item.get() instanceof KatanaItem
+                || item.get() instanceof SheathItem
+                || item.get() instanceof SheathKatanaItem
+                || item.get() instanceof ShinaiItem) {
                 return;
             } else {
                 normalItem(item);
@@ -97,6 +105,8 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                 || item.get() == TsukiFoodSet.DANANKO.getItem().get()
                 || item.get() == TsukiFoodSet.DANMITARASHI.getItem().get()
                 || item.get() == TsukiFoodSet.DANSANSYOKU.getItem().get()
+                || item.get() == TsukiFoodSet.UME.getItem().get()
+                || item.get() == TsukiFoodSet.UMEBOSHI.getItem().get()
             ) {
                 return;
             }

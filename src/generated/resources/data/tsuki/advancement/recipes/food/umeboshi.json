@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:umeboshi"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_ume": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:ume"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ume"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:umeboshi"
+    ]
+  }
+}

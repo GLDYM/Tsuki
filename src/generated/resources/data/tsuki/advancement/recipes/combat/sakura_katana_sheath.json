@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sakura_katana": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:sakura_katana"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:sakura_katana_sheath"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sakura_katana"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:sakura_katana_sheath"
+    ]
+  }
+}

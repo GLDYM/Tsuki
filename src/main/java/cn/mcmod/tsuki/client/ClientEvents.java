@@ -9,6 +9,7 @@ import cn.mcmod.tsuki.client.particle.SyrupDropParticle;
 import cn.mcmod.tsuki.client.render.ChoppingBoardRender;
 import cn.mcmod.tsuki.client.render.ObonRender;
 import cn.mcmod.tsuki.client.render.SeatEntityRenderer;
+import cn.mcmod.tsuki.client.render.ShojiRenderer;
 import cn.mcmod.tsuki.client.render.StoneMortarRenderer;
 import cn.mcmod.tsuki.entity.EntityRegistry;
 import cn.mcmod.tsuki.fluid.FluidRegistry;
@@ -69,6 +70,7 @@ public class ClientEvents {
             BlockEntityRenderers.register(BlockEntityRegistry.STONE_MORTAR.get(), StoneMortarRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.CHOPPING_BOARD.get(), ChoppingBoardRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.OBON.get(), ObonRender::new);
+            BlockEntityRenderers.register(BlockEntityRegistry.SHOJI.get(), ShojiRenderer::new);
             EntityRenderers.register(EntityRegistry.SEAT.get(), SeatEntityRenderer::new);
         });
     }

@@ -70,6 +70,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                 BlockRegistry.MAPLE_SAPLING_GREEN.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.add(BlockRegistry.SAKURA_LEAVES.get(), createLeavesDrops(BlockRegistry.SAKURA_LEAVES.get(),
                 BlockRegistry.SAKURA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.add(BlockRegistry.UME_LEAVES.get(), createLeavesDrops(BlockRegistry.UME_LEAVES.get(),
+                BlockRegistry.UME_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
         this.createTeishoku(BlockRegistry.TEISHOUKU_FISH_COOKED.get());
         this.createTeishoku(BlockRegistry.TEISHOUKU_FISH_RAW.get());

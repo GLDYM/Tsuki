@@ -31,6 +31,30 @@ public enum TsukiFoodSet {
          .cookingTemp(480.0F)
          .build()
    ),
+   UME(
+      FoodInfo.builder()
+         .name("ume")
+         .amountAndCalories(2, 0.2F)
+         .water(5.0F)
+         .nutrients(0.0F, 1.0F, 0.0F, 0.0F, 0.0F)
+         .compostChance(0.3F)
+         .decayModifier(3.0F)
+         .heatCapacity(1.0F)
+         .cookingTemp(480.0F)
+         .build()
+   ),
+   UMEBOSHI(
+      FoodInfo.builder()
+         .name("umeboshi")
+         .amountAndCalories(2, 0.5F)
+         .water(5.0F)
+         .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
+         .compostChance(0.3F)
+         .decayModifier(0.5F)
+         .heatCapacity(1.0F)
+         .cookingTemp(480.0F)
+         .build()
+   ),
    RADISH(
       FoodInfo.builder()
          .name("radish")
@@ -941,5 +965,4 @@ public enum TsukiFoodSet {
        return FoodRegistry.FOODSET.get(this);
     }
 }
-
 

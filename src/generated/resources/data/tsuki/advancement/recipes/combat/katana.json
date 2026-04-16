@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tamahagane": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:tamahagane"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:katana"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tamahagane"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:katana"
+    ]
+  }
+}

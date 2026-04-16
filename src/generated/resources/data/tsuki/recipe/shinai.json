@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "c:bamboo"
+    },
+    "L": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "  B",
+    " B ",
+    "L  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:shinai"
+  }
+}

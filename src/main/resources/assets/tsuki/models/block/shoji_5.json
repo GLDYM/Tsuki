@@ -1,7 +1,7 @@
 {
-  "parent": "tsuki:block/shoji_base",
+  "parent": "minecraft:block/block",
   "textures": {
-    "0": "tsuki:block/shoji/shoji_type_5",
-    "particle": "tsuki:block/shoji/shoji_type_5"
+    "0": "tsuki:entity/blockentity/shoji_type_5",
+    "particle": "tsuki:entity/blockentity/shoji_type_5"
   }
 }

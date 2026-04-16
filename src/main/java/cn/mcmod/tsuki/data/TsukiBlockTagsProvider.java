@@ -27,7 +27,11 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                (Block)BlockRegistry.STRIPPED_MAPLE_LOG.get(),
                (Block)BlockRegistry.SAKURA_LOG.get(),
                (Block)BlockRegistry.MAPLE_LOG.get(),
-               (Block)BlockRegistry.MAPLE_SAP_LOG.get()
+               (Block)BlockRegistry.MAPLE_SAP_LOG.get(),
+               (Block)BlockRegistry.UME_LOG.get(),
+               (Block)BlockRegistry.STRIPPED_UME_LOG.get(),
+               (Block)BlockRegistry.UME_WOOD.get(),
+               (Block)BlockRegistry.STRIPPED_UME_WOOD.get()
             }
          );
       this.tag(BlockTags.LOGS_THAT_BURN)
@@ -41,7 +45,27 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                (Block)BlockRegistry.STRIPPED_MAPLE_LOG.get(),
                (Block)BlockRegistry.SAKURA_LOG.get(),
                (Block)BlockRegistry.MAPLE_LOG.get(),
-               (Block)BlockRegistry.MAPLE_SAP_LOG.get()
+               (Block)BlockRegistry.MAPLE_SAP_LOG.get(),
+               (Block)BlockRegistry.UME_LOG.get(),
+               (Block)BlockRegistry.STRIPPED_UME_LOG.get(),
+               (Block)BlockRegistry.UME_WOOD.get(),
+               (Block)BlockRegistry.STRIPPED_UME_WOOD.get()
+            }
+         );
+      this.tag(TsukiBlockTags.STRIPPED_LOG)
+         .add(
+            new Block[]{
+               (Block)BlockRegistry.STRIPPED_SAKURA_LOG.get(),
+               (Block)BlockRegistry.STRIPPED_MAPLE_LOG.get(),
+               (Block)BlockRegistry.STRIPPED_UME_LOG.get()
+            }
+         );
+      this.tag(TsukiBlockTags.STRIPPED_WOOD)
+         .add(
+            new Block[]{
+               (Block)BlockRegistry.STRIPPED_SAKURA_WOOD.get(),
+               (Block)BlockRegistry.STRIPPED_MAPLE_WOOD.get(),
+               (Block)BlockRegistry.STRIPPED_UME_WOOD.get()
             }
          );
             this.tag(TsukiBlockTags.KAWARA_BLOCK)
@@ -82,7 +106,8 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                (Block)BlockRegistry.MAPLE_LEAVES_RED.get(),
                (Block)BlockRegistry.MAPLE_LEAVES_GREEN.get(),
                (Block)BlockRegistry.MAPLE_LEAVES_ORANGE.get(),
-               (Block)BlockRegistry.MAPLE_LEAVES_YELLOW.get()
+               (Block)BlockRegistry.MAPLE_LEAVES_YELLOW.get(),
+               (Block)BlockRegistry.UME_LEAVES.get()
             }
          );
       this.tag(BlockTags.SAPLINGS)
@@ -92,7 +117,8 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                (Block)BlockRegistry.MAPLE_SAPLING_RED.get(),
                (Block)BlockRegistry.MAPLE_SAPLING_GREEN.get(),
                (Block)BlockRegistry.MAPLE_SAPLING_ORANGE.get(),
-               (Block)BlockRegistry.MAPLE_SAPLING_YELLOW.get()
+               (Block)BlockRegistry.MAPLE_SAPLING_YELLOW.get(),
+               (Block)BlockRegistry.UME_SAPLING.get()
             }
          );
       this.tag(BlockTags.CROPS)

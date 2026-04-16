@@ -37,6 +37,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.copy(BlockTags.PLANKS, ItemTags.PLANKS);
       this.copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
       this.copy(TsukiBlockTags.KAWARA_BLOCK, TsukiItemTags.KAWARA_BLOCK);
+      this.copy(TsukiBlockTags.STRIPPED_LOG, TsukiItemTags.STRIPPED_LOG);
+      this.copy(TsukiBlockTags.STRIPPED_WOOD, TsukiItemTags.STRIPPED_WOOD);
       this.tag(ItemTags.LOGS)
          .add(
             BlockItemRegistry.MAPLE_LOG.get(),
@@ -45,7 +47,11 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
             BlockItemRegistry.MAPLE_WOOD.get(),
             BlockItemRegistry.SAKURA_WOOD.get(),
             BlockItemRegistry.STRIPPED_MAPLE_LOG.get(),
-            BlockItemRegistry.STRIPPED_SAKURA_LOG.get()
+            BlockItemRegistry.STRIPPED_SAKURA_LOG.get(),
+            BlockItemRegistry.UME_LOG.get(),
+            BlockItemRegistry.STRIPPED_UME_LOG.get(),
+            BlockItemRegistry.UME_WOOD.get(),
+            BlockItemRegistry.STRIPPED_UME_WOOD.get()
          );
       this.tag(ItemTags.COALS).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get());
       this.tag(TsukiItemTags.TOOLS_KNIVES).addTag(TsukiItemTags.TOOLS_KNIVES_FISH).addTag(TsukiItemTags.TOOLS_KNIVES_NOODLE);
@@ -83,7 +89,12 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.SLICES_RAW_FISHES_SALMON).addOptional(ResourceLocation.parse("farmersdelight:salmon_slice"));
       this.tag(TsukiItemTags.SLICES_CABBAGE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get());
       this.tag(TsukiItemTags.DUST_CHARCOAL).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHARCOAL_POWDER).get());
-      this.tag(TsukiItemTags.OFFHAND_EQUIPMENT).add(Items.SHIELD);
+      this.tag(TsukiItemTags.OFFHAND_EQUIPMENT).add(
+         Items.SHIELD,
+         TsukiArmorToolRegistry.SHEATH.get(),
+         TsukiArmorToolRegistry.KATANA_SHEATH.get(),
+         TsukiArmorToolRegistry.SAKURA_KATANA_SHEATH.get()
+      );
       this.tag(TsukiItemTags.NATTO).add(FoodRegistry.FOODSET.get(TsukiFoodSet.NATTO).get());
       this.tag(TsukiItemTags.SHRIMP).add(FoodRegistry.FOODSET.get(TsukiFoodSet.SHRIMP).get());
       this.tag(TsukiItemTags.FISHCAKE)
@@ -199,6 +210,13 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         TsukiArmorToolRegistry.SAMURAI_BOOTS_GREEN.get(),
         TsukiArmorToolRegistry.SAMURAI_BOOTS_BLACK.get()
       );
+      this.tag(TsukiItemTags.TOOLS_KATANAS).add(
+         TsukiArmorToolRegistry.KATANA.get(),
+         TsukiArmorToolRegistry.KODACHI.get(),
+         TsukiArmorToolRegistry.TACHI.get(),
+         TsukiArmorToolRegistry.SAKURA_KATANA.get(),
+         TsukiArmorToolRegistry.SAKURA_KODACHI.get()
+      );
       this.registerForgeTags();
    }
 
@@ -270,7 +288,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.RAW_PORK).add(Items.PORKCHOP);
       this.tag(TsukiItemTags.RAW_MUTTON).add(Items.MUTTON);
       this.tag(TsukiItemTags.FISHES).addTag(TsukiItemTags.RAW_FISHES);
-      this.tag(TsukiItemTags.FRUITS).addTag(TsukiItemTags.FRUITS_APPLE).addTag(TsukiItemTags.FRUITS_BERRIES).addTag(TsukiItemTags.FRUITS_MELON_SLICE);
+      this.tag(TsukiItemTags.FRUITS).addTag(TsukiItemTags.FRUITS_APPLE).addTag(TsukiItemTags.FRUITS_BERRIES).addTag(TsukiItemTags.FRUITS_MELON_SLICE).addTag(TsukiItemTags.FRUITS_UME);
       this.tag(TsukiItemTags.FOODS_FRUITS)
          .addTag(TsukiItemTags.FOODS_FRUITS_APPLE)
          .addTag(TsukiItemTags.FOODS_FRUITS_BERRIES)
@@ -281,6 +299,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.FRUITS_APPLE).add(Items.APPLE);
       this.tag(TsukiItemTags.FRUITS_BERRIES).add(Items.SWEET_BERRIES).add(Items.GLOW_BERRIES);
       this.tag(TsukiItemTags.FRUITS_MELON_SLICE).add(Items.MELON_SLICE);
+      this.tag(TsukiItemTags.FRUITS_UME).add(FoodRegistry.FOODSET.get(TsukiFoodSet.UME).get());
       this.tag(TsukiItemTags.FOODS_RAW_MEATS).addTag(TsukiItemTags.FOODS_RAW_MEAT);
       this.tag(TsukiItemTags.FOODS_RAW_MEAT)
          .addTags(
@@ -322,7 +341,14 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
           .add(BlockItemRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
       this.tag(TsukiItemTags.ORES_IRON)
           .add(BlockItemRegistry.IRON_SAND.get());
-      this.tag(TsukiItemTags.TOOLS).addTags(TsukiItemTags.TOOLS_AXES, TsukiItemTags.TOOLS_PICKAXES, TsukiItemTags.TOOLS_SHOVELS, TsukiItemTags.TOOLS_HAMMERS, TsukiItemTags.TOOLS_KNIVES);
+      this.tag(TsukiItemTags.TOOLS).addTags(
+         TsukiItemTags.TOOLS_AXES,
+         TsukiItemTags.TOOLS_PICKAXES,
+         TsukiItemTags.TOOLS_SHOVELS,
+         TsukiItemTags.TOOLS_HAMMERS,
+         TsukiItemTags.TOOLS_KNIVES,
+         TsukiItemTags.TOOLS_KATANAS
+      );
       this.tag(TsukiItemTags.TOOLS_AXES)
          .add(Items.WOODEN_AXE, Items.STONE_AXE, Items.IRON_AXE, Items.DIAMOND_AXE, Items.GOLDEN_AXE, Items.NETHERITE_AXE);
       this.tag(TsukiItemTags.TOOLS_PICKAXES)

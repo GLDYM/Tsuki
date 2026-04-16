@@ -4,6 +4,7 @@
     "#c:tools/pickaxes",
     "#c:tools/shovels",
     "#c:tools/hammers",
-    "#c:tools/knives"
+    "#c:tools/knives",
+    "#c:tools/katanas"
   ]
 }

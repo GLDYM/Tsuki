@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "tsuki:block/stripped_ume_log",
+    "side": "tsuki:block/stripped_ume_log"
+  }
+}

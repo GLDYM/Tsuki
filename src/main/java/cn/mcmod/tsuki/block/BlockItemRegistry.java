@@ -32,6 +32,14 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.MAPLE_WOOD.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> STRIPPED_MAPLE_WOOD = ITEMS.register("stripped_maple_wood",
             () -> new BlockItem(BlockRegistry.STRIPPED_MAPLE_WOOD.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_LOG = ITEMS.register("ume_log",
+            () -> new BlockItem(BlockRegistry.UME_LOG.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> STRIPPED_UME_LOG = ITEMS.register("stripped_ume_log",
+            () -> new BlockItem(BlockRegistry.STRIPPED_UME_LOG.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_WOOD = ITEMS.register("ume_wood",
+            () -> new BlockItem(BlockRegistry.UME_WOOD.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> STRIPPED_UME_WOOD = ITEMS.register("stripped_ume_wood",
+            () -> new BlockItem(BlockRegistry.STRIPPED_UME_WOOD.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> BAMBOO_BLOCK = ITEMS.register("bamboo_block",
             () -> new BlockItem(BlockRegistry.BAMBOO_BLOCK.get(), Tsuki.defaultItemProperties()));
@@ -91,6 +99,8 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_ORANGE.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> MAPLE_LEAVES_GREEN = ITEMS.register("mapleleaves_green",
             () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_LEAVES = ITEMS.register("umeleaves",
+            () -> new BlockItem(BlockRegistry.UME_LEAVES.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> FALLEN_LEAVES_RED = ITEMS.register("fallen_leaves_red",
             () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_RED.get(), Tsuki.defaultItemProperties()));
@@ -115,6 +125,8 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.MAPLE_SAPLING_ORANGE.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> MAPLE_SAPLING_GREEN = ITEMS.register("maple_sapling_green",
             () -> new BlockItem(BlockRegistry.MAPLE_SAPLING_GREEN.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_SAPLING = ITEMS.register("ume_sapling",
+            () -> new BlockItem(BlockRegistry.UME_SAPLING.get(), Tsuki.defaultItemProperties()));
 
 
     public static final DeferredItem<Item> SHOJI = ITEMS.register("shoji",

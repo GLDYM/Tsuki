@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lumber": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:lumber"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:sheath"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lumber"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:sheath"
+    ]
+  }
+}

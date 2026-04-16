@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.data.client;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.block.UmeLeavesBlock;
 import cn.mcmod.tsuki.block.machines.TataraBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -14,7 +15,6 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -45,6 +45,7 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.MAPLE_LEAVES_YELLOW.get());
         simpleBlock(BlockRegistry.MAPLE_LEAVES_GREEN.get());
         simpleBlock(BlockRegistry.MAPLE_LEAVES_ORANGE.get());
+        umeLeaves(BlockRegistry.UME_LEAVES.get());
         simpleBlock(BlockRegistry.FALLEN_LEAVES_RED.get(), models().getExistingFile(modLoc("block/fallen_leaves_red")));
         simpleBlock(BlockRegistry.FALLEN_LEAVES_ORANGE.get(), models().getExistingFile(modLoc("block/fallen_leaves_orange")));
         simpleBlock(BlockRegistry.FALLEN_LEAVES_YELLOW.get(), models().getExistingFile(modLoc("block/fallen_leaves_yellow")));
@@ -54,6 +55,10 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         log(BlockRegistry.STRIPPED_SAKURA_LOG.get());
         log(BlockRegistry.MAPLE_LOG.get());
         log(BlockRegistry.STRIPPED_MAPLE_LOG.get());
+        axisBlock(BlockRegistry.UME_LOG.get(), texture("ume_log"), texture("ume_log_top"));
+        axisBlock(BlockRegistry.STRIPPED_UME_LOG.get(), texture("stripped_ume_log"), texture("stripped_ume_log_top"));
+        axisBlock(BlockRegistry.UME_WOOD.get(), texture("ume_log"), texture("ume_log"));
+        axisBlock(BlockRegistry.STRIPPED_UME_WOOD.get(), texture("stripped_ume_log"), texture("stripped_ume_log"));
         log(BlockRegistry.BAMBOO_BLOCK.get());
         log(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get());
         log(BlockRegistry.BAMBOO_CHARCOAL_BLOCK.get());
@@ -64,6 +69,7 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         crossBlock(BlockRegistry.MAPLE_SAPLING_YELLOW.get());
         crossBlock(BlockRegistry.MAPLE_SAPLING_GREEN.get());
         crossBlock(BlockRegistry.MAPLE_SAPLING_ORANGE.get());
+        crossBlock(BlockRegistry.UME_SAPLING.get());
 
         stageBlock(BlockRegistry.BUCKWHEAT_CROP.get(), BlockStateProperties.AGE_7);
         stageBlock(BlockRegistry.RAPESEED_CROP.get(), BlockStateProperties.AGE_7);
@@ -227,21 +233,29 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
 
         private void shoji(Block block) {
                 getVariantBuilder(block).forAllStates(state -> {
-                        boolean open = state.getValue(BlockStateProperties.OPEN);
-                        boolean top = state.getValue(BlockStateProperties.DOUBLE_BLOCK_HALF) == DoubleBlockHalf.UPPER;
                         Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-                        if (top) {
-                                return ConfiguredModel.builder()
-                                        .modelFile(models().getExistingFile(modLoc("block/" + name(block) + "_empty")))
-                                        .build();
-                        }
                         int yRot = ((int) facing.toYRot() + 180) % 360;
-                        String base = name(block);
-                        String model = open ? base + "_open" : base;
                         return ConfiguredModel.builder()
-                                        .modelFile(models().getExistingFile(modLoc("block/" + model)))
+                                        .modelFile(models().getExistingFile(modLoc("block/" + name(block) + "_empty")))
                                         .rotationY(yRot)
                                         .build();
+                });
+        }
+
+        private void umeLeaves(Block block) {
+                ModelFile defaultLeaves = models().cubeAll("umeleaves", texture("ume_leaves"));
+                getVariantBuilder(block).forAllStates(state -> {
+                        int age = state.getValue(UmeLeavesBlock.AGE);
+                        String model = switch (age) {
+                                case 3 -> "ume_leave_3";
+                                case 4 -> "ume_leave_4";
+                                case 5 -> "ume_leave_5";
+                                default -> "umeleaves";
+                        };
+                        ModelFile modelFile = "umeleaves".equals(model)
+                                ? defaultLeaves
+                                : models().getExistingFile(modLoc("block/" + model));
+                        return ConfiguredModel.builder().modelFile(modelFile).build();
                 });
         }
 

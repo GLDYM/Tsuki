@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "H": {
+      "tag": "c:tools/hammers"
+    },
+    "L": {
+      "tag": "c:lumber"
+    },
+    "M": {
+      "item": "tsuki:sakura_diamond"
+    }
+  },
+  "pattern": [
+    " M",
+    "LH"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:sakura_kodachi"
+  }
+}
