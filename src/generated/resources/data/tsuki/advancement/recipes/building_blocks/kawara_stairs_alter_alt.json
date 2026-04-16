@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_kawara_block": {
+    "has_kawara_block_alter": {
       "conditions": {
         "items": [
           {
-            "items": "#tsuki:kawara_block"
+            "items": "tsuki:kawara_block_alter"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tsuki:kawara"
+        "recipe": "tsuki:kawara_stairs_alter_alt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_kawara_block"
+      "has_kawara_block_alter"
     ]
   ],
   "rewards": {
     "recipes": [
-      "tsuki:kawara"
+      "tsuki:kawara_stairs_alter_alt"
     ]
   }
 }

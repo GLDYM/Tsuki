@@ -1122,17 +1122,17 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("#  ")
             .pattern("L# ")
             .pattern("LL#")
-            .define('#', BlockRegistry.KAWARA_BLOCK.get())
+            .define('#', TsukiItemTags.KAWARA_BLOCK)
             .define('L', TsukiItemTags.LUMBER)
-            .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
+            .unlockedBy("has_kawara_block", has(TsukiItemTags.KAWARA_BLOCK))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara"));
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA.get(), 4)
             .pattern("  #")
             .pattern(" #L")
             .pattern("#LL")
-            .define('#', BlockRegistry.KAWARA_BLOCK.get())
+            .define('#', TsukiItemTags.KAWARA_BLOCK)
             .define('L', TsukiItemTags.LUMBER)
-            .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
+            .unlockedBy("has_kawara_block", has(TsukiItemTags.KAWARA_BLOCK))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_alt"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_STAIRS.get(), 4)
@@ -1155,6 +1155,27 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('#', BlockRegistry.KAWARA_BLOCK.get())
             .unlockedBy("has_kawara_block", has(BlockRegistry.KAWARA_BLOCK.get()))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_slab"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_STAIRS_ALTER.get(), 4)
+            .pattern("#  ")
+            .pattern("## ")
+            .pattern("###")
+            .define('#', BlockRegistry.KAWARA_BLOCK_ALTER.get())
+            .unlockedBy("has_kawara_block_alter", has(BlockRegistry.KAWARA_BLOCK_ALTER.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_stairs_alter"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_STAIRS_ALTER.get(), 4)
+            .pattern("  #")
+            .pattern(" ##")
+            .pattern("###")
+            .define('#', BlockRegistry.KAWARA_BLOCK_ALTER.get())
+            .unlockedBy("has_kawara_block_alter", has(BlockRegistry.KAWARA_BLOCK_ALTER.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_stairs_alter_alt"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_SLAB_ALTER.get(), 6)
+            .pattern("###")
+            .define('#', BlockRegistry.KAWARA_BLOCK_ALTER.get())
+            .unlockedBy("has_kawara_block_alter", has(BlockRegistry.KAWARA_BLOCK_ALTER.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_slab_alter"));
 
         // Kawara block conversion recipes
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_BLOCK_ALTER.get())
@@ -1181,6 +1202,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(BlockRegistry.KAWARA_SLAB_ALTER.get())
                 .unlockedBy("has_kawara_slab_alter", has(BlockRegistry.KAWARA_SLAB_ALTER.get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_slab_from_alter"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_BLOCK.get())
+                .requires(BlockRegistry.KAWARA_SLAB.get(), 2)
+                .unlockedBy("has_kawara_slab", has(BlockRegistry.KAWARA_SLAB.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_block_from_slabs"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, BlockRegistry.KAWARA_BLOCK_ALTER.get())
+                .requires(BlockRegistry.KAWARA_SLAB_ALTER.get(), 2)
+                .unlockedBy("has_kawara_slab_alter", has(BlockRegistry.KAWARA_SLAB_ALTER.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kawara_block_alter_from_slabs"));
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.STONE_LANTERN.get())

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "tsuki:kawara_slab"
+    },
+    {
+      "item": "tsuki:kawara_slab"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:kawara_block"
+  }
+}

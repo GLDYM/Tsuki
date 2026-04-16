@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "tsuki:kawara_block"
+            "items": "#tsuki:kawara_block"
           }
         ]
       },

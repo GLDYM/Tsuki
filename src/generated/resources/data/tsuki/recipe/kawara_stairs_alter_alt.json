@@ -3,19 +3,16 @@
   "category": "building",
   "key": {
     "#": {
-      "tag": "tsuki:kawara_block"
-    },
-    "L": {
-      "tag": "c:lumber"
+      "item": "tsuki:kawara_block_alter"
     }
   },
   "pattern": [
-    "#  ",
-    "L# ",
-    "LL#"
+    "  #",
+    " ##",
+    "###"
   ],
   "result": {
     "count": 4,
-    "id": "tsuki:kawara"
+    "id": "tsuki:kawara_stairs_alter"
   }
 }

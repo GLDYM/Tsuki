@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "tsuki:kawara_block"
+      "tag": "tsuki:kawara_block"
     },
     "L": {
       "tag": "c:lumber"

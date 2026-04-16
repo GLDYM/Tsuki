@@ -44,6 +44,9 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                (Block)BlockRegistry.MAPLE_SAP_LOG.get()
             }
          );
+            this.tag(TsukiBlockTags.KAWARA_BLOCK)
+               .add((Block) BlockRegistry.KAWARA_BLOCK.get())
+               .add((Block) BlockRegistry.KAWARA_BLOCK_ALTER.get());
             this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                .add((Block) BlockRegistry.STONE_MORTAR.get())
                .add((Block) BlockRegistry.SAKURA_DIAMOND_ORE.get())

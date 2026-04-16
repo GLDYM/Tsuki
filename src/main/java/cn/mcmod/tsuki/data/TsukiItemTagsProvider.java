@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
+import cn.mcmod.tsuki.tags.TsukiBlockTags;
 import cn.mcmod.tsuki.tags.TsukiItemTags;
 import java.util.concurrent.CompletableFuture;
 
@@ -35,6 +36,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
    protected void addTags(Provider provider) {
       this.copy(BlockTags.PLANKS, ItemTags.PLANKS);
       this.copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
+      this.copy(TsukiBlockTags.KAWARA_BLOCK, TsukiItemTags.KAWARA_BLOCK);
       this.tag(ItemTags.LOGS)
          .add(
             BlockItemRegistry.MAPLE_LOG.get(),
