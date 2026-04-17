@@ -39,7 +39,7 @@ public class WorldGenerationRegistry {
                     InSquarePlacement.spread(),
                     BiomeFilter.biome(),
                     PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING),
-                    RarityFilter.onAverageOnceEvery(30)));
+                    RarityFilter.onAverageOnceEvery(10)));
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_WILD_PEPPER_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_pepper"));
     public static final ConfiguredFeature<?, ?> FEATURE_PATCH_WILD_PEPPER = new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
             32, 6, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(

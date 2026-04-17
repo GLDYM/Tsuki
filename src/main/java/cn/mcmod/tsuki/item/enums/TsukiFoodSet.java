@@ -781,42 +781,6 @@ public enum TsukiFoodSet {
          .cookingTemp(480.0F)
          .build()
    ),
-   DANANKO(
-      FoodInfo.builder()
-         .name("dananko")
-         .amountAndCalories(6, 0.6F)
-         .water(1.0F)
-         .nutrients(3.0F, 0.0F, 0.0F, 0.0F, 1.0F)
-         .compostChance(0.85F)
-         .decayModifier(2.0F)
-         .heatCapacity(1.0F)
-         .cookingTemp(480.0F)
-         .build()
-   ),
-   DANMITARASHI(
-      FoodInfo.builder()
-         .name("danmitarashi")
-         .amountAndCalories(6, 0.4F)
-         .water(1.0F)
-         .compostChance(0.85F)
-         .nutrients(3.0F, 0.0F, 0.0F, 0.0F, 1.0F)
-         .decayModifier(2.0F)
-         .heatCapacity(1.0F)
-         .cookingTemp(480.0F)
-         .build()
-   ),
-   DANSANSYOKU(
-      FoodInfo.builder()
-         .name("dansansyoku")
-         .amountAndCalories(6, 0.6F)
-         .water(1.0F)
-         .compostChance(0.85F)
-         .nutrients(3.0F, 0.0F, 0.0F, 0.0F, 1.0F)
-         .decayModifier(2.0F)
-         .heatCapacity(1.0F)
-         .cookingTemp(480.0F)
-         .build()
-   ),
    BURGER_RAW(
       FoodInfo.builder()
          .name("burger_raw")

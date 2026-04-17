@@ -102,17 +102,17 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         });
         FoodRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() == TsukiFoodSet.CABBAGE.getItem().get()
-                || item.get() == TsukiFoodSet.DANANKO.getItem().get()
-                || item.get() == TsukiFoodSet.DANMITARASHI.getItem().get()
-                || item.get() == TsukiFoodSet.DANSANSYOKU.getItem().get()
                 || item.get() == TsukiFoodSet.UME.getItem().get()
                 || item.get() == TsukiFoodSet.UMEBOSHI.getItem().get()
             ) {
                 return;
             }
-            if (item.get() == TsukiCuisineSet.BEEF_STICK.getItem().get()
-                    || item.get() == TsukiCuisineSet.CHICKEN_STICK.getItem().get()
-                    || item.get() == TsukiCuisineSet.PORK_STICK.getItem().get()
+            if (item.get() == TsukiCuisineSet.DANANKO.getItem().get()
+                || item.get() == TsukiCuisineSet.DANMITARASHI.getItem().get()
+                || item.get() == TsukiCuisineSet.DANSANSYOKU.getItem().get()
+                || item.get() == TsukiCuisineSet.BEEF_STICK.getItem().get()
+                || item.get() == TsukiCuisineSet.CHICKEN_STICK.getItem().get()
+                || item.get() == TsukiCuisineSet.PORK_STICK.getItem().get()
             ) {
                 return;
             }

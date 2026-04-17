@@ -2165,24 +2165,27 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.DOUGH_RICE)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dango_cooking"));
         CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DANANKO).get()
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.DANANKO).get()
             )
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get())
+            .container(TsukiNormalItemSet.BAMBOO.getItem().get())
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dananko_cooking"));
         CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DANMITARASHI).get()
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.DANMITARASHI).get()
             )
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
             .requires(TsukiItemTags.SUGAR)
             .requires(TsukiItemTags.SUGAR)
+            .container(TsukiNormalItemSet.BAMBOO.getItem().get())
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "danmitarashi_cooking"));
         CookingPotRecipeBuilder.cooking(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DANSANSYOKU).get()
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.DANSANSYOKU).get()
             )
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.DANGO).get())
             .requires(BlockRegistry.SAKURA_LEAVES.get())
             .requires(Items.SHORT_GRASS)
+            .container(TsukiNormalItemSet.BAMBOO.getItem().get())
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dansansyoku_cooking"));
         CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.FOODSET.get(TsukiFoodSet.DAIFUKU).get(), 2
