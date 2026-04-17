@@ -11,6 +11,7 @@ import cn.mcmod.tsuki.client.render.ObonRender;
 import cn.mcmod.tsuki.client.render.SeatEntityRenderer;
 import cn.mcmod.tsuki.client.render.ShojiRenderer;
 import cn.mcmod.tsuki.client.render.StoneMortarRenderer;
+import cn.mcmod.tsuki.client.render.entity.SamuraiIllagerRenderer;
 import cn.mcmod.tsuki.entity.EntityRegistry;
 import cn.mcmod.tsuki.fluid.FluidRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -79,6 +80,7 @@ public class ClientEvents {
             BlockEntityRenderers.register(BlockEntityRegistry.OBON.get(), ObonRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.SHOJI.get(), ShojiRenderer::new);
             EntityRenderers.register(EntityRegistry.SEAT.get(), SeatEntityRenderer::new);
+            EntityRenderers.register(EntityRegistry.SAMURAI_ILLAGER.get(), SamuraiIllagerRenderer::new);
         });
     }
 

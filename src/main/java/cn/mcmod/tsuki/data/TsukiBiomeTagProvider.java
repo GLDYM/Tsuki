@@ -42,5 +42,7 @@ public class TsukiBiomeTagProvider extends BiomeTagsProvider {
         ironSandOreTag.addTag(BiomeTags.IS_BEACH);
         ironSandOreTag.addTag(BiomeTags.IS_RIVER);
 
+        TagAppender<Biome> samuraiSpawnTag = this.tag(TsukiBiomeTags.HAS_SAMURAI_SPAWNS);
+        samuraiSpawnTag.add(Biomes.BAMBOO_JUNGLE);
     }
 }

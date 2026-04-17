@@ -43,6 +43,8 @@ public class Tsuki {
 
     public Tsuki(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(BlockEntityCapabilityRegistry::register);
+        modEventBus.addListener(EntityRegistry::registerAttributes);
+        modEventBus.addListener(EntityRegistry::registerSpawnPlacements);
 
         BlockRegistry.BLOCKS.register(modEventBus);
         BlockItemRegistry.ITEMS.register(modEventBus);

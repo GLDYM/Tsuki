@@ -2,12 +2,14 @@ package cn.mcmod.tsuki.item;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.entity.EntityRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod_mmf.mmlib.item.ItemFoodSeeds;
 import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -53,6 +55,8 @@ public class ItemRegistry {
             ItemRegistry::normalItem);
     public static final DeferredItem<Item> HOP_SEEDS = register("hop_seeds",
             ItemRegistry::normalItem);
+    public static final DeferredItem<Item> SAMURAI_ILLAGER_SPAWN_EGG = register("samurai_illager_spawn_egg",
+            () -> new DeferredSpawnEggItem(EntityRegistry.SAMURAI_ILLAGER, 9804699, 2580065, Tsuki.defaultItemProperties()));
 
     public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = createMaterials();
 
