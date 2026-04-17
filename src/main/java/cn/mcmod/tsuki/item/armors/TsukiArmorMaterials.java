@@ -64,4 +64,26 @@ public class TsukiArmorMaterials {
             0.1F
         )
     );
+
+    public static final Holder<ArmorMaterial> SOLDIER = ARMOR_MATERIALS.register("soldier",
+        () -> new ArmorMaterial(
+            Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                map.put(ArmorItem.Type.BOOTS, 2);
+                map.put(ArmorItem.Type.LEGGINGS, 5);
+                map.put(ArmorItem.Type.CHESTPLATE, 6);
+                map.put(ArmorItem.Type.HELMET, 2);
+                map.put(ArmorItem.Type.BODY, 6);
+            }),
+            14,
+            SoundEvents.ARMOR_EQUIP_IRON,
+            () -> Ingredient.of(net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON),
+            List.of(
+                new ArmorMaterial.Layer(
+                    ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soldier")
+                )
+            ),
+            0.5F,
+            0.0F
+        )
+    );
 }

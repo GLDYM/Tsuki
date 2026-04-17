@@ -186,6 +186,24 @@ public class TsukiArmorToolRegistry {
     public static final DeferredItem<Item> SAMURAI_BOOTS_BLACK = register("samurai_boots_black",
             () -> new SamuraiItem("samurai_black", TsukiArmorMaterials.SAMURAI, ArmorItem.Type.BOOTS, Tsuki.defaultItemProperties()));
 
+    public static final DeferredItem<Item> SOLDIER_HELMET_GRAY = register("soldier_helmet_gray",
+            () -> new SoldierItem("soldier_gray", TsukiArmorMaterials.SOLDIER, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SOLDIER_CHESTPLATE_GRAY = register("soldier_chestplate_gray",
+            () -> new SoldierItem("soldier_gray", TsukiArmorMaterials.SOLDIER, ArmorItem.Type.CHESTPLATE, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SOLDIER_LEGGINGS_GRAY = register("soldier_leggings_gray",
+            () -> new SoldierItem("soldier_gray", TsukiArmorMaterials.SOLDIER, ArmorItem.Type.LEGGINGS, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SOLDIER_BOOTS_GRAY = register("soldier_boots_gray",
+            () -> new SoldierItem("soldier_gray", TsukiArmorMaterials.SOLDIER, ArmorItem.Type.BOOTS, Tsuki.defaultItemProperties()));
+
+    public static final DeferredItem<Item> SOLDIER_HELMET_BLACK = register("soldier_helmet_black",
+            () -> new SoldierItem("soldier_black", TsukiArmorMaterials.SOLDIER, ArmorItem.Type.HELMET, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SOLDIER_CHESTPLATE_BLACK = register("soldier_chestplate_black",
+            () -> new SoldierItem("soldier_black", TsukiArmorMaterials.SOLDIER, ArmorItem.Type.CHESTPLATE, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SOLDIER_LEGGINGS_BLACK = register("soldier_leggings_black",
+            () -> new SoldierItem("soldier_black", TsukiArmorMaterials.SOLDIER, ArmorItem.Type.LEGGINGS, Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SOLDIER_BOOTS_BLACK = register("soldier_boots_black",
+            () -> new SoldierItem("soldier_black", TsukiArmorMaterials.SOLDIER, ArmorItem.Type.BOOTS, Tsuki.defaultItemProperties()));
+
     public static final DeferredItem<Item> MUSIC_DISC_MIKO = register("music_disc_miko", 
         () -> new Item(Tsuki.defaultItemProperties()
             .stacksTo(1)

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "L L",
+    "ILI",
+    "LIL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:soldier_chestplate_gray"
+  }
+}

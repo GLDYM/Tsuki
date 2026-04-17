@@ -29,7 +29,7 @@ public class WorldGenerationRegistry {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_BAMBOOSHOOT_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_bambooshoot"));
     public static final ConfiguredFeature<?, ?> FEATURE_PATCH_BAMBOOSHOOT = new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(
-            64, 1, 3,PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseThresholdProvider(496156461L,
+            64, 1, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseThresholdProvider(496156461L,
             new NormalNoise.NoiseParameters(0, 1.0), 0.005F, -0.8F, 0.33333334F, BlockRegistry.BAMBOOSHOOT.get().defaultBlockState(),
             List.of(BlockRegistry.BAMBOOSHOOT.get().defaultBlockState()),
             List.of(BlockRegistry.BAMBOOSHOOT.get().defaultBlockState()))))));

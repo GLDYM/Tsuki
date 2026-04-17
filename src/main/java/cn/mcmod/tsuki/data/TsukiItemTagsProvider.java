@@ -220,6 +220,22 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         TsukiArmorToolRegistry.SAMURAI_BOOTS_GREEN.get(),
         TsukiArmorToolRegistry.SAMURAI_BOOTS_BLACK.get()
       );
+      this.tag(TsukiItemTags.SOLDIER_HELMET).add(
+        TsukiArmorToolRegistry.SOLDIER_HELMET_GRAY.get(),
+        TsukiArmorToolRegistry.SOLDIER_HELMET_BLACK.get()
+      );
+      this.tag(TsukiItemTags.SOLDIER_CHESTPLATE).add(
+        TsukiArmorToolRegistry.SOLDIER_CHESTPLATE_GRAY.get(),
+        TsukiArmorToolRegistry.SOLDIER_CHESTPLATE_BLACK.get()
+      );
+      this.tag(TsukiItemTags.SOLDIER_LEGGINGS).add(
+        TsukiArmorToolRegistry.SOLDIER_LEGGINGS_GRAY.get(),
+        TsukiArmorToolRegistry.SOLDIER_LEGGINGS_BLACK.get()
+      );
+      this.tag(TsukiItemTags.SOLDIER_BOOTS).add(
+        TsukiArmorToolRegistry.SOLDIER_BOOTS_GRAY.get(),
+        TsukiArmorToolRegistry.SOLDIER_BOOTS_BLACK.get()
+      );
       this.tag(TsukiItemTags.TOOLS_KATANAS).add(
          TsukiArmorToolRegistry.KATANA.get(),
          TsukiArmorToolRegistry.KODACHI.get(),

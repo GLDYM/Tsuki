@@ -781,6 +781,91 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .unlockedBy("has_item", has(TsukiItemTags.SAMURAI_BOOTS))
             .save(consumer);
 
+        // Soldier
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_HELMET_GRAY.get())
+            .pattern("ILI")
+            .pattern("L L")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('L', Items.LEATHER)
+            .unlockedBy("has_item", has(Tags.Items.INGOTS_IRON))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_CHESTPLATE_GRAY.get())
+            .pattern("L L")
+            .pattern("ILI")
+            .pattern("LIL")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('L', Items.LEATHER)
+            .unlockedBy("has_item", has(Tags.Items.INGOTS_IRON))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_LEGGINGS_GRAY.get())
+            .pattern("ILI")
+            .pattern("L L")
+            .pattern("I I")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('L', Items.LEATHER)
+            .unlockedBy("has_item", has(Tags.Items.INGOTS_IRON))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_BOOTS_GRAY.get())
+            .pattern("I I")
+            .pattern("L L")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('L', Items.LEATHER)
+            .unlockedBy("has_item", has(Tags.Items.INGOTS_IRON))
+            .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_HELMET_GRAY.get())
+            .requires(TsukiItemTags.SOLDIER_HELMET)
+            .requires(Tags.Items.DYES_GRAY)
+            .unlockedBy("has_item", has(TsukiItemTags.SOLDIER_HELMET))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soldier_helmet_gray_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_CHESTPLATE_GRAY.get())
+            .requires(TsukiItemTags.SOLDIER_CHESTPLATE)
+            .requires(Tags.Items.DYES_GRAY)
+            .unlockedBy("has_item", has(TsukiItemTags.SOLDIER_CHESTPLATE))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soldier_chestplate_gray_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_LEGGINGS_GRAY.get())
+            .requires(TsukiItemTags.SOLDIER_LEGGINGS)
+            .requires(Tags.Items.DYES_GRAY)
+            .unlockedBy("has_item", has(TsukiItemTags.SOLDIER_LEGGINGS))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soldier_leggings_gray_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_BOOTS_GRAY.get())
+            .requires(TsukiItemTags.SOLDIER_BOOTS)
+            .requires(Tags.Items.DYES_GRAY)
+            .unlockedBy("has_item", has(TsukiItemTags.SOLDIER_BOOTS))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soldier_boots_gray_from_dye"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_HELMET_BLACK.get())
+            .requires(TsukiItemTags.SOLDIER_HELMET)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiItemTags.SOLDIER_HELMET))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_CHESTPLATE_BLACK.get())
+            .requires(TsukiItemTags.SOLDIER_CHESTPLATE)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiItemTags.SOLDIER_CHESTPLATE))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_LEGGINGS_BLACK.get())
+            .requires(TsukiItemTags.SOLDIER_LEGGINGS)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiItemTags.SOLDIER_LEGGINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.SOLDIER_BOOTS_BLACK.get())
+            .requires(TsukiItemTags.SOLDIER_BOOTS)
+            .requires(Tags.Items.DYES_BLACK)
+            .unlockedBy("has_item", has(TsukiItemTags.SOLDIER_BOOTS))
+            .save(consumer);
+
         this.foodSmeltingRecipes(
             "eggplant_bake",
             FoodRegistry.FOODSET.get(TsukiFoodSet.EGGPLANT).get(),
