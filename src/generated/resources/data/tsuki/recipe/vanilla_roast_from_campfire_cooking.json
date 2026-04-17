@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:vanilla"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:vanilla_roast"
+  }
+}

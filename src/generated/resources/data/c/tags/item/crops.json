@@ -10,6 +10,10 @@
     "#c:crops/taro",
     "#c:seeds/rapeseed",
     "#c:crops/redbean",
+    "#c:crops/pepper",
+    "#c:crops/vanilla",
+    "#c:crops/grape",
+    "#c:crops/hop",
     "#c:crops/pumpkin"
   ]
 }

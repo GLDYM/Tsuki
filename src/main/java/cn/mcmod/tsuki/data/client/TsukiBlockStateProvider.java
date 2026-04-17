@@ -22,6 +22,7 @@ import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import java.util.function.IntFunction;
 
 public class TsukiBlockStateProvider extends BlockStateProvider {
         private final String modid;
@@ -73,6 +74,42 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         crossBlock(BlockRegistry.MAPLE_SAPLING_GREEN.get());
         crossBlock(BlockRegistry.MAPLE_SAPLING_ORANGE.get());
         crossBlock(BlockRegistry.UME_SAPLING.get());
+
+        simpleBlock(BlockRegistry.PEPPER_SPLINT.get(), models().getExistingFile(modLoc("block/pepper_splint")));
+        simpleBlockItem(BlockRegistry.PEPPER_SPLINT.get(), models().getExistingFile(modLoc("block/pepper_splint")));
+        simpleBlock(BlockRegistry.VANILLA_SPLINT.get(), models().getExistingFile(modLoc("block/vanilla_splint")));
+        simpleBlockItem(BlockRegistry.VANILLA_SPLINT.get(), models().getExistingFile(modLoc("block/vanilla_splint")));
+        simpleBlock(BlockRegistry.GRAPE_SPLINT_STAND.get(), models().getExistingFile(modLoc("block/grape_splint_stand")));
+        simpleBlockItem(BlockRegistry.GRAPE_SPLINT_STAND.get(), models().getExistingFile(modLoc("block/grape_splint_stand")));
+        simpleBlock(BlockRegistry.GRAPE_SPLINT.get(), models().getExistingFile(modLoc("block/grape_splint")));
+        simpleBlockItem(BlockRegistry.GRAPE_SPLINT.get(), models().getExistingFile(modLoc("block/grape_splint")));
+
+        ageModelBlock(BlockRegistry.PEPPER_CROP.get(), BlockStateProperties.AGE_7, age -> "pepper_" + age);
+        ageModelBlock(BlockRegistry.VANILLA_CROP.get(), BlockStateProperties.AGE_7, age -> "vanilla_" + age);
+        ageModelBlock(BlockRegistry.HOPS_CROP.get(), BlockStateProperties.AGE_7, age -> {
+                if (age == 0) {
+                        return "hops_0";
+                }
+                if (age <= 3) {
+                        return "hops_1";
+                }
+                if (age <= 6) {
+                        return "hops_2";
+                }
+                return "hops_3";
+        });
+        ageModelBlock(BlockRegistry.GRAPE_VINE.get(), BlockStateProperties.AGE_7, age -> {
+                if (age <= 2) {
+                        return "grape_vine_0";
+                }
+                if (age <= 6) {
+                        return "grape_vine_1";
+                }
+                return "grape_vine_2";
+        });
+        ageModelBlock(BlockRegistry.GRAPE_LEAVES.get(), BlockStateProperties.AGE_7, age -> "grape_leaves_" + age);
+        ageModelBlock(BlockRegistry.WILD_PEPPER.get(), BlockStateProperties.AGE_7, age -> "pepper_" + age);
+        ageModelBlock(BlockRegistry.WILD_VANILLA.get(), BlockStateProperties.AGE_7, age -> "vanilla_" + age);
 
         stageBlock(BlockRegistry.BUCKWHEAT_CROP.get(), BlockStateProperties.AGE_7);
         stageBlock(BlockRegistry.RAPESEED_CROP.get(), BlockStateProperties.AGE_7);
@@ -200,6 +237,26 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                                                 modLoc("block/crop_lowered"))
                                                 .texture("crop", texture(cropName + "_stage" + state.getValue(ageProperty))))
                                 .build());
+        }
+
+        private void ageModelBlock(Block block, IntegerProperty ageProperty, IntFunction<String> modelNameByAge) {
+                getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder()
+                                .modelFile(models().getExistingFile(modLoc("block/" + modelNameByAge.apply(state.getValue(ageProperty)))))
+                                .build());
+        }
+
+        private void ageCrossBlock(Block block, IntegerProperty ageProperty, IntFunction<String> textureByAge) {
+                String blockName = name(block);
+                getVariantBuilder(block).forAllStates(state -> {
+                        int age = state.getValue(ageProperty);
+                        String textureName = textureByAge.apply(age);
+                        return ConfiguredModel.builder()
+                                .modelFile(models().cross(
+                                                blockName + "_stage" + age,
+                                                texture(textureName))
+                                                .renderType("cutout"))
+                                .build();
+                });
         }
 
         private void facingSlabBlock(Block slab,

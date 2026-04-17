@@ -78,18 +78,28 @@ public class TsukiArmorToolRegistry {
             () -> new KnifeItem(SAKURA_TOOL_TIER, 1F, -2.0F, Tsuki.defaultItemProperties().stacksTo(1)));
     public static final DeferredItem<Item> SAKURA_NOODLE_KNIFE = register("sakura_knife_noodle",
             () -> new KnifeItem(SAKURA_TOOL_TIER, 2F, -3.0F, Tsuki.defaultItemProperties().stacksTo(1)));
-    public static final DeferredItem<Item> KATANA = register("katana",
-            () -> new KatanaItem(Tiers.IRON, 3, -2.2F, Tsuki.defaultItemProperties().stacksTo(1)));
-    public static final DeferredItem<Item> KODACHI = register("kodachi",
-            () -> new KatanaItem(Tiers.IRON, 1, -1.6F, Tsuki.defaultItemProperties().stacksTo(1)));
+
+    public static final DeferredItem<Item> STONE_HAMMER = register("stone_hammer",
+            () -> new HammerItem(Tiers.STONE, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> IRON_HAMMER = register("iron_hammer",
+            () -> new HammerItem(Tiers.IRON, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> STEEL_HAMMER = register("steel_hammer",
+            () -> new HammerItem(STEEL_TOOL_TIER, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> SAKURA_HAMMER = register("sakura_hammer",
+            () -> new HammerItem(SAKURA_TOOL_TIER, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
+
     public static final DeferredItem<Item> SHINAI = register("shinai",
             () -> new ShinaiItem(Tiers.WOOD, 2, -2.2F, Tsuki.defaultItemProperties().stacksTo(1)));
-    public static final DeferredItem<Item> TACHI = register("tachi",
-            () -> new KatanaItem(Tiers.IRON, 5, -2.2F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> KATANA = register("katana",
+            () -> new KatanaItem(Tiers.IRON, 3, -2.2F, Tsuki.defaultItemProperties().stacksTo(1)));
     public static final DeferredItem<Item> SAKURA_KATANA = register("sakura_katana",
             () -> new KatanaItem(SAKURA_TOOL_TIER, 3, -2.2F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> KODACHI = register("kodachi",
+            () -> new KatanaItem(Tiers.IRON, 1, -1.6F, Tsuki.defaultItemProperties().stacksTo(1)));
     public static final DeferredItem<Item> SAKURA_KODACHI = register("sakura_kodachi",
             () -> new KatanaItem(SAKURA_TOOL_TIER, -1, -1.6F, Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> TACHI = register("tachi",
+            () -> new KatanaItem(Tiers.IRON, 5, -2.2F, Tsuki.defaultItemProperties().stacksTo(1)));
     public static final DeferredItem<Item> SHEATH = register("sheath",
             () -> new SheathItem(Tsuki.defaultItemProperties().stacksTo(1).durability(59)));
     public static final DeferredItem<Item> KATANA_SHEATH = register("katana_sheath",
@@ -104,14 +114,6 @@ public class TsukiArmorToolRegistry {
                     () -> SAKURA_KATANA.get(),
                     () -> SHEATH.get()
             ));
-    public static final DeferredItem<Item> STONE_HAMMER = register("stone_hammer",
-            () -> new HammerItem(Tiers.STONE, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
-    public static final DeferredItem<Item> IRON_HAMMER = register("iron_hammer",
-            () -> new HammerItem(Tiers.IRON, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
-    public static final DeferredItem<Item> STEEL_HAMMER = register("steel_hammer",
-            () -> new HammerItem(STEEL_TOOL_TIER, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
-    public static final DeferredItem<Item> SAKURA_HAMMER = register("sakura_hammer",
-            () -> new HammerItem(SAKURA_TOOL_TIER, 1.0F, -2.8F, Tsuki.defaultItemProperties().stacksTo(1)));
 
             
     public static final DeferredItem<Item> STRAW_HAT = register("straw_hat",

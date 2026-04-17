@@ -261,6 +261,42 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('J', Items.JACK_O_LANTERN)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.GRAPE_SPLINT.get())
+            .pattern(" S ")
+            .pattern("SSS")
+            .pattern(" S ")
+            .define('S', TsukiItemTags.LUMBER)
+            .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "grape_splint"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.GRAPE_SPLINT_STAND.get(), 2)
+            .pattern(" S ")
+            .pattern("S#S")
+            .pattern(" S ")
+            .define('#', Tags.Items.FENCES_WOODEN)
+            .define('S', TsukiItemTags.LUMBER)
+            .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "grape_splint_stand"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.PEPPER_SPLINT.get(), 2)
+            .pattern("S S")
+            .pattern(" # ")
+            .pattern("S S")
+            .define('#', TsukiItemTags.LUMBER)
+            .define('S', Tags.Items.RODS_WOODEN)
+            .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pepper_splint"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.VANILLA_SPLINT.get(), 2)
+            .pattern("#S#")
+            .pattern("S S")
+            .pattern("#S#")
+            .define('#', TsukiItemTags.LUMBER)
+            .define('S', Tags.Items.RODS_WOODEN)
+            .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "vanilla_splint"));
+        foodSmeltingRecipes("vanilla_roast",
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA_ROAST).get(),
+            0.35F,
+            consumer);
 
         // Recipes for tools
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, TsukiNormalItemSet.SILK.getItem().get(), 4)
@@ -2622,6 +2658,17 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiNormalItemSet.UDON_BLOCK.getItem().get())
             .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_chopping"));
+
+        // Peppercorn processing (same behavior as Sakura)
+        ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.BLACK_PEPPER.getItem().get(), 2)
+            .requires(TsukiNormalItemSet.PEPPERCORN_GREEN.getItem().get())
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "black_pepper_chopping"));
+
+        ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.WHITE_PEPPER.getItem().get(), 2)
+            .requires(TsukiNormalItemSet.PEPPERCORN_RED.getItem().get())
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "white_pepper_chopping"));
     }
 
     private void foodSmeltingRecipes(String name, ItemLike ingredient, ItemLike result, float experience, RecipeOutput consumer) {

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SSS",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:grape_splint"
+  }
+}

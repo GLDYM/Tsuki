@@ -75,6 +75,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.SEEDS_REDBEAN).add(ItemRegistry.RED_BEAN.get());
       this.tag(TsukiItemTags.SEEDS_SOYBEAN).add(ItemRegistry.SOYBEAN.get());
       this.tag(TsukiItemTags.SEEDS_TOMATO).add(ItemRegistry.TOMATO_SEEDS.get());
+      this.tag(TsukiItemTags.SEEDS_PEPPER).add(ItemRegistry.PEPPER_SEEDS.get());
+      this.tag(TsukiItemTags.SEEDS_VANILLA).add(ItemRegistry.VANILLA_SEEDS.get());
+      this.tag(TsukiItemTags.SEEDS_GRAPE).add(ItemRegistry.GRAPE_SEEDS.get());
+      this.tag(TsukiItemTags.SEEDS_HOP).add(ItemRegistry.HOP_SEEDS.get());
       this.tag(TsukiItemTags.YEAST).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.YEAST).get());
       this.tag(TsukiItemTags.BAMBOO).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
       this.tag(TsukiItemTags.BAMBOO).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get());
@@ -127,6 +131,12 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.CROPS_ONION).add(FoodRegistry.FOODSET.get(TsukiFoodSet.ONION).get());
       this.tag(TsukiItemTags.CROPS_RADISH).add(FoodRegistry.FOODSET.get(TsukiFoodSet.RADISH).get());
       this.tag(TsukiItemTags.CROPS_TOMATO).add(FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO).get());
+      this.tag(TsukiItemTags.CROPS_PEPPER)
+         .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_GREEN).get())
+         .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_RED).get());
+      this.tag(TsukiItemTags.CROPS_VANILLA).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get());
+      this.tag(TsukiItemTags.CROPS_GRAPE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get());
+      this.tag(TsukiItemTags.CROPS_HOP).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get());
       this.tag(TsukiItemTags.CROPS_RICE).add(ItemRegistry.RICE_SEEDS.get());
       this.tag(TsukiItemTags.CROPS_TARO).add(ItemRegistry.TARO.get());
       this.tag(TsukiItemTags.VEGETABLES_CABBAGE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get());
@@ -230,7 +240,11 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          .addTag(TsukiItemTags.SEEDS_TOMATO)
          .addTag(TsukiItemTags.SEEDS_BUCKWHEAT)
          .addTag(TsukiItemTags.SEEDS_RAPESEED)
-         .addTag(TsukiItemTags.SEEDS_REDBEAN);
+         .addTag(TsukiItemTags.SEEDS_REDBEAN)
+         .addTag(TsukiItemTags.SEEDS_PEPPER)
+         .addTag(TsukiItemTags.SEEDS_VANILLA)
+         .addTag(TsukiItemTags.SEEDS_GRAPE)
+         .addTag(TsukiItemTags.SEEDS_HOP);
       this.tag(TsukiItemTags.CROPS)
          .addTag(TsukiItemTags.CROPS_CABBAGE)
          .addTag(TsukiItemTags.CROPS_ONION)
@@ -242,6 +256,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          .addTag(TsukiItemTags.CROPS_TARO)
          .addTag(TsukiItemTags.SEEDS_RAPESEED)
          .addTag(TsukiItemTags.CROPS_REDBEAN)
+         .addTag(TsukiItemTags.CROPS_PEPPER)
+         .addTag(TsukiItemTags.CROPS_VANILLA)
+         .addTag(TsukiItemTags.CROPS_GRAPE)
+         .addTag(TsukiItemTags.CROPS_HOP)
          .addTag(TsukiItemTags.CROPS_PUMPKIN);
       this.tag(TsukiItemTags.CROPS_PUMPKIN).add(Items.PUMPKIN);
       this.tag(TsukiItemTags.VEGETABLES_PUMPKIN).add(Items.PUMPKIN);

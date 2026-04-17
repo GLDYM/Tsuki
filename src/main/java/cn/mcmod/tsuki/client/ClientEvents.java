@@ -64,6 +64,12 @@ public class ClientEvents {
                     ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
                 }
             });
+
+            // Grape vine/leaves use thin crossed quads with transparency.
+            // Force plain cutout to avoid solid/white alpha artifacts.
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.GRAPE_VINE.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.GRAPE_LEAVES.get(), RenderType.cutout());
+
             FluidRegistry.FLUIDS.getEntries().forEach(fluid -> {
                 ItemBlockRenderTypes.setRenderLayer(fluid.get(), RenderType.translucent());
             });

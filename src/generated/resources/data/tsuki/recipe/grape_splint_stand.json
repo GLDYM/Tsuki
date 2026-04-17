@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:fences/wooden"
+    },
+    "S": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    " S ",
+    "S#S",
+    " S "
+  ],
+  "result": {
+    "count": 2,
+    "id": "tsuki:grape_splint_stand"
+  }
+}

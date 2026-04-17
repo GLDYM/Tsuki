@@ -1,0 +1,6 @@
+{
+  "biomes": "#minecraft:is_savanna",
+  "features": "tsuki:patch_wild_vanilla",
+  "step": "vegetal_decoration",
+  "type": "neoforge:add_features"
+}

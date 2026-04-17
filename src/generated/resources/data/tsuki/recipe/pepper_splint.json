@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "c:lumber"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "S S",
+    " # ",
+    "S S"
+  ],
+  "result": {
+    "count": 2,
+    "id": "tsuki:pepper_splint"
+  }
+}

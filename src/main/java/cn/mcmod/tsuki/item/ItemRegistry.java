@@ -45,6 +45,15 @@ public class ItemRegistry {
                     FoodInfo.builder().name("taro").amountAndCalories(2, 0.2F).water(0F).nutrients(2F, 2F, 0F, 0F, 0F)
                             .decayModifier(2F).heatCapacity(1F).cookingTemp(480F).build()));
 
+    public static final DeferredItem<Item> PEPPER_SEEDS = register("pepper_seeds",
+            ItemRegistry::normalItem);
+    public static final DeferredItem<Item> VANILLA_SEEDS = register("vanilla_seeds",
+            ItemRegistry::normalItem);
+    public static final DeferredItem<Item> GRAPE_SEEDS = register("grape_seeds",
+            ItemRegistry::normalItem);
+    public static final DeferredItem<Item> HOP_SEEDS = register("hop_seeds",
+            ItemRegistry::normalItem);
+
     public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = createMaterials();
 
     private static Map<TsukiNormalItemSet, DeferredItem<Item>> createMaterials() {

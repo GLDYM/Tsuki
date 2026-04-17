@@ -1,8 +1,18 @@
 package cn.mcmod.tsuki.block;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.block.crops.GrapeLeavesBlock;
+import cn.mcmod.tsuki.block.crops.GrapeSplintBlock;
+import cn.mcmod.tsuki.block.crops.GrapeSplintStandBlock;
+import cn.mcmod.tsuki.block.crops.GrapeVineBlock;
+import cn.mcmod.tsuki.block.crops.HopsCropBlock;
+import cn.mcmod.tsuki.block.crops.PepperCropBlock;
+import cn.mcmod.tsuki.block.crops.PepperSplintBlock;
 import cn.mcmod.tsuki.block.crops.RiceCrop;
 import cn.mcmod.tsuki.block.crops.RiceCropRoot;
+import cn.mcmod.tsuki.block.crops.VanillaCropBlock;
+import cn.mcmod.tsuki.block.crops.VanillaSplintBlock;
+import cn.mcmod.tsuki.block.crops.WildCropBlock;
 import cn.mcmod.tsuki.block.foods.NabeBlock;
 import cn.mcmod.tsuki.block.foods.TeishokuBlock;
 import cn.mcmod.tsuki.block.foods.TeishokuFinishedBlock;
@@ -270,6 +280,31 @@ public class BlockRegistry {
 
     public static final DeferredBlock<Block> EGGPLANT_CROP = BLOCKS.register("eggplant_crop",
             () -> new HighCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.EGGPLANT_SEEDS));
+
+    public static final DeferredBlock<Block> PEPPER_CROP = BLOCKS.register("pepper_crop",
+            () -> new PepperCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.PEPPER_SEEDS));
+    public static final DeferredBlock<Block> VANILLA_CROP = BLOCKS.register("vanilla_crop",
+            () -> new VanillaCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.VANILLA_SEEDS));
+    public static final DeferredBlock<Block> HOPS_CROP = BLOCKS.register("hops_crop",
+            () -> new HopsCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.HOP_SEEDS));
+
+    public static final DeferredBlock<Block> PEPPER_SPLINT = BLOCKS.register("pepper_splint",
+            PepperSplintBlock::new);
+    public static final DeferredBlock<Block> VANILLA_SPLINT = BLOCKS.register("vanilla_splint",
+            VanillaSplintBlock::new);
+    public static final DeferredBlock<Block> GRAPE_SPLINT_STAND = BLOCKS.register("grape_splint_stand",
+            GrapeSplintStandBlock::new);
+    public static final DeferredBlock<Block> GRAPE_VINE = BLOCKS.register("grape_vine",
+            GrapeVineBlock::new);
+    public static final DeferredBlock<Block> GRAPE_SPLINT = BLOCKS.register("grape_splint",
+            GrapeSplintBlock::new);
+    public static final DeferredBlock<Block> GRAPE_LEAVES = BLOCKS.register("grape_leaves",
+            GrapeLeavesBlock::new);
+
+    public static final DeferredBlock<Block> WILD_PEPPER = BLOCKS.register("wild_pepper",
+            () -> new WildCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F)));
+    public static final DeferredBlock<Block> WILD_VANILLA = BLOCKS.register("wild_vanilla",
+            () -> new WildCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F)));
 
     public static final DeferredBlock<Block> SHOJI = BLOCKS.register("shoji", () -> new ShojiBlock(0));
     public static final DeferredBlock<Block> SHOJI_1 = BLOCKS.register("shoji_1", () -> new ShojiBlock(1));

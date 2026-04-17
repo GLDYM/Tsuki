@@ -48,6 +48,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                     && block.get() != BlockRegistry.MAPLE_SAP_LOG.get()
                     && block.get() != BlockRegistry.CHESTNUT_BURR.get()
                     && block.get() != BlockRegistry.FUTON.get()
+                    && block.get() != BlockRegistry.GRAPE_VINE.get()
+                    && block.get() != BlockRegistry.GRAPE_LEAVES.get()
                     && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
                     && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()) {
                     if (block.get() instanceof BambooPlant) {
@@ -62,6 +64,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
           );
 
         this.dropOther(BlockRegistry.MAPLE_SAP_LOG.get(), BlockItemRegistry.MAPLE_LOG.get());
+        this.dropOther(BlockRegistry.GRAPE_VINE.get(), BlockItemRegistry.GRAPE_SPLINT_STAND.get());
+        this.dropOther(BlockRegistry.GRAPE_LEAVES.get(), BlockItemRegistry.GRAPE_SPLINT.get());
 
         this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(),  TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
         this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(),  TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
@@ -116,6 +120,16 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                 ItemRegistry.TARO.get(), 3);
 
         createCrop(BlockRegistry.BUCKWHEAT_CROP.get(), ItemRegistry.BUCKWHEAT.get(), ItemRegistry.BUCKWHEAT.get(), 7);
+        createCropWithSupport(BlockRegistry.PEPPER_CROP.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_RED).get(),
+                ItemRegistry.PEPPER_SEEDS.get(), 7, BlockItemRegistry.PEPPER_SPLINT.get());
+        createCropWithSupport(BlockRegistry.VANILLA_CROP.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
+                ItemRegistry.VANILLA_SEEDS.get(), 7, BlockItemRegistry.VANILLA_SPLINT.get());
+        createCropWithSupport(BlockRegistry.HOPS_CROP.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get(),
+                ItemRegistry.HOP_SEEDS.get(), 7, BlockItemRegistry.GRAPE_SPLINT_STAND.get());
+        createCrop(BlockRegistry.WILD_PEPPER.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_GREEN).get(),
+                ItemRegistry.PEPPER_SEEDS.get(), 7);
+        createCrop(BlockRegistry.WILD_VANILLA.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
+                ItemRegistry.VANILLA_SEEDS.get(), 7);
     }
 
     private void createTeishoku(Block block) {
@@ -137,6 +151,13 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         LootItemCondition.Builder builder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, age));
         this.add(block, createCropDrops(block, crop, seeds, builder));
+    }
+
+    private void createCropWithSupport(Block block, Item crop, Item seeds, int age, Item support) {
+        LootItemCondition.Builder builder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, age));
+        this.add(block, createCropDrops(block, crop, seeds, builder)
+                .withPool(LootPool.lootPool().add(LootItem.lootTableItem(support))));
     }
 
     private LootTable.Builder createFutonDrops(Block block) {

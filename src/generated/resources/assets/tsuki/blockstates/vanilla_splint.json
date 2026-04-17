@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tsuki:block/vanilla_splint"
+    }
+  }
+}

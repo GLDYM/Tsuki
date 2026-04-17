@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "tsuki:block/pepper_0"
+    },
+    "age=1": {
+      "model": "tsuki:block/pepper_1"
+    },
+    "age=2": {
+      "model": "tsuki:block/pepper_2"
+    },
+    "age=3": {
+      "model": "tsuki:block/pepper_3"
+    },
+    "age=4": {
+      "model": "tsuki:block/pepper_4"
+    },
+    "age=5": {
+      "model": "tsuki:block/pepper_5"
+    },
+    "age=6": {
+      "model": "tsuki:block/pepper_6"
+    },
+    "age=7": {
+      "model": "tsuki:block/pepper_7"
+    }
+  }
+}

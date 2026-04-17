@@ -31,6 +31,28 @@ public enum TsukiFoodSet {
          .cookingTemp(480.0F)
          .build()
    ),
+   GRAPE(
+      FoodInfo.builder()
+         .name("grape")
+         .amountAndCalories(1, 0.25F)
+         .water(4.0F)
+         .nutrients(0.25F, 0.0F, 1.0F, 0.0F, 0.0F)
+         .decayModifier(5.0F)
+         .heatCapacity(0.0F)
+         .cookingTemp(-1.0F)
+         .build()
+   ),
+   GRAPE_GREEN(
+      FoodInfo.builder()
+         .name("grape_green")
+         .amountAndCalories(2, 0.2F)
+         .water(4.0F)
+         .nutrients(0.0F, 2.0F, 0.0F, 0.5F, 0.0F)
+         .decayModifier(5.0F)
+         .heatCapacity(0.0F)
+         .cookingTemp(0.0F)
+         .build()
+   ),
    UME(
       FoodInfo.builder()
          .name("ume")

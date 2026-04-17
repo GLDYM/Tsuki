@@ -576,8 +576,8 @@
     }
   ],
   "textures": {
-    "0": "block/log_oak",
-    "1": "block/planks_oak",
+    "0": "minecraft:block/oak_log",
+    "1": "minecraft:block/oak_planks",
     "crop": "tsuki:block/pepper_1",
     "particle": "tsuki:block/pepper_1"
   }

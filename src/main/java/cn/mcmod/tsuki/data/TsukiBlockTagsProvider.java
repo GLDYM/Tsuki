@@ -95,7 +95,11 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                .add((Block) BlockRegistry.TATAMI_CARPET_TAN_WAXED.get())
                .add((Block) BlockRegistry.ZABUTON.get());
             this.tag(BlockTags.MINEABLE_WITH_AXE)
-               .add((Block) BlockRegistry.FUTON.get());
+               .add((Block) BlockRegistry.FUTON.get())
+               .add((Block) BlockRegistry.PEPPER_SPLINT.get())
+               .add((Block) BlockRegistry.VANILLA_SPLINT.get())
+               .add((Block) BlockRegistry.GRAPE_SPLINT_STAND.get())
+               .add((Block) BlockRegistry.GRAPE_SPLINT.get());
             this.tag(TsukiBlockTags.MINEABLE_WITH_HAMMER)
                .add((Block) BlockRegistry.TATARA.get());
             this.tag(BlockTags.NEEDS_IRON_TOOL)
@@ -136,7 +140,12 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                (Block)BlockRegistry.REDBEAN_CROP.get(),
                (Block)BlockRegistry.RICE_CROP_ROOT.get(),
                (Block)BlockRegistry.TARO_CROP.get(),
-               (Block)BlockRegistry.TOMATO_CROP.get()
+               (Block)BlockRegistry.TOMATO_CROP.get(),
+               (Block)BlockRegistry.PEPPER_CROP.get(),
+               (Block)BlockRegistry.VANILLA_CROP.get(),
+               (Block)BlockRegistry.HOPS_CROP.get(),
+               (Block)BlockRegistry.WILD_PEPPER.get(),
+               (Block)BlockRegistry.WILD_VANILLA.get()
             }
          );
       this.tag(BlockTags.PLANKS)

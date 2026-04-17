@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "blocks/log_oak",
-		"1": "blocks/planks_oak",
+		"0": "minecraft:block/oak_log",
+		"1": "minecraft:block/oak_planks",
 		"3": "sakura:blocks/pepper_6",
 		"crop": "sakura:blocks/pepper_2",
 		"particle": "sakura:blocks/pepper_2"

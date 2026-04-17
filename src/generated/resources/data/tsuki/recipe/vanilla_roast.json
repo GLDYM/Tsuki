@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:vanilla"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:vanilla_roast"
+  }
+}

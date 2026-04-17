@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "tsuki:block/hops_0"
+    },
+    "age=1": {
+      "model": "tsuki:block/hops_1"
+    },
+    "age=2": {
+      "model": "tsuki:block/hops_1"
+    },
+    "age=3": {
+      "model": "tsuki:block/hops_1"
+    },
+    "age=4": {
+      "model": "tsuki:block/hops_2"
+    },
+    "age=5": {
+      "model": "tsuki:block/hops_2"
+    },
+    "age=6": {
+      "model": "tsuki:block/hops_2"
+    },
+    "age=7": {
+      "model": "tsuki:block/hops_3"
+    }
+  }
+}

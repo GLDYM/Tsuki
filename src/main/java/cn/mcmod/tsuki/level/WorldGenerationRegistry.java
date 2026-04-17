@@ -11,11 +11,13 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseThresholdProvider;
 import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -38,6 +40,27 @@ public class WorldGenerationRegistry {
                     BiomeFilter.biome(),
                     PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING),
                     RarityFilter.onAverageOnceEvery(30)));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_WILD_PEPPER_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_pepper"));
+    public static final ConfiguredFeature<?, ?> FEATURE_PATCH_WILD_PEPPER = new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
+            32, 6, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+            BlockStateProvider.simple(BlockRegistry.WILD_PEPPER.get().defaultBlockState().setValue(BlockStateProperties.AGE_7, 0))))));
+    public static final ResourceKey<PlacedFeature> PATCH_WILD_PEPPER_KEY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_pepper"));
+    public static final PlacedFeature PATCH_WILD_PEPPER = new PlacedFeature(Holder.direct(FEATURE_PATCH_WILD_PEPPER),
+            List.of(PlacementUtils.HEIGHTMAP,
+                    InSquarePlacement.spread(),
+                    BiomeFilter.biome(),
+                    RarityFilter.onAverageOnceEvery(64)));
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_WILD_VANILLA_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_vanilla"));
+    public static final ConfiguredFeature<?, ?> FEATURE_PATCH_WILD_VANILLA = new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
+            32, 6, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+            BlockStateProvider.simple(BlockRegistry.WILD_VANILLA.get().defaultBlockState().setValue(BlockStateProperties.AGE_7, 0))))));
+    public static final ResourceKey<PlacedFeature> PATCH_WILD_VANILLA_KEY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_vanilla"));
+    public static final PlacedFeature PATCH_WILD_VANILLA = new PlacedFeature(Holder.direct(FEATURE_PATCH_WILD_VANILLA),
+            List.of(PlacementUtils.HEIGHTMAP,
+                    InSquarePlacement.spread(),
+                    BiomeFilter.biome(),
+                    RarityFilter.onAverageOnceEvery(48)));
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_ORE_SAKURA_DIAMOND_KEY = ResourceKey.create(
             Registries.CONFIGURED_FEATURE,

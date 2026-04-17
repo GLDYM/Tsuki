@@ -1,0 +1,6 @@
+{
+  "biomes": "#minecraft:is_jungle",
+  "features": "tsuki:patch_wild_pepper",
+  "step": "vegetal_decoration",
+  "type": "neoforge:add_features"
+}

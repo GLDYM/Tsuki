@@ -61,7 +61,7 @@ public class FloorMountedLanternBlock extends CustomLanternBlock {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         double centerX = pos.getX() + 0.5D;
-        double centerY = pos.getY() + 0.65D;
+        double centerY = pos.getY() + 0.45D;
         double centerZ = pos.getZ() + 0.5D;
         level.addParticle(ParticleTypes.SMOKE, centerX, centerY, centerZ, 0.0D, 0.0D, 0.0D);
         level.addParticle(ParticleTypes.FLAME, centerX, centerY, centerZ, 0.0D, 0.0D, 0.0D);

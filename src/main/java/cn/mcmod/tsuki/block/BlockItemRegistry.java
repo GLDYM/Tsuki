@@ -202,6 +202,14 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.MAPLE_SPILE.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> MAPLE_CAULDRON = ITEMS.register("maple_cauldron",
             () -> new BlockItem(BlockRegistry.MAPLE_CAULDRON.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> PEPPER_SPLINT = ITEMS.register("pepper_splint",
+            () -> new BlockItem(BlockRegistry.PEPPER_SPLINT.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> VANILLA_SPLINT = ITEMS.register("vanilla_splint",
+            () -> new BlockItem(BlockRegistry.VANILLA_SPLINT.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> GRAPE_SPLINT_STAND = ITEMS.register("grape_splint_stand",
+            () -> new BlockItem(BlockRegistry.GRAPE_SPLINT_STAND.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> GRAPE_SPLINT = ITEMS.register("grape_splint",
+            () -> new BlockItem(BlockRegistry.GRAPE_SPLINT.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> STONE_MORTAR = ITEMS.register("stone_mortar", 
             StoneMortarItem::new);

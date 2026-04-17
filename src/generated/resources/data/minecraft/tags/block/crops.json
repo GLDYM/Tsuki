@@ -10,6 +10,11 @@
     "tsuki:redbean_crop",
     "tsuki:rice_crop_root",
     "tsuki:taro_crop",
-    "tsuki:tomato_crop"
+    "tsuki:tomato_crop",
+    "tsuki:pepper_crop",
+    "tsuki:vanilla_crop",
+    "tsuki:hops_crop",
+    "tsuki:wild_pepper",
+    "tsuki:wild_vanilla"
   ]
 }

@@ -93,6 +93,10 @@ public class TsukiItemTags {
     public static final TagKey<Item> CROPS_TARO = TagUtils.forgeItemTag("crops/taro");
     public static final TagKey<Item> CROPS_REDBEAN = TagUtils.forgeItemTag("crops/redbean");
     public static final TagKey<Item> CROPS_SOYBEAN = TagUtils.forgeItemTag("crops/soybean");
+    public static final TagKey<Item> CROPS_PEPPER = TagUtils.forgeItemTag("crops/pepper");
+    public static final TagKey<Item> CROPS_VANILLA = TagUtils.forgeItemTag("crops/vanilla");
+    public static final TagKey<Item> CROPS_GRAPE = TagUtils.forgeItemTag("crops/grape");
+    public static final TagKey<Item> CROPS_HOP = TagUtils.forgeItemTag("crops/hop");
 
     public static final TagKey<Item> EGGS = TagUtils.forgeItemTag("eggs");
     public static final TagKey<Item> DASHI = TagUtils.forgeItemTag("dashi");
@@ -153,6 +157,10 @@ public class TsukiItemTags {
     public static final TagKey<Item> SEEDS_RAPESEED = TagUtils.forgeItemTag("seeds/rapeseed");
     public static final TagKey<Item> SEEDS_REDBEAN = TagUtils.forgeItemTag("seeds/redbean");
     public static final TagKey<Item> SEEDS_SOYBEAN = TagUtils.forgeItemTag("seeds/soybean");
+    public static final TagKey<Item> SEEDS_PEPPER = TagUtils.forgeItemTag("seeds/pepper");
+    public static final TagKey<Item> SEEDS_VANILLA = TagUtils.forgeItemTag("seeds/vanilla");
+    public static final TagKey<Item> SEEDS_GRAPE = TagUtils.forgeItemTag("seeds/grape");
+    public static final TagKey<Item> SEEDS_HOP = TagUtils.forgeItemTag("seeds/hop");
 
     public static final TagKey<Item> VEGETABLES = TagUtils.forgeItemTag("vegetables");
     public static final TagKey<Item> VEGETABLES_BEETROOT = TagUtils.forgeItemTag("vegetables/beetroot");

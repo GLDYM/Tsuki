@@ -5077,9 +5077,9 @@
     }
   ],
   "textures": {
-    "0": "block/planks_oak",
+    "0": "minecraft:block/oak_planks",
     "1": "tsuki:block/red_bean_2",
     "2": "tsuki:block/pepper_2",
-    "particle": "block/planks_oak"
+    "particle": "minecraft:block/oak_planks"
   }
 }

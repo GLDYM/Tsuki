@@ -8,6 +8,10 @@
     "#c:seeds/tomato",
     "#c:seeds/buckwheat",
     "#c:seeds/rapeseed",
-    "#c:seeds/redbean"
+    "#c:seeds/redbean",
+    "#c:seeds/pepper",
+    "#c:seeds/vanilla",
+    "#c:seeds/grape",
+    "#c:seeds/hop"
   ]
 }
