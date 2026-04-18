@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "c:bamboo"
+    },
+    "S": {
+      "tag": "c:strings"
+    }
+  },
+  "pattern": [
+    "S",
+    "B",
+    "B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:broom"
+  }
+}

@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.data;
 
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.item.DrinkRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
@@ -98,6 +99,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          TsukiArmorToolRegistry.SHEATH.get(),
          TsukiArmorToolRegistry.KATANA_SHEATH.get(),
          TsukiArmorToolRegistry.SAKURA_KATANA_SHEATH.get()
+      );
+      this.tag(TsukiItemTags.DRINK_CONTAINERS).add(
+         DrinkRegistry.CUP.get(),
+         DrinkRegistry.EMPTY_BOTTLE.get()
       );
       this.tag(TsukiItemTags.NATTO).add(FoodRegistry.FOODSET.get(TsukiFoodSet.NATTO).get());
       this.tag(TsukiItemTags.SHRIMP).add(FoodRegistry.FOODSET.get(TsukiFoodSet.SHRIMP).get());
@@ -389,7 +394,15 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.TOOLS_PICKAXES)
          .add(Items.WOODEN_PICKAXE, Items.STONE_PICKAXE, Items.IRON_PICKAXE, Items.DIAMOND_PICKAXE, Items.GOLDEN_PICKAXE, Items.NETHERITE_PICKAXE);
       this.tag(TsukiItemTags.TOOLS_SHOVELS)
-         .add(Items.WOODEN_SHOVEL, Items.STONE_SHOVEL, Items.IRON_SHOVEL, Items.DIAMOND_SHOVEL, Items.GOLDEN_SHOVEL, Items.NETHERITE_SHOVEL);
+         .add(
+            Items.WOODEN_SHOVEL,
+            Items.STONE_SHOVEL,
+            Items.IRON_SHOVEL,
+            Items.DIAMOND_SHOVEL,
+            Items.GOLDEN_SHOVEL,
+            Items.NETHERITE_SHOVEL,
+            TsukiArmorToolRegistry.BROOM.get()
+         );
    }
 
    public String getName() {

@@ -4,6 +4,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.item.HammerItem;
 import cn.mcmod.tsuki.item.KatanaItem;
 import cn.mcmod.tsuki.item.KnifeItem;
+import cn.mcmod.tsuki.item.BroomItem;
 import cn.mcmod.tsuki.item.SakuraDiamondItem;
 import cn.mcmod.tsuki.item.SheathItem;
 import cn.mcmod.tsuki.item.SheathKatanaItem;
@@ -56,6 +57,9 @@ public class TsukiArmorToolRegistry {
             Math.round((Tiers.IRON.getEnchantmentValue() + SAKURA_TOOL_TIER.getEnchantmentValue()) / 2.0F),
             () -> Ingredient.of(STEEL_INGOT.get())
     );
+
+    public static final DeferredItem<Item> BROOM = register("broom",
+            () -> new BroomItem(STEEL_TOOL_TIER, 1.0F, -2.4F, Tsuki.defaultItemProperties().stacksTo(1)));
 
     public static final DeferredItem<Item> SAKURA_AXE = register("sakura_axe",
             () -> new AxeItem(SAKURA_TOOL_TIER,

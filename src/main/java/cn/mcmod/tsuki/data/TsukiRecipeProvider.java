@@ -11,6 +11,7 @@ import cn.mcmod.tsuki.data.builder.FermenterRecipeBuilder;
 import cn.mcmod.tsuki.data.builder.StoneMortarRecipeBuilder;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.fluid.FluidRegistry;
+import cn.mcmod.tsuki.item.DrinkRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
@@ -336,6 +337,27 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('L', Tags.Items.RODS_WOODEN)
                 .unlockedBy("has_sakura_diamond", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.BROOM.get())
+                .pattern("S")
+                .pattern("B")
+                .pattern("B")
+                .define('S', Tags.Items.STRINGS)
+                .define('B', TsukiItemTags.BAMBOO)
+                .unlockedBy("has_bamboo", has(TsukiItemTags.BAMBOO))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "broom"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DrinkRegistry.CUP.get(), 4)
+                .pattern("# #")
+                .pattern(" # ")
+                .define('#', Items.CLAY_BALL)
+                .unlockedBy("has_clay", has(Items.CLAY_BALL))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cup"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DrinkRegistry.EMPTY_BOTTLE.get(), 4)
+                .pattern("# #")
+                .pattern("# #")
+                .pattern(" # ")
+                .define('#', Tags.Items.GLASS_BLOCKS)
+                .unlockedBy("has_glass", has(Tags.Items.GLASS_BLOCKS))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "empty_bottle"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.IRON_FISH_KNIFE.get())
             .pattern("  I")

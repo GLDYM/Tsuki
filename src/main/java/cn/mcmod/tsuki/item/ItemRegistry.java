@@ -63,9 +63,6 @@ public class ItemRegistry {
     private static Map<TsukiNormalItemSet, DeferredItem<Item>> createMaterials() {
         Map<TsukiNormalItemSet, DeferredItem<Item>> materials = new EnumMap<>(TsukiNormalItemSet.class);
         for (TsukiNormalItemSet material : TsukiNormalItemSet.values()) {
-            if (material.isArmorToolMaterial()) {
-                continue;
-            }
             materials.put(material, register(material.getName(), ItemRegistry::normalItem));
         }
         return materials;

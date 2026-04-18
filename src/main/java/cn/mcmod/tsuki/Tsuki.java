@@ -13,9 +13,11 @@ import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.container.ContainerRegistry;
 import cn.mcmod.tsuki.entity.EntityRegistry;
+import cn.mcmod.tsuki.effect.EffectRegistry;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.fluid.FluidBlockRegistry;
 import cn.mcmod.tsuki.fluid.FluidRegistry;
+import cn.mcmod.tsuki.item.DrinkRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.armors.TsukiArmorMaterials;
@@ -52,6 +54,7 @@ public class Tsuki {
         EntityRegistry.ENTITY_TYPES.register(modEventBus);
         // TsukiDataComponentRegistry.COMPONENTS.register(modEventBus);
         ItemRegistry.ITEMS.register(modEventBus);
+        DrinkRegistry.ITEMS.register(modEventBus);
         FoodRegistry.ITEMS.register(modEventBus);
         TsukiArmorToolRegistry.ITEMS.register(modEventBus);
         TsukiArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
@@ -64,6 +67,7 @@ public class Tsuki {
         JukeboxSongRegistry.register();
         ParticleRegistry.PARTICLE_TYPES.register(modEventBus);
         ContainerRegistry.CONTAINER_TYPES.register(modEventBus);
+        EffectRegistry.MOB_EFFECTS.register(modEventBus);
         LootModifiterRegistry.GLM.register(modEventBus);
         RecipeTypeRegistry.RECIPE_TYPES.register(modEventBus);
         RecipeTypeRegistry.RECIPE_SERIALIZERS.register(modEventBus);

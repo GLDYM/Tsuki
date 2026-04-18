@@ -6,6 +6,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
+import cn.mcmod.tsuki.item.BroomItem;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.ShinaiItem;
@@ -94,7 +95,8 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                 || item.get() instanceof KatanaItem
                 || item.get() instanceof SheathItem
                 || item.get() instanceof SheathKatanaItem
-                || item.get() instanceof ShinaiItem) {
+                || item.get() instanceof ShinaiItem
+                || item.get() instanceof BroomItem) {
                 return;
             } else {
                 normalItem(item);
