@@ -1,0 +1,25 @@
+{
+  "type": "tsuki:distillation",
+  "experience": 0,
+  "fluid": {
+    "amount": 200,
+    "fluidTag": "tsuki:brewers_alcohol"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipeTime": 400,
+  "result_fluid": {
+    "amount": 200,
+    "fluid": "tsuki:cocoa_liqueur"
+  },
+  "results": []
+}

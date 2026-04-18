@@ -1,0 +1,22 @@
+{
+  "type": "tsuki:distillation",
+  "experience": 0,
+  "fluid": {
+    "amount": 200,
+    "fluidTag": "tsuki:grape_wine"
+  },
+  "ingredients": [
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:sugar"
+    }
+  ],
+  "recipeTime": 400,
+  "result_fluid": {
+    "amount": 100,
+    "fluid": "tsuki:brandy"
+  },
+  "results": []
+}

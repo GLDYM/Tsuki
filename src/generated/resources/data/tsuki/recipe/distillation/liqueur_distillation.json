@@ -1,0 +1,25 @@
+{
+  "type": "tsuki:distillation",
+  "experience": 0,
+  "fluid": {
+    "amount": 200,
+    "fluidTag": "tsuki:brewers_alcohol"
+  },
+  "ingredients": [
+    {
+      "tag": "c:fruits"
+    },
+    {
+      "tag": "c:fruits"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipeTime": 400,
+  "result_fluid": {
+    "amount": 200,
+    "fluid": "tsuki:liqueur"
+  },
+  "results": []
+}

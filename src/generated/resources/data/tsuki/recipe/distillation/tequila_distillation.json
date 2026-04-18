@@ -1,0 +1,25 @@
+{
+  "type": "tsuki:distillation",
+  "experience": 0,
+  "fluid": {
+    "amount": 200,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:cactus"
+    },
+    {
+      "item": "minecraft:cactus"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipeTime": 400,
+  "result_fluid": {
+    "amount": 100,
+    "fluid": "tsuki:tequila"
+  },
+  "results": []
+}

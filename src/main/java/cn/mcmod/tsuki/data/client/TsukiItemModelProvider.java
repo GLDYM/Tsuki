@@ -88,7 +88,10 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
             }
         });
         
-        BucketItemRegistry.ITEMS.getEntries().forEach(this::normalItem);
+        BucketItemRegistry.ITEMS.getEntries().forEach(item -> {
+            String name = item.getId().getPath();
+            normalItem(item);
+        });
         TsukiArmorToolRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof KimonoItem
                 || item.get() instanceof HaoriItem

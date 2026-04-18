@@ -2,13 +2,9 @@ package cn.mcmod.tsuki.fluid;
 
 import cn.mcmod.tsuki.Tsuki;
 import net.minecraft.world.item.*;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@EventBusSubscriber(modid = Tsuki.MODID)
 public class BucketItemRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tsuki.MODID);
     public static final DeferredItem<Item> FOOD_OIL_BUCKET = ITEMS.register("food_oil_bucket", () ->
@@ -37,17 +33,19 @@ public class BucketItemRegistry {
         new BucketItem(FluidRegistry.RUM.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     public static final DeferredItem<Item> BRANDY_BUCKET = ITEMS.register("brandy_bucket", () ->
         new BucketItem(FluidRegistry.BRANDY.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> VODKA_BUCKET = ITEMS.register("vodka_bucket", () ->
+        new BucketItem(FluidRegistry.VODKA.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> LIQUEUR_BUCKET = ITEMS.register("liqueur_bucket", () ->
+        new BucketItem(FluidRegistry.LIQUEUR.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> COCOA_LIQUEUR_BUCKET = ITEMS.register("cocoa_liqueur_bucket", () ->
+        new BucketItem(FluidRegistry.COCOA_LIQUEUR.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> GIN_BUCKET = ITEMS.register("gin_bucket", () ->
+        new BucketItem(FluidRegistry.GIN.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> TEQUILA_BUCKET = ITEMS.register("tequila_bucket", () ->
+        new BucketItem(FluidRegistry.TEQUILA.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     public static final DeferredItem<Item> MAPLE_SYRUP_BUCKET = ITEMS.register("maple_syrup_bucket", () ->
         new BucketItem(FluidRegistry.MAPLE_SYRUP.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
-    
-    
-    @SubscribeEvent
-    public static void onAddCreativeModeTab(BuildCreativeModeTabContentsEvent event){
-        if(event.getTabKey()== CreativeModeTabs.INGREDIENTS){
-            ITEMS.getEntries().forEach(entry -> event.accept(entry.get()));
-        }
-    }
-}
 
+}
 
 

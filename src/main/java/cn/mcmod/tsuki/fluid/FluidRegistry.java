@@ -71,6 +71,31 @@ public class FluidRegistry {
             () -> new BaseFlowingFluid.Source(FluidRegistry.BRANDY_PROP));
     public static final DeferredHolder<Fluid, FlowingFluid> BRANDY_FLOWING = FLUIDS.register("brandy_flowing",
             () -> new BaseFlowingFluid.Flowing(FluidRegistry.BRANDY_PROP));
+    
+    public static final DeferredHolder<Fluid, FlowingFluid> VODKA = FLUIDS.register("vodka",
+            () -> new BaseFlowingFluid.Source(FluidRegistry.VODKA_PROP));
+    public static final DeferredHolder<Fluid, FlowingFluid> VODKA_FLOWING = FLUIDS.register("vodka_flowing",
+            () -> new BaseFlowingFluid.Flowing(FluidRegistry.VODKA_PROP));
+
+    public static final DeferredHolder<Fluid, FlowingFluid> LIQUEUR = FLUIDS.register("liqueur",
+            () -> new BaseFlowingFluid.Source(FluidRegistry.LIQUEUR_PROP));
+    public static final DeferredHolder<Fluid, FlowingFluid> LIQUEUR_FLOWING = FLUIDS.register("liqueur_flowing",
+            () -> new BaseFlowingFluid.Flowing(FluidRegistry.LIQUEUR_PROP));
+
+    public static final DeferredHolder<Fluid, FlowingFluid> COCOA_LIQUEUR = FLUIDS.register("cocoa_liqueur",
+            () -> new BaseFlowingFluid.Source(FluidRegistry.COCOA_LIQUEUR_PROP));
+    public static final DeferredHolder<Fluid, FlowingFluid> COCOA_LIQUEUR_FLOWING = FLUIDS.register("cocoa_liqueur_flowing",
+            () -> new BaseFlowingFluid.Flowing(FluidRegistry.COCOA_LIQUEUR_PROP));
+
+    public static final DeferredHolder<Fluid, FlowingFluid> GIN = FLUIDS.register("gin",
+            () -> new BaseFlowingFluid.Source(FluidRegistry.GIN_PROP));
+    public static final DeferredHolder<Fluid, FlowingFluid> GIN_FLOWING = FLUIDS.register("gin_flowing",
+            () -> new BaseFlowingFluid.Flowing(FluidRegistry.GIN_PROP));
+
+    public static final DeferredHolder<Fluid, FlowingFluid> TEQUILA = FLUIDS.register("tequila",
+            () -> new BaseFlowingFluid.Source(FluidRegistry.TEQUILA_PROP));
+    public static final DeferredHolder<Fluid, FlowingFluid> TEQUILA_FLOWING = FLUIDS.register("tequila_flowing",
+            () -> new BaseFlowingFluid.Flowing(FluidRegistry.TEQUILA_PROP));
 
     public static final DeferredHolder<Fluid, FlowingFluid> MAPLE_SYRUP = FLUIDS.register("maple_syrup",
             () -> new BaseFlowingFluid.Source(FluidRegistry.MAPLE_SYRUP_PROP));
@@ -110,6 +135,21 @@ public class FluidRegistry {
     
     private static final BaseFlowingFluid.Properties CHAMPAGNE_PROP = 
             createProp(CHAMPAGNE, CHAMPAGNE_FLOWING, FluidTypeRegistry.CHAMPAGNE, FluidBlockRegistry.CHAMPAGNE_BLOCK,BucketItemRegistry.CHAMPAGNE_BUCKET);
+    
+    private static final BaseFlowingFluid.Properties VODKA_PROP =
+            createProp(VODKA, VODKA_FLOWING, FluidTypeRegistry.VODKA, FluidBlockRegistry.VODKA_BLOCK,BucketItemRegistry.VODKA_BUCKET);
+    
+    private static final BaseFlowingFluid.Properties LIQUEUR_PROP =
+            createProp(LIQUEUR, LIQUEUR_FLOWING, FluidTypeRegistry.LIQUEUR, FluidBlockRegistry.LIQUEUR_BLOCK,BucketItemRegistry.LIQUEUR_BUCKET);
+    
+    private static final BaseFlowingFluid.Properties COCOA_LIQUEUR_PROP =
+            createProp(COCOA_LIQUEUR, COCOA_LIQUEUR_FLOWING, FluidTypeRegistry.COCOA_LIQUEUR, FluidBlockRegistry.COCOA_LIQUEUR_BLOCK,BucketItemRegistry.COCOA_LIQUEUR_BUCKET);
+    
+    private static final BaseFlowingFluid.Properties GIN_PROP =
+            createProp(GIN, GIN_FLOWING, FluidTypeRegistry.GIN, FluidBlockRegistry.GIN_BLOCK,BucketItemRegistry.GIN_BUCKET);
+    
+    private static final BaseFlowingFluid.Properties TEQUILA_PROP =
+            createProp(TEQUILA, TEQUILA_FLOWING, FluidTypeRegistry.TEQUILA, FluidBlockRegistry.TEQUILA_BLOCK,BucketItemRegistry.TEQUILA_BUCKET);
 
     private static final BaseFlowingFluid.Properties MAPLE_SYRUP_PROP =
             createProp(MAPLE_SYRUP, MAPLE_SYRUP_FLOWING, FluidTypeRegistry.MAPLE_SYRUP, FluidBlockRegistry.MAPLE_SYRUP_BLOCK, BucketItemRegistry.MAPLE_SYRUP_BUCKET);
@@ -125,5 +165,4 @@ public class FluidRegistry {
         return blockProperties.apply(new BaseFlowingFluid.Properties(fluidType ,still, flowing));
     }
 }
-
 
