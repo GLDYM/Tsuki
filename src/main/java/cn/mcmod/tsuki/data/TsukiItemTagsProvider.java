@@ -1,7 +1,6 @@
 package cn.mcmod.tsuki.data;
 
 import cn.mcmod.tsuki.block.BlockItemRegistry;
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.item.DrinkRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
@@ -12,17 +11,12 @@ import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.tags.TsukiBlockTags;
 import cn.mcmod.tsuki.tags.TsukiItemTags;
 import java.util.concurrent.CompletableFuture;
-
-import com.jcraft.jorbis.Block;
-
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -102,8 +96,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       );
       this.tag(TsukiItemTags.DRINK_CONTAINERS).add(
          DrinkRegistry.CUP.get(),
-         DrinkRegistry.EMPTY_BOTTLE.get()
+         DrinkRegistry.WINE_BOTTLE.get()
       );
+      DrinkRegistry.WINE_BOTTLES.values().forEach(bottle -> this.tag(TsukiItemTags.DRINK_CONTAINERS).add(bottle.get()));
+      DrinkRegistry.WINE_BOTTLES.values().forEach(bottle -> this.tag(TsukiItemTags.WINE_BOTTLES).add(bottle.get()));
       this.tag(TsukiItemTags.NATTO).add(FoodRegistry.FOODSET.get(TsukiFoodSet.NATTO).get());
       this.tag(TsukiItemTags.SHRIMP).add(FoodRegistry.FOODSET.get(TsukiFoodSet.SHRIMP).get());
       this.tag(TsukiItemTags.FISHCAKE)
@@ -174,11 +170,17 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.CHEESE_CHEESE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE).get());
       this.tag(TsukiItemTags.WATER).addTag(TsukiItemTags.WATER_WATER);
       this.tag(TsukiItemTags.WATER_WATER).add(Items.WATER_BUCKET);
-      this.tag(TsukiItemTags.FLOUR).addTags(TsukiItemTags.FLOUR_WHEAT, TsukiItemTags.FLOUR_BUCKWHEAT, TsukiItemTags.FLOUR_RICE);
+      this.tag(TsukiItemTags.FLOUR)
+        .addTag(TsukiItemTags.FLOUR_WHEAT)
+        .addTag(TsukiItemTags.FLOUR_BUCKWHEAT)
+        .addTag(TsukiItemTags.FLOUR_RICE);
       this.tag(TsukiItemTags.FLOUR_WHEAT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR).get());
       this.tag(TsukiItemTags.FLOUR_BUCKWHEAT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR_BUCKWHEAT).get());
       this.tag(TsukiItemTags.FLOUR_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR_RICE).get());
-      this.tag(TsukiItemTags.DOUGH).addTags(TsukiItemTags.DOUGH_WHEAT, TsukiItemTags.DOUGH_BUCKWHEAT, TsukiItemTags.DOUGH_RICE);
+      this.tag(TsukiItemTags.DOUGH)
+        .addTag(TsukiItemTags.DOUGH_WHEAT)
+        .addTag(TsukiItemTags.DOUGH_BUCKWHEAT)
+        .addTag(TsukiItemTags.DOUGH_RICE);
       this.tag(TsukiItemTags.DOUGH_WHEAT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get());
       this.tag(TsukiItemTags.DOUGH_BUCKWHEAT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_BUCKWHEAT).get());
       this.tag(TsukiItemTags.DOUGH_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_RICE).get());
@@ -297,14 +299,19 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
          .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.IMOGARA).get());
       this.tag(TsukiItemTags.LEAFYVEGETABLES).addTag(TsukiItemTags.LEAFYVEGETABLES_CABBAGE);
       this.tag(TsukiItemTags.LEAFYVEGETABLES_CABBAGE).addTag(TsukiItemTags.VEGETABLES_CABBAGE);
-      this.tag(TsukiItemTags.MUSHROOMS).addTags(new TagKey[]{TsukiItemTags.BROWN_MUSHROOMS, TsukiItemTags.RED_MUSHROOMS});
+      this.tag(TsukiItemTags.MUSHROOMS)
+        .addTag(TsukiItemTags.BROWN_MUSHROOMS)
+        .addTag(TsukiItemTags.RED_MUSHROOMS);
       this.tag(TsukiItemTags.BROWN_MUSHROOMS).add(Items.BROWN_MUSHROOM);
       this.tag(TsukiItemTags.RED_MUSHROOMS).add(Items.RED_MUSHROOM);
       this.tag(TsukiItemTags.VEGETABLES_BEETROOT).add(Items.BEETROOT);
       this.tag(TsukiItemTags.VEGETABLES_CARROT).add(Items.CARROT);
       this.tag(TsukiItemTags.VEGETABLES_POTATO).add(Items.POTATO);
       this.tag(TsukiItemTags.COOKIES).add(Items.COOKIE);
-      this.tag(TsukiItemTags.BREAD).addTags(TsukiItemTags.BREAD_WHEAT, TsukiItemTags.BREAD_BUCKWHEAT, TsukiItemTags.BREAD_RICE);
+      this.tag(TsukiItemTags.BREAD)
+         .addTag(TsukiItemTags.BREAD_WHEAT)
+         .addTag(TsukiItemTags.BREAD_BUCKWHEAT)
+         .addTag(TsukiItemTags.BREAD_RICE);
       this.tag(TsukiItemTags.BREAD_WHEAT).add(Items.BREAD, FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get());
       this.tag(TsukiItemTags.BREAD_BUCKWHEAT).add(FoodRegistry.FOODSET.get(TsukiFoodSet.BUCKWHEAT_BREAD).get());
       this.tag(TsukiItemTags.BREAD_RICE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.RICE_BREAD).get());
@@ -313,14 +320,19 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.COOKED_PORK).add(Items.COOKED_PORKCHOP);
       this.tag(TsukiItemTags.COOKED_MUTTON).add(Items.COOKED_MUTTON);
       this.tag(TsukiItemTags.COOKED_FISHES)
-         .addTags(TsukiItemTags.COOKED_FISHES_COD, TsukiItemTags.COOKED_FISHES_SALMON)
-         .addTags(TsukiItemTags.FISHCAKE);
+         .addTag(TsukiItemTags.COOKED_FISHES_COD)
+         .addTag(TsukiItemTags.COOKED_FISHES_SALMON)
+         .addTag(TsukiItemTags.FISHCAKE);
       this.tag(TsukiItemTags.COOKED_FISHES_COD).add(Items.COOKED_COD);
       this.tag(TsukiItemTags.COOKED_FISHES_SALMON).add(Items.COOKED_SALMON);
       this.tag(TsukiItemTags.EGGS).add(Items.EGG);
-      this.tag(TsukiItemTags.GRAIN).addTags(TsukiItemTags.GRAIN_WHEAT, TsukiItemTags.GRAIN_RICE, TsukiItemTags.GRAIN_BUCKWHEAT);
+      this.tag(TsukiItemTags.GRAIN)
+         .addTag(TsukiItemTags.GRAIN_WHEAT)
+         .addTag(TsukiItemTags.GRAIN_RICE)
+         .addTag(TsukiItemTags.GRAIN_BUCKWHEAT);
       this.tag(TsukiItemTags.GRAIN_WHEAT).add(Items.WHEAT);
-      this.tag(TsukiItemTags.MILK).addTags(TsukiItemTags.MILK_BUCKET);
+      this.tag(TsukiItemTags.MILK)
+        .addTag(TsukiItemTags.MILK_BUCKET);
       this.tag(TsukiItemTags.MILK_BUCKET).add(Items.MILK_BUCKET);
       this.tag(TsukiItemTags.RAW_BEEF).add(Items.BEEF);
       this.tag(TsukiItemTags.RAW_CHICKEN).add(Items.CHICKEN);
@@ -342,32 +354,32 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
       this.tag(TsukiItemTags.FRUITS_UME).add(FoodRegistry.FOODSET.get(TsukiFoodSet.UME).get());
       this.tag(TsukiItemTags.FOODS_RAW_MEATS).addTag(TsukiItemTags.FOODS_RAW_MEAT);
       this.tag(TsukiItemTags.FOODS_RAW_MEAT)
-         .addTags(
-            TsukiItemTags.RAW_FISHES, TsukiItemTags.RAW_MUTTON, TsukiItemTags.RAW_PORK, TsukiItemTags.RAW_CHICKEN, TsukiItemTags.RAW_BEEF
-         );
+         .addTag(TsukiItemTags.RAW_FISHES)
+         .addTag(TsukiItemTags.RAW_MUTTON)
+         .addTag(TsukiItemTags.RAW_PORK)
+         .addTag(TsukiItemTags.RAW_CHICKEN)
+         .addTag(TsukiItemTags.RAW_BEEF);
       this.tag(TsukiItemTags.FOODS_COOKED_MEATS).addTag(TsukiItemTags.FOODS_COOKED_MEAT);
       this.tag(TsukiItemTags.FOODS_COOKED_MEAT)
-         .addTags(
-            TsukiItemTags.COOKED_FISHES,
-            TsukiItemTags.COOKED_MUTTON,
-            TsukiItemTags.COOKED_PORK,
-            TsukiItemTags.COOKED_CHICKEN,
-            TsukiItemTags.COOKED_BEEF
-         );
+         .addTag(TsukiItemTags.COOKED_FISHES)
+         .addTag(TsukiItemTags.COOKED_MUTTON)
+         .addTag(TsukiItemTags.COOKED_PORK)
+         .addTag(TsukiItemTags.COOKED_CHICKEN)
+         .addTag(TsukiItemTags.COOKED_BEEF);
       this.tag(TsukiItemTags.RAW_FISHES)
-         .addTags(
-            TsukiItemTags.SLICES_RAW_FISHES,
-            TsukiItemTags.RAW_FISHES_COD,
-            TsukiItemTags.RAW_FISHES_SALMON,
-            TsukiItemTags.RAW_FISHES_TROPICAL,
-            TsukiItemTags.RAW_FISHES_BONITO
-         )
-         .addTags(TsukiItemTags.FISHCAKE);
+         .addTag(TsukiItemTags.SLICES_RAW_FISHES)
+         .addTag(TsukiItemTags.RAW_FISHES_COD)
+         .addTag(TsukiItemTags.RAW_FISHES_SALMON)
+         .addTag(TsukiItemTags.RAW_FISHES_TROPICAL)
+         .addTag(TsukiItemTags.RAW_FISHES_BONITO)
+         .addTag(TsukiItemTags.FISHCAKE);
       this.tag(TsukiItemTags.RAW_FISHES_COD).add(Items.COD);
       this.tag(TsukiItemTags.RAW_FISHES_SALMON).add(Items.SALMON);
       this.tag(TsukiItemTags.RAW_FISHES_BONITO).add(TsukiFoodSet.BONITO.getItem().get());
       this.tag(TsukiItemTags.RAW_FISHES_TROPICAL).add(Items.TROPICAL_FISH);
-      this.tag(TsukiItemTags.SALAD_INGREDIENTS).addTags(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE, TsukiItemTags.SALAD_INGREDIENTS_TOMATO);
+      this.tag(TsukiItemTags.SALAD_INGREDIENTS)
+        .addTag(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
+        .addTag(TsukiItemTags.SALAD_INGREDIENTS_TOMATO);
       this.tag(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
          .add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get())
          .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get());
@@ -381,14 +393,13 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
           .add(BlockItemRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
       this.tag(TsukiItemTags.ORES_IRON)
           .add(BlockItemRegistry.IRON_SAND.get());
-      this.tag(TsukiItemTags.TOOLS).addTags(
-         TsukiItemTags.TOOLS_AXES,
-         TsukiItemTags.TOOLS_PICKAXES,
-         TsukiItemTags.TOOLS_SHOVELS,
-         TsukiItemTags.TOOLS_HAMMERS,
-         TsukiItemTags.TOOLS_KNIVES,
-         TsukiItemTags.TOOLS_KATANAS
-      );
+      this.tag(TsukiItemTags.TOOLS)
+        .addTag(TsukiItemTags.TOOLS_AXES)
+        .addTag(TsukiItemTags.TOOLS_PICKAXES)
+        .addTag(TsukiItemTags.TOOLS_SHOVELS)
+        .addTag(TsukiItemTags.TOOLS_HAMMERS)
+        .addTag(TsukiItemTags.TOOLS_KNIVES)
+        .addTag(TsukiItemTags.TOOLS_KATANAS);
       this.tag(TsukiItemTags.TOOLS_AXES)
          .add(Items.WOODEN_AXE, Items.STONE_AXE, Items.IRON_AXE, Items.DIAMOND_AXE, Items.GOLDEN_AXE, Items.NETHERITE_AXE);
       this.tag(TsukiItemTags.TOOLS_PICKAXES)

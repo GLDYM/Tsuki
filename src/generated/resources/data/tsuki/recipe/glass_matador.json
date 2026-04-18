@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_tequila"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    },
+    {
+      "item": "tsuki:lemon"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_matador"
+  }
+}

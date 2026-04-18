@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./logo.png" alt="logo" style="zoom: 50%;" />
+<img src="./logo.png" alt="logo" style="zoom: 25%;" />
 
 # Tsuki
 
@@ -25,7 +25,7 @@ Tsuki also focuses on the compatibility with other mods to have a better perform
 - TerraFirmaCraft: The Next Generation (From Sakura, WIP)
 - Create (From Sakura)
 - Farmer's Delight (From Sakura, Developed by Tsuki)
-- Kaleidoscope Cookery (WIP)
+- Kaleidoscope Cookery (From Tsuki)
 
 **THIS MOD IS STILL ALPHA, Use at your own risk.**
 

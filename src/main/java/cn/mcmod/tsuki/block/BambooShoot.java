@@ -23,7 +23,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
 
-@SuppressWarnings("deprecation")
 public class BambooShoot extends BushBlock implements BonemealableBlock {
     public static final MapCodec<BambooShoot> CODEC = simpleCodec(BambooShoot::new);
     private static final VoxelShape SHAPE = Block.box(6D, 0.0D, 6D, 10D, 4.0D, 10D);

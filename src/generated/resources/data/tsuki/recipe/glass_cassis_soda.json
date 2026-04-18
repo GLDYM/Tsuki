@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:blackcurrant_juice"
+    },
+    {
+      "item": "tsuki:soda_water"
+    },
+    {
+      "item": "tsuki:wine_bottle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_cassis_soda"
+  }
+}

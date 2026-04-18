@@ -90,7 +90,6 @@ public class BlockRegistry {
 
     public static final DeferredBlock<SaplingBlock> SAKURA_SAPLING = BLOCKS.register("sakura_sapling",
             () -> sapling(new TreeGrower(
-                    // TODO: 这树写的什么玩意？怎么写个鸡腿树？
                     "sakura",
                     0.1F,
                     Optional.empty(),

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:wine_bottle"
+    },
+    {
+      "item": "tsuki:tequila_bucket"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_tequila"
+  }
+}

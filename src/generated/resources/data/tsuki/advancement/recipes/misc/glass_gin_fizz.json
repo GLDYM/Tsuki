@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:glass_gin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_gin_fizz"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gin"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:glass_gin_fizz"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_whiskey"
+    },
+    {
+      "item": "tsuki:soda_water"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_highball"
+  }
+}

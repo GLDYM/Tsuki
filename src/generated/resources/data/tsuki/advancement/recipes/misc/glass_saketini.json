@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sake": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:glass_sake"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_saketini"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sake"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:glass_saketini"
+    ]
+  }
+}

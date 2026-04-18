@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_champagne": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:glass_champagne"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_bellini"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_champagne"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:glass_bellini"
+    ]
+  }
+}

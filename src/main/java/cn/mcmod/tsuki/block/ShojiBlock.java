@@ -61,7 +61,6 @@ public class ShojiBlock extends BaseEntityBlock {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public MapCodec<ShojiBlock> codec() {
         return CODEC;
     }

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_juice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:blackcurrant_juice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_cassis_orange"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_juice"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:glass_cassis_orange"
+    ]
+  }
+}

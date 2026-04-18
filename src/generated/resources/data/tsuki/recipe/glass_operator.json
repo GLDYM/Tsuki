@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_white_wine"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    },
+    {
+      "item": "tsuki:soda_water"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_operator"
+  }
+}

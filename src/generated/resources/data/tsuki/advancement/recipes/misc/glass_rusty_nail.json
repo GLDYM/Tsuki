@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_rusty_nail"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_whiskey": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:glass_whiskey"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_whiskey"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:glass_rusty_nail"
+    ]
+  }
+}

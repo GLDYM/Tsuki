@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_brandy"
+    },
+    {
+      "item": "tsuki:glass_liqueur"
+    },
+    {
+      "item": "tsuki:lemon_juice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_sidecar"
+  }
+}

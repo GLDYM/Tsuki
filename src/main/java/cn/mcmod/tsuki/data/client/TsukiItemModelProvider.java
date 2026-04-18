@@ -2,13 +2,11 @@ package cn.mcmod.tsuki.data.client;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.FallenLeavesBlock;
-import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.item.BroomItem;
 import cn.mcmod.tsuki.item.FoodRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.ShinaiItem;
 import cn.mcmod.tsuki.item.KatanaItem;
 import cn.mcmod.tsuki.item.SheathItem;
@@ -89,7 +87,6 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         });
         
         BucketItemRegistry.ITEMS.getEntries().forEach(item -> {
-            String name = item.getId().getPath();
             normalItem(item);
         });
         TsukiArmorToolRegistry.ITEMS.getEntries().forEach(item -> {

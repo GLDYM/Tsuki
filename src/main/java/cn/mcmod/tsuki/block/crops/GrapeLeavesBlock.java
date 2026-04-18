@@ -2,7 +2,6 @@ package cn.mcmod.tsuki.block.crops;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;

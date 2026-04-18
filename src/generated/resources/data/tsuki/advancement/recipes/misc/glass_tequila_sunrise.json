@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tequila": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:glass_tequila"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_tequila_sunrise"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tequila"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:glass_tequila_sunrise"
+    ]
+  }
+}

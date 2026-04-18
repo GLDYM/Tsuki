@@ -141,8 +141,8 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
             NonNullList<ItemStack> resultStacks = recipe.getResultItemList();
             boolean fluid_flag = !(recipe.getResultFluid().isEmpty());
             FluidTank outTank = this.outputfluidTank;
-            fluid_flag = (outTank.getFluid().isFluidEqual(recipe.getResultFluid())
-                    && outTank.getSpace() >= recipe.getResultFluid().getAmount())
+            fluid_flag = (FluidStack.isSameFluidSameComponents(outTank.getFluid(), recipe.getResultFluid()) && outTank.getSpace() >= recipe.getResultFluid().getAmount())
+                    && outTank.getSpace() >= recipe.getResultFluid().getAmount()
                     || outTank.isEmpty()
                     || recipe.getResultFluid().isEmpty();
             if (resultStacks.size() <= 0) {

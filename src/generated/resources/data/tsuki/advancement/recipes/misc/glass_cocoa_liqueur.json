@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cocoa_liqueur": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:cocoa_liqueur_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_cocoa_liqueur"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cocoa_liqueur"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:glass_cocoa_liqueur"
+    ]
+  }
+}

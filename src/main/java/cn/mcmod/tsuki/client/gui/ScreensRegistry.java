@@ -2,11 +2,9 @@ package cn.mcmod.tsuki.client.gui;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.container.ContainerRegistry;
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.common.EventBusSubscriber;
 
 @EventBusSubscriber(modid = Tsuki.MODID, value = Dist.CLIENT)

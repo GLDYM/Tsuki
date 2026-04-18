@@ -43,6 +43,7 @@ public enum TsukiNormalItemSet {
     HOP("hop"),
     PEPPERCORN_GREEN("peppercorn_green"),
     PEPPERCORN_RED("peppercorn_red"),
+    MINT("mint"),
     BLACK_PEPPER("black_pepper"),
     WHITE_PEPPER("white_pepper"),
     VANILLA("vanilla"),

@@ -9,7 +9,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
 
-@EventBusSubscriber(modid = Tsuki.MODID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Tsuki.MODID, value = Dist.CLIENT)
 public class TsukiKeyMappings {
     public static final KeyMapping SHEATH_ACTION = new KeyMapping(
             "key.tsuki.sheath_in",

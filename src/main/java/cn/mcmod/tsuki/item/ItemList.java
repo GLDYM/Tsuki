@@ -72,7 +72,7 @@ public final class ItemList {
          "imogara",
          "dried_imogara",
          "imogaranawa_piece",
-         "empty_bottle",
+         "wine_bottle",
          "bento_box",
          "bamboo_sunburnt",
          "bamboo_charcoal"

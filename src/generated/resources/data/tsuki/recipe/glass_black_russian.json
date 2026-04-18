@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_vodka"
+    },
+    {
+      "item": "tsuki:glass_cocoa_liqueur"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_black_russian"
+  }
+}

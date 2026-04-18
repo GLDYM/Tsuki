@@ -74,7 +74,6 @@ public class RiceCropRoot extends BushBlock implements BonemealableBlock, Liquid
         return SHAPE_BY_AGE[state.getValue(this.getAgeProperty())];
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         super.randomTick(state, worldIn, pos, rand);

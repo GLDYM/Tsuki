@@ -12,6 +12,9 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FermenterScreen extends AbstractContainerScreen<FermenterContainer> {
 
     private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/barrel.png");
@@ -28,7 +31,10 @@ public class FermenterScreen extends AbstractContainerScreen<FermenterContainer>
     public void render(GuiGraphics ms, final int mouseX, final int mouseY, float partialTicks) {
         this.renderBackground(ms, mouseX, mouseY, partialTicks);
         super.render(ms, mouseX, mouseY, partialTicks);
-        this.renderTooltip(ms, mouseX, mouseY);
+        boolean renderedFluidTooltip = this.renderFluidTankTooltip(ms, mouseX, mouseY);
+        if (!renderedFluidTooltip) {
+            this.renderTooltip(ms, mouseX, mouseY);
+        }
     }
 
     @Override
@@ -95,5 +101,40 @@ public class FermenterScreen extends AbstractContainerScreen<FermenterContainer>
         }
 
         graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+    private boolean renderFluidTankTooltip(GuiGraphics graphics, int mouseX, int mouseY) {
+        if (this.minecraft == null || this.menu.getCarried().isEmpty() == false) {
+            return false;
+        }
+
+        if (this.isHovering(33, 17, 16, 52, mouseX, mouseY)) {
+            FluidStack fluid = this.menu.blockEntity.getInputFluidTank().getFluid();
+            int amount = this.menu.blockEntity.getInputFluidTank().getFluidAmount();
+            int capacity = this.menu.blockEntity.getInputFluidTank().getCapacity();
+            graphics.renderComponentTooltip(this.font, buildFluidTooltip(fluid, amount, capacity), mouseX, mouseY);
+            return true;
+        }
+
+        if (this.isHovering(125, 17, 16, 52, mouseX, mouseY)) {
+            FluidStack fluid = this.menu.blockEntity.getOutputFluidTank().getFluid();
+            int amount = this.menu.blockEntity.getOutputFluidTank().getFluidAmount();
+            int capacity = this.menu.blockEntity.getOutputFluidTank().getCapacity();
+            graphics.renderComponentTooltip(this.font, buildFluidTooltip(fluid, amount, capacity), mouseX, mouseY);
+            return true;
+        }
+
+        return false;
+    }
+
+    private List<Component> buildFluidTooltip(FluidStack fluidStack, int amount, int capacity) {
+        List<Component> tooltip = new ArrayList<>();
+        if (fluidStack.isEmpty()) {
+            tooltip.add(Component.literal("Empty"));
+        } else {
+            tooltip.add(fluidStack.getHoverName());
+        }
+        tooltip.add(Component.literal(amount + " / " + capacity + " mB").withColor(0x7F7F7F));
+        return tooltip;
     }
 }

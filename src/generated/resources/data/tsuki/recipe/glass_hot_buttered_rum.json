@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_rum"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:milk"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_hot_buttered_rum"
+  }
+}

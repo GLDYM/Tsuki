@@ -8,7 +8,6 @@ import cn.mcmod.tsuki.block.machines.TataraBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceBlock;
@@ -245,24 +244,10 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                                 .build());
         }
 
-        private void ageCrossBlock(Block block, IntegerProperty ageProperty, IntFunction<String> textureByAge) {
-                String blockName = name(block);
-                getVariantBuilder(block).forAllStates(state -> {
-                        int age = state.getValue(ageProperty);
-                        String textureName = textureByAge.apply(age);
-                        return ConfiguredModel.builder()
-                                .modelFile(models().cross(
-                                                blockName + "_stage" + age,
-                                                texture(textureName))
-                                                .renderType("cutout"))
-                                .build();
-                });
-        }
-
         private void facingSlabBlock(Block slab,
-                                                                 ResourceLocation side,
-                                                                 ResourceLocation top,
-                                                                 ResourceLocation bottom) {
+            ResourceLocation side,
+            ResourceLocation top,
+            ResourceLocation bottom) {
                 simpleBlock(slab, models().slab(name(slab), side, bottom, top));
                 simpleBlockItem(slab, models().slab(name(slab), side, bottom, top));
         }

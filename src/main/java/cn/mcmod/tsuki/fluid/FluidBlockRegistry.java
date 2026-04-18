@@ -3,7 +3,6 @@ package cn.mcmod.tsuki.fluid;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import cn.mcmod.tsuki.Tsuki;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.neoforged.neoforge.registries.DeferredBlock;

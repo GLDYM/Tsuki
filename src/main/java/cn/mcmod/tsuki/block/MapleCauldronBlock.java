@@ -36,7 +36,6 @@ import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 
-@SuppressWarnings("deprecation")
 public class MapleCauldronBlock extends BaseEntityBlock {
     public static final MapCodec<MapleCauldronBlock> CODEC = simpleCodec(MapleCauldronBlock::new);
     public static final IntegerProperty LEVEL = IntegerProperty.create("level", 0, 7);

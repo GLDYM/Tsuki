@@ -9,6 +9,7 @@ import net.neoforged.neoforge.common.Tags;
 public class TsukiItemTags {
     public static final TagKey<Item> OFFHAND_EQUIPMENT = TagUtils.modItemTag(Tsuki.MODID,"offhand_equipment");
     public static final TagKey<Item> DRINK_CONTAINERS = TagUtils.modItemTag(Tsuki.MODID, "drink_containers");
+    public static final TagKey<Item> WINE_BOTTLES = TagUtils.modItemTag(Tsuki.MODID, "wine_bottles");
     public static final TagKey<Item> SOUPS = TagUtils.modItemTag(Tsuki.MODID,"soups");
     public static final TagKey<Item> KAWARA_BLOCK = TagUtils.modItemTag(Tsuki.MODID, "kawara_block");
     public static final TagKey<Item> STRIPPED_LOG = TagUtils.forgeItemTag("stripped_log");

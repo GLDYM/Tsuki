@@ -25,7 +25,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-@SuppressWarnings("deprecation")
 public class MapleSpileBlock extends HorizontalDirectionalBlock {
     public static final MapCodec<MapleSpileBlock> CODEC = simpleCodec(MapleSpileBlock::new);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;

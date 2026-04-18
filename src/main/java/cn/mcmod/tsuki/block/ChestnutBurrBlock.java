@@ -1,7 +1,6 @@
 package cn.mcmod.tsuki.block;
 
 import com.mojang.serialization.MapCodec;
-import cn.mcmod.tsuki.block.BlockItemRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

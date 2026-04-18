@@ -948,6 +948,72 @@ public enum TsukiFoodSet {
          .heatCapacity(1.0F)
          .cookingTemp(480.0F)
          .build()
+   ),
+   LEMON(
+    FoodInfo.builder()
+        .name("lemon")
+        .amountAndCalories(1, 0.1F)
+        .water(5.0F)
+        .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
+        .decayModifier(3.5F)
+        .heatCapacity(1.0F)
+        .cookingTemp(480.0F)
+        .build()
+   ),
+   LEMON_JUICE(
+    FoodInfo.builder()
+        .name("lemon_juice")
+        .amountAndCalories(1, 0.1F)
+        .water(40.0F)
+        .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
+        .decayModifier(5.0F)
+        .heatCapacity(0.0F)
+        .cookingTemp(0.0F)
+        .build()
+   ),
+   SODA_WATER(
+      FoodInfo.builder()
+        .name("soda_water")
+        .amountAndCalories(1, 0.1F)
+        .water(50.0F)
+        .nutrients(0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
+        .decayModifier(5.0F)
+        .heatCapacity(0.0F)
+        .cookingTemp(0.0F)
+        .build()
+   ),
+   BLACKCURRANT_JUICE(
+      FoodInfo.builder()
+        .name("blackcurrant_juice")
+        .amountAndCalories(1, 0.1F)
+        .water(40.0F)
+        .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
+        .decayModifier(5.0F)
+        .heatCapacity(0.0F)
+        .cookingTemp(0.0F)
+        .build()
+   ),
+   ORANGE_JUICE(
+      FoodInfo.builder()
+        .name("orange_juice")
+        .amountAndCalories(1, 0.1F)
+        .water(40.0F)
+        .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
+        .decayModifier(5.0F)
+        .heatCapacity(0.0F)
+        .cookingTemp(0.0F)
+        .build()
+   ),
+   ALMOND(
+      FoodInfo.builder()
+        .name("almond")
+        .amountAndCalories(1, 0.1F)
+        .water(0.0F)
+        .nutrients(2.0F, 0.0F, 0.0F, 0.0F, 0.0F)
+        .decayModifier(0.0F)
+        .heatCapacity(1.0F)
+        .cookingTemp(0.0F)
+        .build() 
    );
 
     private final FoodInfo info;

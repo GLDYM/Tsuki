@@ -12,7 +12,6 @@ public class TatamiSlabBlock extends FacingSlab {
         super(prop.randomTicks());
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         super.randomTick(state, worldIn, pos, rand);

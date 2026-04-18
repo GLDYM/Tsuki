@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_red_wine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:glass_red_wine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_sangria"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_red_wine"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:glass_sangria"
+    ]
+  }
+}

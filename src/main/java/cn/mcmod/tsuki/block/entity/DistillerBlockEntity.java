@@ -143,7 +143,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
             boolean fluid_flag = !(recipe.getResultFluid().isEmpty());
             FluidTank outTank = this.outputfluidTank;
             fluid_flag = outTank.isEmpty() || recipe.getResultFluid().isEmpty() ||
-                    (outTank.getFluid().isFluidEqual(recipe.getResultFluid()) && outTank.getSpace() >= recipe.getResultFluid().getAmount());
+                    (FluidStack.isSameFluidSameComponents(outTank.getFluid(), recipe.getResultFluid()) && outTank.getSpace() >= recipe.getResultFluid().getAmount());
             boolean flag = true;
             for (int i = 3; i < resultStacks.size() + 3; i++) {
                 if (!flag)

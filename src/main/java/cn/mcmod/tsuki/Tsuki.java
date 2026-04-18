@@ -48,20 +48,24 @@ public class Tsuki {
         modEventBus.addListener(EntityRegistry::registerAttributes);
         modEventBus.addListener(EntityRegistry::registerSpawnPlacements);
 
+        FluidRegistry.FLUIDS.register(modEventBus);
+        FluidBlockRegistry.BLOCKS.register(modEventBus);
+        FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
+
         BlockRegistry.BLOCKS.register(modEventBus);
         BlockItemRegistry.ITEMS.register(modEventBus);
         BlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
+
         EntityRegistry.ENTITY_TYPES.register(modEventBus);
-        // TsukiDataComponentRegistry.COMPONENTS.register(modEventBus);
+
         ItemRegistry.ITEMS.register(modEventBus);
         DrinkRegistry.ITEMS.register(modEventBus);
         FoodRegistry.ITEMS.register(modEventBus);
         TsukiArmorToolRegistry.ITEMS.register(modEventBus);
         TsukiArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
-        FluidRegistry.FLUIDS.register(modEventBus);
-        FluidBlockRegistry.BLOCKS.register(modEventBus);
-        FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
+
         BucketItemRegistry.ITEMS.register(modEventBus);
+        
         SoundEventRegistry.SOUND_EVENTS.register(modEventBus);
         // JukeboxSongRegistry.JUKEBOX_SONGS.register(modEventBus);
         JukeboxSongRegistry.register();

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_vodka"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_screwdriver"
+  }
+}
