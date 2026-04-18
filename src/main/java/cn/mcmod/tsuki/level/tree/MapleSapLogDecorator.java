@@ -11,9 +11,9 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class MapleSapLogDecorator extends TreeDecorator {
-    public static final MapCodec<MapleSapLogDecorator> CODEC = RecordCodecBuilder.mapCodec(instance ->
-            instance.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(d -> d.probability))
-                    .apply(instance, MapleSapLogDecorator::new));
+    public static final MapCodec<MapleSapLogDecorator> CODEC = RecordCodecBuilder.mapCodec(instance -> instance
+            .group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(d -> d.probability))
+            .apply(instance, MapleSapLogDecorator::new));
 
     private final float probability;
 

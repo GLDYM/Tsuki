@@ -12,9 +12,9 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class MapleFallenLeavesDecorator extends TreeDecorator {
-    public static final MapCodec<MapleFallenLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec(instance ->
-            instance.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("fallen_block").forGetter(d -> d.fallenBlock))
-                    .apply(instance, MapleFallenLeavesDecorator::new));
+    public static final MapCodec<MapleFallenLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec(instance -> instance
+            .group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("fallen_block").forGetter(d -> d.fallenBlock))
+            .apply(instance, MapleFallenLeavesDecorator::new));
 
     private static final int RADIUS = 4;
     private static final int Y_TOP_OFFSET = 2;

@@ -19,9 +19,8 @@ public class SamuraiRenderer extends GeoArmorRenderer<SamuraiItem> {
 
     public SamuraiRenderer(String base) {
         super(new SamuraiModel<>(
-            base,
-            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/samurai")
-        ));
+                base,
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/samurai")));
     }
 
     @Nullable
@@ -69,13 +68,14 @@ public class SamuraiRenderer extends GeoArmorRenderer<SamuraiItem> {
                 setBoneVisible(this.rightBoot, model.rightLeg.visible);
                 setBoneVisible(this.leftBoot, model.leftLeg.visible);
             }
-            default -> {}
+            default -> {
+            }
         }
     }
 
     public static class SamuraiModel<T extends GeoAnimatable> extends DefaultedItemGeoModel<T> {
         private final String base;
-        
+
         public SamuraiModel(String base, ResourceLocation modelLocation) {
             super(modelLocation);
             this.base = base;
@@ -84,9 +84,8 @@ public class SamuraiRenderer extends GeoArmorRenderer<SamuraiItem> {
         @Override
         public ResourceLocation getTextureResource(T animatable) {
             return ResourceLocation.fromNamespaceAndPath(
-                Tsuki.MODID,
-                "textures/item/armor/" + base + ".png"
-            );
+                    Tsuki.MODID,
+                    "textures/item/armor/" + base + ".png");
         }
     }
 

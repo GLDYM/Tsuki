@@ -15,12 +15,13 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 public class ChoppingBoardRender implements BlockEntityRenderer<ChoppingBoardBlockEntity> {
-    
+
     public ChoppingBoardRender(BlockEntityRendererProvider.Context pContext) {
     }
-    
+
     @Override
-    public void render(ChoppingBoardBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer,
+    public void render(ChoppingBoardBlockEntity blockEntity, float partialTicks, PoseStack poseStack,
+            MultiBufferSource buffer,
             int combinedLight, int combinedOverlay) {
         Direction direction = blockEntity.getBlockState().getValue(ChoppingBoardBlock.FACING).getOpposite();
         ItemStack boardStack = blockEntity.getStoredItem();

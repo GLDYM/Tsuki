@@ -10,7 +10,8 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class StoneMortarScreen extends AbstractContainerScreen<StoneMortarContainer> {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/stonemortar.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+            "textures/gui/stonemortar.png");
 
     public StoneMortarScreen(StoneMortarContainer screenContainer, Inventory inv, Component titleIn) {
         super(screenContainer, inv, titleIn);
@@ -39,7 +40,7 @@ public class StoneMortarScreen extends AbstractContainerScreen<StoneMortarContai
         if (this.minecraft == null) {
             return;
         }
-//        RenderUtils.setup(BACKGROUND_TEXTURE);
+        // RenderUtils.setup(BACKGROUND_TEXTURE);
         ms.blit(BACKGROUND_TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
         int n = this.menu.getRolling();
         ms.blit(BACKGROUND_TEXTURE, this.leftPos + 81, this.topPos + 33, 176, n * 16, 14, 16);

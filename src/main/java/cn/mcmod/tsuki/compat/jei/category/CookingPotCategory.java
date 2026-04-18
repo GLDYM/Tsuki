@@ -44,7 +44,8 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
         background = helper.createDrawable(backgroundImage, 13, 16, 151, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.COOKING_POT.get()));
         heatIndicator = helper.createDrawable(backgroundImage, 176, 0, 17, 15);
-        arrow = helper.drawableBuilder(backgroundImage, 176, 15, 34, 17).buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
+        arrow = helper.drawableBuilder(backgroundImage, 176, 15, 34, 17).buildAnimated(200,
+                IDrawableAnimated.StartDirection.LEFT, false);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
     public IDrawable getIcon() {
         return icon;
     }
-    
+
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, CookingPotRecipe recipe, IFocusGroup focuses) {
         NonNullList<Ingredient> recipeIngredients = recipe.getIngredients();
@@ -76,14 +77,14 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
                 int inputIndex = row * 3 + column;
                 if (inputIndex < recipeIngredients.size()) {
                     builder.addSlot(RecipeIngredientRole.INPUT, 23 + column * borderSlotSize, 1 + row * borderSlotSize)
-                    .addIngredients(recipeIngredients.get(inputIndex));
+                            .addIngredients(recipeIngredients.get(inputIndex));
                 }
             }
         }
-        if(recipe.getRequiredFluid() != FluidIngredient.EMPTY)
+        if (recipe.getRequiredFluid() != FluidIngredient.EMPTY)
             builder.addSlot(RecipeIngredientRole.CATALYST, 1, 1)
-            .setFluidRenderer(CookingPotBlockEntity.TANK_CAPACITY, true, 16, 52)
-            .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
+                    .setFluidRenderer(CookingPotBlockEntity.TANK_CAPACITY, true, 16, 52)
+                    .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
         Minecraft minecraft = Minecraft.getInstance();
         ItemStack resultStack = recipe.getResultItem(minecraft.level.registryAccess());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 127, 11).addItemStack(resultStack);
@@ -97,13 +98,15 @@ public class CookingPotCategory implements IRecipeCategory<CookingPotRecipe> {
     }
 
     @Override
-    public void draw(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
+            double mouseY) {
         arrow.draw(guiGraphics, 81, 12);
         heatIndicator.draw(guiGraphics, 86, 0);
     }
 
     @Override
-    public List<Component> getTooltipStrings(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+    public List<Component> getTooltipStrings(CookingPotRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX,
+            double mouseY) {
         if (isCursorInsideBounds(81, 0, 34, 29, mouseX, mouseY)) {
             List<Component> tooltip = new ArrayList<>();
 

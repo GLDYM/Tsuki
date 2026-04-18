@@ -17,7 +17,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class RiceCrop extends CropBlock {
     public static final IntegerProperty RICE_AGE = BlockStateProperties.AGE_7;
-    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] { Block.box(0.0D, -1.0D, 0.0D, 16.0D, 1.0D, 16.0D),
+    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
+            Block.box(0.0D, -1.0D, 0.0D, 16.0D, 1.0D, 16.0D),
             Block.box(0.0D, -1.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 5.0D, 16.0D),
             Block.box(0.0D, -1.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 9.0D, 16.0D),
             Block.box(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 13.0D, 16.0D),

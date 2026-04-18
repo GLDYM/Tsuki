@@ -44,7 +44,8 @@ public class KatanaItem extends SwordItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+        InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND
+                : InteractionHand.MAIN_HAND;
         ItemStack otherStack = player.getItemInHand(otherHand);
         if (otherStack.getItem() instanceof KatanaItem) {
             return InteractionResultHolder.fail(stack);

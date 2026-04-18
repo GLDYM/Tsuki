@@ -32,10 +32,10 @@ public class HaoriItem extends ArmorItem implements GeoItem {
             private GeoArmorRenderer<?> renderer;
 
             @Override
-            public <T extends LivingEntity> HumanoidModel<T> getGeoArmorRenderer(T livingEntity, 
-                                                                   ItemStack itemStack, 
-                                                                   EquipmentSlot equipmentSlot, 
-                                                                   HumanoidModel<T> original) {
+            public <T extends LivingEntity> HumanoidModel<T> getGeoArmorRenderer(T livingEntity,
+                    ItemStack itemStack,
+                    EquipmentSlot equipmentSlot,
+                    HumanoidModel<T> original) {
                 if (this.renderer == null)
                     this.renderer = new HaoriRenderer(HaoriItem.this.base);
                 return this.renderer;

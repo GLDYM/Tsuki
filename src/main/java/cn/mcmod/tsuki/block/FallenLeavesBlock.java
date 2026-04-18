@@ -45,7 +45,8 @@ public class FallenLeavesBlock extends BushBlock {
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
             LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        return state.canSurvive(level, pos) ? super.updateShape(state, direction, neighborState, level, pos, neighborPos)
+        return state.canSurvive(level, pos)
+                ? super.updateShape(state, direction, neighborState, level, pos, neighborPos)
                 : Blocks.AIR.defaultBlockState();
     }
 

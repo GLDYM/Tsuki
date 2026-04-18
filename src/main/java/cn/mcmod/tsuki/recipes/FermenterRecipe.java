@@ -35,7 +35,6 @@ public class FermenterRecipe extends AbstractRecipe {
     @SerializedName("result_fluid")
     public FluidStack outputFluid;
 
-
     @Override
     public NonNullList<Ingredient> getIngredients() {
         return this.inputItems;
@@ -51,7 +50,7 @@ public class FermenterRecipe extends AbstractRecipe {
     }
 
     public boolean matchesWithFluid(FluidStack fluid, RecipeWrapper inv, Level worldIn) {
-        if(this.getRequiredFluid() == FluidIngredient.EMPTY)
+        if (this.getRequiredFluid() == FluidIngredient.EMPTY)
             return fluid.isEmpty() && matches(inv, worldIn);
         return this.getRequiredFluid().test(fluid) && matches(inv, worldIn);
     }
@@ -72,7 +71,7 @@ public class FermenterRecipe extends AbstractRecipe {
 
     @Override
     public ItemStack assemble(RecipeWrapper inv, HolderLookup.Provider registries) {
-        if(this.outputItems.size()>0)
+        if (this.outputItems.size() > 0)
             return this.outputItems.get(0).copy();
         return ItemStack.EMPTY;
     }
@@ -84,15 +83,15 @@ public class FermenterRecipe extends AbstractRecipe {
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries) {
-        if(this.outputItems.size()>0)
+        if (this.outputItems.size() > 0)
             return this.outputItems.get(0);
         return ItemStack.EMPTY;
     }
-    
+
     public NonNullList<ItemStack> getResultItemList() {
         return this.outputItems;
     }
-    
+
     public FluidStack getResultFluid() {
         return outputFluid;
     }
@@ -106,6 +105,5 @@ public class FermenterRecipe extends AbstractRecipe {
     public RecipeType<?> getType() {
         return RecipeTypeRegistry.FERMENTER_RECIPE_TYPE.get();
     }
-    
-}
 
+}

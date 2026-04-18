@@ -37,7 +37,7 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
     private final ItemStackHandler inventory;
     private final IItemHandler inputHandler;
     private ResourceLocation lastRecipeID;
-    
+
     private int recipeTime;
     private int recipeTimeTotal;
 
@@ -62,7 +62,7 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         compound.putInt("RecipeTime", this.recipeTime);
         compound.putInt("RecipeTimeTotal", this.recipeTimeTotal);
     }
-    
+
     public int getRecipeTime() {
         return recipeTime;
     }
@@ -75,7 +75,7 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
 
         matchingRecipe.ifPresent(recipe -> {
             this.recipeTimeTotal = recipe.getRecipeTime();
-            
+
             List<ItemStack> results = recipe.rollByproducts(level.random, 0);
             for (ItemStack resultStack : results) {
                 Direction direction = getBlockState().getValue(ChoppingBoardBlock.FACING).getCounterClockWise();
@@ -95,10 +95,10 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
                 }
             }
             playProcessingSound(toolStack, getStoredItem());
-            if(this.recipeTime < recipeTimeTotal - 1) {
+            if (this.recipeTime < recipeTimeTotal - 1) {
                 this.recipeTime++;
             } else {
-                if(!setResult(recipe))
+                if (!setResult(recipe))
                     removeItem();
             }
         });
@@ -167,19 +167,20 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         }
         return false;
     }
-    
+
     public boolean setResult(ChoppingRecipe recipe) {
         if (level == null) {
             return false;
         }
         ItemStack resultItem = recipe.getResultItem(level.registryAccess());
         if (!resultItem.isEmpty()) {
-            if(resultItem.getCount() > 1) {
-                for(int i=1;i < resultItem.getCount(); i++) {
+            if (resultItem.getCount() > 1) {
+                for (int i = 1; i < resultItem.getCount(); i++) {
                     Direction direction = getBlockState().getValue(ChoppingBoardBlock.FACING).getCounterClockWise();
                     LevelUtils.spawnItemEntity(level, resultItem.copy().split(1),
                             worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2), worldPosition.getY() + 0.2,
-                            worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2), direction.getStepX() * 0.2F, 0.0F,
+                            worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2), direction.getStepX() * 0.2F,
+                            0.0F,
                             direction.getStepZ() * 0.2F);
                 }
             }
@@ -215,7 +216,7 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
     public IItemHandler getItemHandler(@Nullable Direction side) {
         return inputHandler;
     }
-    
+
     @Override
     protected void inventoryChanged() {
         this.recipeTime = 0;
@@ -236,4 +237,3 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         };
     }
 }
-

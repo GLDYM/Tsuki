@@ -27,5 +27,3 @@ public class LayerRegistry {
         return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path), part);
     }
 }
-
-

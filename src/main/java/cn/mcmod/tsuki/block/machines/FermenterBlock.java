@@ -111,8 +111,7 @@ public class FermenterBlock extends BaseEntityBlock {
             FermenterBlockEntity blockEntity,
             Player player,
             InteractionHand hand,
-            Level level
-    ) {
+            Level level) {
         FluidTank outputTank = blockEntity.getOutputFluidTank();
         FluidTank inputTank = blockEntity.getInputFluidTank();
 
@@ -128,7 +127,7 @@ public class FermenterBlock extends BaseEntityBlock {
             } else {
                 return false;
             }
-            
+
             TsukiWineBottleSet set = TsukiWineBottleSet.fromFluid(outFluid);
             if (set == null) {
                 return false;
@@ -136,7 +135,8 @@ public class FermenterBlock extends BaseEntityBlock {
             ItemStack resultBottle = new ItemStack(DrinkRegistry.WINE_BOTTLES.get(set).get());
             int extractUnits = Math.min(resultBottle.getMaxDamage(), maxUnit);
             int extractAmount = extractUnits * WINE_BOTTLE_TRANSFER_MB;
-            // Each 20mB equals one durability unit; extract as much as possible in one interaction.
+            // Each 20mB equals one durability unit; extract as much as possible in one
+            // interaction.
             if (resultBottle.isDamageableItem()) {
                 resultBottle.setDamageValue(resultBottle.getMaxDamage() - extractUnits);
             }
@@ -163,7 +163,8 @@ public class FermenterBlock extends BaseEntityBlock {
         if (heldStack.getDamageValue() >= heldStack.getMaxDamage()) {
             return false;
         }
-        int inputUnit = Math.min(heldStack.getMaxDamage() - heldStack.getDamageValue(), (inputTank.getCapacity() - inputTank.getFluidAmount()) / WINE_BOTTLE_TRANSFER_MB);
+        int inputUnit = Math.min(heldStack.getMaxDamage() - heldStack.getDamageValue(),
+                (inputTank.getCapacity() - inputTank.getFluidAmount()) / WINE_BOTTLE_TRANSFER_MB);
         FluidStack toFill = new FluidStack(wineBottleItem.getFluid(), WINE_BOTTLE_TRANSFER_MB * inputUnit);
         if (inputTank.fill(toFill, FluidAction.SIMULATE) < WINE_BOTTLE_TRANSFER_MB * inputUnit) {
             return false;

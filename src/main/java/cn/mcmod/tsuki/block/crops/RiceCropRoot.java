@@ -37,7 +37,8 @@ public class RiceCropRoot extends BushBlock implements BonemealableBlock, Liquid
     public static final MapCodec<RiceCropRoot> CODEC = simpleCodec(RiceCropRoot::new);
     public static final IntegerProperty AGE = BlockStateProperties.AGE_7;
     public static final BooleanProperty SUPPORTING = BooleanProperty.create("supporting");
-    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] { Block.box(0.0D, -1.0D, 0.0D, 16.0D, 1.0D, 16.0D),
+    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
+            Block.box(0.0D, -1.0D, 0.0D, 16.0D, 1.0D, 16.0D),
             Block.box(0.0D, -1.0D, 0.0D, 16.0D, 3.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 5.0D, 16.0D),
             Block.box(0.0D, -1.0D, 0.0D, 16.0D, 7.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 9.0D, 16.0D),
             Block.box(0.0D, -1.0D, 0.0D, 16.0D, 11.0D, 16.0D), Block.box(0.0D, -1.0D, 0.0D, 16.0D, 13.0D, 16.0D),
@@ -178,7 +179,8 @@ public class RiceCropRoot extends BushBlock implements BonemealableBlock, Liquid
     }
 
     @Override
-    public boolean canPlaceLiquid(@Nullable Player player, BlockGetter worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
+    public boolean canPlaceLiquid(@Nullable Player player, BlockGetter worldIn, BlockPos pos, BlockState state,
+            Fluid fluidIn) {
         return false;
     }
 

@@ -35,13 +35,15 @@ public class StoneMortarCategory implements IRecipeCategory<StoneMortarRecipe> {
 
     public StoneMortarCategory(IGuiHelper helper) {
         title = Component.translatable("tsuki.jei.stone_mortar");
-        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/stonemortar.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+                "textures/gui/stonemortar.png");
         background = helper.createDrawable(backgroundImage, 39, 13, 87, 62);
-        icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.STONE_MORTAR.get()));
+        icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
+                new ItemStack(BlockRegistry.STONE_MORTAR.get()));
         mortar = helper.createDrawable(backgroundImage, 176, 0, 14, 16);
         basket = helper.createDrawable(backgroundImage, 190, 18, 16, 6);
     }
-    
+
     @Override
     public RecipeType<StoneMortarRecipe> getRecipeType() {
         return JEIPlugin.STONE_MORTAR_JEI_TYPE;
@@ -61,34 +63,36 @@ public class StoneMortarCategory implements IRecipeCategory<StoneMortarRecipe> {
     public IDrawable getIcon() {
         return icon;
     }
-    
+
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, StoneMortarRecipe recipe, IFocusGroup focuses) {
-      NonNullList<Ingredient> recipeIngredients = recipe.getIngredients();
-      int borderSlotSize = 18;
-      for (int row = 0; row < 2; ++row) {
-          for (int column = 0; column < 2; ++column) {
-              int inputIndex = row * 2 + column;
-              if (inputIndex < recipeIngredients.size()) {
-                  builder.addSlot(RecipeIngredientRole.INPUT, 1+column * borderSlotSize, 14 + row * borderSlotSize)
-                  .addIngredients(recipeIngredients.get(inputIndex));
-              }
-          }
-      }
-      builder.addSlot(RecipeIngredientRole.OUTPUT, 66, 5).addItemStack(recipe.getResultItemList().get(0));
-      if (recipe.getResultItemList().size() > 1) {
-          builder.addSlot(RecipeIngredientRole.OUTPUT, 66, 41).addItemStack(recipe.getResultItemList().get(1));
-      }
+        NonNullList<Ingredient> recipeIngredients = recipe.getIngredients();
+        int borderSlotSize = 18;
+        for (int row = 0; row < 2; ++row) {
+            for (int column = 0; column < 2; ++column) {
+                int inputIndex = row * 2 + column;
+                if (inputIndex < recipeIngredients.size()) {
+                    builder.addSlot(RecipeIngredientRole.INPUT, 1 + column * borderSlotSize, 14 + row * borderSlotSize)
+                            .addIngredients(recipeIngredients.get(inputIndex));
+                }
+            }
+        }
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 66, 5).addItemStack(recipe.getResultItemList().get(0));
+        if (recipe.getResultItemList().size() > 1) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 66, 41).addItemStack(recipe.getResultItemList().get(1));
+        }
     }
 
     @Override
-    public void draw(StoneMortarRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(StoneMortarRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
+            double mouseY) {
         mortar.draw(guiGraphics, 42, 20);
         basket.draw(guiGraphics, 41, 36);
     }
 
     @Override
-    public List<Component> getTooltipStrings(StoneMortarRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+    public List<Component> getTooltipStrings(StoneMortarRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX,
+            double mouseY) {
         if (isCursorInsideBounds(40, 19, 18, 24, mouseX, mouseY)) {
             List<Component> tooltip = new ArrayList<>();
 

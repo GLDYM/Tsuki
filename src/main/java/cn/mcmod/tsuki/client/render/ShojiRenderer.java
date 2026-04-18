@@ -92,35 +92,59 @@ public class ShojiRenderer implements BlockEntityRenderer<ShojiBlockEntity> {
         Matrix4f matrix = poseStack.last().pose();
         Matrix3f normal = poseStack.last().normal();
 
-        addVertex(builder, matrix, normal, panelLeft, panelBottom, halfThick, FU0, FV1, 0, 0, 1, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelLeft, panelTop, halfThick, FU0, FV0, 0, 0, 1, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelTop, halfThick, FU1, FV0, 0, 0, 1, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelBottom, halfThick, FU1, FV1, 0, 0, 1, packedLight, packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelBottom, halfThick, FU0, FV1, 0, 0, 1, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelTop, halfThick, FU0, FV0, 0, 0, 1, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelTop, halfThick, FU1, FV0, 0, 0, 1, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelBottom, halfThick, FU1, FV1, 0, 0, 1, packedLight,
+                packedOverlay);
 
-        addVertex(builder, matrix, normal, panelRight, panelBottom, -halfThick, BU0, BV1, 0, 0, -1, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelTop, -halfThick, BU0, BV0, 0, 0, -1, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelLeft, panelTop, -halfThick, BU1, BV0, 0, 0, -1, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelLeft, panelBottom, -halfThick, BU1, BV1, 0, 0, -1, packedLight, packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelBottom, -halfThick, BU0, BV1, 0, 0, -1, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelTop, -halfThick, BU0, BV0, 0, 0, -1, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelTop, -halfThick, BU1, BV0, 0, 0, -1, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelBottom, -halfThick, BU1, BV1, 0, 0, -1, packedLight,
+                packedOverlay);
 
-        addVertex(builder, matrix, normal, panelLeft, panelTop, -halfThick, TU0, TV0, 0, 1, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelLeft, panelTop, halfThick, TU0, TV1, 0, 1, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelTop, halfThick, TU1, TV1, 0, 1, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelTop, -halfThick, TU1, TV0, 0, 1, 0, packedLight, packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelTop, -halfThick, TU0, TV0, 0, 1, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelTop, halfThick, TU0, TV1, 0, 1, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelTop, halfThick, TU1, TV1, 0, 1, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelTop, -halfThick, TU1, TV0, 0, 1, 0, packedLight,
+                packedOverlay);
 
-        addVertex(builder, matrix, normal, panelLeft, panelBottom, halfThick, DU0, DV0, 0, -1, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelLeft, panelBottom, -halfThick, DU0, DV1, 0, -1, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelBottom, -halfThick, DU1, DV1, 0, -1, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelBottom, halfThick, DU1, DV0, 0, -1, 0, packedLight, packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelBottom, halfThick, DU0, DV0, 0, -1, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelBottom, -halfThick, DU0, DV1, 0, -1, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelBottom, -halfThick, DU1, DV1, 0, -1, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelBottom, halfThick, DU1, DV0, 0, -1, 0, packedLight,
+                packedOverlay);
 
-        addVertex(builder, matrix, normal, panelLeft, panelBottom, -halfThick, LU0, LV1, -1, 0, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelLeft, panelTop, -halfThick, LU0, LV0, -1, 0, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelLeft, panelTop, halfThick, LU1, LV0, -1, 0, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelLeft, panelBottom, halfThick, LU1, LV1, -1, 0, 0, packedLight, packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelBottom, -halfThick, LU0, LV1, -1, 0, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelTop, -halfThick, LU0, LV0, -1, 0, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelTop, halfThick, LU1, LV0, -1, 0, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelLeft, panelBottom, halfThick, LU1, LV1, -1, 0, 0, packedLight,
+                packedOverlay);
 
-        addVertex(builder, matrix, normal, panelRight, panelBottom, halfThick, RU0, RV1, 1, 0, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelTop, halfThick, RU0, RV0, 1, 0, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelTop, -halfThick, RU1, RV0, 1, 0, 0, packedLight, packedOverlay);
-        addVertex(builder, matrix, normal, panelRight, panelBottom, -halfThick, RU1, RV1, 1, 0, 0, packedLight, packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelBottom, halfThick, RU0, RV1, 1, 0, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelTop, halfThick, RU0, RV0, 1, 0, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelTop, -halfThick, RU1, RV0, 1, 0, 0, packedLight,
+                packedOverlay);
+        addVertex(builder, matrix, normal, panelRight, panelBottom, -halfThick, RU1, RV1, 1, 0, 0, packedLight,
+                packedOverlay);
 
         poseStack.popPose();
     }

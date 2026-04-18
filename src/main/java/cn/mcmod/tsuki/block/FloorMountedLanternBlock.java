@@ -37,7 +37,8 @@ public class FloorMountedLanternBlock extends CustomLanternBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState placement = super.getStateForPlacement(context);
-        return placement != null && placement.canSurvive(context.getLevel(), context.getClickedPos()) ? placement : null;
+        return placement != null && placement.canSurvive(context.getLevel(), context.getClickedPos()) ? placement
+                : null;
     }
 
     @Override

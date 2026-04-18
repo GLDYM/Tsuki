@@ -60,4 +60,3 @@ public class StoneMortarResultSlot extends SlotItemHandler {
         this.removeCount = 0;
     }
 }
-

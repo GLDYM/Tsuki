@@ -36,5 +36,3 @@ public class BurnTimeEvent {
             event.setBurnTime(burnTime);
     }
 }
-
-

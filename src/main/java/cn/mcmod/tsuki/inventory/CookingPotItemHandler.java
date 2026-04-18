@@ -81,4 +81,3 @@ public class CookingPotItemHandler implements IItemHandler {
         return itemHandler.getSlotLimit(mapSlot(slot));
     }
 }
-

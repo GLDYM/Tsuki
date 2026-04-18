@@ -95,10 +95,8 @@ public class BambooShoot extends BushBlock implements BonemealableBlock {
                     .setValue(BambooStalkBlock.LEAVES, BambooLeaves.LARGE));
         }
         worldIn.setBlockAndUpdate(pos.above(),
-                BlockRegistry.BAMBOO_PLANT.get().defaultBlockState().setValue(BambooStalkBlock.LEAVES, BambooLeaves.SMALL));
+                BlockRegistry.BAMBOO_PLANT.get().defaultBlockState().setValue(BambooStalkBlock.LEAVES,
+                        BambooLeaves.SMALL));
         worldIn.setBlockAndUpdate(pos, BlockRegistry.BAMBOO_PLANT.get().defaultBlockState());
     }
 }
-
-
-

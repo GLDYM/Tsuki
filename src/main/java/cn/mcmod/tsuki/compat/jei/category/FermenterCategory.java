@@ -39,11 +39,14 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
 
     public FermenterCategory(IGuiHelper helper) {
         title = Component.translatable("tsuki.jei.fermenting");
-        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/barrel.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+                "textures/gui/barrel.png");
         background = helper.createDrawable(backgroundImage, 32, 16, 110, 54);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.FERMENTER.get()));
-        arrow = helper.drawableBuilder(backgroundImage, 176, 0, 24, 17).buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
-        bubbles = helper.drawableBuilder(backgroundImage, 176, 35, 18, 18).buildAnimated(18, IDrawableAnimated.StartDirection.BOTTOM, false);
+        arrow = helper.drawableBuilder(backgroundImage, 176, 0, 24, 17).buildAnimated(200,
+                IDrawableAnimated.StartDirection.LEFT, false);
+        bubbles = helper.drawableBuilder(backgroundImage, 176, 35, 18, 18).buildAnimated(18,
+                IDrawableAnimated.StartDirection.BOTTOM, false);
     }
 
     @Override
@@ -65,44 +68,46 @@ public class FermenterCategory implements IRecipeCategory<FermenterRecipe> {
     public IDrawable getIcon() {
         return icon;
     }
-    
+
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, FermenterRecipe recipe, IFocusGroup focuses) {
         NonNullList<Ingredient> recipeIngredients = recipe.getIngredients();
         int borderSlotSize = 18;
         for (int row = 0; row < 3; ++row) {
-                int inputIndex = row;
-                if (inputIndex < recipeIngredients.size()) {
-                    builder.addSlot(RecipeIngredientRole.INPUT, 23, 1 + row * borderSlotSize)
-                    .addIngredients(recipeIngredients.get(inputIndex));
-                }
+            int inputIndex = row;
+            if (inputIndex < recipeIngredients.size()) {
+                builder.addSlot(RecipeIngredientRole.INPUT, 23, 1 + row * borderSlotSize)
+                        .addIngredients(recipeIngredients.get(inputIndex));
+            }
         }
-        if(recipe.getRequiredFluid() != FluidIngredient.EMPTY)
+        if (recipe.getRequiredFluid() != FluidIngredient.EMPTY)
             builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
-            .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
-            .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
-        
+                    .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
+                    .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
+
         for (int row = 0; row < 3; ++row) {
             int inputIndex = row;
             if (inputIndex < recipe.getResultItemList().size()) {
                 builder.addSlot(RecipeIngredientRole.OUTPUT, 71, 1 + row * borderSlotSize)
-                .addItemStack(recipe.getResultItemList().get(inputIndex));
+                        .addItemStack(recipe.getResultItemList().get(inputIndex));
             }
         }
-        if(!recipe.getResultFluid().isEmpty())
+        if (!recipe.getResultFluid().isEmpty())
             builder.addSlot(RecipeIngredientRole.OUTPUT, 93, 1)
-            .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
-            .addIngredient(NeoForgeTypes.FLUID_STACK, recipe.getResultFluid());
+                    .setFluidRenderer(FermenterBlockEntity.TANK_CAPACITY, true, 16, 52)
+                    .addIngredient(NeoForgeTypes.FLUID_STACK, recipe.getResultFluid());
     }
 
     @Override
-    public void draw(FermenterRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(FermenterRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
+            double mouseY) {
         bubbles.draw(guiGraphics, 46, 10);
         arrow.draw(guiGraphics, 44, 28);
     }
 
     @Override
-    public List<Component> getTooltipStrings(FermenterRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+    public List<Component> getTooltipStrings(FermenterRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX,
+            double mouseY) {
         if (isCursorInsideBounds(43, 9, 24, 36, mouseX, mouseY)) {
             List<Component> tooltip = new ArrayList<>();
 

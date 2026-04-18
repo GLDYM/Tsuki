@@ -64,7 +64,8 @@ public class HopsCropBlock extends BaseCropBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player,
             InteractionHand hand, BlockHitResult hit) {
         if (!canHarvest(state, player)) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

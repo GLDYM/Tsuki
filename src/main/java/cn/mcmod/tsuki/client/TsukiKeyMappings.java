@@ -15,12 +15,10 @@ public class TsukiKeyMappings {
             "key.tsuki.sheath_in",
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_V,
-            "key.categories.tsuki"
-    );
+            "key.categories.tsuki");
 
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(SHEATH_ACTION);
     }
 }
-

@@ -31,6 +31,7 @@ public class TeishokuBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
     private final FoodInfo info;
+
     public TeishokuBlock(FoodInfo info) {
         super(BlockBehaviour.Properties.of());
         this.info = info;
@@ -41,12 +42,13 @@ public class TeishokuBlock extends Block {
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
-    
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(FACING, BITES);
     }
+
     public FoodInfo getFoodInfo() {
         return this.info;
     }
@@ -64,7 +66,7 @@ public class TeishokuBlock extends Block {
         }
         return eat(level, pos, state, player);
     }
-    
+
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
@@ -80,11 +82,11 @@ public class TeishokuBlock extends Block {
             if (i < 3) {
                 level.setBlock(pos, state.setValue(BITES, Integer.valueOf(i + 1)), 3);
             } else {
-                level.setBlock(pos, BlockRegistry.TEISHOUKU_FINISHED.get().defaultBlockState().setValue(FACING, state.getValue(FACING)), 3);
+                level.setBlock(pos, BlockRegistry.TEISHOUKU_FINISHED.get().defaultBlockState().setValue(FACING,
+                        state.getValue(FACING)), 3);
             }
 
             return level.isClientSide() ? ItemInteractionResult.SUCCESS : ItemInteractionResult.CONSUME;
         }
     }
 }
-

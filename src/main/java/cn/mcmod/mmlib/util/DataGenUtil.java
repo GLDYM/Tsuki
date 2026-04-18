@@ -47,7 +47,8 @@ public final class DataGenUtil {
 
     private static final class IngredientAdapter implements JsonSerializer<Ingredient>, JsonDeserializer<Ingredient> {
         @Override
-        public Ingredient deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        public Ingredient deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
             return Ingredient.CODEC.parse(JsonOps.INSTANCE, json).getOrThrow(JsonParseException::new);
         }
 
@@ -59,7 +60,8 @@ public final class DataGenUtil {
 
     private static final class ItemStackAdapter implements JsonSerializer<ItemStack>, JsonDeserializer<ItemStack> {
         @Override
-        public ItemStack deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        public ItemStack deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
             JsonObject object = json.getAsJsonObject();
             String itemId = object.has("id") ? object.get("id").getAsString() : object.get("item").getAsString();
             Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
@@ -80,7 +82,8 @@ public final class DataGenUtil {
 
     private static final class FluidStackAdapter implements JsonSerializer<FluidStack>, JsonDeserializer<FluidStack> {
         @Override
-        public FluidStack deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        public FluidStack deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
             JsonObject object = json.getAsJsonObject();
             Fluid fluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse(object.get("fluid").getAsString()));
             int amount = object.has("amount") ? object.get("amount").getAsInt() : 0;
@@ -96,9 +99,11 @@ public final class DataGenUtil {
         }
     }
 
-    private static final class ChanceResultAdapter implements JsonSerializer<ChanceResult>, JsonDeserializer<ChanceResult> {
+    private static final class ChanceResultAdapter
+            implements JsonSerializer<ChanceResult>, JsonDeserializer<ChanceResult> {
         @Override
-        public ChanceResult deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        public ChanceResult deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
             JsonObject object = json.getAsJsonObject();
             float chance = object.has("chance") ? object.get("chance").getAsFloat() : 1.0F;
 
@@ -128,9 +133,11 @@ public final class DataGenUtil {
         }
     }
 
-    private static final class FluidIngredientAdapter implements JsonSerializer<FluidIngredient>, JsonDeserializer<FluidIngredient> {
+    private static final class FluidIngredientAdapter
+            implements JsonSerializer<FluidIngredient>, JsonDeserializer<FluidIngredient> {
         @Override
-        public FluidIngredient deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        public FluidIngredient deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
             return FluidIngredient.deserialize(json);
         }
 
@@ -140,9 +147,11 @@ public final class DataGenUtil {
         }
     }
 
-    private static final class NonNullListAdapter implements JsonSerializer<NonNullList<?>>, JsonDeserializer<NonNullList<?>> {
+    private static final class NonNullListAdapter
+            implements JsonSerializer<NonNullList<?>>, JsonDeserializer<NonNullList<?>> {
         @Override
-        public NonNullList<?> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        public NonNullList<?> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException {
             if (!json.isJsonArray()) {
                 throw new JsonParseException("Expected array for NonNullList, got: " + json);
             }

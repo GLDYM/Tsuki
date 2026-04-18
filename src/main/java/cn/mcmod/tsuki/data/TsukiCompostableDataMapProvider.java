@@ -27,7 +27,7 @@ public class TsukiCompostableDataMapProvider extends DataMapProvider {
     @Override
     protected void gather(HolderLookup.Provider provider) {
         Builder<Compostable, Item> builder = builder(NeoForgeDataMaps.COMPOSTABLES);
-        FoodRegistry.ITEMS.getEntries().forEach( item->{
+        FoodRegistry.ITEMS.getEntries().forEach(item -> {
             register(builder, item);
         });
         registerHolder(builder, ItemRegistry.CABBAGE_SEEDS, 0.3F);
@@ -62,20 +62,23 @@ public class TsukiCompostableDataMapProvider extends DataMapProvider {
         registerHolder(builder, BlockItemRegistry.FALLEN_LEAVES_YELLOW, 0.3F);
         registerHolder(builder, BlockItemRegistry.FALLEN_LEAVES_GREEN, 0.3F);
     }
-    
-    private static void register(DataMapProvider.Builder<Compostable, Item> builder, DeferredHolder<Item, ? extends Item> itemHolder) {
+
+    private static void register(DataMapProvider.Builder<Compostable, Item> builder,
+            DeferredHolder<Item, ? extends Item> itemHolder) {
         Item item = itemHolder.get();
-        if(item instanceof IFoodLike food) {
-            if(food.getFoodInfo().getCompostChance() > 0)
+        if (item instanceof IFoodLike food) {
+            if (food.getFoodInfo().getCompostChance() > 0)
                 registerHolder(builder, itemHolder, food.getFoodInfo().getCompostChance());
         }
     }
-    
-    private static void registerHolder(DataMapProvider.Builder<Compostable, Item> builder, DeferredHolder<Item, ? extends Item> itemHolder, float chance) {
+
+    private static void registerHolder(DataMapProvider.Builder<Compostable, Item> builder,
+            DeferredHolder<Item, ? extends Item> itemHolder, float chance) {
         builder.add(itemHolder.getId(), new Compostable(chance), false);
     }
 
-    private static void registerSupplier(DataMapProvider.Builder<Compostable, Item> builder, Supplier<Item> itemSupplier, float chance) {
+    private static void registerSupplier(DataMapProvider.Builder<Compostable, Item> builder,
+            Supplier<Item> itemSupplier, float chance) {
         ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(itemSupplier.get());
         builder.add(itemId, new Compostable(chance), false);
     }

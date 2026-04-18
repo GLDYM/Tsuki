@@ -11,7 +11,8 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import java.util.concurrent.CompletableFuture;
 
 public class TsukiBiomeTagProvider extends BiomeTagsProvider {
-    public TsukiBiomeTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, String modId, ExistingFileHelper existingFileHelper) {
+    public TsukiBiomeTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider, String modId,
+            ExistingFileHelper existingFileHelper) {
         super(output, provider, modId, existingFileHelper);
     }
 

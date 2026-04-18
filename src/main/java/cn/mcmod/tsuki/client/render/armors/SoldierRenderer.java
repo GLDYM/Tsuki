@@ -19,9 +19,8 @@ public class SoldierRenderer extends GeoArmorRenderer<SoldierItem> {
 
     public SoldierRenderer(String base) {
         super(new SoldierModel<>(
-            base,
-            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/soldier")
-        ));
+                base,
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/soldier")));
     }
 
     @Nullable
@@ -68,7 +67,8 @@ public class SoldierRenderer extends GeoArmorRenderer<SoldierItem> {
                 setBoneVisible(this.rightBoot, model.rightLeg.visible);
                 setBoneVisible(this.leftBoot, model.leftLeg.visible);
             }
-            default -> {}
+            default -> {
+            }
         }
     }
 
@@ -83,9 +83,8 @@ public class SoldierRenderer extends GeoArmorRenderer<SoldierItem> {
         @Override
         public ResourceLocation getTextureResource(T animatable) {
             return ResourceLocation.fromNamespaceAndPath(
-                Tsuki.MODID,
-                "textures/item/armor/" + base + ".png"
-            );
+                    Tsuki.MODID,
+                    "textures/item/armor/" + base + ".png");
         }
     }
 

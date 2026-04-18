@@ -51,18 +51,22 @@ public class GrapeSplintStandBlock extends Block {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player,
             InteractionHand hand, BlockHitResult hit) {
-        if (level.isClientSide()) return ItemInteractionResult.SUCCESS;
+        if (level.isClientSide())
+            return ItemInteractionResult.SUCCESS;
 
         if (stack.is(ItemRegistry.GRAPE_SEEDS.get())) {
             level.setBlock(pos, BlockRegistry.GRAPE_VINE.get().defaultBlockState(), 3);
-            if (!player.isCreative()) stack.shrink(1);
+            if (!player.isCreative())
+                stack.shrink(1);
             return ItemInteractionResult.SUCCESS;
         }
         if (stack.is(ItemRegistry.HOP_SEEDS.get())) {
             level.setBlock(pos, BlockRegistry.HOPS_CROP.get().defaultBlockState(), 3);
-            if (!player.isCreative()) stack.shrink(1);
+            if (!player.isCreative())
+                stack.shrink(1);
             return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

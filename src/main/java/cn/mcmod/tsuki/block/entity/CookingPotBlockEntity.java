@@ -89,8 +89,8 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         boolean didInventoryChange = false;
         if (blockEntity.isHeated(level, pos) && blockEntity.hasInput()) {
             Optional<CookingPotRecipe> recipe = blockEntity.getMatchingRecipe(new RecipeWrapper(blockEntity.inventory));
-            if (recipe.isPresent() && blockEntity.canWork(recipe.get(),level)) {
-                didInventoryChange = blockEntity.processRecipe(recipe.get(),level);
+            if (recipe.isPresent() && blockEntity.canWork(recipe.get(), level)) {
+                didInventoryChange = blockEntity.processRecipe(recipe.get(), level);
             } else {
                 blockEntity.recipeTime = 0;
             }
@@ -137,27 +137,32 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         }
 
         if (checkNewRecipe) {
-                        List<RecipeHolder<CookingPotRecipe>> recipes = level.getRecipeManager().getRecipesFor(RecipeTypeRegistry.COOKING_RECIPE_TYPE.get(),
+            List<RecipeHolder<CookingPotRecipe>> recipes = level.getRecipeManager().getRecipesFor(
+                    RecipeTypeRegistry.COOKING_RECIPE_TYPE.get(),
                     inventoryWrapper, level);
-                        for (RecipeHolder<CookingPotRecipe> holder : recipes) {
-                                CookingPotRecipe recipe = holder.value();
-                if(recipe.matchesWithFluid(this.fluidTank.getFluid(),
+            for (RecipeHolder<CookingPotRecipe> holder : recipes) {
+                CookingPotRecipe recipe = holder.value();
+                if (recipe.matchesWithFluid(this.fluidTank.getFluid(),
                         inventoryWrapper, level)) {
-                                    lastRecipeID = holder.id();
-                  return Optional.of(recipe);
+                    lastRecipeID = holder.id();
+                    return Optional.of(recipe);
                 }
             }
 
-            Optional<CookingPotRecipe> fdCompatRecipe = FDCookingPotCompat.findMatching(level, inventoryWrapper, this.fluidTank.getFluid());
+            Optional<CookingPotRecipe> fdCompatRecipe = FDCookingPotCompat.findMatching(level, inventoryWrapper,
+                    this.fluidTank.getFluid());
             if (fdCompatRecipe.isPresent()) {
-                // Compat recipe is generated at runtime and has no holder in this recipe manager.
+                // Compat recipe is generated at runtime and has no holder in this recipe
+                // manager.
                 lastRecipeID = null;
                 return fdCompatRecipe;
             }
 
-            Optional<CookingPotRecipe> kcCompatRecipe = KCCookingPotCompat.findMatching(level, inventoryWrapper, this.fluidTank.getFluid());
+            Optional<CookingPotRecipe> kcCompatRecipe = KCCookingPotCompat.findMatching(level, inventoryWrapper,
+                    this.fluidTank.getFluid());
             if (kcCompatRecipe.isPresent()) {
-                // Compat recipe is generated at runtime and has no holder in this recipe manager.
+                // Compat recipe is generated at runtime and has no holder in this recipe
+                // manager.
                 lastRecipeID = null;
                 return kcCompatRecipe;
             }
@@ -167,7 +172,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         return Optional.empty();
     }
 
-    protected boolean canWork(CookingPotRecipe recipe,Level level) {
+    protected boolean canWork(CookingPotRecipe recipe, Level level) {
         if (hasInput()) {
             ItemStack resultStack = recipe.getResultItem(level.registryAccess());
             ItemStack requiredContainer = recipe.getContainer();
@@ -181,7 +186,8 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                     return false;
                 } else if (!ItemStack.isSameItemSameComponents(this.mealContainer, requiredContainer)) {
                     return false;
-                } else if (outputStack.getCount() + resultStack.getCount() <= inventory.getSlotLimit(SLOT_MEAL_DISPLAY)) {
+                } else if (outputStack.getCount() + resultStack.getCount() <= inventory
+                        .getSlotLimit(SLOT_MEAL_DISPLAY)) {
                     return true;
                 } else {
                     return outputStack.getCount() + resultStack.getCount() <= resultStack.getMaxStackSize();
@@ -192,7 +198,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         }
     }
 
-    private boolean processRecipe(CookingPotRecipe recipe,Level level) {
+    private boolean processRecipe(CookingPotRecipe recipe, Level level) {
         if (level == null) {
             return false;
         }
@@ -215,7 +221,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         } else if (ItemStack.isSameItem(outStack, resultStack)) {
             outStack.grow(resultStack.getCount());
         }
-        if(recipe.getRequiredFluid() != FluidIngredient.EMPTY)
+        if (recipe.getRequiredFluid() != FluidIngredient.EMPTY)
             this.fluidTank.drain(recipe.getRequiredFluid().getRequiredAmount(),
                     FluidAction.EXECUTE);
 
@@ -229,7 +235,8 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 double x = worldPosition.getX() + 0.5;
                 double y = worldPosition.getY() + 0.7;
                 double z = worldPosition.getZ() + 0.5;
-                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F, 0.25F,
+                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
+                        0.25F,
                         0F);
             }
             if (!slotStack.isEmpty()) {
@@ -508,25 +515,25 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
             @Override
             public int get(int index) {
                 switch (index) {
-                case 0:
-                    return CookingPotBlockEntity.this.recipeTime;
-                case 1:
-                    return CookingPotBlockEntity.this.recipeTimeTotal;
-                default:
-                    return 0;
+                    case 0:
+                        return CookingPotBlockEntity.this.recipeTime;
+                    case 1:
+                        return CookingPotBlockEntity.this.recipeTimeTotal;
+                    default:
+                        return 0;
                 }
             }
 
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                case 0:
-                    CookingPotBlockEntity.this.recipeTime = value;
-                    break;
-                case 1:
-                    CookingPotBlockEntity.this.recipeTimeTotal = value;
+                    case 0:
+                        CookingPotBlockEntity.this.recipeTime = value;
+                        break;
+                    case 1:
+                        CookingPotBlockEntity.this.recipeTimeTotal = value;
 
-                    break;
+                        break;
                 }
             }
 
@@ -557,11 +564,10 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     public FluidTank getFluidTank() {
         return fluidTank;
     }
-    
+
     @Override
     public void inventoryChanged() {
         super.inventoryChanged();
     }
 
 }
-

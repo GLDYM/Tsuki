@@ -73,10 +73,12 @@ public class ChoppingBoardBlock extends BaseEntityBlock {
                 if (!offhandStack.isEmpty()) {
                     if (handIn.equals(InteractionHand.MAIN_HAND) && !offhandStack.is(TsukiItemTags.OFFHAND_EQUIPMENT)
                             && !(heldStack.getItem() instanceof BlockItem)) {
-                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Pass to off-hand if that item is placeable
+                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Pass to off-hand if that item
+                                                                                        // is placeable
                     }
                     if (handIn.equals(InteractionHand.OFF_HAND) && offhandStack.is(TsukiItemTags.OFFHAND_EQUIPMENT)) {
-                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Items in this tag should not be placed from the off-hand
+                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Items in this tag should not
+                                                                                        // be placed from the off-hand
                     }
                 }
                 if (heldStack.isEmpty()) {
@@ -112,7 +114,7 @@ public class ChoppingBoardBlock extends BaseEntityBlock {
                 return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
             }
         }
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     public static void spawnCuttingParticles(Level worldIn, BlockPos pos, ItemStack stack, int count) {

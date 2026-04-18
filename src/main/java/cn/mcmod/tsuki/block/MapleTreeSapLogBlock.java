@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 
-
 public class MapleTreeSapLogBlock extends RotatedPillarBlock {
     public static final BooleanProperty EXHAUSTION = BooleanProperty.create("exhaustion");
 

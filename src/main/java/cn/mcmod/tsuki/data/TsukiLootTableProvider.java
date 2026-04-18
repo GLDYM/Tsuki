@@ -13,23 +13,24 @@ import java.util.Set;
 public class TsukiLootTableProvider extends LootTableProvider {
 
     public TsukiLootTableProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
-        super(packOutput, Set.of()
-                ,List.of(new SubProviderEntry(
+        super(packOutput, Set.of(), List.of(new SubProviderEntry(
                 TsukiBlockLoot::new,
-                LootContextParamSets.BLOCK)), provider
-        );
+                LootContextParamSets.BLOCK)), provider);
     }
-    
-//    private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> tables = ImmutableList.of(Pair.of(TsukiBlockLoot::new, LootContextParamSets.BLOCK));
 
-//    @Override
-//    public String getName() {
-//        return "Tsuki's Loot Tables";
-//    }
-//
-//    @Override
-//    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, Builder>>>, LootContextParamSet>> getTables() {
-//        return tables;
-//    }
+    // private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation,
+    // LootTable.Builder>>>, LootContextParamSet>> tables =
+    // ImmutableList.of(Pair.of(TsukiBlockLoot::new, LootContextParamSets.BLOCK));
+
+    // @Override
+    // public String getName() {
+    // return "Tsuki's Loot Tables";
+    // }
+    //
+    // @Override
+    // protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation,
+    // Builder>>>, LootContextParamSet>> getTables() {
+    // return tables;
+    // }
 
 }

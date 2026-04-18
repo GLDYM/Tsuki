@@ -18,11 +18,11 @@ import net.neoforged.neoforge.common.util.RecipeMatcher;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class StoneMortarRecipe extends AbstractRecipe {
-    
+
     @Expose()
     @SerializedName("ingredients")
     public NonNullList<Ingredient> inputItems;
-    
+
     @Expose()
     @SerializedName("results")
     public NonNullList<ItemStack> output;
@@ -82,4 +82,3 @@ public class StoneMortarRecipe extends AbstractRecipe {
     }
 
 }
-

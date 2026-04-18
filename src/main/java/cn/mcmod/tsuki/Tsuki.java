@@ -65,7 +65,7 @@ public class Tsuki {
         TsukiArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
 
         BucketItemRegistry.ITEMS.register(modEventBus);
-        
+
         SoundEventRegistry.SOUND_EVENTS.register(modEventBus);
         // JukeboxSongRegistry.JUKEBOX_SONGS.register(modEventBus);
         JukeboxSongRegistry.register();

@@ -80,7 +80,8 @@ public class HighCropBlock extends BaseCropBlock {
             if (age < this.getMaxAge()) {
                 if (CommonHooks.canCropGrow(worldIn, pos, state, rand.nextInt((int) (25.0F / chance) + 1) == 0)) {
                     worldIn.setBlock(pos,
-                            this.getStateForAge(age + 1).setValue(this.getUpperProperty(), state.getValue(this.getUpperProperty())),
+                            this.getStateForAge(age + 1).setValue(this.getUpperProperty(),
+                                    state.getValue(this.getUpperProperty())),
                             2);
                     CommonHooks.fireCropGrowPost(worldIn, pos, state);
                 }
@@ -90,8 +91,10 @@ public class HighCropBlock extends BaseCropBlock {
             }
             if (age >= this.getGrowUpperAge()) {
                 if (CommonHooks.canCropGrow(worldIn, pos, state, rand.nextInt((int) (25.0F / chance) + 1) == 0)) {
-                    if (this.defaultBlockState().canSurvive(worldIn, pos.above()) && worldIn.isEmptyBlock(pos.above())) {
-                        worldIn.setBlockAndUpdate(pos.above(), this.defaultBlockState().setValue(this.getUpperProperty(), true));
+                    if (this.defaultBlockState().canSurvive(worldIn, pos.above())
+                            && worldIn.isEmptyBlock(pos.above())) {
+                        worldIn.setBlockAndUpdate(pos.above(),
+                                this.defaultBlockState().setValue(this.getUpperProperty(), true));
                         CommonHooks.fireCropGrowPost(worldIn, pos, state);
                     }
                 }

@@ -41,10 +41,9 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
             if (item.get() instanceof BlockItem) {
                 BlockItem blockItem = (BlockItem) item.get();
                 if (blockItem.getBlock() instanceof StoneMortarBlock
-                    || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
-                    || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()
-                    || blockItem.getBlock() == BlockRegistry.FUTON.get())
-                {
+                        || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
+                        || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()
+                        || blockItem.getBlock() == BlockRegistry.FUTON.get()) {
                     return;
                 }
                 if (blockItem.getBlock() instanceof FallenLeavesBlock) {
@@ -52,7 +51,8 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                     return;
                 }
                 if (blockItem.getBlock() == BlockRegistry.KITUNEBI.get()) {
-                    singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0", modLoc("block/ghost_fire_0"));
+                    singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0",
+                            modLoc("block/ghost_fire_0"));
                     return;
                 }
                 if (blockItem.getBlock() == BlockRegistry.KAWARA.get()) {
@@ -67,13 +67,13 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                     return;
                 }
                 if (blockItem.getBlock() == BlockRegistry.SHOJI.get()
-                    || blockItem.getBlock() == BlockRegistry.SHOJI_1.get()
-                    || blockItem.getBlock() == BlockRegistry.SHOJI_2.get()
-                    || blockItem.getBlock() == BlockRegistry.SHOJI_3.get()
-                    || blockItem.getBlock() == BlockRegistry.SHOJI_4.get()
-                    || blockItem.getBlock() == BlockRegistry.SHOJI_5.get()
-                    || blockItem.getBlock() == BlockRegistry.BAMBOO_DOOR.get()
-                    || blockItem.getBlock() == BlockRegistry.CHESTNUT_BURR.get()) {
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_1.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_2.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_3.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_4.get()
+                        || blockItem.getBlock() == BlockRegistry.SHOJI_5.get()
+                        || blockItem.getBlock() == BlockRegistry.BAMBOO_DOOR.get()
+                        || blockItem.getBlock() == BlockRegistry.CHESTNUT_BURR.get()) {
                     normalItem(item);
                     return;
                 }
@@ -85,18 +85,18 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                 normalItem(item);
             }
         });
-        
+
         BucketItemRegistry.ITEMS.getEntries().forEach(item -> {
             normalItem(item);
         });
         TsukiArmorToolRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof KimonoItem
-                || item.get() instanceof HaoriItem
-                || item.get() instanceof KatanaItem
-                || item.get() instanceof SheathItem
-                || item.get() instanceof SheathKatanaItem
-                || item.get() instanceof ShinaiItem
-                || item.get() instanceof BroomItem) {
+                    || item.get() instanceof HaoriItem
+                    || item.get() instanceof KatanaItem
+                    || item.get() instanceof SheathItem
+                    || item.get() instanceof SheathKatanaItem
+                    || item.get() instanceof ShinaiItem
+                    || item.get() instanceof BroomItem) {
                 return;
             } else {
                 normalItem(item);
@@ -104,18 +104,16 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         });
         FoodRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() == TsukiFoodSet.CABBAGE.getItem().get()
-                || item.get() == TsukiFoodSet.UME.getItem().get()
-                || item.get() == TsukiFoodSet.UMEBOSHI.getItem().get()
-            ) {
+                    || item.get() == TsukiFoodSet.UME.getItem().get()
+                    || item.get() == TsukiFoodSet.UMEBOSHI.getItem().get()) {
                 return;
             }
             if (item.get() == TsukiCuisineSet.DANANKO.getItem().get()
-                || item.get() == TsukiCuisineSet.DANMITARASHI.getItem().get()
-                || item.get() == TsukiCuisineSet.DANSANSYOKU.getItem().get()
-                || item.get() == TsukiCuisineSet.BEEF_STICK.getItem().get()
-                || item.get() == TsukiCuisineSet.CHICKEN_STICK.getItem().get()
-                || item.get() == TsukiCuisineSet.PORK_STICK.getItem().get()
-            ) {
+                    || item.get() == TsukiCuisineSet.DANMITARASHI.getItem().get()
+                    || item.get() == TsukiCuisineSet.DANSANSYOKU.getItem().get()
+                    || item.get() == TsukiCuisineSet.BEEF_STICK.getItem().get()
+                    || item.get() == TsukiCuisineSet.CHICKEN_STICK.getItem().get()
+                    || item.get() == TsukiCuisineSet.PORK_STICK.getItem().get()) {
                 return;
             }
             normalItem(item);

@@ -11,61 +11,50 @@ public final class BlockEntityCapabilityRegistry {
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 BlockEntityRegistry.COOKING_POT.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getItemHandler(side));
         event.registerBlockEntity(
                 Capabilities.FluidHandler.BLOCK,
                 BlockEntityRegistry.COOKING_POT.get(),
-                (blockEntity, side) -> blockEntity.getFluidHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getFluidHandler(side));
 
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 BlockEntityRegistry.FERMENTER.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getItemHandler(side));
         event.registerBlockEntity(
                 Capabilities.FluidHandler.BLOCK,
                 BlockEntityRegistry.FERMENTER.get(),
-                (blockEntity, side) -> blockEntity.getFluidHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getFluidHandler(side));
 
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 BlockEntityRegistry.DISTILLER.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getItemHandler(side));
         event.registerBlockEntity(
                 Capabilities.FluidHandler.BLOCK,
                 BlockEntityRegistry.DISTILLER.get(),
-                (blockEntity, side) -> blockEntity.getFluidHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getFluidHandler(side));
 
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 BlockEntityRegistry.STONE_MORTAR.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getItemHandler(side));
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 BlockEntityRegistry.CHOPPING_BOARD.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getItemHandler(side));
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 BlockEntityRegistry.OBON.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getItemHandler(side));
 
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 BlockEntityRegistry.MAPLE_CAULDRON.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getItemHandler(side));
         event.registerBlockEntity(
                 Capabilities.FluidHandler.BLOCK,
                 BlockEntityRegistry.MAPLE_CAULDRON.get(),
-                (blockEntity, side) -> blockEntity.getFluidHandler(side)
-        );
+                (blockEntity, side) -> blockEntity.getFluidHandler(side));
     }
 }

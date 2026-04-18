@@ -33,7 +33,8 @@ public class UmeLeavesBlock extends TsukiLeavesBlock implements BonemealableBloc
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
+    protected void createBlockStateDefinition(
+            StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(AGE);
     }
@@ -41,7 +42,7 @@ public class UmeLeavesBlock extends TsukiLeavesBlock implements BonemealableBloc
     @Override
     protected boolean isRandomlyTicking(BlockState state) {
         return (state.getValue(DISTANCE) == 7 || state.getValue(AGE) < 5)
-            && !(Boolean)state.getValue(PERSISTENT);
+                && !(Boolean) state.getValue(PERSISTENT);
     }
 
     @Override

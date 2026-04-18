@@ -51,8 +51,9 @@ public class TataraBlock extends Block {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
-                                              InteractionHand hand, BlockHitResult hitResult) {
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player,
+            InteractionHand hand, BlockHitResult hitResult) {
         if (hand != InteractionHand.MAIN_HAND || state.getValue(LIT)) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
@@ -98,8 +99,9 @@ public class TataraBlock extends Block {
             if (adjacentState.is(this) && !adjacentState.getValue(LIT)) {
                 level.setBlock(adjacentPos, adjacentState.setValue(LIT, true).setValue(TIMER, 0), 2);
             }
-            // if (adjacentState.is(this) && adjacentState.getValue(LIT) && adjacentState.getValue(TIMER) < 3) {
-            //     level.setBlock(adjacentPos, adjacentState.setValue(TIMER, 3), 2);
+            // if (adjacentState.is(this) && adjacentState.getValue(LIT) &&
+            // adjacentState.getValue(TIMER) < 3) {
+            // level.setBlock(adjacentPos, adjacentState.setValue(TIMER, 3), 2);
             // }
         }
     }
@@ -119,7 +121,7 @@ public class TataraBlock extends Block {
                     drops.add(new ItemStack(TsukiArmorToolRegistry.TAMAHAGANE.get()));
                 }
             }
-        } 
+        }
         for (int i = 0; i < 9; ++i) {
             if (random.nextInt(9) <= 7) {
                 drops.add(new ItemStack(Items.IRON_INGOT));

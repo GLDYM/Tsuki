@@ -21,20 +21,26 @@ public class DataGen {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         PackOutput packOutput = dataGenerator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> provider = event.getLookupProvider();
-        dataGenerator.addProvider(event.includeClient(),new TsukiBlockStateProvider(packOutput, Tsuki.MODID, existingFileHelper));
-        dataGenerator.addProvider(event.includeClient(),new TsukiItemModelProvider(packOutput, Tsuki.MODID, existingFileHelper));
-        TsukiBlockTagsProvider block_tag = new TsukiBlockTagsProvider(packOutput, provider, Tsuki.MODID, existingFileHelper);
-        dataGenerator.addProvider(event.includeServer(),block_tag);
-        dataGenerator.addProvider(event.includeServer(),new TsukiItemTagsProvider(packOutput, provider, block_tag, Tsuki.MODID, existingFileHelper));
-        dataGenerator.addProvider(event.includeServer(),new TsukiFluidTagsProvider(packOutput, provider, Tsuki.MODID, existingFileHelper));
-        dataGenerator.addProvider(event.includeServer(),new TsukiBiomeTagProvider(packOutput, provider, Tsuki.MODID, existingFileHelper));
-        dataGenerator.addProvider(event.includeServer(),new TsukiRecipeProvider(packOutput, provider));
-        dataGenerator.addProvider(event.includeServer(),new TsukiLootTableProvider(packOutput, provider));
-        dataGenerator.addProvider(event.includeServer(),new TsukiFeatureProvider(packOutput, provider));
-        dataGenerator.addProvider(event.includeServer(),new TsukiCompostableDataMapProvider(packOutput, provider));
-    //        dataGenerator.addProvider(event.includeServer(),new TsukiLootModifierProvider(packOutput, provider, Tsuki.MODID));
-        dataGenerator.addProvider(event.includeServer(),new TsukiTFCFoodCompatProvider(packOutput, existingFileHelper));
+        dataGenerator.addProvider(event.includeClient(),
+                new TsukiBlockStateProvider(packOutput, Tsuki.MODID, existingFileHelper));
+        dataGenerator.addProvider(event.includeClient(),
+                new TsukiItemModelProvider(packOutput, Tsuki.MODID, existingFileHelper));
+        TsukiBlockTagsProvider block_tag = new TsukiBlockTagsProvider(packOutput, provider, Tsuki.MODID,
+                existingFileHelper);
+        dataGenerator.addProvider(event.includeServer(), block_tag);
+        dataGenerator.addProvider(event.includeServer(),
+                new TsukiItemTagsProvider(packOutput, provider, block_tag, Tsuki.MODID, existingFileHelper));
+        dataGenerator.addProvider(event.includeServer(),
+                new TsukiFluidTagsProvider(packOutput, provider, Tsuki.MODID, existingFileHelper));
+        dataGenerator.addProvider(event.includeServer(),
+                new TsukiBiomeTagProvider(packOutput, provider, Tsuki.MODID, existingFileHelper));
+        dataGenerator.addProvider(event.includeServer(), new TsukiRecipeProvider(packOutput, provider));
+        dataGenerator.addProvider(event.includeServer(), new TsukiLootTableProvider(packOutput, provider));
+        dataGenerator.addProvider(event.includeServer(), new TsukiFeatureProvider(packOutput, provider));
+        dataGenerator.addProvider(event.includeServer(), new TsukiCompostableDataMapProvider(packOutput, provider));
+        // dataGenerator.addProvider(event.includeServer(),new
+        // TsukiLootModifierProvider(packOutput, provider, Tsuki.MODID));
+        dataGenerator.addProvider(event.includeServer(),
+                new TsukiTFCFoodCompatProvider(packOutput, existingFileHelper));
     }
 }
-
-

@@ -95,7 +95,7 @@ public class SamuraiIllagerEntity extends AbstractIllager implements GeoEntity {
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty,
-                                        MobSpawnType spawnType, @Nullable SpawnGroupData spawnData) {
+            MobSpawnType spawnType, @Nullable SpawnGroupData spawnData) {
         spawnData = super.finalizeSpawn(level, difficulty, spawnType, spawnData);
         RandomSource randomSource = level.getRandom();
         this.populateDefaultEquipmentSlots(randomSource, difficulty);
@@ -105,7 +105,7 @@ public class SamuraiIllagerEntity extends AbstractIllager implements GeoEntity {
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
-      if (this.getCurrentRaid() == null) {
+        if (this.getCurrentRaid() == null) {
             float additionalDifficulty = difficulty.getSpecialMultiplier();
             if (random.nextFloat() < additionalDifficulty * 0.2F) {
                 this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(TsukiArmorToolRegistry.TACHI.get()));
@@ -117,31 +117,30 @@ public class SamuraiIllagerEntity extends AbstractIllager implements GeoEntity {
 
     @Override
     protected void populateDefaultEquipmentEnchantments(ServerLevelAccessor level, RandomSource random,
-                                                        DifficultyInstance difficulty) {
+            DifficultyInstance difficulty) {
         super.populateDefaultEquipmentEnchantments(level, random, difficulty);
         if (random.nextInt(3 + difficulty.getDifficulty().getId()) > 3) {
             ItemStack mainHand = this.getMainHandItem();
             EnchantmentHelper.enchantItemFromProvider(
-                    mainHand, level.registryAccess(), VanillaEnchantmentProviders.MOB_SPAWN_EQUIPMENT, difficulty, random
-            );
+                    mainHand, level.registryAccess(), VanillaEnchantmentProviders.MOB_SPAWN_EQUIPMENT, difficulty,
+                    random);
         }
     }
 
     @Override
     public void applyRaidBuffs(ServerLevel level, int wave, boolean unused) {
-      ItemStack weapon = new ItemStack(TsukiArmorToolRegistry.TACHI.get());
+        ItemStack weapon = new ItemStack(TsukiArmorToolRegistry.TACHI.get());
         Raid raid = this.getCurrentRaid();
         if (raid != null) {
             boolean shouldEnchant = this.random.nextFloat() <= raid.getEnchantOdds();
             if (shouldEnchant) {
-                net.minecraft.resources.ResourceKey<net.minecraft.world.item.enchantment.providers.EnchantmentProvider> key =
-                        wave > raid.getNumGroups(Difficulty.NORMAL)
+                net.minecraft.resources.ResourceKey<net.minecraft.world.item.enchantment.providers.EnchantmentProvider> key = wave > raid
+                        .getNumGroups(Difficulty.NORMAL)
                                 ? VanillaEnchantmentProviders.RAID_VINDICATOR_POST_WAVE_5
                                 : VanillaEnchantmentProviders.RAID_VINDICATOR;
                 EnchantmentHelper.enchantItemFromProvider(
                         weapon, level.registryAccess(), key, level.getCurrentDifficultyAt(this.blockPosition()),
-                        this.random
-                );
+                        this.random);
             }
         }
         this.setItemSlot(EquipmentSlot.MAINHAND, weapon);

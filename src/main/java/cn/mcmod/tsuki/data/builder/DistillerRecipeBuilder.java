@@ -20,42 +20,48 @@ public class DistillerRecipeBuilder {
     private final float experience;
     private final int recipeTime;
 
-    private DistillerRecipeBuilder(FluidIngredient fluid, ItemLike resultItem, int count, FluidStack result_fluid, float exp, int time) {
+    private DistillerRecipeBuilder(FluidIngredient fluid, ItemLike resultItem, int count, FluidStack result_fluid,
+            float exp, int time) {
         this.result.add(new ItemStack(resultItem.asItem(), count));
         this.fluid = fluid;
         this.result_fluid = result_fluid;
         this.experience = exp;
         this.recipeTime = time;
     }
-    
+
     private DistillerRecipeBuilder(FluidIngredient fluid, FluidStack result_fluid, float exp, int time) {
         this.fluid = fluid;
         this.result_fluid = result_fluid;
         this.experience = exp;
         this.recipeTime = time;
     }
-    
-    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, FluidStack result_fluid, float exp, int time) {
+
+    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, FluidStack result_fluid, float exp,
+            int time) {
         return new DistillerRecipeBuilder(fluid, result_fluid, exp, time);
     }
-    
+
     public static DistillerRecipeBuilder distillation(FluidIngredient fluid, FluidStack result_fluid) {
         return new DistillerRecipeBuilder(fluid, result_fluid, 0F, 400);
     }
 
-    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, ItemLike resultItem, FluidStack result_fluid) {
+    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, ItemLike resultItem,
+            FluidStack result_fluid) {
         return new DistillerRecipeBuilder(fluid, resultItem, 1, result_fluid, 0F, 400);
     }
 
-    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, ItemLike resultItem, int count, FluidStack result_fluid) {
+    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, ItemLike resultItem, int count,
+            FluidStack result_fluid) {
         return new DistillerRecipeBuilder(fluid, resultItem, count, result_fluid, 0F, 400);
     }
 
-    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, ItemLike resultItem, FluidStack result_fluid, float exp, int time) {
+    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, ItemLike resultItem,
+            FluidStack result_fluid, float exp, int time) {
         return new DistillerRecipeBuilder(fluid, resultItem, 1, result_fluid, exp, time);
     }
 
-    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, ItemLike resultItem, int count, FluidStack result_fluid, float exp,
+    public static DistillerRecipeBuilder distillation(FluidIngredient fluid, ItemLike resultItem, int count,
+            FluidStack result_fluid, float exp,
             int time) {
         return new DistillerRecipeBuilder(fluid, resultItem, count, result_fluid, exp, time);
     }
@@ -85,7 +91,7 @@ public class DistillerRecipeBuilder {
         }
         return this;
     }
-    
+
     public DistillerRecipeBuilder addResult(ItemLike result) {
         return this.addResult(result, 1);
     }
@@ -117,4 +123,3 @@ public class DistillerRecipeBuilder {
     }
 
 }
-

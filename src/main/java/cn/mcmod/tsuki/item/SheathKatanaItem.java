@@ -95,8 +95,10 @@ public class SheathKatanaItem extends Item {
         }
 
         // Unsheathe hand behavior:
-        // - Main hand sheath-katana: blade to main hand; sheath to offhand or inventory.
-        // - Offhand sheath-katana: only trigger when main hand is empty; blade to main hand and sheath stays offhand.
+        // - Main hand sheath-katana: blade to main hand; sheath to offhand or
+        // inventory.
+        // - Offhand sheath-katana: only trigger when main hand is empty; blade to main
+        // hand and sheath stays offhand.
         if (hand == InteractionHand.MAIN_HAND) {
             player.setItemInHand(InteractionHand.MAIN_HAND, blade);
             if (player.getOffhandItem().isEmpty()) {
@@ -132,7 +134,8 @@ public class SheathKatanaItem extends Item {
         ItemStack blade = player.getMainHandItem();
 
         for (LivingEntity target : targets) {
-            float enchantDamage = EnchantmentHelper.modifyDamage(serverLevel, blade, target, player.damageSources().playerAttack(player), 0.0F);
+            float enchantDamage = EnchantmentHelper.modifyDamage(serverLevel, blade, target,
+                    player.damageSources().playerAttack(player), 0.0F);
             float sweepDamage = baseDamage + enchantDamage;
             if (target instanceof Player targetPlayer && targetPlayer.isBlocking()) {
                 targetPlayer.disableShield();

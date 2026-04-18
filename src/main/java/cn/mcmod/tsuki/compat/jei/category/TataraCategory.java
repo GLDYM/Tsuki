@@ -73,7 +73,8 @@ public class TataraCategory implements IRecipeCategory<TataraJeiRecipe> {
     }
 
     @Override
-    public void draw(TataraJeiRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(TataraJeiRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
+            double mouseY) {
         guiGraphics.pose().pushPose();
         guiGraphics.pose().translate(8, 14, 0);
         guiGraphics.pose().scale(2.0F, 2.0F, 1.0F);

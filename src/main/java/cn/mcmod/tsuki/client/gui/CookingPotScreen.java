@@ -21,7 +21,8 @@ import java.util.List;
 
 public class CookingPotScreen extends AbstractContainerScreen<CookingPotContainer> {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/pot.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+            "textures/gui/pot.png");
 
     public CookingPotScreen(CookingPotContainer screenContainer, Inventory inv, Component titleIn) {
         super(screenContainer, inv, titleIn);
@@ -53,11 +54,11 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotContaine
         if (this.minecraft == null) {
             return;
         }
-//        RenderUtils.setup(BACKGROUND_TEXTURE);
-        ms.blit(BACKGROUND_TEXTURE,this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+        // RenderUtils.setup(BACKGROUND_TEXTURE);
+        ms.blit(BACKGROUND_TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 
         if (this.menu.isHeated()) {
-            ms.blit(BACKGROUND_TEXTURE,this.leftPos + 99, this.topPos + 16, 176, 0, 17, 15);
+            ms.blit(BACKGROUND_TEXTURE, this.leftPos + 99, this.topPos + 16, 176, 0, 17, 15);
         }
         // Render progress arrow
         int l = this.menu.getCookProgressionScaled();
@@ -125,7 +126,9 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotContaine
             return true;
         }
 
-        // graphics.renderTooltip(this.font, Component.translatable("gui.tsuki.cooking_pot.meal_display"), mouseX, mouseY);
+        // graphics.renderTooltip(this.font,
+        // Component.translatable("gui.tsuki.cooking_pot.meal_display"), mouseX,
+        // mouseY);
         return true;
     }
 

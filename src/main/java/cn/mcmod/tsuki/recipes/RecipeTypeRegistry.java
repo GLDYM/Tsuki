@@ -27,7 +27,6 @@ public class RecipeTypeRegistry {
     public static final DeferredHolder<RecipeType<?>, RecipeType<ChoppingRecipe>> CHOPPING_RECIPE_TYPE = RECIPE_TYPES
             .register("chopping", () -> recipeType("chopping"));
 
-
     public static final DeferredHolder<RecipeSerializer<?>, AbstractRecipeSerializer<StoneMortarRecipe>> STONE_MORTAR_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("stone_mortar", () -> new AbstractRecipeSerializer<StoneMortarRecipe>(StoneMortarRecipe.class));
     public static final DeferredHolder<RecipeSerializer<?>, AbstractRecipeSerializer<CookingPotRecipe>> COOKING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
@@ -36,17 +35,15 @@ public class RecipeTypeRegistry {
             .register("fermenting", () -> new AbstractRecipeSerializer<FermenterRecipe>(FermenterRecipe.class));
     public static final DeferredHolder<RecipeSerializer<?>, AbstractRecipeSerializer<DistillerRecipe>> DISTILLER_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("distillation", () -> new AbstractRecipeSerializer<DistillerRecipe>(DistillerRecipe.class));
-    
+
     public static final DeferredHolder<RecipeSerializer<?>, AbstractRecipeSerializer<ChoppingRecipe>> CHOPPING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("chopping", () -> new AbstractRecipeSerializer<ChoppingRecipe>(ChoppingRecipe.class));
 
     private static <T extends Recipe<?>> RecipeType<T> recipeType(String name) {
         return new RecipeType<T>() {
             public String toString() {
-                                return ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, name).toString();
+                return ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, name).toString();
             }
         };
     }
 }
-
-

@@ -60,4 +60,3 @@ public class CookingPotResultSlot extends SlotItemHandler {
         this.removeCount = 0;
     }
 }
-

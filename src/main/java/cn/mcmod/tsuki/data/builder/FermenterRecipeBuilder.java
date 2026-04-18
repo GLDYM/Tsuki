@@ -20,42 +20,48 @@ public class FermenterRecipeBuilder {
     private final float experience;
     private final int recipeTime;
 
-    private FermenterRecipeBuilder(FluidIngredient fluid, ItemLike resultItem, int count, FluidStack result_fluid, float exp, int time) {
+    private FermenterRecipeBuilder(FluidIngredient fluid, ItemLike resultItem, int count, FluidStack result_fluid,
+            float exp, int time) {
         this.result.add(new ItemStack(resultItem.asItem(), count));
         this.fluid = fluid;
         this.result_fluid = result_fluid;
         this.experience = exp;
         this.recipeTime = time;
     }
-    
+
     private FermenterRecipeBuilder(FluidIngredient fluid, FluidStack result_fluid, float exp, int time) {
         this.fluid = fluid;
         this.result_fluid = result_fluid;
         this.experience = exp;
         this.recipeTime = time;
     }
-    
-    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, FluidStack result_fluid, float exp, int time) {
+
+    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, FluidStack result_fluid, float exp,
+            int time) {
         return new FermenterRecipeBuilder(fluid, result_fluid, exp, time);
     }
-    
+
     public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, FluidStack result_fluid) {
         return new FermenterRecipeBuilder(fluid, result_fluid, 0F, 800);
     }
 
-    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, ItemLike resultItem, FluidStack result_fluid) {
+    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, ItemLike resultItem,
+            FluidStack result_fluid) {
         return new FermenterRecipeBuilder(fluid, resultItem, 1, result_fluid, 0F, 800);
     }
 
-    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, ItemLike resultItem, int count, FluidStack result_fluid) {
+    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, ItemLike resultItem, int count,
+            FluidStack result_fluid) {
         return new FermenterRecipeBuilder(fluid, resultItem, count, result_fluid, 0F, 800);
     }
 
-    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, ItemLike resultItem, FluidStack result_fluid, float exp, int time) {
+    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, ItemLike resultItem, FluidStack result_fluid,
+            float exp, int time) {
         return new FermenterRecipeBuilder(fluid, resultItem, 1, result_fluid, exp, time);
     }
 
-    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, ItemLike resultItem, int count, FluidStack result_fluid, float exp,
+    public static FermenterRecipeBuilder fermenting(FluidIngredient fluid, ItemLike resultItem, int count,
+            FluidStack result_fluid, float exp,
             int time) {
         return new FermenterRecipeBuilder(fluid, resultItem, count, result_fluid, exp, time);
     }
@@ -85,7 +91,7 @@ public class FermenterRecipeBuilder {
         }
         return this;
     }
-    
+
     public FermenterRecipeBuilder addResult(ItemLike result) {
         return this.addResult(result, 1);
     }
@@ -117,4 +123,3 @@ public class FermenterRecipeBuilder {
     }
 
 }
-

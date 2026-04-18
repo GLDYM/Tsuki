@@ -93,7 +93,7 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
         if (!this.inputfluidTank.isEmpty()) {
             return true;
         }
-        
+
         for (int i = 0; i < 3; ++i) {
             if (!inventory.getStackInSlot(i).isEmpty()) {
                 return true;
@@ -101,6 +101,7 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
         }
         return false;
     }
+
     private Optional<FermenterRecipe> getMatchingRecipe(RecipeWrapper inventoryWrapper) {
         if (level == null) {
             return Optional.empty();
@@ -141,7 +142,8 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
             NonNullList<ItemStack> resultStacks = recipe.getResultItemList();
             boolean fluid_flag = !(recipe.getResultFluid().isEmpty());
             FluidTank outTank = this.outputfluidTank;
-            fluid_flag = (FluidStack.isSameFluidSameComponents(outTank.getFluid(), recipe.getResultFluid()) && outTank.getSpace() >= recipe.getResultFluid().getAmount())
+            fluid_flag = (FluidStack.isSameFluidSameComponents(outTank.getFluid(), recipe.getResultFluid())
+                    && outTank.getSpace() >= recipe.getResultFluid().getAmount())
                     && outTank.getSpace() >= recipe.getResultFluid().getAmount()
                     || outTank.isEmpty()
                     || recipe.getResultFluid().isEmpty();
@@ -189,7 +191,7 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
             ItemStack outStack = inventory.getStackInSlot(i);
             if (outStack.isEmpty()) {
                 inventory.setStackInSlot(i, resultStacks.get(i - 3).copy());
-            } else if (ItemStack.isSameItem(outStack,resultStacks.get(i - 3))) {
+            } else if (ItemStack.isSameItem(outStack, resultStacks.get(i - 3))) {
                 outStack.grow(resultStacks.get(i - 3).getCount());
             }
         }
@@ -210,7 +212,8 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
                 double x = worldPosition.getX() + 0.5;
                 double y = worldPosition.getY() + 0.7;
                 double z = worldPosition.getZ() + 0.5;
-                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F, 0.25F,
+                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
+                        0.25F,
                         0F);
             }
             if (!slotStack.isEmpty()) {
@@ -327,7 +330,7 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
             public boolean isFluidValid(FluidStack stack) {
                 return !stack.getFluid().getFluidType().isLighterThanAir();
             }
-            
+
         };
     }
 
@@ -336,24 +339,24 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
             @Override
             public int get(int index) {
                 switch (index) {
-                case 0:
-                    return FermenterBlockEntity.this.recipeTime;
-                case 1:
-                    return FermenterBlockEntity.this.recipeTimeTotal;
-                default:
-                    return 0;
+                    case 0:
+                        return FermenterBlockEntity.this.recipeTime;
+                    case 1:
+                        return FermenterBlockEntity.this.recipeTimeTotal;
+                    default:
+                        return 0;
                 }
             }
 
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                case 0:
-                    FermenterBlockEntity.this.recipeTime = value;
-                    break;
-                case 1:
-                    FermenterBlockEntity.this.recipeTimeTotal = value;
-                    break;
+                    case 0:
+                        FermenterBlockEntity.this.recipeTime = value;
+                        break;
+                    case 1:
+                        FermenterBlockEntity.this.recipeTimeTotal = value;
+                        break;
                 }
             }
 
@@ -379,7 +382,7 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
             }
         };
     }
-    
+
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory player, Player entity) {
         return new FermenterContainer(id, player, this, this.blockData);
@@ -399,4 +402,3 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
 }
-

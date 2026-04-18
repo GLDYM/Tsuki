@@ -19,7 +19,7 @@ public class ObonBlockEntity extends SyncedBlockEntity {
 
     public ObonBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.OBON.get(), pos, state);
-        
+
         inventory = createHandler();
         inputHandler = inventory;
     }
@@ -85,4 +85,3 @@ public class ObonBlockEntity extends SyncedBlockEntity {
         };
     }
 }
-

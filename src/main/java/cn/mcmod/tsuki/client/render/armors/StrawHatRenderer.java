@@ -9,7 +9,6 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 public class StrawHatRenderer extends GeoArmorRenderer<StrawHatItem> {
     public StrawHatRenderer() {
         super(new DefaultedItemGeoModel<>(
-            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/straw_hat")
-        ));
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/straw_hat")));
     }
 }

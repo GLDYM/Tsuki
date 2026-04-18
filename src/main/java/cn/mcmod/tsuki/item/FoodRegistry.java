@@ -21,14 +21,15 @@ public class FoodRegistry {
 
     public static final Map<TsukiCuisineSet, DeferredItem<ItemFoodBase>> CUISINES = ItemRegistryUtil.mapOfKeys(
             TsukiCuisineSet.class,
-            info -> register(info.getFoodInfo().getName(), () -> normalFood(info.getFoodInfo(), info.getContainer().get())));
+            info -> register(info.getFoodInfo().getName(),
+                    () -> normalFood(info.getFoodInfo(), info.getContainer().get())));
 
     private static ItemFoodBase normalFood(FoodInfo info) {
         return new ItemFoodBase(Tsuki.defaultItemProperties(), info);
     }
 
     private static ItemFoodBase normalFood(FoodInfo info, Item container) {
-        if(container == null)
+        if (container == null)
             return normalFood(info);
         return new ItemFoodBase(Tsuki.defaultItemProperties().craftRemainder(container), info);
     }
@@ -37,5 +38,3 @@ public class FoodRegistry {
         return ITEMS.register(name, item);
     }
 }
-
-

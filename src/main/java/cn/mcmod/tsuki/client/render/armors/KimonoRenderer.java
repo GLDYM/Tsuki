@@ -11,9 +11,8 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 public class KimonoRenderer extends GeoArmorRenderer<KimonoItem> {
     public KimonoRenderer(String base) {
         super(new KimonoModel<>(
-            base,
-            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/kimono")
-        ));
+                base,
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/kimono")));
     }
 
     @Override
@@ -23,7 +22,7 @@ public class KimonoRenderer extends GeoArmorRenderer<KimonoItem> {
 
     public static class KimonoModel<T extends GeoAnimatable> extends DefaultedItemGeoModel<T> {
         private final String base;
-        
+
         public KimonoModel(String base, ResourceLocation modelLocation) {
             super(modelLocation);
             this.base = base;
@@ -32,9 +31,8 @@ public class KimonoRenderer extends GeoArmorRenderer<KimonoItem> {
         @Override
         public ResourceLocation getTextureResource(T animatable) {
             return ResourceLocation.fromNamespaceAndPath(
-                Tsuki.MODID,
-                "textures/item/armor/" + base + ".png"
-            );
+                    Tsuki.MODID,
+                    "textures/item/armor/" + base + ".png");
         }
     }
 }

@@ -62,9 +62,11 @@ public enum TsukiNormalItemSet {
     SAKURA_COIN("sakura_coin");
 
     private final String name;
+
     private TsukiNormalItemSet(String name) {
         this.name = name;
     }
+
     public String getName() {
         return name;
     }

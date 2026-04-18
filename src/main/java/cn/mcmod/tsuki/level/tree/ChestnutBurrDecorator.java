@@ -10,8 +10,8 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class ChestnutBurrDecorator extends TreeDecorator {
-    public static final MapCodec<ChestnutBurrDecorator> CODEC = RecordCodecBuilder.mapCodec(instance ->
-            instance.group(Codec.FLOAT.fieldOf("probability").forGetter(d -> d.probability))
+    public static final MapCodec<ChestnutBurrDecorator> CODEC = RecordCodecBuilder
+            .mapCodec(instance -> instance.group(Codec.FLOAT.fieldOf("probability").forGetter(d -> d.probability))
                     .apply(instance, ChestnutBurrDecorator::new));
 
     private final float probability;

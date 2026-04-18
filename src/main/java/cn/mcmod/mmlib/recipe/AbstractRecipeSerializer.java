@@ -31,13 +31,12 @@ public class AbstractRecipeSerializer<T extends AbstractRecipe> implements Recip
                         return DataResult.error(e::getMessage);
                     }
                 },
-                recipe -> DataResult.success(new Dynamic<>(JsonOps.INSTANCE, DataGenUtil.NETWORK_GSON.toJsonTree(recipe)))
-        );
+                recipe -> DataResult
+                        .success(new Dynamic<>(JsonOps.INSTANCE, DataGenUtil.NETWORK_GSON.toJsonTree(recipe))));
         this.codec = MapCodec.assumeMapUnsafe(gsonCodec);
         this.streamCodec = StreamCodec.of(
                 (buffer, recipe) -> buffer.writeUtf(DataGenUtil.NETWORK_GSON.toJson(toJson(recipe))),
-                buffer -> DataGenUtil.NETWORK_GSON.fromJson(buffer.readUtf(), recipeClass)
-        );
+                buffer -> DataGenUtil.NETWORK_GSON.fromJson(buffer.readUtf(), recipeClass));
     }
 
     public JsonObject toJson(T recipe) {

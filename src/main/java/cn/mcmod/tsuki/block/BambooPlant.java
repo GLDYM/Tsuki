@@ -83,9 +83,9 @@ public class BambooPlant extends Block implements BonemealableBlock {
 
     @Override
     public void randomTick(BlockState state, ServerLevel levelIn, BlockPos pos, RandomSource random) {
-        if(CommonHooks.canCropGrow(levelIn, pos, state, random.nextInt(3) == 0)) {
+        if (CommonHooks.canCropGrow(levelIn, pos, state, random.nextInt(3) == 0)) {
             if (levelIn.getRawBrightness(pos.above(), 0) >= 6) {
-                growingTick(state, levelIn, pos, random); 
+                growingTick(state, levelIn, pos, random);
                 spreadingTick(levelIn, pos, random);
                 CommonHooks.fireCropGrowPost(levelIn, pos, state);
             }
@@ -94,7 +94,7 @@ public class BambooPlant extends Block implements BonemealableBlock {
 
     public void spreadingTick(ServerLevel levelIn, BlockPos pos, RandomSource random) {
         int j = this.getHeightAboveUpToMax(levelIn, pos) + 1;
-        if(j >= 16) {
+        if (j >= 16) {
             if (levelIn.isRaining() || random.nextFloat() < 0.15) {
                 growBambooShoot(levelIn, pos, random);
             }
@@ -103,8 +103,8 @@ public class BambooPlant extends Block implements BonemealableBlock {
 
     public void growingTick(BlockState state, ServerLevel levelIn, BlockPos pos, RandomSource random) {
         int i = this.getHeightBelowUpToMax(levelIn, pos) + 1;
-        if(i < 16 && levelIn.isEmptyBlock(pos.above())) {
-                this.growBamboo(state, levelIn, pos, random, i);
+        if (i < 16 && levelIn.isEmptyBlock(pos.above())) {
+            this.growBamboo(state, levelIn, pos, random, i);
         }
     }
 
@@ -170,10 +170,10 @@ public class BambooPlant extends Block implements BonemealableBlock {
         BambooLeaves bambooleaves = BambooLeaves.NONE;
         if (p_48915_ >= 1) {
             if (blockstate.is(this) && blockstate.getValue(LEAVES) != BambooLeaves.NONE) {
-                    bambooleaves = BambooLeaves.LARGE;
-                    if (blockstate1.is(this)) {
-                        level.setBlock(pos.below(), blockstate.setValue(LEAVES, BambooLeaves.SMALL), 3);
-                        level.setBlock(blockpos, blockstate1.setValue(LEAVES, BambooLeaves.NONE), 3);
+                bambooleaves = BambooLeaves.LARGE;
+                if (blockstate1.is(this)) {
+                    level.setBlock(pos.below(), blockstate.setValue(LEAVES, BambooLeaves.SMALL), 3);
+                    level.setBlock(blockpos, blockstate1.setValue(LEAVES, BambooLeaves.NONE), 3);
                 }
             } else {
                 bambooleaves = BambooLeaves.SMALL;
@@ -194,14 +194,16 @@ public class BambooPlant extends Block implements BonemealableBlock {
 
     protected int getHeightAboveUpToMax(BlockGetter p_48883_, BlockPos p_48884_) {
         int i;
-        for (i = 0; i < 16 && p_48883_.getBlockState(p_48884_.above(i + 1)).is(this); ++i) ;
+        for (i = 0; i < 16 && p_48883_.getBlockState(p_48884_.above(i + 1)).is(this); ++i)
+            ;
 
         return i;
     }
 
     protected int getHeightBelowUpToMax(BlockGetter p_48933_, BlockPos p_48934_) {
         int i;
-        for (i = 0; i < 16 && p_48933_.getBlockState(p_48934_.below(i + 1)).is(this); ++i) ;
+        for (i = 0; i < 16 && p_48933_.getBlockState(p_48934_.below(i + 1)).is(this); ++i)
+            ;
 
         return i;
     }
@@ -211,6 +213,3 @@ public class BambooPlant extends Block implements BonemealableBlock {
         return 1F;
     }
 }
-
-
-

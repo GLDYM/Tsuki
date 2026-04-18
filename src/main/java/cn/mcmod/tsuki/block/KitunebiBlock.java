@@ -51,7 +51,8 @@ public class KitunebiBlock extends LightBlock {
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
             BlockHitResult hitResult) {
-        // Keep foxfire brightness fixed; unlike vanilla light block, right-click does not cycle level.
+        // Keep foxfire brightness fixed; unlike vanilla light block, right-click does
+        // not cycle level.
         return InteractionResult.CONSUME;
     }
 

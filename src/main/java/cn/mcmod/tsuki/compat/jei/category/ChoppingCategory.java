@@ -34,9 +34,11 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
     private final IDrawable icon;
 
     private final IDrawable chancedSlot;
+
     public ChoppingCategory(IGuiHelper helper) {
         title = Component.translatable("tsuki.jei.chopping");
-        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/jei_chopping.png");
+        ResourceLocation backgroundImage = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+                "textures/gui/jei_chopping.png");
         background = helper.createDrawable(backgroundImage, 4, 4, 92, 74);
         chancedSlot = helper.createDrawable(backgroundImage, 100, 0, 18, 18);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
@@ -69,7 +71,8 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
         builder.addSlot(RecipeIngredientRole.INPUT, 14, 7).addIngredients(recipeIngredients.get(0));
         builder.addSlot(RecipeIngredientRole.INPUT, 14, 29).addIngredients(recipe.getTool());
         Minecraft minecraft = Minecraft.getInstance();
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 62, 7).addItemStack(recipe.getResultItem(minecraft.level.registryAccess()));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 62, 7)
+                .addItemStack(recipe.getResultItem(minecraft.level.registryAccess()));
 
         NonNullList<ChanceResult> byproducts = recipe.getByproducts();
         for (int i = 0; i < Math.min(4, byproducts.size()); i++) {
@@ -84,10 +87,10 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
         }
 
     }
-    
+
     @Override
     public void draw(ChoppingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX,
-                     double mouseY) {
+            double mouseY) {
 
         NonNullList<ChanceResult> byproducts = recipe.getByproducts();
         for (int i = 0; i < Math.min(4, byproducts.size()); i++) {
@@ -98,7 +101,8 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
         }
         Minecraft minecraft = Minecraft.getInstance();
         Font fontRenderer = minecraft.font;
-        guiGraphics.drawString(fontRenderer, Component.translatable("tsuki.jei.chopping.count", recipe.getRecipeTime()), 33, 32, 0xFEFEFE,true);
+        guiGraphics.drawString(fontRenderer, Component.translatable("tsuki.jei.chopping.count", recipe.getRecipeTime()),
+                33, 32, 0xFEFEFE, true);
         RenderSystem.setShaderColor(1, 1, 1, 1);
     }
 

@@ -33,11 +33,10 @@ public class SoldierItem extends ArmorItem implements GeoItem {
 
             @Override
             public <T extends LivingEntity> HumanoidModel<T> getGeoArmorRenderer(
-                T livingEntity,
-                ItemStack itemStack,
-                EquipmentSlot equipmentSlot,
-                HumanoidModel<T> original
-            ) {
+                    T livingEntity,
+                    ItemStack itemStack,
+                    EquipmentSlot equipmentSlot,
+                    HumanoidModel<T> original) {
                 if (this.renderer == null)
                     this.renderer = new SoldierRenderer(SoldierItem.this.base);
                 return this.renderer;

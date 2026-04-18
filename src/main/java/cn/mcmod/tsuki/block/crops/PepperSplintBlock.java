@@ -58,13 +58,16 @@ public class PepperSplintBlock extends Block {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player,
             InteractionHand hand, BlockHitResult hit) {
-        if (level.isClientSide()) return ItemInteractionResult.SUCCESS;
+        if (level.isClientSide())
+            return ItemInteractionResult.SUCCESS;
 
         if (stack.is(ItemRegistry.PEPPER_SEEDS.get())) {
             level.setBlock(pos, BlockRegistry.PEPPER_CROP.get().defaultBlockState(), 3);
-            if (!player.isCreative()) stack.shrink(1);
+            if (!player.isCreative())
+                stack.shrink(1);
             return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -77,7 +80,8 @@ public class PepperSplintBlock extends Block {
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos, boolean isMoving) {
+    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos,
+            boolean isMoving) {
         super.neighborChanged(state, level, pos, block, fromPos, isMoving);
         if (!this.canSurvive(state, level, pos)) {
             level.destroyBlock(pos, true);

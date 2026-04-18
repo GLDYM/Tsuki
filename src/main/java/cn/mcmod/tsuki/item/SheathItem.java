@@ -27,12 +27,13 @@ public class SheathItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack sheathStack = player.getItemInHand(hand);
-        InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+        InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND
+                : InteractionHand.MAIN_HAND;
         ItemStack otherStack = player.getItemInHand(otherHand);
 
         if (otherStack.getItem() instanceof KatanaItem) {
             if (!otherStack.is(TsukiArmorToolRegistry.SAKURA_KATANA.get())
-                && !otherStack.is(TsukiArmorToolRegistry.KATANA.get())) {
+                    && !otherStack.is(TsukiArmorToolRegistry.KATANA.get())) {
                 player.displayClientMessage(Component.translatable("tsuki.katana.wrong_katana"), false);
                 return InteractionResultHolder.fail(sheathStack);
             }
@@ -41,10 +42,10 @@ public class SheathItem extends Item {
                         otherStack.is(TsukiArmorToolRegistry.SAKURA_KATANA.get())
                                 ? TsukiArmorToolRegistry.SAKURA_KATANA_SHEATH.get()
                                 : TsukiArmorToolRegistry.KATANA_SHEATH.get(),
-                        1
-                );
+                        1);
 
-                CompoundTag customTag = sheathKatana.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+                CompoundTag customTag = sheathKatana.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+                        .copyTag();
                 customTag.put(TAG_SHEATH, sheathStack.copyWithCount(1).saveOptional(player.registryAccess()));
                 sheathKatana.set(DataComponents.CUSTOM_DATA, CustomData.of(customTag));
 

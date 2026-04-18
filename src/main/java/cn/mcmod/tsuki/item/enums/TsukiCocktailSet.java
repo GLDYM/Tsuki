@@ -7,182 +7,182 @@ import net.minecraft.world.effect.MobEffects;
 import java.util.function.Supplier;
 
 public enum TsukiCocktailSet {
-    GLASS_KIR("glass_kir", () -> new MobEffectInstance[]{
+    GLASS_KIR("glass_kir", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 200, 0),
             new MobEffectInstance(EffectRegistry.EXP_UP, 200, 0)
     }),
-    GLASS_KIR_ROYALE("glass_kir_royale", () -> new MobEffectInstance[]{
+    GLASS_KIR_ROYALE("glass_kir_royale", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 800, 0),
             new MobEffectInstance(MobEffects.REGENERATION, 400, 0)
     }),
-    GLASS_CASSIS_ORANGE("glass_cassis_orange", () -> new MobEffectInstance[]{
+    GLASS_CASSIS_ORANGE("glass_cassis_orange", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0)
     }),
-    GLASS_CASSIS_SODA("glass_cassis_soda", () -> new MobEffectInstance[]{
+    GLASS_CASSIS_SODA("glass_cassis_soda", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0),
             new MobEffectInstance(MobEffects.JUMP, 400, 0)
     }),
-    GLASS_MIMOSA("glass_mimosa", () -> new MobEffectInstance[]{
+    GLASS_MIMOSA("glass_mimosa", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600, 0),
             new MobEffectInstance(MobEffects.JUMP, 400, 0)
     }),
-    GLASS_SHANDY_GAFF("glass_shandy_gaff", () -> new MobEffectInstance[]{
+    GLASS_SHANDY_GAFF("glass_shandy_gaff", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.SATURATION, 400, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0)
     }),
-    GLASS_RED_EYE("glass_red_eye", () -> new MobEffectInstance[]{
+    GLASS_RED_EYE("glass_red_eye", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0),
             new MobEffectInstance(MobEffects.SATURATION, 200, 0)
     }),
-    GLASS_SANGRIA("glass_sangria", () -> new MobEffectInstance[]{
+    GLASS_SANGRIA("glass_sangria", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 600, 0),
             new MobEffectInstance(MobEffects.HEALTH_BOOST, 400, 0)
     }),
-    GLASS_KALIMOTXO("glass_kalimotxo", () -> new MobEffectInstance[]{
+    GLASS_KALIMOTXO("glass_kalimotxo", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0),
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0)
     }),
-    GLASS_KITTY("glass_kitty", () -> new MobEffectInstance[]{
+    GLASS_KITTY("glass_kitty", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0),
             new MobEffectInstance(MobEffects.LUCK, 400, 0)
     }),
-    GLASS_OPERATOR("glass_operator", () -> new MobEffectInstance[]{
+    GLASS_OPERATOR("glass_operator", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0),
             new MobEffectInstance(MobEffects.ABSORPTION, 400, 0)
     }),
-    GLASS_AMERICANO("glass_americano", () -> new MobEffectInstance[]{
+    GLASS_AMERICANO("glass_americano", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.SATURATION, 600, 0),
             new MobEffectInstance(MobEffects.DIG_SPEED, 400, 0)
     }),
-    GLASS_GIN_TONIC("glass_gin_tonic", () -> new MobEffectInstance[]{
+    GLASS_GIN_TONIC("glass_gin_tonic", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0)
     }),
-    GLASS_GIN_FIZZ("glass_gin_fizz", () -> new MobEffectInstance[]{
+    GLASS_GIN_FIZZ("glass_gin_fizz", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 400, 0),
             new MobEffectInstance(MobEffects.JUMP, 400, 0)
     }),
-    GLASS_GIMLET("glass_gimlet", () -> new MobEffectInstance[]{
+    GLASS_GIMLET("glass_gimlet", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0),
             new MobEffectInstance(MobEffects.DIG_SPEED, 400, 0)
     }),
-    GLASS_SPRITZER("glass_spritzer", () -> new MobEffectInstance[]{
+    GLASS_SPRITZER("glass_spritzer", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0)
     }),
-    GLASS_MARTINI("glass_martini", () -> new MobEffectInstance[]{
+    GLASS_MARTINI("glass_martini", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 800, 0),
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0)
     }),
-    GLASS_ALEXANDER("glass_alexander", () -> new MobEffectInstance[]{
+    GLASS_ALEXANDER("glass_alexander", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.REGENERATION, 200, 0),
             new MobEffectInstance(MobEffects.HUNGER, 200, 1)
     }),
-    GLASS_BELLINI("glass_bellini", () -> new MobEffectInstance[]{
+    GLASS_BELLINI("glass_bellini", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 800, 0),
             new MobEffectInstance(MobEffects.REGENERATION, 200, 0)
     }),
-    GLASS_SCREWDRIVER("glass_screwdriver", () -> new MobEffectInstance[]{
+    GLASS_SCREWDRIVER("glass_screwdriver", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400, 0)
     }),
-    GLASS_SALTY_DOG("glass_salty_dog", () -> new MobEffectInstance[]{
+    GLASS_SALTY_DOG("glass_salty_dog", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 600, 0),
             new MobEffectInstance(MobEffects.WATER_BREATHING, 200, 0)
     }),
-    GLASS_MATADOR("glass_matador", () -> new MobEffectInstance[]{
+    GLASS_MATADOR("glass_matador", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400, 0),
             new MobEffectInstance(MobEffects.DIG_SPEED, 400, 0)
     }),
-    GLASS_HOT_TODDY("glass_hot_toddy", () -> new MobEffectInstance[]{
+    GLASS_HOT_TODDY("glass_hot_toddy", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 400, 0),
             new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400, 0)
     }),
-    GLASS_HOT_BUTTERED_RUM("glass_hot_buttered_rum", () -> new MobEffectInstance[]{
+    GLASS_HOT_BUTTERED_RUM("glass_hot_buttered_rum", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0),
             new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400, 0)
     }),
-    GLASS_GROG("glass_grog", () -> new MobEffectInstance[]{
+    GLASS_GROG("glass_grog", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.WATER_BREATHING, 600, 0),
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 0)
     }),
-    GLASS_CUBA_LIBRE("glass_cuba_libre", () -> new MobEffectInstance[]{
+    GLASS_CUBA_LIBRE("glass_cuba_libre", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.WATER_BREATHING, 400, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600, 0)
     }),
-    GLASS_PINA_COLADA("glass_pina_colada", () -> new MobEffectInstance[]{
+    GLASS_PINA_COLADA("glass_pina_colada", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.WATER_BREATHING, 400, 0),
             new MobEffectInstance(MobEffects.ABSORPTION, 400, 0)
     }),
-    GLASS_DAIQUIRI("glass_daiquiri", () -> new MobEffectInstance[]{
+    GLASS_DAIQUIRI("glass_daiquiri", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.WATER_BREATHING, 200, 0),
             new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 0)
     }),
-    GLASS_HIGHBALL("glass_highball", () -> new MobEffectInstance[]{
+    GLASS_HIGHBALL("glass_highball", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 400, 0)
     }),
-    GLASS_MOSCOW_MULE("glass_moscow_mule", () -> new MobEffectInstance[]{
+    GLASS_MOSCOW_MULE("glass_moscow_mule", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0),
             new MobEffectInstance(MobEffects.SATURATION, 200, 0)
     }),
-    GLASS_TEQUILA_SUNRISE("glass_tequila_sunrise", () -> new MobEffectInstance[]{
+    GLASS_TEQUILA_SUNRISE("glass_tequila_sunrise", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.HEAL, 2, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0)
     }),
-    GLASS_MARGARITA("glass_margarita", () -> new MobEffectInstance[]{
+    GLASS_MARGARITA("glass_margarita", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 200, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0)
     }),
-    GLASS_NEGRONI("glass_negroni", () -> new MobEffectInstance[]{
+    GLASS_NEGRONI("glass_negroni", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 0),
             new MobEffectInstance(EffectRegistry.GOLDEN_HEART, 100, 0)
     }),
-    GLASS_BLACK_RUSSIAN("glass_black_russian", () -> new MobEffectInstance[]{
+    GLASS_BLACK_RUSSIAN("glass_black_russian", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0),
             new MobEffectInstance(EffectRegistry.FIRE_BLADE, 200, 0)
     }),
-    GLASS_GODFATHER("glass_godfather", () -> new MobEffectInstance[]{
+    GLASS_GODFATHER("glass_godfather", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 200, 0),
             new MobEffectInstance(EffectRegistry.EXP_UP, 200, 0)
     }),
-    GLASS_GODMOTHER("glass_godmother", () -> new MobEffectInstance[]{
+    GLASS_GODMOTHER("glass_godmother", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0),
             new MobEffectInstance(EffectRegistry.EXP_UP, 200, 0)
     }),
-    GLASS_SIDECAR("glass_sidecar", () -> new MobEffectInstance[]{
+    GLASS_SIDECAR("glass_sidecar", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 200, 0),
             new MobEffectInstance(EffectRegistry.GOLDEN_HEART, 2, 0)
     }),
-    GLASS_BLOODY_MARY("glass_bloody_mary", () -> new MobEffectInstance[]{
+    GLASS_BLOODY_MARY("glass_bloody_mary", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 400, 1)
     }),
-    GLASS_OLD_FASHIONED("glass_old_fashioned", () -> new MobEffectInstance[]{
+    GLASS_OLD_FASHIONED("glass_old_fashioned", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0),
             new MobEffectInstance(MobEffects.DIG_SPEED, 200, 0),
             new MobEffectInstance(MobEffects.NIGHT_VISION, 200, 0)
     }),
-    GLASS_WHISKEY_SOUR("glass_whiskey_sour", () -> new MobEffectInstance[]{
+    GLASS_WHISKEY_SOUR("glass_whiskey_sour", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0),
             new MobEffectInstance(MobEffects.DIG_SPEED, 200, 0)
     }),
-    GLASS_MOJITO("glass_mojito", () -> new MobEffectInstance[]{
+    GLASS_MOJITO("glass_mojito", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 200, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0),
             new MobEffectInstance(MobEffects.NIGHT_VISION, 200, 0)
     }),
-    GLASS_RUSTY_NAIL("glass_rusty_nail", () -> new MobEffectInstance[]{
+    GLASS_RUSTY_NAIL("glass_rusty_nail", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 200, 0),
             new MobEffectInstance(MobEffects.LUCK, 200, 0)
     }),
-    GLASS_SAKETINI("glass_saketini", () -> new MobEffectInstance[]{
+    GLASS_SAKETINI("glass_saketini", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.HEAL, 2, 1),
             new MobEffectInstance(MobEffects.REGENERATION, 200, 0),
             new MobEffectInstance(MobEffects.HEALTH_BOOST, 200, 0)
     }),
-    GLASS_STINGER("glass_stinger", () -> new MobEffectInstance[]{
+    GLASS_STINGER("glass_stinger", () -> new MobEffectInstance[] {
             new MobEffectInstance(EffectRegistry.POISONING, 200, 0)
     }),
-    GLASS_SCORPION("glass_scorpion", () -> new MobEffectInstance[]{
+    GLASS_SCORPION("glass_scorpion", () -> new MobEffectInstance[] {
             new MobEffectInstance(EffectRegistry.SCORPION, 200, 0)
     });
 

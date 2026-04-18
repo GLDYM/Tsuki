@@ -15,25 +15,25 @@ import net.neoforged.neoforge.common.loot.LootModifier;
 import java.util.List;
 import com.google.common.collect.Lists;
 
-public class FishingModifiter extends LootModifier{
+public class FishingModifiter extends LootModifier {
 
     protected FishingModifiter(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
     }
+
     public static final MapCodec<FishingModifiter> CODEC = RecordCodecBuilder
             .mapCodec(inst -> codecStart(inst).apply(inst, FishingModifiter::new));
+
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-      List<Item> seeds = Lists.newArrayList(TsukiFoodSet.SHRIMP.getItem().get(), TsukiFoodSet.BONITO.getItem().get());
-      generatedLoot.clear();
-      generatedLoot.add(new ItemStack(seeds.get(context.getRandom().nextInt(seeds.size()))));
+        List<Item> seeds = Lists.newArrayList(TsukiFoodSet.SHRIMP.getItem().get(), TsukiFoodSet.BONITO.getItem().get());
+        generatedLoot.clear();
+        generatedLoot.add(new ItemStack(seeds.get(context.getRandom().nextInt(seeds.size()))));
         return generatedLoot;
     }
-
 
     @Override
     public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC;
     }
 }
-

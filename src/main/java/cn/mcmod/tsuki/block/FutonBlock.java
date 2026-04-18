@@ -78,7 +78,8 @@ public class FutonBlock extends Block {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
+            BlockHitResult hit) {
         if (level.isClientSide()) {
             return InteractionResult.CONSUME;
         }
@@ -106,8 +107,7 @@ public class FutonBlock extends Block {
                     pos.getZ() + 0.5D,
                     5.0F,
                     true,
-                    Level.ExplosionInteraction.BLOCK
-            );
+                    Level.ExplosionInteraction.BLOCK);
             return InteractionResult.SUCCESS;
         }
 
@@ -162,7 +162,8 @@ public class FutonBlock extends Block {
     }
 
     @Override
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer,
+            ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         if (!level.isClientSide()) {
             BlockPos headPos = pos.relative(state.getValue(FACING));
@@ -174,7 +175,7 @@ public class FutonBlock extends Block {
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
-                                  LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+            LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         if (direction == getNeighborDirection(state.getValue(PART), state.getValue(FACING))) {
             return neighborState.is(this) && neighborState.getValue(PART) != state.getValue(PART)
                     ? state.setValue(OCCUPIED, neighborState.getValue(OCCUPIED))

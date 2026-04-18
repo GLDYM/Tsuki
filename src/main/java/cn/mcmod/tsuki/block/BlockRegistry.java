@@ -209,14 +209,17 @@ public class BlockRegistry {
             () -> plank(MapColor.SAND));
     public static final DeferredBlock<Block> BAMBOO_PLANK = BLOCKS.register("plank_bamboo",
             () -> plank(MapColor.SAND));
-    
+
     public static final DeferredBlock<Block> STRAW_BLOCK = BLOCKS.register("straw_block",
             () -> new Block(BlockBehaviour.Properties.of()));
 
     public static final DeferredBlock<DropExperienceBlock> SAKURA_DIAMOND_ORE = BLOCKS.register("sakura_diamond_ore",
-            () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE)));
-    public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_SAKURA_DIAMOND_ORE = BLOCKS.register("deepslate_sakura_diamond_ore",
-            () -> new DropExperienceBlock(UniformInt.of(3, 7), BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE)));
+            () -> new DropExperienceBlock(UniformInt.of(3, 7),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_ORE)));
+    public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_SAKURA_DIAMOND_ORE = BLOCKS.register(
+            "deepslate_sakura_diamond_ore",
+            () -> new DropExperienceBlock(UniformInt.of(3, 7),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE)));
     public static final DeferredBlock<Block> IRON_SAND = BLOCKS.register("iron_sand",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.COLOR_GRAY)));
 
@@ -234,16 +237,20 @@ public class BlockRegistry {
             () -> new FacingSlab(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<Block> TATAMI_CARPET = BLOCKS.register("tatami_carpet",
             () -> new CarpetBlock(
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND).sound(SoundType.GRASS)));
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
+                            .sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_CARPET_WAXED = BLOCKS.register("tatami_ns_carpet",
             () -> new CarpetBlock(
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND).sound(SoundType.GRASS)));
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
+                            .sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_CARPET_TAN = BLOCKS.register("tatami_tan_carpet",
             () -> new CarpetBlock(
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND).sound(SoundType.GRASS)));
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
+                            .sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_CARPET_TAN_WAXED = BLOCKS.register("tatami_tan_ns_carpet",
             () -> new CarpetBlock(
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND).sound(SoundType.GRASS)));
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
+                            .sound(SoundType.GRASS)));
 
     public static final DeferredBlock<Block> RICE_CROP_ROOT = BLOCKS.register("rice_crop_root",
             () -> new RiceCropRoot(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F)));
@@ -251,41 +258,54 @@ public class BlockRegistry {
             () -> new RiceCrop(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F)));
 
     public static final DeferredBlock<Block> CABBAGE_CROP = BLOCKS.register("cabbage_crop",
-            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.CABBAGE_SEEDS));
+            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F),
+                    ItemRegistry.CABBAGE_SEEDS));
 
     public static final DeferredBlock<Block> RADISH_CROP = BLOCKS.register("radish_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.RADISH_SEEDS));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F),
+                    ItemRegistry.RADISH_SEEDS));
 
     public static final DeferredBlock<Block> ONION_CROP = BLOCKS.register("onion_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.ONION_SEEDS));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F),
+                    ItemRegistry.ONION_SEEDS));
 
     public static final DeferredBlock<Block> REDBEAN_CROP = BLOCKS.register("redbean_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.RED_BEAN));
-    
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F),
+                    ItemRegistry.RED_BEAN));
+
     public static final DeferredBlock<Block> SOYBEAN_CROP = BLOCKS.register("soybean_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.SOYBEAN));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F),
+                    ItemRegistry.SOYBEAN));
 
     public static final DeferredBlock<Block> RAPESEED_CROP = BLOCKS.register("rapeseed_crop",
-            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.RAPESEEDS));
+            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F),
+                    ItemRegistry.RAPESEEDS));
 
     public static final DeferredBlock<Block> BUCKWHEAT_CROP = BLOCKS.register("buckwheat_crop",
-            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.BUCKWHEAT));
+            () -> new BaseCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F),
+                    ItemRegistry.BUCKWHEAT));
 
     public static final DeferredBlock<Block> TARO_CROP = BLOCKS.register("taro_crop",
-            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.TARO));
+            () -> new Age3CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F),
+                    ItemRegistry.TARO));
 
     public static final DeferredBlock<Block> TOMATO_CROP = BLOCKS.register("tomato_crop",
-            () -> new HighCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.TOMATO_SEEDS));
+            () -> new HighCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F),
+                    ItemRegistry.TOMATO_SEEDS));
 
     public static final DeferredBlock<Block> EGGPLANT_CROP = BLOCKS.register("eggplant_crop",
-            () -> new HighCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.EGGPLANT_SEEDS));
+            () -> new HighCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F),
+                    ItemRegistry.EGGPLANT_SEEDS));
 
     public static final DeferredBlock<Block> PEPPER_CROP = BLOCKS.register("pepper_crop",
-            () -> new PepperCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.PEPPER_SEEDS));
+            () -> new PepperCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F),
+                    ItemRegistry.PEPPER_SEEDS));
     public static final DeferredBlock<Block> VANILLA_CROP = BLOCKS.register("vanilla_crop",
-            () -> new VanillaCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F), ItemRegistry.VANILLA_SEEDS));
+            () -> new VanillaCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS).strength(0.2F),
+                    ItemRegistry.VANILLA_SEEDS));
     public static final DeferredBlock<Block> HOPS_CROP = BLOCKS.register("hops_crop",
-            () -> new HopsCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F), ItemRegistry.HOP_SEEDS));
+            () -> new HopsCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F),
+                    ItemRegistry.HOP_SEEDS));
 
     public static final DeferredBlock<Block> PEPPER_SPLINT = BLOCKS.register("pepper_splint",
             PepperSplintBlock::new);
@@ -325,8 +345,7 @@ public class BlockRegistry {
                             .isValidSpawn((state, level, pos, type) -> false)
                             .isRedstoneConductor((state, level, pos) -> false)
                             .isSuffocating((state, level, pos) -> false)
-                            .isViewBlocking((state, level, pos) -> false)
-                        ));
+                            .isViewBlocking((state, level, pos) -> false)));
     // Kawara block variants
     public static final DeferredBlock<Block> KAWARA_BLOCK_ALTER = BLOCKS.register("kawara_block_alter",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
@@ -411,9 +430,12 @@ public class BlockRegistry {
                     .mapColor(MapColor.COLOR_RED)));
     public static final DeferredBlock<Block> FUTON = BLOCKS.register("futon", FutonBlock::new);
     public static final DeferredBlock<Block> TAIKO = BLOCKS.register("taiko", TaikoBlock::new);
-    public static final DeferredBlock<Block> NOREN_WHITE = BLOCKS.register("noren_white", () -> new NorenBlock(MapColor.SNOW));
-    public static final DeferredBlock<Block> NOREN_BLUE = BLOCKS.register("noren_blue", () -> new NorenBlock(MapColor.COLOR_BLUE));
-    public static final DeferredBlock<Block> NOREN_PINK = BLOCKS.register("noren_pink", () -> new NorenBlock(MapColor.COLOR_PINK));
+    public static final DeferredBlock<Block> NOREN_WHITE = BLOCKS.register("noren_white",
+            () -> new NorenBlock(MapColor.SNOW));
+    public static final DeferredBlock<Block> NOREN_BLUE = BLOCKS.register("noren_blue",
+            () -> new NorenBlock(MapColor.COLOR_BLUE));
+    public static final DeferredBlock<Block> NOREN_PINK = BLOCKS.register("noren_pink",
+            () -> new NorenBlock(MapColor.COLOR_PINK));
     public static final DeferredBlock<Block> BAMBOO_FENCE = BLOCKS.register("bamboo_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
     public static final DeferredBlock<Block> BAMBOO_FENCE_SUNBURNT = BLOCKS.register("bamboo_fence_sunburnt",
@@ -428,34 +450,38 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> TATARA = BLOCKS.register("tatara", () -> new TataraBlock());
 
     public static final DeferredBlock<Block> MAPLE_SPILE = BLOCKS.register("maple_spile", () -> new MapleSpileBlock());
-    public static final DeferredBlock<Block> MAPLE_CAULDRON = BLOCKS.register("maple_cauldron", () -> new MapleCauldronBlock());
+    public static final DeferredBlock<Block> MAPLE_CAULDRON = BLOCKS.register("maple_cauldron",
+            () -> new MapleCauldronBlock());
 
-    public static final DeferredBlock<Block> STONE_MORTAR = BLOCKS.register("stone_mortar", () -> new StoneMortarBlock());
+    public static final DeferredBlock<Block> STONE_MORTAR = BLOCKS.register("stone_mortar",
+            () -> new StoneMortarBlock());
     public static final DeferredBlock<Block> COOKING_POT = BLOCKS.register("cooking_pot", () -> new CookingPotBlock());
     public static final DeferredBlock<Block> FERMENTER = BLOCKS.register("fermenter", () -> new FermenterBlock());
     public static final DeferredBlock<Block> DISTILLER = BLOCKS.register("distiller", () -> new DistillerBlock());
     public static final DeferredBlock<Block> OBON = BLOCKS.register("obon", () -> new ObonBlock());
-    public static final DeferredBlock<Block> CHOPPING_BOARD = BLOCKS.register("chopping_board", () -> new ChoppingBoardBlock());
-    public static final DeferredBlock<Block> TEISHOUKU_FINISHED = BLOCKS.register("teishoku_finished", TeishokuFinishedBlock::new);
-    public static final DeferredBlock<Block> TEISHOUKU_FISH_SALT = BLOCKS.register("teishoku_fish_salt", 
-            ()->new TeishokuBlock(FoodInfo.builder().amountAndCalories(8, 0.8f).build()));
-    public static final DeferredBlock<Block> TEISHOUKU_FISH_COOKED = BLOCKS.register("teishoku_fish_cooked", 
-            ()->new TeishokuBlock(FoodInfo.builder().amountAndCalories(8, 0.8f).build()));
-    public static final DeferredBlock<Block> TEISHOUKU_FISH_RAW = BLOCKS.register("teishoku_fish_raw", 
-            ()->new TeishokuBlock(FoodInfo.builder().amountAndCalories(6, 0.8f).build()));
-    public static final DeferredBlock<Block> TEISHOKO_TAMAGOYAKI = BLOCKS.register("teishoku_tamagoyaki", 
-            ()->new TeishokuBlock(FoodInfo.builder().amountAndCalories(6, 0.8f).build()));
-    public static final DeferredBlock<Block> TEISHOKO_YAKINIKU = BLOCKS.register("teishoku_yakiniku", 
-            ()->new TeishokuBlock(FoodInfo.builder().amountAndCalories(10, 0.8f).build()));
-    
-    public static final DeferredBlock<Block> NABE_SUKIYAKI = BLOCKS.register("nabe_sukiyaki", 
-            ()->new NabeBlock(FoodInfo.builder().amountAndCalories(12, 1f).build()));
-    public static final DeferredBlock<Block> NABE_ODEN = BLOCKS.register("nabe_oden", 
-            ()->new NabeBlock(FoodInfo.builder().amountAndCalories(12, 1f).build()));
-    
+    public static final DeferredBlock<Block> CHOPPING_BOARD = BLOCKS.register("chopping_board",
+            () -> new ChoppingBoardBlock());
+    public static final DeferredBlock<Block> TEISHOUKU_FINISHED = BLOCKS.register("teishoku_finished",
+            TeishokuFinishedBlock::new);
+    public static final DeferredBlock<Block> TEISHOUKU_FISH_SALT = BLOCKS.register("teishoku_fish_salt",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(8, 0.8f).build()));
+    public static final DeferredBlock<Block> TEISHOUKU_FISH_COOKED = BLOCKS.register("teishoku_fish_cooked",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(8, 0.8f).build()));
+    public static final DeferredBlock<Block> TEISHOUKU_FISH_RAW = BLOCKS.register("teishoku_fish_raw",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(6, 0.8f).build()));
+    public static final DeferredBlock<Block> TEISHOKO_TAMAGOYAKI = BLOCKS.register("teishoku_tamagoyaki",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(6, 0.8f).build()));
+    public static final DeferredBlock<Block> TEISHOKO_YAKINIKU = BLOCKS.register("teishoku_yakiniku",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(10, 0.8f).build()));
+
+    public static final DeferredBlock<Block> NABE_SUKIYAKI = BLOCKS.register("nabe_sukiyaki",
+            () -> new NabeBlock(FoodInfo.builder().amountAndCalories(12, 1f).build()));
+    public static final DeferredBlock<Block> NABE_ODEN = BLOCKS.register("nabe_oden",
+            () -> new NabeBlock(FoodInfo.builder().amountAndCalories(12, 1f).build()));
+
     private static RotatedPillarBlock log(MapColor top, MapColor bark) {
         return new RotatedPillarBlock(BlockBehaviour.Properties
-                                .of().mapColor( state -> (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? top : bark))
+                .of().mapColor(state -> (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? top : bark))
                 .strength(2.0F).sound(SoundType.WOOD));
     }
 
@@ -466,7 +492,7 @@ public class BlockRegistry {
 
     private static RotatedPillarBlock simplebambooBlock(MapColor top, MapColor bark) {
         return new RotatedPillarBlock(BlockBehaviour.Properties
-                                .of().mapColor(state -> (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? top : bark))
+                .of().mapColor(state -> (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? top : bark))
 
                 .strength(2.0F).sound(SoundType.BAMBOO));
     }

@@ -27,7 +27,8 @@ import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public final class KCCookingPotCompat {
     private static final String KC_MODID = "kaleidoscope_cookery";
-    private static final ResourceLocation COMPAT_ID_PREFIX = ResourceLocation.fromNamespaceAndPath(KC_MODID, "stockpot");
+    private static final ResourceLocation COMPAT_ID_PREFIX = ResourceLocation.fromNamespaceAndPath(KC_MODID,
+            "stockpot");
     private static final int DEFAULT_WATER_AMOUNT = 125;
     private static final boolean DEBUG_LOG = false;
     private static String lastDebugKey = "";
@@ -64,7 +65,8 @@ public final class KCCookingPotCompat {
             if (recipe.matches(input, level)) {
                 matched++;
                 int ingredientCount = getNonEmptyIngredientCount(recipe);
-                matchedIds.add(holder.id() + "[ingredients=" + ingredientCount + ",result=" + recipe.result().getCount() + "]");
+                matchedIds.add(holder.id() + "[ingredients=" + ingredientCount + ",result=" + recipe.result().getCount()
+                        + "]");
                 if (ingredientCount > bestIngredientCount) {
                     bestIngredientCount = ingredientCount;
                     bestMatch = holder;
@@ -80,13 +82,13 @@ public final class KCCookingPotCompat {
                     describeFluid(fluid),
                     describeWrapperInputs(wrapper),
                     checked,
-                    matched
-            );
+                    matched);
             return Optional.empty();
         }
 
         logDebugDedup(
-                "kc-match|" + bestMatch.id() + "|" + soupBase + "|" + describeFluid(fluid) + "|" + describeWrapperInputs(wrapper),
+                "kc-match|" + bestMatch.id() + "|" + soupBase + "|" + describeFluid(fluid) + "|"
+                        + describeWrapperInputs(wrapper),
                 "matched: selected={}, soupBase={}, fluid={}, inputs={}, checked={}, matched={}, candidates=[{}]",
                 bestMatch.id(),
                 soupBase,
@@ -94,8 +96,7 @@ public final class KCCookingPotCompat {
                 describeWrapperInputs(wrapper),
                 checked,
                 matched,
-                matchedIds
-        );
+                matchedIds);
         return transform(bestMatch.id(), bestMatch.value(), level);
     }
 
@@ -123,7 +124,8 @@ public final class KCCookingPotCompat {
         }
 
         CookingPotRecipe recipe = new CookingPotRecipe();
-        recipe.setId(ResourceLocation.fromNamespaceAndPath(COMPAT_ID_PREFIX.getNamespace(), COMPAT_ID_PREFIX.getPath() + "/compat_" + sourceId.getPath()));
+        recipe.setId(ResourceLocation.fromNamespaceAndPath(COMPAT_ID_PREFIX.getNamespace(),
+                COMPAT_ID_PREFIX.getPath() + "/compat_" + sourceId.getPath()));
 
         NonNullList<Ingredient> inputs = NonNullList.create();
         for (Ingredient ingredient : source.getIngredients()) {
@@ -144,7 +146,8 @@ public final class KCCookingPotCompat {
     private static StockpotInput createStockpotInput(RecipeWrapper wrapper, ResourceLocation soupBase) {
         List<ItemStack> inputs = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
-            // Keep the full 9-slot shape (including empty slots) to match KC's StockpotInput semantics.
+            // Keep the full 9-slot shape (including empty slots) to match KC's
+            // StockpotInput semantics.
             inputs.add(wrapper.getItem(i));
         }
         return new StockpotInput(inputs, soupBase);

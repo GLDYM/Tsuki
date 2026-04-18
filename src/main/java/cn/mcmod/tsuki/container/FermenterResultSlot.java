@@ -60,4 +60,3 @@ public class FermenterResultSlot extends SlotItemHandler {
         this.removeCount = 0;
     }
 }
-

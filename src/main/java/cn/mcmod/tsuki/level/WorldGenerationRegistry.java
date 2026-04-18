@@ -27,35 +27,49 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 public class WorldGenerationRegistry {
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_BAMBOOSHOOT_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_bambooshoot"));
-    public static final ConfiguredFeature<?, ?> FEATURE_PATCH_BAMBOOSHOOT = new ConfiguredFeature<>(Feature.FLOWER, new RandomPatchConfiguration(
-            64, 1, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new NoiseThresholdProvider(496156461L,
-            new NormalNoise.NoiseParameters(0, 1.0), 0.005F, -0.8F, 0.33333334F, BlockRegistry.BAMBOOSHOOT.get().defaultBlockState(),
-            List.of(BlockRegistry.BAMBOOSHOOT.get().defaultBlockState()),
-            List.of(BlockRegistry.BAMBOOSHOOT.get().defaultBlockState()))))));
-    public static final ResourceKey<PlacedFeature> PATCH_BAMBOOSHOOT_KEY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_bambooshoot"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_BAMBOOSHOOT_KEY = ResourceKey.create(
+            Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_bambooshoot"));
+    public static final ConfiguredFeature<?, ?> FEATURE_PATCH_BAMBOOSHOOT = new ConfiguredFeature<>(Feature.FLOWER,
+            new RandomPatchConfiguration(
+                    64, 1, 3,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                            new SimpleBlockConfiguration(new NoiseThresholdProvider(496156461L,
+                                    new NormalNoise.NoiseParameters(0, 1.0), 0.005F, -0.8F, 0.33333334F,
+                                    BlockRegistry.BAMBOOSHOOT.get().defaultBlockState(),
+                                    List.of(BlockRegistry.BAMBOOSHOOT.get().defaultBlockState()),
+                                    List.of(BlockRegistry.BAMBOOSHOOT.get().defaultBlockState()))))));
+    public static final ResourceKey<PlacedFeature> PATCH_BAMBOOSHOOT_KEY = ResourceKey.create(Registries.PLACED_FEATURE,
+            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_bambooshoot"));
     public static final PlacedFeature PATCH_BAMBOOSHOOT = new PlacedFeature(Holder.direct(FEATURE_PATCH_BAMBOOSHOOT),
             List.of(PlacementUtils.HEIGHTMAP,
                     InSquarePlacement.spread(),
                     BiomeFilter.biome(),
                     PlacementUtils.filteredByBlockSurvival(Blocks.BIRCH_SAPLING),
                     RarityFilter.onAverageOnceEvery(10)));
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_WILD_PEPPER_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_pepper"));
-    public static final ConfiguredFeature<?, ?> FEATURE_PATCH_WILD_PEPPER = new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
-            32, 6, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
-            BlockStateProvider.simple(BlockRegistry.WILD_PEPPER.get().defaultBlockState().setValue(BlockStateProperties.AGE_7, 0))))));
-    public static final ResourceKey<PlacedFeature> PATCH_WILD_PEPPER_KEY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_pepper"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_WILD_PEPPER_KEY = ResourceKey.create(
+            Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_pepper"));
+    public static final ConfiguredFeature<?, ?> FEATURE_PATCH_WILD_PEPPER = new ConfiguredFeature<>(
+            Feature.RANDOM_PATCH, new RandomPatchConfiguration(
+                    32, 6, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                            BlockStateProvider.simple(BlockRegistry.WILD_PEPPER.get().defaultBlockState()
+                                    .setValue(BlockStateProperties.AGE_7, 0))))));
+    public static final ResourceKey<PlacedFeature> PATCH_WILD_PEPPER_KEY = ResourceKey.create(Registries.PLACED_FEATURE,
+            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_pepper"));
     public static final PlacedFeature PATCH_WILD_PEPPER = new PlacedFeature(Holder.direct(FEATURE_PATCH_WILD_PEPPER),
             List.of(PlacementUtils.HEIGHTMAP,
                     InSquarePlacement.spread(),
                     BiomeFilter.biome(),
                     RarityFilter.onAverageOnceEvery(64)));
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_WILD_VANILLA_KEY = ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_vanilla"));
-    public static final ConfiguredFeature<?, ?> FEATURE_PATCH_WILD_VANILLA = new ConfiguredFeature<>(Feature.RANDOM_PATCH, new RandomPatchConfiguration(
-            32, 6, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
-            BlockStateProvider.simple(BlockRegistry.WILD_VANILLA.get().defaultBlockState().setValue(BlockStateProperties.AGE_7, 0))))));
-    public static final ResourceKey<PlacedFeature> PATCH_WILD_VANILLA_KEY = ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_vanilla"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_WILD_VANILLA_KEY = ResourceKey.create(
+            Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_vanilla"));
+    public static final ConfiguredFeature<?, ?> FEATURE_PATCH_WILD_VANILLA = new ConfiguredFeature<>(
+            Feature.RANDOM_PATCH, new RandomPatchConfiguration(
+                    32, 6, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                            BlockStateProvider.simple(BlockRegistry.WILD_VANILLA.get().defaultBlockState()
+                                    .setValue(BlockStateProperties.AGE_7, 0))))));
+    public static final ResourceKey<PlacedFeature> PATCH_WILD_VANILLA_KEY = ResourceKey.create(
+            Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_wild_vanilla"));
     public static final PlacedFeature PATCH_WILD_VANILLA = new PlacedFeature(Holder.direct(FEATURE_PATCH_WILD_VANILLA),
             List.of(PlacementUtils.HEIGHTMAP,
                     InSquarePlacement.spread(),
@@ -71,8 +85,10 @@ public class WorldGenerationRegistry {
     public static final ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>> FEATURE_ORE_SAKURA_DIAMOND = new ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>>(
             Feature.ORE,
             new OreConfiguration(List.of(
-                    OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), BlockRegistry.SAKURA_DIAMOND_ORE.get().defaultBlockState()),
-                    OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get().defaultBlockState())),
+                    OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES),
+                            BlockRegistry.SAKURA_DIAMOND_ORE.get().defaultBlockState()),
+                    OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES),
+                            BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get().defaultBlockState())),
                     4,
                     0.5F));
 
@@ -87,13 +103,15 @@ public class WorldGenerationRegistry {
             List.of(
                     CountPlacement.of(7),
                     InSquarePlacement.spread(),
-                    HeightRangePlacement.of(BiasedToBottomHeight.of(VerticalAnchor.bottom(), VerticalAnchor.absolute(-1), 1)),
+                    HeightRangePlacement
+                            .of(BiasedToBottomHeight.of(VerticalAnchor.bottom(), VerticalAnchor.absolute(-1), 1)),
                     BiomeFilter.biome()));
-    public static final ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>> FEATURE_ORE_IRON_SAND =
-            new ConfiguredFeature<>(Feature.ORE,
-                    new OreConfiguration(List.of(
-                            OreConfiguration.target(new TagMatchTest(BlockTags.SAND), BlockRegistry.IRON_SAND.get().defaultBlockState())),
-                            12));
+    public static final ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>> FEATURE_ORE_IRON_SAND = new ConfiguredFeature<>(
+            Feature.ORE,
+            new OreConfiguration(List.of(
+                    OreConfiguration.target(new TagMatchTest(BlockTags.SAND),
+                            BlockRegistry.IRON_SAND.get().defaultBlockState())),
+                    12));
     public static final PlacedFeature ORE_IRON_SAND = new PlacedFeature(
             Holder.direct(FEATURE_ORE_IRON_SAND),
             List.of(
@@ -110,20 +128,26 @@ public class WorldGenerationRegistry {
         }
     }
 
-//    public static final BlockPos BLOCK_BELOW = new BlockPos(0, -1, 0);
-//
-//    private static ConfiguredFeature<?, ?> wildPlantFeature(Supplier<Block> wildCrop, TagKey<Block> blockTag) {
-//        return new ConfiguredFeature<>(Feature.RANDOM_PATCH, getWildCropConfiguration(wildCrop.get(),
-//                64, 1, BlockPredicate.matchesTag(BLOCK_BELOW,blockTag)));
-//    }
-//    private static PlacedFeature wildPlantPatch(ConfiguredFeature<?, ?> feature,
-//            PlacementModifier... modifiers) {
-//        return new PlacedFeature(Holder.direct(feature), Lists.newArrayList(modifiers));
-//    }
-//
-//    private static RandomPatchConfiguration getWildCropConfiguration(Block block, int tries, int xzSpread, BlockPredicate plantedOn) {
-//        return new RandomPatchConfiguration(tries, xzSpread, 3, PlacementUtils.filtered(
-//                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(block)),
-//                        BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, plantedOn)));
-//    }
+    // public static final BlockPos BLOCK_BELOW = new BlockPos(0, -1, 0);
+    //
+    // private static ConfiguredFeature<?, ?> wildPlantFeature(Supplier<Block>
+    // wildCrop, TagKey<Block> blockTag) {
+    // return new ConfiguredFeature<>(Feature.RANDOM_PATCH,
+    // getWildCropConfiguration(wildCrop.get(),
+    // 64, 1, BlockPredicate.matchesTag(BLOCK_BELOW,blockTag)));
+    // }
+    // private static PlacedFeature wildPlantPatch(ConfiguredFeature<?, ?> feature,
+    // PlacementModifier... modifiers) {
+    // return new PlacedFeature(Holder.direct(feature),
+    // Lists.newArrayList(modifiers));
+    // }
+    //
+    // private static RandomPatchConfiguration getWildCropConfiguration(Block block,
+    // int tries, int xzSpread, BlockPredicate plantedOn) {
+    // return new RandomPatchConfiguration(tries, xzSpread, 3,
+    // PlacementUtils.filtered(
+    // Feature.SIMPLE_BLOCK, new
+    // SimpleBlockConfiguration(BlockStateProvider.simple(block)),
+    // BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, plantedOn)));
+    // }
 }

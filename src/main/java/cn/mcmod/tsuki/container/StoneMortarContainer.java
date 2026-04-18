@@ -136,4 +136,3 @@ public class StoneMortarContainer extends AbstractContainerMenu {
         return i != 0 ? i % 40 / 10 : 0;
     }
 }
-

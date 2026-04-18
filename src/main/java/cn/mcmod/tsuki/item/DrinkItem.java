@@ -23,11 +23,13 @@ public class DrinkItem extends Item {
     private final Supplier<Item> containerItem;
     private final Component toolTip;
 
-    public DrinkItem(Properties properties, Supplier<Item> containerItem, boolean alcoholic, MobEffectInstance... effects) {
+    public DrinkItem(Properties properties, Supplier<Item> containerItem, boolean alcoholic,
+            MobEffectInstance... effects) {
         this(properties, containerItem, alcoholic, null, effects);
     }
 
-    public DrinkItem(Properties properties, Supplier<Item> containerItem, boolean alcoholic, Component toolTip, MobEffectInstance... effects) {
+    public DrinkItem(Properties properties, Supplier<Item> containerItem, boolean alcoholic, Component toolTip,
+            MobEffectInstance... effects) {
         super(properties.stacksTo(16));
         this.effects = effects;
         this.alcoholic = alcoholic;

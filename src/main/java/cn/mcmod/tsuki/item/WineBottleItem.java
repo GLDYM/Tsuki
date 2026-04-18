@@ -32,8 +32,7 @@ public class WineBottleItem extends Item {
             Supplier<Item> containerItem,
             Supplier<Fluid> fluidSupplier,
             boolean alcoholic,
-            MobEffectInstance... effects
-    ) {
+            MobEffectInstance... effects) {
         this(properties, containerItem, fluidSupplier, alcoholic, null, effects);
     }
 
@@ -43,8 +42,7 @@ public class WineBottleItem extends Item {
             Supplier<Fluid> fluidSupplier,
             boolean alcoholic,
             Component toolTip,
-            MobEffectInstance... effects
-    ) {
+            MobEffectInstance... effects) {
         super(properties.stacksTo(1).durability(MAX_SIP_DAMAGE));
         this.effects = effects;
         this.alcoholic = alcoholic;

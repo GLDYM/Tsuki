@@ -6,7 +6,6 @@ public class TsukiConfig {
     public static ModConfigSpec COMMON_CONFIG;
     public static ModConfigSpec.IntValue IRON_SAND_AMOUNT;
 
-
     static {
         ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
         COMMON_BUILDER.comment("General settings").push("general");

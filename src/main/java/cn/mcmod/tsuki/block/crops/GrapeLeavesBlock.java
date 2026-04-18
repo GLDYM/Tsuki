@@ -74,7 +74,8 @@ public class GrapeLeavesBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player,
             InteractionHand hand, BlockHitResult hit) {
         if (level.isClientSide()) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -82,12 +83,14 @@ public class GrapeLeavesBlock extends Block implements BonemealableBlock {
         int age = state.getValue(AGE);
         if (age >= 6 && stack.is(Items.SHEARS)) {
             if (age == 6) {
-                popResource(level, pos.below(), new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get()));
+                popResource(level, pos.below(),
+                        new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get()));
             } else {
                 popResource(level, pos.below(), new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get()));
             }
             level.setBlock(pos, state.setValue(AGE, 0), 2);
-            stack.hurtAndBreak(1, player, hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+            stack.hurtAndBreak(1, player,
+                    hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
             return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

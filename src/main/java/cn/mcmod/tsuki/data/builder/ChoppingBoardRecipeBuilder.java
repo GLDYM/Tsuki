@@ -50,11 +50,11 @@ public class ChoppingBoardRecipeBuilder {
     }
 
     public ChoppingBoardRecipeBuilder requires(Ingredient ingre) {
-        if(this.item.isEmpty())
+        if (this.item.isEmpty())
             this.item = ingre;
         return this;
     }
-    
+
     public ChoppingBoardRecipeBuilder requiresTool(TagKey<Item> tag) {
         return this.requiresTool(Ingredient.of(tag));
     }
@@ -64,7 +64,7 @@ public class ChoppingBoardRecipeBuilder {
     }
 
     public ChoppingBoardRecipeBuilder requiresTool(Ingredient ingre) {
-        if(this.tool.isEmpty())
+        if (this.tool.isEmpty())
             this.tool = ingre;
         return this;
     }
@@ -77,7 +77,7 @@ public class ChoppingBoardRecipeBuilder {
         this.byproduces.add(new ChanceResult(new ItemStack(result.asItem(), count), 1));
         return this;
     }
-    
+
     public ChoppingBoardRecipeBuilder addByproduceWithChance(ItemLike result, float chance) {
         return this.addByproduce(result, 1, chance);
     }

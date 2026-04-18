@@ -8,7 +8,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-
 public class CustomLanternBlock extends Block {
     public static final MapCodec<CustomLanternBlock> CODEC = simpleCodec(CustomLanternBlock::new);
 

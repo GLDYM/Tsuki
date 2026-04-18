@@ -13,7 +13,6 @@ import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.BlockAndItemGeoLayer;
 
-
 public class SamuraiIllagerRenderer extends GeoEntityRenderer<SamuraiIllagerEntity> {
     public SamuraiIllagerRenderer(EntityRendererProvider.Context context) {
         super(context, new SamuraiIllagerModel());
@@ -43,7 +42,7 @@ public class SamuraiIllagerRenderer extends GeoEntityRenderer<SamuraiIllagerEnti
 
         @Override
         protected ItemDisplayContext getTransformTypeForStack(GeoBone bone, ItemStack stack,
-                                                              SamuraiIllagerEntity animatable) {
+                SamuraiIllagerEntity animatable) {
             return "left_arm".equals(bone.getName())
                     ? ItemDisplayContext.THIRD_PERSON_LEFT_HAND
                     : ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
@@ -51,17 +50,18 @@ public class SamuraiIllagerRenderer extends GeoEntityRenderer<SamuraiIllagerEnti
 
         @Override
         protected void renderStackForBone(PoseStack poseStack, GeoBone bone, ItemStack stack,
-                                          SamuraiIllagerEntity animatable,
-                                          net.minecraft.client.renderer.MultiBufferSource bufferSource,
-                                          float partialTick, int packedLight, int packedOverlay) {
+                SamuraiIllagerEntity animatable,
+                net.minecraft.client.renderer.MultiBufferSource bufferSource,
+                float partialTick, int packedLight, int packedOverlay) {
             poseStack.pushPose();
             // Magic numbers.
             poseStack.translate(0.27D, -0.1D, 0.5D);
             poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
             poseStack.mulPose(Axis.YP.rotationDegrees(-40.0F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(-22.5F));            
+            poseStack.mulPose(Axis.ZP.rotationDegrees(-22.5F));
             poseStack.scale(1.0F, 1.0F, 1.0F);
-            super.renderStackForBone(poseStack, bone, stack, animatable, bufferSource, partialTick, packedLight, packedOverlay);
+            super.renderStackForBone(poseStack, bone, stack, animatable, bufferSource, partialTick, packedLight,
+                    packedOverlay);
             poseStack.popPose();
         }
     }
@@ -73,15 +73,17 @@ public class SamuraiIllagerRenderer extends GeoEntityRenderer<SamuraiIllagerEnti
 
         // This Animation is a little weird
         // @Override
-        // public void setCustomAnimations(SamuraiIllagerEntity animatable, long instanceId,
-        //                                 AnimationState<SamuraiIllagerEntity> animationState) {
-        //     super.setCustomAnimations(animatable, instanceId, animationState);
-        //     GeoBone head = this.getAnimationProcessor().getBone("head");
-        //     if (head != null) {
-        //         EntityModelData entityModelData = animationState.getData(DataTickets.ENTITY_MODEL_DATA);
-        //         head.setRotX(entityModelData.headPitch() * Mth.DEG_TO_RAD);
-        //         head.setRotY(entityModelData.netHeadYaw() * Mth.DEG_TO_RAD);
-        //     }
+        // public void setCustomAnimations(SamuraiIllagerEntity animatable, long
+        // instanceId,
+        // AnimationState<SamuraiIllagerEntity> animationState) {
+        // super.setCustomAnimations(animatable, instanceId, animationState);
+        // GeoBone head = this.getAnimationProcessor().getBone("head");
+        // if (head != null) {
+        // EntityModelData entityModelData =
+        // animationState.getData(DataTickets.ENTITY_MODEL_DATA);
+        // head.setRotX(entityModelData.headPitch() * Mth.DEG_TO_RAD);
+        // head.setRotY(entityModelData.netHeadYaw() * Mth.DEG_TO_RAD);
+        // }
         // }
     }
 }

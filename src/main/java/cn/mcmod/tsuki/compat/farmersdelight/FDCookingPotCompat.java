@@ -24,7 +24,8 @@ public final class FDCookingPotCompat {
     private FDCookingPotCompat() {
     }
 
-    public static Optional<cn.mcmod.tsuki.recipes.CookingPotRecipe> findMatching(Level level, RecipeWrapper wrapper, FluidStack fluid) {
+    public static Optional<cn.mcmod.tsuki.recipes.CookingPotRecipe> findMatching(Level level, RecipeWrapper wrapper,
+            FluidStack fluid) {
         if (level == null || !isEnabled() || !fluid.isEmpty()) {
             return Optional.empty();
         }
@@ -60,9 +61,11 @@ public final class FDCookingPotCompat {
         return recipes;
     }
 
-    private static cn.mcmod.tsuki.recipes.CookingPotRecipe transform(ResourceLocation sourceId, CookingPotRecipe source, Level level) {
+    private static cn.mcmod.tsuki.recipes.CookingPotRecipe transform(ResourceLocation sourceId, CookingPotRecipe source,
+            Level level) {
         cn.mcmod.tsuki.recipes.CookingPotRecipe recipe = new cn.mcmod.tsuki.recipes.CookingPotRecipe();
-        recipe.setId(ResourceLocation.fromNamespaceAndPath(COMPAT_ID_PREFIX.getNamespace(), COMPAT_ID_PREFIX.getPath() + "/compat_" + sourceId.getPath()));
+        recipe.setId(ResourceLocation.fromNamespaceAndPath(COMPAT_ID_PREFIX.getNamespace(),
+                COMPAT_ID_PREFIX.getPath() + "/compat_" + sourceId.getPath()));
 
         NonNullList<Ingredient> inputs = NonNullList.create();
         for (Ingredient ingredient : source.getIngredients()) {

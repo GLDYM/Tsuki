@@ -42,7 +42,8 @@ public class MapleTreeLogBlock extends RotatedPillarBlock {
                 level.playSound((Player) null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 level.setBlock(pos, BlockRegistry.MAPLE_SAP_LOG.get().withPropertiesOf(state)
                         .setValue(MapleTreeSapLogBlock.EXHAUSTION, false), 11);
-                itemstack.hurtAndBreak(1, player, hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+                itemstack.hurtAndBreak(1, player,
+                        hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
                 level.gameEvent(player, GameEvent.SHEAR, pos);
                 player.awardStat(Stats.ITEM_USED.get(Items.SHEARS));
             }
@@ -62,6 +63,3 @@ public class MapleTreeLogBlock extends RotatedPillarBlock {
         return super.getToolModifiedState(state, context, ItemAbility, simulate);
     }
 }
-
-
-

@@ -50,17 +50,17 @@ public class ObonBlock extends BaseEntityBlock {
     protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
     }
-    
+
     @Override
     public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
     }
-    
+
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
-    
+
     @Override
     public float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos) {
         return 1F;
@@ -75,17 +75,21 @@ public class ObonBlock extends BaseEntityBlock {
 
             if (obon.isEmpty()) {
                 if (!offhandStack.isEmpty()) {
-                    if (handIn.equals(InteractionHand.MAIN_HAND) && !offhandStack.is(TsukiItemTags.OFFHAND_EQUIPMENT) && !(heldStack.getItem() instanceof BlockItem)) {
-                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Pass to off-hand if that item is placeable
+                    if (handIn.equals(InteractionHand.MAIN_HAND) && !offhandStack.is(TsukiItemTags.OFFHAND_EQUIPMENT)
+                            && !(heldStack.getItem() instanceof BlockItem)) {
+                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Pass to off-hand if that item
+                                                                                        // is placeable
                     }
                     if (handIn.equals(InteractionHand.OFF_HAND) && offhandStack.is(TsukiItemTags.OFFHAND_EQUIPMENT)) {
-                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Items in this tag should not be placed from the off-hand
+                        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION; // Items in this tag should not
+                                                                                        // be placed from the off-hand
                     }
                 }
                 if (heldStack.isEmpty()) {
                     return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
                 } else if (obon.addItem(player.getAbilities().instabuild ? heldStack.copy() : heldStack)) {
-                    worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F);
+                    worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_PLACE,
+                            SoundSource.BLOCKS, 1.0F, 0.8F);
                     return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
                 }
 
@@ -97,13 +101,14 @@ public class ObonBlock extends BaseEntityBlock {
                 } else {
                     obon.removeItem();
                 }
-                worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_HIT, SoundSource.BLOCKS, 0.25F, 0.5F);
+                worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_HIT, SoundSource.BLOCKS,
+                        0.25F, 0.5F);
                 return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
-    
+
     @Override
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
@@ -115,12 +120,12 @@ public class ObonBlock extends BaseEntityBlock {
             super.onRemove(state, worldIn, pos, newState, isMoving);
         }
     }
-    
+
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
-    
+
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return BlockEntityRegistry.OBON.get().create(pos, state);
@@ -130,11 +135,10 @@ public class ObonBlock extends BaseEntityBlock {
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
-    
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(FACING);
     }
 }
-

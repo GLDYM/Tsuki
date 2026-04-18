@@ -56,24 +56,24 @@ public class JEIPlugin implements IModPlugin {
                 .map(RecipeHolder::value)
                 .toList();
     }
-    
-    public static final mezz.jei.api.recipe.RecipeType<CookingPotRecipe> COOKING_POT_JEI_TYPE = 
-            mezz.jei.api.recipe.RecipeType.create(Tsuki.MODID, "cooking", CookingPotRecipe.class);
-    
-    public static final mezz.jei.api.recipe.RecipeType<StoneMortarRecipe> STONE_MORTAR_JEI_TYPE = 
-            mezz.jei.api.recipe.RecipeType.create(Tsuki.MODID, "stone_mortar", StoneMortarRecipe.class);
-    
-    public static final mezz.jei.api.recipe.RecipeType<FermenterRecipe> FERMENTER_JEI_TYPE = 
-            mezz.jei.api.recipe.RecipeType.create(Tsuki.MODID, "fermenting", FermenterRecipe.class);
-    
-    public static final mezz.jei.api.recipe.RecipeType<DistillerRecipe> DISTILLER_JEI_TYPE = 
-            mezz.jei.api.recipe.RecipeType.create(Tsuki.MODID, "distillation", DistillerRecipe.class);
-    
-    public static final mezz.jei.api.recipe.RecipeType<ChoppingRecipe> CHOPPING_JEI_TYPE = 
-            mezz.jei.api.recipe.RecipeType.create(Tsuki.MODID, "chopping", ChoppingRecipe.class);
 
-    public static final mezz.jei.api.recipe.RecipeType<TataraJeiRecipe> TATARA_JEI_TYPE =
-            mezz.jei.api.recipe.RecipeType.create(Tsuki.MODID, "tatara", TataraJeiRecipe.class);
+    public static final mezz.jei.api.recipe.RecipeType<CookingPotRecipe> COOKING_POT_JEI_TYPE = mezz.jei.api.recipe.RecipeType
+            .create(Tsuki.MODID, "cooking", CookingPotRecipe.class);
+
+    public static final mezz.jei.api.recipe.RecipeType<StoneMortarRecipe> STONE_MORTAR_JEI_TYPE = mezz.jei.api.recipe.RecipeType
+            .create(Tsuki.MODID, "stone_mortar", StoneMortarRecipe.class);
+
+    public static final mezz.jei.api.recipe.RecipeType<FermenterRecipe> FERMENTER_JEI_TYPE = mezz.jei.api.recipe.RecipeType
+            .create(Tsuki.MODID, "fermenting", FermenterRecipe.class);
+
+    public static final mezz.jei.api.recipe.RecipeType<DistillerRecipe> DISTILLER_JEI_TYPE = mezz.jei.api.recipe.RecipeType
+            .create(Tsuki.MODID, "distillation", DistillerRecipe.class);
+
+    public static final mezz.jei.api.recipe.RecipeType<ChoppingRecipe> CHOPPING_JEI_TYPE = mezz.jei.api.recipe.RecipeType
+            .create(Tsuki.MODID, "chopping", ChoppingRecipe.class);
+
+    public static final mezz.jei.api.recipe.RecipeType<TataraJeiRecipe> TATARA_JEI_TYPE = mezz.jei.api.recipe.RecipeType
+            .create(Tsuki.MODID, "tatara", TataraJeiRecipe.class);
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -87,11 +87,13 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        List<CookingPotRecipe> cookingRecipes = new java.util.ArrayList<>(findRecipesByType(RecipeTypeRegistry.COOKING_RECIPE_TYPE.get()));
+        List<CookingPotRecipe> cookingRecipes = new java.util.ArrayList<>(
+                findRecipesByType(RecipeTypeRegistry.COOKING_RECIPE_TYPE.get()));
         cookingRecipes.addAll(FDCookingPotCompat.getAllForJei(MC.level));
         cookingRecipes.addAll(KCCookingPotCompat.getAllForJei(MC.level));
         registration.addRecipes(COOKING_POT_JEI_TYPE, cookingRecipes);
-        registration.addRecipes(STONE_MORTAR_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get()));
+        registration.addRecipes(STONE_MORTAR_JEI_TYPE,
+                findRecipesByType(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get()));
         registration.addRecipes(FERMENTER_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.FERMENTER_RECIPE_TYPE.get()));
         registration.addRecipes(DISTILLER_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.DISTILLER_RECIPE_TYPE.get()));
         registration.addRecipes(CHOPPING_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get()));
@@ -99,8 +101,7 @@ public class JEIPlugin implements IModPlugin {
                 new ItemStack(BlockRegistry.TATARA.get()),
                 new ItemStack(net.minecraft.world.item.Items.FLINT_AND_STEEL),
                 new ItemStack(net.minecraft.world.item.Items.IRON_INGOT),
-                new ItemStack(TsukiArmorToolRegistry.TAMAHAGANE.get())
-        )));
+                new ItemStack(TsukiArmorToolRegistry.TAMAHAGANE.get()))));
     }
 
     @Override
@@ -126,10 +127,10 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
-        registration.addRecipeTransferHandler(CookingPotContainer.class,null, COOKING_POT_JEI_TYPE, 0, 9, 10, 36);
-        registration.addRecipeTransferHandler(StoneMortarContainer.class,null, STONE_MORTAR_JEI_TYPE, 0, 4, 6, 36);
-        registration.addRecipeTransferHandler(FermenterContainer.class, null,FERMENTER_JEI_TYPE, 0, 3, 6, 36);
-        registration.addRecipeTransferHandler(DistillerContainer.class, null,DISTILLER_JEI_TYPE, 0, 3, 6, 36);
+        registration.addRecipeTransferHandler(CookingPotContainer.class, null, COOKING_POT_JEI_TYPE, 0, 9, 10, 36);
+        registration.addRecipeTransferHandler(StoneMortarContainer.class, null, STONE_MORTAR_JEI_TYPE, 0, 4, 6, 36);
+        registration.addRecipeTransferHandler(FermenterContainer.class, null, FERMENTER_JEI_TYPE, 0, 3, 6, 36);
+        registration.addRecipeTransferHandler(DistillerContainer.class, null, DISTILLER_JEI_TYPE, 0, 3, 6, 36);
     }
 
     @Override

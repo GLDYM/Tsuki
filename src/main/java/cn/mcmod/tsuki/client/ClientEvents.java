@@ -56,10 +56,10 @@ public class ClientEvents {
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.BAMBOO_LANTERN.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.WINDBELL.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.FUTON.get(), RenderType.cutoutMipped());
-            
+
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_ODEN.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_SUKIYAKI.get(), RenderType.cutoutMipped());
-            
+
             BlockRegistry.BLOCKS.getEntries().forEach(block -> {
                 if (block.get() instanceof BushBlock) {
                     ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutoutMipped());
@@ -74,7 +74,7 @@ public class ClientEvents {
             FluidRegistry.FLUIDS.getEntries().forEach(fluid -> {
                 ItemBlockRenderTypes.setRenderLayer(fluid.get(), RenderType.translucent());
             });
-            
+
             BlockEntityRenderers.register(BlockEntityRegistry.STONE_MORTAR.get(), StoneMortarRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.CHOPPING_BOARD.get(), ChoppingBoardRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.OBON.get(), ObonRender::new);

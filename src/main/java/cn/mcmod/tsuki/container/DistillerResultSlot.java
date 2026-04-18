@@ -60,4 +60,3 @@ public class DistillerResultSlot extends SlotItemHandler {
         this.removeCount = 0;
     }
 }
-

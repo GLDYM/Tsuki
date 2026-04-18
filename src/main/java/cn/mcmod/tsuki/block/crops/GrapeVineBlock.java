@@ -90,7 +90,8 @@ public class GrapeVineBlock extends Block implements BonemealableBlock {
             BlockPos[] horizontalNeighbors = { pos.east(), pos.north(), pos.west(), pos.south() };
             for (BlockPos neighbor : horizontalNeighbors) {
                 if (level.getBlockState(neighbor).is(BlockRegistry.GRAPE_SPLINT.get())) {
-                    level.setBlock(neighbor, BlockRegistry.GRAPE_LEAVES.get().defaultBlockState().setValue(GrapeLeavesBlock.AGE, 0), 2);
+                    level.setBlock(neighbor,
+                            BlockRegistry.GRAPE_LEAVES.get().defaultBlockState().setValue(GrapeLeavesBlock.AGE, 0), 2);
                 }
             }
         }

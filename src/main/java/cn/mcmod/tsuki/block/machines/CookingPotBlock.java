@@ -168,4 +168,3 @@ public class CookingPotBlock extends BaseEntityBlock {
                 CookingPotBlockEntity::workingTick);
     }
 }
-

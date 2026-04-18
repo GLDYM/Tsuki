@@ -14,9 +14,10 @@ import net.minecraft.world.level.block.state.BlockState;
 public class KnifeItem extends DiggerItem {
 
     public KnifeItem(Tier tier, float attackDamageIn, float attackSpeedIn, Properties properties) {
-        super(tier, TsukiBlockTags.MINEABLE_WITH_KNIFE, properties.attributes(DiggerItem.createAttributes(tier, attackDamageIn, attackSpeedIn)));
+        super(tier, TsukiBlockTags.MINEABLE_WITH_KNIFE,
+                properties.attributes(DiggerItem.createAttributes(tier, attackDamageIn, attackSpeedIn)));
     }
-    
+
     @Override
     public boolean canAttackBlock(BlockState state, Level worldIn, BlockPos pos, Player player) {
         return !player.isCreative();

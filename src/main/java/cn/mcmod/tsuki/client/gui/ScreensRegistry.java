@@ -17,5 +17,3 @@ public class ScreensRegistry {
         event.register(ContainerRegistry.DISTILLER.get(), DistillerScreen::new);
     }
 }
-
-

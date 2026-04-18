@@ -24,7 +24,8 @@ public enum TsukiWineBottleSet {
     GIN_BOTTLE("gin_bottle", FluidRegistry.GIN, TsukiAlcoholSet.GLASS_GIN.getEffects()),
     TEQUILA_BOTTLE("tequila_bottle", FluidRegistry.TEQUILA, TsukiAlcoholSet.GLASS_TEQUILA.getEffects()),
     LIQUEUR_BOTTLE("liqueur_bottle", FluidRegistry.LIQUEUR, TsukiAlcoholSet.GLASS_LIQUEUR.getEffects()),
-    COCOA_LIQUEUR_BOTTLE("cocoa_liqueur_bottle", FluidRegistry.COCOA_LIQUEUR, TsukiAlcoholSet.GLASS_COCOA_LIQUEUR.getEffects());
+    COCOA_LIQUEUR_BOTTLE("cocoa_liqueur_bottle", FluidRegistry.COCOA_LIQUEUR,
+            TsukiAlcoholSet.GLASS_COCOA_LIQUEUR.getEffects());
 
     private final String name;
     private final Supplier<? extends Fluid> fluidSupplier;

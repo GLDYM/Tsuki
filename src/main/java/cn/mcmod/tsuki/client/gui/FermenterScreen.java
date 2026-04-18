@@ -17,7 +17,8 @@ import java.util.List;
 
 public class FermenterScreen extends AbstractContainerScreen<FermenterContainer> {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/barrel.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+            "textures/gui/barrel.png");
 
     public FermenterScreen(FermenterContainer screenContainer, Inventory inv, Component titleIn) {
         super(screenContainer, inv, titleIn);
@@ -49,7 +50,7 @@ public class FermenterScreen extends AbstractContainerScreen<FermenterContainer>
         if (this.minecraft == null) {
             return;
         }
-//        RenderUtils.setup(BACKGROUND_TEXTURE);
+        // RenderUtils.setup(BACKGROUND_TEXTURE);
         ms.blit(BACKGROUND_TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 
         // Render progress arrow
@@ -58,9 +59,10 @@ public class FermenterScreen extends AbstractContainerScreen<FermenterContainer>
 
         int m = this.menu.getWorking();
         ms.blit(BACKGROUND_TEXTURE, this.leftPos + 78, this.topPos + 44 - m, 176, 53 - m, 18, m);
-        
+
         var inputFluidTank = this.menu.blockEntity.getInputFluidTank();
-        int inputHeight = (int) (52.0F * ((float) inputFluidTank.getFluidAmount() / (float) inputFluidTank.getCapacity()));
+        int inputHeight = (int) (52.0F
+                * ((float) inputFluidTank.getFluidAmount() / (float) inputFluidTank.getCapacity()));
         if (inputHeight > 0) {
             int tankX = this.leftPos + 33;
             int tankY = this.topPos + 17 + (52 - inputHeight);
@@ -68,7 +70,8 @@ public class FermenterScreen extends AbstractContainerScreen<FermenterContainer>
         }
 
         var outputFluidTank = this.menu.blockEntity.getOutputFluidTank();
-        int outputHeight = (int) (52.0F * ((float) outputFluidTank.getFluidAmount() / (float) outputFluidTank.getCapacity()));
+        int outputHeight = (int) (52.0F
+                * ((float) outputFluidTank.getFluidAmount() / (float) outputFluidTank.getCapacity()));
         if (outputHeight > 0) {
             int tankX = this.leftPos + 125;
             int tankY = this.topPos + 17 + (52 - outputHeight);

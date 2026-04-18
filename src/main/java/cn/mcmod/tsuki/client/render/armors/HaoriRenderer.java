@@ -11,9 +11,8 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 public class HaoriRenderer extends GeoArmorRenderer<HaoriItem> {
     public HaoriRenderer(String base) {
         super(new HaoriModel<>(
-            base,
-            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/haori")
-        ));
+                base,
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "armor/haori")));
     }
 
     @Override
@@ -23,7 +22,7 @@ public class HaoriRenderer extends GeoArmorRenderer<HaoriItem> {
 
     public static class HaoriModel<T extends GeoAnimatable> extends DefaultedItemGeoModel<T> {
         private final String base;
-        
+
         public HaoriModel(String base, ResourceLocation modelLocation) {
             super(modelLocation);
             this.base = base;
@@ -32,9 +31,8 @@ public class HaoriRenderer extends GeoArmorRenderer<HaoriItem> {
         @Override
         public ResourceLocation getTextureResource(T animatable) {
             return ResourceLocation.fromNamespaceAndPath(
-                Tsuki.MODID,
-                "textures/item/armor/" + base + ".png"
-            );
+                    Tsuki.MODID,
+                    "textures/item/armor/" + base + ".png");
         }
     }
 }

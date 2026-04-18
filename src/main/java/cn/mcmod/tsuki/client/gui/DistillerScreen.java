@@ -17,7 +17,8 @@ import java.util.List;
 
 public class DistillerScreen extends AbstractContainerScreen<DistillerContainer> {
 
-    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/distiller.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+            "textures/gui/distiller.png");
 
     public DistillerScreen(DistillerContainer screenContainer, Inventory inv, Component titleIn) {
         super(screenContainer, inv, titleIn);
@@ -49,22 +50,23 @@ public class DistillerScreen extends AbstractContainerScreen<DistillerContainer>
         if (this.minecraft == null) {
             return;
         }
-//        RenderUtils.setup(BACKGROUND_TEXTURE);
+        // RenderUtils.setup(BACKGROUND_TEXTURE);
         ms.blit(BACKGROUND_TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
 
         // Render progress arrow
         int l = this.menu.getCookProgressionScaled();
         ms.blit(BACKGROUND_TEXTURE, this.leftPos + 75, this.topPos + 35, 176, 0, l + 1, 17);
-        
+
         int m = this.menu.getWorking();
         ms.blit(BACKGROUND_TEXTURE, this.leftPos + 78, this.topPos + 34 - m, 176, 53 - m, 18, m);
-        
+
         if (this.menu.isHeated()) {
             ms.blit(BACKGROUND_TEXTURE, this.leftPos + 78, this.topPos + 52, 176, 17, 18, 18);
         }
-        
+
         var inputFluidTank = this.menu.blockEntity.getInputFluidTank();
-        int inputHeight = (int) (52.0F * ((float) inputFluidTank.getFluidAmount() / (float) inputFluidTank.getCapacity()));
+        int inputHeight = (int) (52.0F
+                * ((float) inputFluidTank.getFluidAmount() / (float) inputFluidTank.getCapacity()));
         if (inputHeight > 0) {
             int tankX = this.leftPos + 33;
             int tankY = this.topPos + 17 + (52 - inputHeight);
@@ -72,7 +74,8 @@ public class DistillerScreen extends AbstractContainerScreen<DistillerContainer>
         }
 
         var outputFluidTank = this.menu.blockEntity.getOutputFluidTank();
-        int outputHeight = (int) (52.0F * ((float) outputFluidTank.getFluidAmount() / (float) outputFluidTank.getCapacity()));
+        int outputHeight = (int) (52.0F
+                * ((float) outputFluidTank.getFluidAmount() / (float) outputFluidTank.getCapacity()));
         if (outputHeight > 0) {
             int tankX = this.leftPos + 125;
             int tankY = this.topPos + 17 + (52 - outputHeight);

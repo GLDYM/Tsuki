@@ -30,45 +30,47 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 public class TsukiBlockLoot extends AbstartctBlockLoot {
 
-        public TsukiBlockLoot(HolderLookup.Provider provider) {
-                super(provider);
+    public TsukiBlockLoot(HolderLookup.Provider provider) {
+        super(provider);
     }
 
     @Override
     public void addTables() {
         dropSelf(BlockRegistry.BAMBOO_BLOCK.get());
-       BlockRegistry.BLOCKS
-          .getEntries()
-          .forEach(
-             block -> {
-                if (!(block.get() instanceof LeavesBlock)
-                    && !(block.get() instanceof CropBlock)
-                    && !(block.get() instanceof TeishokuBlock)
-                    && !(block.get() instanceof RiceCropRoot)
-                    && block.get() != BlockRegistry.MAPLE_SAP_LOG.get()
-                    && block.get() != BlockRegistry.CHESTNUT_BURR.get()
-                    && block.get() != BlockRegistry.FUTON.get()
-                    && block.get() != BlockRegistry.GRAPE_VINE.get()
-                    && block.get() != BlockRegistry.GRAPE_LEAVES.get()
-                    && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
-                    && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()) {
-                    if (block.get() instanceof BambooPlant) {
-                        this.dropOther((Block)block.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
-                    } else if (block.get() instanceof TeishokuFinishedBlock) {
-                        this.dropOther((Block)block.get(), BlockItemRegistry.OBON.get());
-                    } else {
-                        this.dropSelf((Block)block.get());
-                   }
-                }
-             }
-          );
+        BlockRegistry.BLOCKS
+                .getEntries()
+                .forEach(
+                        block -> {
+                            if (!(block.get() instanceof LeavesBlock)
+                                    && !(block.get() instanceof CropBlock)
+                                    && !(block.get() instanceof TeishokuBlock)
+                                    && !(block.get() instanceof RiceCropRoot)
+                                    && block.get() != BlockRegistry.MAPLE_SAP_LOG.get()
+                                    && block.get() != BlockRegistry.CHESTNUT_BURR.get()
+                                    && block.get() != BlockRegistry.FUTON.get()
+                                    && block.get() != BlockRegistry.GRAPE_VINE.get()
+                                    && block.get() != BlockRegistry.GRAPE_LEAVES.get()
+                                    && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
+                                    && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()) {
+                                if (block.get() instanceof BambooPlant) {
+                                    this.dropOther((Block) block.get(),
+                                            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
+                                } else if (block.get() instanceof TeishokuFinishedBlock) {
+                                    this.dropOther((Block) block.get(), BlockItemRegistry.OBON.get());
+                                } else {
+                                    this.dropSelf((Block) block.get());
+                                }
+                            }
+                        });
 
         this.dropOther(BlockRegistry.MAPLE_SAP_LOG.get(), BlockItemRegistry.MAPLE_LOG.get());
         this.dropOther(BlockRegistry.GRAPE_VINE.get(), BlockItemRegistry.GRAPE_SPLINT_STAND.get());
         this.dropOther(BlockRegistry.GRAPE_LEAVES.get(), BlockItemRegistry.GRAPE_SPLINT.get());
 
-        this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(),  TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
-        this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(),  TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
+        this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(),
+                createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(), TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
+        this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(
+                BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
         this.add(BlockRegistry.FUTON.get(), createFutonDrops(BlockRegistry.FUTON.get()));
         this.add(BlockRegistry.CHESTNUT_BURR.get(), createChestnutBurrDrops(BlockRegistry.CHESTNUT_BURR.get()));
 
@@ -89,7 +91,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         this.createTeishoku(BlockRegistry.TEISHOUKU_FISH_RAW.get());
         this.createTeishoku(BlockRegistry.TEISHOUKU_FISH_SALT.get());
         this.createTeishoku(BlockRegistry.TEISHOKO_TAMAGOYAKI.get());
-        
+
         createCrop(BlockRegistry.CABBAGE_CROP.get(), FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get(),
                 ItemRegistry.CABBAGE_SEEDS.get(), 7);
 
@@ -120,13 +122,16 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                 ItemRegistry.TARO.get(), 3);
 
         createCrop(BlockRegistry.BUCKWHEAT_CROP.get(), ItemRegistry.BUCKWHEAT.get(), ItemRegistry.BUCKWHEAT.get(), 7);
-        createCropWithSupport(BlockRegistry.PEPPER_CROP.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_RED).get(),
+        createCropWithSupport(BlockRegistry.PEPPER_CROP.get(),
+                ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_RED).get(),
                 ItemRegistry.PEPPER_SEEDS.get(), 7, BlockItemRegistry.PEPPER_SPLINT.get());
-        createCropWithSupport(BlockRegistry.VANILLA_CROP.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
+        createCropWithSupport(BlockRegistry.VANILLA_CROP.get(),
+                ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
                 ItemRegistry.VANILLA_SEEDS.get(), 7, BlockItemRegistry.VANILLA_SPLINT.get());
         createCropWithSupport(BlockRegistry.HOPS_CROP.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get(),
                 ItemRegistry.HOP_SEEDS.get(), 7, BlockItemRegistry.GRAPE_SPLINT_STAND.get());
-        createCrop(BlockRegistry.WILD_PEPPER.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_GREEN).get(),
+        createCrop(BlockRegistry.WILD_PEPPER.get(),
+                ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_GREEN).get(),
                 ItemRegistry.PEPPER_SEEDS.get(), 7);
         createCrop(BlockRegistry.WILD_VANILLA.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
                 ItemRegistry.VANILLA_SEEDS.get(), 7);
@@ -139,7 +144,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
     }
 
     protected LootTable.Builder createTeishokuDrops(Block p_124143_, Item p_124144_, Item p_124145_,
-                                                    LootItemCondition.Builder p_124146_) {
+            LootItemCondition.Builder p_124146_) {
         return applyExplosionDecay(p_124143_, LootTable.lootTable()
                 .withPool(LootPool.lootPool().add(
                         LootItem.lootTableItem(p_124145_).when(p_124146_)))
@@ -162,7 +167,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
 
     private LootTable.Builder createFutonDrops(Block block) {
         LootItemCondition.Builder footPart = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(FutonBlock.PART, FutonBlock.BedPart.FOOT));
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(FutonBlock.PART,
+                        FutonBlock.BedPart.FOOT));
         return applyExplosionDecay(block, LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .add(LootItem.lootTableItem(BlockItemRegistry.FUTON.get()).when(footPart))));

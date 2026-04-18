@@ -22,7 +22,8 @@ public class TsukiKeyInputHandler {
         }
 
         while (TsukiKeyMappings.SHEATH_ACTION.consumeClick()) {
-            InteractionHand hand = resolveActionHand(minecraft.player.getMainHandItem(), minecraft.player.getOffhandItem());
+            InteractionHand hand = resolveActionHand(minecraft.player.getMainHandItem(),
+                    minecraft.player.getOffhandItem());
             if (hand == null) {
                 continue;
             }
@@ -48,4 +49,3 @@ public class TsukiKeyInputHandler {
         return null;
     }
 }
-

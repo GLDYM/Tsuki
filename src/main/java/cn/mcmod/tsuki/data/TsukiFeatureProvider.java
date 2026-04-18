@@ -24,25 +24,33 @@ public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
 
     public TsukiFeatureProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
         super(packOutput, registries, new RegistrySetBuilder()
-                        .add(Registries.CONFIGURED_FEATURE, bootstrap -> {
-                            TsukiTreeFeatures.bootstrapEntries();
-                            TsukiTreeFeatures.ENTRY.forEach(
-                                    e -> bootstrap.register(e.getA(), e.getB())
-                            );
-                            bootstrap.register(WorldGenerationRegistry.FEATURE_PATCH_BAMBOOSHOOT_KEY, WorldGenerationRegistry.FEATURE_PATCH_BAMBOOSHOOT);
-                            bootstrap.register(WorldGenerationRegistry.FEATURE_PATCH_WILD_PEPPER_KEY, WorldGenerationRegistry.FEATURE_PATCH_WILD_PEPPER);
-                            bootstrap.register(WorldGenerationRegistry.FEATURE_PATCH_WILD_VANILLA_KEY, WorldGenerationRegistry.FEATURE_PATCH_WILD_VANILLA);
-                            bootstrap.register(WorldGenerationRegistry.FEATURE_ORE_SAKURA_DIAMOND_KEY, WorldGenerationRegistry.FEATURE_ORE_SAKURA_DIAMOND);
-                            bootstrap.register(WorldGenerationRegistry.FEATURE_ORE_IRON_SAND_KEY, WorldGenerationRegistry.FEATURE_ORE_IRON_SAND);
-                        })
-                        .add(Registries.PLACED_FEATURE, bootstrap -> {
-                            bootstrap.register(WorldGenerationRegistry.PATCH_BAMBOOSHOOT_KEY, WorldGenerationRegistry.PATCH_BAMBOOSHOOT);
-                            bootstrap.register(WorldGenerationRegistry.PATCH_WILD_PEPPER_KEY, WorldGenerationRegistry.PATCH_WILD_PEPPER);
-                            bootstrap.register(WorldGenerationRegistry.PATCH_WILD_VANILLA_KEY, WorldGenerationRegistry.PATCH_WILD_VANILLA);
-                            bootstrap.register(WorldGenerationRegistry.ORE_SAKURA_DIAMOND_KEY, WorldGenerationRegistry.ORE_SAKURA_DIAMOND);
-                            bootstrap.register(WorldGenerationRegistry.ORE_IRON_SAND_KEY, WorldGenerationRegistry.ORE_IRON_SAND);
-                        })
-                , Set.of(Tsuki.MODID));
+                .add(Registries.CONFIGURED_FEATURE, bootstrap -> {
+                    TsukiTreeFeatures.bootstrapEntries();
+                    TsukiTreeFeatures.ENTRY.forEach(
+                            e -> bootstrap.register(e.getA(), e.getB()));
+                    bootstrap.register(WorldGenerationRegistry.FEATURE_PATCH_BAMBOOSHOOT_KEY,
+                            WorldGenerationRegistry.FEATURE_PATCH_BAMBOOSHOOT);
+                    bootstrap.register(WorldGenerationRegistry.FEATURE_PATCH_WILD_PEPPER_KEY,
+                            WorldGenerationRegistry.FEATURE_PATCH_WILD_PEPPER);
+                    bootstrap.register(WorldGenerationRegistry.FEATURE_PATCH_WILD_VANILLA_KEY,
+                            WorldGenerationRegistry.FEATURE_PATCH_WILD_VANILLA);
+                    bootstrap.register(WorldGenerationRegistry.FEATURE_ORE_SAKURA_DIAMOND_KEY,
+                            WorldGenerationRegistry.FEATURE_ORE_SAKURA_DIAMOND);
+                    bootstrap.register(WorldGenerationRegistry.FEATURE_ORE_IRON_SAND_KEY,
+                            WorldGenerationRegistry.FEATURE_ORE_IRON_SAND);
+                })
+                .add(Registries.PLACED_FEATURE, bootstrap -> {
+                    bootstrap.register(WorldGenerationRegistry.PATCH_BAMBOOSHOOT_KEY,
+                            WorldGenerationRegistry.PATCH_BAMBOOSHOOT);
+                    bootstrap.register(WorldGenerationRegistry.PATCH_WILD_PEPPER_KEY,
+                            WorldGenerationRegistry.PATCH_WILD_PEPPER);
+                    bootstrap.register(WorldGenerationRegistry.PATCH_WILD_VANILLA_KEY,
+                            WorldGenerationRegistry.PATCH_WILD_VANILLA);
+                    bootstrap.register(WorldGenerationRegistry.ORE_SAKURA_DIAMOND_KEY,
+                            WorldGenerationRegistry.ORE_SAKURA_DIAMOND);
+                    bootstrap.register(WorldGenerationRegistry.ORE_IRON_SAND_KEY,
+                            WorldGenerationRegistry.ORE_IRON_SAND);
+                }), Set.of(Tsuki.MODID));
     }
 
 }

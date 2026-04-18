@@ -34,11 +34,12 @@ public class FermenterContainer extends AbstractContainerMenu {
         int startX = 8;
         int startY = 18;
         for (int row = 0; row < 3; ++row) {
-                this.addSlot(new SlotItemHandler(inventory, row, 55, 17 + (row * 18)));
+            this.addSlot(new SlotItemHandler(inventory, row, 55, 17 + (row * 18)));
         }
-        
+
         for (int row = 0; row < 3; ++row) {
-            this.addSlot(new FermenterResultSlot(playerInventory.player, blockEntity, inventory, 3 + row, 103, 17 + (row * 18)));
+            this.addSlot(new FermenterResultSlot(playerInventory.player, blockEntity, inventory, 3 + row, 103,
+                    17 + (row * 18)));
         }
 
         // Main Player Inventory
@@ -137,4 +138,3 @@ public class FermenterContainer extends AbstractContainerMenu {
         return i != 0 ? i % 18 : 0;
     }
 }
-

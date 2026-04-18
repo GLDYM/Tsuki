@@ -23,7 +23,7 @@ public class ChoppingRecipe extends AbstractRecipe {
     @Expose
     @SerializedName("ingredient")
     public Ingredient input;
-    
+
     @Expose
     @SerializedName("tool")
     public Ingredient tool;
@@ -31,7 +31,7 @@ public class ChoppingRecipe extends AbstractRecipe {
     @Expose
     @SerializedName("result")
     public ItemStack output;
-    
+
     @Expose
     @SerializedName("byproducts")
     public NonNullList<ChanceResult> extraOutput;
@@ -56,16 +56,16 @@ public class ChoppingRecipe extends AbstractRecipe {
             return false;
         return input.test(inv.getItem(0));
     }
-    
+
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries) {
         return this.output;
     }
-    
+
     public NonNullList<ChanceResult> getByproducts() {
         return this.extraOutput;
     }
-    
+
     public List<ItemStack> rollByproducts(RandomSource rand, int fortuneLevel) {
         List<ItemStack> results = Lists.newArrayList();
         NonNullList<ChanceResult> rollableResults = getByproducts();
@@ -98,4 +98,3 @@ public class ChoppingRecipe extends AbstractRecipe {
     }
 
 }
-

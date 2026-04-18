@@ -15,7 +15,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BaseCropBlock extends CropBlock {
     private final Supplier<? extends ItemLike> seedItem;
-    
+
     public BaseCropBlock(BlockBehaviour.Properties properties, Supplier<? extends ItemLike> seedSupplier) {
         super(properties);
         this.seedItem = seedSupplier;
@@ -23,7 +23,8 @@ public class BaseCropBlock extends CropBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        // Move the outline down by 1px so crop visuals/selection align better with farmland top (15/16 block).
+        // Move the outline down by 1px so crop visuals/selection align better with
+        // farmland top (15/16 block).
         return super.getShape(state, level, pos, context).move(0.0D, -0.0625D, 0.0D);
     }
 

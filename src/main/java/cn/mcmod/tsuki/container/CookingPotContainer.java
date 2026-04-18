@@ -47,7 +47,8 @@ public class CookingPotContainer extends AbstractContainerMenu {
 
         this.addSlot(new CookingPotMealDisplaySlot(inventory, CookingPotBlockEntity.SLOT_MEAL_DISPLAY, 140, 27));
         this.addSlot(new SlotItemHandler(inventory, CookingPotBlockEntity.SLOT_CONTAINER_INPUT, 108, 53));
-        this.addSlot(new CookingPotResultSlot(playerInventory.player, blockEntity, inventory, CookingPotBlockEntity.SLOT_OUTPUT, 140, 53));
+        this.addSlot(new CookingPotResultSlot(playerInventory.player, blockEntity, inventory,
+                CookingPotBlockEntity.SLOT_OUTPUT, 140, 53));
 
         // Main Player Inventory
         int startPlayerInvY = startY * 4 + 12;
@@ -144,4 +145,3 @@ public class CookingPotContainer extends AbstractContainerMenu {
         return this.blockEntity.isHeated();
     }
 }
-

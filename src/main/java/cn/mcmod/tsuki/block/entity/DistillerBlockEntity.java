@@ -94,7 +94,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
         if (!this.inputfluidTank.isEmpty()) {
             return true;
         }
-        
+
         for (int i = 0; i < 3; ++i) {
             if (!inventory.getStackInSlot(i).isEmpty()) {
                 return true;
@@ -143,7 +143,8 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
             boolean fluid_flag = !(recipe.getResultFluid().isEmpty());
             FluidTank outTank = this.outputfluidTank;
             fluid_flag = outTank.isEmpty() || recipe.getResultFluid().isEmpty() ||
-                    (FluidStack.isSameFluidSameComponents(outTank.getFluid(), recipe.getResultFluid()) && outTank.getSpace() >= recipe.getResultFluid().getAmount());
+                    (FluidStack.isSameFluidSameComponents(outTank.getFluid(), recipe.getResultFluid())
+                            && outTank.getSpace() >= recipe.getResultFluid().getAmount());
             boolean flag = true;
             for (int i = 3; i < resultStacks.size() + 3; i++) {
                 if (!flag)
@@ -162,7 +163,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
             }
             return fluid_flag && flag;
         }
-        return false;    
+        return false;
     }
 
     private boolean processRecipe(DistillerRecipe recipe) {
@@ -183,7 +184,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
             ItemStack outStack = inventory.getStackInSlot(i);
             if (outStack.isEmpty()) {
                 inventory.setStackInSlot(i, resultStacks.get(i - 3).copy());
-            } else if (ItemStack.isSameItem(outStack,resultStacks.get(i - 3))) {
+            } else if (ItemStack.isSameItem(outStack, resultStacks.get(i - 3))) {
                 outStack.grow(resultStacks.get(i - 3).getCount());
             }
         }
@@ -204,7 +205,8 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
                 double x = worldPosition.getX() + 0.5;
                 double y = worldPosition.getY() + 0.7;
                 double z = worldPosition.getZ() + 0.5;
-                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F, 0.25F,
+                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
+                        0.25F,
                         0F);
             }
             if (!slotStack.isEmpty()) {
@@ -310,7 +312,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
             }
         };
     }
-    
+
     private FluidTank createInputFluidHandler() {
         return new FluidTank(TANK_CAPACITY) {
             @Override
@@ -347,24 +349,24 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
             @Override
             public int get(int index) {
                 switch (index) {
-                case 0:
-                    return DistillerBlockEntity.this.recipeTime;
-                case 1:
-                    return DistillerBlockEntity.this.recipeTimeTotal;
-                default:
-                    return 0;
+                    case 0:
+                        return DistillerBlockEntity.this.recipeTime;
+                    case 1:
+                        return DistillerBlockEntity.this.recipeTimeTotal;
+                    default:
+                        return 0;
                 }
             }
 
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                case 0:
-                    DistillerBlockEntity.this.recipeTime = value;
-                    break;
-                case 1:
-                    DistillerBlockEntity.this.recipeTimeTotal = value;
-                    break;
+                    case 0:
+                        DistillerBlockEntity.this.recipeTime = value;
+                        break;
+                    case 1:
+                        DistillerBlockEntity.this.recipeTimeTotal = value;
+                        break;
                 }
             }
 
@@ -379,7 +381,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
     public AbstractContainerMenu createMenu(int id, Inventory player, Player entity) {
         return new DistillerContainer(id, player, this, this.blockData);
     }
-    
+
     public boolean isHeated() {
         if (level == null) {
             return false;
@@ -401,4 +403,3 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
 }
-

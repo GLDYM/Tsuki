@@ -35,7 +35,8 @@ public class ChestnutBurrBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
+    protected void createBlockStateDefinition(
+            StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(AGE);
     }
@@ -66,7 +67,7 @@ public class ChestnutBurrBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
-                                               BlockHitResult hitResult) {
+            BlockHitResult hitResult) {
         if (state.getValue(AGE) < 3) {
             return InteractionResult.PASS;
         }

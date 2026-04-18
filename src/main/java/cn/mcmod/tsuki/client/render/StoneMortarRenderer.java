@@ -65,7 +65,8 @@ public class StoneMortarRenderer implements BlockEntityRenderer<StoneMortarBlock
                 rotation = ((world.getGameTime() + partialTicks) * degreesPerTick) % 360.0F;
             }
             top.setRotation(0F, ((float) Math.PI * rotation) / 180.0F, 0F);
-            ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/entity/blockentity/mortar.png");
+            ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+                    "textures/entity/blockentity/mortar.png");
             this.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entitySolid(TEXTURE)), combinedLight,
                     combinedOverlay);
             poseStack.popPose();

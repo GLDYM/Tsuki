@@ -61,4 +61,3 @@ public class StoneMortarItemHandler implements IItemHandler {
         return itemHandler.getSlotLimit(slot);
     }
 }
-

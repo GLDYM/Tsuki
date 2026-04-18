@@ -26,25 +26,21 @@ public class DrinkRegistry {
                     DrinkRegistry::bottleContainerItem,
                     wineBottle::getFluid,
                     true,
-                    wineBottle.getEffects()))
-    );
+                    wineBottle.getEffects())));
     public static final Map<TsukiAlcoholSet, DeferredItem<Item>> ALCOHOLS = ItemRegistryUtil.mapOfKeys(
             TsukiAlcoholSet.class,
             alcohol -> register(alcohol.getName(), () -> new DrinkItem(
                     Tsuki.defaultItemProperties(),
                     DrinkRegistry::glassCupContainerItem,
                     true,
-                    alcohol.getEffects()))
-    );
+                    alcohol.getEffects())));
     public static final Map<TsukiCocktailSet, DeferredItem<Item>> COCKTAILS = ItemRegistryUtil.mapOfKeys(
             TsukiCocktailSet.class,
             cocktail -> register(cocktail.getName(), () -> new DrinkItem(
                     Tsuki.defaultItemProperties(),
                     DrinkRegistry::glassCupContainerItem,
                     true,
-                    cocktail.getEffects()))
-    );
-
+                    cocktail.getEffects())));
 
     private static Item normalItem() {
         return new Item(Tsuki.defaultItemProperties());

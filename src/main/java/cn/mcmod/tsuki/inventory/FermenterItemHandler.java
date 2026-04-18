@@ -51,7 +51,9 @@ public class FermenterItemHandler implements IItemHandler {
         if (side == null || side.equals(Direction.UP)) {
             return slot < SLOTS_INPUT ? itemHandler.extractItem(slot, amount, simulate) : ItemStack.EMPTY;
         } else {
-            return (slot >= SLOT_OUTPUT_BEGIN || slot <= SLOT_OUTPUT_END)  ? itemHandler.extractItem(slot, amount, simulate) : ItemStack.EMPTY;
+            return (slot >= SLOT_OUTPUT_BEGIN || slot <= SLOT_OUTPUT_END)
+                    ? itemHandler.extractItem(slot, amount, simulate)
+                    : ItemStack.EMPTY;
         }
     }
 
@@ -60,4 +62,3 @@ public class FermenterItemHandler implements IItemHandler {
         return itemHandler.getSlotLimit(slot);
     }
 }
-

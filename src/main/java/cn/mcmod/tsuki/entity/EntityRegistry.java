@@ -16,12 +16,13 @@ public class EntityRegistry {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister
             .create(Registries.ENTITY_TYPE, Tsuki.MODID);
 
-    public static final DeferredHolder<EntityType<?>, EntityType<SamuraiIllagerEntity>> SAMURAI_ILLAGER = ENTITY_TYPES.register(
-            "samurai_illager",
-            () -> EntityType.Builder.of(SamuraiIllagerEntity::new, MobCategory.MONSTER)
-                    .sized(0.6F, 1.95F)
-                    .clientTrackingRange(90)
-                    .build("tsuki:samurai_illager"));
+    public static final DeferredHolder<EntityType<?>, EntityType<SamuraiIllagerEntity>> SAMURAI_ILLAGER = ENTITY_TYPES
+            .register(
+                    "samurai_illager",
+                    () -> EntityType.Builder.of(SamuraiIllagerEntity::new, MobCategory.MONSTER)
+                            .sized(0.6F, 1.95F)
+                            .clientTrackingRange(90)
+                            .build("tsuki:samurai_illager"));
 
     public static final DeferredHolder<EntityType<?>, EntityType<SeatEntity>> SEAT = ENTITY_TYPES.register("seat",
             () -> EntityType.Builder.<SeatEntity>of(SeatEntity::new, MobCategory.MISC)
