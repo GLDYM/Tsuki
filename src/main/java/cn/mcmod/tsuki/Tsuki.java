@@ -80,7 +80,6 @@ public class Tsuki {
         VillagerRegistry.PROFESSIONS.register(modEventBus);
         CreativeModeTabRegistry.TABS.register(modEventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, TsukiConfig.COMMON_CONFIG);
-
     }
 
     public static Logger getLogger() {
