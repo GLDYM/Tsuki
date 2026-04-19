@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -34,7 +35,7 @@ public class UmeLeavesBlock extends TsukiLeavesBlock implements BonemealableBloc
 
     @Override
     protected void createBlockStateDefinition(
-            StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
+            StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(AGE);
     }
@@ -48,8 +49,11 @@ public class UmeLeavesBlock extends TsukiLeavesBlock implements BonemealableBloc
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         super.randomTick(state, level, pos, random);
-        int age = state.getValue(AGE);
-        level.setBlock(pos, state.setValue(AGE, age + 1), 2);
+        boolean persistent = state.getValue(PERSISTENT);
+        if (random.nextInt(5) == 0 && !persistent) {
+            int age = state.getValue(AGE);
+            level.setBlock(pos, state.setValue(AGE, age + 1), 2);
+        }
     }
 
     @Override

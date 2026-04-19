@@ -93,6 +93,9 @@
     "tsuki:dried_bonito": {
       "chance": 0.3
     },
+    "tsuki:edodes": {
+      "chance": 0.3
+    },
     "tsuki:eggplant": {
       "chance": 0.3
     },
@@ -103,6 +106,12 @@
       "chance": 0.3
     },
     "tsuki:fallen_leaves_green": {
+      "chance": 0.3
+    },
+    "tsuki:fallen_leaves_matsutake": {
+      "chance": 0.3
+    },
+    "tsuki:fallen_leaves_mushroom": {
       "chance": 0.3
     },
     "tsuki:fallen_leaves_orange": {
@@ -167,6 +176,9 @@
     },
     "tsuki:mashed_potato": {
       "chance": 0.5
+    },
+    "tsuki:matsutake": {
+      "chance": 0.3
     },
     "tsuki:mayo": {
       "chance": 0.25
@@ -234,6 +246,9 @@
     "tsuki:onigiri_fish": {
       "chance": 1.0
     },
+    "tsuki:onigiri_matsutake": {
+      "chance": 1.0
+    },
     "tsuki:onigiri_mushroom": {
       "chance": 1.0
     },
@@ -251,6 +266,15 @@
     },
     "tsuki:osuimono": {
       "chance": 0.5
+    },
+    "tsuki:pasta_mushroom": {
+      "chance": 1.0
+    },
+    "tsuki:pasta_tomato": {
+      "chance": 1.0
+    },
+    "tsuki:pasta_whitesauce": {
+      "chance": 1.0
     },
     "tsuki:pickled_eggplant": {
       "chance": 0.5
@@ -342,6 +366,9 @@
     "tsuki:rice_fried": {
       "chance": 1.0
     },
+    "tsuki:rice_matsutake": {
+      "chance": 1.0
+    },
     "tsuki:rice_mushroom": {
       "chance": 1.0
     },
@@ -369,6 +396,9 @@
     "tsuki:rice_seeds": {
       "chance": 0.3
     },
+    "tsuki:roast_matsutake": {
+      "chance": 0.5
+    },
     "tsuki:sakuraleaves": {
       "chance": 0.3
     },
@@ -377,6 +407,9 @@
     },
     "tsuki:satsumaage": {
       "chance": 0.5
+    },
+    "tsuki:shimeji": {
+      "chance": 0.3
     },
     "tsuki:shrimp": {
       "chance": 0.2
@@ -515,6 +548,9 @@
     },
     "tsuki:worcester_sauce": {
       "chance": 0.3
+    },
+    "tsuki:yaki_pasta": {
+      "chance": 1.0
     },
     "tsuki:yaki_udon": {
       "chance": 1.0

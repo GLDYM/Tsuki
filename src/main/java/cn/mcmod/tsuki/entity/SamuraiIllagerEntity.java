@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.entity;
 
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -34,6 +35,7 @@ import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.providers.VanillaEnchantmentProviders;
+import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
@@ -134,7 +136,7 @@ public class SamuraiIllagerEntity extends AbstractIllager implements GeoEntity {
         if (raid != null) {
             boolean shouldEnchant = this.random.nextFloat() <= raid.getEnchantOdds();
             if (shouldEnchant) {
-                net.minecraft.resources.ResourceKey<net.minecraft.world.item.enchantment.providers.EnchantmentProvider> key = wave > raid
+                ResourceKey<EnchantmentProvider> key = wave > raid
                         .getNumGroups(Difficulty.NORMAL)
                                 ? VanillaEnchantmentProviders.RAID_VINDICATOR_POST_WAVE_5
                                 : VanillaEnchantmentProviders.RAID_VINDICATOR;

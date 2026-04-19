@@ -34,6 +34,8 @@ public class DataGen {
                 new TsukiFluidTagsProvider(packOutput, provider, Tsuki.MODID, existingFileHelper));
         dataGenerator.addProvider(event.includeServer(),
                 new TsukiBiomeTagProvider(packOutput, provider, Tsuki.MODID, existingFileHelper));
+        dataGenerator.addProvider(event.includeServer(),
+                new TsukiPoiTypeTagsProvider(packOutput, provider, existingFileHelper));
         dataGenerator.addProvider(event.includeServer(), new TsukiRecipeProvider(packOutput, provider));
         dataGenerator.addProvider(event.includeServer(), new TsukiLootTableProvider(packOutput, provider));
         dataGenerator.addProvider(event.includeServer(), new TsukiFeatureProvider(packOutput, provider));

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tsuki",
+  "key": {
+    "#": {
+      "item": "tsuki:sakura_diamond"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:sakura_diamond_block"
+  }
+}

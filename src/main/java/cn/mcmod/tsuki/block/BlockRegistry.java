@@ -24,6 +24,7 @@ import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.block.machines.TataraBlock;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod.tsuki.level.tree.TsukiTreeFeatures;
 import cn.mcmod.mmlib.block.Age3CropBlock;
 import cn.mcmod.mmlib.block.BaseCropBlock;
@@ -192,6 +193,10 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> FALLEN_LEAVES_GREEN = BLOCKS.register("fallen_leaves_green",
             () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion()));
+    public static final DeferredBlock<Block> MUSHROOM_FALLEN_LEAVES = BLOCKS.register("fallen_leaves_mushroom",
+            () -> new FallenLeavesMushroomBlock(FallenLeavesMushroomBlock.Type.MUSHROOM));
+    public static final DeferredBlock<Block> MATSUTAKE_FALLEN_LEAVES = BLOCKS.register("fallen_leaves_matsutake",
+            () -> new FallenLeavesMushroomBlock(FallenLeavesMushroomBlock.Type.MATSUTAKE));
     public static final DeferredBlock<Block> CHESTNUT_BURR = BLOCKS.register("chestnut_burr",
             () -> new ChestnutBurrBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.PLANT)
@@ -220,6 +225,8 @@ public class BlockRegistry {
             "deepslate_sakura_diamond_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 7),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_DIAMOND_ORE)));
+    public static final DeferredBlock<Block> SAKURA_DIAMOND_BLOCK = BLOCKS.register("sakura_diamond_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIAMOND_BLOCK)));
     public static final DeferredBlock<Block> IRON_SAND = BLOCKS.register("iron_sand",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.COLOR_GRAY)));
 
@@ -305,7 +312,7 @@ public class BlockRegistry {
                     ItemRegistry.VANILLA_SEEDS));
     public static final DeferredBlock<Block> HOPS_CROP = BLOCKS.register("hops_crop",
             () -> new HopsCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F),
-                    ItemRegistry.HOP_SEEDS));
+                    ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP)));
 
     public static final DeferredBlock<Block> PEPPER_SPLINT = BLOCKS.register("pepper_splint",
             PepperSplintBlock::new);

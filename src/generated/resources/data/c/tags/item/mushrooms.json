@@ -1,6 +1,9 @@
 {
   "values": [
     "#c:mushrooms/brownmushroom",
-    "#c:mushrooms/redmushroom"
+    "#c:mushrooms/redmushroom",
+    "tsuki:matsutake",
+    "tsuki:edodes",
+    "tsuki:shimeji"
   ]
 }

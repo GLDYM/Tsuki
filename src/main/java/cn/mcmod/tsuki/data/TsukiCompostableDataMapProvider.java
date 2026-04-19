@@ -61,6 +61,8 @@ public class TsukiCompostableDataMapProvider extends DataMapProvider {
         registerHolder(builder, BlockItemRegistry.FALLEN_LEAVES_ORANGE, 0.3F);
         registerHolder(builder, BlockItemRegistry.FALLEN_LEAVES_YELLOW, 0.3F);
         registerHolder(builder, BlockItemRegistry.FALLEN_LEAVES_GREEN, 0.3F);
+        registerHolder(builder, BlockItemRegistry.MUSHROOM_FALLEN_LEAVES, 0.3F);
+        registerHolder(builder, BlockItemRegistry.MATSUTAKE_FALLEN_LEAVES, 0.3F);
     }
 
     private static void register(DataMapProvider.Builder<Compostable, Item> builder,

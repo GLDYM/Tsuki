@@ -41,6 +41,7 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.STRAW_BLOCK.get());
         simpleBlock(BlockRegistry.SAKURA_DIAMOND_ORE.get());
         simpleBlock(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
+        simpleBlock(BlockRegistry.SAKURA_DIAMOND_BLOCK.get());
         simpleBlock(BlockRegistry.IRON_SAND.get());
 
         simpleBlock(BlockRegistry.MAPLE_LEAVES_RED.get());
@@ -55,6 +56,10 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 models().getExistingFile(modLoc("block/fallen_leaves_yellow")));
         simpleBlock(BlockRegistry.FALLEN_LEAVES_GREEN.get(),
                 models().getExistingFile(modLoc("block/fallen_leaves_green")));
+        simpleBlock(BlockRegistry.MUSHROOM_FALLEN_LEAVES.get(),
+                models().getExistingFile(modLoc("block/fallen_leaves_mushroom")));
+        simpleBlock(BlockRegistry.MATSUTAKE_FALLEN_LEAVES.get(),
+                models().getExistingFile(modLoc("block/fallen_leaves_matsutake")));
         chestnutBurr(BlockRegistry.CHESTNUT_BURR.get());
 
         log(BlockRegistry.SAKURA_LOG.get());

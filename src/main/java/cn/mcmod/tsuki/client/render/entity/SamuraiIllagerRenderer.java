@@ -4,6 +4,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.entity.SamuraiIllagerEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -51,7 +52,7 @@ public class SamuraiIllagerRenderer extends GeoEntityRenderer<SamuraiIllagerEnti
         @Override
         protected void renderStackForBone(PoseStack poseStack, GeoBone bone, ItemStack stack,
                 SamuraiIllagerEntity animatable,
-                net.minecraft.client.renderer.MultiBufferSource bufferSource,
+                MultiBufferSource bufferSource,
                 float partialTick, int packedLight, int packedOverlay) {
             poseStack.pushPose();
             // Magic numbers.

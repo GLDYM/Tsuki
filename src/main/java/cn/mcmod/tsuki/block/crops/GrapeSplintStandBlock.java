@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.block.crops;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -63,7 +64,7 @@ public class GrapeSplintStandBlock extends Block {
                 stack.shrink(1);
             return ItemInteractionResult.SUCCESS;
         }
-        if (stack.is(ItemRegistry.HOP_SEEDS.get())) {
+        if (stack.is(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get())) {
             level.setBlock(pos, BlockRegistry.HOPS_CROP.get().defaultBlockState(), 3);
             if (!player.isCreative())
                 stack.shrink(1);

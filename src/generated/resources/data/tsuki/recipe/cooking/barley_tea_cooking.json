@@ -11,6 +11,9 @@
   "ingredients": [
     {
       "tag": "c:grain/wheat"
+    },
+    {
+      "tag": "c:grain/wheat"
     }
   ],
   "recipeTime": 200,

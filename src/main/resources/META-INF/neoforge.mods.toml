@@ -17,6 +17,8 @@ New battle styles with your katana and kodachi, Cooking with campfire and cookin
 New illager with his katana spawn in Bamboo forest and maple forest!
 New dress: Kimono, yukata and Haori.
 '''
+[[mixins]]
+config="tsuki.mixins.json"
 [[dependencies.tsuki]]
     modId="neoforge"
     mandatory=true

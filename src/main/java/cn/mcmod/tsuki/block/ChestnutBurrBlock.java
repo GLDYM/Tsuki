@@ -5,9 +5,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -36,7 +38,7 @@ public class ChestnutBurrBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     protected void createBlockStateDefinition(
-            StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
+            StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(AGE);
     }
@@ -62,8 +64,8 @@ public class ChestnutBurrBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return level.getBlockState(pos.above()).is(net.minecraft.tags.BlockTags.LEAVES);
-    }
+            return level.getBlockState(pos.above()).is(BlockTags.LEAVES);
+        }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,

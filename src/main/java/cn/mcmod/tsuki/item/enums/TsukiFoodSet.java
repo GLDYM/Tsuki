@@ -125,6 +125,39 @@ public enum TsukiFoodSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    MATSUTAKE(
+            FoodInfo.builder()
+                    .name("matsutake")
+                    .amountAndCalories(1, 0.2F)
+                    .water(1.0F)
+                    .nutrients(0.0F, 0.0F, 2.0F, 0.0F, 0.0F)
+                    .compostChance(0.3F)
+                    .decayModifier(2.0F)
+                    .heatCapacity(2.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    EDODES(
+            FoodInfo.builder()
+                    .name("edodes")
+                    .amountAndCalories(1, 0.2F)
+                    .water(1.0F)
+                    .nutrients(0.0F, 0.0F, 2.0F, 0.0F, 0.0F)
+                    .compostChance(0.3F)
+                    .decayModifier(2.0F)
+                    .heatCapacity(2.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    SHIMEJI(
+            FoodInfo.builder()
+                    .name("shimeji")
+                    .amountAndCalories(1, 0.2F)
+                    .water(1.0F)
+                    .nutrients(0.0F, 0.0F, 2.0F, 0.0F, 0.0F)
+                    .compostChance(0.3F)
+                    .decayModifier(2.0F)
+                    .heatCapacity(2.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     ONION(
             FoodInfo.builder()
                     .name("onion")
@@ -345,6 +378,17 @@ public enum TsukiFoodSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    ROAST_MATSUTAKE(
+            FoodInfo.builder()
+                    .name("roast_matsutake")
+                    .amountAndCalories(5, 0.6F)
+                    .water(0.0F)
+                    .compostChance(0.5F)
+                    .nutrients(0.0F, 0.0F, 3.0F, 0.0F, 0.0F)
+                    .decayModifier(1.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     CHEESE(
             FoodInfo.builder()
                     .name("cheese")
@@ -557,6 +601,17 @@ public enum TsukiFoodSet {
                     .water(0.5F)
                     .compostChance(1.0F)
                     .nutrients(2.0F, 0.0F, 2.0F, 0.0F, 0.5F)
+                    .decayModifier(2.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    ONIGIRI_MATSUTAKE(
+            FoodInfo.builder()
+                    .name("onigiri_matsutake")
+                    .amountAndCalories(9, 0.7F)
+                    .water(0.5F)
+                    .compostChance(1.0F)
+                    .nutrients(2.0F, 0.0F, 3.0F, 0.0F, 1.0F)
                     .decayModifier(2.0F)
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)

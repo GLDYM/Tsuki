@@ -72,6 +72,7 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                 .add((Block) BlockRegistry.STONE_MORTAR.get())
                 .add((Block) BlockRegistry.SAKURA_DIAMOND_ORE.get())
                 .add((Block) BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get())
+                .add((Block) BlockRegistry.SAKURA_DIAMOND_BLOCK.get())
                 .add((Block) BlockRegistry.IRON_SAND.get())
                 .add((Block) BlockRegistry.TATARA.get())
                 .add((Block) BlockRegistry.KAWARA_BLOCK.get())
@@ -90,6 +91,8 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                 .add((Block) BlockRegistry.TATAMI_CARPET_WAXED.get())
                 .add((Block) BlockRegistry.TATAMI_CARPET_TAN.get())
                 .add((Block) BlockRegistry.TATAMI_CARPET_TAN_WAXED.get())
+                .add((Block) BlockRegistry.MUSHROOM_FALLEN_LEAVES.get())
+                .add((Block) BlockRegistry.MATSUTAKE_FALLEN_LEAVES.get())
                 .add((Block) BlockRegistry.ZABUTON.get());
         this.tag(BlockTags.MINEABLE_WITH_AXE)
                 .add((Block) BlockRegistry.FUTON.get())
@@ -101,7 +104,10 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                 .add((Block) BlockRegistry.TATARA.get());
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add((Block) BlockRegistry.SAKURA_DIAMOND_ORE.get())
-                .add((Block) BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
+                .add((Block) BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get())
+                .add((Block) BlockRegistry.SAKURA_DIAMOND_BLOCK.get());
+        this.tag(BlockTags.BEACON_BASE_BLOCKS)
+                .add((Block) BlockRegistry.SAKURA_DIAMOND_BLOCK.get());
         this.tag(BlockTags.LEAVES)
                 .add(
                         new Block[] {

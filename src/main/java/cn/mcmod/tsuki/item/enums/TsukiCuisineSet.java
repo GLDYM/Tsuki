@@ -683,6 +683,17 @@ public enum TsukiCuisineSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    RICE_MATSUTAKE(
+            FoodInfo.builder()
+                    .name("rice_matsutake")
+                    .amountAndCalories(8, 0.6F)
+                    .water(0.5F)
+                    .compostChance(1.0F)
+                    .nutrients(2.0F, 0.0F, 3.0F, 0.0F, 1.0F)
+                    .decayModifier(2.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     RICE_EGG(
             FoodInfo.builder()
                     .name("rice_egg")
@@ -845,6 +856,50 @@ public enum TsukiCuisineSet {
                     .compostChance(1.0F)
                     .nutrients(3.0F, 0.0F, 1.0F, 4.0F, 3.0F)
                     .decayModifier(2.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    PASTA_TOMATO(
+            FoodInfo.builder()
+                    .name("pasta_tomato")
+                    .amountAndCalories(9, 0.8F)
+                    .water(1.5F)
+                    .compostChance(1.0F)
+                    .nutrients(2.0F, 0.0F, 4.0F, 4.0F, 2.0F)
+                    .decayModifier(3.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    PASTA_MUSHROOM(
+            FoodInfo.builder()
+                    .name("pasta_mushroom")
+                    .amountAndCalories(9, 0.8F)
+                    .water(1.5F)
+                    .compostChance(1.0F)
+                    .nutrients(2.0F, 0.0F, 4.0F, 4.0F, 2.0F)
+                    .decayModifier(3.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    PASTA_WHITESAUCE(
+            FoodInfo.builder()
+                    .name("pasta_whitesauce")
+                    .amountAndCalories(9, 0.8F)
+                    .water(1.5F)
+                    .compostChance(1.0F)
+                    .nutrients(2.0F, 0.0F, 4.0F, 4.0F, 2.0F)
+                    .decayModifier(3.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    YAKI_PASTA(
+            FoodInfo.builder()
+                    .name("yaki_pasta")
+                    .amountAndCalories(9, 0.7F)
+                    .water(2.5F)
+                    .compostChance(1.0F)
+                    .nutrients(1.5F, 0.0F, 4.0F, 2.0F, 2.0F)
+                    .decayModifier(3.5F)
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build());

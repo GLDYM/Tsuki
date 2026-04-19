@@ -75,7 +75,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.SEEDS_PEPPER).add(ItemRegistry.PEPPER_SEEDS.get());
         this.tag(TsukiItemTags.SEEDS_VANILLA).add(ItemRegistry.VANILLA_SEEDS.get());
         this.tag(TsukiItemTags.SEEDS_GRAPE).add(ItemRegistry.GRAPE_SEEDS.get());
-        this.tag(TsukiItemTags.SEEDS_HOP).add(ItemRegistry.HOP_SEEDS.get());
+        this.tag(TsukiItemTags.SEEDS_HOP).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get());
         this.tag(TsukiItemTags.YEAST).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.YEAST).get());
         this.tag(TsukiItemTags.BAMBOO).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
         this.tag(TsukiItemTags.BAMBOO).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get());
@@ -297,7 +297,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.LEAFYVEGETABLES_CABBAGE).addTag(TsukiItemTags.VEGETABLES_CABBAGE);
         this.tag(TsukiItemTags.MUSHROOMS)
                 .addTag(TsukiItemTags.BROWN_MUSHROOMS)
-                .addTag(TsukiItemTags.RED_MUSHROOMS);
+                .addTag(TsukiItemTags.RED_MUSHROOMS)
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.MATSUTAKE).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SHIMEJI).get());
         this.tag(TsukiItemTags.BROWN_MUSHROOMS).add(Items.BROWN_MUSHROOM);
         this.tag(TsukiItemTags.RED_MUSHROOMS).add(Items.RED_MUSHROOM);
         this.tag(TsukiItemTags.VEGETABLES_BEETROOT).add(Items.BEETROOT);

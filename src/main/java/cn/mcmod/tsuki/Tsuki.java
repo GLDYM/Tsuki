@@ -22,12 +22,12 @@ import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.armors.TsukiArmorMaterials;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
-// import cn.mcmod.tsuki.item.armors.TsukiDataComponentRegistry;
 import cn.mcmod.tsuki.level.tree.TsukiTreeDecoratorTypes;
 import cn.mcmod.tsuki.loot_modifier.LootModifiterRegistry;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.tsuki.sound.SoundEventRegistry;
 import cn.mcmod.tsuki.sound.JukeboxSongRegistry;
+import cn.mcmod.tsuki.villager.VillagerRegistry;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -76,6 +76,8 @@ public class Tsuki {
         RecipeTypeRegistry.RECIPE_TYPES.register(modEventBus);
         RecipeTypeRegistry.RECIPE_SERIALIZERS.register(modEventBus);
         TsukiTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(modEventBus);
+        VillagerRegistry.POI_TYPES.register(modEventBus);
+        VillagerRegistry.PROFESSIONS.register(modEventBus);
         CreativeModeTabRegistry.TABS.register(modEventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, TsukiConfig.COMMON_CONFIG);
 

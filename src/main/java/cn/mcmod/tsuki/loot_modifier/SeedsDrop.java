@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 
 import com.google.common.collect.Lists;
 import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import com.mojang.serialization.*;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
@@ -33,7 +34,8 @@ public class SeedsDrop {
                     ItemRegistry.ONION_SEEDS.get(), ItemRegistry.RADISH_SEEDS.get(), ItemRegistry.TOMATO_SEEDS.get(),
                     ItemRegistry.RICE_SEEDS.get(), ItemRegistry.RAPESEEDS.get(), ItemRegistry.TARO.get(),
                     ItemRegistry.BUCKWHEAT.get(), ItemRegistry.SOYBEAN.get(), ItemRegistry.RED_BEAN.get(),
-                    ItemRegistry.GRAPE_SEEDS.get(), ItemRegistry.HOP_SEEDS.get(), ItemRegistry.VANILLA_SEEDS.get());
+                    ItemRegistry.GRAPE_SEEDS.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get(),
+                    ItemRegistry.VANILLA_SEEDS.get());
             generatedLoot.add(new ItemStack(seeds.get(context.getRandom().nextInt(seeds.size()))));
             return generatedLoot;
         }

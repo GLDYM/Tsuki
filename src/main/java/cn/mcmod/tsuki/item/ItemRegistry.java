@@ -53,8 +53,6 @@ public class ItemRegistry {
             ItemRegistry::normalItem);
     public static final DeferredItem<Item> GRAPE_SEEDS = register("grape_seeds",
             ItemRegistry::normalItem);
-    public static final DeferredItem<Item> HOP_SEEDS = register("hop_seeds",
-            ItemRegistry::normalItem);
     public static final DeferredItem<Item> SAMURAI_ILLAGER_SPAWN_EGG = register("samurai_illager_spawn_egg",
             () -> new DeferredSpawnEggItem(EntityRegistry.SAMURAI_ILLAGER, 9804699, 2580065,
                     Tsuki.defaultItemProperties()));

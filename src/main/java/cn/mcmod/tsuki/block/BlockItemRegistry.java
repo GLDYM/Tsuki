@@ -85,6 +85,8 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.SAKURA_DIAMOND_ORE.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> DEEPSLATE_SAKURA_DIAMOND_ORE = ITEMS.register("deepslate_sakura_diamond_ore",
             () -> new BlockItem(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAKURA_DIAMOND_BLOCK = ITEMS.register("sakura_diamond_block",
+            () -> new BlockItem(BlockRegistry.SAKURA_DIAMOND_BLOCK.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> IRON_SAND = ITEMS.register("iron_sand",
             () -> new BlockItem(BlockRegistry.IRON_SAND.get(), Tsuki.defaultItemProperties()));
 
@@ -110,6 +112,10 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_YELLOW.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> FALLEN_LEAVES_GREEN = ITEMS.register("fallen_leaves_green",
             () -> new BlockItem(BlockRegistry.FALLEN_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MUSHROOM_FALLEN_LEAVES = ITEMS.register("fallen_leaves_mushroom",
+            () -> new BlockItem(BlockRegistry.MUSHROOM_FALLEN_LEAVES.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MATSUTAKE_FALLEN_LEAVES = ITEMS.register("fallen_leaves_matsutake",
+            () -> new BlockItem(BlockRegistry.MATSUTAKE_FALLEN_LEAVES.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> CHESTNUT_BURRS = ITEMS.register("chestnut_burrs",
             () -> new BlockItem(BlockRegistry.CHESTNUT_BURR.get(), Tsuki.defaultItemProperties()));
 

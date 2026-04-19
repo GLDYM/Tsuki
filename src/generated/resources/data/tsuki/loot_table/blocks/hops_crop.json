@@ -27,7 +27,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "tsuki:hop_seeds"
+              "name": "tsuki:hop"
             }
           ]
         }
@@ -59,7 +59,7 @@
               }
             }
           ],
-          "name": "tsuki:hop_seeds"
+          "name": "tsuki:hop"
         }
       ],
       "rolls": 1.0

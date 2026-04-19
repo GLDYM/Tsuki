@@ -1232,6 +1232,12 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .save(consumer);
         this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT), BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT)
             .save(consumer);
+        this.makeIngotToBlock(BlockItemRegistry.SAKURA_DIAMOND_BLOCK, () -> TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
+            .unlockedBy("has_sakura_diamond", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_diamond_block"));
+        this.makeBlockToIngot(() -> TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), BlockItemRegistry.SAKURA_DIAMOND_BLOCK)
+            .unlockedBy("has_sakura_diamond_block", has(BlockItemRegistry.SAKURA_DIAMOND_BLOCK.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_diamond_from_block"));
         this.makeLumber((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_BAMBOO), Ingredient.of(TsukiItemTags.BAMBOO))
             .unlockedBy("has_item", has(TsukiItemTags.BAMBOO))
             .save(consumer);
@@ -2100,6 +2106,43 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.VEGETABLES)
             .container(Items.BOWL)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yaki_udon_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.PASTA_TOMATO).get(), 1
+            )
+            .requires(TsukiNormalItemSet.PASTA_RAW.getItem().get())
+            .requires(TsukiItemTags.TOMATOSAUCE)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pasta_tomato_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.PASTA_MUSHROOM).get(), 1
+            )
+            .requires(TsukiNormalItemSet.PASTA_RAW.getItem().get())
+            .requires(TsukiItemTags.MUSHROOMS)
+            .requires(TsukiItemTags.MUSHROOMS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pasta_mushroom_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.CUISINES.get(TsukiCuisineSet.PASTA_WHITESAUCE).get(), 1
+            )
+            .requires(TsukiNormalItemSet.PASTA_RAW.getItem().get())
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.SALT)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pasta_whitesauce_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.YAKI_PASTA).get(), 2
+            )
+            .requires(TsukiNormalItemSet.PASTA_RAW.getItem().get())
+            .requires(Ingredient.fromValues(Stream.of(
+                    new TagValue(TsukiItemTags.RAW_CHICKEN),
+                    new TagValue(TsukiItemTags.RAW_PORK),
+                    new TagValue(TsukiItemTags.RAW_BEEF),
+                    new TagValue(TsukiItemTags.RAW_MUTTON))))
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yaki_pasta_cooking"));
         CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiNormalItemSet.WORCESTER_SAUCE.getItem().get(), 2
             )
@@ -3341,6 +3384,10 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiNormalItemSet.UDON_BLOCK.getItem().get())
             .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "udon_chopping"));
+        ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.PASTA_RAW.getItem().get(), 2, 1.0F, 4)
+            .requires(TsukiNormalItemSet.PASTA_BLOCK.getItem().get())
+            .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pasta_raw_chopping"));
 
         // Peppercorn processing (same behavior as Sakura)
         ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.BLACK_PEPPER.getItem().get(), 2)

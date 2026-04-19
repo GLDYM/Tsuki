@@ -1,4 +1,4 @@
-package cn.mcmod.tsuki.events;
+package cn.mcmod.tsuki.villager;
 
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;

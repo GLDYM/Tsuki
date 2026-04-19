@@ -90,7 +90,7 @@ repositories {
     }
 
     // Patchouli
-    maven { 
+    maven {
         url = 'https://maven.blamejared.com'
     }
 
@@ -134,6 +134,7 @@ dependencies {
 
     // Dev Tools
     runtimeOnly "curse.maven:let-me-see-see-your-code-1229018:6777654"
+    runtimeOnly "curse.maven:advanced-loot-info-1205426:7938903"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
