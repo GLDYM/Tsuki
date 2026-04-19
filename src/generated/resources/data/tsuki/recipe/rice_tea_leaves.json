@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "tsuki:rice/brown"
+    },
+    {
+      "item": "tsuki:green_tea_leaves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:rice_tea_leaves"
+  }
+}

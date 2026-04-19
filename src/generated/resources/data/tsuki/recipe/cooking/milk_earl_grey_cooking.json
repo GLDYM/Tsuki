@@ -1,0 +1,23 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "tsuki:cup"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:earl_grey_leaves"
+    },
+    {
+      "tag": "c:milk"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:milk_earl_grey"
+  }
+}

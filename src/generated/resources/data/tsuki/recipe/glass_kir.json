@@ -6,11 +6,14 @@
       "item": "tsuki:glass_white_wine"
     },
     {
+      "item": "tsuki:glass_vodka"
+    },
+    {
       "item": "tsuki:blackcurrant_juice"
     }
   ],
   "result": {
-    "count": 1,
+    "count": 2,
     "id": "tsuki:glass_kir"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "tsuki:cup"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:green_tea_leaves"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:green_tea"
+  }
+}

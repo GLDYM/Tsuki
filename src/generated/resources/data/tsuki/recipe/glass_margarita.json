@@ -6,6 +6,9 @@
       "item": "tsuki:glass_tequila"
     },
     {
+      "item": "tsuki:glass_liqueur"
+    },
+    {
       "item": "tsuki:lemon_juice"
     },
     {
@@ -13,7 +16,7 @@
     }
   ],
   "result": {
-    "count": 1,
+    "count": 2,
     "id": "tsuki:glass_margarita"
   }
 }

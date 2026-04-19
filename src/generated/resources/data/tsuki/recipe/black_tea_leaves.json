@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:green_tea_leaves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:black_tea_leaves"
+  }
+}

@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.item;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.item.enums.TsukiAlcoholSet;
 import cn.mcmod.tsuki.item.enums.TsukiCocktailSet;
+import cn.mcmod.tsuki.item.enums.TsukiTeaSet;
 import cn.mcmod.tsuki.item.enums.TsukiWineBottleSet;
 import cn.mcmod_mmf.mmlib.registry.ItemRegistryUtil;
 import net.minecraft.world.item.Item;
@@ -19,6 +20,13 @@ public class DrinkRegistry {
     public static final DeferredItem<Item> WINE_BOTTLE = register("wine_bottle", DrinkRegistry::normalItem);
     public static final DeferredItem<Item> GLASS_CUP = register("glass_cup", DrinkRegistry::normalItem);
 
+    public static final Map<TsukiTeaSet, DeferredItem<Item>> TEAS = ItemRegistryUtil.mapOfKeys(
+            TsukiTeaSet.class,
+            tea -> register(tea.getName(), () -> new DrinkItem(
+                    Tsuki.defaultItemProperties(),
+                    DrinkRegistry::cupContainerItem,
+                    false,
+                    tea.getEffects())));
     public static final Map<TsukiWineBottleSet, DeferredItem<Item>> WINE_BOTTLES = ItemRegistryUtil.mapOfKeys(
             TsukiWineBottleSet.class,
             wineBottle -> register(wineBottle.getName(), () -> new WineBottleItem(

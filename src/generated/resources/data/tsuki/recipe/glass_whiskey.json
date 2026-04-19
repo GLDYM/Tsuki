@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "tsuki:wine_bottle"
+      "item": "tsuki:glass_cup"
     },
     {
-      "item": "tsuki:whiskey_bucket"
+      "item": "tsuki:whiskey_bottle"
     }
   ],
   "result": {

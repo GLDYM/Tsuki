@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_tea_leaves": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:black_tea_leaves"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:earl_grey_leaves"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_black_tea_leaves"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:earl_grey_leaves"
+    ]
+  }
+}

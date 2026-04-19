@@ -140,6 +140,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.CROPS_VANILLA).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get());
         this.tag(TsukiItemTags.CROPS_GRAPE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get());
         this.tag(TsukiItemTags.CROPS_HOP).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get());
+        this.tag(TsukiItemTags.GREEN_TEA_LEAVES).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get());
+        this.tag(TsukiItemTags.BLACK_TEA_LEAVES).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get());
         this.tag(TsukiItemTags.CROPS_RICE).add(ItemRegistry.RICE_SEEDS.get());
         this.tag(TsukiItemTags.CROPS_TARO).add(ItemRegistry.TARO.get());
         this.tag(TsukiItemTags.VEGETABLES_CABBAGE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get());

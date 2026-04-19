@@ -2,13 +2,13 @@
   "type": "tsuki:distillation",
   "experience": 0,
   "fluid": {
-    "amount": 1000,
+    "amount": 200,
     "fluid": "tsuki:beer"
   },
   "ingredients": [],
   "recipeTime": 400,
   "result_fluid": {
-    "amount": 500,
+    "amount": 100,
     "fluid": "tsuki:whiskey"
   },
   "results": []

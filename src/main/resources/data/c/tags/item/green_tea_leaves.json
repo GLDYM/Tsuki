@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#tsuki:green_tea_leaves",
+    "#c:tea_leaves/green",
+    {
+        "id": "herbalbrews:green_tea",
+        "required": false
+    }
+  ]
+}

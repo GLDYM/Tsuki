@@ -101,6 +101,8 @@ public class TsukiItemTags {
     public static final TagKey<Item> CROPS_VANILLA = TagUtils.forgeItemTag("crops/vanilla");
     public static final TagKey<Item> CROPS_GRAPE = TagUtils.forgeItemTag("crops/grape");
     public static final TagKey<Item> CROPS_HOP = TagUtils.forgeItemTag("crops/hop");
+    public static final TagKey<Item> GREEN_TEA_LEAVES = TagUtils.modItemTag(Tsuki.MODID, "green_tea_leaves");
+    public static final TagKey<Item> BLACK_TEA_LEAVES = TagUtils.modItemTag(Tsuki.MODID, "black_tea_leaves");
 
     public static final TagKey<Item> EGGS = TagUtils.forgeItemTag("eggs");
     public static final TagKey<Item> DASHI = TagUtils.forgeItemTag("dashi");

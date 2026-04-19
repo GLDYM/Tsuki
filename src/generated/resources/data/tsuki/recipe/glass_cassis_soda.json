@@ -3,6 +3,9 @@
   "category": "misc",
   "ingredients": [
     {
+      "item": "tsuki:glass_cup"
+    },
+    {
       "item": "tsuki:blackcurrant_juice"
     },
     {
