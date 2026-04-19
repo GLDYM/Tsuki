@@ -247,6 +247,14 @@ public class BlockItemRegistry {
 
     public static final DeferredItem<Item> TEISHOKO_YAKINIKU = ITEMS.register("teishoku_yakiniku",
             () -> new BlockItem(BlockRegistry.TEISHOKO_YAKINIKU.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> TEISHOKU_TEMPURA = ITEMS.register("teishoku_tempura",
+            () -> new BlockItem(BlockRegistry.TEISHOKU_TEMPURA.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> TEISHOKU_FRIED = ITEMS.register("teishoku_fried",
+            () -> new BlockItem(BlockRegistry.TEISHOKU_FRIED.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> TEISHOKU_KATSU = ITEMS.register("teishoku_katsu",
+            () -> new BlockItem(BlockRegistry.TEISHOKU_KATSU.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> TEISHOKU_BURGER = ITEMS.register("teishoku_burger",
+            () -> new BlockItem(BlockRegistry.TEISHOKU_BURGER.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> NABE_SUKIYAKI = ITEMS.register("nabe_sukiyaki",
             () -> new BlockItem(BlockRegistry.NABE_SUKIYAKI.get(), Tsuki.defaultItemProperties()));

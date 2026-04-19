@@ -21,7 +21,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:mashed_potato"
+      "id": "tsuki:mashed_potato"
     }
   ],
   "type": "create:mixing"

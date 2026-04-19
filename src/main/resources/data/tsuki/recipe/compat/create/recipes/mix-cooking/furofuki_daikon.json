@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:furofuki_daikon"
+      "id": "tsuki:furofuki_daikon"
     }
   ],
   "type": "create:mixing"

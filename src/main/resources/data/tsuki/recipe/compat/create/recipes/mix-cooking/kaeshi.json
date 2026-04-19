@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 4,
-      "item": "tsuki:kaeshi"
+      "id": "tsuki:kaeshi"
     }
   ],
   "type": "create:mixing"

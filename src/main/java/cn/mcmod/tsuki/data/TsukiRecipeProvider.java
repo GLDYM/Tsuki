@@ -1067,6 +1067,34 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.YAKINIKU).get())
             .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
             .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOKU_TEMPURA.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TEMPURA).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOKU_FRIED.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.FRIED_CHICKEN).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOKU_KATSU.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TEISHOKU_BURGER.get())
+            .requires(TsukiItemTags.SOUPS)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(BlockRegistry.OBON.get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_DISH).get())
+            .unlockedBy("has_obon", has(BlockRegistry.OBON.get()))
+            .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, FoodRegistry.FOODSET.get(TsukiFoodSet.SASHIMI).get())
             .requires(TsukiItemTags.SLICES_RAW_FISHES)
             .requires(TsukiItemTags.SLICES_RAW_FISHES)
@@ -1182,6 +1210,16 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
             .unlockedBy("has_burger", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get()))
             .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU_DISH).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU).get())
+            .requires(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
+            .unlockedBy("has_katsu", has(FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "katsu_dish"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CROQUETTE_DISH).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.CROQUETTE).get())
+            .requires(TsukiItemTags.SALAD_INGREDIENTS_CABBAGE)
+            .unlockedBy("has_croquette", has(FoodRegistry.FOODSET.get(TsukiFoodSet.CROQUETTE).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "croquette_dish"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE_BURGER).get())
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get())
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER).get())
@@ -1232,6 +1270,43 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .save(consumer);
         this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT), BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT)
             .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get())
+            .pattern("L L")
+            .pattern("LLL")
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bento_box"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.CUISINES.get(TsukiCuisineSet.BENTO_STANDARD).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TEMPURA).get())
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.FOODS_COOKED_MEAT)
+            .unlockedBy("has_bento_box", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bento_standard"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.CUISINES.get(TsukiCuisineSet.BENTO_DELUXE).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TEMPURA).get())
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(Items.DRIED_KELP)
+            .requires(TsukiItemTags.FOODS_COOKED_MEAT)
+            .unlockedBy("has_bento_box", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bento_deluxe"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.CUISINES.get(TsukiCuisineSet.BENTO_PREMIUM).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.OMURICE).get())
+            .requires(TsukiItemTags.VEGETABLES)
+            .unlockedBy("has_bento_box", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bento_premium"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.CUISINES.get(TsukiCuisineSet.BENTO_SUPREME).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get())
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CURRY_SAUCE).get())
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.FOODS_COOKED_MEAT)
+            .unlockedBy("has_bento_box", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bento_supreme"));
         this.makeIngotToBlock(BlockItemRegistry.SAKURA_DIAMOND_BLOCK, () -> TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
             .unlockedBy("has_sakura_diamond", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_diamond_block"));

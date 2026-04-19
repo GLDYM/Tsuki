@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:tofu_nanban"
+      "id": "tsuki:tofu_nanban"
     }
   ],
   "type": "create:mixing"

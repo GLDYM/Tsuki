@@ -803,6 +803,26 @@ public enum TsukiFoodSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    KATSU_DISH(
+            FoodInfo.builder()
+                    .name("katsu_dish")
+                    .amountAndCalories(10, 0.8F)
+                    .water(0.5F)
+                    .nutrients(0.5F, 0.0F, 2.0F, 5.0F, 1.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    CROQUETTE_DISH(
+            FoodInfo.builder()
+                    .name("croquette_dish")
+                    .amountAndCalories(8, 0.6F)
+                    .water(0.5F)
+                    .nutrients(0.5F, 0.0F, 2.0F, 5.0F, 1.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     HAMBURGER(
             FoodInfo.builder()
                     .name("hamburger")

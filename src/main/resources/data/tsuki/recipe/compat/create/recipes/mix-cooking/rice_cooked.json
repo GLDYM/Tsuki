@@ -17,7 +17,7 @@
   ],
   "results": [
     {
-      "item": "tsuki:rice_cooked"
+      "id": "tsuki:rice_cooked"
     }
   ],
   "type": "create:mixing"

@@ -35,7 +35,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:nikujaga"
+      "id": "tsuki:nikujaga"
     }
   ],
   "type": "create:mixing"

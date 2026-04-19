@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:mayo"
+      "id": "tsuki:mayo"
     }
   ],
   "type": "create:mixing"

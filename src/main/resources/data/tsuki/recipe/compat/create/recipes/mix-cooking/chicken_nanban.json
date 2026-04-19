@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:chicken_nanban"
+      "id": "tsuki:chicken_nanban"
     }
   ],
   "type": "create:mixing"

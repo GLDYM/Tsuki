@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:croquette"
+    },
+    {
+      "tag": "c:salad_ingredients/cabbage"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:croquette_dish"
+  }
+}

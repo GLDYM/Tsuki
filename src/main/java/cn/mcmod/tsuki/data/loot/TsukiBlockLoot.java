@@ -91,6 +91,11 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         this.createTeishoku(BlockRegistry.TEISHOUKU_FISH_RAW.get());
         this.createTeishoku(BlockRegistry.TEISHOUKU_FISH_SALT.get());
         this.createTeishoku(BlockRegistry.TEISHOKO_TAMAGOYAKI.get());
+        this.createTeishoku(BlockRegistry.TEISHOKO_YAKINIKU.get());
+        this.createTeishoku(BlockRegistry.TEISHOKU_TEMPURA.get());
+        this.createTeishoku(BlockRegistry.TEISHOKU_FRIED.get());
+        this.createTeishoku(BlockRegistry.TEISHOKU_KATSU.get());
+        this.createTeishoku(BlockRegistry.TEISHOKU_BURGER.get());
 
         createCrop(BlockRegistry.CABBAGE_CROP.get(), FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get(),
                 ItemRegistry.CABBAGE_SEEDS.get(), 7);

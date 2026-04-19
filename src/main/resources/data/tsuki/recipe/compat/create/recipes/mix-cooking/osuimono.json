@@ -21,7 +21,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:osuimono"
+      "id": "tsuki:osuimono"
     }
   ],
   "type": "create:mixing"

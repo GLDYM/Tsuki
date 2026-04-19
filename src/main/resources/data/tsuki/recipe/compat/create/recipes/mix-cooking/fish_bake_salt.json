@@ -20,7 +20,7 @@
   ],
   "results": [
     {
-      "item": "tsuki:fish_bake_salt"
+      "id": "tsuki:fish_bake_salt"
     }
   ],
   "type": "create:mixing"

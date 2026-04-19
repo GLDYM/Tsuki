@@ -53,11 +53,13 @@ public class ItemRegistry {
             ItemRegistry::normalItem);
     public static final DeferredItem<Item> GRAPE_SEEDS = register("grape_seeds",
             ItemRegistry::normalItem);
+
+
+    public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = createMaterials();
+
     public static final DeferredItem<Item> SAMURAI_ILLAGER_SPAWN_EGG = register("samurai_illager_spawn_egg",
             () -> new DeferredSpawnEggItem(EntityRegistry.SAMURAI_ILLAGER, 9804699, 2580065,
                     Tsuki.defaultItemProperties()));
-
-    public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = createMaterials();
 
     private static Map<TsukiNormalItemSet, DeferredItem<Item>> createMaterials() {
         Map<TsukiNormalItemSet, DeferredItem<Item>> materials = new EnumMap<>(TsukiNormalItemSet.class);

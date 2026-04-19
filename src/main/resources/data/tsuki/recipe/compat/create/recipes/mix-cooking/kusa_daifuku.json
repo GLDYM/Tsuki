@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:kusa_daifuku"
+      "id": "tsuki:kusa_daifuku"
     }
   ],
   "type": "create:mixing"

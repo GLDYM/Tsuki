@@ -21,7 +21,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:tofu_fried"
+      "id": "tsuki:tofu_fried"
     }
   ],
   "type": "create:mixing"

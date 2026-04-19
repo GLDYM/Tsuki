@@ -21,7 +21,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:tomato_sauce"
+      "id": "tsuki:tomato_sauce"
     }
   ],
   "type": "create:mixing"

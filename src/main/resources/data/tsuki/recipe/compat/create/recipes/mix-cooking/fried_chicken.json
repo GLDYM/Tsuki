@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:fried_chicken"
+      "id": "tsuki:fried_chicken"
     }
   ],
   "type": "create:mixing"

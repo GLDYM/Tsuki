@@ -480,6 +480,14 @@ public class BlockRegistry {
             () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(6, 0.8f).build()));
     public static final DeferredBlock<Block> TEISHOKO_YAKINIKU = BLOCKS.register("teishoku_yakiniku",
             () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(10, 0.8f).build()));
+    public static final DeferredBlock<Block> TEISHOKU_TEMPURA = BLOCKS.register("teishoku_tempura",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(8, 0.8f).build()));
+    public static final DeferredBlock<Block> TEISHOKU_FRIED = BLOCKS.register("teishoku_fried",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(8, 0.8f).build()));
+    public static final DeferredBlock<Block> TEISHOKU_KATSU = BLOCKS.register("teishoku_katsu",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(10, 0.8f).build()));
+    public static final DeferredBlock<Block> TEISHOKU_BURGER = BLOCKS.register("teishoku_burger",
+            () -> new TeishokuBlock(FoodInfo.builder().amountAndCalories(10, 0.8f).build()));
 
     public static final DeferredBlock<Block> NABE_SUKIYAKI = BLOCKS.register("nabe_sukiyaki",
             () -> new NabeBlock(FoodInfo.builder().amountAndCalories(12, 1f).build()));

@@ -17,7 +17,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:pork_stick"
+      "id": "tsuki:pork_stick"
     }
   ],
   "type": "create:mixing"

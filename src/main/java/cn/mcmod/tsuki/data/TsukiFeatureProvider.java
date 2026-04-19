@@ -53,4 +53,7 @@ public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
                 }), Set.of(Tsuki.MODID));
     }
 
+    public String getName() {
+        return "Tsuki - Features";
+    }
 }

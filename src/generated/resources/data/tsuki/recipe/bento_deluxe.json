@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:bento_box"
+    },
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "item": "tsuki:tempura"
+    },
+    {
+      "tag": "c:vegetables"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "tag": "c:foods/cooked_meat"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:bento_deluxe"
+  }
+}

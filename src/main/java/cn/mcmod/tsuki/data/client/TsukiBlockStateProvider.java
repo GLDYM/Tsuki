@@ -4,6 +4,7 @@ import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.ChestnutBurrBlock;
 import cn.mcmod.tsuki.block.FutonBlock;
 import cn.mcmod.tsuki.block.UmeLeavesBlock;
+import cn.mcmod.tsuki.block.foods.TeishokuBlock;
 import cn.mcmod.tsuki.block.machines.TataraBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -232,6 +233,16 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                     .modelFile(models().cubeAll(modelName, texture(modelName)))
                     .build();
         });
+
+        teishoku(BlockRegistry.TEISHOUKU_FISH_COOKED.get(), "teishoku_fish_cooked", 3);
+        teishoku(BlockRegistry.TEISHOUKU_FISH_RAW.get(), "teishoku_fish_raw", 3);
+        teishoku(BlockRegistry.TEISHOUKU_FISH_SALT.get(), "teishoku_fish_salt", 3);
+        teishoku(BlockRegistry.TEISHOKO_TAMAGOYAKI.get(), "teishoku_tamagoyaki", 3);
+        teishoku(BlockRegistry.TEISHOKO_YAKINIKU.get(), "teishoku_yakiniku", 3);
+        teishoku(BlockRegistry.TEISHOKU_TEMPURA.get(), "teishoku_tempura", 3);
+        teishoku(BlockRegistry.TEISHOKU_FRIED.get(), "teishoku_fried", 3);
+        teishoku(BlockRegistry.TEISHOKU_KATSU.get(), "teishoku_katsu", 3);
+        teishoku(BlockRegistry.TEISHOKU_BURGER.get(), "teishoku_burger", 3);
     }
 
     private void log(RotatedPillarBlock block) {
@@ -358,6 +369,21 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 .part().modelFile(sideModel).rotationY(90).addModel().condition(FenceBlock.EAST, true).end()
                 .part().modelFile(sideModel).rotationY(180).addModel().condition(FenceBlock.SOUTH, true).end()
                 .part().modelFile(sideModel).rotationY(270).addModel().condition(FenceBlock.WEST, true).end();
+    }
+
+    private void teishoku(Block block, String baseModel, int maxBites) {
+        getVariantBuilder(block).forAllStates(state -> {
+            int bites = state.getValue(TeishokuBlock.BITES);
+            Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+            int yRot = ((int) facing.toYRot() + 180) % 360;
+            int modelBite = Math.min(bites, maxBites);
+            String modelName = modelBite > 0 ? baseModel + "_" + modelBite : baseModel;
+            return ConfiguredModel.builder()
+                    .modelFile(models().getExistingFile(modLoc("block/" + modelName)))
+                    .rotationY(yRot)
+                    .build();
+        });
+        simpleBlockItem(block, models().getExistingFile(modLoc("block/" + baseModel)));
     }
 
     private String name(Block block) {

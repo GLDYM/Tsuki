@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_katsu": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:katsu"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:katsu_dish"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_katsu"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:katsu_dish"
+    ]
+  }
+}

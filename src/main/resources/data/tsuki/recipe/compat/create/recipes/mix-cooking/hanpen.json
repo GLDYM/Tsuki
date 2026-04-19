@@ -32,7 +32,7 @@
   "results": [
     {
       "count": 4,
-      "item": "tsuki:fishcake"
+      "id": "tsuki:fishcake"
     }
   ],
   "type": "create:mixing"

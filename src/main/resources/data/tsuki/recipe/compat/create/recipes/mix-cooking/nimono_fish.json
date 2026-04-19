@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:nimono_fish"
+      "id": "tsuki:nimono_fish"
     }
   ],
   "type": "create:mixing"

@@ -29,7 +29,7 @@
   ],
   "results": [
     {
-      "item": "tsuki:ramen_large"
+      "id": "tsuki:ramen_large"
     }
   ],
   "type": "create:mixing"

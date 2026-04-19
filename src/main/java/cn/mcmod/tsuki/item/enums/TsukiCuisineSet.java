@@ -79,6 +79,50 @@ public enum TsukiCuisineSet {
                     .cookingTemp(480.0F)
                     .build(),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO)),
+    BENTO_STANDARD(
+            FoodInfo.builder()
+                    .name("bento")
+                    .amountAndCalories(10, 1.0F)
+                    .water(0.5F)
+                    .nutrients(3.0F, 0.0F, 3.0F, 3.0F, 3.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(0.0F)
+                    .cookingTemp(-1.0F)
+                    .build(),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX)),
+    BENTO_DELUXE(
+            FoodInfo.builder()
+                    .name("bento_deluxe")
+                    .amountAndCalories(12, 1.0F)
+                    .water(0.5F)
+                    .nutrients(3.0F, 0.0F, 3.0F, 3.0F, 3.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(0.0F)
+                    .cookingTemp(-1.0F)
+                    .build(),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX)),
+    BENTO_PREMIUM(
+            FoodInfo.builder()
+                    .name("bento_premium")
+                    .amountAndCalories(14, 1.0F)
+                    .water(0.5F)
+                    .nutrients(3.0F, 0.0F, 3.0F, 3.0F, 3.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(0.0F)
+                    .cookingTemp(-1.0F)
+                    .build(),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX)),
+    BENTO_SUPREME(
+            FoodInfo.builder()
+                    .name("bento_supreme")
+                    .amountAndCalories(16, 1.0F)
+                    .water(0.5F)
+                    .nutrients(3.0F, 0.0F, 3.0F, 3.0F, 3.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(0.0F)
+                    .cookingTemp(-1.0F)
+                    .build(),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX)),
     SOUP_REDBEAN(
             FoodInfo.builder()
                     .name("soup_red_bean")

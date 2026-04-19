@@ -24,7 +24,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:red_bean_paste"
+      "id": "tsuki:red_bean_paste"
     }
   ],
   "type": "create:mixing"

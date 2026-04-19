@@ -5,6 +5,7 @@ import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
+import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,18 +18,27 @@ public class CreativeModeTabRegistry {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB,
             Tsuki.MODID);
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GROUP = TABS.register(
-            "items",
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BLOCKS = TABS.register(
+            "blocks",
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(BlockItemRegistry.COOKING_POT.get()))
-                    .title(Component.translatable("item_group.tsuki.items"))
+                    .title(Component.translatable("item_group.tsuki.blocks"))
                     .displayItems(
                             (parameters, output) -> {
                                 BlockItemRegistry.ITEMS.getEntries().forEach(
                                         (entry) -> output.accept(new ItemStack(entry.get())));
+                            })
+                    .build());
+
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEMS = TABS.register(
+            "items",
+            () -> CreativeModeTab.builder()
+                    .icon(() -> new ItemStack(TsukiNormalItemSet.SAKURA_COIN.getItem().get()))
+                    .title(Component.translatable("item_group.tsuki.items"))
+                    .displayItems(
+                            (parameters, output) -> {
                                 ItemRegistry.ITEMS.getEntries().forEach(
-                                        (entry) -> output.accept(new ItemStack(entry.get())));
-                                BucketItemRegistry.ITEMS.getEntries().forEach(
                                         (entry) -> output.accept(new ItemStack(entry.get())));
                             })
                     .build());
@@ -37,7 +47,7 @@ public class CreativeModeTabRegistry {
             "food",
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI).get()))
-                    .title(Component.translatable("item_group.tsuki.food"))
+                    .title(Component.translatable("item_group.tsuki.foods"))
                     .displayItems(
                             (parameters, output) -> FoodRegistry.ITEMS.getEntries().forEach(
                                     (entry) -> output.accept(new ItemStack(entry.get()))))
@@ -51,6 +61,8 @@ public class CreativeModeTabRegistry {
                     .displayItems(
                             (parameters, output) -> {
                                 DrinkRegistry.ITEMS.getEntries().forEach(
+                                        (entry) -> output.accept(new ItemStack(entry.get())));
+                                BucketItemRegistry.ITEMS.getEntries().forEach(
                                         (entry) -> output.accept(new ItemStack(entry.get())));
                             })
                     .build());

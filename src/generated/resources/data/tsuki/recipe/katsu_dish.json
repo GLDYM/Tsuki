@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:katsu"
+    },
+    {
+      "tag": "c:salad_ingredients/cabbage"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:katsu_dish"
+  }
+}

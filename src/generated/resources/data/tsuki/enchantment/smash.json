@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.tsuki.smash"
+  },
+  "max_cost": {
+    "base": 18,
+    "per_level_above_first": 6
+  },
+  "max_level": 10,
+  "min_cost": {
+    "base": 8,
+    "per_level_above_first": 4
+  },
+  "primary_items": "#minecraft:enchantable/mining",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#minecraft:pickaxes",
+  "weight": 10
+}

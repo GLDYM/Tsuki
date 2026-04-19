@@ -105,15 +105,17 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         FoodRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() == TsukiFoodSet.CABBAGE.getItem().get()
                     || item.get() == TsukiFoodSet.UME.getItem().get()
-                    || item.get() == TsukiFoodSet.UMEBOSHI.getItem().get()) {
-                return;
-            }
-            if (item.get() == TsukiCuisineSet.DANANKO.getItem().get()
+                    || item.get() == TsukiFoodSet.UMEBOSHI.getItem().get()
+                    || item.get() == TsukiCuisineSet.DANANKO.getItem().get()
                     || item.get() == TsukiCuisineSet.DANMITARASHI.getItem().get()
                     || item.get() == TsukiCuisineSet.DANSANSYOKU.getItem().get()
                     || item.get() == TsukiCuisineSet.BEEF_STICK.getItem().get()
                     || item.get() == TsukiCuisineSet.CHICKEN_STICK.getItem().get()
-                    || item.get() == TsukiCuisineSet.PORK_STICK.getItem().get()) {
+                    || item.get() == TsukiCuisineSet.PORK_STICK.getItem().get()
+                    || item.get() == TsukiCuisineSet.BENTO_STANDARD.getItem().get()
+                    || item.get() == TsukiCuisineSet.BENTO_DELUXE.getItem().get()
+                    || item.get() == TsukiCuisineSet.BENTO_PREMIUM.getItem().get()
+                    || item.get() == TsukiCuisineSet.BENTO_SUPREME.getItem().get()) {
                 return;
             }
             normalItem(item);

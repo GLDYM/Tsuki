@@ -21,7 +21,7 @@
   "results": [
     {
       "count": 2,
-      "item": "tsuki:kamaboko"
+      "id": "tsuki:kamaboko"
     }
   ],
   "type": "create:mixing"
