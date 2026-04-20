@@ -1,0 +1,7 @@
+{
+  "remove": [
+    "tsuki:omnitool",
+    "tsuki:fresh_food"
+  ],
+  "values": []
+}

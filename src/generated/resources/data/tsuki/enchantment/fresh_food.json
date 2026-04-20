@@ -1,21 +1,21 @@
 {
   "anvil_cost": 2,
   "description": {
-    "translate": "enchantment.tsuki.smash"
+    "translate": "enchantment.tsuki.fresh_food"
   },
   "max_cost": {
-    "base": 35,
-    "per_level_above_first": 0
+    "base": 28,
+    "per_level_above_first": 6
   },
-  "max_level": 1,
+  "max_level": 10,
   "min_cost": {
-    "base": 15,
-    "per_level_above_first": 0
+    "base": 8,
+    "per_level_above_first": 4
   },
   "primary_items": [],
   "slots": [
     "mainhand"
   ],
   "supported_items": "#minecraft:pickaxes",
-  "weight": 1
+  "weight": 10
 }

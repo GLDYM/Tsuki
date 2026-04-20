@@ -13,6 +13,8 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 public final class TsukiEnchantments {
     public static final ResourceKey<Enchantment> ANTI_FIRE = key("anti_fire");
     public static final ResourceKey<Enchantment> SMASH = key("smash");
+    public static final ResourceKey<Enchantment> OMNITOOL = key("omnitool");
+    public static final ResourceKey<Enchantment> FRESH_FOOD = key("fresh_food");
 
     private TsukiEnchantments() {
     }
@@ -26,4 +28,3 @@ public final class TsukiEnchantments {
         return EnchantmentHelper.getTagEnchantmentLevel(holder, stack);
     }
 }
-

@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "tsuki:omnitool",
+      "required": false
+    },
+    {
+      "id": "tsuki:fresh_food",
+      "required": false
+    }
+  ]
+}

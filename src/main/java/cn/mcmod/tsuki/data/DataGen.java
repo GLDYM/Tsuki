@@ -40,6 +40,8 @@ public class DataGen {
         dataGenerator.addProvider(event.includeServer(), new TsukiLootTableProvider(packOutput, provider));
         dataGenerator.addProvider(event.includeServer(), new TsukiFeatureProvider(packOutput, provider));
         dataGenerator.addProvider(event.includeServer(), new TsukiEnchantmentProvider(packOutput, provider));
+        dataGenerator.addProvider(event.includeServer(),
+                new TsukiEnchantmentTagProvider(packOutput, provider, existingFileHelper));
         dataGenerator.addProvider(event.includeServer(), new TsukiCompostableDataMapProvider(packOutput, provider));
         // dataGenerator.addProvider(event.includeServer(),new
         // TsukiLootModifierProvider(packOutput, provider, Tsuki.MODID));

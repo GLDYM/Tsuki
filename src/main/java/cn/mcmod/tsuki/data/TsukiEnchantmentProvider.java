@@ -13,12 +13,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 
 public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
@@ -33,16 +31,19 @@ public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
 
         HolderSet<Item> pickaxes = items.getOrThrow(ItemTags.PICKAXES);
         HolderSet<Item> miningEnchantable = items.getOrThrow(ItemTags.MINING_ENCHANTABLE);
+        HolderSet<Item> cantEnchantable = HolderSet.direct();
 
         HolderSet<Enchantment> antiFireExclusive = HolderSet.direct();
-        HolderSet<Enchantment> powerExclusive = HolderSet.direct();
+        HolderSet<Enchantment> smashExclusive = HolderSet.direct();
+        HolderSet<Enchantment> omnitoolExclusive = HolderSet.direct();
+        HolderSet<Enchantment> freshFoodExclusive = HolderSet.direct();
 
         bootstrap.register(TsukiEnchantments.ANTI_FIRE,
                 new Enchantment(
                         Component.translatable("enchantment.tsuki.anti_fire"),
                         Enchantment.definition(
                                 pickaxes,
-                                miningEnchantable,
+                                cantEnchantable,
                                 1,
                                 1,
                                 Enchantment.dynamicCost(20, 0),
@@ -57,14 +58,44 @@ public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
                         Component.translatable("enchantment.tsuki.smash"),
                         Enchantment.definition(
                                 pickaxes,
-                                miningEnchantable,
+                                cantEnchantable,
+                                1,
+                                1,
+                                Enchantment.dynamicCost(15, 0),
+                                Enchantment.dynamicCost(35, 0),
+                                2,
+                                EquipmentSlotGroup.MAINHAND),
+                        smashExclusive,
+                        DataComponentMap.EMPTY));
+
+        bootstrap.register(TsukiEnchantments.OMNITOOL,
+                new Enchantment(
+                        Component.translatable("enchantment.tsuki.omnitool"),
+                        Enchantment.definition(
+                                pickaxes,
+                                cantEnchantable,
+                                1,
+                                1,
+                                Enchantment.dynamicCost(20, 0),
+                                Enchantment.dynamicCost(45, 0),
+                                4,
+                                EquipmentSlotGroup.MAINHAND),
+                        omnitoolExclusive,
+                        DataComponentMap.EMPTY));
+
+        bootstrap.register(TsukiEnchantments.FRESH_FOOD,
+                new Enchantment(
+                        Component.translatable("enchantment.tsuki.fresh_food"),
+                        Enchantment.definition(
+                                pickaxes,
+                                cantEnchantable,
                                 10,
                                 10,
                                 Enchantment.dynamicCost(8, 4),
-                                Enchantment.dynamicCost(18, 6),
+                                Enchantment.dynamicCost(28, 6),
                                 2,
                                 EquipmentSlotGroup.MAINHAND),
-                        powerExclusive,
+                        freshFoodExclusive,
                         DataComponentMap.EMPTY));
     }
 
@@ -72,4 +103,3 @@ public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
         return "Tsuki - Enchantments";
     }
 }
-

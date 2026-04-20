@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -16,7 +17,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public class TsukiEnchantmentEvents {
     private static final int ANTI_FIRE_INTERVAL_TICKS = 80;
     private static final int ANTI_FIRE_DURATION_TICKS = 340;
-    private static final int POWER_HASTE_DURATION_TICKS = 120;
+    private static final float SMASH_MIN_BREAK_SPEED = 0.25F;
 
     private TsukiEnchantmentEvents() {
     }
@@ -40,8 +41,8 @@ public class TsukiEnchantmentEvents {
     }
 
     @SubscribeEvent
-    public static void onBlockBreak(BlockEvent.BreakEvent event) {
-        if (!(event.getPlayer() instanceof ServerPlayer player)) {
+    public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
 
@@ -51,11 +52,42 @@ public class TsukiEnchantmentEvents {
             return;
         }
 
-        float chance = Math.min(1.0F, smashLevel * 0.10F);
+        if (event.getNewSpeed() < SMASH_MIN_BREAK_SPEED) {
+            event.setNewSpeed(SMASH_MIN_BREAK_SPEED);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onHarvestCheck(PlayerEvent.HarvestCheck event) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+
+        ItemStack mainHand = player.getMainHandItem();
+        int omnitoolLevel = TsukiEnchantments.getLevel(player.registryAccess(), TsukiEnchantments.OMNITOOL, mainHand);
+        if (omnitoolLevel <= 0) {
+            return;
+        }
+
+        event.setCanHarvest(true);
+    }
+
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        if (!(event.getPlayer() instanceof ServerPlayer player)) {
+            return;
+        }
+
+        ItemStack mainHand = player.getMainHandItem();
+        int freshFoodLevel = TsukiEnchantments.getLevel(player.registryAccess(), TsukiEnchantments.FRESH_FOOD, mainHand);
+        if (freshFoodLevel <= 0) {
+            return;
+        }
+
+        float chance = Math.min(1.0F, freshFoodLevel * 0.10F);
         RandomSource random = player.getRandom();
         if (random.nextFloat() <= chance) {
-            player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, POWER_HASTE_DURATION_TICKS, 1, true, false));
+            player.getFoodData().eat(1, 1.0F);
         }
     }
 }
-
