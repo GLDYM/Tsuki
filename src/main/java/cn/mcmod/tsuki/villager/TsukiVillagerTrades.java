@@ -5,7 +5,6 @@ import cn.mcmod.tsuki.item.DrinkRegistry;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
-import cn.mcmod.tsuki.item.enums.TsukiAlcoholSet;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod.tsuki.item.enums.TsukiWineBottleSet;

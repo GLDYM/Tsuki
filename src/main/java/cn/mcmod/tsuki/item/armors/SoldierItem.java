@@ -31,6 +31,7 @@ public class SoldierItem extends ArmorItem implements GeoItem {
         consumer.accept(new GeoRenderProvider() {
             private GeoArmorRenderer<?> renderer;
 
+            @SuppressWarnings("unchecked")
             @Override
             public <T extends LivingEntity> HumanoidModel<T> getGeoArmorRenderer(
                     T livingEntity,

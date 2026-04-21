@@ -4,6 +4,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.item.HammerItem;
 import cn.mcmod.tsuki.item.KatanaItem;
 import cn.mcmod.tsuki.item.KnifeItem;
+import cn.mcmod.tsuki.item.MythicPickaxeItem;
 import cn.mcmod.tsuki.item.BroomItem;
 import cn.mcmod.tsuki.item.SakuraDiamondItem;
 import cn.mcmod.tsuki.item.SheathItem;
@@ -22,7 +23,9 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.core.component.DataComponents;
 import net.neoforged.neoforge.common.SimpleTier;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -65,18 +68,32 @@ public class TsukiArmorToolRegistry {
 
     public static final DeferredItem<Item> SAKURA_AXE = register("sakura_axe",
             () -> new AxeItem(SAKURA_TOOL_TIER,
-                    Tsuki.defaultItemProperties().attributes(AxeItem.createAttributes(SAKURA_TOOL_TIER, 5.0F, -3.0F))));
+                    Tsuki.defaultItemProperties()
+                            .attributes(AxeItem.createAttributes(SAKURA_TOOL_TIER, 5.0F, -3.0F))
+                            .stacksTo(1)));
     public static final DeferredItem<Item> SAKURA_PICKAXE = register("sakura_pickaxe",
             () -> new PickaxeItem(SAKURA_TOOL_TIER,
                     Tsuki.defaultItemProperties()
-                            .attributes(PickaxeItem.createAttributes(SAKURA_TOOL_TIER, 1.0F, -2.8F))));
+                            .attributes(PickaxeItem.createAttributes(SAKURA_TOOL_TIER, 1.0F, -2.8F))
+                            .stacksTo(1)));
     public static final DeferredItem<Item> SAKURA_HOE = register("sakura_hoe",
             () -> new HoeItem(SAKURA_TOOL_TIER,
-                    Tsuki.defaultItemProperties().attributes(HoeItem.createAttributes(SAKURA_TOOL_TIER, -6.0F, 0.0F))));
+                    Tsuki.defaultItemProperties()
+                            .attributes(HoeItem.createAttributes(SAKURA_TOOL_TIER, -6.0F, 0.0F))
+                            .stacksTo(1)));
     public static final DeferredItem<Item> SAKURA_SHOVEL = register("sakura_shovel",
             () -> new ShovelItem(SAKURA_TOOL_TIER,
                     Tsuki.defaultItemProperties()
-                            .attributes(ShovelItem.createAttributes(SAKURA_TOOL_TIER, 1.5F, -3.0F))));
+                            .attributes(ShovelItem.createAttributes(SAKURA_TOOL_TIER, 1.5F, -3.0F))
+                            .stacksTo(1)));
+    public static final DeferredItem<Item> MYTHIC_PICKAXE = register("mythic_pickaxe",
+            () -> new MythicPickaxeItem(SAKURA_TOOL_TIER,
+                    Tsuki.defaultItemProperties()
+                            .stacksTo(1)
+                            .rarity(Rarity.EPIC)
+                            .component(DataComponents.UNBREAKABLE, new Unbreakable(true))
+                            .attributes(PickaxeItem.createAttributes(SAKURA_TOOL_TIER, 1.0F, -2.8F))));
+
 
     public static final DeferredItem<Item> IRON_FISH_KNIFE = register("knife_fish",
             () -> new KnifeItem(Tiers.IRON, 1F, -2.0F, Tsuki.defaultItemProperties().stacksTo(1)));

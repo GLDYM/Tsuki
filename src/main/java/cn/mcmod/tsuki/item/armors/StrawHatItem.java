@@ -29,6 +29,7 @@ public class StrawHatItem extends ArmorItem implements GeoItem {
         consumer.accept(new GeoRenderProvider() {
             private GeoArmorRenderer<?> renderer;
 
+            @SuppressWarnings("unchecked")
             @Override
             public <T extends LivingEntity> HumanoidModel<T> getGeoArmorRenderer(T livingEntity,
                     ItemStack itemStack,

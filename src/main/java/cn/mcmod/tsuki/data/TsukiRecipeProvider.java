@@ -36,6 +36,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
@@ -60,6 +61,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
     }
 
     protected void buildRecipes(RecipeOutput consumer) {
+        this.registerSmithingRecipe(consumer);
         this.registerCraftingRecipe(consumer);
         this.registerDecorativeBlockRecipes(consumer);
         this.registerMortarRecipe(consumer);
@@ -68,6 +70,18 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.registerDistillerRecipe(consumer);
         this.registerDrinkRecipes(consumer);
         this.registerChoppingRecipes(consumer);
+    }
+
+    private void registerSmithingRecipe(RecipeOutput consumer) {
+        SmithingTransformRecipeBuilder.smithing(
+            Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+            Ingredient.of(TsukiArmorToolRegistry.SAKURA_PICKAXE.get()),
+            Ingredient.of(Items.NETHERITE_INGOT),
+            RecipeCategory.TOOLS,
+            TsukiArmorToolRegistry.MYTHIC_PICKAXE.get()
+        )
+        .unlocks("has_sakura_pickaxe", has(TsukiArmorToolRegistry.SAKURA_PICKAXE.get()))
+        .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mythic_pickaxe_smithing"));
     }
 
     private void registerCraftingRecipe(RecipeOutput consumer) {

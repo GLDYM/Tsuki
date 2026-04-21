@@ -2,12 +2,22 @@ package cn.mcmod.tsuki.events;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.enchantment.TsukiEnchantments;
+import cn.mcmod.tsuki.item.MythicPickaxeItem;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -17,7 +27,21 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public class TsukiEnchantmentEvents {
     private static final int ANTI_FIRE_INTERVAL_TICKS = 80;
     private static final int ANTI_FIRE_DURATION_TICKS = 340;
-    private static final float SMASH_MIN_BREAK_SPEED = 0.25F;
+    private static final float SMASH_MAX_BREAK_TICKS = 8.0F;
+    private static final TagKey<Block> C_ORES_TAG = TagKey.create(net.minecraft.core.registries.Registries.BLOCK,
+            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "ores"));
+    @SuppressWarnings("unchecked")
+    private static final TagKey<Block>[] ORE_TAGS = new TagKey[] {
+            BlockTags.COAL_ORES,
+            BlockTags.IRON_ORES,
+            BlockTags.GOLD_ORES,
+            BlockTags.DIAMOND_ORES,
+            BlockTags.EMERALD_ORES,
+            BlockTags.REDSTONE_ORES,
+            BlockTags.LAPIS_ORES,
+            BlockTags.COPPER_ORES,
+            C_ORES_TAG
+    };
 
     private TsukiEnchantmentEvents() {
     }
@@ -40,20 +64,39 @@ public class TsukiEnchantmentEvents {
         player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, ANTI_FIRE_DURATION_TICKS, 0, true, false));
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-        if (!(event.getEntity() instanceof ServerPlayer player)) {
+        Player player = event.getEntity();
+        if (player == null) {
             return;
         }
 
         ItemStack mainHand = player.getMainHandItem();
         int smashLevel = TsukiEnchantments.getLevel(player.registryAccess(), TsukiEnchantments.SMASH, mainHand);
-        if (smashLevel <= 0) {
+        int omnitoolLevel = TsukiEnchantments.getLevel(player.registryAccess(), TsukiEnchantments.OMNITOOL, mainHand);
+        if (smashLevel <= 0 && omnitoolLevel <= 0) {
             return;
         }
 
-        if (event.getNewSpeed() < SMASH_MIN_BREAK_SPEED) {
-            event.setNewSpeed(SMASH_MIN_BREAK_SPEED);
+        float hardness = event.getState().getDestroySpeed(player.level(), event.getPosition().orElse(player.blockPosition()));
+        if (hardness <= 0.0F) {
+            return;
+        }
+
+        float currentSpeed = event.getNewSpeed();
+        if (currentSpeed <= 0.0F) {
+            return;
+        }
+
+        BlockState state = event.getState();
+        boolean correctTool = omnitoolLevel > 0 || !state.requiresCorrectToolForDrops() || player.getMainHandItem().isCorrectToolForDrops(state);
+        float divisor = correctTool ? 30.0F : 100.0F;
+        float currentBreakTicks = (hardness * divisor) / currentSpeed;
+        if (smashLevel > 0 && currentBreakTicks > SMASH_MAX_BREAK_TICKS) {
+            float targetSpeed = (hardness * divisor) / SMASH_MAX_BREAK_TICKS;
+            event.setNewSpeed(Math.max(currentSpeed, targetSpeed));
+        } else if (omnitoolLevel > 0) {
+            event.setNewSpeed(currentSpeed * 10 / 3);
         }
     }
 
@@ -79,6 +122,10 @@ public class TsukiEnchantmentEvents {
         }
 
         ItemStack mainHand = player.getMainHandItem();
+        if (mainHand.getItem() instanceof MythicPickaxeItem) {
+            addMythicPickaxeExperience(player, event, mainHand);
+        }
+
         int freshFoodLevel = TsukiEnchantments.getLevel(player.registryAccess(), TsukiEnchantments.FRESH_FOOD, mainHand);
         if (freshFoodLevel <= 0) {
             return;
@@ -87,7 +134,41 @@ public class TsukiEnchantmentEvents {
         float chance = Math.min(1.0F, freshFoodLevel * 0.10F);
         RandomSource random = player.getRandom();
         if (random.nextFloat() <= chance) {
-            player.getFoodData().eat(1, 1.0F);
+            player.getFoodData().eat(1, 0.5F);
         }
+    }
+
+    private static void addMythicPickaxeExperience(ServerPlayer player, BlockEvent.BreakEvent event, ItemStack stack) {
+        RandomSource random = player.getRandom();
+        int gainedExp = random.nextInt(30) + 1;
+
+        float hardness = event.getState().getDestroySpeed(player.level(), event.getPos());
+        if (hardness > 1.0F) {
+            gainedExp = Math.max(1, Math.round(gainedExp * hardness));
+        }
+
+        Block block = event.getState().getBlock();
+        if (isOreBlock(block)) {
+            gainedExp += getOreExtraExperience(block, player.level(), event.getPos(), player, stack);
+        }
+
+        MythicPickaxeItem.addMiningExperience(stack, gainedExp, random, player.registryAccess(), player);
+    }
+
+    private static boolean isOreBlock(Block block) {
+        for (TagKey<Block> oreTag : ORE_TAGS) {
+            if (block.builtInRegistryHolder().is(oreTag)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static int getOreExtraExperience(Block block, Level level, BlockPos pos, ServerPlayer player, ItemStack stack) {
+        if (block instanceof DropExperienceBlock dropExperienceBlock) {
+            int extra = dropExperienceBlock.getExpDrop(level.getBlockState(pos), level, pos, null, player, stack);
+            return Math.max(0, extra);
+        }
+        return 0;
     }
 }

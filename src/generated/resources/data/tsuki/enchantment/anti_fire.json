@@ -16,6 +16,6 @@
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:pickaxes",
+  "supported_items": "#c:tools/pickaxes",
   "weight": 1
 }

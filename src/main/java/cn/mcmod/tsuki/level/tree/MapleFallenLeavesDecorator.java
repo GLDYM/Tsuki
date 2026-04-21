@@ -65,7 +65,7 @@ public class MapleFallenLeavesDecorator extends TreeDecorator {
                     }
 
                     boolean hasSupport = context.level().isStateAtPosition(supportPos,
-                            support -> !support.isAir() && !support.liquid());
+                            support -> !support.isAir() && !support.getFluidState().isEmpty());
                     if (!hasSupport) {
                         continue;
                     }

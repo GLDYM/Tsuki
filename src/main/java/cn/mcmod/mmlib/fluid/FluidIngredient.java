@@ -2,7 +2,10 @@ package cn.mcmod.mmlib.fluid;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
@@ -49,7 +52,12 @@ public class FluidIngredient {
             return false;
         }
         if (fluidTag != null) {
-            return stack.getFluid().builtInRegistryHolder().is(fluidTag);
+            ResourceKey<Fluid> key = BuiltInRegistries.FLUID.getResourceKey(stack.getFluid()).orElse(null);
+            if (key == null) {
+                return false;
+            }
+            Holder.Reference<Fluid> holder = BuiltInRegistries.FLUID.getHolderOrThrow(key);
+            return holder.is(this.fluidTag);
         }
         return stack.getFluid() == fluid;
     }
@@ -66,7 +74,12 @@ public class FluidIngredient {
 
         if (this.fluidTag != null) {
             for (Fluid fluidEntry : BuiltInRegistries.FLUID) {
-                if (fluidEntry.builtInRegistryHolder().is(this.fluidTag)) {
+                ResourceKey<Fluid> key = BuiltInRegistries.FLUID.getResourceKey(fluidEntry).orElse(null);
+                if (key == null) {
+                    continue;
+                }
+                Holder.Reference<Fluid> holder = BuiltInRegistries.FLUID.getHolderOrThrow(key);
+                if (holder.is(this.fluidTag)) {
                     matches.add(new FluidStack(fluidEntry, this.amount));
                 }
             }

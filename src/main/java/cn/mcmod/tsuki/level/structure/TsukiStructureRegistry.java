@@ -3,7 +3,6 @@ package cn.mcmod.tsuki.level.structure;
 import cn.mcmod.tsuki.Tsuki;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElementType;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class TsukiStructureRegistry {

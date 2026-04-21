@@ -479,6 +479,7 @@
   "item.tsuki.mochi_toasted": "Toasted Mochi",
   "item.tsuki.molasses": "Molasses",
   "item.tsuki.music_disc_miko": "Music Disc",
+  "item.tsuki.mythic_pickaxe": "????",
   "item.tsuki.natto": "Natto",
   "item.tsuki.nikujaga": "Nikujaga",
   "item.tsuki.nimono_fish": "Fish Nimono",
@@ -768,5 +769,10 @@
   "tsuki.sound.taiko": "Taiko: Drum",
   "tsuki.tooltip.campfire.fire_remain": "Remaining fuel: %1$s Ticks",
   "tsuki.tooltip.campfire.item_in": "Item in campfire: %1$s",
+  "tsuki.tooltip.mythic_pickaxe.mining_level": "Mining Level: %s",
+  "tsuki.tooltip.mythic_pickaxe.mining_experience": "Mining Experience: %s/%s",
+  "tsuki.chat.mythic_pickaxe.enchant_up": "[%s] UP",
+  "tsuki.chat.mythic_pickaxe.enchant_max": "[%s] MAX",
+  "tsuki.chat.mythic_pickaxe.enchant_drop": "[%s] DROP",
   "wailaharvestability.toolclass.forging_hammer": "Forging Hammer"
 }

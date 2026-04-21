@@ -5,6 +5,7 @@ import java.util.concurrent.CompletableFuture;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.enchantment.TsukiEnchantments;
+import cn.mcmod.tsuki.tags.TsukiItemTags;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistrySetBuilder;
@@ -13,7 +14,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -29,8 +29,7 @@ public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
     private static void bootstrap(BootstrapContext<Enchantment> bootstrap) {
         HolderGetter<Item> items = bootstrap.lookup(Registries.ITEM);
 
-        HolderSet<Item> pickaxes = items.getOrThrow(ItemTags.PICKAXES);
-        HolderSet<Item> miningEnchantable = items.getOrThrow(ItemTags.MINING_ENCHANTABLE);
+        HolderSet<Item> pickaxes = items.getOrThrow(TsukiItemTags.TOOLS_PICKAXES);
         HolderSet<Item> cantEnchantable = HolderSet.direct();
 
         HolderSet<Enchantment> antiFireExclusive = HolderSet.direct();
