@@ -12,10 +12,10 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -25,7 +25,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class FallenLeavesMushroomBlock extends FallenLeavesBlock implements BonemealableBlock {
+public class FallenLeavesMushroomBlock extends FallenLeavesBlock {
     private static final MapCodec<FallenLeavesMushroomBlock> MUSHROOM_CODEC = simpleCodec(
             properties -> new FallenLeavesMushroomBlock(Type.MUSHROOM, properties));
     private static final MapCodec<FallenLeavesMushroomBlock> MATSUTAKE_CODEC = simpleCodec(
@@ -91,9 +91,18 @@ public class FallenLeavesMushroomBlock extends FallenLeavesBlock implements Bone
         }
 
         if (!level.isClientSide) {
+            ItemStack normal;
+
+            switch (level.random.nextInt(4)) {
+                case 0 -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(), 5 + level.random.nextInt(3));
+                case 1 -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.SHIMEJI).get(), 5 + level.random.nextInt(3));
+                case 2 -> normal = new ItemStack(Items.BROWN_MUSHROOM, 5 + level.random.nextInt(3));
+                case 3 -> normal = new ItemStack(Items.RED_MUSHROOM, 5 + level.random.nextInt(3));
+                default -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(), 5 + level.random.nextInt(3));
+            }
             ItemStack drop = type == Type.MATSUTAKE
                     ? new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.MATSUTAKE).get(), 5 + level.random.nextInt(3))
-                    : new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(), 5 + level.random.nextInt(3));
+                    : normal;
             popResource(level, pos, drop);
             level.setBlock(pos, state.setValue(AGE, 1), 2);
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.9F);

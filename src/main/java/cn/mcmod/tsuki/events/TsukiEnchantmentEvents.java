@@ -4,6 +4,9 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.enchantment.TsukiEnchantments;
 import cn.mcmod.tsuki.item.MythicPickaxeItem;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
@@ -29,7 +32,6 @@ public class TsukiEnchantmentEvents {
     private static final int ANTI_FIRE_DURATION_TICKS = 340;
     private static final float SMASH_MAX_BREAK_TICKS = 8.0F;
     private static final float OMNITOOL_NON_PICKAXE_SPEED_MULTIPLIER = 9.0F;
-    private static final float OMNITOOL_WRONG_TOOL_PENALTY_FIX_MULTIPLIER = 10.0F / 3.0F;
     private static final TagKey<Block> C_ORES_TAG = TagKey.create(net.minecraft.core.registries.Registries.BLOCK,
             net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "ores"));
     @SuppressWarnings("unchecked")
@@ -171,8 +173,13 @@ public class TsukiEnchantmentEvents {
     }
 
     private static boolean isOreBlock(Block block) {
+        ResourceKey<Block> key = BuiltInRegistries.BLOCK.getResourceKey(block).orElse(null);
+        if (key == null) {
+            return false;
+        }
+        Holder.Reference<Block> holder = BuiltInRegistries.BLOCK.getHolderOrThrow(key);
         for (TagKey<Block> oreTag : ORE_TAGS) {
-            if (block.builtInRegistryHolder().is(oreTag)) {
+            if (holder.is(oreTag)) {
                 return true;
             }
         }

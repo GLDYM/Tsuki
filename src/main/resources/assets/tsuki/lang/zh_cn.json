@@ -1,4 +1,4 @@
-﻿{
+{
     "barrel.contains.fluid":  "这个桶含有%1$s液体",
     "barrel.contains.nonfluid":  "这个桶是空的",
     "block.tsuki.andon":  "青行灯",
@@ -35,6 +35,8 @@
     "block.tsuki.doburoku":  "浊酒",
     "block.tsuki.eggplantcrop":  "茄子作物",
     "block.tsuki.fallen_leaves_green":  "绿色落叶",
+    "block.tsuki.fallen_leaves_mushroom": "长有蘑菇的落叶",
+    "block.tsuki.fallen_leaves_matsutake": "长有松茸的落叶",
     "block.tsuki.fallen_leaves_orange":  "橙色落叶",
     "block.tsuki.fallen_leaves_red":  "红色落叶",
     "block.tsuki.fallen_leaves_yellow":  "黄色落叶",

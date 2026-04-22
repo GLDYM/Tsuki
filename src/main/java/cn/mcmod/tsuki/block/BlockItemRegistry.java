@@ -1,7 +1,6 @@
 package cn.mcmod.tsuki.block;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.item.StoneMortarItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -218,7 +217,7 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.GRAPE_SPLINT.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> STONE_MORTAR = ITEMS.register("stone_mortar",
-            StoneMortarItem::new);
+            () -> new BlockItem(BlockRegistry.STONE_MORTAR.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> COOKING_POT = ITEMS.register("cooking_pot",
             () -> new BlockItem(BlockRegistry.COOKING_POT.get(), Tsuki.defaultItemProperties()));
 

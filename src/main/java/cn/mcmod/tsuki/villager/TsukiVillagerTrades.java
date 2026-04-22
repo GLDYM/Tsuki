@@ -110,6 +110,7 @@ public final class TsukiVillagerTrades {
         trades.get(2).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get(), 8, 2, 4, 16, 5));
 
         trades.get(3).add(buyWithCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(), 4, 6, 10, 12, 5));
+        trades.get(3).add(buyWithCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.SHIMEJI).get(), 4, 6, 10, 12, 5));
         trades.get(3).add(buyWithCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.MATSUTAKE).get(), 4, 16, 32, 12, 5));
         trades.get(3).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SALT).get(), 8, 2, 7, 12, 10));
         trades.get(3).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SOYSAUCE).get(), 8, 3, 6, 12, 10));
@@ -138,7 +139,7 @@ public final class TsukiVillagerTrades {
         trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get(), 1, 40, 60, 8, 15));
         trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get(), 1, 20, 35, 8, 15));
 
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 42, 8, 30));
+        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 32, 8, 30));
         trades.get(5).add(buyWithCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
         trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get(), 1, 60, 64, 4, 30));
         trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get(), 1, 40, 45, 4, 30));
@@ -204,13 +205,13 @@ public final class TsukiVillagerTrades {
         trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SOLDIER_LEGGINGS_BLACK.get(), 1, 16, 20, 4, 15));
         trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SOLDIER_BOOTS_BLACK.get(), 1, 14, 18, 4, 15));
 
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 42, 8, 30));
+        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 32, 8, 30));
         trades.get(5).add(buyWithCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
         trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.KATANA.get(), 1, 20, 30, 4, 30));
         trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.KODACHI.get(), 1, 16, 24, 4, 30));
         trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_KATANA.get(), 1, 30, 50, 2, 30));
         trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.TACHI.get(), 1, 26, 40, 2, 30));
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 8, 14, 8, 30));
+        // trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 8, 14, 8, 30));
     }
 
     // All the buy and sell is from Village Perspective

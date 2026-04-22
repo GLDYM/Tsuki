@@ -96,21 +96,16 @@ public class CookingPotBlock extends BaseEntityBlock {
         return state.setValue(TRAY_SUPPORT, belowBlock.is(TsukiBlockTags.TRAY_HEAT_SOURCES));
     }
 
+    // TODO: When not Open, simulate Farmer's delight; else simulate kaleidoscope.
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand handIn, BlockHitResult result) {
+
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (!(blockentity instanceof CookingPotBlockEntity cookingPot)) {
             return ItemInteractionResult.FAIL;
         }
-        IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1))
-                .orElse(null);
-        if (handler != null && handler instanceof FluidBucketWrapper) {
-            FluidUtil.interactWithFluidHandler(player, handIn, cookingPot.getFluidTank());
-            cookingPot.inventoryChanged();
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
-        }
-
+        // open/close
         if (stack.isEmpty() && player.isShiftKeyDown()) {
             if (!level.isClientSide()) {
                 boolean open = state.getValue(OPEN);
@@ -120,16 +115,28 @@ public class CookingPotBlock extends BaseEntityBlock {
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
 
+        // bucket
+        IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1))
+                .orElse(null);
+        if (handler != null && handler instanceof FluidBucketWrapper) {
+            FluidUtil.interactWithFluidHandler(player, handIn, cookingPot.getFluidTank());
+            cookingPot.inventoryChanged();
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+
         if (!level.isClientSide()) {
+            // container
             if (cookingPot.tryTakeMealWithContainer(player, handIn)) {
                 return ItemInteractionResult.SUCCESS;
             }
-
+            // TODO: simulate kaleidoscope, and only insert one item.
             if (!stack.isEmpty() && state.getValue(OPEN) && cookingPot.tryInsertHeldItem(player, handIn)) {
                 return ItemInteractionResult.SUCCESS;
             }
-
-            ((ServerPlayer) player).openMenu(cookingPot, pos);
+            // TODO: simulate farmer's delight, we need a config to determine if block the GUI.
+            if (!state.getValue(OPEN)) {
+                ((ServerPlayer) player).openMenu(cookingPot, pos);
+            }
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }

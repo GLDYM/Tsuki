@@ -146,7 +146,8 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
             playSound(SoundEvents.SHEEP_SHEAR, 1.0F, 1.0F);
         } else if (boardItem.getItem() instanceof BlockItem blockItem) {
             Block block = blockItem.getBlock();
-            SoundType soundType = block.defaultBlockState().getSoundType();
+            BlockState blockState = block.defaultBlockState();
+            SoundType soundType = block.getSoundType(blockState, level, worldPosition, null);
             playSound(soundType.getBreakSound(), 1.0F, 0.8F);
         } else {
             playSound(SoundEvents.WOOD_HIT, 1.0F, 0.8F);

@@ -30,6 +30,7 @@ public final class KCCookingPotCompat {
     private static final ResourceLocation COMPAT_ID_PREFIX = ResourceLocation.fromNamespaceAndPath(KC_MODID,
             "stockpot");
     private static final int DEFAULT_WATER_AMOUNT = 125;
+    // TODO: config!
     private static final boolean DEBUG_LOG = false;
     private static String lastDebugKey = "";
 

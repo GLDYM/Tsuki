@@ -359,6 +359,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
             ItemStack remaining = inventory.insertItem(SLOT_CONTAINER_INPUT, single, false);
             inserted = remaining.isEmpty();
         } else {
+            // TODO: Also for capability.
             for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
                 if (!inventory.getStackInSlot(i).isEmpty()) {
                     continue;
@@ -366,7 +367,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 ItemStack remaining = inventory.insertItem(i, single, false);
                 inserted = remaining.isEmpty();
             }
-
+            // TODO: Need a config.
             for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
                 if (inventory.getStackInSlot(i).isEmpty()) {
                     continue;

@@ -3,7 +3,6 @@ package cn.mcmod.tsuki.data.client;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.FallenLeavesBlock;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
-import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.item.BroomItem;
 import cn.mcmod.tsuki.item.FoodRegistry;
@@ -40,8 +39,7 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         BlockItemRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof BlockItem) {
                 BlockItem blockItem = (BlockItem) item.get();
-                if (blockItem.getBlock() instanceof StoneMortarBlock
-                        || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
+                if (blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
                         || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()
                         || blockItem.getBlock() == BlockRegistry.FUTON.get()) {
                     return;

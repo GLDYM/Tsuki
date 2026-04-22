@@ -113,7 +113,7 @@ public class CookingPotScreen extends AbstractContainerScreen<CookingPotContaine
         if (slot.hasItem()) {
             ItemStack mealStack = slot.getItem();
             List<Component> tooltip = new ArrayList<>();
-            MutableComponent mealName = mealStack.getHoverName().copy().withStyle(mealStack.getRarity().color());
+            MutableComponent mealName = mealStack.getHoverName().copy().withStyle(mealStack.getRarity().getStyleModifier());
             tooltip.add(mealName);
 
             ItemStack containerStack = this.menu.blockEntity.getCurrentMealContainer();
