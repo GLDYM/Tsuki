@@ -8,6 +8,7 @@
       "tag": "c:crops/tomato"
     },
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "minecraft:water"
     }

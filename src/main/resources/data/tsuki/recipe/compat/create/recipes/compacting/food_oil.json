@@ -18,7 +18,7 @@
   "results": [
     {
       "amount": 125,
-      "fluid": "tsuki:food_oil"
+      "id": "tsuki:food_oil"
     }
   ],
   "type": "create:compacting"

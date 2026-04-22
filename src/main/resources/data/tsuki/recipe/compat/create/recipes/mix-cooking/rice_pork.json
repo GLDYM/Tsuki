@@ -8,6 +8,7 @@
       "tag": "c:foods/raw_pork"
     },
     {
+      "type": "neoforge:single",
       "amount": 125,
       "fluid": "minecraft:water"
     }

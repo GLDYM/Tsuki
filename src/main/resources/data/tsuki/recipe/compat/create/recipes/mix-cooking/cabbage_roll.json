@@ -22,6 +22,7 @@
       }
     ],
     {
+      "type": "neoforge:single",
       "amount": 125,
       "fluid": "minecraft:water"
     }

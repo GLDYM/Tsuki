@@ -11,6 +11,7 @@
       "tag": "c:salt"
     },
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "minecraft:water"
     }

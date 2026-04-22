@@ -8,6 +8,7 @@
       "item": "tsuki:noodle_soup"
     },
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "minecraft:water"
     }

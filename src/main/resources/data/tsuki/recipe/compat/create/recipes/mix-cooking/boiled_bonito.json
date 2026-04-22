@@ -5,6 +5,7 @@
       "item": "tsuki:machined_bonito"
     },
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "minecraft:water"
     }

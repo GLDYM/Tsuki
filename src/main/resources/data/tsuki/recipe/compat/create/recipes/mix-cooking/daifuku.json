@@ -8,6 +8,7 @@
       "item": "tsuki:red_bean_paste"
     },
     {
+      "type": "neoforge:single",
       "amount": 125,
       "fluid": "minecraft:water"
     }

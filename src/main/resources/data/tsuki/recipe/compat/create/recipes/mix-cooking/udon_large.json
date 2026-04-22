@@ -17,6 +17,7 @@
       "tag": "c:eggs"
     },
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "minecraft:water"
     }

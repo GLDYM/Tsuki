@@ -11,6 +11,7 @@
       "item": "tsuki:tempura"
     },
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "minecraft:water"
     }

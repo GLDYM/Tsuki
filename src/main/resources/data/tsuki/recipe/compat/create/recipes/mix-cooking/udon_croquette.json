@@ -11,6 +11,7 @@
       "item": "tsuki:croquette"
     },
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "minecraft:water"
     }

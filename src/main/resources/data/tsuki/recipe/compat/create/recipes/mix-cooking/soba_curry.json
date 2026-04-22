@@ -19,6 +19,7 @@
       "item": "tsuki:curry_powder"
     },
     {
+      "type": "neoforge:single",
       "amount": 250,
       "fluid": "minecraft:water"
     }

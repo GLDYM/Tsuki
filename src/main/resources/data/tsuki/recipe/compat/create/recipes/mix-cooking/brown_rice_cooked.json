@@ -5,6 +5,7 @@
       "tag": "tsuki:rice/brown"
     },
     {
+      "type": "neoforge:single",
       "amount": 125,
       "fluid": "minecraft:water"
     }
