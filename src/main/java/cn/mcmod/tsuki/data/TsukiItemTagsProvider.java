@@ -31,6 +31,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
     protected void addTags(Provider provider) {
         this.copy(BlockTags.PLANKS, ItemTags.PLANKS);
         this.copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
+        this.copy(BlockTags.BEDS, ItemTags.BEDS);
         this.copy(TsukiBlockTags.KAWARA_BLOCK, TsukiItemTags.KAWARA_BLOCK);
         this.copy(TsukiBlockTags.STRIPPED_LOG, TsukiItemTags.STRIPPED_LOG);
         this.copy(TsukiBlockTags.STRIPPED_WOOD, TsukiItemTags.STRIPPED_WOOD);

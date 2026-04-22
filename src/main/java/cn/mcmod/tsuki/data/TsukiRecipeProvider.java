@@ -255,8 +255,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(Tags.Items.ORES_IRON) // Accepting all iron ores
             .requires(BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK.get())
             .requires(TsukiItemTags.TOOLS_HAMMERS)
-            .unlockedBy("has_iron_ore", has(Items.IRON_ORE))
+            .unlockedBy("has_iron_ore", has(Tags.Items.ORES_IRON))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tatara"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, BlockItemRegistry.TATARA.get())
+            .requires(Items.RAW_IRON) // Accepting all iron ores
+            .requires(BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK.get())
+            .requires(TsukiItemTags.TOOLS_HAMMERS)
+            .unlockedBy("has_iron_ore", has(Items.RAW_IRON))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tatara_alt"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.CHOPPING_BOARD.get())
             .pattern("###")
             .pattern("I I")

@@ -161,6 +161,8 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                 .add((Block) BlockRegistry.BAMBOO_DOOR.get());
         this.tag(BlockTags.WOODEN_DOORS)
                 .add((Block) BlockRegistry.BAMBOO_DOOR.get());
+        this.tag(BlockTags.BEDS)
+                .add((Block) BlockRegistry.FUTON.get());
     }
 
     public String getName() {

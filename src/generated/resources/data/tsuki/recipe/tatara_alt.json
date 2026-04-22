@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_iron"
+    },
+    {
+      "item": "tsuki:bamboo_charcoal_block"
+    },
+    {
+      "tag": "c:tools/hammers"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:tatara"
+  }
+}

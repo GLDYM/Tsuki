@@ -187,7 +187,7 @@ public class MythicPickaxeItem extends PickaxeItem {
             }
 
             Holder<Enchantment> holder = enchantmentHolder.get();
-            int maxLevel = Math.max(1, Math.min(rolled.max, holder.value().getMaxLevel()));
+            int maxLevel = Math.max(1, rolled.max);
             int addLevel = Math.max(1, rolled.count);
             EnchantRollResult result = tryUpgradeEnchantment(stack, holder, addLevel, maxLevel);
             notifyEnchantRollResult(player, holder, result);

@@ -12,8 +12,8 @@ public class TsukiItemTags {
     public static final TagKey<Item> WINE_BOTTLES = TagUtils.modItemTag(Tsuki.MODID, "wine_bottles");
     public static final TagKey<Item> SOUPS = TagUtils.modItemTag(Tsuki.MODID, "soups");
     public static final TagKey<Item> KAWARA_BLOCK = TagUtils.modItemTag(Tsuki.MODID, "kawara_block");
-    public static final TagKey<Item> STRIPPED_LOG = TagUtils.forgeItemTag("stripped_log");
-    public static final TagKey<Item> STRIPPED_WOOD = TagUtils.forgeItemTag("stripped_wood");
+    public static final TagKey<Item> STRIPPED_LOG = TagUtils.forgeItemTag("stripped_logs");
+    public static final TagKey<Item> STRIPPED_WOOD = TagUtils.forgeItemTag("stripped_woods");
 
     public static final TagKey<Item> SALT = TagUtils.forgeItemTag("salt");
     public static final TagKey<Item> DUST_SALT = TagUtils.forgeItemTag("dust/salt");

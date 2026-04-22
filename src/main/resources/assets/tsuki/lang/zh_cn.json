@@ -723,7 +723,7 @@
     "enchantment.tsuki.smash":  "粉碎",
     "enchantment.tsuki.smash.desc":  "快速挖掘任意方块。若非合适挖掘工具，仍不会掉落物品。",
     "enchantment.tsuki.omnitool":  "万能",
-    "enchantment.tsuki.omnitool.desc":  "将该物品变为任意方块的合适挖掘工具。",
+    "enchantment.tsuki.omnitool.desc":  "视为任意方块的合适挖掘工具。",
     "enchantment.tsuki.fresh_food":  "生鲜",
     "enchantment.tsuki.fresh_food.desc":  "每次挖掘方块时一定概率恢复饥饿值与饱和度。",
     "item_group.tsuki.armors_and_tools":  "月 - 工具与装备",

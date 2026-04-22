@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#c:ores/iron"
+            "items": "minecraft:raw_iron"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tsuki:tatara"
+        "recipe": "tsuki:tatara_alt"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "tsuki:tatara"
+      "tsuki:tatara_alt"
     ]
   }
 }
