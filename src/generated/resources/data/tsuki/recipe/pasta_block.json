@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:flour/wheat"
+    },
+    {
+      "tag": "c:flour/wheat"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "tag": "c:water"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:pasta_block"
+  }
+}

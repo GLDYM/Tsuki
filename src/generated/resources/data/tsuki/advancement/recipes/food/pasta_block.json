@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_katana": {
+    "has_eggs": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:katana"
+            "items": "#c:eggs"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tsuki:katana_sheath"
+        "recipe": "tsuki:pasta_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_katana"
+      "has_eggs"
     ]
   ],
   "rewards": {
     "recipes": [
-      "tsuki:katana_sheath"
+      "tsuki:pasta_block"
     ]
   }
 }

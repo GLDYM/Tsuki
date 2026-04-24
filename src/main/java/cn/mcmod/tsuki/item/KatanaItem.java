@@ -2,7 +2,6 @@ package cn.mcmod.tsuki.item;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -39,19 +38,6 @@ public class KatanaItem extends SwordItem {
             }
             player.displayClientMessage(Component.translatable("tsuki.katana.wrong_duel"), false);
         }
-    }
-
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        ItemStack stack = player.getItemInHand(hand);
-        InteractionHand otherHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND
-                : InteractionHand.MAIN_HAND;
-        ItemStack otherStack = player.getItemInHand(otherHand);
-        if (otherStack.getItem() instanceof KatanaItem) {
-            return InteractionResultHolder.fail(stack);
-        }
-        player.startUsingItem(hand);
-        return InteractionResultHolder.consume(stack);
     }
 
     @Override

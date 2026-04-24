@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sakura_katana": {
+    "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:sakura_katana"
+            "items": "#c:straw"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tsuki:sakura_katana_sheath"
+        "recipe": "tsuki:straw_hat"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_sakura_katana"
+      "has_item"
     ]
   ],
   "rewards": {
     "recipes": [
-      "tsuki:sakura_katana_sheath"
+      "tsuki:straw_hat"
     ]
   }
 }

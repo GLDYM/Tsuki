@@ -761,6 +761,7 @@
     "tsuki.sound.taiko":  "太鼓：鼓噪",
     "tsuki.tooltip.campfire.fire_remain":  "剩余燃料: %1$s Ticks",
     "tsuki.tooltip.campfire.item_in":  "篝火里的物品: %1$s",
+    "tsuki.tooltip.sheath_katana": "对某个模组的拙劣模仿罢了。\n右键可以拔刀横扫攻击。",
     "tsuki.tooltip.mythic_pickaxe.mining_level":  "挖掘等级: %s",
     "tsuki.tooltip.mythic_pickaxe.mining_experience":  "挖掘经验: %s/%s",
     "tsuki.chat.mythic_pickaxe.enchant_up":  "[%s] UP",

@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "equipment",
+  "category": "misc",
   "ingredients": [
     {
-      "item": "tsuki:katana"
+      "tag": "minecraft:saplings"
     },
     {
-      "item": "tsuki:sheath"
+      "tag": "c:dyes/lime"
     }
   ],
   "result": {
     "count": 1,
-    "id": "tsuki:katana_sheath"
+    "id": "tsuki:ume_sapling"
   }
 }

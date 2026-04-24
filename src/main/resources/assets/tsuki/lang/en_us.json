@@ -770,6 +770,7 @@
   "tsuki.sound.taiko": "Taiko: Drum",
   "tsuki.tooltip.campfire.fire_remain": "Remaining fuel: %1$s Ticks",
   "tsuki.tooltip.campfire.item_in": "Item in campfire: %1$s",
+  "tsuki.tooltip.sheath_katana": "A crude imitation of another mod's feature.\nRight-click to put the katana in or take it out.",
   "tsuki.tooltip.mythic_pickaxe.mining_level": "Mining Level: %s",
   "tsuki.tooltip.mythic_pickaxe.mining_experience": "Mining Experience: %s/%s",
   "tsuki.chat.mythic_pickaxe.enchant_up": "[%s] UP",

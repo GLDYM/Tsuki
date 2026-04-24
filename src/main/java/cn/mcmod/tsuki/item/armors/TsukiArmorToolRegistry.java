@@ -58,9 +58,9 @@ public class TsukiArmorToolRegistry {
             TagKey.create(Registries.BLOCK,
                     ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "incorrect_for_sakura_tool")),
             2031,
-            (Tiers.IRON.getSpeed() + SAKURA_TOOL_TIER.getSpeed()) / 2.0F,
-            (Tiers.IRON.getAttackDamageBonus() + SAKURA_TOOL_TIER.getAttackDamageBonus()) / 2.0F,
-            Math.round((Tiers.IRON.getEnchantmentValue() + SAKURA_TOOL_TIER.getEnchantmentValue()) / 2.0F),
+            8.0F,
+            3.0F,
+            18,
             () -> Ingredient.of(STEEL_INGOT.get()));
 
     public static final DeferredItem<Item> BROOM = register("broom",

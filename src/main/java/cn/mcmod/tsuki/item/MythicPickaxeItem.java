@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.item;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.TsukiConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -30,6 +31,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -40,7 +42,6 @@ import net.minecraft.world.level.Level;
 public class MythicPickaxeItem extends PickaxeItem {
     private static final String KEY_MINING_EXPERIENCE = "mining_experience";
     private static final String KEY_MINING_LEVEL = "mining_level";
-    private static final int LEVEL_UP_REQUIRED_EXP = 10_000;
     private static final String ENCHANTMENT_TABLE_RESOURCE = "/data/tsuki/loot_table/mythic_pickaxe.json";
     private static final Gson GSON = new GsonBuilder()
             .registerTypeAdapter(ResourceLocation.class, new ResourceLocationDeserializer())
@@ -49,7 +50,7 @@ public class MythicPickaxeItem extends PickaxeItem {
     private static MythicEnchantmentTable CACHED_TABLE;
     private static boolean TABLE_LOADED;
 
-    public MythicPickaxeItem(net.minecraft.world.item.Tier tier, Item.Properties properties) {
+    public MythicPickaxeItem(Tier tier, Item.Properties properties) {
         super(tier, properties);
     }
 
@@ -75,7 +76,7 @@ public class MythicPickaxeItem extends PickaxeItem {
         int level = getMiningLevel(stack);
         int experience = getMiningExperience(stack);
         tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_level", level).withStyle(ChatFormatting.GOLD));
-        tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_experience", experience, LEVEL_UP_REQUIRED_EXP)
+        tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_experience", experience, TsukiConfig.MYTHIC_PICKAXE_EXP_NEEDED.get())
                 .withStyle(ChatFormatting.AQUA));
     }
 
@@ -98,7 +99,7 @@ public class MythicPickaxeItem extends PickaxeItem {
         int currentLevel = Math.max(1, tag.getInt(KEY_MINING_LEVEL));
 
         currentExp += addAmount;
-        while (currentExp >= LEVEL_UP_REQUIRED_EXP) {
+        while (currentExp >= TsukiConfig.MYTHIC_PICKAXE_EXP_NEEDED.get()) {
             currentLevel += 1;
             levelUps += 1;
             currentExp = randomRange(useRandom, 1, 30);

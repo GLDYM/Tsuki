@@ -24,6 +24,8 @@ public class SheathItem extends Item {
         super(properties.durability(Tiers.WOOD.getUses()));
     }
 
+
+    
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack sheathStack = player.getItemInHand(hand);
@@ -54,7 +56,7 @@ public class SheathItem extends Item {
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
                         SoundEvents.ARMOR_EQUIP_IRON, player.getSoundSource(), 1.0F, 1.2F);
             }
-            return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide());
+            return InteractionResultHolder.consume(player.getItemInHand(hand));
         }
 
         player.startUsingItem(hand);

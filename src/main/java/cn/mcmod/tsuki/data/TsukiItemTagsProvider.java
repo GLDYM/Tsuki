@@ -28,6 +28,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         super(packOutput, lookupProvider, blockTags.contentsGetter(), modId, existingFileHelper);
     }
 
+    // TODO: check everything
     protected void addTags(Provider provider) {
         this.copy(BlockTags.PLANKS, ItemTags.PLANKS);
         this.copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
@@ -241,12 +242,6 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.SOLDIER_BOOTS).add(
                 TsukiArmorToolRegistry.SOLDIER_BOOTS_GRAY.get(),
                 TsukiArmorToolRegistry.SOLDIER_BOOTS_BLACK.get());
-        this.tag(TsukiItemTags.TOOLS_KATANAS).add(
-                TsukiArmorToolRegistry.KATANA.get(),
-                TsukiArmorToolRegistry.KODACHI.get(),
-                TsukiArmorToolRegistry.TACHI.get(),
-                TsukiArmorToolRegistry.SAKURA_KATANA.get(),
-                TsukiArmorToolRegistry.SAKURA_KODACHI.get());
         this.registerForgeTags();
     }
 
@@ -394,28 +389,66 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .add(BlockItemRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
         this.tag(TsukiItemTags.ORES_IRON)
                 .add(BlockItemRegistry.IRON_SAND.get());
+
         this.tag(TsukiItemTags.TOOLS)
-                .addTag(TsukiItemTags.TOOLS_AXES)
-                .addTag(TsukiItemTags.TOOLS_PICKAXES)
-                .addTag(TsukiItemTags.TOOLS_SHOVELS)
+                // .addTag(TsukiItemTags.TOOLS_AXES)
+                // .addTag(TsukiItemTags.TOOLS_PICKAXES)
+                // .addTag(TsukiItemTags.TOOLS_SHOVELS)
                 .addTag(TsukiItemTags.TOOLS_HAMMERS)
                 .addTag(TsukiItemTags.TOOLS_KNIVES)
                 .addTag(TsukiItemTags.TOOLS_KATANAS);
         this.tag(TsukiItemTags.TOOLS_AXES)
-                .add(Items.WOODEN_AXE, Items.STONE_AXE, Items.IRON_AXE, Items.DIAMOND_AXE, Items.GOLDEN_AXE,
-                        Items.NETHERITE_AXE);
+                .add(TsukiArmorToolRegistry.SAKURA_AXE.get());
+        this.tag(TsukiItemTags.AXES)
+                .add(TsukiArmorToolRegistry.SAKURA_AXE.get());
+        this.tag(TsukiItemTags.TOOLS_HOES)
+                .add(TsukiArmorToolRegistry.SAKURA_HOE.get());
+        this.tag(TsukiItemTags.HOES)
+                .add(TsukiArmorToolRegistry.SAKURA_HOE.get());
         this.tag(TsukiItemTags.TOOLS_PICKAXES)
-                .add(Items.WOODEN_PICKAXE, Items.STONE_PICKAXE, Items.IRON_PICKAXE, Items.DIAMOND_PICKAXE,
-                        Items.GOLDEN_PICKAXE, Items.NETHERITE_PICKAXE);
+                .add(TsukiArmorToolRegistry.SAKURA_PICKAXE.get())
+                .add(TsukiArmorToolRegistry.MYTHIC_PICKAXE.get());
+        this.tag(TsukiItemTags.PICKAXES)
+                .add(TsukiArmorToolRegistry.SAKURA_PICKAXE.get())
+                .add(TsukiArmorToolRegistry.MYTHIC_PICKAXE.get());
         this.tag(TsukiItemTags.TOOLS_SHOVELS)
-                .add(
-                        Items.WOODEN_SHOVEL,
-                        Items.STONE_SHOVEL,
-                        Items.IRON_SHOVEL,
-                        Items.DIAMOND_SHOVEL,
-                        Items.GOLDEN_SHOVEL,
-                        Items.NETHERITE_SHOVEL,
-                        TsukiArmorToolRegistry.BROOM.get());
+                .add(TsukiArmorToolRegistry.SAKURA_SHOVEL.get())
+                .add(TsukiArmorToolRegistry.BROOM.get());
+        this.tag(TsukiItemTags.SHOVELS)
+                .add(TsukiArmorToolRegistry.SAKURA_SHOVEL.get())
+                .add(TsukiArmorToolRegistry.BROOM.get());
+        this.tag(TsukiItemTags.TOOLS_SWORDS)
+                .addTag(TsukiItemTags.TOOLS_KATANAS);
+        this.tag(TsukiItemTags.SWORDS)
+                .addTag(TsukiItemTags.TOOLS_KATANAS);
+        this.tag(TsukiItemTags.TOOLS_KNIVES)
+                .addTag(TsukiItemTags.TOOLS_KNIVES_FISH)
+                .addTag(TsukiItemTags.TOOLS_KNIVES_NOODLE);
+        this.tag(TsukiItemTags.TOOLS_HAMMERS)
+                .add(TsukiArmorToolRegistry.STONE_HAMMER.get())
+                .add(TsukiArmorToolRegistry.IRON_HAMMER.get())
+                .add(TsukiArmorToolRegistry.STEEL_HAMMER.get())
+                .add(TsukiArmorToolRegistry.SAKURA_HAMMER.get());
+        this.tag(TsukiItemTags.TOOLS_KATANAS)
+                .add(TsukiArmorToolRegistry.SHINAI.get())
+                .add(TsukiArmorToolRegistry.KATANA.get())
+                .add(TsukiArmorToolRegistry.KODACHI.get())
+                .add(TsukiArmorToolRegistry.TACHI.get())
+                .add(TsukiArmorToolRegistry.SAKURA_KATANA.get())
+                .add(TsukiArmorToolRegistry.SAKURA_KODACHI.get());
+        
+        this.tag(TsukiItemTags.HEAD_ARMOR)
+                .addTag(TsukiItemTags.SAMURAI_HELMET)
+                .addTag(TsukiItemTags.SOLDIER_HELMET);
+        this.tag(TsukiItemTags.CHEST_ARMOR)
+                .addTag(TsukiItemTags.SAMURAI_CHESTPLATE)
+                .addTag(TsukiItemTags.SOLDIER_CHESTPLATE);
+        this.tag(TsukiItemTags.LEG_ARMOR)
+                .addTag(TsukiItemTags.SAMURAI_LEGGINGS)
+                .addTag(TsukiItemTags.SOLDIER_LEGGINGS);
+        this.tag(TsukiItemTags.FOOT_ARMOR)
+                .addTag(TsukiItemTags.SAMURAI_BOOTS)
+                .addTag(TsukiItemTags.SOLDIER_BOOTS);
     }
 
     public String getName() {

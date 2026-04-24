@@ -1,6 +1,8 @@
 {
   "values": [
     "#tsuki:tools/knives/fish",
+    "#tsuki:tools/knives/noodle",
+    "#tsuki:tools/knives/fish",
     "#tsuki:tools/knives/noodle"
   ]
 }
