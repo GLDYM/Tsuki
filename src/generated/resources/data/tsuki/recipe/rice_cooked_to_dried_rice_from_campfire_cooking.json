@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.1,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:rice_cooked"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:dried_rice"
+  }
+}

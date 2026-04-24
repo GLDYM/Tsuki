@@ -1,14 +1,12 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "tsuki:ume"
-    },
-    {
-      "tag": "c:salt"
-    }
-  ],
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:ume"
+  },
   "result": {
     "count": 1,
     "id": "tsuki:umeboshi"

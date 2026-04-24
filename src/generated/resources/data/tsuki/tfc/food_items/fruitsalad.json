@@ -1,0 +1,11 @@
+{
+  "dairy": 2.0,
+  "decayModifier": 5.5,
+  "fruit": 4.0,
+  "grain": 2.0,
+  "hunger": 6,
+  "protein": 0.0,
+  "saturation": 0.6,
+  "vegetables": 0.0,
+  "water": 15.0
+}

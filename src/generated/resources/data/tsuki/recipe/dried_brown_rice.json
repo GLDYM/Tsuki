@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:brown_rice_cooked"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:dried_brown_rice"
+  }
+}

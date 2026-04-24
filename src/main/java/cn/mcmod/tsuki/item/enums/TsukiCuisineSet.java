@@ -946,6 +946,116 @@ public enum TsukiCuisineSet {
                     .decayModifier(3.5F)
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
+                    .build()),
+    CHAWANMUSHI(
+            FoodInfo.builder()
+                    .name("chawanmushi")
+                    .amountAndCalories(6, 0.5F)
+                    .water(5.0F)
+                    .nutrients(0.0F, 0.0F, 3.0F, 3.0F, 3.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(2.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    CURRY_OMURICE(
+            FoodInfo.builder()
+                    .name("curry_omurice")
+                    .amountAndCalories(8, 0.6F)
+                    .water(0.5F)
+                    .nutrients(3.0F, 0.0F, 1.0F, 4.0F, 3.0F)
+                    .decayModifier(2.25F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    EHOUMAKI(
+            FoodInfo.builder()
+                    .name("ehoumaki")
+                    .amountAndCalories(8, 0.6F)
+                    .water(1.0F)
+                    .nutrients(2.0F, 0.0F, 3.0F, 3.0F, 2.0F)
+                    .decayModifier(4.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    OCHAZUKE(
+            FoodInfo.builder()
+                    .name("ochazuke")
+                    .amountAndCalories(6, 0.6F)
+                    .water(50.0F)
+                    .nutrients(0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    ODEN(
+            FoodInfo.builder()
+                    .name("oden")
+                    .amountAndCalories(8, 0.6F)
+                    .water(1.0F)
+                    .nutrients(1.0F, 0.0F, 3.0F, 3.0F, 0.0F)
+                    .decayModifier(4.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    MABODOFU(
+            FoodInfo.builder()
+                    .name("mabodofu")
+                    .amountAndCalories(8, 0.6F)
+                    .water(1.0F)
+                    .nutrients(1.0F, 0.0F, 3.0F, 1.0F, 0.0F)
+                    .decayModifier(4.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    MABOQIEZI(
+            FoodInfo.builder()
+                    .name("maboqiezi")
+                    .amountAndCalories(8, 0.6F)
+                    .water(1.0F)
+                    .nutrients(1.0F, 0.0F, 4.0F, 0.0F, 0.0F)
+                    .decayModifier(4.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    WHITE_STEW(
+            FoodInfo.builder()
+                    .name("white_stew")
+                    .amountAndCalories(6, 0.6F)
+                    .water(35.0F)
+                    .nutrients(2.0F, 2.0F, 2.0F, 2.0F, 2.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(0.0F)
+                    .cookingTemp(0.0F)
+                    .build()),
+    YAKI_SOBA(
+            FoodInfo.builder()
+                    .name("yaki_soba")
+                    .amountAndCalories(9, 0.7F)
+                    .water(2.5F)
+                    .nutrients(1.5F, 0.0F, 4.0F, 2.0F, 2.0F)
+                    .decayModifier(3.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    ZOSUI(
+            FoodInfo.builder()
+                    .name("zosui")
+                    .amountAndCalories(8, 1.0F)
+                    .water(5.0F)
+                    .nutrients(0.0F, 0.0F, 0.0F, 3.0F, 3.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    ZOSUI_ZUIKI(
+            FoodInfo.builder()
+                    .name("zosui_zuiki")
+                    .amountAndCalories(6, 1.0F)
+                    .water(5.0F)
+                    .nutrients(2.0F, 0.0F, 2.0F, 0.0F, 0.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
                     .build());
 
     private final FoodInfo info;
@@ -972,3 +1082,4 @@ public enum TsukiCuisineSet {
         return container;
     }
 }
+

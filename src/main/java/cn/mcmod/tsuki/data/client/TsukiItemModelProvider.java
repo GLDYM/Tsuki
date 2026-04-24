@@ -6,6 +6,7 @@ import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.fluid.BucketItemRegistry;
 import cn.mcmod.tsuki.item.BroomItem;
 import cn.mcmod.tsuki.item.FoodRegistry;
+import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.ShinaiItem;
 import cn.mcmod.tsuki.item.KatanaItem;
 import cn.mcmod.tsuki.item.SheathItem;
@@ -15,6 +16,7 @@ import cn.mcmod.tsuki.item.armors.KimonoItem;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
+import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod_mmf.mmlib.data.AbstractItemModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -119,7 +121,22 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
             normalItem(item);
         });
 
-        // ItemRegistry.ITEMS.getEntries().forEach(this::normalItem);
+        ItemRegistry.ITEMS.getEntries().forEach( item -> {
+            if (item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()
+                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()
+                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()
+                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RAMEN_BLOCK).get()
+                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.UDON_BLOCK).get()
+                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SOBA_BLOCK).get()
+                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PASTA_BLOCK).get()
+                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get()
+                || item.get() == ItemRegistry.SAMURAI_ILLAGER_SPAWN_EGG.get())
+                {
+                return;
+            } else {
+                normalItem(item);
+            }
+        });
     }
 
     private void normalItem(DeferredHolder<Item, ? extends Item> item) {

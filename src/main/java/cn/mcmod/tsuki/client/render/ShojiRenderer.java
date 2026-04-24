@@ -40,7 +40,7 @@ public class ShojiRenderer implements BlockEntityRenderer<ShojiBlockEntity> {
     static {
         for (int i = 0; i < MAX_TYPES; i++) {
             TEXTURES[i] = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
-                    "textures/entity/blockentity/shoji_type_" + i + ".png");
+                    "textures/block/shoji/shoji_type_" + i + ".png");
         }
     }
 

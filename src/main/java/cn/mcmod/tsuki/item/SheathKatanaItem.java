@@ -24,8 +24,6 @@ import net.minecraft.server.level.ServerLevel;
 import java.util.List;
 import java.util.function.Supplier;
 
-import cn.mcmod.tsuki.TsukiConfig;
-
 public class SheathKatanaItem extends Item {
     private static final String TAG_BLADE = "SheathBlade";
     private static final String TAG_SHEATH = "SheathItem";

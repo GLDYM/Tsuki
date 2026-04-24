@@ -994,6 +994,196 @@ public enum TsukiFoodSet {
                     .heatCapacity(0.0F)
                     .cookingTemp(0.0F)
                     .build()),
+    SMOKED_BONITO(
+            FoodInfo.builder()
+                    .name("smoked_bonito")
+                    .amountAndCalories(3, 0.3F)
+                    .water(0.0F)
+                    .nutrients(0.0F, 0.0F, 0.0F, 2.0F, 2.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    FRIED_BROWN_RICE(
+            FoodInfo.builder()
+                    .name("fried_brown_rice")
+                    .amountAndCalories(4, 0.5F)
+                    .water(0.0F)
+                    .nutrients(1.5F, 0.0F, 0.0F, 0.0F, 0.0F)
+                    .decayModifier(0.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    DRIED_BROWN_RICE(
+            FoodInfo.builder()
+                    .name("dried_brown_rice")
+                    .amountAndCalories(4, 0.5F)
+                    .water(0.0F)
+                    .nutrients(1.5F, 0.0F, 0.0F, 0.0F, 0.0F)
+                    .decayModifier(0.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    DRIED_RICE(
+            FoodInfo.builder()
+                    .name("dried_rice")
+                    .amountAndCalories(4, 0.5F)
+                    .water(0.0F)
+                    .nutrients(1.5F, 0.0F, 0.0F, 0.0F, 0.0F)
+                    .decayModifier(0.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    EGG_SOFT(
+            FoodInfo.builder()
+                    .name("egg_soft")
+                    .amountAndCalories(2, 0.6F)
+                    .water(1.0F)
+                    .nutrients(0.0F, 0.0F, 0.0F, 0.0F, 3.0F)
+                    .decayModifier(2.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    EGG_SOYSAUCE(
+            FoodInfo.builder()
+                    .name("egg_soysauce")
+                    .amountAndCalories(4, 0.6F)
+                    .water(1.0F)
+                    .nutrients(0.0F, 0.0F, 0.0F, 0.0F, 3.5F)
+                    .decayModifier(1.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    FRUITSALAD(
+            FoodInfo.builder()
+                    .name("fruitsalad")
+                    .amountAndCalories(6, 0.6F)
+                    .water(15.0F)
+                    .nutrients(2.0F, 4.0F, 0.0F, 0.0F, 2.0F)
+                    .decayModifier(5.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    MAPLE_COOKIE(
+            FoodInfo.builder()
+                    .name("maple_cookie")
+                    .amountAndCalories(3, 0.25F)
+                    .water(0.75F)
+                    .nutrients(2.0F, 0.0F, 0.0F, 0.0F, 0.2F)
+                    .decayModifier(0.8F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    PUDDING(
+            FoodInfo.builder()
+                    .name("pudding")
+                    .amountAndCalories(4, 0.4F)
+                    .water(2.0F)
+                    .nutrients(2.0F, 0.0F, 0.0F, 0.0F, 2.0F)
+                    .decayModifier(2.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    PUDDING_MAPLE(
+            FoodInfo.builder()
+                    .name("pudding_maple")
+                    .amountAndCalories(6, 0.6F)
+                    .water(2.0F)
+                    .nutrients(3.0F, 0.0F, 0.0F, 0.0F, 2.0F)
+                    .decayModifier(2.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    POUND_CAKE(
+            FoodInfo.builder()
+                    .name("pound_cake")
+                    .amountAndCalories(5, 0.6F)
+                    .water(0.5F)
+                    .nutrients(4.0F, 2.0F, 0.0F, 0.0F, 4.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    DORAYAKI(
+            FoodInfo.builder()
+                    .name("dorayaki")
+                    .amountAndCalories(6, 0.6F)
+                    .water(1.0F)
+                    .nutrients(5.0F, 2.0F, 2.0F, 0.0F, 0.0F)
+                    .decayModifier(2.0F)
+                    .heatCapacity(2.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    RAW_TAIYAKI(
+            FoodInfo.builder()
+                    .name("raw_taiyaki")
+                    .amountAndCalories(2, 0.2F)
+                    .water(0.5F)
+                    .nutrients(0.5F, 0.0F, 0.0F, 0.0F, 0.0F)
+                    .decayModifier(2.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    TAIYAKI(
+            FoodInfo.builder()
+                    .name("taiyaki")
+                    .amountAndCalories(6, 0.6F)
+                    .water(0.5F)
+                    .nutrients(4.0F, 0.0F, 0.0F, 0.0F, 4.0F)
+                    .decayModifier(1.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    TAIYAKI_MOCHA(
+            FoodInfo.builder()
+                    .name("taiyaki_mocha")
+                    .amountAndCalories(8, 0.6F)
+                    .water(0.5F)
+                    .nutrients(4.0F, 0.0F, 0.0F, 0.0F, 4.0F)
+                    .decayModifier(1.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    MOCHA_COOKIE(
+            FoodInfo.builder()
+                    .name("mocha_cookie")
+                    .amountAndCalories(5, 0.25F)
+                    .water(0.75F)
+                    .nutrients(2.0F, 0.0F, 0.0F, 0.0F, 0.2F)
+                    .decayModifier(0.8F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    PUDDING_MOCHA(
+            FoodInfo.builder()
+                    .name("pudding_mocha")
+                    .amountAndCalories(6, 0.6F)
+                    .water(2.0F)
+                    .nutrients(3.0F, 0.0F, 0.0F, 0.0F, 2.0F)
+                    .decayModifier(2.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    POUND_CAKE_MOCHA(
+            FoodInfo.builder()
+                    .name("pound_cake_mocha")
+                    .amountAndCalories(7, 0.6F)
+                    .water(0.5F)
+                    .nutrients(4.0F, 2.0F, 0.0F, 0.0F, 4.0F)
+                    .decayModifier(3.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
+    SUIKATSUGAN(
+            FoodInfo.builder()
+                    .name("suikatsugan")
+                    .amountAndCalories(4, 0.5F)
+                    .water(20.0F)
+                    .nutrients(1.5F, 2.0F, 0.0F, 0.0F, 0.0F)
+                    .decayModifier(0.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     ALMOND(
             FoodInfo.builder()
                     .name("almond")
@@ -1019,3 +1209,4 @@ public enum TsukiFoodSet {
         return FoodRegistry.FOODSET.get(this);
     }
 }
+

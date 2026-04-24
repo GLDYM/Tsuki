@@ -23,6 +23,7 @@ import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.armors.TsukiArmorMaterials;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.level.tree.TsukiTreeDecoratorTypes;
+import cn.mcmod.tsuki.level.tree.TsukiFeatureTypes;
 import cn.mcmod.tsuki.loot_modifier.LootModifiterRegistry;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.tsuki.sound.SoundEventRegistry;
@@ -75,6 +76,7 @@ public class Tsuki {
         LootModifiterRegistry.GLM.register(modEventBus);
         RecipeTypeRegistry.RECIPE_TYPES.register(modEventBus);
         RecipeTypeRegistry.RECIPE_SERIALIZERS.register(modEventBus);
+        TsukiFeatureTypes.FEATURES.register(modEventBus);
         TsukiTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(modEventBus);
         VillagerRegistry.POI_TYPES.register(modEventBus);
         VillagerRegistry.PROFESSIONS.register(modEventBus);

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "group": "tsuki",
+  "ingredient": {
+    "item": "tsuki:raw_taiyaki"
+  },
+  "result": {
+    "count": 1,
+    "id": "tsuki:taiyaki"
+  }
+}

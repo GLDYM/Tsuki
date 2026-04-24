@@ -1,32 +1,62 @@
 {
   "variants": {
-    "facing=east,open=false": {
+    "facing=east,half=lower,open=false": {
       "model": "tsuki:block/shoji_5_empty",
       "y": 90
     },
-    "facing=east,open=true": {
+    "facing=east,half=lower,open=true": {
       "model": "tsuki:block/shoji_5_empty",
       "y": 90
     },
-    "facing=north,open=false": {
+    "facing=east,half=upper,open=false": {
+      "model": "tsuki:block/shoji_5_empty",
+      "y": 90
+    },
+    "facing=east,half=upper,open=true": {
+      "model": "tsuki:block/shoji_5_empty",
+      "y": 90
+    },
+    "facing=north,half=lower,open=false": {
       "model": "tsuki:block/shoji_5_empty"
     },
-    "facing=north,open=true": {
+    "facing=north,half=lower,open=true": {
       "model": "tsuki:block/shoji_5_empty"
     },
-    "facing=south,open=false": {
+    "facing=north,half=upper,open=false": {
+      "model": "tsuki:block/shoji_5_empty"
+    },
+    "facing=north,half=upper,open=true": {
+      "model": "tsuki:block/shoji_5_empty"
+    },
+    "facing=south,half=lower,open=false": {
       "model": "tsuki:block/shoji_5_empty",
       "y": 180
     },
-    "facing=south,open=true": {
+    "facing=south,half=lower,open=true": {
       "model": "tsuki:block/shoji_5_empty",
       "y": 180
     },
-    "facing=west,open=false": {
+    "facing=south,half=upper,open=false": {
+      "model": "tsuki:block/shoji_5_empty",
+      "y": 180
+    },
+    "facing=south,half=upper,open=true": {
+      "model": "tsuki:block/shoji_5_empty",
+      "y": 180
+    },
+    "facing=west,half=lower,open=false": {
       "model": "tsuki:block/shoji_5_empty",
       "y": 270
     },
-    "facing=west,open=true": {
+    "facing=west,half=lower,open=true": {
+      "model": "tsuki:block/shoji_5_empty",
+      "y": 270
+    },
+    "facing=west,half=upper,open=false": {
+      "model": "tsuki:block/shoji_5_empty",
+      "y": 270
+    },
+    "facing=west,half=upper,open=true": {
       "model": "tsuki:block/shoji_5_empty",
       "y": 270
     }

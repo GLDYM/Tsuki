@@ -31,7 +31,6 @@ public class TsukiEnchantmentEvents {
     private static final int ANTI_FIRE_INTERVAL_TICKS = 80;
     private static final int ANTI_FIRE_DURATION_TICKS = 340;
     private static final float SMASH_MAX_BREAK_TICKS = 8.0F;
-    private static final float OMNITOOL_NON_PICKAXE_SPEED_MULTIPLIER = 9.0F;
     private static final TagKey<Block> C_ORES_TAG = TagKey.create(net.minecraft.core.registries.Registries.BLOCK,
             net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "ores"));
     @SuppressWarnings("unchecked")
@@ -78,7 +77,7 @@ public class TsukiEnchantmentEvents {
         ItemStack mainHand = player.getMainHandItem();
         int smashLevel = TsukiEnchantments.getLevel(player.registryAccess(), TsukiEnchantments.SMASH, mainHand);
         int omnitoolLevel = TsukiEnchantments.getLevel(player.registryAccess(), TsukiEnchantments.OMNITOOL, mainHand);
-        if (smashLevel <= 0 && omnitoolLevel <= 0) {
+        if (smashLevel <= 0) {
             return;
         }
 
@@ -97,24 +96,21 @@ public class TsukiEnchantmentEvents {
         boolean originalCorrectTool = player.getMainHandItem().isCorrectToolForDrops(state);
         float adjustedSpeed = currentSpeed;
 
-        boolean mineableWithPickaxe = state.is(BlockTags.MINEABLE_WITH_PICKAXE);
-        boolean mineableWithOtherTool = hasNonPickaxeMineableTag(state);
-
-        if (omnitoolLevel > 0 && !mineableWithPickaxe && mineableWithOtherTool) {
-            adjustedSpeed *= OMNITOOL_NON_PICKAXE_SPEED_MULTIPLIER;
-        }
-
-
         boolean effectiveCorrectTool = !requiresCorrectTool || originalCorrectTool || omnitoolLevel > 0;
         float divisor = effectiveCorrectTool ? 30.0F : 100.0F;
         float currentBreakTicks = (hardness * divisor) / adjustedSpeed;
-        if (smashLevel > 0 && currentBreakTicks > SMASH_MAX_BREAK_TICKS) {
-            float targetSpeed = (hardness * divisor) / SMASH_MAX_BREAK_TICKS;
+
+        if (hardness <= 1.5F) {
+            float targetSpeed = (hardness * divisor);
             event.setNewSpeed(Math.max(adjustedSpeed, targetSpeed));
             return;
         }
 
-        event.setNewSpeed(adjustedSpeed);
+        if (currentBreakTicks > SMASH_MAX_BREAK_TICKS) {
+            float targetSpeed = (hardness * divisor) / SMASH_MAX_BREAK_TICKS;
+            event.setNewSpeed(Math.max(adjustedSpeed, targetSpeed));
+            return;
+        }
     }
 
     @SubscribeEvent
@@ -194,10 +190,10 @@ public class TsukiEnchantmentEvents {
         return 0;
     }
 
-    private static boolean hasNonPickaxeMineableTag(BlockState state) {
-        return state.getTags().anyMatch(tag -> {
-            String path = tag.location().getPath();
-            return path.startsWith("mineable/") && !"mineable/pickaxe".equals(path);
-        });
-    }
+    // private static boolean hasNonPickaxeMineableTag(BlockState state) {
+    //     return state.getTags().anyMatch(tag -> {
+    //         String path = tag.location().getPath();
+    //         return path.startsWith("mineable/") && !"mineable/pickaxe".equals(path);
+    //     });
+    // }
 }

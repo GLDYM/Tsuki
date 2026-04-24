@@ -125,6 +125,9 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> SAKURA_SAPLING = ITEMS.register("sakura_sapling",
             () -> new BlockItem(BlockRegistry.SAKURA_SAPLING.get(), Tsuki.defaultItemProperties()));
 
+    public static final DeferredItem<Item> SACRED_SAKURA_SAPLING = ITEMS.register("sacred_sakura_sapling",
+            () -> new BlockItem(BlockRegistry.SACRED_SAKURA_SAPLING.get(), Tsuki.defaultItemProperties()));
+
     public static final DeferredItem<Item> MAPLE_SAPLING_RED = ITEMS.register("maple_sapling_red",
             () -> new BlockItem(BlockRegistry.MAPLE_SAPLING_RED.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> MAPLE_SAPLING_YELLOW = ITEMS.register("maple_sapling_yellow",

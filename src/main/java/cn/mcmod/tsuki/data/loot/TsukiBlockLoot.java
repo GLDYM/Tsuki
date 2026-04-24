@@ -54,7 +54,13 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                                     && block.get() != BlockRegistry.GRAPE_LEAVES.get()
                                     && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
                                     && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()
-                                    && block.get() != BlockRegistry.BAMBOO_DOOR.get()) {
+                                    && block.get() != BlockRegistry.BAMBOO_DOOR.get()
+                                    && block.get() != BlockRegistry.SHOJI.get()
+                                    && block.get() != BlockRegistry.SHOJI_1.get()
+                                    && block.get() != BlockRegistry.SHOJI_2.get()
+                                    && block.get() != BlockRegistry.SHOJI_3.get()
+                                    && block.get() != BlockRegistry.SHOJI_4.get()
+                                    && block.get() != BlockRegistry.SHOJI_5.get()) {
                                 if (block.get() instanceof BambooPlant) {
                                     this.dropOther((Block) block.get(),
                                             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
@@ -75,6 +81,12 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(
                 BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
         this.add(BlockRegistry.BAMBOO_DOOR.get(), createDoor(BlockRegistry.BAMBOO_DOOR.get()));
+        this.add(BlockRegistry.SHOJI.get(), createDoor(BlockRegistry.SHOJI.get()));
+        this.add(BlockRegistry.SHOJI_1.get(), createDoor(BlockRegistry.SHOJI_1.get()));
+        this.add(BlockRegistry.SHOJI_2.get(), createDoor(BlockRegistry.SHOJI_2.get()));
+        this.add(BlockRegistry.SHOJI_3.get(), createDoor(BlockRegistry.SHOJI_3.get()));
+        this.add(BlockRegistry.SHOJI_4.get(), createDoor(BlockRegistry.SHOJI_4.get()));
+        this.add(BlockRegistry.SHOJI_5.get(), createDoor(BlockRegistry.SHOJI_5.get()));
         this.add(BlockRegistry.FUTON.get(), createFutonDrops(BlockRegistry.FUTON.get()));
         this.add(BlockRegistry.CHESTNUT_BURR.get(), createChestnutBurrDrops(BlockRegistry.CHESTNUT_BURR.get()));
 

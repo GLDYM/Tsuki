@@ -17,6 +17,7 @@ import net.minecraft.util.valueproviders.WeightedListInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -58,6 +59,10 @@ public class TsukiTreeFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_UME_KEY = ResourceKey
             .create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fancy_ume"));
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MASSIVE_SAKURA_KEY = ResourceKey
+            .create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "massive_sakura"));
+
+
     public static synchronized void bootstrapEntries() {
         if (initialized) {
             return;
@@ -92,6 +97,10 @@ public class TsukiTreeFeatures {
         registryTree(UME_KEY,
                 createSimpleBlobTree(BlockRegistry.UME_LOG.get(), BlockRegistry.UME_LEAVES.get()).ignoreVines());
         registryTree(FANCY_UME_KEY, createFancyTree(BlockRegistry.UME_LOG.get(), BlockRegistry.UME_LEAVES.get()));
+
+        ENTRY.add(new Pair<>(
+                MASSIVE_SAKURA_KEY,
+                new ConfiguredFeature<>(TsukiFeatureTypes.MASSIVE_TREE.get(), NoneFeatureConfiguration.INSTANCE)));
     }
 
     private static ConfiguredFeature<?, ?> registryTree(ResourceKey<ConfiguredFeature<?, ?>> key,

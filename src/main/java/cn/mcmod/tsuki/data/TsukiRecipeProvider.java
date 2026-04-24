@@ -85,16 +85,48 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
     }
 
     private void registerCraftingRecipe(RecipeOutput consumer) {
-        SimpleCookingRecipeBuilder.smoking(
-            Ingredient.of(TsukiFoodSet.BOILED_BONITO.getItem().get()),
-            RecipeCategory.FOOD,
+        this.foodSmeltingRecipes(
+            "boiled_bonito_to_smoked_bonito",
+            TsukiFoodSet.BOILED_BONITO.getItem().get(),
+            TsukiFoodSet.SMOKED_BONITO.getItem().get(),
+            0.5F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "smoked_bonito_to_dried_bonito",
+            TsukiFoodSet.SMOKED_BONITO.getItem().get(),
             TsukiFoodSet.DRIED_BONITO.getItem().get(),
             0.5F,
-            100
-            )
-            .unlockedBy("has_ingredient", has(TsukiFoodSet.BOILED_BONITO.getItem().get()))
-            .group(Tsuki.MODID)
-            .save(consumer, "smoking_bonito");
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "brown_rice_cooked_to_dried_brown_rice",
+            TsukiCuisineSet.BROWN_RICE_COOKED.getItem().get(),
+            TsukiFoodSet.DRIED_BROWN_RICE.getItem().get(),
+            0.1F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "rice_cooked_to_dried_rice",
+            TsukiCuisineSet.RICE_COOKED.getItem().get(),
+            TsukiFoodSet.DRIED_RICE.getItem().get(),
+            0.1F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "dried_brown_rice_to_fried_brown_rice",
+            TsukiFoodSet.DRIED_BROWN_RICE.getItem().get(),
+            TsukiFoodSet.FRIED_BROWN_RICE.getItem().get(),
+            0.1F,
+            consumer
+        );
+        this.foodSmeltingRecipes(
+            "raw_taiyaki_to_taiyaki",
+            TsukiFoodSet.RAW_TAIYAKI.getItem().get(),
+            TsukiFoodSet.TAIYAKI.getItem().get(),
+            0.1F,
+            consumer
+        );
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB, BlockRegistry.TATAMI);
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_WAXED, BlockRegistry.TATAMI_WAXED);
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_SUNBURNT, BlockRegistry.TATAMI_SUNBURNT);
@@ -2768,6 +2800,122 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.SALT)
             .container(Items.BOWL)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_fried_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.FOODSET.get(TsukiFoodSet.EGG_SOFT).get(), 2
+            )
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.EGGS)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "egg_soft_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.FOODSET.get(TsukiFoodSet.EGG_SOYSAUCE).get(), 2
+            )
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(TsukiItemTags.SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "egg_soysauce_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.CUISINES.get(TsukiCuisineSet.OCHAZUKE).get(), 2
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiNormalItemSet.WHITE_PEPPER.getItem().get())
+            .requires(TsukiItemTags.SOYSAUCE)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ochazuke_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.CUISINES.get(TsukiCuisineSet.CHAWANMUSHI).get(), 2
+            )
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiNormalItemSet.NOODLE_SOUP.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "chawanmushi_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.CUISINES.get(TsukiCuisineSet.WHITE_STEW).get(), 2
+            )
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.SALT)
+            .requires(TsukiItemTags.RAW_CHICKEN)
+            .requires(Tags.Items.CROPS_CARROT)
+            .requires(Tags.Items.CROPS_POTATO)
+            .requires(TsukiItemTags.MUSHROOMS)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "white_stew_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.CUISINES.get(TsukiCuisineSet.ODEN).get(), 2
+            )
+            .requires(Tags.Items.RODS_WOODEN)
+            .requires(TsukiFoodSet.FISHCAKE.getItem().get())
+            .requires(TsukiItemTags.CROPS_RADISH)
+            .requires(TsukiItemTags.EGGS)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "oden_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.FOODSET.get(TsukiFoodSet.PUDDING).get(), 2
+            )
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.SUGAR)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiNormalItemSet.VANILLA.getItem().get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pudding_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.FOODSET.get(TsukiFoodSet.PUDDING_MAPLE).get(), 2
+            )
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.SUGAR)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiNormalItemSet.VANILLA.getItem().get())
+            .requires(TsukiNormalItemSet.MAPLE_SYRUP.getItem().get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pudding_maple_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.FOODSET.get(TsukiFoodSet.PUDDING_MOCHA).get(), 2
+            )
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.SUGAR)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiNormalItemSet.VANILLA.getItem().get())
+            .requires(TsukiNormalItemSet.MOCHA.getItem().get())
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pudding_mocha_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100), FoodRegistry.FOODSET.get(TsukiFoodSet.FRUITSALAD).get(), 2
+            )
+            .requires(Ingredient.fromValues(Stream.of(new ItemValue(new ItemStack(Items.APPLE)), new ItemValue(new ItemStack(Items.CHORUS_FRUIT)))))
+            .requires(TsukiItemTags.SUGAR)
+            .requires(TsukiItemTags.FRUITS)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fruitsalad_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 200), FoodRegistry.CUISINES.get(TsukiCuisineSet.YAKI_SOBA).get(), 2
+            )
+            .requires(TsukiNormalItemSet.SOBA_RAW.getItem().get())
+            .requires(TsukiItemTags.FOODS_RAW_MEAT)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yaki_soba_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.CUISINES.get(TsukiCuisineSet.ZOSUI).get(), 2
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiItemTags.FOODS_RAW_MEAT)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.SOYSAUCE)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "zosui_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100), FoodRegistry.CUISINES.get(TsukiCuisineSet.ZOSUI_ZUIKI).get()
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(TsukiNormalItemSet.IMOGARA.getItem().get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "zosui_zuiki_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 0), FoodRegistry.FOODSET.get(TsukiFoodSet.SUIKATSUGAN).get(), 2
+            )
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiFoodSet.UMEBOSHI.getItem().get())
+            .requires(TsukiItemTags.SUGAR)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "suikatsugan_cooking"));
         CookingPotRecipeBuilder.cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), TsukiCuisineSet.RAMEN_CURRY.getItem().get(), 1)
             .requires(TsukiNormalItemSet.RAMEN_RAW.getItem().get())
             .requires(TsukiNormalItemSet.DASHI.getItem().get())

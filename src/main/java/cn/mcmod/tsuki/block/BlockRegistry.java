@@ -100,6 +100,17 @@ public class BlockRegistry {
                     Optional.empty(),
                     Optional.empty())));
 
+    public static final DeferredBlock<SaplingBlock> SACRED_SAKURA_SAPLING = BLOCKS.register("sacred_sakura_sapling",
+            () -> sapling(new TreeGrower(
+                    "sacred_sakura",
+                    0.0F,
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(TsukiTreeFeatures.MASSIVE_SAKURA_KEY),
+                    Optional.of(TsukiTreeFeatures.MASSIVE_SAKURA_KEY),
+                    Optional.empty(),
+                    Optional.empty())));
+
     public static final DeferredBlock<RotatedPillarBlock> MAPLE_LOG = BLOCKS.register("maple_log",
             MapleTreeLogBlock::new);
 
