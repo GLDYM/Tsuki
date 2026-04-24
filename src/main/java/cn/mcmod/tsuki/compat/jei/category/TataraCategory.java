@@ -27,7 +27,7 @@ public class TataraCategory implements IRecipeCategory<TataraJeiRecipe> {
 
     public TataraCategory(IGuiHelper helper) {
         title = Component.translatable("tsuki.jei.tatara");
-        background = helper.createBlankDrawable(154, 58);
+        background = helper.createBlankDrawable(119, 58);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(BlockRegistry.TATARA.get()));
         ResourceLocation arrowTexture = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/pot.png");
         arrow = helper.drawableBuilder(arrowTexture, 176, 15, 34, 17).build();
@@ -57,14 +57,14 @@ public class TataraCategory implements IRecipeCategory<TataraJeiRecipe> {
     public void setRecipe(IRecipeLayoutBuilder builder, TataraJeiRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.CATALYST, 36, 1).addItemStack(recipe.ignition());
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 7)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 99, 7)
                 .addItemStack(recipe.ironResult())
                 .addRichTooltipCallback((slotView, tooltip) -> {
                     tooltip.add(Component.translatable("tsuki.jei.tatara.iron.amount", "0-9"));
                     tooltip.add(Component.translatable("tsuki.jei.tatara.iron.chance", "8/9", "9"));
                 });
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 33)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 99, 33)
                 .addItemStack(recipe.tamahaganeResult())
                 .addRichTooltipCallback((slotView, tooltip) -> {
                     tooltip.add(Component.translatable("tsuki.jei.tatara.tamahagane.amount", "0-2"));
@@ -81,6 +81,6 @@ public class TataraCategory implements IRecipeCategory<TataraJeiRecipe> {
         guiGraphics.renderItem(recipe.furnace(), 0, 0);
         guiGraphics.pose().popPose();
 
-        arrow.draw(guiGraphics, 62, 20);
+        arrow.draw(guiGraphics, 57, 20);
     }
 }

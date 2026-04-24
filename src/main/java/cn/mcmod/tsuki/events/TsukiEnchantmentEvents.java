@@ -157,7 +157,7 @@ public class TsukiEnchantmentEvents {
 
     private static void addMythicPickaxeExperience(ServerPlayer player, BlockEvent.BreakEvent event, ItemStack stack) {
         RandomSource random = player.getRandom();
-        int gainedExp = random.nextInt(30) + 1;
+        int gainedExp = random.nextInt(3) + 1;
 
         float hardness = event.getState().getDestroySpeed(player.level(), event.getPos());
         if (hardness > 1.0F) {

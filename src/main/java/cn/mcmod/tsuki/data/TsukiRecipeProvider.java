@@ -98,6 +98,24 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB, BlockRegistry.TATAMI);
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_WAXED, BlockRegistry.TATAMI_WAXED);
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_SUNBURNT, BlockRegistry.TATAMI_SUNBURNT);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SAKURA_WOOD.get(), 3)
+            .pattern("##")
+            .pattern("##")
+            .define('#', BlockItemRegistry.SAKURA_LOG.get())
+            .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_WOOD.get(), 4)
+            .pattern("##")
+            .pattern("##")
+            .define('#', BlockItemRegistry.MAPLE_LOG.get())
+            .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
+            .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.UME_WOOD.get(), 4)
+            .pattern("##")
+            .pattern("##")
+            .define('#', BlockItemRegistry.UME_LOG.get())
+            .unlockedBy("has_item", has(BlockItemRegistry.UME_LOG.get()))
+            .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TATAMI_WAXED.get(), 1)
             .requires(BlockRegistry.TATAMI.get())
             .requires(Items.HONEYCOMB)
@@ -505,16 +523,16 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('W', TsukiItemTags.LUMBER)
             .unlockedBy("has_lumber", has(TsukiItemTags.LUMBER))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sheath"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, TsukiArmorToolRegistry.KATANA_SHEATH.get())
-            .requires(TsukiArmorToolRegistry.KATANA.get())
-            .requires(TsukiArmorToolRegistry.SHEATH.get())
-            .unlockedBy("has_katana", has(TsukiArmorToolRegistry.KATANA.get()))
-            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "katana_sheath"));
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, TsukiArmorToolRegistry.SAKURA_KATANA_SHEATH.get())
-            .requires(TsukiArmorToolRegistry.SAKURA_KATANA.get())
-            .requires(TsukiArmorToolRegistry.SHEATH.get())
-            .unlockedBy("has_sakura_katana", has(TsukiArmorToolRegistry.SAKURA_KATANA.get()))
-            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_katana_sheath"));
+        // ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, TsukiArmorToolRegistry.KATANA_SHEATH.get())
+        //     .requires(TsukiArmorToolRegistry.KATANA.get())
+        //     .requires(TsukiArmorToolRegistry.SHEATH.get())
+        //     .unlockedBy("has_katana", has(TsukiArmorToolRegistry.KATANA.get()))
+        //     .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "katana_sheath"));
+        // ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, TsukiArmorToolRegistry.SAKURA_KATANA_SHEATH.get())
+        //     .requires(TsukiArmorToolRegistry.SAKURA_KATANA.get())
+        //     .requires(TsukiArmorToolRegistry.SHEATH.get())
+        //     .unlockedBy("has_sakura_katana", has(TsukiArmorToolRegistry.SAKURA_KATANA.get()))
+        //     .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_katana_sheath"));
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, TsukiArmorToolRegistry.SAKURA_AXE.get())
             .pattern("DD ")
             .pattern("DL ")
@@ -602,6 +620,15 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiArmorToolRegistry.KIMONO_MIKO.get())
             .requires(TsukiArmorToolRegistry.SAKURA_DIAMOND.get())
             .unlockedBy("has_item", has(TsukiArmorToolRegistry.SAKURA_DIAMOND.get()))
+            .save(consumer);
+
+        // Straw Hat
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT,
+            TsukiArmorToolRegistry.STRAW_HAT.get())
+            .pattern("###")
+            .pattern("# #")
+            .define('#', TsukiItemTags.STRAW)
+            .unlockedBy("has_item", has(TsukiItemTags.STRAW))
             .save(consumer);
 
         // Kimono
@@ -1006,13 +1033,6 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             0.5F,
             consumer
         );
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get(), 3)
-            .requires(TsukiItemTags.FLOUR_WHEAT)
-            .requires(TsukiItemTags.FLOUR_WHEAT)
-            .requires(TsukiItemTags.FLOUR_WHEAT)
-            .requires(TsukiItemTags.WATER)
-            .unlockedBy("has_flour", has(TsukiItemTags.FLOUR_WHEAT))
-            .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockItemRegistry.NABE_SUKIYAKI.get())
             .requires(BlockItemRegistry.COOKING_POT.get())
             .requires(TsukiItemTags.SOYSAUCE)
@@ -1037,6 +1057,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .save(consumer);
         this.makeItemToBucket(BucketItemRegistry.FOOD_OIL_BUCKET, Ingredient.of(TsukiItemTags.SEEDS_RAPESEED))
             .unlockedBy("has_seeds", has(TsukiItemTags.SEEDS_RAPESEED))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get(), 3)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_flour", has(TsukiItemTags.FLOUR_WHEAT))
             .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_BUCKWHEAT).get(), 3)
             .requires(TsukiItemTags.FLOUR_BUCKWHEAT)
@@ -1149,6 +1176,11 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.MAPLE_SAPLING_ORANGE.get())
             .requires(ItemTags.SAPLINGS)
             .requires(Tags.Items.DYES_ORANGE)
+            .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.UME_SAPLING.get())
+            .requires(ItemTags.SAPLINGS)
+            .requires(Tags.Items.DYES_LIME)
             .unlockedBy("has_sapling", has(ItemTags.SAPLINGS))
             .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI).get())
@@ -1481,6 +1513,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.SALT)
             .requires(TsukiItemTags.WATER)
             .unlockedBy("has_udon", has(TsukiNormalItemSet.FLOUR.getItem().get()))
+            .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiNormalItemSet.PASTA_BLOCK.getItem().get())
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.FLOUR_WHEAT)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.WATER)
+            .unlockedBy("has_eggs", has(TsukiItemTags.EGGS))
             .save(consumer);
     }
 
@@ -3484,7 +3523,6 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requiresTool(TsukiItemTags.TOOLS_KNIVES_NOODLE)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pasta_raw_chopping"));
 
-        // Peppercorn processing (same behavior as Sakura)
         ChoppingBoardRecipeBuilder.chop(TsukiNormalItemSet.BLACK_PEPPER.getItem().get(), 2)
             .requires(TsukiNormalItemSet.PEPPERCORN_GREEN.getItem().get())
             .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)

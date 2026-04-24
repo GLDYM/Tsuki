@@ -16,8 +16,9 @@
       "tag": "c:soysauce"
     },
     {
+      "type": "neoforge:tag",
       "amount": 125,
-      "fluidTag": "c:food_oil"
+      "tag": "c:food_oil"
     }
   ],
   "neoforge:conditions": [

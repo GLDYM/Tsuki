@@ -111,7 +111,7 @@ public class SheathKatanaItem extends Item {
             player.setItemInHand(InteractionHand.OFF_HAND, sheath);
         }
 
-        executeUnsheatheSweep(player);
+        executeUnsheatheSweep(player, blade);
 
         ItemStack bladeInMainHand = player.getMainHandItem();
         if (bladeInMainHand.getItem() instanceof KatanaItem) {
@@ -122,16 +122,17 @@ public class SheathKatanaItem extends Item {
                 SoundEvents.ARMOR_EQUIP_IRON, player.getSoundSource(), 1.0F, 0.8F);
     }
 
-    private void executeUnsheatheSweep(Player player) {
+    private void executeUnsheatheSweep(Player player, ItemStack blade) {
         Level level = player.level();
         if (!(level instanceof ServerLevel serverLevel)) {
             return;
         }
-        float baseDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE) + 1.0F;
+        float baseDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE)
+            + blade.getDamageValue() * 1.2F;
         AABB aabb = player.getBoundingBox().inflate(2.5D, 0.5D, 2.5D);
         List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, aabb,
                 target -> target != player && !player.isAlliedTo(target) && player.distanceToSqr(target) < 10.0D);
-        ItemStack blade = player.getMainHandItem();
+        // ItemStack blade = player.getMainHandItem();
 
         for (LivingEntity target : targets) {
             float enchantDamage = EnchantmentHelper.modifyDamage(serverLevel, blade, target,

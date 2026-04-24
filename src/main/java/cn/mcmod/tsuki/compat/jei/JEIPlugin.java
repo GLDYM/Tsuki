@@ -112,6 +112,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.FERMENTER.get()), FERMENTER_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.DISTILLER.get()), DISTILLER_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CHOPPING_BOARD.get()), CHOPPING_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(BlockRegistry.TATARA.get()), TATARA_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.STONE_HAMMER.get()), TATARA_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.IRON_HAMMER.get()), TATARA_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.STEEL_HAMMER.get()), TATARA_JEI_TYPE);

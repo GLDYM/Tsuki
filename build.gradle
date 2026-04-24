@@ -9,7 +9,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.78'
 }
 
-version = '1.1.2'
+version = '1.1.4'
 group = 'cn.mcmod.tsuki' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 base {
     archivesName = 'Tsuki'
@@ -143,7 +143,7 @@ jar {
         attributes([
                 "Specification-Title"     : "tsuki",
                 "Specification-Vendor"    : "tracen_minecraft_group",
-                "Specification-Version"   : "0.0.2",
+                "Specification-Version"   : "1.1.4",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "tracen_minecraft_group",

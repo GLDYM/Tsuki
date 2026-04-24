@@ -19,7 +19,9 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -51,7 +53,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                                     && block.get() != BlockRegistry.GRAPE_VINE.get()
                                     && block.get() != BlockRegistry.GRAPE_LEAVES.get()
                                     && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
-                                    && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()) {
+                                    && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()
+                                    && block.get() != BlockRegistry.BAMBOO_DOOR.get()) {
                                 if (block.get() instanceof BambooPlant) {
                                     this.dropOther((Block) block.get(),
                                             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
@@ -71,6 +74,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                 createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(), TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
         this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(
                 BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
+        this.add(BlockRegistry.BAMBOO_DOOR.get(), createDoor(BlockRegistry.BAMBOO_DOOR.get()));
         this.add(BlockRegistry.FUTON.get(), createFutonDrops(BlockRegistry.FUTON.get()));
         this.add(BlockRegistry.CHESTNUT_BURR.get(), createChestnutBurrDrops(BlockRegistry.CHESTNUT_BURR.get()));
 
@@ -187,5 +191,14 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                         .add(LootItem.lootTableItem(BlockItemRegistry.CHESTNUT_BURRS.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
                                 .when(mature))));
+    }
+
+    private LootTable.Builder createDoor(Block block) {
+        LootItemCondition.Builder lowerHalf = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties()
+                        .hasProperty(DoorBlock.HALF, DoubleBlockHalf.LOWER));
+        return applyExplosionDecay(block, LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .add(LootItem.lootTableItem(block).when(lowerHalf))));
     }
 }
