@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "tsuki:maple_red_checked",
+    "features": [
+      {
+        "chance": 0.02,
+        "feature": "tsuki:fancy_maple_red_checked"
+      },
+      {
+        "chance": 0.15,
+        "feature": "tsuki:maple_yellow_checked"
+      },
+      {
+        "chance": 0.02,
+        "feature": "tsuki:fancy_maple_yellow_checked"
+      },
+      {
+        "chance": 0.15,
+        "feature": "tsuki:maple_orange_checked"
+      },
+      {
+        "chance": 0.02,
+        "feature": "tsuki:fancy_maple_orange_checked"
+      },
+      {
+        "chance": 0.12,
+        "feature": "tsuki:maple_green_checked"
+      },
+      {
+        "chance": 0.02,
+        "feature": "tsuki:fancy_maple_green_checked"
+      }
+    ]
+  }
+}

@@ -80,6 +80,7 @@ repositories {
     // Keep explicit core repositories for stable dependency resolution.
     mavenCentral()
     maven { url = 'https://maven.neoforged.net/releases' }
+    maven { url = 'https://maven.minecraftforge.net/' }
     maven { url = 'https://maven.parchmentmc.org' }
     maven {
         url = "https://maven.theillusivec4.top/"
@@ -131,6 +132,9 @@ dependencies {
 
     compileOnly ("curse.maven:kaleidoscope-cookery-1309203:7738871")
     runtimeOnly ("curse.maven:kaleidoscope-cookery-1309203:7738871")
+
+    compileOnly "com.github.glitchfiend:TerraBlender-neoforge:${mc_version}-4.1.0.8"
+    // runtimeOnly "com.github.glitchfiend:TerraBlender-neoforge:${mc_version}-4.1.0.8"
 
     // Dev Tools
     runtimeOnly "curse.maven:let-me-see-see-your-code-1229018:6777654"

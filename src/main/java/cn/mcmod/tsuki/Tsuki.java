@@ -11,6 +11,7 @@ import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.BlockEntityCapabilityRegistry;
 import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
+import cn.mcmod.tsuki.compat.terrablender.TsukiTerraBlenderCompat;
 import cn.mcmod.tsuki.container.ContainerRegistry;
 import cn.mcmod.tsuki.entity.EntityRegistry;
 import cn.mcmod.tsuki.effect.EffectRegistry;
@@ -32,8 +33,10 @@ import cn.mcmod.tsuki.villager.VillagerRegistry;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod(Tsuki.MODID)
 public class Tsuki {
@@ -45,6 +48,7 @@ public class Tsuki {
     }
 
     public Tsuki(IEventBus modEventBus, ModContainer modContainer) {
+        modEventBus.addListener(this::onCommonSetup);
         modEventBus.addListener(BlockEntityCapabilityRegistry::register);
         modEventBus.addListener(EntityRegistry::registerAttributes);
         modEventBus.addListener(EntityRegistry::registerSpawnPlacements);
@@ -82,6 +86,12 @@ public class Tsuki {
         VillagerRegistry.PROFESSIONS.register(modEventBus);
         CreativeModeTabRegistry.TABS.register(modEventBus);
         modContainer.registerConfig(ModConfig.Type.COMMON, TsukiConfig.COMMON_CONFIG);
+    }
+
+    private void onCommonSetup(FMLCommonSetupEvent event) {
+        if (ModList.get().isLoaded("terrablender")) {
+            event.enqueueWork(TsukiTerraBlenderCompat::registerRegions);
+        }
     }
 
     public static Logger getLogger() {

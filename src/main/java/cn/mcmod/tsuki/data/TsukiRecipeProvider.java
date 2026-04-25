@@ -1553,6 +1553,11 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.WATER)
             .unlockedBy("has_eggs", has(TsukiItemTags.EGGS))
             .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TsukiCuisineSet.CURRY_OMURICE.getItem().get())
+            .requires(TsukiCuisineSet.OMURICE.getItem().get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CURRY_SAUCE).get())
+            .unlockedBy("has_omurice", has(TsukiCuisineSet.OMURICE.getItem().get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "curry_omurice"));
     }
 
     private void registerDecorativeBlockRecipes(RecipeOutput consumer) {
@@ -2846,10 +2851,10 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.CUISINES.get(TsukiCuisineSet.ODEN).get(), 2
             )
-            .requires(Tags.Items.RODS_WOODEN)
             .requires(TsukiFoodSet.FISHCAKE.getItem().get())
             .requires(TsukiItemTags.CROPS_RADISH)
             .requires(TsukiItemTags.EGGS)
+            .container(Items.STICK)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "oden_cooking"));
         CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200), FoodRegistry.FOODSET.get(TsukiFoodSet.PUDDING).get(), 2

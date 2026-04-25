@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.data;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.level.WorldGenerationRegistry;
 import cn.mcmod.tsuki.level.tree.TsukiTreeFeatures;
+import cn.mcmod.tsuki.level.tree.TsukiTreePlacedFeatures;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -38,6 +39,7 @@ public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
                             WorldGenerationRegistry.FEATURE_ORE_SAKURA_DIAMOND);
                     bootstrap.register(WorldGenerationRegistry.FEATURE_ORE_IRON_SAND_KEY,
                             WorldGenerationRegistry.FEATURE_ORE_IRON_SAND);
+                    TsukiTreePlacedFeatures.bootstrapConfigured(bootstrap);
                 })
                 .add(Registries.PLACED_FEATURE, bootstrap -> {
                     bootstrap.register(WorldGenerationRegistry.PATCH_BAMBOOSHOOT_KEY,
@@ -50,6 +52,7 @@ public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
                             WorldGenerationRegistry.ORE_SAKURA_DIAMOND);
                     bootstrap.register(WorldGenerationRegistry.ORE_IRON_SAND_KEY,
                             WorldGenerationRegistry.ORE_IRON_SAND);
+                    TsukiTreePlacedFeatures.bootstrapPlaced(bootstrap);
                 }), Set.of(Tsuki.MODID));
     }
 

@@ -21,25 +21,31 @@ New dress: Kimono, yukata and Haori.
 config="tsuki.mixins.json"
 [[dependencies.tsuki]]
     modId="neoforge"
-    mandatory=true
+    type = "required"
     versionRange="[21.1,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tsuki]]
     modId="minecraft"
-    mandatory=true
+    type = "required"
     versionRange="[1.21.1,1.22)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tsuki]]
     modId="mysterious_mountain_lib"
-    mandatory=true
+    type = "required"
     versionRange="[1.2.11-1.21.1,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.tsuki]]
     modId="geckolib"
-    mandatory=true
+    type = "required"
     versionRange="[4.8.0,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tsuki]]
+    modId="terrablender"
+    type = "optional"
+    versionRange="[4.1.0,)"
     ordering="AFTER"
     side="BOTH"

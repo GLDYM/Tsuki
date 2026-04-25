@@ -1,0 +1,17 @@
+{
+  "feature": "tsuki:fancy_maple_orange",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "tsuki:maple_sapling_orange",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}

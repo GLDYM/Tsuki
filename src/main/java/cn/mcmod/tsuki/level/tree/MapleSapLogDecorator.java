@@ -4,7 +4,9 @@ import cn.mcmod.tsuki.block.BlockRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
@@ -38,10 +40,16 @@ public class MapleSapLogDecorator extends TreeDecorator {
             return;
         }
 
-        int minY = logs.stream().mapToInt(BlockPos::getY).min().orElse(Integer.MIN_VALUE);
-        int targetY = minY + 1;
-
-        List<BlockPos> candidates = logs.stream().filter(pos -> pos.getY() == targetY).toList();
+        Set<BlockPos> logSet = new HashSet<>(logs);
+        // Prefer the second block above trunk roots, which is stable for both worldgen and sapling growth.
+        List<BlockPos> candidates = logs.stream()
+                .filter(pos -> logSet.contains(pos.below()) && !logSet.contains(pos.below(2)))
+                .toList();
+        if (candidates.isEmpty()) {
+            int minY = logs.stream().mapToInt(BlockPos::getY).min().orElse(Integer.MIN_VALUE);
+            int targetY = minY + 1;
+            candidates = logs.stream().filter(pos -> pos.getY() == targetY).toList();
+        }
         if (candidates.isEmpty()) {
             return;
         }

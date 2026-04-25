@@ -60,13 +60,15 @@ public class MapleFallenLeavesDecorator extends TreeDecorator {
                     BlockPos placePos = new BlockPos(x, y, z);
                     BlockPos supportPos = placePos.below();
 
-                    if (!context.isAir(placePos)) {
+                    boolean canPlaceHere = context.level().isStateAtPosition(placePos,
+                            state -> (state.isAir() || state.canBeReplaced()) && state.getFluidState().isEmpty());
+                    if (!canPlaceHere) {
                         continue;
                     }
 
-                    boolean hasSupport = context.level().isStateAtPosition(supportPos,
-                            support -> !support.isAir() && !support.getFluidState().isEmpty());
-                    if (!hasSupport) {
+                    boolean hasSolidSupport = context.level().isStateAtPosition(supportPos,
+                            support -> !support.isAir() && support.getFluidState().isEmpty());
+                    if (!hasSolidSupport) {
                         continue;
                     }
 

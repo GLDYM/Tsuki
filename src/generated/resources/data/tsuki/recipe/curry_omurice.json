@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:omurice"
+    },
+    {
+      "item": "tsuki:curry_sauce"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:curry_omurice"
+  }
+}

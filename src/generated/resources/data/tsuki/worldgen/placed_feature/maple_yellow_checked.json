@@ -1,0 +1,17 @@
+{
+  "feature": "tsuki:maple_yellow",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "tsuki:maple_sapling_yellow",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}

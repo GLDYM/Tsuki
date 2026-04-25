@@ -1,8 +1,7 @@
 {
   "type": "tsuki:cooking",
   "container": {
-    "count": 0,
-    "id": "minecraft:air"
+    "id": "minecraft:stick"
   },
   "experience": 0,
   "fluid": {
@@ -10,9 +9,6 @@
     "fluidTag": "c:water/water"
   },
   "ingredients": [
-    {
-      "tag": "c:rods/wooden"
-    },
     {
       "item": "tsuki:fishcake"
     },

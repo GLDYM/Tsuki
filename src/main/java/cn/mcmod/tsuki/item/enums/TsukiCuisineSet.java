@@ -10,6 +10,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
 public enum TsukiCuisineSet {
+    ODEN(
+            FoodInfo.builder()
+                    .name("oden")
+                    .amountAndCalories(8, 0.6F)
+                    .water(1.0F)
+                    .nutrients(1.0F, 0.0F, 3.0F, 3.0F, 0.0F)
+                    .decayModifier(4.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build(),
+            () -> Items.STICK),
     DANANKO(
             FoodInfo.builder()
                     .name("dananko")
@@ -629,6 +640,16 @@ public enum TsukiCuisineSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    YAKI_SOBA(
+            FoodInfo.builder()
+                    .name("yaki_soba")
+                    .amountAndCalories(9, 0.7F)
+                    .water(2.5F)
+                    .nutrients(1.5F, 0.0F, 4.0F, 2.0F, 2.0F)
+                    .decayModifier(3.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     BROWN_RICE_COOKED(
             FoodInfo.builder()
                     .name("brown_rice_cooked")
@@ -826,6 +847,16 @@ public enum TsukiCuisineSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    CURRY_OMURICE(
+            FoodInfo.builder()
+                    .name("curry_omurice")
+                    .amountAndCalories(8, 0.6F)
+                    .water(0.5F)
+                    .nutrients(3.0F, 0.0F, 1.0F, 4.0F, 3.0F)
+                    .decayModifier(2.25F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     RICE_FRIED(
             FoodInfo.builder()
                     .name("rice_fried")
@@ -957,16 +988,7 @@ public enum TsukiCuisineSet {
                     .heatCapacity(2.0F)
                     .cookingTemp(480.0F)
                     .build()),
-    CURRY_OMURICE(
-            FoodInfo.builder()
-                    .name("curry_omurice")
-                    .amountAndCalories(8, 0.6F)
-                    .water(0.5F)
-                    .nutrients(3.0F, 0.0F, 1.0F, 4.0F, 3.0F)
-                    .decayModifier(2.25F)
-                    .heatCapacity(1.0F)
-                    .cookingTemp(480.0F)
-                    .build()),
+
     EHOUMAKI(
             FoodInfo.builder()
                     .name("ehoumaki")
@@ -984,16 +1006,6 @@ public enum TsukiCuisineSet {
                     .water(50.0F)
                     .nutrients(0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
                     .decayModifier(5.0F)
-                    .heatCapacity(1.0F)
-                    .cookingTemp(480.0F)
-                    .build()),
-    ODEN(
-            FoodInfo.builder()
-                    .name("oden")
-                    .amountAndCalories(8, 0.6F)
-                    .water(1.0F)
-                    .nutrients(1.0F, 0.0F, 3.0F, 3.0F, 0.0F)
-                    .decayModifier(4.0F)
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
@@ -1027,16 +1039,7 @@ public enum TsukiCuisineSet {
                     .heatCapacity(0.0F)
                     .cookingTemp(0.0F)
                     .build()),
-    YAKI_SOBA(
-            FoodInfo.builder()
-                    .name("yaki_soba")
-                    .amountAndCalories(9, 0.7F)
-                    .water(2.5F)
-                    .nutrients(1.5F, 0.0F, 4.0F, 2.0F, 2.0F)
-                    .decayModifier(3.5F)
-                    .heatCapacity(1.0F)
-                    .cookingTemp(480.0F)
-                    .build()),
+
     ZOSUI(
             FoodInfo.builder()
                     .name("zosui")
