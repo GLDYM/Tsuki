@@ -2,9 +2,6 @@
   "values": [
     "minecraft:bamboo_jungle",
     "minecraft:cherry_grove",
-    {
-      "id": "tsuki:maple_forest",
-      "required": false
-    }
+    "tsuki:maple_forest"
   ]
 }

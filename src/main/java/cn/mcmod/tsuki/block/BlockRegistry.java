@@ -222,9 +222,11 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> SAKURA_PLANK = BLOCKS.register("plank_sakura",
             () -> plank(MapColor.WOOD));
     public static final DeferredBlock<Block> MAPLE_PLANK = BLOCKS.register("plank_maple",
-            () -> plank(MapColor.SAND));
+            () -> plank(MapColor.WOOD));
+    public static final DeferredBlock<Block> UME_PLANK = BLOCKS.register("plank_ume",
+            () -> plank(MapColor.WOOD));
     public static final DeferredBlock<Block> BAMBOO_PLANK = BLOCKS.register("plank_bamboo",
-            () -> plank(MapColor.SAND));
+            () -> plank(MapColor.WOOD));
 
     public static final DeferredBlock<Block> STRAW_BLOCK = BLOCKS.register("straw_block",
             () -> new Block(BlockBehaviour.Properties.of()));

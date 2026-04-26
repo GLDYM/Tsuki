@@ -62,12 +62,12 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                                     && block.get() != BlockRegistry.SHOJI_4.get()
                                     && block.get() != BlockRegistry.SHOJI_5.get()) {
                                 if (block.get() instanceof BambooPlant) {
-                                    this.dropOther((Block) block.get(),
+                                    this.dropOther(block.get(),
                                             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
                                 } else if (block.get() instanceof TeishokuFinishedBlock) {
-                                    this.dropOther((Block) block.get(), BlockItemRegistry.OBON.get());
+                                    this.dropOther(block.get(), BlockItemRegistry.OBON.get());
                                 } else {
-                                    this.dropSelf((Block) block.get());
+                                    this.dropSelf(block.get());
                                 }
                             }
                         });

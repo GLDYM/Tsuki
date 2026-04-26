@@ -39,7 +39,7 @@ public class TsukiBiomeTagProvider extends BiomeTagsProvider {
         TagAppender<Biome> sakuraDiamondOreTag = this.tag(TsukiBiomeTags.CAN_SPAWN_SAKURA_DIAMOND_ORE);
         sakuraDiamondOreTag.add(Biomes.BAMBOO_JUNGLE);
         sakuraDiamondOreTag.add(Biomes.CHERRY_GROVE);
-        sakuraDiamondOreTag.addOptional(TsukiBiomeRegistry.MAPLE_FOREST.location());
+        sakuraDiamondOreTag.add(TsukiBiomeRegistry.MAPLE_FOREST);
 
         TagAppender<Biome> ironSandOreTag = this.tag(TsukiBiomeTags.CAN_SPAWN_IRON_SAND_ORE);
         ironSandOreTag.addTag(BiomeTags.IS_BEACH);
@@ -47,6 +47,6 @@ public class TsukiBiomeTagProvider extends BiomeTagsProvider {
 
         TagAppender<Biome> samuraiSpawnTag = this.tag(TsukiBiomeTags.HAS_SAMURAI_SPAWNS);
         samuraiSpawnTag.add(Biomes.BAMBOO_JUNGLE);
-        samuraiSpawnTag.addOptional(TsukiBiomeRegistry.MAPLE_FOREST.location());
+        samuraiSpawnTag.add(TsukiBiomeRegistry.MAPLE_FOREST);
     }
 }

@@ -47,11 +47,12 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> BAMBOO_CHARCOAL_BLOCK = ITEMS.register("bamboo_charcoal_block",
             () -> new BlockItem(BlockRegistry.BAMBOO_CHARCOAL_BLOCK.get(), Tsuki.defaultItemProperties()));
 
-    // TODO: Bad. Need Data Fix.
     public static final DeferredItem<Item> SAKURA_PLANK = ITEMS.register("plank_sakura",
             () -> new BlockItem(BlockRegistry.SAKURA_PLANK.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> MAPLE_PLANK = ITEMS.register("plank_maple",
             () -> new BlockItem(BlockRegistry.MAPLE_PLANK.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_PLANK = ITEMS.register("plank_ume",
+            () -> new BlockItem(BlockRegistry.UME_PLANK.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> BAMBOO_PLANK = ITEMS.register("plank_bamboo",
             () -> new BlockItem(BlockRegistry.BAMBOO_PLANK.get(), Tsuki.defaultItemProperties()));
 

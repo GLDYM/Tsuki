@@ -1335,24 +1335,24 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(BlockRegistry.SAKURA_LEAVES.get())
             .unlockedBy("has_mochi", has(FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get()))
             .save(consumer);
-        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO))
+        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO))
             .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()))
             .save(consumer);
         this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, () -> Items.BAMBOO)
             .unlockedBy("has_item", has(Items.BAMBOO))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_from_vanilla_bamboo"));
-        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT))
+        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT))
             .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()))
             .save(consumer);
-        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK, (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL))
+        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL))
             .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
             .save(consumer);
-        this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO), BlockItemRegistry.BAMBOO_BLOCK).save(consumer);
+        this.makeBlockToIngot(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO), BlockItemRegistry.BAMBOO_BLOCK).save(consumer);
         this.makeBlockToIngot(() -> Items.BAMBOO, BlockItemRegistry.BAMBOO_BLOCK)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_to_vanilla_bamboo"));
-        this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL), BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK)
+        this.makeBlockToIngot(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL), BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK)
             .save(consumer);
-        this.makeBlockToIngot((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT), BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT)
+        this.makeBlockToIngot(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT), BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT)
             .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get())
             .pattern("L L")
@@ -1397,45 +1397,86 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.makeBlockToIngot(() -> TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), BlockItemRegistry.SAKURA_DIAMOND_BLOCK)
             .unlockedBy("has_sakura_diamond_block", has(BlockItemRegistry.SAKURA_DIAMOND_BLOCK.get()))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_diamond_from_block"));
-        this.makeLumber((Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_BAMBOO), Ingredient.of(TsukiItemTags.BAMBOO))
+        this.makeLumber(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_BAMBOO), Ingredient.of(TsukiItemTags.BAMBOO))
             .unlockedBy("has_item", has(TsukiItemTags.BAMBOO))
             .save(consumer);
+
         this.makeLumber(
-            (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
             Ingredient.of(BlockRegistry.MAPLE_LOG.get())
             )
             .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
             .save(consumer);
         this.makeLumber(
-            (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
             Ingredient.of(BlockRegistry.SAKURA_LOG.get())
             )
             .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
             .save(consumer);
         this.makeLumber(
-            (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_UME),
+            Ingredient.of(BlockRegistry.UME_LOG.get())
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.UME_LOG.get()))
+            .save(consumer);
+
+        this.makeLumber(
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
             Ingredient.of(BlockRegistry.MAPLE_WOOD.get())
             )
             .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_lumber_from_wood"));
         this.makeLumber(
-            (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
             Ingredient.of(BlockRegistry.SAKURA_WOOD.get())
             )
             .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_lumber_from_wood"));
         this.makeLumber(
-            (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_UME),
+            Ingredient.of(BlockRegistry.UME_WOOD.get())
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.UME_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ume_lumber_from_wood"));
+
+        this.makeLumber(
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
             Ingredient.of(BlockRegistry.STRIPPED_MAPLE_LOG.get())
             )
             .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_lumber_from_stripped"));
         this.makeLumber(
-            (Supplier<? extends Item>)ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
             Ingredient.of(BlockRegistry.STRIPPED_SAKURA_LOG.get())
             )
             .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_lumber_from_stripped"));
+        this.makeLumber(
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_UME),
+            Ingredient.of(BlockRegistry.STRIPPED_UME_LOG.get())
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.UME_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ume_lumber_from_stripped"));
+
+        this.makeLumber(
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE),
+            Ingredient.of(BlockRegistry.STRIPPED_MAPLE_WOOD.get())
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.MAPLE_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_lumber_from_stripped_wood"));
+        this.makeLumber(
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA),
+            Ingredient.of(BlockRegistry.STRIPPED_SAKURA_WOOD.get())
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.SAKURA_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_lumber_from_stripped_wood"));
+        this.makeLumber(
+            ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_UME),
+            Ingredient.of(BlockRegistry.STRIPPED_UME_WOOD.get())
+            )
+            .unlockedBy("has_item", has(BlockItemRegistry.UME_LOG.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ume_lumber_from_stripped_wood"));
+
         this.makeLumberToPlank(BlockRegistry.BAMBOO_PLANK, Ingredient.of(TsukiItemTags.LUMBER_BAMBOO))
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
@@ -1443,6 +1484,9 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
         this.makeLumberToPlank(BlockRegistry.SAKURA_PLANK, Ingredient.of(TsukiItemTags.LUMBER_SAKURA))
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer);
+        this.makeLumberToPlank(BlockRegistry.UME_PLANK, Ingredient.of(TsukiItemTags.LUMBER_UME))
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer);
         SimpleCookingRecipeBuilder.smelting(
@@ -3708,7 +3752,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
     }
 
     public ShapelessRecipeBuilder makeLumber(Supplier<? extends Item> ingotOut, Ingredient ingreIn) {
-        return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ingotOut.get(), 8).requires(ingreIn);
+        return ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ingotOut.get(), 16).requires(ingreIn);
     }
 
     public ShapelessRecipeBuilder makeItemToBucket(Supplier<? extends Item> ingotOut, Ingredient ingreIn) {

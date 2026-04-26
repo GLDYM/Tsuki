@@ -3,11 +3,11 @@
   "category": "building",
   "ingredients": [
     {
-      "item": "tsuki:sakura_wood"
+      "item": "tsuki:stripped_ume_wood"
     }
   ],
   "result": {
     "count": 16,
-    "id": "tsuki:lumber_sakura"
+    "id": "tsuki:lumber_ume"
   }
 }

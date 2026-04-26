@@ -202,6 +202,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> LUMBER_BAMBOO = TagUtil.forgeItemTag("lumber/bamboo");
     public static final TagKey<Item> LUMBER_MAPLE = TagUtil.forgeItemTag("lumber/maple");
     public static final TagKey<Item> LUMBER_SAKURA = TagUtil.forgeItemTag("lumber/sakura");
+    public static final TagKey<Item> LUMBER_UME = TagUtil.forgeItemTag("lumber/ume");
 
     public static final TagKey<Item> ORES = TagUtil.forgeItemTag("ores");
     public static final TagKey<Item> ORES_IRON = TagUtil.forgeItemTag("ores/iron");

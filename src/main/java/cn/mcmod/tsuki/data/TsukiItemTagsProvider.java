@@ -157,12 +157,14 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get())
                 .addOptional(ResourceLocation.parse("farmersdelight:straw"));
         this.tag(TsukiItemTags.RICE).addTag(TsukiItemTags.RICE_BROWN).addTag(TsukiItemTags.RICE_RICE);
-        this.tag(TsukiItemTags.LUMBER).addTag(TsukiItemTags.LUMBER_BAMBOO).addTag(TsukiItemTags.LUMBER_MAPLE)
-                .addTag(TsukiItemTags.LUMBER_SAKURA);
+        this.tag(TsukiItemTags.LUMBER)
+            .addTag(TsukiItemTags.LUMBER_BAMBOO).addTag(TsukiItemTags.LUMBER_MAPLE)
+            .addTag(TsukiItemTags.LUMBER_SAKURA).addTag(TsukiItemTags.LUMBER_UME);
         this.tag(TsukiItemTags.LUMBER_TFC).addTag(TsukiItemTags.LUMBER);
         this.tag(TsukiItemTags.LUMBER_BAMBOO).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_BAMBOO).get());
         this.tag(TsukiItemTags.LUMBER_MAPLE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE).get());
         this.tag(TsukiItemTags.LUMBER_SAKURA).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA).get());
+        this.tag(TsukiItemTags.LUMBER_UME).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_UME).get());
         this.tag(TsukiItemTags.GRAIN_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get());
         this.tag(TsukiItemTags.GRAIN_BUCKWHEAT).add(ItemRegistry.BUCKWHEAT.get());
         this.tag(TsukiItemTags.SALT).addTag(TsukiItemTags.DUST_SALT);
@@ -436,7 +438,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .add(TsukiArmorToolRegistry.TACHI.get())
                 .add(TsukiArmorToolRegistry.SAKURA_KATANA.get())
                 .add(TsukiArmorToolRegistry.SAKURA_KODACHI.get());
-        
+
         this.tag(TsukiItemTags.HEAD_ARMOR)
                 .addTag(TsukiItemTags.SAMURAI_HELMET)
                 .addTag(TsukiItemTags.SOLDIER_HELMET);

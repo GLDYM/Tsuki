@@ -2,30 +2,55 @@
 
 ![logo](./logo.png)
 
-# Tsuki
+# Tsuki🌕
 
-🌕 🌸 Call of Sakura 🌸 🌕
+*西来祖道  我伝東*
+*釣月耕雲  慕古風*
+*世俗紅塵  飛不到*
+*深山雪夜  草菴中*
+
+[English](README.md) / [简体中文](README_CN.md)
 
 ![Counter](https://count.getloli.com/@TSUKI?name=TSUKI&theme=miku&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto)
 
 </div>
 
-Tsuki is a Japanese-styled Minecraft mod.
-
-Tsuki forks from Sakura and aims to bring the content of those mods into higher Minecraft versions (1.21.1 & 26.1).
-
-- Sakura 1.20.1
-- Sakura 1.12.2
-- MapleTrees 1.7.10
-- Bamboo 1.7.10
-- WA 1.7.10
-
-Tsuki also focuses on the compatibility with other mods to have a better performance in the Modpack. Tsuki plans to support these mods:
-
-- TerraFirmaCraft: The Next Generation (From Sakura, WIP)
-- Create (From Sakura)
-- Farmer's Delight (From Sakura, Developed by Tsuki)
-- Kaleidoscope Cookery (From Tsuki)
-
 **THIS MOD IS STILL ALPHA, Use at your own risk.**
 
+After 1.7.10, Japanese-style mods declined, with many authors fading from development. *Sakura* emerged, combining the strengths of *Bamboo*, *Maple*, and *WA*, forging a revival of Japanese-style mods. Six years have passed,  *Farmer’s Delight* and *Kaleidoscope* flourishing everywhere; yet Sakura remains at 1.12.2, missing much content awaiting migration. *Urushi* also needs to stabilize on 1.20.1 and has no plans to migrate to NeoForge for now.
+
+**Japanese-style mods have once again fallen into slumber.**
+
+Thanks to the development of AI technology, it is now easy to migrate low-version mods to higher versions. But from 1.12.2 to 1.21.1, the changes are not only in code but also in the modding ecosystem; simply porting content unchanged would make it incompatible with the environment.
+
+This, is **Tsuki**. A higher version rework of *Sakura*. **Tsuki** is dedicated to migrating *Sakura* and a series of Japanese-style mods to higher versions, while building integration with other modern mods to better fit the high-version ecosystem.
+
+## Migrated Content
+
+- All content from Sakura 1.20.1
+- Most content from Sakura 1.12.2
+
+## Completed Integrations
+
+- Farmer’s Delight: Japanese cooking pot can cook any Farmer’s Delight pot recipe
+- Kaleidoscope: Cookery: Japanese cooking pot can cook any Kaleidoscope soup pot recipe
+- Create: Some recipes can be cooked with Create
+- Create: Liquid Fuel: Seed oil, vodka, and sake can be used as fuel in Blaze Burners
+- Touhou Little Maid: Unfinished altars randomly generate in the world
+
+## Planned Migration & Integration Targets
+
+- Maple
+- Bamboo
+- TFC: TNG
+- Create
+- Gensokyo Delight ~~ Youkai' Feast
+
+## Copyright
+
+This mod uses source code from the following mods, published here according to their open-source licenses:
+
+- Sakura
+- MMLib
+- Farmer’s Delight
+- Kaleidoscope: Cookery

@@ -1,9 +1,6 @@
 {
   "values": [
     "minecraft:bamboo_jungle",
-    {
-      "id": "tsuki:maple_forest",
-      "required": false
-    }
+    "tsuki:maple_forest"
   ]
 }

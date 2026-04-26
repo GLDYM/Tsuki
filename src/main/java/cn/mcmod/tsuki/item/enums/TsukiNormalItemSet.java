@@ -33,6 +33,7 @@ public enum TsukiNormalItemSet {
     LUMBER_BAMBOO("lumber_bamboo"),
     LUMBER_SAKURA("lumber_sakura"),
     LUMBER_MAPLE("lumber_maple"),
+    LUMBER_UME("lumber_ume"),
 
     STRAW("straw"),
     SILK("silk"),
