@@ -6,7 +6,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import cn.mcmod.tsuki.container.StoneMortarContainer;
-import cn.mcmod.tsuki.inventory.StoneMortarItemHandler;
+import cn.mcmod.tsuki.block.capability.StoneMortarItemHandler;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.tsuki.recipes.StoneMortarRecipe;

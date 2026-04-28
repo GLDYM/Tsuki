@@ -128,6 +128,7 @@ public class TsukiEnchantmentEvents {
         event.setCanHarvest(true);
     }
 
+    // TODO: Spilting this into a separate event handler class for better organization?
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         if (!(event.getPlayer() instanceof ServerPlayer player)) {

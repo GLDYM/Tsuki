@@ -1,5 +1,7 @@
 package cn.mcmod.tsuki.block.entity;
 
+import cn.mcmod.tsuki.item.DrinkRegistry;
+import cn.mcmod.tsuki.item.WineBottleFluidHandlerItem;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
@@ -56,5 +58,14 @@ public final class BlockEntityCapabilityRegistry {
                 Capabilities.FluidHandler.BLOCK,
                 BlockEntityRegistry.MAPLE_CAULDRON.get(),
                 (blockEntity, side) -> blockEntity.getFluidHandler(side));
+
+        event.registerItem(
+                Capabilities.FluidHandler.ITEM,
+                (stack, context) -> new WineBottleFluidHandlerItem(stack),
+                DrinkRegistry.WINE_BOTTLE.get());
+        DrinkRegistry.WINE_BOTTLES.values().forEach(item -> event.registerItem(
+                Capabilities.FluidHandler.ITEM,
+                (stack, context) -> new WineBottleFluidHandlerItem(stack),
+                item.get()));
     }
 }

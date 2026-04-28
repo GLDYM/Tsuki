@@ -1,4 +1,4 @@
-package cn.mcmod.tsuki.inventory;
+package cn.mcmod.tsuki.block.capability;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -7,14 +7,14 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.IItemHandler;
 
-public class FermenterItemHandler implements IItemHandler {
-    private static final int SLOTS_INPUT = 3;
-    private static final int SLOT_OUTPUT_BEGIN = 3;
-    private static final int SLOT_OUTPUT_END = 5;
+public class StoneMortarItemHandler implements IItemHandler {
+    private static final int SLOTS_INPUT = 4;
+    private static final int SLOT_OUTPUT = 4;
+    private static final int SLOT_OUTPUT_EXTRA = 5;
     private final IItemHandler itemHandler;
     private final Direction side;
 
-    public FermenterItemHandler(IItemHandler itemHandler, @Nullable Direction side) {
+    public StoneMortarItemHandler(IItemHandler itemHandler, @Nullable Direction side) {
         this.itemHandler = itemHandler;
         this.side = side;
     }
@@ -39,7 +39,7 @@ public class FermenterItemHandler implements IItemHandler {
     @Nonnull
     public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
         if (side == null || side.equals(Direction.UP)) {
-            return (slot < SLOTS_INPUT) ? itemHandler.insertItem(slot, stack, simulate) : stack;
+            return slot < SLOTS_INPUT ? itemHandler.insertItem(slot, stack, simulate) : stack;
         } else {
             return stack;
         }
@@ -49,10 +49,9 @@ public class FermenterItemHandler implements IItemHandler {
     @Nonnull
     public ItemStack extractItem(int slot, int amount, boolean simulate) {
         if (side == null || side.equals(Direction.UP)) {
-            return slot < SLOTS_INPUT ? itemHandler.extractItem(slot, amount, simulate) : ItemStack.EMPTY;
+            return ItemStack.EMPTY;
         } else {
-            return (slot >= SLOT_OUTPUT_BEGIN || slot <= SLOT_OUTPUT_END)
-                    ? itemHandler.extractItem(slot, amount, simulate)
+            return slot == SLOT_OUTPUT || slot == SLOT_OUTPUT_EXTRA ? itemHandler.extractItem(slot, amount, simulate)
                     : ItemStack.EMPTY;
         }
     }

@@ -8,11 +8,11 @@ import javax.annotation.Nullable;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.block.capability.CookingPotItemHandler;
 import cn.mcmod.tsuki.block.machines.CookingPotBlock;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.container.CookingPotContainer;
-import cn.mcmod.tsuki.inventory.CookingPotItemHandler;
 import cn.mcmod.tsuki.recipes.CookingPotRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;

@@ -115,10 +115,6 @@ public class WineBottleItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
-        showToolTip(tooltip);
-    }
-
-    protected void showToolTip(List<Component> tooltip) {
         if (toolTip != null) {
             tooltip.add(toolTip);
         }

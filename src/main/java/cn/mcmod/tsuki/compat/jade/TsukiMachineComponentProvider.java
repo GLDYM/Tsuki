@@ -9,7 +9,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
@@ -151,8 +150,8 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
                 ELEMENT.item(stack).translate(new Vec2(0F, -5.5F))
             )
         );
-        tooltip.setLineMargin(-1, ScreenDirection.UP, 3);
-        tooltip.setLineMargin(-1, ScreenDirection.DOWN, -6);
+        tooltip.setLineMargin(-1, ScreenDirection.UP, 4);
+        tooltip.setLineMargin(-1, ScreenDirection.DOWN, -5);
     }
 
     private static void addFluidTank(ITooltip tooltip, FluidTank tank) {

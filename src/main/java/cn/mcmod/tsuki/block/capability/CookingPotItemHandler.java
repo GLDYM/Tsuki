@@ -1,4 +1,4 @@
-package cn.mcmod.tsuki.inventory;
+package cn.mcmod.tsuki.block.capability;
 
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
 import javax.annotation.Nonnull;

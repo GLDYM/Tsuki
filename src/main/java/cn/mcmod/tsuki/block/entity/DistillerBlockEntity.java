@@ -2,7 +2,7 @@ package cn.mcmod.tsuki.block.entity;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.container.DistillerContainer;
-import cn.mcmod.tsuki.inventory.FermenterItemHandler;
+import cn.mcmod.tsuki.block.capability.FermenterItemHandler;
 import cn.mcmod.tsuki.block.machines.DistillerBlock;
 import cn.mcmod.tsuki.recipes.DistillerRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
