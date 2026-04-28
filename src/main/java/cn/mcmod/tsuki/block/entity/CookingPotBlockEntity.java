@@ -93,11 +93,13 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 didInventoryChange = blockEntity.processRecipe(recipe.get(), level);
             } else {
                 blockEntity.recipeTime = 0;
+                blockEntity.recipeTimeTotal = 0;
             }
-        } else if (blockEntity.recipeTime > 0) {
+        } else {
             if (state.is(BlockRegistry.COOKING_POT.get()))
                 state.setValue(CookingPotBlock.OPEN, true);
             blockEntity.recipeTime = 0;
+            blockEntity.recipeTimeTotal = 0;
         }
 
         if (blockEntity.moveMealToOutput()) {
@@ -564,6 +566,14 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
 
     public FluidTank getFluidTank() {
         return fluidTank;
+    }
+
+    public int getRecipeTime() {
+        return recipeTime;
+    }
+
+    public int getRecipeTimeTotal() {
+        return recipeTimeTotal;
     }
 
     @Override

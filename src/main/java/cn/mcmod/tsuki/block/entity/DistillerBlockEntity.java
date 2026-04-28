@@ -80,9 +80,11 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
                 didInventoryChange = blockEntity.processRecipe(recipe.get());
             } else {
                 blockEntity.recipeTime = 0;
+                blockEntity.recipeTimeTotal = 0;
             }
-        } else if (blockEntity.recipeTime > 0) {
+        } else {
             blockEntity.recipeTime = 0;
+            blockEntity.recipeTimeTotal = 0;
         }
 
         if (didInventoryChange) {
@@ -400,6 +402,14 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
 
     public FluidTank getOutputFluidTank() {
         return outputfluidTank;
+    }
+
+    public int getRecipeTime() {
+        return recipeTime;
+    }
+
+    public int getRecipeTimeTotal() {
+        return recipeTimeTotal;
     }
 
 }

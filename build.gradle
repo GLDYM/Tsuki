@@ -82,18 +82,22 @@ repositories {
     maven { url = 'https://maven.neoforged.net/releases' }
     maven { url = 'https://maven.minecraftforge.net/' }
     maven { url = 'https://maven.parchmentmc.org' }
-    maven {
-        url = "https://maven.theillusivec4.top/"
-    }
+    maven { url = "https://maven.theillusivec4.top/" }
     maven {
         name = "Geckolib"
         url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
     }
 
-    // Patchouli
     maven {
-        url = 'https://maven.blamejared.com'
+        name = "Patchouli"
+        url = "https://maven.blamejared.com"
     }
+
+    // HYW?
+    // maven {
+    //     name = "Ageratum"
+    //     url = "https://maven.anvilcraft.dev/"
+    // }
 
     maven {
         url = "https://api.modrinth.com/maven"
@@ -105,34 +109,38 @@ repositories {
 
 dependencies {
 
-    // Use local MMLib jar from project libs/ to match current source API.
+    // MMLib, will be embedded in the future, but not now
     compileOnly files('libs/mysterious_mountain_lib-1.2.15-1.21.1.jar')
     runtimeOnly files('libs/mysterious_mountain_lib-1.2.15-1.21.1.jar')
-    // Compile against only the API artifact
-    compileOnly(("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api"))
-    // Use the full Curios API jar at runtime
-    runtimeOnly(("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1"))
-    // Patchouli will be removed in the future, but not now
+    // Ageratum, embedded via Jar-in-Jar
+    // jarJar(implementation("curse.maven:ageratum-1500610:7935946"))
+    // runtimeOnly ("curse.maven:ageratum-1500610:7935946")
+    // CuriosAPI
+    compileOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api")
+    runtimeOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1")
+    // JEI
+    compileOnly ("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    compileOnly ("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}")
+    runtimeOnly ("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
+    // Jade
+    compileOnly "curse.maven:jade-324717:7545219"
+    runtimeOnly "curse.maven:jade-324717:7545219"
+    // Geckolib
+    compileOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
+    runtimeOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
+    // Patchouli, will be removed in the future, but not now
     compileOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
     runtimeOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
 
-    // compile against the JEI API but do not include it at runtime
-    compileOnly(("mezz.jei:jei-${mc_version}-common-api:${jei_version}"))
-    compileOnly(("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"))
-    // at runtime, use the full JEI jar for NeoForge
-    runtimeOnly(("mezz.jei:jei-${mc_version}-neoforge:${jei_version}"))
-
-    compileOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
-    runtimeOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
-
     // Compact
-    //implementation ("maven.modrinth:epic-fight:20.9.2")
-    compileOnly ("maven.modrinth:farmers-delight:1.21.1-1.2.11")
-    runtimeOnly ("maven.modrinth:farmers-delight:1.21.1-1.2.11")
-
+    // implementation ("maven.modrinth:epic-fight:20.9.2")
+    // Farmers Delight
+    compileOnly ("maven.modrinth:farmers-delight:1.21.1-1.3.0")
+    runtimeOnly ("maven.modrinth:farmers-delight:1.21.1-1.3.0")
+    // Kaleidoscope Cookery
     compileOnly ("curse.maven:kaleidoscope-cookery-1309203:7738871")
     runtimeOnly ("curse.maven:kaleidoscope-cookery-1309203:7738871")
-
+    // TerraBlender
     compileOnly "com.github.glitchfiend:TerraBlender-neoforge:${mc_version}-4.1.0.8"
     // runtimeOnly "com.github.glitchfiend:TerraBlender-neoforge:${mc_version}-4.1.0.8"
 
