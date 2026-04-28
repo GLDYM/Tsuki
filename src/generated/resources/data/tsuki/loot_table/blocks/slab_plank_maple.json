@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:slab_plank_maple"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "tsuki:blocks/slab_plank_maple"
+}

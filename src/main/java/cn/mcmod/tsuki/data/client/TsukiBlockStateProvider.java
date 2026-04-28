@@ -39,8 +39,38 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.MAPLE_PLANK.get());
         simpleBlock(BlockRegistry.BAMBOO_PLANK.get());
         simpleBlock(BlockRegistry.UME_PLANK.get());
+        stairsBlock((StairBlock) BlockRegistry.SAKURA_PLANK_STAIRS.get(),
+                texture("plank_sakura"), texture("plank_sakura"), texture("plank_sakura"));
+        stairsBlock((StairBlock) BlockRegistry.MAPLE_PLANK_STAIRS.get(),
+                texture("plank_maple"), texture("plank_maple"), texture("plank_maple"));
+        stairsBlock((StairBlock) BlockRegistry.UME_PLANK_STAIRS.get(),
+                texture("plank_ume"), texture("plank_ume"), texture("plank_ume"));
+        stairsBlock((StairBlock) BlockRegistry.BAMBOO_PLANK_STAIRS.get(),
+                texture("plank_bamboo"), texture("plank_bamboo"), texture("plank_bamboo"));
+        slabBlock((SlabBlock) BlockRegistry.SAKURA_PLANK_SLAB.get(),
+                models().slab("slab_plank_sakura", texture("plank_sakura"), texture("plank_sakura"), texture("plank_sakura")),
+                models().slabTop("slab_plank_sakura_top", texture("plank_sakura"), texture("plank_sakura"), texture("plank_sakura")),
+                models().cubeAll("plank_sakura", texture("plank_sakura")));
+        slabBlock((SlabBlock) BlockRegistry.MAPLE_PLANK_SLAB.get(),
+                models().slab("slab_plank_maple", texture("plank_maple"), texture("plank_maple"), texture("plank_maple")),
+                models().slabTop("slab_plank_maple_top", texture("plank_maple"), texture("plank_maple"), texture("plank_maple")),
+                models().cubeAll("plank_maple", texture("plank_maple")));
+        slabBlock((SlabBlock) BlockRegistry.UME_PLANK_SLAB.get(),
+                models().slab("slab_plank_ume", texture("plank_ume"), texture("plank_ume"), texture("plank_ume")),
+                models().slabTop("slab_plank_ume_top", texture("plank_ume"), texture("plank_ume"), texture("plank_ume")),
+                models().cubeAll("plank_ume", texture("plank_ume")));
+        slabBlock((SlabBlock) BlockRegistry.BAMBOO_PLANK_SLAB.get(),
+                models().slab("slab_plank_bamboo", texture("plank_bamboo"), texture("plank_bamboo"), texture("plank_bamboo")),
+                models().slabTop("slab_plank_bamboo_top", texture("plank_bamboo"), texture("plank_bamboo"), texture("plank_bamboo")),
+                models().cubeAll("plank_bamboo", texture("plank_bamboo")));
 
         simpleBlock(BlockRegistry.STRAW_BLOCK.get());
+        stairsBlock((StairBlock) BlockRegistry.STRAW_BLOCK_STAIRS.get(),
+                texture("straw_block"), texture("straw_block"), texture("straw_block"));
+        slabBlock((SlabBlock) BlockRegistry.STRAW_BLOCK_SLAB.get(),
+                models().slab("slab_straw_block", texture("straw_block"), texture("straw_block"), texture("straw_block")),
+                models().slabTop("slab_straw_block_top", texture("straw_block"), texture("straw_block"), texture("straw_block")),
+                models().cubeAll("straw_block", texture("straw_block")));
         simpleBlock(BlockRegistry.SAKURA_DIAMOND_ORE.get());
         simpleBlock(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
         simpleBlock(BlockRegistry.SAKURA_DIAMOND_BLOCK.get());
@@ -75,6 +105,18 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         log(BlockRegistry.BAMBOO_BLOCK.get());
         log(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get());
         log(BlockRegistry.BAMBOO_CHARCOAL_BLOCK.get());
+        stairsBlock((StairBlock) BlockRegistry.BAMBOO_BLOCK_STAIRS.get(),
+                texture("bamboo_block"), texture("bamboo_block_top"), texture("bamboo_block_top"));
+        stairsBlock((StairBlock) BlockRegistry.BAMBOO_BLOCK_SUNBURNT_STAIRS.get(),
+                texture("bamboo_block_sunburnt"), texture("bamboo_block_sunburnt_top"), texture("bamboo_block_sunburnt_top"));
+        slabBlock((SlabBlock) BlockRegistry.BAMBOO_BLOCK_SLAB.get(),
+                models().slab("slab_bamboo_block", texture("bamboo_block"), texture("bamboo_block_top"), texture("bamboo_block_top")),
+                models().slabTop("slab_bamboo_block_top", texture("bamboo_block"), texture("bamboo_block_top"), texture("bamboo_block_top")),
+                models().cubeBottomTop("bamboo_block", texture("bamboo_block"), texture("bamboo_block_top"), texture("bamboo_block_top")));
+        slabBlock((SlabBlock) BlockRegistry.BAMBOO_BLOCK_SUNBURNT_SLAB.get(),
+                models().slab("slab_bamboo_block_sunburnt", texture("bamboo_block_sunburnt"), texture("bamboo_block_sunburnt_top"), texture("bamboo_block_sunburnt_top")),
+                models().slabTop("slab_bamboo_block_sunburnt_top", texture("bamboo_block_sunburnt"), texture("bamboo_block_sunburnt_top"), texture("bamboo_block_sunburnt_top")),
+                models().cubeBottomTop("bamboo_block_sunburnt", texture("bamboo_block_sunburnt"), texture("bamboo_block_sunburnt_top"), texture("bamboo_block_sunburnt_top")));
 
         horizontalBlock(BlockRegistry.FERMENTER.get(),
                 models().getExistingFile(ResourceLocation.parse("tsuki:block/fermenter")));
@@ -152,6 +194,12 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 texture("tatami"),
                 texture("tatami"),
                 texture("tatami"));
+        stairsBlock((StairBlock) BlockRegistry.TATAMI_STAIRS.get(),
+                texture("tatami"), texture("tatami"), texture("tatami"));
+        stairsBlock((StairBlock) BlockRegistry.TATAMI_STAIRS_WAXED.get(),
+                texture("tatami"), texture("tatami"), texture("tatami"));
+        stairsBlock((StairBlock) BlockRegistry.TATAMI_STAIRS_SUNBURNT.get(),
+                texture("tatami_tan"), texture("tatami_tan"), texture("tatami_tan"));
         facingSlabBlock(BlockRegistry.TATAMI_SLAB_SUNBURNT.get(),
                 texture("tatami_tan"),
                 texture("tatami_tan"),

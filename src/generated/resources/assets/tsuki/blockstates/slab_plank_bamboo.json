@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "tsuki:block/slab_plank_bamboo"
+    },
+    "type=double": {
+      "model": "tsuki:block/plank_bamboo"
+    },
+    "type=top": {
+      "model": "tsuki:block/slab_plank_bamboo_top"
+    }
+  }
+}

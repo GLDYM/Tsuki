@@ -140,6 +140,16 @@ public class BlockRegistry {
             .register("bamboo_block_sunburnt", () -> simplebambooBlock(MapColor.SAND, MapColor.WOOD));
     public static final DeferredBlock<RotatedPillarBlock> BAMBOO_CHARCOAL_BLOCK = BLOCKS.register(
             "bamboo_charcoal_block", () -> simplebambooBlock(MapColor.COLOR_GRAY, MapColor.COLOR_BLACK));
+    public static final DeferredBlock<Block> BAMBOO_BLOCK_STAIRS = BLOCKS.register("stairs_bamboo_block",
+            () -> new StairBlock(Blocks.BAMBOO_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_BLOCK_SLAB = BLOCKS.register("slab_bamboo_block",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_BLOCK_SUNBURNT_STAIRS = BLOCKS.register("stairs_bamboo_block_sunburnt",
+            () -> new StairBlock(Blocks.BAMBOO_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_BLOCK_SUNBURNT_SLAB = BLOCKS.register("slab_bamboo_block_sunburnt",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
 
     public static final DeferredBlock<Block> MAPLE_SAPLING_RED = BLOCKS.register("maple_sapling_red",
             () -> sapling(new TreeGrower(
@@ -227,9 +237,34 @@ public class BlockRegistry {
             () -> plank(MapColor.WOOD));
     public static final DeferredBlock<Block> BAMBOO_PLANK = BLOCKS.register("plank_bamboo",
             () -> plank(MapColor.WOOD));
+    public static final DeferredBlock<Block> SAKURA_PLANK_STAIRS = BLOCKS.register("stairs_plank_sakura",
+            () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> MAPLE_PLANK_STAIRS = BLOCKS.register("stairs_plank_maple",
+            () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> UME_PLANK_STAIRS = BLOCKS.register("stairs_plank_ume",
+            () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_PLANK_STAIRS = BLOCKS.register("stairs_plank_bamboo",
+            () -> new StairBlock(Blocks.BAMBOO_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+    public static final DeferredBlock<Block> SAKURA_PLANK_SLAB = BLOCKS.register("slab_plank_sakura",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> MAPLE_PLANK_SLAB = BLOCKS.register("slab_plank_maple",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> UME_PLANK_SLAB = BLOCKS.register("slab_plank_ume",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_PLANK_SLAB = BLOCKS.register("slab_plank_bamboo",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
 
     public static final DeferredBlock<Block> STRAW_BLOCK = BLOCKS.register("straw_block",
-            () -> new Block(BlockBehaviour.Properties.of()));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK)));
+    public static final DeferredBlock<Block> STRAW_BLOCK_STAIRS = BLOCKS.register("stairs_straw_block",
+            () -> new StairBlock(Blocks.HAY_BLOCK.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK)));
+    public static final DeferredBlock<Block> STRAW_BLOCK_SLAB = BLOCKS.register("slab_straw_block",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK)));
 
     public static final DeferredBlock<DropExperienceBlock> SAKURA_DIAMOND_ORE = BLOCKS.register("sakura_diamond_ore",
             () -> new DropExperienceBlock(UniformInt.of(3, 7),
@@ -255,6 +290,15 @@ public class BlockRegistry {
             () -> new FacingSlab(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<FacingSlab> TATAMI_SLAB_SUNBURNT = BLOCKS.register("tatami_slab_sunburnt",
             () -> new FacingSlab(BlockBehaviour.Properties.of()));
+    public static final DeferredBlock<Block> TATAMI_STAIRS = BLOCKS.register("tatami_stairs",
+            () -> new TatamiStairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> TATAMI_STAIRS_WAXED = BLOCKS.register("tatami_stairs_waxed",
+            () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> TATAMI_STAIRS_SUNBURNT = BLOCKS.register("tatami_stairs_sunburnt",
+            () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
     public static final DeferredBlock<Block> TATAMI_CARPET = BLOCKS.register("tatami_carpet",
             () -> new CarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)

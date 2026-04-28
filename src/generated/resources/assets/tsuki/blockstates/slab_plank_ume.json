@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "tsuki:block/slab_plank_ume"
+    },
+    "type=double": {
+      "model": "tsuki:block/plank_ume"
+    },
+    "type=top": {
+      "model": "tsuki:block/slab_plank_ume_top"
+    }
+  }
+}

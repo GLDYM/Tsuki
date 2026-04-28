@@ -21,6 +21,9 @@
     "tsuki:buckwheat_bread": {
       "chance": 0.5
     },
+    "tsuki:buggys_meat": {
+      "chance": 1.0
+    },
     "tsuki:bun": {
       "chance": 0.5
     },
@@ -136,6 +139,9 @@
       "chance": 1.0
     },
     "tsuki:hamburger": {
+      "chance": 1.0
+    },
+    "tsuki:hydra_ramen": {
       "chance": 1.0
     },
     "tsuki:hyorogan": {

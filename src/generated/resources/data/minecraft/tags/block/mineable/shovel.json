@@ -1,6 +1,15 @@
 {
   "values": [
     "tsuki:iron_sand",
+    "tsuki:tatami",
+    "tsuki:tatami_waxed",
+    "tsuki:tatami_sunburnt",
+    "tsuki:tatami_slab",
+    "tsuki:tatami_slab_waxed",
+    "tsuki:tatami_slab_sunburnt",
+    "tsuki:tatami_stairs",
+    "tsuki:tatami_stairs_waxed",
+    "tsuki:tatami_stairs_sunburnt",
     "tsuki:tatami_carpet",
     "tsuki:tatami_ns_carpet",
     "tsuki:tatami_tan_carpet",

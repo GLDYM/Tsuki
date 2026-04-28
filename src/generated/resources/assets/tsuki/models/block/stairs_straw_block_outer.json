@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "tsuki:block/straw_block",
+    "side": "tsuki:block/straw_block",
+    "top": "tsuki:block/straw_block"
+  }
+}

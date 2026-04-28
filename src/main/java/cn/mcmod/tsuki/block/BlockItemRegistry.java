@@ -46,6 +46,14 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> BAMBOO_CHARCOAL_BLOCK = ITEMS.register("bamboo_charcoal_block",
             () -> new BlockItem(BlockRegistry.BAMBOO_CHARCOAL_BLOCK.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_BLOCK_STAIRS = ITEMS.register("stairs_bamboo_block",
+            () -> new BlockItem(BlockRegistry.BAMBOO_BLOCK_STAIRS.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_BLOCK_SLAB = ITEMS.register("slab_bamboo_block",
+            () -> new BlockItem(BlockRegistry.BAMBOO_BLOCK_SLAB.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_BLOCK_SUNBURNT_STAIRS = ITEMS.register("stairs_bamboo_block_sunburnt",
+            () -> new BlockItem(BlockRegistry.BAMBOO_BLOCK_SUNBURNT_STAIRS.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_BLOCK_SUNBURNT_SLAB = ITEMS.register("slab_bamboo_block_sunburnt",
+            () -> new BlockItem(BlockRegistry.BAMBOO_BLOCK_SUNBURNT_SLAB.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> SAKURA_PLANK = ITEMS.register("plank_sakura",
             () -> new BlockItem(BlockRegistry.SAKURA_PLANK.get(), Tsuki.defaultItemProperties()));
@@ -55,6 +63,22 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.UME_PLANK.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> BAMBOO_PLANK = ITEMS.register("plank_bamboo",
             () -> new BlockItem(BlockRegistry.BAMBOO_PLANK.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAKURA_PLANK_STAIRS = ITEMS.register("stairs_plank_sakura",
+            () -> new BlockItem(BlockRegistry.SAKURA_PLANK_STAIRS.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_PLANK_STAIRS = ITEMS.register("stairs_plank_maple",
+            () -> new BlockItem(BlockRegistry.MAPLE_PLANK_STAIRS.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_PLANK_STAIRS = ITEMS.register("stairs_plank_ume",
+            () -> new BlockItem(BlockRegistry.UME_PLANK_STAIRS.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_PLANK_STAIRS = ITEMS.register("stairs_plank_bamboo",
+            () -> new BlockItem(BlockRegistry.BAMBOO_PLANK_STAIRS.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAKURA_PLANK_SLAB = ITEMS.register("slab_plank_sakura",
+            () -> new BlockItem(BlockRegistry.SAKURA_PLANK_SLAB.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_PLANK_SLAB = ITEMS.register("slab_plank_maple",
+            () -> new BlockItem(BlockRegistry.MAPLE_PLANK_SLAB.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_PLANK_SLAB = ITEMS.register("slab_plank_ume",
+            () -> new BlockItem(BlockRegistry.UME_PLANK_SLAB.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_PLANK_SLAB = ITEMS.register("slab_plank_bamboo",
+            () -> new BlockItem(BlockRegistry.BAMBOO_PLANK_SLAB.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> TATAMI = ITEMS.register("tatami",
             () -> new BlockItem(BlockRegistry.TATAMI.get(), Tsuki.defaultItemProperties()));
@@ -70,6 +94,13 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.TATAMI_SUNBURNT.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> TATAMI_SLAB_SUNBURNT = ITEMS.register("tatami_slab_sunburnt",
             () -> new BlockItem(BlockRegistry.TATAMI_SLAB_SUNBURNT.get(), Tsuki.defaultItemProperties()));
+
+    public static final DeferredItem<Item> TATAMI_STAIRS = ITEMS.register("tatami_stairs",
+            () -> new BlockItem(BlockRegistry.TATAMI_STAIRS.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> TATAMI_STAIRS_WAXED = ITEMS.register("tatami_stairs_waxed",
+            () -> new BlockItem(BlockRegistry.TATAMI_STAIRS_WAXED.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> TATAMI_STAIRS_SUNBURNT = ITEMS.register("tatami_stairs_sunburnt",
+            () -> new BlockItem(BlockRegistry.TATAMI_STAIRS_SUNBURNT.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> TATAMI_CARPET = ITEMS.register("tatami_carpet",
             () -> new BlockItem(BlockRegistry.TATAMI_CARPET.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> TATAMI_CARPET_WAXED = ITEMS.register("tatami_ns_carpet",
@@ -81,6 +112,10 @@ public class BlockItemRegistry {
 
     public static final DeferredItem<Item> STRAW_BLOCK = ITEMS.register("straw_block",
             () -> new BlockItem(BlockRegistry.STRAW_BLOCK.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> STRAW_BLOCK_STAIRS = ITEMS.register("stairs_straw_block",
+            () -> new BlockItem(BlockRegistry.STRAW_BLOCK_STAIRS.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> STRAW_BLOCK_SLAB = ITEMS.register("slab_straw_block",
+            () -> new BlockItem(BlockRegistry.STRAW_BLOCK_SLAB.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> SAKURA_DIAMOND_ORE = ITEMS.register("sakura_diamond_ore",
             () -> new BlockItem(BlockRegistry.SAKURA_DIAMOND_ORE.get(), Tsuki.defaultItemProperties()));

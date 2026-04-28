@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "tsuki:block/plank_bamboo",
+    "side": "tsuki:block/plank_bamboo",
+    "top": "tsuki:block/plank_bamboo"
+  }
+}

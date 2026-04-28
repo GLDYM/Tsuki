@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "tsuki:block/slab_plank_sakura"
+    },
+    "type=double": {
+      "model": "tsuki:block/plank_sakura"
+    },
+    "type=top": {
+      "model": "tsuki:block/slab_plank_sakura_top"
+    }
+  }
+}

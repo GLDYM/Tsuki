@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "tsuki:block/plank_sakura",
+    "side": "tsuki:block/plank_sakura",
+    "top": "tsuki:block/plank_sakura"
+  }
+}

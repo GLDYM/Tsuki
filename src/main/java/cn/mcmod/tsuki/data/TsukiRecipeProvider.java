@@ -130,6 +130,23 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB, BlockRegistry.TATAMI);
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_WAXED, BlockRegistry.TATAMI_WAXED);
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_SUNBURNT, BlockRegistry.TATAMI_SUNBURNT);
+        this.makeSlab(consumer, BlockRegistry.SAKURA_PLANK_SLAB, BlockRegistry.SAKURA_PLANK);
+        this.makeSlab(consumer, BlockRegistry.MAPLE_PLANK_SLAB, BlockRegistry.MAPLE_PLANK);
+        this.makeSlab(consumer, BlockRegistry.UME_PLANK_SLAB, BlockRegistry.UME_PLANK);
+        this.makeSlab(consumer, BlockRegistry.BAMBOO_PLANK_SLAB, BlockRegistry.BAMBOO_PLANK);
+        this.makeStair(consumer, BlockRegistry.TATAMI_STAIRS, BlockRegistry.TATAMI);
+        this.makeStair(consumer, BlockRegistry.TATAMI_STAIRS_WAXED, BlockRegistry.TATAMI_WAXED);
+        this.makeStair(consumer, BlockRegistry.TATAMI_STAIRS_SUNBURNT, BlockRegistry.TATAMI_SUNBURNT);
+        this.makeStair(consumer, BlockRegistry.SAKURA_PLANK_STAIRS, BlockRegistry.SAKURA_PLANK);
+        this.makeStair(consumer, BlockRegistry.MAPLE_PLANK_STAIRS, BlockRegistry.MAPLE_PLANK);
+        this.makeStair(consumer, BlockRegistry.UME_PLANK_STAIRS, BlockRegistry.UME_PLANK);
+        this.makeStair(consumer, BlockRegistry.BAMBOO_PLANK_STAIRS, BlockRegistry.BAMBOO_PLANK);
+        this.makeSlab(consumer, BlockRegistry.BAMBOO_BLOCK_SLAB, BlockRegistry.BAMBOO_BLOCK);
+        this.makeSlab(consumer, BlockRegistry.BAMBOO_BLOCK_SUNBURNT_SLAB, BlockRegistry.BAMBOO_BLOCK_SUNBURNT);
+        this.makeSlab(consumer, BlockRegistry.STRAW_BLOCK_SLAB, BlockRegistry.STRAW_BLOCK);
+        this.makeStair(consumer, BlockRegistry.BAMBOO_BLOCK_STAIRS, BlockRegistry.BAMBOO_BLOCK);
+        this.makeStair(consumer, BlockRegistry.BAMBOO_BLOCK_SUNBURNT_STAIRS, BlockRegistry.BAMBOO_BLOCK_SUNBURNT);
+        this.makeStair(consumer, BlockRegistry.STRAW_BLOCK_STAIRS, BlockRegistry.STRAW_BLOCK);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.SAKURA_WOOD.get(), 3)
             .pattern("##")
             .pattern("##")
@@ -3749,6 +3766,16 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
 
     public ShapedRecipeBuilder makeLumberToPlank(Supplier<? extends Block> blockOut, Ingredient ingreIn) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockOut.get()).pattern("##").pattern("##").define('#', ingreIn);
+    }
+
+    public void makeStair(RecipeOutput consumer, Supplier<? extends Block> out, Supplier<? extends Block> in) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, out.get(), 4)
+                .pattern("#  ")
+                .pattern("## ")
+                .pattern("###")
+                .define('#', in.get())
+                .unlockedBy("has_item", has(in.get()))
+                .save(consumer);
     }
 
     public ShapelessRecipeBuilder makeLumber(Supplier<? extends Item> ingotOut, Ingredient ingreIn) {

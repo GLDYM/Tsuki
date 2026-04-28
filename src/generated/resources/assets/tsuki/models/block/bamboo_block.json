@@ -1,7 +1,9 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
+    "bottom": "tsuki:block/bamboo_block_top",
     "end": "tsuki:block/bamboo_block_top",
-    "side": "tsuki:block/bamboo_block"
+    "side": "tsuki:block/bamboo_block",
+    "top": "tsuki:block/bamboo_block_top"
   }
 }

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:stairs_plank_ume"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "tsuki:blocks/stairs_plank_ume"
+}
