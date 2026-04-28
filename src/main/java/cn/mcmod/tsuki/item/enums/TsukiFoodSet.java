@@ -944,6 +944,17 @@ public enum TsukiFoodSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    BUGGYS_MEAT(
+            FoodInfo.builder()
+                    .name("buggys_meat")
+                    .amountAndCalories(20, 0.8F)
+                    .water(0.0F)
+                    .compostChance(1.0F)
+                    .nutrients(0.0F, 0.0F, 0.0F, 10.0F, 1.0F)
+                    .decayModifier(0.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     LEMON(
             FoodInfo.builder()
                     .name("lemon")

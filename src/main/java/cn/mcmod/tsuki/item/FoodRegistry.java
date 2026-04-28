@@ -17,7 +17,12 @@ public class FoodRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tsuki.MODID);
 
     public static final Map<TsukiFoodSet, DeferredItem<ItemFoodBase>> FOODSET = ItemRegistryUtil.mapOfKeys(
-            TsukiFoodSet.class, info -> register(info.getFoodInfo().getName(), () -> normalFood(info.getFoodInfo())));
+            TsukiFoodSet.class, info -> register(info.getFoodInfo().getName(), () -> {
+                if (info == TsukiFoodSet.BUGGYS_MEAT) {
+                    return new BuggysMeatItem(Tsuki.defaultItemProperties(), info.getFoodInfo());
+                }
+                return normalFood(info.getFoodInfo());
+            }));
 
     public static final Map<TsukiCuisineSet, DeferredItem<ItemFoodBase>> CUISINES = ItemRegistryUtil.mapOfKeys(
             TsukiCuisineSet.class,

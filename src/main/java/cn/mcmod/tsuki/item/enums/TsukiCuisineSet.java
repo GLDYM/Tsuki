@@ -398,6 +398,17 @@ public enum TsukiCuisineSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    HYDRA_RAMEN(
+            FoodInfo.builder()
+                    .name("hydra_ramen")
+                    .amountAndCalories(20, 0.7F)
+                    .water(35.0F)
+                    .compostChance(1.0F)
+                    .nutrients(2.0F, 0.0F, 0.0F, 10.0F, 2.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     UDON(
             FoodInfo.builder()
                     .name("udon")
@@ -1085,4 +1096,3 @@ public enum TsukiCuisineSet {
         return container;
     }
 }
-

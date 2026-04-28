@@ -762,6 +762,8 @@
     "tsuki.katana.wrong_duel_shinai":  "竹刀必须双手握持。",
     "tsuki.katana.wrong_katana":  "这种刀不能被放入刀鞘。",
     "tsuki.sound.taiko":  "太鼓：鼓噪",
+    "tsuki.tooltip.buggys_meat.1": "Baguchan 喜欢吃的肉 OwO",
+    "tsuki.tooltip.buggys_meat.2": "但射命丸政不太喜欢 OvO",
     "tsuki.tooltip.campfire.fire_remain":  "剩余燃料: %1$s Ticks",
     "tsuki.tooltip.campfire.item_in":  "篝火里的物品: %1$s",
     "tsuki.tooltip.sheath_katana": "对某个模组的拙劣模仿罢了。\n右键可以拔刀横扫攻击。",
