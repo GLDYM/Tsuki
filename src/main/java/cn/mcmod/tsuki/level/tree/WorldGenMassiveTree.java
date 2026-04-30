@@ -1,6 +1,9 @@
 package cn.mcmod.tsuki.level.tree;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,37 +18,94 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+// TODO: Need to Review, too much magic numbers. I am not completely understand Space Colonization.
 public class WorldGenMassiveTree {
-    private static final float PI = (float) Math.PI;
-    private static final byte[] OTHER_COORD_PAIRS = new byte[] {2, 0, 0, 1, 2, 1};
+
+    private static final int ROOT_DIAMETER = 4;
+    private static final int ROOT_RADIUS = ROOT_DIAMETER / 2;
+    private static final double SHROOMLIGHT_CHANCE = 0.03;
 
     private final boolean notify;
     private final Random random = new Random();
-    private final int[] basePos = new int[] {0, 0, 0};
-    private final int[] placeScratch = new int[3];
-    private final int[] checkScratch = new int[3];
 
     private LevelAccessor level;
+    private int baseX;
+    private int baseY;
+    private int baseZ;
+
     private int heightLimit;
     private int minHeight = -1;
     private int height;
-    private int leafBases;
-    private int density;
-    private int[][] leafNodes = new int[0][];
-    private int leafNodesLength;
 
-    private float heightAttenuation = 0.45f;
-    private float branchSlope = 0.45f;
-    private float scaleWidth = 4.0f;
-    private float branchDensity = 3.0f;
-    private int trunkSize = 11;
-    private boolean slopeTrunk;
+    private float heightAttenuation = 0.75f;
+    private float scaleWidth = 1.0f;
+    private float branchDensity = 1.0f;
     private boolean safeGrowth;
-    private int heightLimitLimit = 250;
-    private int leafDistanceLimit = 4;
+    private int heightLimitLimit = 120;
 
     private BlockState leavesState = BlockRegistry.SAKURA_LEAVES.get().defaultBlockState();
     private BlockState logState = BlockRegistry.SAKURA_LOG.get().defaultBlockState();
+    private BlockState shroomlightState = Blocks.SHROOMLIGHT.defaultBlockState();
+
+    private static final class Vec3 {
+        final double x;
+        final double y;
+        final double z;
+
+        Vec3(double x, double y, double z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+        Vec3 add(Vec3 o) {
+            return new Vec3(this.x + o.x, this.y + o.y, this.z + o.z);
+        }
+
+        Vec3 scale(double s) {
+            return new Vec3(this.x * s, this.y * s, this.z * s);
+        }
+
+        double length() {
+            return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+        }
+
+        Vec3 normalize() {
+            double len = this.length();
+            if (len < 1.0e-6) {
+                return new Vec3(0.0, 1.0, 0.0);
+            }
+            return new Vec3(this.x / len, this.y / len, this.z / len);
+        }
+
+        double distanceTo(Vec3 o) {
+            double dx = this.x - o.x;
+            double dy = this.y - o.y;
+            double dz = this.z - o.z;
+            return Math.sqrt(dx * dx + dy * dy + dz * dz);
+        }
+    }
+
+    private static final class Node {
+        final Vec3 pos;
+        final int parent;
+        int children;
+
+        Node(Vec3 pos, int parent) {
+            this.pos = pos;
+            this.parent = parent;
+        }
+    }
+
+    private static final class TrunkProfile {
+        final Vec3 topCenter;
+        final int topRadius;
+
+        TrunkProfile(Vec3 topCenter, int topRadius) {
+            this.topCenter = topCenter;
+            this.topRadius = topRadius;
+        }
+    }
 
     public WorldGenMassiveTree(boolean notify) {
         this.notify = notify;
@@ -56,33 +116,15 @@ public class WorldGenMassiveTree {
     }
 
     public WorldGenMassiveTree setTreeScale(float treeHeight, float width, float leaves) {
-        this.heightLimitLimit = (int) (treeHeight * 12.0D);
-        this.minHeight = this.heightLimitLimit / 2;
-        this.trunkSize = (int) Math.round(treeHeight / 2.0D);
-
-        if (this.minHeight > 30) {
-            this.leafDistanceLimit = 5;
-        } else {
-            this.leafDistanceLimit = Math.max(2, this.minHeight / 8);
-        }
-
-        this.scaleWidth = width;
-        this.branchDensity = leaves;
-        return this;
-    }
-
-    public WorldGenMassiveTree setMinTrunkSize(int radius) {
-        this.trunkSize = Math.max(radius, this.trunkSize);
+        this.heightLimitLimit = Math.max(40, (int) (treeHeight * 12.0f));
+        this.minHeight = Math.max(24, this.heightLimitLimit / 3);
+        this.scaleWidth = Math.max(0.6f, width);
+        this.branchDensity = Math.max(0.4f, leaves);
         return this;
     }
 
     public WorldGenMassiveTree setLeafAttenuation(float attenuation) {
-        this.heightAttenuation = attenuation;
-        return this;
-    }
-
-    public WorldGenMassiveTree setSloped(boolean sloped) {
-        this.slopeTrunk = sloped;
+        this.heightAttenuation = Mth.clamp(attenuation, 0.45f, 0.95f);
         return this;
     }
 
@@ -104,112 +146,264 @@ public class WorldGenMassiveTree {
     public boolean generate(LevelAccessor world, RandomSource rand, BlockPos pos) {
         this.level = world;
         this.random.setSeed(rand.nextLong());
-        this.basePos[0] = pos.getX();
-        this.basePos[1] = pos.getY();
-        this.basePos[2] = pos.getZ();
+        this.baseX = pos.getX();
+        this.baseY = pos.getY();
+        this.baseZ = pos.getZ();
 
         if (this.heightLimit == 0) {
             this.heightLimit = this.heightLimitLimit;
         }
         if (this.minHeight == -1) {
-            this.minHeight = 80;
+            this.minHeight = 48;
         }
         if (!this.validTreeLocation()) {
             return false;
         }
 
-        this.setup();
-        this.generateLeafNodeList();
-        this.generateLeaves();
-        this.generateLeafNodeBases();
-        this.generateTrunk();
+        TrunkProfile trunk = this.generateTrunk();
+        List<Node> skeleton = this.generateSpaceColonizationSkeleton(trunk.topCenter);
+        this.generateBranches(skeleton);
+        this.generateLeafClusters(skeleton);
         return true;
     }
 
-    private void setup() {
-        this.leafBases = Mth.ceil(this.heightLimit * this.heightAttenuation);
-        this.density = Math.max(1, (int) (1.382D + Math.pow(this.branchDensity * this.heightLimit / 13.0D, 2.0D)));
-    }
+    private List<Node> generateSpaceColonizationSkeleton(Vec3 trunkTopCenter) {
+        List<Vec3> attractors = this.sampleCrownAttractors();
+        double influenceRadius = Math.max(22.0, this.height * 0.62 * this.scaleWidth);
+        List<Node> nodes = new ArrayList<>();
 
-    private float layerSize(int yLayer) {
-        if (yLayer < this.leafBases) {
-            return -1.618F;
-        }
+        nodes.add(new Node(new Vec3(trunkTopCenter.x, trunkTopCenter.y, trunkTopCenter.z), -1));
 
-        float mid = this.heightLimit * 0.5F;
-        float dist = this.heightLimit * 0.5F - yLayer;
-        if (dist == 0.0F) {
-            return mid;
-        }
-        if (Math.abs(dist) >= mid) {
-            return 0.0F;
-        }
-        float r = (float) Math.sqrt(mid * mid - dist * dist);
-        return r * 0.5F;
-    }
+        double stepLen = 1.35;
+        double killDist = 3.0;
+        int maxIterations = this.height * 5;
 
-    private void generateLeafNodeList() {
-        int maxNodes = this.density;
-        int[] base = this.basePos;
-        int[][] nodes = new int[maxNodes * this.heightLimit][4];
-        int y = base[1] + this.heightLimit - this.leafDistanceLimit;
-        int added = 1;
-        int trunkTop = base[1] + this.height;
-        int relY = y - base[1];
+        for (int iteration = 0; iteration < maxIterations && !attractors.isEmpty(); iteration++) {
+            Vec3[] dirSums = new Vec3[nodes.size()];
+            int[] counts = new int[nodes.size()];
 
-        nodes[0][0] = base[0];
-        nodes[0][1] = y;
-        nodes[0][2] = base[2];
-        nodes[0][3] = trunkTop;
-        --y;
+            Iterator<Vec3> it = attractors.iterator();
+            while (it.hasNext()) {
+                Vec3 a = it.next();
+                int nearest = -1;
+                double nearestDist = Double.MAX_VALUE;
 
-        while (relY >= 0) {
-            float layerSize = this.layerSize(relY);
-            if (layerSize > 0.0F) {
-                for (int i = 0; i < maxNodes; ++i) {
-                    float radius = this.scaleWidth * layerSize * (this.random.nextFloat() + 0.328f);
-                    float angle = this.random.nextFloat() * 2.0f * PI;
-                    int x = Mth.floor(radius * Mth.sin(angle) + base[0] + 0.5f);
-                    int z = Mth.floor(radius * Mth.cos(angle) + base[2] + 0.5f);
-
-                    int[] leafBottom = new int[] {x, y, z};
-                    int[] leafTop = new int[] {x, y + this.leafDistanceLimit, z};
-                    if (this.checkBlockLine(leafBottom, leafTop) != -1) {
-                        continue;
+                for (int i = 0; i < nodes.size(); i++) {
+                    double d = nodes.get(i).pos.distanceTo(a);
+                    if (d < killDist) {
+                        nearest = -2;
+                        break;
                     }
-
-                    int dx = base[0] - leafBottom[0];
-                    int dz = base[2] - leafBottom[2];
-                    double dist = Math.sqrt(dx * dx + dz * dz);
-                    int branchDrop = (int) (dist * this.branchSlope);
-                    int[] branchStart = new int[] {base[0], Math.min(leafBottom[1] - branchDrop, trunkTop), base[2]};
-                    if (this.checkBlockLine(branchStart, leafBottom) == -1) {
-                        nodes[added][0] = x;
-                        nodes[added][1] = y;
-                        nodes[added][2] = z;
-                        nodes[added][3] = branchStart[1];
-                        ++added;
+                    if (d <= influenceRadius && d < nearestDist) {
+                        nearestDist = d;
+                        nearest = i;
                     }
                 }
+
+                if (nearest == -2) {
+                    it.remove();
+                } else if (nearest >= 0) {
+                    Node n = nodes.get(nearest);
+                    Vec3 dir = new Vec3(a.x - n.pos.x, a.y - n.pos.y, a.z - n.pos.z).normalize();
+                    if (dirSums[nearest] == null) {
+                        dirSums[nearest] = dir;
+                    } else {
+                        dirSums[nearest] = dirSums[nearest].add(dir);
+                    }
+                    counts[nearest]++;
+                }
             }
-            --y;
-            --relY;
+
+            int oldSize = nodes.size();
+            for (int i = 0; i < oldSize; i++) {
+                if (counts[i] == 0) {
+                    continue;
+                }
+
+                Node parent = nodes.get(i);
+                Vec3 averaged = dirSums[i].scale(1.0 / counts[i]).normalize();
+                double rel = Mth.clamp((parent.pos.y - this.baseY) / (double) this.height, 0.0, 1.0);
+                Vec3 upBias = new Vec3(0.0, 0.12 * (1.0 - rel), 0.0);
+                Vec3 droopBias = new Vec3(0.0, -0.15 - 0.10 * rel, 0.0);
+                Vec3 noise = new Vec3(
+                        (this.random.nextDouble() * 2.0 - 1.0) * 0.22,
+                        (this.random.nextDouble() * 2.0 - 1.0) * 0.16,
+                        (this.random.nextDouble() * 2.0 - 1.0) * 0.22);
+                Vec3 growthDir = averaged.add(upBias).add(noise).normalize();
+                growthDir = growthDir.add(droopBias).normalize();
+                Vec3 next = parent.pos.add(growthDir.scale(stepLen));
+
+                if (next.y >= this.baseY + this.height - 2) {
+                    continue;
+                }
+                if (next.y <= this.baseY + 1) {
+                    continue;
+                }
+                if (!this.canOccupy(next)) {
+                    continue;
+                }
+
+                nodes.add(new Node(next, i));
+                parent.children++;
+            }
+
+            if (nodes.size() == oldSize) {
+                break;
+            }
         }
 
-        this.leafNodes = nodes;
-        this.leafNodesLength = added;
+        if (nodes.size() <= 1) {
+            this.seedFallbackBranches(nodes, trunkTopCenter);
+        }
+        return nodes;
     }
 
-    private void generateLeaves() {
-        for (int i = 0; i < this.leafNodesLength; ++i) {
-            int[] node = this.leafNodes[i];
-            int x = node[0];
-            int y = node[1];
-            int z = node[2];
+    private void addBasalAttractors(List<Vec3> attractors, Vec3 start) {
+        int count = 36 + this.random.nextInt(14);
+        for (int i = 0; i < count; i++) {
+            double angle = this.random.nextDouble() * Math.PI * 2.0;
+            double radius = 2.4 + this.random.nextDouble() * 2.0;
+            double yOffset = -2.6 + this.random.nextDouble() * 1.4;
+            attractors.add(new Vec3(
+                    start.x + Math.cos(angle) * radius,
+                    start.y + yOffset,
+                    start.z + Math.sin(angle) * radius));
+        }
+    }
 
-            for (int layer = 0; layer < this.leafDistanceLimit; ++layer) {
-                int size = (layer != 0 && layer != this.leafDistanceLimit - 1) ? 3 : 2;
-                this.genLeafLayer(x, y + layer, z, size);
+    private void seedFallbackBranches(List<Node> nodes, Vec3 start) {
+        int limbs = 4 + this.random.nextInt(3);
+        for (int i = 0; i < limbs; i++) {
+            double angle = (Math.PI * 2.0 * i) / limbs + this.random.nextDouble() * 0.45;
+            double len = 5.0 + this.random.nextDouble() * 3.5;
+            double rise = -2.0 + this.random.nextDouble() * 2.0;
+            Vec3 end = new Vec3(
+                    start.x + Math.cos(angle) * len,
+                    start.y + rise,
+                    start.z + Math.sin(angle) * len);
+            nodes.add(new Node(end, 0));
+            nodes.get(0).children++;
+        }
+    }
+
+    private List<Vec3> sampleCrownAttractors() {
+        int count = (int) (1200 * this.branchDensity * this.scaleWidth);
+        count = Mth.clamp(count, 700, 3500);
+
+        List<Vec3> points = new ArrayList<>(count);
+        double crownHeight = this.height * this.heightAttenuation;
+        double rx = Math.max(10.0, this.height * 0.32 * this.scaleWidth);
+        double rz = rx;
+        double ry = Math.max(11.0, crownHeight * 0.42);
+        double cy = this.baseY + this.height * 0.53;
+
+        for (int i = 0; i < count; i++) {
+            double x;
+            double y;
+            double z;
+            while (true) {
+                x = (this.random.nextDouble() * 2.0 - 1.0) * rx;
+                y = (this.random.nextDouble() * 2.0 - 1.0) * ry;
+                z = (this.random.nextDouble() * 2.0 - 1.0) * rz;
+                double ellipsoid = (x * x) / (rx * rx) + (y * y) / (ry * ry) + (z * z) / (rz * rz);
+                if (ellipsoid <= 1.0) {
+                    break;
+                }
+            }
+
+            // Push points toward the crown shell to form natural branch distribution.
+            double shellBias = 0.78 + this.random.nextDouble() * 0.22;
+            points.add(new Vec3(this.baseX + 0.5 + x * shellBias, cy + y * shellBias, this.baseZ + 0.5 + z * shellBias));
+        }
+        return points;
+    }
+
+    private TrunkProfile generateTrunk() {
+        int trunkTop = this.baseY + (int) (this.height * 0.10);
+        double topCenterX = this.baseX + 0.5;
+        double topCenterZ = this.baseZ + 0.5;
+        int topRadius = ROOT_RADIUS;
+        for (int y = this.baseY; y <= trunkTop; y++) {
+            double rel = (y - this.baseY) / (double) Math.max(1, (trunkTop - this.baseY));
+            double centerX = this.baseX + 0.5;
+            double centerZ = this.baseZ + 0.5;
+
+            double taper = 1.0 - rel * 0.28;
+            double waviness = 1.0;
+            int radius = Mth.clamp((int) Math.round(ROOT_RADIUS * taper * waviness), 3, ROOT_RADIUS + 1);
+            this.placeLogDisk(Mth.floor(centerX), y, Mth.floor(centerZ), radius);
+            topCenterX = centerX;
+            topCenterZ = centerZ;
+            topRadius = radius;
+        }
+        return new TrunkProfile(new Vec3(topCenterX, trunkTop, topCenterZ), topRadius);
+    }
+
+    private void generateBranches(List<Node> nodes) {
+        for (int i = 1; i < nodes.size(); i++) {
+            Node child = nodes.get(i);
+            Node parent = nodes.get(child.parent);
+
+            double parentRel = Mth.clamp((parent.pos.y - this.baseY) / (double) this.height, 0.0, 1.0);
+            int radius = Mth.clamp((int) Math.round((1.0 - parentRel) * 2), 1, 2);
+
+            this.placeBranchSegment(parent.pos, child.pos, radius);
+        }
+    }
+
+    private void generateLeafClusters(List<Node> nodes) {
+        for (Node node : nodes) {
+            if (node.children > 0) {
+                continue;
+            }
+            int y = Mth.floor(node.pos.y);
+            if (y < this.baseY + this.height * 0.20) {
+                continue;
+            }
+            int x = Mth.floor(node.pos.x);
+            int z = Mth.floor(node.pos.z);
+            this.genLeafLayer(x, y - 2, z, 2);
+            this.genLeafLayer(x, y - 1, z, 3);
+            this.genLeafLayer(x, y, z, 3);
+            this.genLeafLayer(x, y + 1, z, 2);
+        }
+    }
+
+    private void placeBranchSegment(Vec3 from, Vec3 to, int radius) {
+        double dx = to.x - from.x;
+        double dy = to.y - from.y;
+        double dz = to.z - from.z;
+        int steps = Math.max(1, (int) Math.ceil(Math.max(Math.abs(dx), Math.max(Math.abs(dy), Math.abs(dz)))));
+
+        Direction.Axis axis = Direction.Axis.Y;
+        if (Math.abs(dx) > Math.abs(dz) && Math.abs(dx) > Math.abs(dy)) {
+            axis = Direction.Axis.X;
+        } else if (Math.abs(dz) > Math.abs(dx) && Math.abs(dz) > Math.abs(dy)) {
+            axis = Direction.Axis.Z;
+        }
+        BlockState state = this.logState.setValue(RotatedPillarBlock.AXIS, axis);
+
+        for (int i = 0; i <= steps; i++) {
+            double t = i / (double) steps;
+            int x = Mth.floor(from.x + dx * t);
+            int y = Mth.floor(from.y + dy * t);
+            int z = Mth.floor(from.z + dz * t);
+            this.placeLogDisk(x, y, z, radius, state);
+        }
+    }
+
+    private void placeLogDisk(int centerX, int y, int centerZ, int radius) {
+        this.placeLogDisk(centerX, y, centerZ, radius, this.logState.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
+    }
+
+    private void placeLogDisk(int centerX, int y, int centerZ, int radius, BlockState state) {
+        int rr = radius * radius;
+        for (int x = -radius; x <= radius; x++) {
+            for (int z = -radius; z <= radius; z++) {
+                if (x * x + z * z > rr) {
+                    continue;
+                }
+                this.placeBlock(new BlockPos(centerX + x, y, centerZ + z), state);
             }
         }
     }
@@ -234,208 +428,72 @@ public class WorldGenMassiveTree {
                             ? (state.isAir() || state.canBeReplaced() || state.is(BlockTags.LEAVES))
                             : !state.is(Blocks.BEDROCK);
                     if (canPlace || block instanceof SaplingBlock) {
-                        this.placeBlock(placePos, this.leavesState);
+                        this.placeBlock(placePos, this.random.nextDouble() < SHROOMLIGHT_CHANCE ? this.shroomlightState : this.leavesState);
                     }
                 }
             }
         }
     }
 
-    private void generateLeafNodeBases() {
-        int minBranchHeight = (int) (this.heightLimit * 0.2f);
-        int[] start = new int[] {this.basePos[0], this.basePos[1], this.basePos[2]};
-        for (int i = 0; i < this.leafNodesLength; ++i) {
-            int[] end = this.leafNodes[i];
-            start[1] = end[3];
-            int relHeight = start[1] - this.basePos[1];
-            if (relHeight >= minBranchHeight) {
-                this.placeBlockLine(start, end, this.logState);
-            }
-        }
-    }
-
-    private void generateTrunk() {
-        int x = this.basePos[0];
-        int y = this.basePos[1];
-        int maxY = this.basePos[1] + this.height;
-        int z = this.basePos[2];
-
-        int[] bottom = new int[] {x, y, z};
-        int[] top = new int[] {x, maxY, z};
-        double lim = 400f / this.trunkSize;
-
-        for (int i = -this.trunkSize; i <= this.trunkSize; i++) {
-            bottom[0] = x + i;
-            top[0] = x + i;
-            for (int j = -this.trunkSize; j <= this.trunkSize; j++) {
-                if ((j * j + i * i) * 4 >= this.trunkSize * this.trunkSize * 5) {
-                    continue;
-                }
-                bottom[2] = z + j;
-                top[2] = z + j;
-                if (this.slopeTrunk) {
-                    top[1] = y + sinc2(lim * i, lim * j, this.height) - (this.random.nextInt(3) - 1);
-                }
-
-                this.placeBlockLine(bottom, top, this.logState);
-                this.placeBlock(new BlockPos(top[0], top[1], top[2]), this.logState.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
-
-            }
-        }
-    }
-
     private boolean validTreeLocation() {
         int maxY = this.level.getMaxBuildHeight() - 1;
-        int adjusted = Math.min(this.heightLimit + this.basePos[1], maxY) - this.basePos[1];
+        int adjusted = Math.min(this.heightLimit + this.baseY, maxY) - this.baseY;
         if (adjusted < this.minHeight) {
             return false;
         }
         this.heightLimit = adjusted;
 
-        BlockPos soilPos = new BlockPos(this.basePos[0], this.basePos[1] - 1, this.basePos[2]);
+        BlockPos soilPos = new BlockPos(this.baseX, this.baseY - 1, this.baseZ);
         BlockState soil = this.level.getBlockState(soilPos);
         if (!soil.isFaceSturdy(this.level, soilPos, Direction.UP)) {
             return false;
         }
 
-        int[] start = new int[] {this.basePos[0], this.basePos[1], this.basePos[2]};
-        int[] end = new int[] {this.basePos[0], this.basePos[1] + this.heightLimit - 1, this.basePos[2]};
-        int freeHeight = this.checkBlockLine(start, end);
-
-        if (freeHeight == -1) {
-            freeHeight = this.heightLimit;
-        }
-        if (freeHeight < this.minHeight) {
+        this.height = (int) (this.heightLimit * this.heightAttenuation);
+        this.height = Mth.clamp(this.height, this.minHeight, this.heightLimit - 1);
+        if (this.height < 20) {
             return false;
         }
-
-        this.heightLimit = Math.min(freeHeight, this.heightLimitLimit);
-        this.height = (int) (this.heightLimit * this.heightAttenuation);
-        if (this.height >= this.heightLimit) {
-            this.height = this.heightLimit - 1;
-        }
-        this.height += this.random.nextInt(this.heightLimit - this.height);
 
         if (!this.safeGrowth) {
             return true;
         }
 
-        int x = this.basePos[0];
-        int y = this.basePos[1];
-        int z = this.basePos[2];
-        int[] trunkStart = new int[] {x, y, z};
-        int[] trunkEnd = new int[] {x, y + this.height, z};
-        double lim = 400f / this.trunkSize;
-
-        for (int i = -this.trunkSize; i <= this.trunkSize; i++) {
-            trunkStart[0] = x + i;
-            trunkEnd[0] = x + i;
-            for (int j = -this.trunkSize; j <= this.trunkSize; j++) {
-                if ((j * j + i * i) * 4 >= this.trunkSize * this.trunkSize * 5) {
-                    continue;
-                }
-                trunkStart[2] = z + j;
-                trunkEnd[2] = z + j;
-                if (this.slopeTrunk) {
-                    trunkEnd[1] = y + sinc2(lim * i, lim * j, this.height);
-                }
-                if (this.checkBlockLine(trunkStart, trunkEnd) != -1) {
-                    return false;
+        int top = this.baseY + this.height;
+        for (int y = this.baseY; y <= top; y++) {
+            for (int x = -ROOT_RADIUS; x <= ROOT_RADIUS; x++) {
+                for (int z = -ROOT_RADIUS; z <= ROOT_RADIUS; z++) {
+                    if (x * x + z * z > ROOT_RADIUS * ROOT_RADIUS) {
+                        continue;
+                    }
+                    BlockPos p = new BlockPos(this.baseX + x, y, this.baseZ + z);
+                    BlockState s = this.level.getBlockState(p);
+                    Block b = s.getBlock();
+                    boolean blocked = !(s.isAir() || s.canBeReplaced() || s.is(BlockTags.LEAVES) || s.is(BlockTags.LOGS)
+                            || b instanceof SaplingBlock);
+                    if (blocked) {
+                        return false;
+                    }
                 }
             }
         }
+
         return true;
     }
 
-    private void placeBlockLine(int[] start, int[] end, BlockState state) {
-        int major = 0;
-        for (byte i = 0; i < 3; ++i) {
-            int delta = end[i] - start[i];
-            this.placeScratch[i] = delta;
-            if (Math.abs(delta) > Math.abs(this.placeScratch[major])) {
-                major = i;
-            }
+    private boolean canOccupy(Vec3 vec) {
+        BlockPos pos = new BlockPos(Mth.floor(vec.x), Mth.floor(vec.y), Mth.floor(vec.z));
+        if (pos.getY() < this.level.getMinBuildHeight() || pos.getY() >= this.level.getMaxBuildHeight()) {
+            return false;
         }
 
-        if (this.placeScratch[major] == 0) {
-            return;
+        BlockState state = this.level.getBlockState(pos);
+        Block block = state.getBlock();
+        if (this.safeGrowth) {
+            return state.isAir() || state.canBeReplaced() || state.is(BlockTags.LEAVES) || state.is(BlockTags.LOGS)
+                    || block instanceof SaplingBlock;
         }
-
-        byte sec = OTHER_COORD_PAIRS[major];
-        byte tertiary = OTHER_COORD_PAIRS[major + 3];
-        byte step = this.placeScratch[major] > 0 ? (byte) 1 : (byte) -1;
-        float secStep = (float) this.placeScratch[sec] / (float) this.placeScratch[major];
-        float thirdStep = (float) this.placeScratch[tertiary] / (float) this.placeScratch[major];
-        int endStep = this.placeScratch[major] + step;
-        int[] cursor = this.placeScratch;
-
-        for (int i = 0; i != endStep; i += step) {
-            cursor[major] = Mth.floor(start[major] + i + 0.5f);
-            cursor[sec] = Mth.floor(start[sec] + i * secStep + 0.5f);
-            cursor[tertiary] = Mth.floor(start[tertiary] + i * thirdStep + 0.5f);
-
-            BlockPos pos = new BlockPos(cursor[0], cursor[1], cursor[2]);
-            Direction.Axis axis = Direction.Axis.Y;
-            int dx = Math.abs(cursor[0] - start[0]);
-            int dz = Math.abs(cursor[2] - start[2]);
-            int m = Math.max(dx, dz);
-            if (m > 0) {
-                axis = dx == m ? Direction.Axis.X : Direction.Axis.Z;
-            }
-            this.placeBlock(pos, state.setValue(RotatedPillarBlock.AXIS, axis));
-        }
-    }
-
-    private int checkBlockLine(int[] start, int[] end) {
-        int major = 0;
-        for (byte i = 0; i < 3; ++i) {
-            int delta = end[i] - start[i];
-            this.checkScratch[i] = delta;
-            if (Math.abs(delta) > Math.abs(this.checkScratch[major])) {
-                major = i;
-            }
-        }
-
-        if (this.checkScratch[major] == 0) {
-            return -1;
-        }
-
-        byte sec = OTHER_COORD_PAIRS[major];
-        byte tertiary = OTHER_COORD_PAIRS[major + 3];
-        byte step = this.checkScratch[major] > 0 ? (byte) 1 : (byte) -1;
-        float secStep = (float) this.checkScratch[sec] / (float) this.checkScratch[major];
-        float thirdStep = (float) this.checkScratch[tertiary] / (float) this.checkScratch[major];
-        int i = 0;
-        int endStep = this.checkScratch[major] + step;
-        int[] cursor = this.checkScratch;
-
-        while (i != endStep) {
-            cursor[major] = start[major] + i;
-            cursor[sec] = Mth.floor(start[sec] + i * secStep);
-            cursor[tertiary] = Mth.floor(start[tertiary] + i * thirdStep);
-
-            BlockPos pos = new BlockPos(cursor[0], cursor[1], cursor[2]);
-            BlockState state = this.level.getBlockState(pos);
-            Block block = state.getBlock();
-
-            boolean blocked;
-            if (this.safeGrowth) {
-                blocked = !(state.isAir()
-                        || state.canBeReplaced()
-                        || state.is(BlockTags.LEAVES)
-                        || state.is(BlockTags.LOGS)
-                        || block instanceof SaplingBlock);
-            } else {
-                blocked = state.is(Blocks.BEDROCK);
-            }
-
-            if (blocked) {
-                break;
-            }
-            i += step;
-        }
-
-        return i == endStep ? -1 : Math.abs(i);
+        return !state.is(Blocks.BEDROCK);
     }
 
     private void placeBlock(BlockPos pos, BlockState state) {
@@ -444,15 +502,5 @@ public class WorldGenMassiveTree {
             return;
         }
         this.level.setBlock(pos, state, this.notify ? 3 : 2);
-    }
-
-    private static int sinc2(double x, double z, int y) {
-        final double pi = Math.PI;
-        final double pi2 = pi / 1.5;
-        double r = Math.sqrt(Math.pow(x / pi, 2) + Math.pow(z / pi, 2)) * pi / 180.0;
-        if (r == 0) {
-            return y;
-        }
-        return (int) Math.round(y * (((Math.sin(r) / r) + (Math.sin(r * pi2) / (r * pi2))) / 2.0));
     }
 }
