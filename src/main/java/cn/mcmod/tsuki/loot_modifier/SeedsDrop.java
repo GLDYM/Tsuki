@@ -34,8 +34,8 @@ public class SeedsDrop {
                     ItemRegistry.ONION_SEEDS.get(), ItemRegistry.RADISH_SEEDS.get(), ItemRegistry.TOMATO_SEEDS.get(),
                     ItemRegistry.RICE_SEEDS.get(), ItemRegistry.RAPESEEDS.get(), ItemRegistry.TARO.get(),
                     ItemRegistry.BUCKWHEAT.get(), ItemRegistry.SOYBEAN.get(), ItemRegistry.RED_BEAN.get(),
-                    ItemRegistry.GRAPE_SEEDS.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get(),
-                    ItemRegistry.VANILLA_SEEDS.get());
+                    ItemRegistry.GRAPE_SEEDS.get(), TsukiNormalItemSet.HOP.getItem().get(),
+                    ItemRegistry.VANILLA_SEEDS.get(), ItemRegistry.PEPPER_SEEDS.get());
             generatedLoot.add(new ItemStack(seeds.get(context.getRandom().nextInt(seeds.size()))));
             return generatedLoot;
         }

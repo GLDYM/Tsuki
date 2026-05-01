@@ -1,5 +1,6 @@
 package cn.mcmod.tsuki.loot_modifier;
 
+import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -26,7 +27,11 @@ public class FishingModifiter extends LootModifier {
 
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        List<Item> seeds = Lists.newArrayList(TsukiFoodSet.SHRIMP.getItem().get(), TsukiFoodSet.BONITO.getItem().get());
+        List<Item> seeds = Lists.newArrayList(
+            TsukiFoodSet.SHRIMP.getItem().get(),
+            TsukiFoodSet.BONITO.getItem().get(),
+            BlockItemRegistry.BAMBOOSHOOT.get()
+        );
         generatedLoot.clear();
         generatedLoot.add(new ItemStack(seeds.get(context.getRandom().nextInt(seeds.size()))));
         return generatedLoot;

@@ -10,6 +10,7 @@ import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.capability.CookingPotItemHandler;
 import cn.mcmod.tsuki.block.machines.CookingPotBlock;
+import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.container.CookingPotContainer;
@@ -27,6 +28,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -90,6 +92,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         if (blockEntity.isHeated(level, pos) && blockEntity.hasInput()) {
             Optional<CookingPotRecipe> recipe = blockEntity.getMatchingRecipe(new RecipeWrapper(blockEntity.inventory));
             if (recipe.isPresent() && blockEntity.canWork(recipe.get(), level)) {
+                blockEntity.renderCookingParticles(level, pos);
                 didInventoryChange = blockEntity.processRecipe(recipe.get(), level);
             } else {
                 blockEntity.recipeTime = 0;
@@ -248,6 +251,22 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         return true;
     }
 
+    private void renderCookingParticles(Level level, BlockPos pos) {
+        if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
+            if (level.random.nextInt(10) != 0) {
+                return;
+            }
+            double x = pos.getX() + 0.5D + (level.random.nextDouble() * 0.5D - 0.25D);
+            double y = pos.getY() + 0.72D;
+            double z = pos.getZ() + 0.5D + (level.random.nextDouble() * 0.5D - 0.25D);
+            double xd = (level.random.nextDouble() - 0.5D) * 0.012D;
+            double yd = 0.01D + level.random.nextDouble() * 0.012D;
+            double zd = (level.random.nextDouble() - 0.5D) * 0.012D;
+            serverLevel.sendParticles(ParticleRegistry.COOKING.get(), x, y, z, 2, xd, yd, zd, 0.0D);
+        }
+    }
+
+
     private boolean moveMealToOutput() {
         ItemStack mealStack = inventory.getStackInSlot(SLOT_MEAL_DISPLAY);
         if (mealStack.isEmpty()) {
@@ -361,7 +380,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
             ItemStack remaining = inventory.insertItem(SLOT_CONTAINER_INPUT, single, false);
             inserted = remaining.isEmpty();
         } else {
-            // TODO: Also for capability.
+            // TODO: Also for capability, first query every slot, then stack.
             for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
                 if (!inventory.getStackInSlot(i).isEmpty()) {
                     continue;
@@ -369,7 +388,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 ItemStack remaining = inventory.insertItem(i, single, false);
                 inserted = remaining.isEmpty();
             }
-            // TODO: Need a config.
+            // TODO: Need a client config to determine whether to allow item stacking. Default is not allow.
             for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
                 if (inventory.getStackInSlot(i).isEmpty()) {
                     continue;
@@ -389,6 +408,45 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         player.setItemInHand(hand, handStack);
         inventoryChanged();
         return true;
+    }
+
+    public boolean tryTakeInputItems(Player player, InteractionHand hand) {
+        ItemStack handStack = player.getItemInHand(hand);
+        if (hand != InteractionHand.MAIN_HAND || !handStack.isEmpty()) {
+            return false;
+        }
+
+        for (int i = SLOT_INPUT_START + SLOT_INPUT_COUNT - 1; i >= SLOT_INPUT_START; --i) {
+            ItemStack slotStack = inventory.getStackInSlot(i);
+            if (slotStack.isEmpty()) {
+                continue;
+            }
+            ItemStack extracted = inventory.extractItem(i, slotStack.getCount(), false);
+            if (extracted.isEmpty()) {
+                continue;
+            }
+            if (!player.getInventory().add(extracted)) {
+                player.drop(extracted, false);
+            }
+            inventoryChanged();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean tryTakeOutputItem(Player player, InteractionHand hand) {
+        ItemStack outputStack = inventory.getStackInSlot(SLOT_OUTPUT);
+        if (!outputStack.isEmpty()) {
+            ItemStack extracted = inventory.extractItem(SLOT_OUTPUT, outputStack.getCount(), false);
+            if (!extracted.isEmpty()) {
+                if (!player.getInventory().add(extracted)) {
+                    player.drop(extracted, false);
+                }
+                inventoryChanged();
+                return true;
+            }
+        }
+        return false;
     }
 
     public void trackRecipeExperience(@Nullable ResourceLocation recipeId) {

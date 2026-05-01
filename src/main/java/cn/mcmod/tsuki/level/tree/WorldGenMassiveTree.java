@@ -23,7 +23,7 @@ public class WorldGenMassiveTree {
 
     private static final int ROOT_DIAMETER = 4;
     private static final int ROOT_RADIUS = ROOT_DIAMETER / 2;
-    private static final double SHROOMLIGHT_CHANCE = 0.03;
+    private static final double SHROOMLIGHT_CHANCE = 0.015;
 
     private final boolean notify;
     private final Random random = new Random();
@@ -97,16 +97,6 @@ public class WorldGenMassiveTree {
         }
     }
 
-    private static final class TrunkProfile {
-        final Vec3 topCenter;
-        final int topRadius;
-
-        TrunkProfile(Vec3 topCenter, int topRadius) {
-            this.topCenter = topCenter;
-            this.topRadius = topRadius;
-        }
-    }
-
     public WorldGenMassiveTree(boolean notify) {
         this.notify = notify;
     }
@@ -160,19 +150,19 @@ public class WorldGenMassiveTree {
             return false;
         }
 
-        TrunkProfile trunk = this.generateTrunk();
-        List<Node> skeleton = this.generateSpaceColonizationSkeleton(trunk.topCenter);
+        List<Node> skeleton = this.generateSpaceColonizationSkeleton();
         this.generateBranches(skeleton);
         this.generateLeafClusters(skeleton);
         return true;
     }
 
-    private List<Node> generateSpaceColonizationSkeleton(Vec3 trunkTopCenter) {
+    private List<Node> generateSpaceColonizationSkeleton() {
         List<Vec3> attractors = this.sampleCrownAttractors();
         double influenceRadius = Math.max(22.0, this.height * 0.62 * this.scaleWidth);
         List<Node> nodes = new ArrayList<>();
+        Vec3 start = new Vec3(this.baseX + 0.5, this.baseY , this.baseZ + 0.5);
 
-        nodes.add(new Node(new Vec3(trunkTopCenter.x, trunkTopCenter.y, trunkTopCenter.z), -1));
+        nodes.add(new Node(start, -1));
 
         double stepLen = 1.35;
         double killDist = 3.0;
@@ -253,23 +243,23 @@ public class WorldGenMassiveTree {
         }
 
         if (nodes.size() <= 1) {
-            this.seedFallbackBranches(nodes, trunkTopCenter);
+            this.seedFallbackBranches(nodes, start);
         }
         return nodes;
     }
 
-    private void addBasalAttractors(List<Vec3> attractors, Vec3 start) {
-        int count = 36 + this.random.nextInt(14);
-        for (int i = 0; i < count; i++) {
-            double angle = this.random.nextDouble() * Math.PI * 2.0;
-            double radius = 2.4 + this.random.nextDouble() * 2.0;
-            double yOffset = -2.6 + this.random.nextDouble() * 1.4;
-            attractors.add(new Vec3(
-                    start.x + Math.cos(angle) * radius,
-                    start.y + yOffset,
-                    start.z + Math.sin(angle) * radius));
-        }
-    }
+    // private void addBasalAttractors(List<Vec3> attractors, Vec3 start) {
+    //     int count = 36 + this.random.nextInt(14);
+    //     for (int i = 0; i < count; i++) {
+    //         double angle = this.random.nextDouble() * Math.PI * 2.0;
+    //         double radius = 2.4 + this.random.nextDouble() * 2.0;
+    //         double yOffset = -2.6 + this.random.nextDouble() * 1.4;
+    //         attractors.add(new Vec3(
+    //                 start.x + Math.cos(angle) * radius,
+    //                 start.y + yOffset,
+    //                 start.z + Math.sin(angle) * radius));
+    //     }
+    // }
 
     private void seedFallbackBranches(List<Node> nodes, Vec3 start) {
         int limbs = 4 + this.random.nextInt(3);
@@ -295,7 +285,7 @@ public class WorldGenMassiveTree {
         double rx = Math.max(10.0, this.height * 0.32 * this.scaleWidth);
         double rz = rx;
         double ry = Math.max(11.0, crownHeight * 0.42);
-        double cy = this.baseY + this.height * 0.53;
+        double cy = this.baseY + this.height * 0.36;
 
         for (int i = 0; i < count; i++) {
             double x;
@@ -318,27 +308,6 @@ public class WorldGenMassiveTree {
         return points;
     }
 
-    private TrunkProfile generateTrunk() {
-        int trunkTop = this.baseY + (int) (this.height * 0.10);
-        double topCenterX = this.baseX + 0.5;
-        double topCenterZ = this.baseZ + 0.5;
-        int topRadius = ROOT_RADIUS;
-        for (int y = this.baseY; y <= trunkTop; y++) {
-            double rel = (y - this.baseY) / (double) Math.max(1, (trunkTop - this.baseY));
-            double centerX = this.baseX + 0.5;
-            double centerZ = this.baseZ + 0.5;
-
-            double taper = 1.0 - rel * 0.28;
-            double waviness = 1.0;
-            int radius = Mth.clamp((int) Math.round(ROOT_RADIUS * taper * waviness), 3, ROOT_RADIUS + 1);
-            this.placeLogDisk(Mth.floor(centerX), y, Mth.floor(centerZ), radius);
-            topCenterX = centerX;
-            topCenterZ = centerZ;
-            topRadius = radius;
-        }
-        return new TrunkProfile(new Vec3(topCenterX, trunkTop, topCenterZ), topRadius);
-    }
-
     private void generateBranches(List<Node> nodes) {
         for (int i = 1; i < nodes.size(); i++) {
             Node child = nodes.get(i);
@@ -357,7 +326,7 @@ public class WorldGenMassiveTree {
                 continue;
             }
             int y = Mth.floor(node.pos.y);
-            if (y < this.baseY + this.height * 0.20) {
+            if (y < this.baseY + this.height * 0.18) {
                 continue;
             }
             int x = Mth.floor(node.pos.x);
@@ -390,10 +359,6 @@ public class WorldGenMassiveTree {
             int z = Mth.floor(from.z + dz * t);
             this.placeLogDisk(x, y, z, radius, state);
         }
-    }
-
-    private void placeLogDisk(int centerX, int y, int centerZ, int radius) {
-        this.placeLogDisk(centerX, y, centerZ, radius, this.logState.setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y));
     }
 
     private void placeLogDisk(int centerX, int y, int centerZ, int radius, BlockState state) {

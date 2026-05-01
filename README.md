@@ -54,3 +54,9 @@ This mod uses source code from the following mods, published here according to t
 - MMLib
 - Farmer’s Delight
 - Kaleidoscope: Cookery
+
+This mod uses assets from the following mods, published here according to their open-source licenses:
+
+- Sakura
+- Farmer’s Delight
+- Kaleidoscope: Cookery

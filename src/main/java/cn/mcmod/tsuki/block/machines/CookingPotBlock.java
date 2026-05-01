@@ -76,6 +76,29 @@ public class CookingPotBlock extends BaseEntityBlock {
         return BlockEntityRegistry.COOKING_POT.get().create(pos, state);
     }
 
+    // F****, it not sync server
+    // @Override
+    // public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    //     BlockEntity blockEntity = level.getBlockEntity(pos);
+    //     if (!(blockEntity instanceof CookingPotBlockEntity cookingPot) || cookingPot.getRecipeTimeTotal() <= 0
+    //             || random.nextInt(2) != 0) {
+    //         CookingPotBlockEntity cookingPotEntity = (CookingPotBlockEntity) blockEntity;
+    //         // Tsuki.getLogger().debug("WTF is you working? {}", cookingPotEntity.isWorking());
+    //         return;
+    //     }
+
+    //     int count = 2 + random.nextInt(2);
+    //     for (int i = 0; i < count; i++) {
+    //         double x = pos.getX() + 0.5D + (random.nextDouble() * 0.5D - 0.25D);
+    //         double y = pos.getY() + 0.72D;
+    //         double z = pos.getZ() + 0.5D + (random.nextDouble() * 0.5D - 0.25D);
+    //         double xd = (random.nextDouble() - 0.5D) * 0.012D;
+    //         double yd = 0.01D + random.nextDouble() * 0.012D;
+    //         double zd = (random.nextDouble() - 0.5D) * 0.012D;
+    //         level.addParticle(ParticleRegistry.COOKING.get(), x, y, z, xd, yd, zd);
+    //     }
+    // }
+
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return SHAPE;
@@ -125,15 +148,24 @@ public class CookingPotBlock extends BaseEntityBlock {
         }
 
         if (!level.isClientSide()) {
-            // container
+            // Meal
             if (cookingPot.tryTakeMealWithContainer(player, handIn)) {
                 return ItemInteractionResult.SUCCESS;
             }
-            // TODO: simulate kaleidoscope, and only insert one item.
+
+            if (cookingPot.tryTakeOutputItem(player, handIn)) {
+                return ItemInteractionResult.SUCCESS;
+            }
+
+            // Insert or take input items
             if (!stack.isEmpty() && state.getValue(OPEN) && cookingPot.tryInsertHeldItem(player, handIn)) {
                 return ItemInteractionResult.SUCCESS;
             }
-            // TODO: simulate farmer's delight, we need a config to determine if block the GUI.
+
+            if (stack.isEmpty() && state.getValue(OPEN) && cookingPot.tryTakeInputItems(player, handIn)) {
+                return ItemInteractionResult.SUCCESS;
+            }
+
             if (!state.getValue(OPEN)) {
                 ((ServerPlayer) player).openMenu(cookingPot, pos);
             }

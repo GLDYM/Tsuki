@@ -13,7 +13,7 @@ public class MassiveTreeFeature extends Feature<NoneFeatureConfiguration> {
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
         return new WorldGenMassiveTree(false)
-                .setTreeScale(7, 1.15f, 0.68f)
+                .setTreeScale(8, 1.3f, 0.68f)
                 .setLeafAttenuation(0.56f)
                 .setSafe(true)
                 .generate(context.level(), context.random(), context.origin());

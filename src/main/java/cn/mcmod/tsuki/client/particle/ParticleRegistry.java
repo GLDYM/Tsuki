@@ -31,4 +31,7 @@ public class ParticleRegistry {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> KITUNEBI_FIRE = PARTICLE_TYPES.register(
             "kitunebi_fire",
             () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> COOKING = PARTICLE_TYPES.register(
+            "cooking",
+            () -> new SimpleParticleType(false));
 }
