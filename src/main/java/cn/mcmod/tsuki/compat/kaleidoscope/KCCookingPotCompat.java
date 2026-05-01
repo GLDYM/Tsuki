@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.TsukiConfig;
+import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.recipes.CookingPotRecipe;
 import com.github.ysbbbbbb.kaleidoscopecookery.crafting.container.StockpotInput;
 import com.github.ysbbbbbb.kaleidoscopecookery.crafting.recipe.StockpotRecipe;
@@ -223,16 +223,17 @@ public final class KCCookingPotCompat {
     }
 
     private static void logDebug(String message, Object... args) {
-        if (TsukiConfig.DEBUG_MODE.get()) {
+        if (TsukiCommonConfig.DEBUG_MODE.get()) {
             Tsuki.getLogger().info("[KC Stockpot Compat] " + message, args);
         }
     }
 
     private static void logDebugDedup(String key, String message, Object... args) {
-        if (!TsukiConfig.DEBUG_MODE.get() || key.equals(lastDebugKey)) {
+        if (!TsukiCommonConfig.DEBUG_MODE.get() || key.equals(lastDebugKey)) {
             return;
         }
         lastDebugKey = key;
         Tsuki.getLogger().info("[KC Stockpot Compat] " + message, args);
     }
 }
+

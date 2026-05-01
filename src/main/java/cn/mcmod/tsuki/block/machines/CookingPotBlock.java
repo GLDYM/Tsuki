@@ -119,7 +119,6 @@ public class CookingPotBlock extends BaseEntityBlock {
         return state.setValue(TRAY_SUPPORT, belowBlock.is(TsukiBlockTags.TRAY_HEAT_SOURCES));
     }
 
-    // TODO: When not Open, simulate Farmer's delight; else simulate kaleidoscope.
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
             Player player, InteractionHand handIn, BlockHitResult result) {
@@ -184,6 +183,20 @@ public class CookingPotBlock extends BaseEntityBlock {
             }
             super.onRemove(state, worldIn, pos, newState, isMoving);
         }
+    }
+
+    @Override
+    protected boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof CookingPotBlockEntity cookingPot && cookingPot.isWorking()) {
+            return 15;
+        }
+        return 0;
     }
 
     @Override

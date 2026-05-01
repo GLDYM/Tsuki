@@ -2,7 +2,7 @@ package cn.mcmod.tsuki.level;
 
 import java.util.List;
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.TsukiConfig;
+import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -122,9 +122,9 @@ public class WorldGenerationRegistry {
 
     private static int resolveIronSandCount() {
         try {
-            return Math.max(1, TsukiConfig.IRON_SAND_AMOUNT.get() / 64);
+            return Math.max(1, TsukiCommonConfig.IRON_SAND_AMOUNT.get() / 64);
         } catch (IllegalStateException ignored) {
-            return Math.max(1, TsukiConfig.IRON_SAND_AMOUNT.getDefault() / 64);
+            return Math.max(1, TsukiCommonConfig.IRON_SAND_AMOUNT.getDefault() / 64);
         }
     }
 
@@ -151,3 +151,4 @@ public class WorldGenerationRegistry {
     // BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, plantedOn)));
     // }
 }
+

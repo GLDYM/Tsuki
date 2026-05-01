@@ -67,6 +67,71 @@ public class CookingPotItemHandler implements IItemHandler {
     @Override
     @Nonnull
     public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+        if (slot < 0 || slot >= exposedSlots.length) {
+            throw new RuntimeException("Slot " + slot + " not in valid range - [0," + exposedSlots.length + ")");
+        }
+
+        if (exposedSlots.length == CookingPotBlockEntity.SLOT_INPUT_COUNT && !stack.isEmpty()) {
+            ItemStack remaining = stack.copy();
+            ItemStack single = stack.copyWithCount(1);
+            int[] emptyCandidates = new int[exposedSlots.length];
+            int emptyCount = 0;
+
+            // 1: query all empty slots, then insert 1 per slot in order.
+            for (int exposedSlot : exposedSlots) {
+                if (!itemHandler.getStackInSlot(exposedSlot).isEmpty()) {
+                    continue;
+                }
+                if (!itemHandler.insertItem(exposedSlot, single, true).isEmpty()) {
+                    continue;
+                }
+                emptyCandidates[emptyCount++] = exposedSlot;
+            }
+
+            for (int i = 0; i < emptyCount && !remaining.isEmpty(); ++i) {
+                if (itemHandler.insertItem(emptyCandidates[i], single, simulate).isEmpty()) {
+                    remaining.shrink(1);
+                }
+            }
+
+            // 2: no empty slots. Repeatedly choose the compatible slot with the
+            // smallest stack count (tie: earlier slot), then insert as much as possible.
+            while (!remaining.isEmpty()) {
+                int bestSlot = -1;
+                int bestCount = Integer.MAX_VALUE;
+
+                for (int exposedSlot : exposedSlots) {
+                    ItemStack slotStack = itemHandler.getStackInSlot(exposedSlot);
+                    if (slotStack.isEmpty()) {
+                        continue;
+                    }
+                    if (!ItemStack.isSameItemSameComponents(slotStack, remaining)) {
+                        continue;
+                    }
+                    if (!itemHandler.insertItem(exposedSlot, single, true).isEmpty()) {
+                        continue;
+                    }
+
+                    int count = slotStack.getCount();
+                    if (count < bestCount) {
+                        bestCount = count;
+                        bestSlot = exposedSlot;
+                    }
+                }
+
+                if (bestSlot == -1) {
+                    break;
+                }
+
+                ItemStack before = remaining;
+                remaining = itemHandler.insertItem(bestSlot, remaining, simulate);
+                if (remaining.getCount() == before.getCount()) {
+                    break;
+                }
+            }
+            return remaining;
+        }
+
         return itemHandler.insertItem(mapSlot(slot), stack, simulate);
     }
 

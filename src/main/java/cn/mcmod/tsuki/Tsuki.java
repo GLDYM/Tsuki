@@ -1,5 +1,7 @@
 package cn.mcmod.tsuki;
 
+import cn.mcmod.tsuki.config.TsukiCommonConfig;
+import cn.mcmod.tsuki.config.TsukiClientConfig;
 import cn.mcmod.tsuki.fluid.FluidTypeRegistry;
 import cn.mcmod.tsuki.item.CreativeModeTabRegistry;
 import org.slf4j.Logger;
@@ -37,6 +39,8 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(Tsuki.MODID)
 public class Tsuki {
@@ -85,7 +89,9 @@ public class Tsuki {
         VillagerRegistry.POI_TYPES.register(modEventBus);
         VillagerRegistry.PROFESSIONS.register(modEventBus);
         CreativeModeTabRegistry.TABS.register(modEventBus);
-        modContainer.registerConfig(ModConfig.Type.COMMON, TsukiConfig.COMMON_CONFIG);
+        modContainer.registerConfig(ModConfig.Type.COMMON, TsukiCommonConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, TsukiClientConfig.SPEC);
+        modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
@@ -98,3 +104,5 @@ public class Tsuki {
         return LOGGER;
     }
 }
+
+

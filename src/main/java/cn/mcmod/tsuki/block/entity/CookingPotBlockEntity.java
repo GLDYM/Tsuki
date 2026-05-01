@@ -13,6 +13,7 @@ import cn.mcmod.tsuki.block.machines.CookingPotBlock;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
+import cn.mcmod.tsuki.config.TsukiClientConfig;
 import cn.mcmod.tsuki.container.CookingPotContainer;
 import cn.mcmod.tsuki.recipes.CookingPotRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
@@ -88,6 +89,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     }
 
     public static void workingTick(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity blockEntity) {
+        boolean wasWorking = blockEntity.isWorking();
         boolean didInventoryChange = false;
         if (blockEntity.isHeated(level, pos) && blockEntity.hasInput()) {
             Optional<CookingPotRecipe> recipe = blockEntity.getMatchingRecipe(new RecipeWrapper(blockEntity.inventory));
@@ -111,6 +113,10 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
 
         if (didInventoryChange) {
             blockEntity.inventoryChanged();
+        }
+
+        if (wasWorking != blockEntity.isWorking()) {
+            level.updateNeighbourForOutputSignal(pos, state.getBlock());
         }
     }
 
@@ -380,7 +386,6 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
             ItemStack remaining = inventory.insertItem(SLOT_CONTAINER_INPUT, single, false);
             inserted = remaining.isEmpty();
         } else {
-            // TODO: Also for capability, first query every slot, then stack.
             for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
                 if (!inventory.getStackInSlot(i).isEmpty()) {
                     continue;
@@ -388,13 +393,14 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 ItemStack remaining = inventory.insertItem(i, single, false);
                 inserted = remaining.isEmpty();
             }
-            // TODO: Need a client config to determine whether to allow item stacking. Default is not allow.
-            for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
-                if (inventory.getStackInSlot(i).isEmpty()) {
-                    continue;
+            if (TsukiClientConfig.ALLOW_COOKING_POT_INPUT_STACKING.get()) {
+                for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
+                    if (inventory.getStackInSlot(i).isEmpty()) {
+                        continue;
+                    }
+                    ItemStack remaining = inventory.insertItem(i, single, false);
+                    inserted = remaining.isEmpty();
                 }
-                ItemStack remaining = inventory.insertItem(i, single, false);
-                inserted = remaining.isEmpty();
             }
         }
 
@@ -634,9 +640,14 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         return recipeTimeTotal;
     }
 
+    public boolean isWorking() {
+        return recipeTime > 0 && recipeTimeTotal > 0;
+    }
+
     @Override
     public void inventoryChanged() {
         super.inventoryChanged();
     }
 
 }
+

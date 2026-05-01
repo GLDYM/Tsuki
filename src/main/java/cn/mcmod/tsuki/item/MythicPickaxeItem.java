@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.item;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.TsukiConfig;
+import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -76,7 +76,7 @@ public class MythicPickaxeItem extends PickaxeItem {
         int level = getMiningLevel(stack);
         int experience = getMiningExperience(stack);
         tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_level", level).withStyle(ChatFormatting.GOLD));
-        tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_experience", experience, TsukiConfig.MYTHIC_PICKAXE_EXP_NEEDED.get())
+        tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_experience", experience, TsukiCommonConfig.MYTHIC_PICKAXE_EXP_NEEDED.get())
                 .withStyle(ChatFormatting.AQUA));
     }
 
@@ -99,7 +99,7 @@ public class MythicPickaxeItem extends PickaxeItem {
         int currentLevel = Math.max(1, tag.getInt(KEY_MINING_LEVEL));
 
         currentExp += addAmount;
-        while (currentExp >= TsukiConfig.MYTHIC_PICKAXE_EXP_NEEDED.get()) {
+        while (currentExp >= TsukiCommonConfig.MYTHIC_PICKAXE_EXP_NEEDED.get()) {
             currentLevel += 1;
             levelUps += 1;
             currentExp = randomRange(useRandom, 1, 30);
@@ -336,3 +336,4 @@ public class MythicPickaxeItem extends PickaxeItem {
         DROP
     }
 }
+
