@@ -12,10 +12,13 @@ public class TsukiClientConfig {
 
     public TsukiClientConfig() {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
-        builder.comment("Client settings").push("client");
+        builder.comment("Client settings")
+                .translation("tsuki.config.category.client")
+                .push("client");
 
         allowCookingPotInputStacking = builder
                 .comment("Allow inserting cooking pot input items into occupied input slots.")
+                .translation("tsuki.config.allow_cooking_pot_input_stacking")
                 .define("allow_cooking_pot_input_stacking", false);
 
         builder.pop();

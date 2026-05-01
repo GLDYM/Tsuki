@@ -16,18 +16,23 @@ public class TsukiCommonConfig {
 
     public TsukiCommonConfig() {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
-        builder.comment("General settings").push("general");
+        builder.comment("General settings")
+                .translation("tsuki.config.category.general")
+                .push("general");
 
         ironSandAmount = builder
                 .comment("Changes generate amount of Iron Sand. Increase value to gen more Iron Sand.")
+                .translation("tsuki.config.iron_sand_amount")
                 .defineInRange("iron_sand_amount", 128, 1, 5120);
 
         mythicPickaxeExpNeeded = builder
                 .comment("Changes the experience needed to upgrade Mythic Pickaxe. Increase value to make it harder to upgrade.")
+                .translation("tsuki.config.mythic_pickaxe_exp_needed")
                 .defineInRange("mythic_pickaxe_exp_needed", 10000, 1, Integer.MAX_VALUE);
 
         debugMode = builder
                 .comment("Enables debug mode.")
+                .translation("tsuki.config.debug_mode")
                 .define("debug_mode", false);
 
         builder.pop();
