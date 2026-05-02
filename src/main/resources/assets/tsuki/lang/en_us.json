@@ -760,6 +760,7 @@
     "tsuki.config.vanilla_weight":  "Vannila Weight",
     "tsuki.config.vanilla_weight.tooltip":  "Changes generate rate of Vanilla. Increase value to gen more Vanilla.",
     "tsuki.haori.texture":  "Haori Texture",
+    "config.jade.plugin_tsuki.machine_info": "Machine Info",
     "tsuki.jade.cooking_pot.container":  "Served on:",
     "tsuki.jei.chopping":  "Chopping",
     "tsuki.jei.chopping.count":  "Need %s Cuts",

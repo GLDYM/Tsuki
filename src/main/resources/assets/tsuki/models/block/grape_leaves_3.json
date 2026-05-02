@@ -1,6 +1,7 @@
 {
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
+    "ambientocclusion": false,
 	"textures": {
 		"0": "block/oak_planks",
 		"1": "tsuki:block/grape_leave_3",

@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
@@ -39,7 +40,13 @@ import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 public class MapleCauldronBlock extends BaseEntityBlock {
     public static final MapCodec<MapleCauldronBlock> CODEC = simpleCodec(MapleCauldronBlock::new);
     public static final IntegerProperty LEVEL = IntegerProperty.create("level", 0, 7);
-    private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    // Match vanilla cauldron shell shape for correct light occlusion and smooth lighting.
+    private static final VoxelShape SHAPE = Shapes.or(
+            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D),
+            Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D),
+            Block.box(14.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
+            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 2.0D),
+            Block.box(0.0D, 0.0D, 14.0D, 16.0D, 16.0D, 16.0D));
 
     public MapleCauldronBlock(BlockBehaviour.Properties properties) {
         super(properties);
@@ -64,6 +71,16 @@ public class MapleCauldronBlock extends BaseEntityBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
+    }
+
+    @Override
+    public VoxelShape getOcclusionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return SHAPE;
+    }
+
+    @Override
+    public boolean useShapeForLightOcclusion(BlockState state) {
+        return true;
     }
 
     @Override
