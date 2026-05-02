@@ -303,7 +303,7 @@ public class BlockRegistry {
             () -> new CarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
                             .sound(SoundType.GRASS)));
-    public static final DeferredBlock<Block> TATAMI_CARPET_WAXED = BLOCKS.register("tatami_ns_carpet",
+    public static final DeferredBlock<Block> TATAMI_CARPET_NS = BLOCKS.register("tatami_ns_carpet",
             () -> new CarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
                             .sound(SoundType.GRASS)));
@@ -311,7 +311,7 @@ public class BlockRegistry {
             () -> new CarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
                             .sound(SoundType.GRASS)));
-    public static final DeferredBlock<Block> TATAMI_CARPET_TAN_WAXED = BLOCKS.register("tatami_tan_ns_carpet",
+    public static final DeferredBlock<Block> TATAMI_CARPET_TAN_NS = BLOCKS.register("tatami_tan_ns_carpet",
             () -> new CarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
                             .sound(SoundType.GRASS)));

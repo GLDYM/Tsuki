@@ -84,9 +84,9 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                 .add(BlockRegistry.TATAMI_STAIRS_WAXED.get())
                 .add(BlockRegistry.TATAMI_STAIRS_SUNBURNT.get())
                 .add(BlockRegistry.TATAMI_CARPET.get())
-                .add(BlockRegistry.TATAMI_CARPET_WAXED.get())
+                .add(BlockRegistry.TATAMI_CARPET_NS.get())
                 .add(BlockRegistry.TATAMI_CARPET_TAN.get())
-                .add(BlockRegistry.TATAMI_CARPET_TAN_WAXED.get())
+                .add(BlockRegistry.TATAMI_CARPET_TAN_NS.get())
                 .add(BlockRegistry.MUSHROOM_FALLEN_LEAVES.get())
                 .add(BlockRegistry.MATSUTAKE_FALLEN_LEAVES.get())
                 .add(BlockRegistry.ZABUTON.get());

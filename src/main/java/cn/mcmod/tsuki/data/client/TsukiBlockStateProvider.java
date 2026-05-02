@@ -205,9 +205,9 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 texture("tatami_tan"),
                 texture("tatami_tan"));
         carpet(BlockRegistry.TATAMI_CARPET.get(), "tatami");
-        carpet(BlockRegistry.TATAMI_CARPET_WAXED.get(), "tatami_ns");
+        carpet(BlockRegistry.TATAMI_CARPET_NS.get(), "tatami_ns");
         carpet(BlockRegistry.TATAMI_CARPET_TAN.get(), "tatami_tan");
-        carpet(BlockRegistry.TATAMI_CARPET_TAN_WAXED.get(), "tatami_tan_ns");
+        carpet(BlockRegistry.TATAMI_CARPET_TAN_NS.get(), "tatami_tan_ns");
 
         ModelFile kawaraCube = models().cubeAll("kawara_block", texture("kawara"));
         ModelFile kawaraAlterCube = models().cubeAll("kawara_block_alter", texture("kawara_alter"));
