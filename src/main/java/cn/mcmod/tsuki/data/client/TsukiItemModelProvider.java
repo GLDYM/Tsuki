@@ -17,7 +17,7 @@ import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
-import cn.mcmod_mmf.mmlib.data.AbstractItemModelProvider;
+import cn.mcmod.mmlib.data.AbstractItemModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;

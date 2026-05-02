@@ -4,7 +4,7 @@ package cn.mcmod.tsuki.block.foods;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
+import cn.mcmod.mmlib.item.info.FoodInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -90,3 +90,4 @@ public class TeishokuBlock extends Block {
         }
     }
 }
+

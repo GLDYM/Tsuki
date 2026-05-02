@@ -5,11 +5,7 @@
     "#minecraft:campfires",
     "#minecraft:fire",
     {
-      "id": "#mmlib:tray_heat_sources",
-      "required": false
-    },
-    {
-      "id": "#mysterious_mountain_lib:tray_heat_sources",
+      "id": "#tsuki:tray_heat_sources",
       "required": false
     },
     {

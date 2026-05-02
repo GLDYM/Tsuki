@@ -3,11 +3,7 @@
   "values": [
     "minecraft:hopper",
     {
-      "id": "#mmlib:heat_conductors",
-      "required": false
-    },
-    {
-      "id": "#mysterious_mountain_lib:heat_conductors",
+      "id": "#tsuki:heat_conductors",
       "required": false
     },
     {

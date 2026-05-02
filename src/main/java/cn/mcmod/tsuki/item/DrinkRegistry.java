@@ -5,7 +5,7 @@ import cn.mcmod.tsuki.item.enums.TsukiAlcoholSet;
 import cn.mcmod.tsuki.item.enums.TsukiCocktailSet;
 import cn.mcmod.tsuki.item.enums.TsukiTeaSet;
 import cn.mcmod.tsuki.item.enums.TsukiWineBottleSet;
-import cn.mcmod_mmf.mmlib.registry.ItemRegistryUtil;
+import cn.mcmod.mmlib.registry.ItemRegistryUtil;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -70,3 +70,4 @@ public class DrinkRegistry {
         return ITEMS.register(name, item);
     }
 }
+

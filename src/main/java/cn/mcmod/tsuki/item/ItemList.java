@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
+import cn.mcmod.mmlib.item.info.FoodInfo;
 
 public final class ItemList {
     public static List<String> MATERIAL_SET = Lists.newArrayList(
@@ -1701,3 +1701,4 @@ public final class ItemList {
                             .build()
             });
 }
+

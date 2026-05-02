@@ -67,5 +67,5 @@
     }
   ],
   "lootTable": "tsuki:curry_powder",
-  "type": "mysterious_mountain_lib:add_loot_table"
+  "type": "tsuki:add_loot_table"
 }

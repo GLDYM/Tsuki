@@ -1,6 +1,6 @@
 package cn.mcmod.tsuki.block;
 
-import cn.mcmod_mmf.mmlib.block.FacingSlab;
+import cn.mcmod.mmlib.block.FacingSlab;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -21,3 +21,4 @@ public class TatamiSlabBlock extends FacingSlab {
     }
 
 }
+

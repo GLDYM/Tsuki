@@ -4,8 +4,8 @@ import java.util.function.Supplier;
 
 import cn.mcmod.tsuki.item.FoodRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
-import cn.mcmod_mmf.mmlib.item.ItemFoodBase;
-import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
+import cn.mcmod.mmlib.item.ItemFoodBase;
+import cn.mcmod.mmlib.item.info.FoodInfo;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
@@ -1096,3 +1096,4 @@ public enum TsukiCuisineSet {
         return container;
     }
 }
+

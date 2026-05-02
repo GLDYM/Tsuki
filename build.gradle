@@ -9,7 +9,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.78'
 }
 
-version = '1.1.7'
+version = '1.2.0'
 group = 'cn.mcmod.tsuki' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 base {
     archivesName = 'Tsuki'
@@ -42,7 +42,7 @@ neoForge {
         }
         data {
             data()
-            programArguments.addAll '--mod', "tsuki", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'mysterious_mountain_lib'
+            programArguments.addAll '--mod', "tsuki", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
         server {
             server()
@@ -113,9 +113,6 @@ repositories {
 }
 
 dependencies {
-    // MMLib, will be embedded in the future, but not now
-    compileOnly files('libs/mysterious_mountain_lib-1.2.15-1.21.1.jar')
-    runtimeOnly files('libs/mysterious_mountain_lib-1.2.15-1.21.1.jar')
     // Ageratum, embedded via Jar-in-Jar.
     // F, we need Ponder.
     // jarJar(implementation("curse.maven:ageratum-1500610:7935946"))

@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.item;
 
-import cn.mcmod_mmf.mmlib.item.ItemFoodBase;
-import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
+import cn.mcmod.mmlib.item.ItemFoodBase;
+import cn.mcmod.mmlib.item.info.FoodInfo;
 import java.util.List;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -22,3 +22,4 @@ public class BuggysMeatItem extends ItemFoodBase {
         }
     }
 }
+

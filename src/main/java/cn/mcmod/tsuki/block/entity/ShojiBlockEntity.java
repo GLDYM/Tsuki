@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.block.entity;
 
 import cn.mcmod.tsuki.block.ShojiBlock;
-import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
+import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -67,3 +67,4 @@ public class ShojiBlockEntity extends SyncedBlockEntity {
         compound.putFloat("animation_progress", animationProgress);
     }
 }
+

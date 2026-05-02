@@ -4,11 +4,7 @@
     "minecraft:magma_block",
     "#tsuki:tray_heat_sources",
     {
-      "id": "#mmlib:heat_sources",
-      "required": false
-    },
-    {
-      "id": "#mysterious_mountain_lib:heat_sources",
+      "id": "#tsuki:heat_sources",
       "required": false
     },
     {

@@ -2,7 +2,7 @@
   "type": "tsuki:fermenting",
   "experience": 10,
   "fluid": {
-    "amount": 500,
+    "amount": 1000,
     "fluid": "tsuki:doburoku"
   },
   "ingredients": [
@@ -12,7 +12,7 @@
   ],
   "recipeTime": 500,
   "result_fluid": {
-    "amount": 250,
+    "amount": 500,
     "fluid": "tsuki:sake"
   },
   "results": [

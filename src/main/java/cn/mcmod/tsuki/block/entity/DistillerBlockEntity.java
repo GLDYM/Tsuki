@@ -7,8 +7,8 @@ import cn.mcmod.tsuki.block.machines.DistillerBlock;
 import cn.mcmod.tsuki.recipes.DistillerRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
-import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
-import cn.mcmod_mmf.mmlib.utils.LevelUtils;
+import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
+import cn.mcmod.mmlib.utils.LevelUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -413,3 +413,4 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
 }
+

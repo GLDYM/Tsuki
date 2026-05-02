@@ -2,7 +2,7 @@
   "type": "tsuki:fermenting",
   "experience": 0,
   "fluid": {
-    "amount": 100,
+    "amount": 500,
     "fluidTag": "c:water/water"
   },
   "ingredients": [
@@ -23,7 +23,7 @@
   },
   "results": [
     {
-      "count": 4,
+      "count": 20,
       "id": "tsuki:yeast"
     }
   ]

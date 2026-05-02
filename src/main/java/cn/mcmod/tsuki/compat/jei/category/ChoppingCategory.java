@@ -7,7 +7,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
 import cn.mcmod.tsuki.recipes.ChoppingRecipe;
-import cn.mcmod_mmf.mmlib.utils.I18nUtils;
+import cn.mcmod.mmlib.utils.I18nUtils;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -107,3 +107,4 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
     }
 
 }
+

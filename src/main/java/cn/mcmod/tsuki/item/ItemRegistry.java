@@ -4,8 +4,8 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.entity.EntityRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
-import cn.mcmod_mmf.mmlib.item.ItemFoodSeeds;
-import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
+import cn.mcmod.mmlib.item.ItemFoodSeeds;
+import cn.mcmod.mmlib.item.info.FoodInfo;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
@@ -85,3 +85,4 @@ public class ItemRegistry {
         return ITEMS.register(name, item);
     }
 }
+

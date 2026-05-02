@@ -17,4 +17,7 @@ public class LootModifiterRegistry {
     public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<? extends IGlobalLootModifier>> FISHING = GLM
             .register("fishing_modifiter",
                     () -> FishingModifiter.CODEC);
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<? extends IGlobalLootModifier>> ADD_LOOT_TABLE = GLM
+            .register("add_loot_table",
+                    () -> AddLootTableModifier.CODEC.get());
 }

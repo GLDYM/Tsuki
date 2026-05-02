@@ -2,7 +2,7 @@
   "type": "tsuki:distillation",
   "experience": 0,
   "fluid": {
-    "amount": 200,
+    "amount": 1000,
     "fluidTag": "tsuki:brewers_alcohol"
   },
   "ingredients": [
@@ -18,7 +18,7 @@
   ],
   "recipeTime": 400,
   "result_fluid": {
-    "amount": 200,
+    "amount": 1000,
     "fluid": "tsuki:liqueur"
   },
   "results": []

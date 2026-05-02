@@ -30,9 +30,3 @@ New dress: Kimono, yukata and Haori.
     versionRange="[1.20,1.21)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.tsuki]]
-    modId="mysterious_mountain_lib"
-    mandatory=true
-    versionRange="[1.5.18-1.20.1,)"
-    ordering="AFTER"
-    side="BOTH"

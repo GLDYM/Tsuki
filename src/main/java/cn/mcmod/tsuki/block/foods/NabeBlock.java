@@ -4,7 +4,7 @@ import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.machines.CookingPotBlock;
 import cn.mcmod.tsuki.tags.TsukiBlockTags;
 import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
-import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
+import cn.mcmod.mmlib.item.info.FoodInfo;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -160,3 +160,4 @@ public class NabeBlock extends Block implements HeatableBlockEntity {
         }
     }
 }
+

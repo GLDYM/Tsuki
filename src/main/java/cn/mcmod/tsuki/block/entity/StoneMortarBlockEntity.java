@@ -10,8 +10,8 @@ import cn.mcmod.tsuki.block.capability.StoneMortarItemHandler;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
-import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
-import cn.mcmod_mmf.mmlib.utils.LevelUtils;
+import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
+import cn.mcmod.mmlib.utils.LevelUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -354,3 +354,4 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     }
 
 }
+

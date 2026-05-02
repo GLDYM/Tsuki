@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.item.enums;
 
-import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
-import cn.mcmod_mmf.mmlib.item.ItemFoodBase;
+import cn.mcmod.mmlib.item.info.FoodInfo;
+import cn.mcmod.mmlib.item.ItemFoodBase;
 import cn.mcmod.tsuki.item.FoodRegistry;
 import java.util.function.Supplier;
 

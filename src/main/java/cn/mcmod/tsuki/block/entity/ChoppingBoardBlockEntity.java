@@ -9,8 +9,8 @@ import javax.annotation.Nullable;
 import cn.mcmod.tsuki.block.machines.ChoppingBoardBlock;
 import cn.mcmod.tsuki.recipes.ChoppingRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
-import cn.mcmod_mmf.mmlib.utils.LevelUtils;
+import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
+import cn.mcmod.mmlib.utils.LevelUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -238,3 +238,4 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         };
     }
 }
+

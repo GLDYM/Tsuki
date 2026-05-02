@@ -6,8 +6,8 @@ import cn.mcmod.tsuki.block.capability.FermenterItemHandler;
 import cn.mcmod.tsuki.block.machines.FermenterBlock;
 import cn.mcmod.tsuki.recipes.FermenterRecipe;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod_mmf.mmlib.block.entity.SyncedBlockEntity;
-import cn.mcmod_mmf.mmlib.utils.LevelUtils;
+import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
+import cn.mcmod.mmlib.utils.LevelUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -412,3 +412,4 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
 }
+

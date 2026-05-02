@@ -13,7 +13,7 @@ import cn.mcmod.tsuki.item.ItemRegistry;
 import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
-import cn.mcmod_mmf.mmlib.data.loot.AbstartctBlockLoot;
+import cn.mcmod.mmlib.data.loot.AbstartctBlockLoot;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Item;
@@ -214,3 +214,4 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                         .add(LootItem.lootTableItem(block).when(lowerHalf))));
     }
 }
+

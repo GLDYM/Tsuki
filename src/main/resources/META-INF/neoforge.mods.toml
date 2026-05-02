@@ -32,12 +32,6 @@ config="tsuki.mixins.json"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tsuki]]
-    modId="mysterious_mountain_lib"
-    type = "required"
-    versionRange="[1.2.11-1.21.1,)"
-    ordering="AFTER"
-    side="BOTH"
-[[dependencies.tsuki]]
     modId="geckolib"
     type = "required"
     versionRange="[4.8.0,)"

@@ -28,10 +28,10 @@ import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import cn.mcmod.tsuki.level.tree.TsukiTreeFeatures;
 import cn.mcmod.mmlib.block.Age3CropBlock;
 import cn.mcmod.mmlib.block.BaseCropBlock;
-import cn.mcmod_mmf.mmlib.block.BaseHorizonBlock;
-import cn.mcmod_mmf.mmlib.block.FacingSlab;
+import cn.mcmod.mmlib.block.BaseHorizonBlock;
+import cn.mcmod.mmlib.block.FacingSlab;
 import cn.mcmod.mmlib.block.HighCropBlock;
-import cn.mcmod_mmf.mmlib.item.info.FoodInfo;
+import cn.mcmod.mmlib.item.info.FoodInfo;
 import java.util.Optional;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
@@ -575,3 +575,4 @@ public class BlockRegistry {
     }
 
 }
+

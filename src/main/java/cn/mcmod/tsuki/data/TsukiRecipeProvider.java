@@ -24,7 +24,7 @@ import cn.mcmod.tsuki.item.enums.TsukiTeaSet;
 import cn.mcmod.tsuki.item.enums.TsukiWineBottleSet;
 import cn.mcmod.tsuki.tags.TsukiFluidTags;
 import cn.mcmod.tsuki.tags.TsukiItemTags;
-import cn.mcmod_mmf.mmlib.data.AbstractRecipeProvider;
+import cn.mcmod.mmlib.data.AbstractRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -3824,3 +3824,4 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .unlockedBy("has_ingredient", has(ingredient.get()));
     }
 }
+
