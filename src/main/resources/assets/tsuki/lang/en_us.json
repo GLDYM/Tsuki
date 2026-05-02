@@ -774,6 +774,12 @@
     "tsuki.jei.tatara.iron.chance":  "Per-roll chance: %s for %s rolls",
     "tsuki.jei.tatara.tamahagane.amount":  "Possible amount: %s",
     "tsuki.jei.tatara.tamahagane.chance":  "Trigger chance: %s",
+    "emi.category.tsuki.cooking": "Japanese Cooking Pot",
+    "emi.category.tsuki.stone_mortar": "Stone Mortar",
+    "emi.category.tsuki.fermenting": "Fermenting",
+    "emi.category.tsuki.distillation": "Distillation Barrel",
+    "emi.category.tsuki.chopping": "Chopping",
+    "emi.category.tsuki.tatara": "Tatara Smelting",
     "tsuki.katana.sheath.not_empty_hand":  "You should pull out your Katana with an empty hand.",
     "tsuki.katana.wrong_duel":  "You shouldn\u0027t wield two Katanas with both hands.",
     "tsuki.katana.wrong_duel_shinai":  "You must hold a Shinai with BOTH hands.",
@@ -790,7 +796,6 @@
     "tsuki.chat.mythic_pickaxe.enchant_up":  "[%s] UP",
     "tsuki.chat.mythic_pickaxe.enchant_max":  "[%s] MAX",
     "tsuki.chat.mythic_pickaxe.enchant_drop":  "[%s] DROP",
-    "wailaharvestability.toolclass.forging_hammer":  "Forging Hammer",
     "tsuki.config.allow_cooking_pot_input_stacking":  "Allow Cooking Pot Input Stacking",
     "tsuki.config.category.client":  "Client Settings",
     "tsuki.config.mythic_pickaxe_exp_needed":  "Mythic Pickaxe EXP Needed",
@@ -799,5 +804,8 @@
     "tsuki.config.allow_cooking_pot_input_stacking.tooltip":  "Allow inserting cooking pot input items into occupied input slots.",
     "tsuki.config.mythic_pickaxe_exp_needed.tooltip":  "Changes the experience needed to upgrade Mythic Pickaxe. Increase value to make it harder to upgrade.",
     "tsuki.config.debug_mode.tooltip":  "Enables Log debug.",
-    "tsuki.config.iron_sand_amount.tooltip":  "Changes generate amount of Iron Sand. Increase value to gen more Iron Sand."
+    "tsuki.config.iron_sand_amount.tooltip":  "Changes generate amount of Iron Sand. Increase value to gen more Iron Sand.",
+
+    "wailaharvestability.toolclass.forging_hammer":  "Forging Hammer"
 }
+

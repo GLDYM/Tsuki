@@ -124,8 +124,13 @@ public final class KCCookingPotCompat {
         }
 
         CookingPotRecipe recipe = new CookingPotRecipe();
+        String sourcePath = sourceId.getPath();
+        String prefixPath = COMPAT_ID_PREFIX.getPath() + "/";
+        if (sourcePath.startsWith(prefixPath)) {
+            sourcePath = sourcePath.substring(prefixPath.length());
+        }
         recipe.setId(ResourceLocation.fromNamespaceAndPath(COMPAT_ID_PREFIX.getNamespace(),
-                COMPAT_ID_PREFIX.getPath() + "/compat_" + sourceId.getPath()));
+                COMPAT_ID_PREFIX.getPath() + "/compat_" + sourcePath));
 
         NonNullList<Ingredient> inputs = NonNullList.create();
         for (Ingredient ingredient : source.getIngredients()) {

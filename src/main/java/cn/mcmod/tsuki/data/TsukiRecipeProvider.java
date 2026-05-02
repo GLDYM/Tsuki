@@ -3007,7 +3007,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
 
     private void registerFermenterRecipe(RecipeOutput consumer) {
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100),
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
             FoodRegistry.FOODSET.get(TsukiFoodSet.PICKELD_RADISH).get(),
             2,
             FluidStack.EMPTY,
@@ -3023,7 +3023,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.STRAW)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "natto_fermenting"));
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100),
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
             FoodRegistry.FOODSET.get(TsukiFoodSet.PICKELD_EGGPLANT).get(),
             2,
             FluidStack.EMPTY,
@@ -3066,9 +3066,9 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.YEAST)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "beer_fermenting"));
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.YEAST).get(),
-            4,
+            40,
             FluidStack.EMPTY,
             0.0F,
             400
@@ -3077,9 +3077,9 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.SUGAR_SUGAR)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yeast_fermenting"));
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100),
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 500),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.YEAST).get(),
-            4,
+            20,
             FluidStack.EMPTY,
             0.0F,
             200
@@ -3108,18 +3108,18 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.KOUJI)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "vinger_fermenting"));
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromFluid((Fluid)FluidRegistry.DOBUROKU.get(), 500),
+            FluidIngredient.fromFluid((Fluid)FluidRegistry.DOBUROKU.get(), 1000),
             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKE_KASU).get(),
             2,
-            new FluidStack((Fluid)FluidRegistry.SAKE.get(), 250),
+            new FluidStack((Fluid)FluidRegistry.SAKE.get(), 500),
             10.0F,
             500
             )
             .requires(TsukiItemTags.DUST_CHARCOAL)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sake_charcoal_fermenting"));
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromFluid((Fluid)FluidRegistry.DOBUROKU.get(), 500),
-            new FluidStack((Fluid)FluidRegistry.SAKE.get(), 100), 10.0F, 1000
+            FluidIngredient.fromFluid((Fluid)FluidRegistry.DOBUROKU.get(), 1000),
+            new FluidStack((Fluid)FluidRegistry.SAKE.get(), 500), 10.0F, 1000
             )
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sake_fermenting"));
         FermenterRecipeBuilder.fermenting(
@@ -3144,8 +3144,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.KOUJI)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "red_vinger_fermenting"));
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
-            new FluidStack((Fluid)FluidRegistry.RED_WINE.get(), 100)
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
+            new FluidStack((Fluid)FluidRegistry.RED_WINE.get(), 500)
             )
             .requires(TsukiItemTags.CROPS_GRAPE)
             .requires(TsukiItemTags.CROPS_GRAPE)
@@ -3153,8 +3153,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.YEAST)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "red_wine_fermenting"));
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
-            new FluidStack((Fluid)FluidRegistry.WHITE_WINE.get(), 100)
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
+            new FluidStack((Fluid)FluidRegistry.WHITE_WINE.get(), 500)
             )
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get())
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get())
@@ -3162,8 +3162,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.YEAST)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "white_wine_fermenting"));
         FermenterRecipeBuilder.fermenting(
-            FluidIngredient.fromFluid((Fluid)FluidRegistry.WHITE_WINE.get(), 200),
-            new FluidStack((Fluid)FluidRegistry.CHAMPAGNE.get(), 100)
+            FluidIngredient.fromFluid((Fluid)FluidRegistry.WHITE_WINE.get(), 1000),
+            new FluidStack((Fluid)FluidRegistry.CHAMPAGNE.get(), 500)
             )
             .requires(TsukiItemTags.SUGAR)
             .requires(TsukiItemTags.YEAST)
@@ -3172,81 +3172,81 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
 
     private void registerDistillerRecipe(RecipeOutput consumer) {
         DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromFluid((Fluid)FluidRegistry.SAKE.get(), 200),
-            new FluidStack((Fluid)FluidRegistry.SHOUCHU.get(), 100)
+            FluidIngredient.fromFluid((Fluid)FluidRegistry.SAKE.get(), 1000),
+            new FluidStack((Fluid)FluidRegistry.SHOUCHU.get(), 500)
             )
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shouchu_from_sake_distillation"));
         DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromFluid((Fluid)FluidRegistry.BEER.get(), 200),
-            new FluidStack((Fluid)FluidRegistry.WHISKEY.get(), 100)
+            FluidIngredient.fromFluid((Fluid)FluidRegistry.BEER.get(), 1000),
+            new FluidStack((Fluid)FluidRegistry.WHISKEY.get(), 500)
             )
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "whiskey_from_beer_distillation"));
         DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
-            new FluidStack((Fluid)FluidRegistry.RUM.get(), 100)
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
+            new FluidStack((Fluid)FluidRegistry.RUM.get(), 500)
         )
             .requires(Items.SUGAR_CANE)
             .requires(Items.SUGAR_CANE)
             .requires(TsukiItemTags.YEAST)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rum_cane_distillation"));
         DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
-            new FluidStack((Fluid)FluidRegistry.RUM.get(), 100)
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
+            new FluidStack((Fluid)FluidRegistry.RUM.get(), 500)
         )
             .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
             .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
             .requires(TsukiItemTags.YEAST)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rum_molasses_distillation"));
         DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
-            new FluidStack((Fluid)FluidRegistry.SHOUCHU.get(), 100)
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
+            new FluidStack((Fluid)FluidRegistry.SHOUCHU.get(), 500)
         )
             .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKE_KASU).get())
             .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKE_KASU).get())
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shouchu_from_sakekasu_distillation"));
         DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
-            new FluidStack((Fluid)FluidRegistry.VODKA.get(), 100)
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
+            new FluidStack((Fluid)FluidRegistry.VODKA.get(), 500)
         )
             .requires(Items.POTATO)
             .requires(Items.POTATO)
             .requires(Items.POTATO)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "vodka_distillation"));
         DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(
-            TsukiFluidTags.BREWERS_ALCOHOL, 200),
-            new FluidStack((Fluid)FluidRegistry.LIQUEUR.get(), 200)
+            TsukiFluidTags.BREWERS_ALCOHOL, 1000),
+            new FluidStack((Fluid)FluidRegistry.LIQUEUR.get(), 1000)
         )
             .requires(TsukiItemTags.FRUITS)
             .requires(TsukiItemTags.FRUITS)
             .requires(Items.SUGAR)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "liqueur_distillation"));
         DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromTag(TsukiFluidTags.BREWERS_ALCOHOL, 200),
-            new FluidStack((Fluid)FluidRegistry.COCOA_LIQUEUR.get(), 200)
+            FluidIngredient.fromTag(TsukiFluidTags.BREWERS_ALCOHOL, 1000),
+            new FluidStack((Fluid)FluidRegistry.COCOA_LIQUEUR.get(), 1000)
         )
             .requires(Items.COCOA_BEANS)
             .requires(Items.COCOA_BEANS)
             .requires(Items.SUGAR)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cocoa_liqueur_distillation"));
         DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(
-            TsukiFluidTags.BREWERS_ALCOHOL, 200),
-            new FluidStack((Fluid)FluidRegistry.GIN.get(), 200)
+            TsukiFluidTags.BREWERS_ALCOHOL, 1000),
+            new FluidStack((Fluid)FluidRegistry.GIN.get(), 1000)
         )
             .requires(TsukiItemTags.GRAIN)
             .requires(TsukiItemTags.FRUITS_BERRIES)
             .requires(TsukiItemTags.FRUITS_BERRIES)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "gin_distillation"));
         DistillerRecipeBuilder.distillation(
-            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
-            new FluidStack((Fluid)FluidRegistry.TEQUILA.get(), 100)
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
+            new FluidStack((Fluid)FluidRegistry.TEQUILA.get(), 500)
         )
             .requires(Items.CACTUS)
             .requires(Items.CACTUS)
             .requires(Items.SUGAR)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tequila_distillation"));
         DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(
-            TsukiFluidTags.GRAPE_WINE, 200),
-            new FluidStack((Fluid)FluidRegistry.BRANDY.get(), 200)
+            TsukiFluidTags.GRAPE_WINE, 1000),
+            new FluidStack((Fluid)FluidRegistry.BRANDY.get(), 1000)
         )
             .requires(TsukiItemTags.SUGAR)
             .requires(TsukiItemTags.SUGAR)

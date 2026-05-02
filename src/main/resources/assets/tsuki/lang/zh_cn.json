@@ -762,7 +762,7 @@
     "tsuki.jade.cooking_pot.container":  "需盛装于：",
     "tsuki.jei.chopping":  "砧板",
     "tsuki.jei.chopping.count":  "需要切%s刀",
-    "tsuki.jei.cooking":  "烹饪锅",
+    "tsuki.jei.cooking":  "日式煮锅",
     "tsuki.jei.distillation":  "蒸馏桶",
     "tsuki.jei.fermenting":  "酿造桶",
     "tsuki.jei.stone_mortar":  "石磨",
@@ -771,6 +771,12 @@
     "tsuki.jei.tatara.iron.chance":  "每轮概率：%s（共%s轮）",
     "tsuki.jei.tatara.tamahagane.amount":  "可能数量：%s",
     "tsuki.jei.tatara.tamahagane.chance":  "触发概率：%s",
+    "emi.category.tsuki.cooking": "日式煮锅",
+    "emi.category.tsuki.stone_mortar": "石磨",
+    "emi.category.tsuki.fermenting": "酿造桶",
+    "emi.category.tsuki.distillation": "蒸馏桶",
+    "emi.category.tsuki.chopping": "砧板",
+    "emi.category.tsuki.tatara": "锻铁炉炼铁",
     "tsuki.katana.sheath.not_empty_hand":  "空出一只手才可以拔刀。",
     "tsuki.katana.wrong_duel":  "你不能双持打刀。",
     "tsuki.katana.wrong_duel_shinai":  "竹刀必须双手握持。",
@@ -786,7 +792,7 @@
     "tsuki.chat.mythic_pickaxe.enchant_up":  "[%s] UP",
     "tsuki.chat.mythic_pickaxe.enchant_max":  "[%s] MAX",
     "tsuki.chat.mythic_pickaxe.enchant_drop":  "[%s] DROP",
-    "wailaharvestability.toolclass.forging_hammer":  "锻造锤",
+
     "tsuki.config.allow_cooking_pot_input_stacking":  "允许烹饪锅叠放",
     "tsuki.config.category.client":  "客户端设置",
     "tsuki.config.mythic_pickaxe_exp_needed":  "神话镐升级所需经验",
@@ -796,5 +802,7 @@
     "tsuki.config.allow_cooking_pot_input_stacking.tooltip":  "允许将烹饪锅输入物品插入到已占用的输入槽位中。",
     "tsuki.config.mythic_pickaxe_exp_needed.tooltip":  "调整神话镐升级所需经验。提高该值会让升级更困难。",
     "tsuki.config.debug_mode.tooltip":  "启用日志调试。",
-    "tsuki.config.iron_sand_amount.tooltip":  "调整铁砂生成数量。提高该值会生成更多铁砂。"
+    "tsuki.config.iron_sand_amount.tooltip":  "调整铁砂生成数量。提高该值会生成更多铁砂。",
+
+    "wailaharvestability.toolclass.forging_hammer":  "锻造锤"
 }

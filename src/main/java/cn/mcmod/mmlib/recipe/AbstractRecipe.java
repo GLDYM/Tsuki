@@ -18,6 +18,10 @@ public abstract class AbstractRecipe implements Recipe<RecipeWrapper> {
         this.id = id;
     }
 
+    public ResourceLocation getId() {
+        return this.id;
+    }
+
     @Override
     public String getGroup() {
         return this.group == null ? "" : this.group;
