@@ -117,6 +117,9 @@ dependencies {
     // F, we need Ponder.
     // jarJar(implementation("curse.maven:ageratum-1500610:7935946"))
     // runtimeOnly ("curse.maven:ageratum-1500610:7935946")
+    // GuideME
+    compileOnly 'org.appliedenergistics:guideme:21.1.15:api'
+    runtimeOnly 'org.appliedenergistics:guideme:21.1.15'
     // Geckolib
     compileOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
     runtimeOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"

@@ -592,7 +592,7 @@
     "item.tsuki.sakura_axe":  "Sakura Diamond Axe",
     "item.tsuki.sakura_coin":  "Sakura Coin",
     "item.tsuki.sakura_diamond":  "Sakura Diamond",
-    "item.tsuki.sakura_guide":  "Harvester Guide",
+    "item.tsuki.sakura_guide":  "Fudoki",
     "item.tsuki.sakura_hammer":  "Sakura Diamond Forging Hammer",
     "item.tsuki.sakura_hoe":  "Sakura Diamond Hoe",
     "item.tsuki.sakura_katana":  "Sakura Katana",
@@ -806,6 +806,8 @@
     "tsuki.config.mythic_pickaxe_exp_needed.tooltip":  "Changes the experience needed to upgrade Mythic Pickaxe. Increase value to make it harder to upgrade.",
     "tsuki.config.debug_mode.tooltip":  "Enables Log debug.",
     "tsuki.config.iron_sand_amount.tooltip":  "Changes generate amount of Iron Sand. Increase value to gen more Iron Sand.",
+
+    "tsuki.guide.name": "Fudoki",
 
     "wailaharvestability.toolclass.forging_hammer":  "Forging Hammer"
 }

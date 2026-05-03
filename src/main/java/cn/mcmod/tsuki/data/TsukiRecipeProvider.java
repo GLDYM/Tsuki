@@ -4,6 +4,7 @@ import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.BlockItemRegistry;
 import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.compat.guideme.TsukiGuideMeCompat;
 import cn.mcmod.tsuki.data.builder.ChoppingBoardRecipeBuilder;
 import cn.mcmod.tsuki.data.builder.CookingPotRecipeBuilder;
 import cn.mcmod.tsuki.data.builder.DistillerRecipeBuilder;
@@ -24,6 +25,7 @@ import cn.mcmod.tsuki.item.enums.TsukiTeaSet;
 import cn.mcmod.tsuki.item.enums.TsukiWineBottleSet;
 import cn.mcmod.tsuki.tags.TsukiFluidTags;
 import cn.mcmod.tsuki.tags.TsukiItemTags;
+import guideme.Guides;
 import cn.mcmod.mmlib.data.AbstractRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import java.util.function.Supplier;
@@ -218,6 +220,22 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.CHEESE)
             .unlockedBy("has_curry", has(TsukiNormalItemSet.CURRY_SAUCE.getItem().get()))
             .save(consumer);
+        whenModLoaded(
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.SAKURA_GUIDE.get())
+                .requires(Items.BOOK)
+                .requires(TsukiNormalItemSet.BAMBOO.getItem().get())
+                .unlockedBy("has_book", has(Items.BOOK)),
+            consumer,
+            "guideme",
+            "sakura_guide_from_bamboo_and_book");
+        whenModLoaded(
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.SAKURA_GUIDE.get())
+                .requires(Items.BOOK)
+                .requires(BlockItemRegistry.SAKURA_SAPLING.get())
+                .unlockedBy("has_sakura_sapling", has(BlockItemRegistry.SAKURA_SAPLING.get())),
+            consumer,
+            "guideme",
+            "sakura_guide_from_sakura_sapling_and_book");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
             .requires(TsukiCuisineSet.RICE_COOKED.getItem().get())
             .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
@@ -3824,4 +3842,5 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .unlockedBy("has_ingredient", has(ingredient.get()));
     }
 }
-
+
+

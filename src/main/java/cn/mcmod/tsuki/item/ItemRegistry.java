@@ -61,6 +61,9 @@ public class ItemRegistry {
             () -> new DeferredSpawnEggItem(EntityRegistry.SAMURAI_ILLAGER, 9804699, 2580065,
                     Tsuki.defaultItemProperties()));
 
+    public static final DeferredItem<Item> SAKURA_GUIDE = register("sakura_guide",
+            () -> new Item(Tsuki.defaultItemProperties().stacksTo(1)));
+
     private static Map<TsukiNormalItemSet, DeferredItem<Item>> createMaterials() {
         Map<TsukiNormalItemSet, DeferredItem<Item>> materials = new EnumMap<>(TsukiNormalItemSet.class);
         for (TsukiNormalItemSet material : TsukiNormalItemSet.values()) {
@@ -85,4 +88,4 @@ public class ItemRegistry {
         return ITEMS.register(name, item);
     }
 }
-
+

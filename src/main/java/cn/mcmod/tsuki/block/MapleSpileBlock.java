@@ -100,7 +100,7 @@ public class MapleSpileBlock extends HorizontalDirectionalBlock {
         Direction facing = state.getValue(FACING);
         BlockPos attachedPos = pos.relative(facing.getOpposite());
         BlockState attached = level.getBlockState(attachedPos);
-        return attached.is(BlockRegistry.MAPLE_SAP_LOG.get()) && !attached.getValue(MapleTreeSapLogBlock.EXHAUSTION);
+        return attached.is(BlockRegistry.MAPLE_SAP_LOG.get()) || attached.is(BlockRegistry.MAPLE_LOG.get());
     }
 
     @Override
