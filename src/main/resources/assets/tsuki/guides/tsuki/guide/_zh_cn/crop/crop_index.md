@@ -1,6 +1,6 @@
 ---
 navigation:
-  title: 农林鱼志
+  title: 农林牧鱼录
   icon: taro
   parent: index.md
   position: 1
@@ -41,9 +41,7 @@ item_ids:
   - tsuki:ume
 ---
 
-# 农林鱼志
-
-该模组增加了多种作物、树苗与鱼类，不同的作物具有不同的种植与收获方式。
+# 农林牧鱼录
 
 ## 作物
 
@@ -58,7 +56,7 @@ item_ids:
 
 ## 树苗
 
-- 竹笋<ItemImage id="tsuki:bamboo_shoot" scale="0.6"/>：于平原、森林、雨林、沼泽、草甸自然生成，也可通过钓鱼获得。生长为桂竹<ItemImage id="tsuki:bamboo" scale="0.6"/>。催熟桂竹可在其周围8格内生长出竹笋。
+- 竹笋<ItemImage id="tsuki:bamboo_shoot" scale="0.6"/>：于平原、森林、雨林、沼泽、草甸自然生成，也可通过钓鱼获得。生长为桂竹<ItemImage id="tsuki:bamboo" scale="0.6"/>。催熟桂竹可在其周围8格生长出竹笋。
 - 山樱<ItemImage id="tsuki:sakura_sapling" scale="0.6"/>：合成获得。高产量的建材。
 - 枫树<ItemImage id="tsuki:maple_sapling_red" scale="0.6"/><ItemImage id="tsuki:maple_sapling_yellow" scale="0.6"/><ItemImage id="tsuki:maple_sapling_orange" scale="0.6"/><ItemImage id="tsuki:maple_sapling_green" scale="0.6"/>：合成获得，亦于枫树林中自然生成。有时会生成枫糖浆原木<ItemImage id="tsuki:maple_sap_log" scale="0.6"/>，可使用枫糖龙头<ItemImage id="tsuki:maple_spile" scale="0.6"/>与枫糖大锅<ItemImage id="tsuki:maple_cauldron" scale="0.6"/>收集枫糖浆。绿色枫树下方有时候会生成毛栗<ItemImage id="tsuki:chestnut_burrs" scale="0.6"/>，右键可收获；切开毛栗<ItemImage id="tsuki:chestnut_burrs" scale="0.6"/>可获得板栗<ItemImage id="tsuki:chestnut" scale="0.6"/>。
 - 梅树<ItemImage id="tsuki:ume_sapling" scale="0.6"/>：合成获得。梅树树叶会不定期生长出梅子<ItemImage id="tsuki:ume" scale="0.6"/>，右键可收获。
