@@ -20,6 +20,9 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
+sourceSets {
+    guideRun
+}
 
 neoForge {
     // Develop against NeoForge for Minecraft 1.21.1
@@ -34,6 +37,14 @@ neoForge {
         // Omit the "v"-prefix in mappingsVersion
         minecraftVersion = "1.21"
         mappingsVersion = "2024.11.10"
+    }
+
+    addModdingDependenciesTo sourceSets.guideRun
+
+    mods {
+        "tsuki" {
+            sourceSet sourceSets.main
+        }
     }
 
     runs {
@@ -53,11 +64,13 @@ neoForge {
 
             logLevel = org.slf4j.event.Level.DEBUG
         }
-    }
 
-    mods {
-        "tsuki" {
-            sourceSet sourceSets.main
+        guide {
+            client()
+            sourceSet = sourceSets.guideRun
+            loadedMods = [mods.tsuki]
+            systemProperty 'guideme.tsuki.guide.sources', file('src/main/resources/assets/tsuki/guides/tsuki/guide').getAbsolutePath()
+            systemProperty 'guideme.showOnStartup', 'tsuki:guide'
         }
     }
 }
@@ -119,20 +132,20 @@ dependencies {
     // runtimeOnly ("curse.maven:ageratum-1500610:7935946")
     // GuideME
     compileOnly 'org.appliedenergistics:guideme:21.1.15:api'
-    runtimeOnly 'org.appliedenergistics:guideme:21.1.15'
+    // runtimeOnly 'org.appliedenergistics:guideme:21.1.15'
     // Geckolib
     compileOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
     runtimeOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
     // Patchouli, will be removed in the future, but not now
-    compileOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
-    runtimeOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
+    // compileOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
+    // runtimeOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
 
     // Compact
     // Epic Fight, Hm?
     // implementation ("maven.modrinth:epic-fight:20.9.2")
     // CuriosAPI, now we don't use it.
     compileOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api")
-    runtimeOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1")
+    // runtimeOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1")
     // Jade
     compileOnly "curse.maven:jade-324717:7545219"
     runtimeOnly "curse.maven:jade-324717:7545219"
@@ -155,11 +168,15 @@ dependencies {
 
     // Dev Tools
     // MCMOD Export Tool
-    runtimeOnly "curse.maven:let-me-see-see-your-code-1229018:6777654"
+    // runtimeOnly "curse.maven:let-me-see-see-your-code-1229018:6777654"
     // Loot Info
-    runtimeOnly "curse.maven:advanced-loot-info-1205426:7938903"
+    // runtimeOnly "curse.maven:advanced-loot-info-1205426:7938903"
     // We need a tech mod to test fluid.
     runtimeOnly "curse.maven:create-328085:7963363"
+
+    // Guide
+    guideRunRuntimeOnly 'org.appliedenergistics:guideme:21.1.15'
+    guideRunRuntimeOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
 }
 
 // Example for how to get properties into the manifest for reading at runtime.

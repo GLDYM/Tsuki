@@ -3,6 +3,8 @@ navigation:
   title: 风土记
   icon: sakura_guide
   position: 0
+item_ids:
+  - tsuki:sakura_guide
 ---
 
 # 风土记
@@ -18,11 +20,11 @@ navigation:
 - [农林牧鱼录](crop/crop_index.md)
 - 烹饪饮食录
 - 煮茶调酒录
-- 矿石资源录
-- 锻铁炼钢录
+- [矿产冶炼录](smithing/smithing_index.md)
 - [服饰装甲录](armor/armor_index.md)
 - 工具武器录
 - 建筑装饰录
-- 商业贸易录
-- 模组联动录
-- 模组历史录
+- [商业贸易录](villager/villager_index.md)
+- [古迹遗址录](worldgen/worldgen_index.md)
+- [模组联动录](compat/compat_index.md)
+- [模组大事记](history.md)

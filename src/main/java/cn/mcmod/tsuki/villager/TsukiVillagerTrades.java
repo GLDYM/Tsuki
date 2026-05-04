@@ -191,8 +191,8 @@ public final class TsukiVillagerTrades {
         trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.YUKATA_YELLOW.get(), 1, 16, 22, 4, 15));
         trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.SHINAI.get(), 1, 8, 10, 4, 15));
         trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 10, 14, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.SHINAI.get(), 1, 6, 8, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 6, 10, 4, 15));
+        trades.get(3).add(buyWithCoins(TsukiArmorToolRegistry.SHINAI.get(), 1, 6, 8, 4, 15));
+        trades.get(3).add(buyWithCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 6, 10, 4, 15));
 
         trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
         trades.get(4).add(buyWithCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 48, 8, 30));

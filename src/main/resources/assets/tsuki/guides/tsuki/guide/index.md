@@ -18,12 +18,13 @@ This guide follows that tradition, documenting the agriculture, customs, geograp
 - [Crops & Forestry](crop/crop_index.md)
 - Cooking & Food
 - Tea & Drinks
-- Ore & Resources
+- [Ore & Smelting](smithing/smithing_index.md)
 - Smithing & Forging
 - [Clothing & Armor](armor/armor_index.md)
 - Tools & Weapons
 - Building & Decoration
 - Villager Trades
-- Mod Integration
-- Mod History
+- [Structures](worldgen/worldgen_index.md)
+- [Mod Integration](compat/compat_index.md)
+- [Mod History](history.md)
 
