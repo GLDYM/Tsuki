@@ -2,6 +2,7 @@ package cn.mcmod.tsuki;
 
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.config.TsukiClientConfig;
+import cn.mcmod.tsuki.client.TsukiClient;
 import cn.mcmod.tsuki.fluid.FluidTypeRegistry;
 import cn.mcmod.tsuki.item.CreativeModeTabRegistry;
 import org.slf4j.Logger;
@@ -34,14 +35,14 @@ import cn.mcmod.tsuki.sound.SoundEventRegistry;
 import cn.mcmod.tsuki.sound.JukeboxSongRegistry;
 import cn.mcmod.tsuki.villager.VillagerRegistry;
 import net.minecraft.world.item.Item;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.client.gui.ConfigurationScreen;
-import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.fml.loading.FMLEnvironment;
 
 @Mod(Tsuki.MODID)
 public class Tsuki {
@@ -97,7 +98,9 @@ public class Tsuki {
 
         modContainer.registerConfig(ModConfig.Type.COMMON, TsukiCommonConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.CLIENT, TsukiClientConfig.SPEC);
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        if (FMLEnvironment.dist == Dist.CLIENT) {
+            TsukiClient.registerConfigScreen(modContainer);
+        }
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
@@ -110,4 +113,3 @@ public class Tsuki {
         return LOGGER;
     }
 }
-

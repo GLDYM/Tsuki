@@ -22,11 +22,8 @@ public class BambooBlock extends RotatedPillarBlock {
     @Override
     public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         super.randomTick(state, worldIn, pos, rand);
-        if (worldIn.isDay()) {
-            if (worldIn.canSeeSky(pos.above()) || worldIn.getBlockState(pos.above()).is(this)
-                    || worldIn.getBlockState(pos.above()).is(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get())) {
-                worldIn.setBlockAndUpdate(pos, BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get().withPropertiesOf(state));
-            }
+        if (worldIn.isDay() && worldIn.canSeeSky(pos.above())) {
+            worldIn.setBlockAndUpdate(pos, BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get().withPropertiesOf(state));
         }
     }
 }

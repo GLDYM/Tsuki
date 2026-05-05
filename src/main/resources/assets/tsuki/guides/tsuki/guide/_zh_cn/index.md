@@ -21,9 +21,9 @@ item_ids:
 - 烹饪饮食录
 - 煮茶调酒录
 - [矿产冶炼录](smithing/smithing_index.md)
-- [服饰装甲录](armor/armor_index.md)
+- [服饰护甲录](armor/armor_index.md)
 - 工具武器录
-- 建筑装饰录
+- [建筑装饰录](decoration/decoration_index.md)
 - [商业贸易录](villager/villager_index.md)
 - [古迹遗址录](worldgen/worldgen_index.md)
 - [模组联动录](compat/compat_index.md)

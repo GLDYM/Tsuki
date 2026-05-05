@@ -1,11 +1,11 @@
 ---
 navigation:
-  title: 服饰装甲录
+  title: 服饰护甲录
   icon: straw_hat
   position: 5
 ---
 
-# 服饰装甲录
+# 服饰护甲录
 
 ## 服饰
 
