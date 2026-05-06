@@ -21,6 +21,8 @@ Back in the 1.7.10 era, I encountered these Japanese-style mods through modpacks
 
 That is Tsuki. I do not know what the next five years will look like, and I do not know how long I will be able to maintain this mod; but if even one person in the future tries to remake these Japanese-style mods, then this attempt will have meaning.
 
+> Author: 北辰星光 Polaris_Light  Copyright: CC-BY-NC-ND 4.0
+
 ## Update Log
 
 - 1.2.1 This page was created.

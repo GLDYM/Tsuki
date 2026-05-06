@@ -82,6 +82,16 @@ public class StoneMortarBlock extends BaseEntityBlock {
     }
 
     @Override
+    protected boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
+        return blockState.getValue(WORKING) ? 15 : 0;
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
         builder.add(WORKING);
@@ -95,5 +105,4 @@ public class StoneMortarBlock extends BaseEntityBlock {
                 StoneMortarBlockEntity::workingTick);
     }
 }
-
 

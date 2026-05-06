@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class WindBellBlock extends FloorMountedLanternBlock {
+public class WindBellBlock extends CustomLanternBlock {
     public static final MapCodec<WindBellBlock> CODEC = simpleCodec(WindBellBlock::new);
 
     public WindBellBlock(Properties properties) {

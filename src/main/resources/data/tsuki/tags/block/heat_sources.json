@@ -4,10 +4,6 @@
     "minecraft:magma_block",
     "#tsuki:tray_heat_sources",
     {
-      "id": "#tsuki:heat_sources",
-      "required": false
-    },
-    {
       "id": "#farmersdelight:heat_sources",
       "required": false
     }

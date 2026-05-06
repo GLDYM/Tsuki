@@ -40,11 +40,11 @@ public class DrinkItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         if (!level.isClientSide) {
-            for (MobEffectInstance effect : effects) {
-                entity.addEffect(new MobEffectInstance(effect));
-            }
+            DrinkEffectHelper.applyEffects(entity, effects);
             if (alcoholic && level.getRandom().nextFloat() < 0.7F) {
-                entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
+                DrinkEffectHelper.applyEffects(entity, new MobEffectInstance[] {
+                        new MobEffectInstance(MobEffects.CONFUSION, 200, 0)
+                });
             }
         }
 
@@ -83,8 +83,6 @@ public class DrinkItem extends Item {
     }
 
     protected void showToolTip(List<Component> tooltip) {
-        if (toolTip != null) {
-            tooltip.add(toolTip);
-        }
+        DrinkEffectHelper.appendEffectTooltip(tooltip, effects, toolTip);
     }
 }

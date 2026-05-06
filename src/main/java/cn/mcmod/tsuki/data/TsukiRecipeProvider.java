@@ -74,7 +74,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
 
     private void registerSmithingRecipe(RecipeOutput consumer) {
         SmithingTransformRecipeBuilder.smithing(
-            Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+            Ingredient.of(Items.PAPER),
             Ingredient.of(TsukiArmorToolRegistry.SAKURA_PICKAXE.get()),
             Ingredient.of(Items.NETHERITE_INGOT),
             RecipeCategory.TOOLS,

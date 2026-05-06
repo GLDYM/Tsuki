@@ -5,8 +5,8 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import cn.mcmod.tsuki.container.StoneMortarContainer;
 import cn.mcmod.tsuki.block.capability.StoneMortarItemHandler;
+import cn.mcmod.tsuki.container.StoneMortarContainer;
 import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
 import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
 import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
@@ -38,8 +38,7 @@ import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuProvider {
 
     private final ItemStackHandler inventory;
-    private final IItemHandler inputHandler;
-    private final IItemHandler outputHandler;
+    private final StoneMortarItemHandler itemHandler;
 
     protected final ContainerData blockData;
     private final Object2IntOpenHashMap<ResourceLocation> experienceTracker;
@@ -54,8 +53,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         super(BlockEntityRegistry.STONE_MORTAR.get(), pos, state);
 
         this.inventory = createHandler();
-        this.inputHandler = new StoneMortarItemHandler(inventory, Direction.UP);
-        this.outputHandler = new StoneMortarItemHandler(inventory, Direction.DOWN);
+        this.itemHandler = new StoneMortarItemHandler(inventory);
         this.blockData = createIntArray();
         this.experienceTracker = new Object2IntOpenHashMap<>();
         this.checkNewRecipe = true;
@@ -91,6 +89,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         }
         if (state.getValue(StoneMortarBlock.WORKING) != isWorking) {
             level.setBlock(pos, state.setValue(StoneMortarBlock.WORKING, isWorking), 3);
+            level.updateNeighbourForOutputSignal(pos, state.getBlock());
         }
     }
 
@@ -248,7 +247,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
 
     @Nonnull
     public IItemHandler getItemHandler(@Nullable Direction side) {
-        return side == null || side.equals(Direction.UP) ? inputHandler : outputHandler;
+        return itemHandler.forSide(side);
     }
 
     public ItemStackHandler getInventory() {

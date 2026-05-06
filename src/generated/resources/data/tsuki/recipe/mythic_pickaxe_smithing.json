@@ -11,6 +11,6 @@
     "id": "tsuki:mythic_pickaxe"
   },
   "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
+    "item": "minecraft:paper"
   }
 }

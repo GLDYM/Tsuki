@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.capability.CookingPotItemHandler;
+import cn.mcmod.tsuki.block.capability.SingleFluidHandler;
 import cn.mcmod.tsuki.block.machines.CookingPotBlock;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
@@ -42,6 +43,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
@@ -59,11 +61,10 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     public static final int SLOT_OUTPUT = 11;
     public static final int SLOT_COUNT = 12;
     private final ItemStackHandler inventory;
-    private final IItemHandler inputHandler;
-    private final IItemHandler containerHandler;
-    private final IItemHandler outputHandler;
+    private final CookingPotItemHandler itemHandler;
 
     private final FluidTank fluidTank;
+    private final SingleFluidHandler fluidHandler;
     protected final ContainerData blockData;
     private final Object2IntOpenHashMap<ResourceLocation> experienceTracker;
 
@@ -78,11 +79,10 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         super(BlockEntityRegistry.COOKING_POT.get(), pos, state);
 
         this.inventory = createHandler();
-        this.inputHandler = new CookingPotItemHandler(inventory, Direction.UP);
-        this.containerHandler = new CookingPotItemHandler(inventory, Direction.NORTH);
-        this.outputHandler = new CookingPotItemHandler(inventory, Direction.DOWN);
+        this.itemHandler = new CookingPotItemHandler(inventory);
         this.blockData = createIntArray();
         this.fluidTank = createFluidHandler();
+        this.fluidHandler = new SingleFluidHandler(fluidTank);
         this.experienceTracker = new Object2IntOpenHashMap<>();
         this.checkNewRecipe = true;
         this.mealContainer = ItemStack.EMPTY;
@@ -478,21 +478,12 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
 
     @Nonnull
     public IItemHandler getItemHandler(@Nullable Direction side) {
-        if (side == null) {
-            return inventory;
-        }
-        if (side == Direction.UP) {
-            return inputHandler;
-        }
-        if (side == Direction.DOWN) {
-            return outputHandler;
-        }
-        return containerHandler;
+        return itemHandler.forSide(side);
     }
 
     @Nonnull
-    public FluidTank getFluidHandler(@Nullable Direction side) {
-        return this.fluidTank;
+    public IFluidHandler getFluidHandler(@Nullable Direction side) {
+        return this.fluidHandler.forSide(side);
     }
 
     public ItemStackHandler getInventory() {

@@ -38,6 +38,12 @@ config="tsuki.mixins.json"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.tsuki]]
+    modId="guideme"
+    type = "optional"
+    versionRange="[21,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tsuki]]
     modId="terrablender"
     type = "optional"
     versionRange="[4.1.0,)"

@@ -50,6 +50,14 @@ public class ShojiBlock extends BaseEntityBlock {
     protected static final VoxelShape SHAPE_OPEN_SOUTH = Block.box(0.0D, 0.0D, 7.0D, 3.0D, 16.0D, 9.0D);
     protected static final VoxelShape SHAPE_OPEN_WEST = Block.box(7.0D, 0.0D, 13.0D, 9.0D, 16.0D, 16.0D);
     protected static final VoxelShape SHAPE_OPEN_EAST = Block.box(7.0D, 0.0D, 0.0D, 9.0D, 16.0D, 3.0D);
+    protected static final VoxelShape INTERACTION_SHAPE_OPEN_NORTH = Block.box(13.0D, 0.0D, 7.0D, 29.0D, 16.0D,
+            9.0D);
+    protected static final VoxelShape INTERACTION_SHAPE_OPEN_SOUTH = Block.box(-13.0D, 0.0D, 7.0D, 3.0D, 16.0D,
+            9.0D);
+    protected static final VoxelShape INTERACTION_SHAPE_OPEN_WEST = Block.box(7.0D, 0.0D, 13.0D, 9.0D, 16.0D,
+            29.0D);
+    protected static final VoxelShape INTERACTION_SHAPE_OPEN_EAST = Block.box(7.0D, 0.0D, -13.0D, 9.0D, 16.0D,
+            3.0D);
 
     private final int type;
 
@@ -102,13 +110,7 @@ public class ShojiBlock extends BaseEntityBlock {
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         Direction facing = state.getValue(FACING);
         if (state.getValue(OPEN)) {
-            return switch (facing) {
-                case NORTH -> SHAPE_OPEN_NORTH;
-                case SOUTH -> SHAPE_OPEN_SOUTH;
-                case WEST -> SHAPE_OPEN_WEST;
-                case EAST -> SHAPE_OPEN_EAST;
-                default -> SHAPE_NS;
-            };
+            return getOpenInteractionShape(facing);
         }
         return (facing == Direction.NORTH || facing == Direction.SOUTH) ? SHAPE_NS : SHAPE_EW;
     }
@@ -129,6 +131,16 @@ public class ShojiBlock extends BaseEntityBlock {
         return (facing == Direction.NORTH || facing == Direction.SOUTH) ? SHAPE_NS : SHAPE_EW;
     }
 
+    private static VoxelShape getOpenInteractionShape(Direction facing) {
+        return switch (facing) {
+            case NORTH -> INTERACTION_SHAPE_OPEN_NORTH;
+            case SOUTH -> INTERACTION_SHAPE_OPEN_SOUTH;
+            case WEST -> INTERACTION_SHAPE_OPEN_WEST;
+            case EAST -> INTERACTION_SHAPE_OPEN_EAST;
+            default -> SHAPE_NS;
+        };
+    }
+
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,
             BlockHitResult hitResult) {
@@ -139,17 +151,21 @@ public class ShojiBlock extends BaseEntityBlock {
         }
 
         if (!level.isClientSide) {
-            boolean open = !baseState.getValue(OPEN);
-            BlockState newLower = baseState.setValue(OPEN, open);
-            level.setBlock(basePos, newLower, 3);
-
-            BlockPos upperPos = basePos.above();
-            BlockState upperState = level.getBlockState(upperPos);
-            if (upperState.is(this) && upperState.getValue(HALF) == DoubleBlockHalf.UPPER) {
-                level.setBlock(upperPos, upperState.setValue(OPEN, open), 3);
-            }
+            toggle(level, basePos, baseState);
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    public static void toggle(Level level, BlockPos basePos, BlockState baseState) {
+        boolean open = !baseState.getValue(OPEN);
+        BlockState newLower = baseState.setValue(OPEN, open);
+        level.setBlock(basePos, newLower, 3);
+
+        BlockPos upperPos = basePos.above();
+        BlockState upperState = level.getBlockState(upperPos);
+        if (upperState.getBlock() == baseState.getBlock() && upperState.getValue(HALF) == DoubleBlockHalf.UPPER) {
+            level.setBlock(upperPos, upperState.setValue(OPEN, open), 3);
+        }
     }
 
     @Override

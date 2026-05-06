@@ -728,7 +728,7 @@
     "item.tsuki.zuku":  "Zuku",
     "item.tsuki.zuku_ingot":  "Zuku Ingot",
     "enchantment.tsuki.anti_fire":  "Anti Fire",
-    "enchantment.tsuki.anti_fire.desc":  "Gives the player anti-fire effect when mining blocks.",
+    "enchantment.tsuki.anti_fire.desc":  "Gives the player anti-fire effect.",
     "enchantment.tsuki.smash":  "Smash",
     "enchantment.tsuki.smash.desc":  "Quickly mines any block. If the tool is not suitable, no items will drop.",
     "enchantment.tsuki.omnitool":  "Omnitool",
@@ -808,7 +808,7 @@
     "tsuki.config.iron_sand_amount.tooltip":  "Changes generate amount of Iron Sand. Increase value to gen more Iron Sand.",
 
     "tsuki.guide.name": "Fudoki",
+    "tsuki.chat.sakura_guide.no_guideme": "GuideME is not installed, so Fudoki cannot be opened.",
 
     "wailaharvestability.toolclass.forging_hammer":  "Forging Hammer"
 }
-

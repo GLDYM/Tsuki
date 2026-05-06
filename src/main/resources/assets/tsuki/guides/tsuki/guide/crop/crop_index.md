@@ -2,7 +2,6 @@
 navigation:
   title: Crops & Forestry
   icon: taro
-  parent: index.md
   position: 1
 item_ids:
   - tsuki:rice_seeds
@@ -41,16 +40,20 @@ item_ids:
   - tsuki:ume
 ---
 
-This mod adds a variety of crops, each with different planting and harvesting mechanics.
+# Crops & Forestry
 
-- Onion<ItemImage id="tsuki:onion_seeds" scale="0.6"/><ItemImage id="tsuki:onion" scale="0.6"/>, Radish<ItemImage id="tsuki:radish_seeds" scale="0.6"/><ItemImage id="tsuki:radish" scale="0.6"/>, Cabbage<ItemImage id="tsuki:cabbage_seeds" scale="0.6"/><ItemImage id="tsuki:cabbage" scale="0.6"/>: Seeds drop from breaking grass; standard crops.
-- Rapeseed<ItemImage id="tsuki:rapeseeds" scale="0.6"/>, Red Bean<ItemImage id="tsuki:red_bean" scale="0.6"/>, Soybean<ItemImage id="tsuki:soybean" scale="0.6"/>, Buckwheat<ItemImage id="tsuki:buckwheat" scale="0.6"/>, Taro<ItemImage id="tsuki:taro" scale="0.6"/>: Seeds drop from breaking grass; standard crops.
-- Tomato<ItemImage id="tsuki:tomato_seeds" scale="0.6"/><ItemImage id="tsuki:tomato" scale="0.6"/>, Eggplant<ItemImage id="tsuki:eggplant_seeds" scale="0.6"/><ItemImage id="tsuki:eggplant" scale="0.6"/>: Seeds drop from breaking grass; two-block-high crops that continue growing upward after maturity.
-- Rice<ItemImage id="tsuki:rice_seeds" scale="0.6"/>: Seeds drop from breaking grass; must be planted in single-block-deep water. When mature it becomes two blocks high and emerges above the water; you can harvest only the top half while leaving the root intact.
-- Vanilla<ItemImage id="tsuki:vanilla_seeds" scale="0.6"/><ItemImage id="tsuki:vanilla" scale="0.6"/>: Seeds drop from grass or can be found wild. Must be planted on a Vanilla Splint<ItemImage id="tsuki:vanilla_splint" scale="0.6"/>, harvest with right-click.
-- Pepper<ItemImage id="tsuki:pepper_seeds" scale="0.6"/><ItemImage id="tsuki:peppercorn_green" scale="0.6"/><ItemImage id="tsuki:peppercorn_red" scale="0.6"/>: Seeds drop from grass or can be found wild. Must be planted on a Pepper Splint<ItemImage id="tsuki:pepper_splint" scale="0.6"/>, harvest with right-click. Immature stage yields Green Peppercorn<ItemImage id="tsuki:peppercorn_green" scale="0.6"/>, mature yields Red Peppercorn<ItemImage id="tsuki:peppercorn_red" scale="0.6"/>.
-- Hop<ItemImage id="tsuki:hop" scale="0.6"/>: Seeds drop from grass. Must be planted on a vertical Grape Splint Stand<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>, harvest with right-click.
-- Grape<ItemImage id="tsuki:grape_seeds" scale="0.6"/><ItemImage id="tsuki:grape_green" scale="0.6"/><ItemImage id="tsuki:grape" scale="0.6"/>: Seeds drop from grass. Must be planted on a vertical Grape Splint Stand<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>. When planted it will grow grape leaves on adjacent horizontal Grape Splints<ItemImage id="tsuki:grape_splint" scale="0.6"/>, and continue growing upward. Grape leaves can produce grapes; use shears and right-click to harvest. Immature stage yields Green Grape<ItemImage id="tsuki:grape_green" scale="0.6"/>, mature yields Grape<ItemImage id="tsuki:grape" scale="0.6"/>.
+## Crops
+
+All crop seeds can be obtained by breaking grass. The [Japanese Farmer](../villager/villager_index.md) sells some seeds and buys various crops.
+
+- Onion<ItemImage id="tsuki:onion_seeds" scale="0.6"/><ItemImage id="tsuki:onion" scale="0.6"/>, Radish<ItemImage id="tsuki:radish_seeds" scale="0.6"/><ItemImage id="tsuki:radish" scale="0.6"/>, Cabbage<ItemImage id="tsuki:cabbage_seeds" scale="0.6"/><ItemImage id="tsuki:cabbage" scale="0.6"/>: Standard crops.
+- Rapeseed<ItemImage id="tsuki:rapeseeds" scale="0.6"/>, Red Bean<ItemImage id="tsuki:red_bean" scale="0.6"/>, Soybean<ItemImage id="tsuki:soybean" scale="0.6"/>, Buckwheat<ItemImage id="tsuki:buckwheat" scale="0.6"/>, Taro<ItemImage id="tsuki:taro" scale="0.6"/>: Standard crops.
+- Tomato<ItemImage id="tsuki:tomato_seeds" scale="0.6"/><ItemImage id="tsuki:tomato" scale="0.6"/>, Eggplant<ItemImage id="tsuki:eggplant_seeds" scale="0.6"/><ItemImage id="tsuki:eggplant" scale="0.6"/>:Two-block-high crops that continue growing upward after maturity.
+- Rice<ItemImage id="tsuki:rice_seeds" scale="0.6"/>: Must be planted in single-block-deep water. When mature it becomes two blocks high and emerges above water; harvest only the top half to leave the root intact.
+- Vanilla<ItemImage id="tsuki:vanilla_seeds" scale="0.6"/><ItemImage id="tsuki:vanilla" scale="0.6"/>: Seeds can be found wild. Must be planted on a Vanilla Splint<ItemImage id="tsuki:vanilla_splint" scale="0.6"/>; harvest with right-click.
+- Pepper<ItemImage id="tsuki:pepper_seeds" scale="0.6"/><ItemImage id="tsuki:peppercorn_green" scale="0.6"/><ItemImage id="tsuki:peppercorn_red" scale="0.6"/>: Seeds can be found wild. Must be planted on a Pepper Splint<ItemImage id="tsuki:pepper_splint" scale="0.6"/>; harvest with right-click. Immature stage yields Green Peppercorn<ItemImage id="tsuki:peppercorn_green" scale="0.6"/>, mature yields Red Peppercorn<ItemImage id="tsuki:peppercorn_red" scale="0.6"/>.
+- Hop<ItemImage id="tsuki:hop" scale="0.6"/>: Must be planted on a vertical Grape Splint Stand<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>; harvest with right-click.
+- Grape<ItemImage id="tsuki:grape_seeds" scale="0.6"/><ItemImage id="tsuki:grape_green" scale="0.6"/><ItemImage id="tsuki:grape" scale="0.6"/>: Must be planted on a vertical Grape Splint Stand<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>. When planted it will grow grape leaves on adjacent horizontal Grape Splints<ItemImage id="tsuki:grape_splint" scale="0.6"/>, and continue growing upward. Grape leaves can produce grapes; use shears and right-click to harvest. Immature stage yields Green Grape<ItemImage id="tsuki:grape_green" scale="0.6"/>, mature yields Grape<ItemImage id="tsuki:grape" scale="0.6"/>.
 
 ## Saplings
 
@@ -61,4 +64,4 @@ This mod adds a variety of crops, each with different planting and harvesting me
 
 ## Fish
 
-- Shrimp<ItemImage id="tsuki:shrimp" scale="0.6"/>, Bonito<ItemImage id="tsuki:bonito" scale="0.6"/>: Obtained by fishing.
+- Shrimp<ItemImage id="tsuki:shrimp" scale="0.6"/>, Bonito<ItemImage id="tsuki:bonito" scale="0.6"/>: Obtained by fishing. The [Fishman](../villager/villager_index.md) also sells Shrimp or Bonito.

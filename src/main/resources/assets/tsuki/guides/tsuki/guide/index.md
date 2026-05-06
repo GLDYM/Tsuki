@@ -3,6 +3,8 @@ navigation:
   title: FUDOKI
   icon: sakura_guide
   position: 0
+item_ids:
+  - tsuki:sakura_guide
 ---
 
 # Fudoki
@@ -16,15 +18,14 @@ This guide follows that tradition, documenting the agriculture, customs, geograp
 ## Contents
 
 - [Crops & Forestry](crop/crop_index.md)
-- Cooking & Food
-- Tea & Drinks
+- [Cooking & Food](cooking/cooking_index.md)
+- [Tea & Drinks](drink/drink_index.md)
 - [Ore & Smelting](smithing/smithing_index.md)
-- Smithing & Forging
 - [Clothing & Armor](armor/armor_index.md)
-- Tools & Weapons
-- Building & Decoration
-- Villager Trades
-- [Structures](worldgen/worldgen_index.md)
+- [Tools & Weapons](tool/tool_index.md)
+- [Building & Decoration](decoration/decoration_index.md)
+- [Villager Trades](villager/villager_index.md)
+- [Structures & Worldgen](worldgen/worldgen_index.md)
 - [Mod Integration](compat/compat_index.md)
 - [Mod History](history.md)
 

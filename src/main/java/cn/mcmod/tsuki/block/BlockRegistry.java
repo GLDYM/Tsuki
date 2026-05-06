@@ -468,7 +468,7 @@ public class BlockRegistry {
                     .lightLevel(state -> 15),
                     Block.box(3.0D, 0.0D, 3.0D, 13.0D, 16.0D, 13.0D)));
     public static final DeferredBlock<Block> BAMBOO_LANTERN = BLOCKS.register("bamboo_lantern",
-            () -> new FloorMountedLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
+            () -> new BambooLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN)
                     .mapColor(MapColor.SAND)
                     .sound(SoundType.BAMBOO)
                     .lightLevel(state -> 15),
@@ -575,4 +575,5 @@ public class BlockRegistry {
     }
 
 }
-
+
+

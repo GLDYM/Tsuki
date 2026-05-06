@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.block.entity;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
+import cn.mcmod.tsuki.block.capability.DoubleFluidHandler;
 import cn.mcmod.tsuki.container.FermenterContainer;
 import cn.mcmod.tsuki.block.capability.FermenterItemHandler;
 import cn.mcmod.tsuki.block.machines.FermenterBlock;
@@ -27,6 +28,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
@@ -44,11 +46,11 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
 
     public static final int TANK_CAPACITY = 4000;
     private final ItemStackHandler inventory;
-    private final IItemHandler inputHandler;
-    private final IItemHandler outputHandler;
+    private final FermenterItemHandler itemHandler;
 
     private final FluidTank inputfluidTank;
     private final FluidTank outputfluidTank;
+    private final DoubleFluidHandler fluidHandler;
     protected final ContainerData blockData;
     private final Object2IntOpenHashMap<ResourceLocation> experienceTracker;
 
@@ -62,11 +64,11 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
         super(BlockEntityRegistry.FERMENTER.get(), pos, state);
 
         this.inventory = createHandler();
-        this.inputHandler = new FermenterItemHandler(inventory, Direction.UP);
-        this.outputHandler = new FermenterItemHandler(inventory, Direction.DOWN);
+        this.itemHandler = new FermenterItemHandler(inventory);
         this.blockData = createIntArray();
         this.inputfluidTank = createInputFluidHandler();
         this.outputfluidTank = createFluidHandler();
+        this.fluidHandler = new DoubleFluidHandler(inputfluidTank, outputfluidTank, this::isOutputFluidSide);
         this.experienceTracker = new Object2IntOpenHashMap<>();
         this.checkNewRecipe = true;
     }
@@ -248,22 +250,12 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
 
     @Nonnull
     public IItemHandler getItemHandler(@Nullable Direction side) {
-        return side == null || side.equals(Direction.UP) ? inputHandler : outputHandler;
+        return itemHandler.forSide(side);
     }
 
     @Nonnull
-    public FluidTank getFluidHandler(@Nullable Direction side) {
-        if (side == null) {
-            return this.inputfluidTank;
-        }
-        BlockState state = getBlockState();
-        if (state.getBlock() instanceof FermenterBlock) {
-            Direction facing = state.getValue(FermenterBlock.FACING);
-            if (side == facing || side == facing.getOpposite() || side == Direction.DOWN) {
-                return this.outputfluidTank;
-            }
-        }
-        return this.inputfluidTank;
+    public IFluidHandler getFluidHandler(@Nullable Direction side) {
+        return fluidHandler.forSide(side);
     }
 
     public ItemStackHandler getInventory() {
@@ -385,6 +377,15 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
         };
     }
 
+    private boolean isOutputFluidSide(Direction side) {
+        BlockState state = getBlockState();
+        if (state.getBlock() instanceof FermenterBlock) {
+            Direction facing = state.getValue(FermenterBlock.FACING);
+            return side == facing || side == facing.getOpposite() || side == Direction.DOWN;
+        }
+        return false;
+    }
+
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory player, Player entity) {
         return new FermenterContainer(id, player, this, this.blockData);
@@ -412,4 +413,4 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
 }
-
+

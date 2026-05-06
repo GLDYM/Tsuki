@@ -15,6 +15,7 @@ import cn.mcmod.tsuki.block.entity.BlockEntityCapabilityRegistry;
 import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideMeCompat;
+import cn.mcmod.tsuki.compat.guideme.TsukiGuideCompat;
 import cn.mcmod.tsuki.compat.terrablender.TsukiTerraBlenderCompat;
 import cn.mcmod.tsuki.container.ContainerRegistry;
 import cn.mcmod.tsuki.entity.EntityRegistry;
@@ -91,9 +92,11 @@ public class Tsuki {
         VillagerRegistry.POI_TYPES.register(modEventBus);
         VillagerRegistry.PROFESSIONS.register(modEventBus);
         CreativeModeTabRegistry.TABS.register(modEventBus);
-
+        
         if (ModList.get().isLoaded("guideme")) {
             TsukiGuideMeCompat.register();
+        } else {
+            TsukiGuideCompat.register();
         }
 
         modContainer.registerConfig(ModConfig.Type.COMMON, TsukiCommonConfig.SPEC);
