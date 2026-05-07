@@ -59,6 +59,7 @@ public final class BlockEntityCapabilityRegistry {
                 BlockEntityRegistry.MAPLE_CAULDRON.get(),
                 (blockEntity, side) -> blockEntity.getFluidHandler(side));
 
+        // TODO: Move Away
         event.registerItem(
                 Capabilities.FluidHandler.ITEM,
                 (stack, context) -> new WineBottleFluidHandlerItem(stack),

@@ -22,7 +22,7 @@ item_ids:
     <Block id="minecraft:magma_block" />
     <Block y="1" id="tsuki:distiller"/>
     <Block x="1" id="minecraft:magma_block" />
-    <Block x="1" y="1" id="minecraft:hopper" p:facing="north"/> 
+    <Block x="1" y="1" id="minecraft:hopper" p:facing="north"/>
     <Block x="1" y="2" id="tsuki:distiller"/>
 </GameScene>
 
@@ -30,7 +30,7 @@ item_ids:
 
 对酿造桶/蒸馏桶使用流体桶或酒瓶可输入流体，使用空桶<ItemImage id="minecraft:bucket" scale="0.6"/>或者空酒瓶<ItemImage id="tsuki:wine_bottle" scale="0.6"/>可输出流体。空桶<ItemImage id="minecraft:bucket" scale="0.6"/>需要 1000mB 流体填充，而空酒瓶<ItemImage id="tsuki:wine_bottle" scale="0.6"/>需要 100mB 流体填充。优先访问输出槽，若输出槽流体不足则尝试输入槽。
 
-输入配方所需流体与物品即可工作。
+之后输入配方所需流体与物品即可工作。
 
 ## 自动化
 

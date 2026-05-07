@@ -1,7 +1,7 @@
 ---
 navigation:
   title: Mod History
-  icon: maple_leaves
+  icon: mapleleaves_red
   position: 11
 ---
 

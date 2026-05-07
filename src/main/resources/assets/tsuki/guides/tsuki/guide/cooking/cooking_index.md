@@ -1,7 +1,7 @@
 ---
 navigation:
   title: Cooking & Food
-  icon: cup
+  icon: rice_curry_katsu
   position: 2
 ---
 

@@ -803,16 +803,17 @@
     "tsuki.config.allow_cooking_pot_input_stacking":  "允许烹饪锅叠放",
     "tsuki.config.category.client":  "客户端设置",
     "tsuki.config.mythic_pickaxe_exp_needed":  "神话镐升级所需经验",
+    "tsuki.config.give_guide_on_first_login":  "首次进入时给予指南",
     "tsuki.config.iron_sand_amount":  "铁砂生成数量",
     "tsuki.config.debug_mode":  "调试模式",
     "tsuki.config.category.general":  "通用设置",
     "tsuki.config.allow_cooking_pot_input_stacking.tooltip":  "允许将烹饪锅输入物品插入到已占用的输入槽位中。",
     "tsuki.config.mythic_pickaxe_exp_needed.tooltip":  "调整神话镐升级所需经验。提高该值会让升级更困难。",
+    "tsuki.config.give_guide_on_first_login.tooltip":  "安装 GuideME 时，玩家首次进入存档后给予指南书。",
     "tsuki.config.debug_mode.tooltip":  "启用日志调试。",
     "tsuki.config.iron_sand_amount.tooltip":  "调整铁砂生成数量。提高该值会生成更多铁砂。",
 
     "tsuki.guide.name": "风土记",
-    "tsuki.chat.sakura_guide.no_guideme": "未安装 GuideME 模组，无法打开风土记。",
-
+    "tsuki.chat.sakura_guide.no_guideme": "\u00a76[月]\u00a7r 安装 GuideME 以查看模组内手册！\nhttps://www.curseforge.com/minecraft/mc-mods/guideme",
     "wailaharvestability.toolclass.forging_hammer":  "锻造锤"
 }

@@ -803,12 +803,14 @@
     "tsuki.config.debug_mode":  "Debug Mode",
     "tsuki.config.category.general":  "General Settings",
     "tsuki.config.allow_cooking_pot_input_stacking.tooltip":  "Allow inserting cooking pot input items into occupied input slots.",
+    "tsuki.config.give_guide_on_first_login":  "Give Guide On First Login",
+    "tsuki.config.give_guide_on_first_login.tooltip":  "Gives the guide book to players the first time they join a world when GuideME is installed.",
     "tsuki.config.mythic_pickaxe_exp_needed.tooltip":  "Changes the experience needed to upgrade Mythic Pickaxe. Increase value to make it harder to upgrade.",
     "tsuki.config.debug_mode.tooltip":  "Enables Log debug.",
     "tsuki.config.iron_sand_amount.tooltip":  "Changes generate amount of Iron Sand. Increase value to gen more Iron Sand.",
 
     "tsuki.guide.name": "Fudoki",
-    "tsuki.chat.sakura_guide.no_guideme": "GuideME is not installed, so Fudoki cannot be opened.",
+    "tsuki.chat.sakura_guide.no_guideme": "\u00a76[Tsuki]\u00a7r Install GuideME to view in-game guide!\nhttps://www.curseforge.com/minecraft/mc-mods/guideme",
 
     "wailaharvestability.toolclass.forging_hammer":  "Forging Hammer"
 }
