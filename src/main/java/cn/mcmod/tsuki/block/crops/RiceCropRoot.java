@@ -76,6 +76,11 @@ public class RiceCropRoot extends BushBlock implements BonemealableBlock, Liquid
     }
 
     @Override
+    public float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
+        return 1.0F;
+    }
+
+    @Override
     public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         super.randomTick(state, worldIn, pos, rand);
         if (!worldIn.isAreaLoaded(pos, 1)) {

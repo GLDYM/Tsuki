@@ -27,3 +27,6 @@ forge*changelog.txt
 
 src/generated/resources/.cache
 backup/
+
+hs_err_pid*
+replay_pid*

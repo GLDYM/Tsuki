@@ -4,6 +4,7 @@ import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -35,6 +36,11 @@ public class WildCropBlock extends CropBlock {
                 || block == Blocks.ROOTED_DIRT
                 || block == Blocks.PODZOL
                 || block == Blocks.MUD;
+    }
+
+    @Override
+    public float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
+        return 1.0F;
     }
 
     @Override

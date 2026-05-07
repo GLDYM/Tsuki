@@ -41,7 +41,7 @@ Can be hung below blocks without blocking entity movement. Noren are door curtai
 
 Can be hung below blocks; brightness level 15 light source. Red lanterns are commonly hung under house eaves or at pub entrances of Izakaya, used for celebrations, while white lanterns are used for funerals.
 
-### Stone Lanterns<ItemImage id="tsuki:stone_lantern" scale="0.6"/><ItemImage id="tsuki:cobblestone_lantern" scale="0.6"/><ItemImage id="tsuki:moss_stone_lantern" scale="0.6"/>
+### Stone Lanterns<ItemImage id="tsuki:stone_lantern" scale="0.6"/><ItemImage id="tsuki:cobblestone_lantern" scale="0.6"/><ItemImage id="tsuki:mossy_stone_lantern" scale="0.6"/>
 
 Can be placed anywhere; brightness level 15 light source. Stone lanterns are commonly used along paths in gardens or around hot springs.
 

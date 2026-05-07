@@ -2,7 +2,6 @@
 navigation:
   title: Ore & Smelting
   icon: sakura_diamond
-  parent: index.md
   position: 4
 item_ids:
   - tsuki:iron_sand

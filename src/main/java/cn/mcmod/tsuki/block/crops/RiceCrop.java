@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.block.crops;
 import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.item.ItemRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.LevelReader;
@@ -46,6 +47,11 @@ public class RiceCrop extends CropBlock {
     @Override
     public int getMaxAge() {
         return 7;
+    }
+
+    @Override
+    public float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
+        return 1.0F;
     }
 
     @Override

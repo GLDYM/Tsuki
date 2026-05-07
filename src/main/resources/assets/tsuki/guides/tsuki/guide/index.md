@@ -1,6 +1,6 @@
 ---
 navigation:
-  title: FUDOKI
+  title: Fudoki
   icon: sakura_guide
   position: 0
 item_ids:

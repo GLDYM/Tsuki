@@ -2,10 +2,9 @@
 navigation:
   title: Clothing & Armor
   icon: straw_hat
-  parent: index.md
   position: 2
 ---
- 
+
 # Clothing & Armor
 
 ## Clothing
