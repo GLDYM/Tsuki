@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
-import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;

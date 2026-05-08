@@ -1,18 +1,18 @@
 package cn.mcmod.tsuki.data.loot;
 
-import cn.mcmod.tsuki.block.BambooPlant;
-import cn.mcmod.tsuki.block.BlockItemRegistry;
-import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod.tsuki.block.ChestnutBurrBlock;
-import cn.mcmod.tsuki.block.FutonBlock;
-import cn.mcmod.tsuki.block.crops.RiceCropRoot;
-import cn.mcmod.tsuki.block.foods.TeishokuBlock;
-import cn.mcmod.tsuki.block.foods.TeishokuFinishedBlock;
-import cn.mcmod.tsuki.item.FoodRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
-import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
-import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
-import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.block.crop.RiceCropRoot;
+import cn.mcmod.tsuki.block.decoration.FutonBlock;
+import cn.mcmod.tsuki.block.food.TeishokuBlock;
+import cn.mcmod.tsuki.block.food.TeishokuFinishedBlock;
+import cn.mcmod.tsuki.block.tree.BambooPlant;
+import cn.mcmod.tsuki.block.tree.ChestnutBurrBlock;
+import cn.mcmod.tsuki.init.item.FoodRegistry;
+import cn.mcmod.tsuki.init.item.ItemRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import cn.mcmod.tsuki.init.item.BlockItemRegistry;
+import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
+import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
 import cn.mcmod.mmlib.data.loot.AbstartctBlockLoot;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -77,9 +77,9 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         this.dropOther(BlockRegistry.GRAPE_LEAVES.get(), BlockItemRegistry.GRAPE_SPLINT.get());
 
         this.add(BlockRegistry.SAKURA_DIAMOND_ORE.get(),
-                createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(), TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
+                createOreDrop(BlockRegistry.SAKURA_DIAMOND_ORE.get(), ArmorToolRegistry.SAKURA_DIAMOND.get()));
         this.add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), createOreDrop(
-                BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), TsukiArmorToolRegistry.SAKURA_DIAMOND.get()));
+                BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get(), ArmorToolRegistry.SAKURA_DIAMOND.get()));
         this.add(BlockRegistry.BAMBOO_DOOR.get(), createDoor(BlockRegistry.BAMBOO_DOOR.get()));
         this.add(BlockRegistry.SHOJI.get(), createDoor(BlockRegistry.SHOJI.get()));
         this.add(BlockRegistry.SHOJI_1.get(), createDoor(BlockRegistry.SHOJI_1.get()));
@@ -214,4 +214,5 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                         .add(LootItem.lootTableItem(block).when(lowerHalf))));
     }
 }
-
+
+

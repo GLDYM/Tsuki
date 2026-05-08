@@ -1,15 +1,16 @@
 package cn.mcmod.tsuki.data;
 
-import cn.mcmod.tsuki.block.BlockItemRegistry;
-import cn.mcmod.tsuki.item.DrinkRegistry;
-import cn.mcmod.tsuki.item.FoodRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
-import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
-import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
-import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
-import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
-import cn.mcmod.tsuki.tags.TsukiBlockTags;
-import cn.mcmod.tsuki.tags.TsukiItemTags;
+import cn.mcmod.tsuki.init.item.DrinkRegistry;
+import cn.mcmod.tsuki.init.item.FoodRegistry;
+import cn.mcmod.tsuki.init.item.ItemRegistry;
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import cn.mcmod.tsuki.init.item.BlockItemRegistry;
+import cn.mcmod.tsuki.init.item.enums.TsukiCuisineSet;
+import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
+import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.tag.TsukiBlockTags;
+import cn.mcmod.tsuki.tag.TsukiItemTags;
+
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
@@ -53,14 +54,14 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.TOOLS_KNIVES).addTag(TsukiItemTags.TOOLS_KNIVES_FISH)
                 .addTag(TsukiItemTags.TOOLS_KNIVES_NOODLE);
         this.tag(TsukiItemTags.TOOLS_HAMMERS).add(
-                TsukiArmorToolRegistry.STONE_HAMMER.get(),
-                TsukiArmorToolRegistry.IRON_HAMMER.get(),
-                TsukiArmorToolRegistry.STEEL_HAMMER.get(),
-                TsukiArmorToolRegistry.SAKURA_HAMMER.get());
-        this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).add(TsukiArmorToolRegistry.IRON_FISH_KNIFE.get(),
-                TsukiArmorToolRegistry.SAKURA_FISH_KNIFE.get());
-        this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE).add(TsukiArmorToolRegistry.IRON_NOODLE_KNIFE.get(),
-                TsukiArmorToolRegistry.SAKURA_NOODLE_KNIFE.get());
+                ArmorToolRegistry.STONE_HAMMER.get(),
+                ArmorToolRegistry.IRON_HAMMER.get(),
+                ArmorToolRegistry.STEEL_HAMMER.get(),
+                ArmorToolRegistry.SAKURA_HAMMER.get());
+        this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).add(ArmorToolRegistry.IRON_FISH_KNIFE.get(),
+                ArmorToolRegistry.SAKURA_FISH_KNIFE.get());
+        this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE).add(ArmorToolRegistry.IRON_NOODLE_KNIFE.get(),
+                ArmorToolRegistry.SAKURA_NOODLE_KNIFE.get());
         this.tag(TsukiItemTags.TOOLS_KNIVES_FISH).addOptionalTag(ResourceLocation.parse("farmersdelight:tools/knives"));
         this.tag(TsukiItemTags.TOOLS_KNIVES_NOODLE)
                 .addOptionalTag(ResourceLocation.parse("farmersdelight:tools/knives"));
@@ -95,9 +96,9 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.DUST_CHARCOAL).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHARCOAL_POWDER).get());
         this.tag(TsukiItemTags.OFFHAND_EQUIPMENT).add(
                 Items.SHIELD,
-                TsukiArmorToolRegistry.SHEATH.get(),
-                TsukiArmorToolRegistry.KATANA_SHEATH.get(),
-                TsukiArmorToolRegistry.SAKURA_KATANA_SHEATH.get());
+                ArmorToolRegistry.SHEATH.get(),
+                ArmorToolRegistry.KATANA_SHEATH.get(),
+                ArmorToolRegistry.SAKURA_KATANA_SHEATH.get());
         this.tag(TsukiItemTags.DRINK_CONTAINERS).add(
                 DrinkRegistry.CUP.get(),
                 DrinkRegistry.WINE_BOTTLE.get());
@@ -196,54 +197,54 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_BUCKWHEAT).get());
         this.tag(TsukiItemTags.DOUGH_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH_RICE).get());
         this.tag(TsukiItemTags.KIMONO).add(
-                TsukiArmorToolRegistry.KIMONO_BLACK.get(),
-                TsukiArmorToolRegistry.KIMONO_GREEN.get(),
-                TsukiArmorToolRegistry.KIMONO_CYAN.get(),
-                TsukiArmorToolRegistry.KIMONO_PURPLE.get(),
-                TsukiArmorToolRegistry.KIMONO_SAKURA.get(),
-                TsukiArmorToolRegistry.KIMONO_WHITE.get(),
-                TsukiArmorToolRegistry.KIMONO_BROWN.get(),
-                TsukiArmorToolRegistry.KIMONO_ENE.get(),
-                TsukiArmorToolRegistry.KIMONO_MIKO.get(),
-                TsukiArmorToolRegistry.YUKATA_BLUE.get(),
-                TsukiArmorToolRegistry.YUKATA_RED.get(),
-                TsukiArmorToolRegistry.YUKATA_LIME.get(),
-                TsukiArmorToolRegistry.YUKATA_YELLOW.get(),
-                TsukiArmorToolRegistry.YUKATA_MAGENTA.get());
+                ArmorToolRegistry.KIMONO_BLACK.get(),
+                ArmorToolRegistry.KIMONO_GREEN.get(),
+                ArmorToolRegistry.KIMONO_CYAN.get(),
+                ArmorToolRegistry.KIMONO_PURPLE.get(),
+                ArmorToolRegistry.KIMONO_SAKURA.get(),
+                ArmorToolRegistry.KIMONO_WHITE.get(),
+                ArmorToolRegistry.KIMONO_BROWN.get(),
+                ArmorToolRegistry.KIMONO_ENE.get(),
+                ArmorToolRegistry.KIMONO_MIKO.get(),
+                ArmorToolRegistry.YUKATA_BLUE.get(),
+                ArmorToolRegistry.YUKATA_RED.get(),
+                ArmorToolRegistry.YUKATA_LIME.get(),
+                ArmorToolRegistry.YUKATA_YELLOW.get(),
+                ArmorToolRegistry.YUKATA_MAGENTA.get());
         this.tag(TsukiItemTags.HAORI).add(
-                TsukiArmorToolRegistry.HAORI_BLACK.get(),
-                TsukiArmorToolRegistry.HAORI_GREEN.get(),
-                TsukiArmorToolRegistry.HAORI_BROWN.get(),
-                TsukiArmorToolRegistry.HAORI_CYAN.get(),
-                TsukiArmorToolRegistry.HAORI_LIGHT_BLUE.get());
+                ArmorToolRegistry.HAORI_BLACK.get(),
+                ArmorToolRegistry.HAORI_GREEN.get(),
+                ArmorToolRegistry.HAORI_BROWN.get(),
+                ArmorToolRegistry.HAORI_CYAN.get(),
+                ArmorToolRegistry.HAORI_LIGHT_BLUE.get());
         this.tag(TsukiItemTags.SAMURAI_HELMET).add(
-                TsukiArmorToolRegistry.SAMURAI_HELMET_RED.get(),
-                TsukiArmorToolRegistry.SAMURAI_HELMET_GREEN.get(),
-                TsukiArmorToolRegistry.SAMURAI_HELMET_BLACK.get());
+                ArmorToolRegistry.SAMURAI_HELMET_RED.get(),
+                ArmorToolRegistry.SAMURAI_HELMET_GREEN.get(),
+                ArmorToolRegistry.SAMURAI_HELMET_BLACK.get());
         this.tag(TsukiItemTags.SAMURAI_CHESTPLATE).add(
-                TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_RED.get(),
-                TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_GREEN.get(),
-                TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_BLACK.get());
+                ArmorToolRegistry.SAMURAI_CHESTPLATE_RED.get(),
+                ArmorToolRegistry.SAMURAI_CHESTPLATE_GREEN.get(),
+                ArmorToolRegistry.SAMURAI_CHESTPLATE_BLACK.get());
         this.tag(TsukiItemTags.SAMURAI_LEGGINGS).add(
-                TsukiArmorToolRegistry.SAMURAI_LEGGINGS_RED.get(),
-                TsukiArmorToolRegistry.SAMURAI_LEGGINGS_GREEN.get(),
-                TsukiArmorToolRegistry.SAMURAI_LEGGINGS_BLACK.get());
+                ArmorToolRegistry.SAMURAI_LEGGINGS_RED.get(),
+                ArmorToolRegistry.SAMURAI_LEGGINGS_GREEN.get(),
+                ArmorToolRegistry.SAMURAI_LEGGINGS_BLACK.get());
         this.tag(TsukiItemTags.SAMURAI_BOOTS).add(
-                TsukiArmorToolRegistry.SAMURAI_BOOTS_RED.get(),
-                TsukiArmorToolRegistry.SAMURAI_BOOTS_GREEN.get(),
-                TsukiArmorToolRegistry.SAMURAI_BOOTS_BLACK.get());
+                ArmorToolRegistry.SAMURAI_BOOTS_RED.get(),
+                ArmorToolRegistry.SAMURAI_BOOTS_GREEN.get(),
+                ArmorToolRegistry.SAMURAI_BOOTS_BLACK.get());
         this.tag(TsukiItemTags.SOLDIER_HELMET).add(
-                TsukiArmorToolRegistry.SOLDIER_HELMET_GRAY.get(),
-                TsukiArmorToolRegistry.SOLDIER_HELMET_BLACK.get());
+                ArmorToolRegistry.SOLDIER_HELMET_GRAY.get(),
+                ArmorToolRegistry.SOLDIER_HELMET_BLACK.get());
         this.tag(TsukiItemTags.SOLDIER_CHESTPLATE).add(
-                TsukiArmorToolRegistry.SOLDIER_CHESTPLATE_GRAY.get(),
-                TsukiArmorToolRegistry.SOLDIER_CHESTPLATE_BLACK.get());
+                ArmorToolRegistry.SOLDIER_CHESTPLATE_GRAY.get(),
+                ArmorToolRegistry.SOLDIER_CHESTPLATE_BLACK.get());
         this.tag(TsukiItemTags.SOLDIER_LEGGINGS).add(
-                TsukiArmorToolRegistry.SOLDIER_LEGGINGS_GRAY.get(),
-                TsukiArmorToolRegistry.SOLDIER_LEGGINGS_BLACK.get());
+                ArmorToolRegistry.SOLDIER_LEGGINGS_GRAY.get(),
+                ArmorToolRegistry.SOLDIER_LEGGINGS_BLACK.get());
         this.tag(TsukiItemTags.SOLDIER_BOOTS).add(
-                TsukiArmorToolRegistry.SOLDIER_BOOTS_GRAY.get(),
-                TsukiArmorToolRegistry.SOLDIER_BOOTS_BLACK.get());
+                ArmorToolRegistry.SOLDIER_BOOTS_GRAY.get(),
+                ArmorToolRegistry.SOLDIER_BOOTS_BLACK.get());
         this.registerForgeTags();
     }
 
@@ -400,25 +401,25 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addTag(TsukiItemTags.TOOLS_KNIVES)
                 .addTag(TsukiItemTags.TOOLS_KATANAS);
         this.tag(TsukiItemTags.TOOLS_AXES)
-                .add(TsukiArmorToolRegistry.SAKURA_AXE.get());
+                .add(ArmorToolRegistry.SAKURA_AXE.get());
         this.tag(TsukiItemTags.AXES)
-                .add(TsukiArmorToolRegistry.SAKURA_AXE.get());
+                .add(ArmorToolRegistry.SAKURA_AXE.get());
         this.tag(TsukiItemTags.TOOLS_HOES)
-                .add(TsukiArmorToolRegistry.SAKURA_HOE.get());
+                .add(ArmorToolRegistry.SAKURA_HOE.get());
         this.tag(TsukiItemTags.HOES)
-                .add(TsukiArmorToolRegistry.SAKURA_HOE.get());
+                .add(ArmorToolRegistry.SAKURA_HOE.get());
         this.tag(TsukiItemTags.TOOLS_PICKAXES)
-                .add(TsukiArmorToolRegistry.SAKURA_PICKAXE.get())
-                .add(TsukiArmorToolRegistry.MYTHIC_PICKAXE.get());
+                .add(ArmorToolRegistry.SAKURA_PICKAXE.get())
+                .add(ArmorToolRegistry.MYTHIC_PICKAXE.get());
         this.tag(TsukiItemTags.PICKAXES)
-                .add(TsukiArmorToolRegistry.SAKURA_PICKAXE.get())
-                .add(TsukiArmorToolRegistry.MYTHIC_PICKAXE.get());
+                .add(ArmorToolRegistry.SAKURA_PICKAXE.get())
+                .add(ArmorToolRegistry.MYTHIC_PICKAXE.get());
         this.tag(TsukiItemTags.TOOLS_SHOVELS)
-                .add(TsukiArmorToolRegistry.SAKURA_SHOVEL.get())
-                .add(TsukiArmorToolRegistry.BROOM.get());
+                .add(ArmorToolRegistry.SAKURA_SHOVEL.get())
+                .add(ArmorToolRegistry.BROOM.get());
         this.tag(TsukiItemTags.SHOVELS)
-                .add(TsukiArmorToolRegistry.SAKURA_SHOVEL.get())
-                .add(TsukiArmorToolRegistry.BROOM.get());
+                .add(ArmorToolRegistry.SAKURA_SHOVEL.get())
+                .add(ArmorToolRegistry.BROOM.get());
         this.tag(TsukiItemTags.TOOLS_SWORDS)
                 .addTag(TsukiItemTags.TOOLS_KATANAS);
         this.tag(TsukiItemTags.SWORDS)
@@ -427,17 +428,17 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addTag(TsukiItemTags.TOOLS_KNIVES_FISH)
                 .addTag(TsukiItemTags.TOOLS_KNIVES_NOODLE);
         this.tag(TsukiItemTags.TOOLS_HAMMERS)
-                .add(TsukiArmorToolRegistry.STONE_HAMMER.get())
-                .add(TsukiArmorToolRegistry.IRON_HAMMER.get())
-                .add(TsukiArmorToolRegistry.STEEL_HAMMER.get())
-                .add(TsukiArmorToolRegistry.SAKURA_HAMMER.get());
+                .add(ArmorToolRegistry.STONE_HAMMER.get())
+                .add(ArmorToolRegistry.IRON_HAMMER.get())
+                .add(ArmorToolRegistry.STEEL_HAMMER.get())
+                .add(ArmorToolRegistry.SAKURA_HAMMER.get());
         this.tag(TsukiItemTags.TOOLS_KATANAS)
-                .add(TsukiArmorToolRegistry.SHINAI.get())
-                .add(TsukiArmorToolRegistry.KATANA.get())
-                .add(TsukiArmorToolRegistry.KODACHI.get())
-                .add(TsukiArmorToolRegistry.TACHI.get())
-                .add(TsukiArmorToolRegistry.SAKURA_KATANA.get())
-                .add(TsukiArmorToolRegistry.SAKURA_KODACHI.get());
+                .add(ArmorToolRegistry.SHINAI.get())
+                .add(ArmorToolRegistry.KATANA.get())
+                .add(ArmorToolRegistry.KODACHI.get())
+                .add(ArmorToolRegistry.TACHI.get())
+                .add(ArmorToolRegistry.SAKURA_KATANA.get())
+                .add(ArmorToolRegistry.SAKURA_KODACHI.get());
 
         this.tag(TsukiItemTags.HEAD_ARMOR)
                 .addTag(TsukiItemTags.SAMURAI_HELMET)

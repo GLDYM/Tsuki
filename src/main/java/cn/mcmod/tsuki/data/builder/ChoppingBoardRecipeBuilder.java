@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.data.builder;
 
 import cn.mcmod.mmlib.recipe.ChanceResult;
-import cn.mcmod.tsuki.recipes.ChoppingRecipe;
+import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;

@@ -1,6 +1,5 @@
 package cn.mcmod.tsuki.entity;
 
-import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
@@ -39,6 +38,8 @@ import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jetbrains.annotations.Nullable;
+
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -110,9 +111,9 @@ public class SamuraiIllagerEntity extends AbstractIllager implements GeoEntity {
         if (this.getCurrentRaid() == null) {
             float additionalDifficulty = difficulty.getSpecialMultiplier();
             if (random.nextFloat() < additionalDifficulty * 0.2F) {
-                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(TsukiArmorToolRegistry.TACHI.get()));
+                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ArmorToolRegistry.TACHI.get()));
             } else {
-                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(TsukiArmorToolRegistry.KATANA.get()));
+                this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ArmorToolRegistry.KATANA.get()));
             }
         }
     }
@@ -131,7 +132,7 @@ public class SamuraiIllagerEntity extends AbstractIllager implements GeoEntity {
 
     @Override
     public void applyRaidBuffs(ServerLevel level, int wave, boolean unused) {
-        ItemStack weapon = new ItemStack(TsukiArmorToolRegistry.TACHI.get());
+        ItemStack weapon = new ItemStack(ArmorToolRegistry.TACHI.get());
         Raid raid = this.getCurrentRaid();
         if (raid != null) {
             boolean shouldEnchant = this.random.nextFloat() <= raid.getEnchantOdds();

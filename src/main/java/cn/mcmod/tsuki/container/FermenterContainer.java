@@ -2,8 +2,9 @@ package cn.mcmod.tsuki.container;
 
 import java.util.Objects;
 
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.FermenterBlockEntity;
+import cn.mcmod.tsuki.init.MenuTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +27,7 @@ public class FermenterContainer extends AbstractContainerMenu {
 
     public FermenterContainer(final int windowId, final Inventory playerInventory,
             final FermenterBlockEntity blockEntity, ContainerData cookingPotDataIn) {
-        super(ContainerRegistry.FERMENTER.get(), windowId);
+        super(MenuTypeRegistry.FERMENTER.get(), windowId);
         this.blockEntity = blockEntity;
         this.inventory = blockEntity.getInventory();
         this.containerData = cookingPotDataIn;

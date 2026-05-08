@@ -3,11 +3,11 @@ package cn.mcmod.tsuki.compat.jei.category;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import cn.mcmod.mmlib.recipe.ChanceResult;
+import cn.mcmod.mmlib.util.I18nUtil;
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
-import cn.mcmod.tsuki.recipes.ChoppingRecipe;
-import cn.mcmod.mmlib.utils.I18nUtils;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -82,7 +82,7 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
                         ChanceResult output = chanceResult;
                         float chance = output.chance();
                         if (chance != 1)
-                            tooltip.add(I18nUtils.chanceComponent(chance));
+                            tooltip.add(I18nUtil.chanceComponent(chance));
                     });
         }
 
@@ -107,4 +107,5 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
     }
 
 }
-
+
+

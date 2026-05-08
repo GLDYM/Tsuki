@@ -5,10 +5,10 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.StoneMortarBlockEntity;
-import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
-import cn.mcmod.tsuki.client.layers.LayerRegistry;
+import cn.mcmod.tsuki.block.machine.StoneMortarBlock;
+import cn.mcmod.tsuki.client.layer.LayerRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;

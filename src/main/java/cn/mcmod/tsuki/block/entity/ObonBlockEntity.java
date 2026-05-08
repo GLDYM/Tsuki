@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -85,4 +86,5 @@ public class ObonBlockEntity extends SyncedBlockEntity {
         };
     }
 }
-
+
+

@@ -2,7 +2,7 @@ package cn.mcmod.tsuki.compat.guideme;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
-import cn.mcmod.tsuki.item.ItemRegistry;
+import cn.mcmod.tsuki.init.item.ItemRegistry;
 import guideme.Guide;
 import guideme.GuidesCommon;
 import net.minecraft.resources.ResourceLocation;

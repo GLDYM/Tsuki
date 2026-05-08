@@ -1,9 +1,9 @@
 package cn.mcmod.tsuki.data;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.level.WorldGenerationRegistry;
-import cn.mcmod.tsuki.level.tree.TsukiTreeFeatures;
-import cn.mcmod.tsuki.level.tree.TsukiTreePlacedFeatures;
+import cn.mcmod.tsuki.init.WorldGenerationRegistry;
+import cn.mcmod.tsuki.worldgen.TsukiTreeFeatures;
+import cn.mcmod.tsuki.worldgen.TsukiTreePlacedFeatures;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;

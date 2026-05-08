@@ -7,20 +7,21 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
-import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.mmlib.util.LevelUtil;
 import cn.mcmod.tsuki.block.capability.CookingPotItemHandler;
 import cn.mcmod.tsuki.block.capability.SingleFluidHandler;
-import cn.mcmod.tsuki.block.machines.CookingPotBlock;
+import cn.mcmod.tsuki.block.machine.CookingPotBlock;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.config.TsukiClientConfig;
 import cn.mcmod.tsuki.container.CookingPotContainer;
-import cn.mcmod.tsuki.recipes.CookingPotRecipe;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
+import cn.mcmod.tsuki.init.RecipeTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
 import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
-import cn.mcmod.mmlib.utils.LevelUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -246,7 +247,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 double x = worldPosition.getX() + 0.5;
                 double y = worldPosition.getY() + 0.7;
                 double z = worldPosition.getZ() + 0.5;
-                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
+                LevelUtil.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
                         0.25F,
                         0F);
             }
@@ -470,7 +471,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         for (Object2IntMap.Entry<ResourceLocation> entry : experienceTracker.object2IntEntrySet()) {
             world.getRecipeManager().byKey(entry.getKey()).ifPresent(holder -> {
                 if (holder.value() instanceof CookingPotRecipe recipe) {
-                    LevelUtils.splitAndSpawnExperience(world, pos, entry.getIntValue(), recipe.getExperience());
+                    LevelUtil.splitAndSpawnExperience(world, pos, entry.getIntValue(), recipe.getExperience());
                 }
             });
         }

@@ -1,7 +1,8 @@
 package cn.mcmod.tsuki.data;
 
-import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod.tsuki.tags.TsukiBlockTags;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.tag.TsukiBlockTags;
+
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

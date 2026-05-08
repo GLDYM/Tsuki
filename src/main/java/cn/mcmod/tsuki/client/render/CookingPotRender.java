@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
-import cn.mcmod.tsuki.block.machines.CookingPotBlock;
+import cn.mcmod.tsuki.block.machine.CookingPotBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;

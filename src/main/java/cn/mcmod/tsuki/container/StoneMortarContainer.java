@@ -2,8 +2,9 @@ package cn.mcmod.tsuki.container;
 
 import java.util.Objects;
 
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.StoneMortarBlockEntity;
+import cn.mcmod.tsuki.init.MenuTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +27,7 @@ public class StoneMortarContainer extends AbstractContainerMenu {
 
     public StoneMortarContainer(final int windowId, final Inventory playerInventory,
             final StoneMortarBlockEntity blockEntity, ContainerData cookingPotDataIn) {
-        super(ContainerRegistry.STONE_MORTAR.get(), windowId);
+        super(MenuTypeRegistry.STONE_MORTAR.get(), windowId);
         this.blockEntity = blockEntity;
         this.inventory = blockEntity.getInventory();
         this.containerData = cookingPotDataIn;

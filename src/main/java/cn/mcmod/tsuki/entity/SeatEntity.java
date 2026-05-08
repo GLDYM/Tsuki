@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.entity;
 
-import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.init.EntityTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,7 +22,7 @@ public class SeatEntity extends Entity {
     }
 
     public static SeatEntity create(Level level, BlockPos seatPos, double yOffset) {
-        SeatEntity entity = EntityRegistry.SEAT.get().create(level);
+        SeatEntity entity = EntityTypeRegistry.SEAT.get().create(level);
         if (entity == null) {
             return null;
         }

@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.client.render;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.ShojiBlock;
+import cn.mcmod.tsuki.block.decoration.ShojiBlock;
 import cn.mcmod.tsuki.block.entity.ShojiBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

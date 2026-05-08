@@ -2,8 +2,9 @@ package cn.mcmod.tsuki.container;
 
 import java.util.Objects;
 
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.DistillerBlockEntity;
+import cn.mcmod.tsuki.init.MenuTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +27,7 @@ public class DistillerContainer extends AbstractContainerMenu {
 
     public DistillerContainer(final int windowId, final Inventory playerInventory,
             final DistillerBlockEntity blockEntity, ContainerData cookingPotDataIn) {
-        super(ContainerRegistry.DISTILLER.get(), windowId);
+        super(MenuTypeRegistry.DISTILLER.get(), windowId);
         this.blockEntity = blockEntity;
         this.inventory = blockEntity.getInventory();
         this.containerData = cookingPotDataIn;

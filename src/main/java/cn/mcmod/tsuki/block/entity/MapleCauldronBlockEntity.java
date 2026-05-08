@@ -4,11 +4,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
-import cn.mcmod.tsuki.block.MapleCauldronBlock;
-import cn.mcmod.tsuki.block.MapleSpileBlock;
-import cn.mcmod.tsuki.fluid.FluidRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
-import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.block.machine.MapleCauldronBlock;
+import cn.mcmod.tsuki.block.machine.MapleSpileBlock;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.init.fluid.FluidRegistry;
+import cn.mcmod.tsuki.init.item.ItemRegistry;
+import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;

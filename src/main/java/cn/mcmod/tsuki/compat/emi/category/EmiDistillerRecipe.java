@@ -5,9 +5,9 @@ import java.util.List;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.DistillerBlockEntity;
-import cn.mcmod.tsuki.recipes.DistillerRecipe;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.recipe.DistillerRecipe;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.BasicEmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;

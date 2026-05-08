@@ -3,38 +3,39 @@ package cn.mcmod.tsuki;
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.config.TsukiClientConfig;
 import cn.mcmod.tsuki.client.TsukiClient;
-import cn.mcmod.tsuki.fluid.FluidTypeRegistry;
-import cn.mcmod.tsuki.item.CreativeModeTabRegistry;
+import cn.mcmod.tsuki.init.CreativeModeTabRegistry;
+import cn.mcmod.tsuki.init.EntityTypeRegistry;
+import cn.mcmod.tsuki.init.LootModifiterRegistry;
+import cn.mcmod.tsuki.init.MenuTypeRegistry;
+import cn.mcmod.tsuki.init.RecipeTypeRegistry;
+import cn.mcmod.tsuki.init.SoundEventRegistry;
+import cn.mcmod.tsuki.init.FeatureTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockEntityCapabilityRegistry;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.block.FluidBlockRegistry;
+import cn.mcmod.tsuki.init.fluid.FluidRegistry;
+import cn.mcmod.tsuki.init.fluid.FluidTypeRegistry;
+import cn.mcmod.tsuki.init.item.DrinkRegistry;
+import cn.mcmod.tsuki.init.item.FoodRegistry;
+import cn.mcmod.tsuki.init.item.ItemCapabilityRegistry;
+import cn.mcmod.tsuki.init.item.ItemRegistry;
+import cn.mcmod.tsuki.init.item.ArmorMaterialRegistry;
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import cn.mcmod.tsuki.init.item.BlockItemRegistry;
+import cn.mcmod.tsuki.init.item.BucketItemRegistry;
+import cn.mcmod.tsuki.init.MobEffectRegistry;
+
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
-import cn.mcmod.tsuki.block.BlockItemRegistry;
-import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod.tsuki.block.entity.BlockEntityCapabilityRegistry;
-import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideMeCompat;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideCompat;
 import cn.mcmod.tsuki.compat.terrablender.TsukiTerraBlenderCompat;
-import cn.mcmod.tsuki.container.ContainerRegistry;
-import cn.mcmod.tsuki.entity.EntityRegistry;
-import cn.mcmod.tsuki.effect.EffectRegistry;
-import cn.mcmod.tsuki.fluid.BucketItemRegistry;
-import cn.mcmod.tsuki.fluid.FluidBlockRegistry;
-import cn.mcmod.tsuki.fluid.FluidRegistry;
-import cn.mcmod.tsuki.item.DrinkRegistry;
-import cn.mcmod.tsuki.item.FoodRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
-import cn.mcmod.tsuki.item.armors.TsukiArmorMaterials;
-import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
-import cn.mcmod.tsuki.level.tree.TsukiTreeDecoratorTypes;
-import cn.mcmod.tsuki.level.tree.TsukiFeatureTypes;
-import cn.mcmod.tsuki.loot_modifier.LootModifiterRegistry;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod.tsuki.sound.SoundEventRegistry;
-import cn.mcmod.tsuki.sound.JukeboxSongRegistry;
 import cn.mcmod.tsuki.villager.VillagerRegistry;
+import cn.mcmod.tsuki.worldgen.TsukiTreeDecoratorTypes;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -57,37 +58,35 @@ public class Tsuki {
     public Tsuki(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::onCommonSetup);
         modEventBus.addListener(BlockEntityCapabilityRegistry::register);
-        modEventBus.addListener(EntityRegistry::registerAttributes);
-        modEventBus.addListener(EntityRegistry::registerSpawnPlacements);
-
-        FluidRegistry.FLUIDS.register(modEventBus);
-        FluidBlockRegistry.BLOCKS.register(modEventBus);
-        FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
+        modEventBus.addListener(ItemCapabilityRegistry::register);
+        modEventBus.addListener(EntityTypeRegistry::registerAttributes);
+        modEventBus.addListener(EntityTypeRegistry::registerSpawnPlacements);
 
         BlockRegistry.BLOCKS.register(modEventBus);
-        BlockItemRegistry.ITEMS.register(modEventBus);
+        FluidBlockRegistry.BLOCKS.register(modEventBus);
         BlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
 
-        EntityRegistry.ENTITY_TYPES.register(modEventBus);
+        FluidRegistry.FLUIDS.register(modEventBus);
+        FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
 
         ItemRegistry.ITEMS.register(modEventBus);
+        BlockItemRegistry.ITEMS.register(modEventBus);
         DrinkRegistry.ITEMS.register(modEventBus);
-        FoodRegistry.ITEMS.register(modEventBus);
-        TsukiArmorToolRegistry.ITEMS.register(modEventBus);
-        TsukiArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
-
         BucketItemRegistry.ITEMS.register(modEventBus);
+        FoodRegistry.ITEMS.register(modEventBus);
+        ArmorToolRegistry.ITEMS.register(modEventBus);
+        ArmorMaterialRegistry.ARMOR_MATERIALS.register(modEventBus);
+
+        EntityTypeRegistry.ENTITY_TYPES.register(modEventBus);
 
         SoundEventRegistry.SOUND_EVENTS.register(modEventBus);
-        // JukeboxSongRegistry.JUKEBOX_SONGS.register(modEventBus);
-        JukeboxSongRegistry.register();
         ParticleRegistry.PARTICLE_TYPES.register(modEventBus);
-        ContainerRegistry.CONTAINER_TYPES.register(modEventBus);
-        EffectRegistry.MOB_EFFECTS.register(modEventBus);
+        MenuTypeRegistry.CONTAINER_TYPES.register(modEventBus);
+        MobEffectRegistry.MOB_EFFECTS.register(modEventBus);
         LootModifiterRegistry.GLM.register(modEventBus);
         RecipeTypeRegistry.RECIPE_TYPES.register(modEventBus);
         RecipeTypeRegistry.RECIPE_SERIALIZERS.register(modEventBus);
-        TsukiFeatureTypes.FEATURES.register(modEventBus);
+        FeatureTypeRegistry.FEATURES.register(modEventBus);
         TsukiTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(modEventBus);
         VillagerRegistry.POI_TYPES.register(modEventBus);
         VillagerRegistry.PROFESSIONS.register(modEventBus);
@@ -108,7 +107,7 @@ public class Tsuki {
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
         if (ModList.get().isLoaded("terrablender")) {
-            event.enqueueWork(TsukiTerraBlenderCompat::registerRegions);
+            event.enqueueWork(TsukiTerraBlenderCompat::register);
         }
     }
 

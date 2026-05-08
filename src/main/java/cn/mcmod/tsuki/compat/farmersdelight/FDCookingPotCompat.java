@@ -24,7 +24,7 @@ public final class FDCookingPotCompat {
     private FDCookingPotCompat() {
     }
 
-    public static Optional<cn.mcmod.tsuki.recipes.CookingPotRecipe> findMatching(Level level, RecipeWrapper wrapper,
+    public static Optional<cn.mcmod.tsuki.recipe.CookingPotRecipe> findMatching(Level level, RecipeWrapper wrapper,
             FluidStack fluid) {
         if (level == null || !isEnabled() || !fluid.isEmpty()) {
             return Optional.empty();
@@ -44,7 +44,7 @@ public final class FDCookingPotCompat {
         return Optional.empty();
     }
 
-    public static List<cn.mcmod.tsuki.recipes.CookingPotRecipe> getAllForJei(Level level) {
+    public static List<cn.mcmod.tsuki.recipe.CookingPotRecipe> getAllForJei(Level level) {
         if (level == null || !isEnabled()) {
             return List.of();
         }
@@ -54,16 +54,16 @@ public final class FDCookingPotCompat {
             return List.of();
         }
 
-        List<cn.mcmod.tsuki.recipes.CookingPotRecipe> recipes = new ArrayList<>();
+        List<cn.mcmod.tsuki.recipe.CookingPotRecipe> recipes = new ArrayList<>();
         for (RecipeHolder<CookingPotRecipe> holder : level.getRecipeManager().getAllRecipesFor(fdCookingType)) {
             recipes.add(transform(holder.id(), holder.value(), level));
         }
         return recipes;
     }
 
-    private static cn.mcmod.tsuki.recipes.CookingPotRecipe transform(ResourceLocation sourceId, CookingPotRecipe source,
+    private static cn.mcmod.tsuki.recipe.CookingPotRecipe transform(ResourceLocation sourceId, CookingPotRecipe source,
             Level level) {
-        cn.mcmod.tsuki.recipes.CookingPotRecipe recipe = new cn.mcmod.tsuki.recipes.CookingPotRecipe();
+        cn.mcmod.tsuki.recipe.CookingPotRecipe recipe = new cn.mcmod.tsuki.recipe.CookingPotRecipe();
         String sourcePath = sourceId.getPath();
         String prefixPath = COMPAT_ID_PREFIX.getPath() + "/";
         if (sourcePath.startsWith(prefixPath)) {

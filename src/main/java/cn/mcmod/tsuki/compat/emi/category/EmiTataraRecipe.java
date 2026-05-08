@@ -3,7 +3,7 @@ package cn.mcmod.tsuki.compat.emi.category;
 import java.util.List;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.BasicEmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;

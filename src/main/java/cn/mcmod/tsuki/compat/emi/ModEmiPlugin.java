@@ -3,7 +3,6 @@ package cn.mcmod.tsuki.compat.emi;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.compat.emi.category.EmiChoppingRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiCookingPotRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiDistillerRecipe;
@@ -12,13 +11,14 @@ import cn.mcmod.tsuki.compat.emi.category.EmiStoneMortarRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiTataraRecipe;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
-import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
-import cn.mcmod.tsuki.recipes.ChoppingRecipe;
-import cn.mcmod.tsuki.recipes.CookingPotRecipe;
-import cn.mcmod.tsuki.recipes.DistillerRecipe;
-import cn.mcmod.tsuki.recipes.FermenterRecipe;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
+import cn.mcmod.tsuki.init.RecipeTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import cn.mcmod.tsuki.recipe.ChoppingRecipe;
+import cn.mcmod.tsuki.recipe.CookingPotRecipe;
+import cn.mcmod.tsuki.recipe.DistillerRecipe;
+import cn.mcmod.tsuki.recipe.FermenterRecipe;
+import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
@@ -84,7 +84,7 @@ public class ModEmiPlugin implements EmiPlugin {
                 new ItemStack(BlockRegistry.TATARA.get()),
                 new ItemStack(Items.FLINT_AND_STEEL),
                 new ItemStack(Items.IRON_INGOT),
-                new ItemStack(TsukiArmorToolRegistry.TAMAHAGANE.get())));
+                new ItemStack(ArmorToolRegistry.TAMAHAGANE.get())));
 
         registry.addWorkstation(EmiCookingPotRecipe.CATEGORY, EmiStack.of(BlockRegistry.COOKING_POT.get()));
         registry.addWorkstation(EmiStoneMortarRecipe.CATEGORY, EmiStack.of(BlockRegistry.STONE_MORTAR.get()));
@@ -92,10 +92,10 @@ public class ModEmiPlugin implements EmiPlugin {
         registry.addWorkstation(EmiDistillerRecipe.CATEGORY, EmiStack.of(BlockRegistry.DISTILLER.get()));
         registry.addWorkstation(EmiChoppingRecipe.CATEGORY, EmiStack.of(BlockRegistry.CHOPPING_BOARD.get()));
         registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(BlockRegistry.TATARA.get()));
-        registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(TsukiArmorToolRegistry.STONE_HAMMER.get()));
-        registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(TsukiArmorToolRegistry.IRON_HAMMER.get()));
-        registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(TsukiArmorToolRegistry.STEEL_HAMMER.get()));
-        registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(TsukiArmorToolRegistry.SAKURA_HAMMER.get()));
+        registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(ArmorToolRegistry.STONE_HAMMER.get()));
+        registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(ArmorToolRegistry.IRON_HAMMER.get()));
+        registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(ArmorToolRegistry.STEEL_HAMMER.get()));
+        registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(ArmorToolRegistry.SAKURA_HAMMER.get()));
     }
 
     private static ResourceLocation toSyncId(ResourceLocation id) {

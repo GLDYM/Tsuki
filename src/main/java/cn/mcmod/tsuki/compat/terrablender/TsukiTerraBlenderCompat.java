@@ -8,7 +8,7 @@ public final class TsukiTerraBlenderCompat {
     private TsukiTerraBlenderCompat() {
     }
 
-    public static void registerRegions() {
+    public static void register() {
         Regions.register(new TsukiOverworldRegion(
             ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "overworld"),
             5));

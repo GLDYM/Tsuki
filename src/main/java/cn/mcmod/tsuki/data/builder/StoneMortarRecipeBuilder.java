@@ -1,6 +1,6 @@
 package cn.mcmod.tsuki.data.builder;
 
-import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
+import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;

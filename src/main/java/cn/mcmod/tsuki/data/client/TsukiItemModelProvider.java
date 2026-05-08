@@ -1,22 +1,22 @@
 package cn.mcmod.tsuki.data.client;
 
-import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod.tsuki.block.FallenLeavesBlock;
-import cn.mcmod.tsuki.block.BlockItemRegistry;
-import cn.mcmod.tsuki.fluid.BucketItemRegistry;
-import cn.mcmod.tsuki.item.BroomItem;
-import cn.mcmod.tsuki.item.FoodRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
-import cn.mcmod.tsuki.item.ShinaiItem;
-import cn.mcmod.tsuki.item.KatanaItem;
-import cn.mcmod.tsuki.item.SheathItem;
-import cn.mcmod.tsuki.item.SheathKatanaItem;
-import cn.mcmod.tsuki.item.armors.HaoriItem;
-import cn.mcmod.tsuki.item.armors.KimonoItem;
-import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
-import cn.mcmod.tsuki.item.enums.TsukiCuisineSet;
-import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
-import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.init.item.FoodRegistry;
+import cn.mcmod.tsuki.init.item.ItemRegistry;
+import cn.mcmod.tsuki.block.tree.FallenLeavesBlock;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import cn.mcmod.tsuki.init.item.BlockItemRegistry;
+import cn.mcmod.tsuki.init.item.BucketItemRegistry;
+import cn.mcmod.tsuki.init.item.enums.TsukiCuisineSet;
+import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
+import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.item.armor.HaoriItem;
+import cn.mcmod.tsuki.item.armor.KimonoItem;
+import cn.mcmod.tsuki.item.tool.BroomItem;
+import cn.mcmod.tsuki.item.tool.KatanaItem;
+import cn.mcmod.tsuki.item.tool.SheathItem;
+import cn.mcmod.tsuki.item.tool.SheathKatanaItem;
+import cn.mcmod.tsuki.item.tool.ShinaiItem;
 import cn.mcmod.mmlib.data.AbstractItemModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -89,7 +89,7 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         BucketItemRegistry.ITEMS.getEntries().forEach(item -> {
             normalItem(item);
         });
-        TsukiArmorToolRegistry.ITEMS.getEntries().forEach(item -> {
+        ArmorToolRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof KimonoItem
                     || item.get() instanceof HaoriItem
                     || item.get() instanceof KatanaItem

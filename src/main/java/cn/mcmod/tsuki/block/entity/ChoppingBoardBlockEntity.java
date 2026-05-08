@@ -6,11 +6,12 @@ import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import cn.mcmod.tsuki.block.machines.ChoppingBoardBlock;
-import cn.mcmod.tsuki.recipes.ChoppingRecipe;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
+import cn.mcmod.tsuki.block.machine.ChoppingBoardBlock;
+import cn.mcmod.tsuki.init.RecipeTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
-import cn.mcmod.mmlib.utils.LevelUtils;
+import cn.mcmod.mmlib.util.LevelUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -79,7 +80,7 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
             List<ItemStack> results = recipe.rollByproducts(level.random, 0);
             for (ItemStack resultStack : results) {
                 Direction direction = getBlockState().getValue(ChoppingBoardBlock.FACING).getCounterClockWise();
-                LevelUtils.spawnItemEntity(level, resultStack.copy(),
+                LevelUtil.spawnItemEntity(level, resultStack.copy(),
                         worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2), worldPosition.getY() + 0.2,
                         worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2), direction.getStepX() * 0.2F, 0.0F,
                         direction.getStepZ() * 0.2F);
@@ -178,7 +179,7 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
             if (resultItem.getCount() > 1) {
                 for (int i = 1; i < resultItem.getCount(); i++) {
                     Direction direction = getBlockState().getValue(ChoppingBoardBlock.FACING).getCounterClockWise();
-                    LevelUtils.spawnItemEntity(level, resultItem.copy().split(1),
+                    LevelUtil.spawnItemEntity(level, resultItem.copy().split(1),
                             worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2), worldPosition.getY() + 0.2,
                             worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2), direction.getStepX() * 0.2F,
                             0.0F,
@@ -238,4 +239,5 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         };
     }
 }
-
+
+

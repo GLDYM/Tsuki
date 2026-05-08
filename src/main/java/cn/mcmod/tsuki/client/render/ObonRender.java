@@ -2,7 +2,8 @@ package cn.mcmod.tsuki.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import cn.mcmod.tsuki.block.ObonBlock;
+
+import cn.mcmod.tsuki.block.decoration.ObonBlock;
 import cn.mcmod.tsuki.block.entity.ObonBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;

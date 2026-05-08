@@ -1,9 +1,9 @@
 package cn.mcmod.tsuki.data;
 
-import cn.mcmod.tsuki.block.BlockItemRegistry;
-import cn.mcmod.tsuki.item.FoodRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
-import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.init.item.BlockItemRegistry;
+import cn.mcmod.tsuki.init.item.FoodRegistry;
+import cn.mcmod.tsuki.init.item.ItemRegistry;
+import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
 import cn.mcmod.mmlib.item.IFoodLike;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -85,4 +85,5 @@ public class TsukiCompostableDataMapProvider extends DataMapProvider {
         builder.add(itemId, new Compostable(chance), false);
     }
 }
-
+
+

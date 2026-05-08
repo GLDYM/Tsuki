@@ -1,8 +1,6 @@
 package cn.mcmod.tsuki.client;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod.tsuki.block.entity.BlockEntityRegistry;
 import cn.mcmod.tsuki.client.particle.FallenLeafParticle;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.client.particle.CookingParticle;
@@ -14,8 +12,10 @@ import cn.mcmod.tsuki.client.render.SeatEntityRenderer;
 import cn.mcmod.tsuki.client.render.ShojiRenderer;
 import cn.mcmod.tsuki.client.render.StoneMortarRenderer;
 import cn.mcmod.tsuki.client.render.entity.SamuraiIllagerRenderer;
-import cn.mcmod.tsuki.entity.EntityRegistry;
-import cn.mcmod.tsuki.fluid.FluidRegistry;
+import cn.mcmod.tsuki.init.EntityTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.fluid.FluidRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -82,8 +82,8 @@ public class ClientEvents {
             BlockEntityRenderers.register(BlockEntityRegistry.COOKING_POT.get(), CookingPotRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.OBON.get(), ObonRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.SHOJI.get(), ShojiRenderer::new);
-            EntityRenderers.register(EntityRegistry.SEAT.get(), SeatEntityRenderer::new);
-            EntityRenderers.register(EntityRegistry.SAMURAI_ILLAGER.get(), SamuraiIllagerRenderer::new);
+            EntityRenderers.register(EntityTypeRegistry.SEAT.get(), SeatEntityRenderer::new);
+            EntityRenderers.register(EntityTypeRegistry.SAMURAI_ILLAGER.get(), SamuraiIllagerRenderer::new);
         });
     }
 

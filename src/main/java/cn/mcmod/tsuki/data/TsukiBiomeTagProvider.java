@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.data;
 
 import cn.mcmod.tsuki.compat.terrablender.TsukiBiomeRegistry;
-import cn.mcmod.tsuki.tags.TsukiBiomeTags;
+import cn.mcmod.tsuki.tag.TsukiBiomeTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;

@@ -2,11 +2,10 @@ package cn.mcmod.tsuki.compat.jei;
 
 import java.util.List;
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod.tsuki.client.gui.CookingPotScreen;
-import cn.mcmod.tsuki.client.gui.DistillerScreen;
-import cn.mcmod.tsuki.client.gui.FermenterScreen;
-import cn.mcmod.tsuki.client.gui.StoneMortarScreen;
+import cn.mcmod.tsuki.client.screen.CookingPotScreen;
+import cn.mcmod.tsuki.client.screen.DistillerScreen;
+import cn.mcmod.tsuki.client.screen.FermenterScreen;
+import cn.mcmod.tsuki.client.screen.StoneMortarScreen;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.compat.jei.category.ChoppingCategory;
@@ -16,17 +15,18 @@ import cn.mcmod.tsuki.compat.jei.category.FermenterCategory;
 import cn.mcmod.tsuki.compat.jei.category.StoneMortarCategory;
 import cn.mcmod.tsuki.compat.jei.category.TataraCategory;
 import cn.mcmod.tsuki.compat.jei.recipe.TataraJeiRecipe;
-import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
+import cn.mcmod.tsuki.recipe.ChoppingRecipe;
+import cn.mcmod.tsuki.recipe.CookingPotRecipe;
+import cn.mcmod.tsuki.recipe.DistillerRecipe;
+import cn.mcmod.tsuki.recipe.FermenterRecipe;
+import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import cn.mcmod.tsuki.container.CookingPotContainer;
 import cn.mcmod.tsuki.container.DistillerContainer;
 import cn.mcmod.tsuki.container.FermenterContainer;
 import cn.mcmod.tsuki.container.StoneMortarContainer;
-import cn.mcmod.tsuki.recipes.ChoppingRecipe;
-import cn.mcmod.tsuki.recipes.CookingPotRecipe;
-import cn.mcmod.tsuki.recipes.DistillerRecipe;
-import cn.mcmod.tsuki.recipes.FermenterRecipe;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
+import cn.mcmod.tsuki.init.RecipeTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
@@ -102,7 +102,7 @@ public class JEIPlugin implements IModPlugin {
                 new ItemStack(BlockRegistry.TATARA.get()),
                 new ItemStack(Items.FLINT_AND_STEEL),
                 new ItemStack(Items.IRON_INGOT),
-                new ItemStack(TsukiArmorToolRegistry.TAMAHAGANE.get()))));
+                new ItemStack(ArmorToolRegistry.TAMAHAGANE.get()))));
     }
 
     @Override
@@ -113,10 +113,10 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.DISTILLER.get()), DISTILLER_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CHOPPING_BOARD.get()), CHOPPING_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.TATARA.get()), TATARA_JEI_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.STONE_HAMMER.get()), TATARA_JEI_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.IRON_HAMMER.get()), TATARA_JEI_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.STEEL_HAMMER.get()), TATARA_JEI_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(TsukiArmorToolRegistry.SAKURA_HAMMER.get()), TATARA_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ArmorToolRegistry.STONE_HAMMER.get()), TATARA_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ArmorToolRegistry.IRON_HAMMER.get()), TATARA_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ArmorToolRegistry.STEEL_HAMMER.get()), TATARA_JEI_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ArmorToolRegistry.SAKURA_HAMMER.get()), TATARA_JEI_TYPE);
     }
 
     @Override

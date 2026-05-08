@@ -1,9 +1,10 @@
 package cn.mcmod.tsuki.villager;
 
-import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
-import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import java.util.List;
+
+import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
+import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades.ItemListing;
 import net.minecraft.world.item.ItemStack;

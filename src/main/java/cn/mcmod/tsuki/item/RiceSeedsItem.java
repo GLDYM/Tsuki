@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.item;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;

@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.data.builder;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
-import cn.mcmod.tsuki.recipes.CookingPotRecipe;
+import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;

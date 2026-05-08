@@ -8,7 +8,8 @@ import java.util.StringJoiner;
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
-import cn.mcmod.tsuki.recipes.CookingPotRecipe;
+import cn.mcmod.tsuki.recipe.CookingPotRecipe;
+
 import com.github.ysbbbbbb.kaleidoscopecookery.crafting.container.StockpotInput;
 import com.github.ysbbbbbb.kaleidoscopecookery.crafting.recipe.StockpotRecipe;
 import com.github.ysbbbbbb.kaleidoscopecookery.init.ModRecipes;

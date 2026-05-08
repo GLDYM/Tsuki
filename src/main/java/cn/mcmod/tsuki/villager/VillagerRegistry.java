@@ -1,7 +1,8 @@
 package cn.mcmod.tsuki.villager;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;

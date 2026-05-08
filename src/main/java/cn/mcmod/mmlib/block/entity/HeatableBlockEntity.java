@@ -1,6 +1,6 @@
 package cn.mcmod.mmlib.block.entity;
 
-import cn.mcmod.tsuki.tags.TsukiBlockTags;
+import cn.mcmod.tsuki.tag.TsukiBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;

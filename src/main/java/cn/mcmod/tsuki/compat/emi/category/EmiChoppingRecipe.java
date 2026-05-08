@@ -5,8 +5,8 @@ import java.util.List;
 
 import cn.mcmod.mmlib.recipe.ChanceResult;
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
-import cn.mcmod.tsuki.recipes.ChoppingRecipe;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.BasicEmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;

@@ -1,0 +1,143 @@
+package cn.mcmod.tsuki.client.screen;
+
+import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.container.FermenterContainer;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.InventoryMenu;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.neoforged.neoforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FermenterScreen extends AbstractContainerScreen<FermenterContainer> {
+
+    private static final ResourceLocation BACKGROUND_TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+            "textures/gui/barrel.png");
+
+    public FermenterScreen(FermenterContainer screenContainer, Inventory inv, Component titleIn) {
+        super(screenContainer, inv, titleIn);
+        this.leftPos = 0;
+        this.topPos = 0;
+        this.imageWidth = 176;
+        this.imageHeight = 166;
+    }
+
+    @Override
+    public void render(GuiGraphics ms, final int mouseX, final int mouseY, float partialTicks) {
+        this.renderBackground(ms, mouseX, mouseY, partialTicks);
+        super.render(ms, mouseX, mouseY, partialTicks);
+        boolean renderedFluidTooltip = this.renderFluidTankTooltip(ms, mouseX, mouseY);
+        if (!renderedFluidTooltip) {
+            this.renderTooltip(ms, mouseX, mouseY);
+        }
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics ms, int mouseX, int mouseY) {
+        super.renderLabels(ms, mouseX, mouseY);
+        ms.drawString(this.font, this.playerInventoryTitle, 8, this.imageHeight - 96 + 2, 4210752, false);
+    }
+
+    @Override
+    protected void renderBg(GuiGraphics ms, float partialTicks, int mouseX, int mouseY) {
+        // Render UI background
+        if (this.minecraft == null) {
+            return;
+        }
+        // RenderUtils.setup(BACKGROUND_TEXTURE);
+        ms.blit(BACKGROUND_TEXTURE, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight);
+
+        // Render progress arrow
+        int l = this.menu.getCookProgressionScaled();
+        ms.blit(BACKGROUND_TEXTURE, this.leftPos + 75, this.topPos + 45, 176, 0, l + 1, 17);
+
+        int m = this.menu.getWorking();
+        ms.blit(BACKGROUND_TEXTURE, this.leftPos + 78, this.topPos + 44 - m, 176, 53 - m, 18, m);
+
+        var inputFluidTank = this.menu.blockEntity.getInputFluidTank();
+        int inputHeight = (int) (52.0F
+                * ((float) inputFluidTank.getFluidAmount() / (float) inputFluidTank.getCapacity()));
+        if (inputHeight > 0) {
+            int tankX = this.leftPos + 33;
+            int tankY = this.topPos + 17 + (52 - inputHeight);
+            renderFluid(ms, inputFluidTank.getFluid(), tankX, tankY, 16, inputHeight);
+        }
+
+        var outputFluidTank = this.menu.blockEntity.getOutputFluidTank();
+        int outputHeight = (int) (52.0F
+                * ((float) outputFluidTank.getFluidAmount() / (float) outputFluidTank.getCapacity()));
+        if (outputHeight > 0) {
+            int tankX = this.leftPos + 125;
+            int tankY = this.topPos + 17 + (52 - outputHeight);
+            renderFluid(ms, outputFluidTank.getFluid(), tankX, tankY, 16, outputHeight);
+        }
+    }
+
+    private void renderFluid(GuiGraphics graphics, FluidStack fluidStack, int x, int y, int width, int height) {
+        if (this.minecraft == null || fluidStack.isEmpty() || width <= 0 || height <= 0) {
+            return;
+        }
+
+        IClientFluidTypeExtensions fluidClient = IClientFluidTypeExtensions.of(fluidStack.getFluid());
+        ResourceLocation stillTexture = fluidClient.getStillTexture(fluidStack);
+        TextureAtlasSprite sprite = this.minecraft.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
+        int tint = fluidClient.getTintColor(fluidStack);
+
+        float alpha = (float) (tint >> 24 & 0xFF) / 255.0F;
+        float red = (float) (tint >> 16 & 0xFF) / 255.0F;
+        float green = (float) (tint >> 8 & 0xFF) / 255.0F;
+        float blue = (float) (tint & 0xFF) / 255.0F;
+        graphics.setColor(red, green, blue, alpha);
+
+        for (int xOffset = 0; xOffset < width; xOffset += 16) {
+            int drawWidth = Math.min(16, width - xOffset);
+            for (int yOffset = 0; yOffset < height; yOffset += 16) {
+                int drawHeight = Math.min(16, height - yOffset);
+                graphics.blit(x + xOffset, y + yOffset, 0, drawWidth, drawHeight, sprite);
+            }
+        }
+
+        graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+    private boolean renderFluidTankTooltip(GuiGraphics graphics, int mouseX, int mouseY) {
+        if (this.minecraft == null || this.menu.getCarried().isEmpty() == false) {
+            return false;
+        }
+
+        if (this.isHovering(33, 17, 16, 52, mouseX, mouseY)) {
+            FluidStack fluid = this.menu.blockEntity.getInputFluidTank().getFluid();
+            int amount = this.menu.blockEntity.getInputFluidTank().getFluidAmount();
+            int capacity = this.menu.blockEntity.getInputFluidTank().getCapacity();
+            graphics.renderComponentTooltip(this.font, buildFluidTooltip(fluid, amount, capacity), mouseX, mouseY);
+            return true;
+        }
+
+        if (this.isHovering(125, 17, 16, 52, mouseX, mouseY)) {
+            FluidStack fluid = this.menu.blockEntity.getOutputFluidTank().getFluid();
+            int amount = this.menu.blockEntity.getOutputFluidTank().getFluidAmount();
+            int capacity = this.menu.blockEntity.getOutputFluidTank().getCapacity();
+            graphics.renderComponentTooltip(this.font, buildFluidTooltip(fluid, amount, capacity), mouseX, mouseY);
+            return true;
+        }
+
+        return false;
+    }
+
+    private List<Component> buildFluidTooltip(FluidStack fluidStack, int amount, int capacity) {
+        List<Component> tooltip = new ArrayList<>();
+        if (fluidStack.isEmpty()) {
+            tooltip.add(Component.literal("Empty"));
+        } else {
+            tooltip.add(fluidStack.getHoverName());
+        }
+        tooltip.add(Component.literal(amount + " / " + capacity + " mB").withColor(0x7F7F7F));
+        return tooltip;
+    }
+}

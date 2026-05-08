@@ -2,8 +2,9 @@ package cn.mcmod.tsuki.container;
 
 import java.util.Objects;
 
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
+import cn.mcmod.tsuki.init.MenuTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -32,7 +33,7 @@ public class CookingPotContainer extends AbstractContainerMenu {
 
     public CookingPotContainer(final int windowId, final Inventory playerInventory,
             final CookingPotBlockEntity blockEntity, ContainerData cookingPotDataIn) {
-        super(ContainerRegistry.COOKING_POT.get(), windowId);
+        super(MenuTypeRegistry.COOKING_POT.get(), windowId);
         this.blockEntity = blockEntity;
         this.inventory = blockEntity.getInventory();
         this.containerData = cookingPotDataIn;

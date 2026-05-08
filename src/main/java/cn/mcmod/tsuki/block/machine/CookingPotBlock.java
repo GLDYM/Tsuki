@@ -1,0 +1,223 @@
+package cn.mcmod.tsuki.block.machine;
+
+import javax.annotation.Nullable;
+
+import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.tag.TsukiBlockTags;
+
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.fluids.FluidUtil;
+import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
+import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
+
+public class CookingPotBlock extends BaseEntityBlock {
+    public static final MapCodec<CookingPotBlock> CODEC = simpleCodec(CookingPotBlock::new);
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final BooleanProperty TRAY_SUPPORT = BooleanProperty.create("tray_support");
+    public static final BooleanProperty OPEN = BooleanProperty.create("open");
+
+    protected static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D);
+    protected static final VoxelShape SHAPE_WITH_TRAY = Shapes.or(SHAPE,
+            Block.box(0.0D, -1.0D, 0.0D, 16.0D, 0.0D, 16.0D));
+
+    public CookingPotBlock(Properties properties) {
+        super(properties);
+    }
+
+    public CookingPotBlock() {
+        this(Properties.of().noOcclusion().strength(0.5F, 5.0F).sound(SoundType.LANTERN));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH)
+                .setValue(TRAY_SUPPORT, false).setValue(OPEN, false));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState pState) {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return BlockEntityRegistry.COOKING_POT.get().create(pos, state);
+    }
+
+    // F****, it not sync server
+    // @Override
+    // public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    //     BlockEntity blockEntity = level.getBlockEntity(pos);
+    //     if (!(blockEntity instanceof CookingPotBlockEntity cookingPot) || cookingPot.getRecipeTimeTotal() <= 0
+    //             || random.nextInt(2) != 0) {
+    //         CookingPotBlockEntity cookingPotEntity = (CookingPotBlockEntity) blockEntity;
+    //         // Tsuki.getLogger().debug("WTF is you working? {}", cookingPotEntity.isWorking());
+    //         return;
+    //     }
+
+    //     int count = 2 + random.nextInt(2);
+    //     for (int i = 0; i < count; i++) {
+    //         double x = pos.getX() + 0.5D + (random.nextDouble() * 0.5D - 0.25D);
+    //         double y = pos.getY() + 0.72D;
+    //         double z = pos.getZ() + 0.5D + (random.nextDouble() * 0.5D - 0.25D);
+    //         double xd = (random.nextDouble() - 0.5D) * 0.012D;
+    //         double yd = 0.01D + random.nextDouble() * 0.012D;
+    //         double zd = (random.nextDouble() - 0.5D) * 0.012D;
+    //         level.addParticle(ParticleRegistry.COOKING.get(), x, y, z, xd, yd, zd);
+    //     }
+    // }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+        return state.getValue(TRAY_SUPPORT) ? SHAPE_WITH_TRAY : SHAPE;
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockPos pos = context.getClickedPos();
+        Level world = context.getLevel();
+        BlockState belowBlock = world.getBlockState(pos.below());
+        BlockState state = this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+
+        return state.setValue(TRAY_SUPPORT, belowBlock.is(TsukiBlockTags.TRAY_HEAT_SOURCES));
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player, InteractionHand handIn, BlockHitResult result) {
+
+        BlockEntity blockentity = level.getBlockEntity(pos);
+        if (!(blockentity instanceof CookingPotBlockEntity cookingPot)) {
+            return ItemInteractionResult.FAIL;
+        }
+        // open/close
+        if (stack.isEmpty() && player.isShiftKeyDown()) {
+            if (!level.isClientSide()) {
+                boolean open = state.getValue(OPEN);
+                level.setBlockAndUpdate(pos, state.setValue(OPEN, !open));
+                level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 0.7F, 1.0F);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        // bucket
+        IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1))
+                .orElse(null);
+        if (handler != null && handler instanceof FluidBucketWrapper) {
+            FluidUtil.interactWithFluidHandler(player, handIn, cookingPot.getFluidTank());
+            cookingPot.inventoryChanged();
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        if (!level.isClientSide()) {
+            // Meal
+            if (cookingPot.tryTakeMealWithContainer(player, handIn)) {
+                return ItemInteractionResult.SUCCESS;
+            }
+
+            if (cookingPot.tryTakeOutputItem(player, handIn)) {
+                return ItemInteractionResult.SUCCESS;
+            }
+
+            // Insert or take input items
+            if (!stack.isEmpty() && state.getValue(OPEN) && cookingPot.tryInsertHeldItem(player, handIn)) {
+                return ItemInteractionResult.SUCCESS;
+            }
+
+            if (stack.isEmpty() && state.getValue(OPEN) && cookingPot.tryTakeInputItems(player, handIn)) {
+                return ItemInteractionResult.SUCCESS;
+            }
+
+            if (!state.getValue(OPEN)) {
+                ((ServerPlayer) player).openMenu(cookingPot, pos);
+            }
+        }
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    @Override
+    public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+            if (blockEntity instanceof CookingPotBlockEntity potBlockEntity) {
+                Containers.dropContents(worldIn, pos, potBlockEntity.getDroppableInventory());
+                potBlockEntity.grantStoredRecipeExperience(worldIn, Vec3.atCenterOf(pos));
+                worldIn.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, worldIn, pos, newState, isMoving);
+        }
+    }
+
+    @Override
+    protected boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof CookingPotBlockEntity cookingPot && cookingPot.isWorking()) {
+            return 15;
+        }
+        return 0;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(FACING, TRAY_SUPPORT, OPEN);
+    }
+
+    @Override
+    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world,
+            BlockPos currentPos, BlockPos facingPos) {
+        BlockState belowBlock = world.getBlockState(currentPos.below());
+        return state.setValue(TRAY_SUPPORT, belowBlock.is(TsukiBlockTags.TRAY_HEAT_SOURCES));
+    }
+
+    @Override
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
+            BlockEntityType<T> blockEntity) {
+        return createTickerHelper(blockEntity, BlockEntityRegistry.COOKING_POT.get(),
+                CookingPotBlockEntity::workingTick);
+    }
+}

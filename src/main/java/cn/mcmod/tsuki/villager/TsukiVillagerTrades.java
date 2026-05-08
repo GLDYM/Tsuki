@@ -1,13 +1,13 @@
 package cn.mcmod.tsuki.villager;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.item.DrinkRegistry;
-import cn.mcmod.tsuki.item.FoodRegistry;
-import cn.mcmod.tsuki.item.ItemRegistry;
-import cn.mcmod.tsuki.item.armors.TsukiArmorToolRegistry;
-import cn.mcmod.tsuki.item.enums.TsukiFoodSet;
-import cn.mcmod.tsuki.item.enums.TsukiNormalItemSet;
-import cn.mcmod.tsuki.item.enums.TsukiWineBottleSet;
+import cn.mcmod.tsuki.init.item.DrinkRegistry;
+import cn.mcmod.tsuki.init.item.FoodRegistry;
+import cn.mcmod.tsuki.init.item.ItemRegistry;
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
+import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.init.item.enums.TsukiWineBottleSet;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -139,8 +139,8 @@ public final class TsukiVillagerTrades {
         trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get(), 1, 40, 60, 8, 25));
         trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get(), 1, 20, 35, 8, 25));
 
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 32, 8, 30));
-        trades.get(5).add(buyWithCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
+        trades.get(5).add(sellForCoins(ArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 32, 8, 30));
+        trades.get(5).add(buyWithCoins(ArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
         trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get(), 1, 60, 64, 4, 30));
         trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get(), 1, 40, 45, 4, 30));
         trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RUM_BOTTLE).get(), 1, 60, 64, 4, 30));
@@ -165,52 +165,52 @@ public final class TsukiVillagerTrades {
         // Comparison of the prize is a essential part of Sakura :)
         trades.get(1).add(buyWithCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SILK).get(), 2, 1, 3, 16, 2));
         trades.get(1).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SILK).get(), 4, 2, 5, 16, 2));
-        trades.get(1).add(buyWithCoins(TsukiArmorToolRegistry.KIMONO_WHITE.get(), 1, 10, 14, 4, 2));
-        trades.get(1).add(buyWithCoins(TsukiArmorToolRegistry.HAORI_BLACK.get(), 1, 10, 14, 4, 2));
+        trades.get(1).add(buyWithCoins(ArmorToolRegistry.KIMONO_WHITE.get(), 1, 10, 14, 4, 2));
+        trades.get(1).add(buyWithCoins(ArmorToolRegistry.HAORI_BLACK.get(), 1, 10, 14, 4, 2));
 
         trades.get(2).add(buyWithCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get(), 8, 6, 10, 16, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.KIMONO_BLACK.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.KIMONO_GREEN.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.KIMONO_CYAN.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.KIMONO_PURPLE.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.KIMONO_SAKURA.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.KIMONO_BROWN.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.HAORI_BROWN.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.HAORI_CYAN.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.HAORI_LIGHT_BLUE.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.HAORI_GREEN.get(), 1, 14, 20, 4, 10));
-        trades.get(2).add(sellForCoins(TsukiArmorToolRegistry.STRAW_HAT.get(), 1, 8, 12, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.KIMONO_BLACK.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.KIMONO_GREEN.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.KIMONO_CYAN.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.KIMONO_PURPLE.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.KIMONO_SAKURA.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.KIMONO_BROWN.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.HAORI_BROWN.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.HAORI_CYAN.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.HAORI_LIGHT_BLUE.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.HAORI_GREEN.get(), 1, 14, 20, 4, 10));
+        trades.get(2).add(sellForCoins(ArmorToolRegistry.STRAW_HAT.get(), 1, 8, 12, 4, 10));
         trades.get(2).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SILK).get(), 8, 4, 7, 12, 10));
 
-        trades.get(3).add(buyWithCoins(TsukiArmorToolRegistry.STRAW_HAT.get(), 1, 4, 8, 8, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.KIMONO_MIKO.get(), 1, 20, 36, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.YUKATA_RED.get(), 1, 16, 22, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.YUKATA_BLUE.get(), 1, 16, 22, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.YUKATA_MAGENTA.get(), 1, 16, 22, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.YUKATA_LIME.get(), 1, 16, 22, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.YUKATA_YELLOW.get(), 1, 16, 22, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.SHINAI.get(), 1, 8, 10, 4, 15));
-        trades.get(3).add(sellForCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 10, 14, 4, 15));
-        trades.get(3).add(buyWithCoins(TsukiArmorToolRegistry.SHINAI.get(), 1, 6, 8, 4, 15));
-        trades.get(3).add(buyWithCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 6, 10, 4, 15));
+        trades.get(3).add(buyWithCoins(ArmorToolRegistry.STRAW_HAT.get(), 1, 4, 8, 8, 15));
+        trades.get(3).add(sellForCoins(ArmorToolRegistry.KIMONO_MIKO.get(), 1, 20, 36, 4, 15));
+        trades.get(3).add(sellForCoins(ArmorToolRegistry.YUKATA_RED.get(), 1, 16, 22, 4, 15));
+        trades.get(3).add(sellForCoins(ArmorToolRegistry.YUKATA_BLUE.get(), 1, 16, 22, 4, 15));
+        trades.get(3).add(sellForCoins(ArmorToolRegistry.YUKATA_MAGENTA.get(), 1, 16, 22, 4, 15));
+        trades.get(3).add(sellForCoins(ArmorToolRegistry.YUKATA_LIME.get(), 1, 16, 22, 4, 15));
+        trades.get(3).add(sellForCoins(ArmorToolRegistry.YUKATA_YELLOW.get(), 1, 16, 22, 4, 15));
+        trades.get(3).add(sellForCoins(ArmorToolRegistry.SHINAI.get(), 1, 8, 10, 4, 15));
+        trades.get(3).add(sellForCoins(ArmorToolRegistry.SHEATH.get(), 1, 10, 14, 4, 15));
+        trades.get(3).add(buyWithCoins(ArmorToolRegistry.SHINAI.get(), 1, 6, 8, 4, 15));
+        trades.get(3).add(buyWithCoins(ArmorToolRegistry.SHEATH.get(), 1, 6, 10, 4, 15));
 
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
-        trades.get(4).add(buyWithCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 48, 8, 30));
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SAMURAI_HELMET_RED.get(), 1, 28, 32, 4, 25));
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SAMURAI_CHESTPLATE_RED.get(), 1, 42, 56, 4, 25));
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SAMURAI_LEGGINGS_RED.get(), 1, 38, 42, 4, 25));
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SAMURAI_BOOTS_RED.get(), 1, 10, 24, 32, 25));
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SOLDIER_HELMET_BLACK.get(), 1, 16, 20, 4, 25));
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SOLDIER_CHESTPLATE_BLACK.get(), 1, 18, 22, 4, 25));
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SOLDIER_LEGGINGS_BLACK.get(), 1, 16, 20, 4, 25));
-        trades.get(4).add(sellForCoins(TsukiArmorToolRegistry.SOLDIER_BOOTS_BLACK.get(), 1, 14, 18, 4, 25));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
+        trades.get(4).add(buyWithCoins(ArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 48, 8, 30));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SAMURAI_HELMET_RED.get(), 1, 28, 32, 4, 25));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SAMURAI_CHESTPLATE_RED.get(), 1, 42, 56, 4, 25));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SAMURAI_LEGGINGS_RED.get(), 1, 38, 42, 4, 25));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SAMURAI_BOOTS_RED.get(), 1, 10, 24, 32, 25));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SOLDIER_HELMET_BLACK.get(), 1, 16, 20, 4, 25));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SOLDIER_CHESTPLATE_BLACK.get(), 1, 18, 22, 4, 25));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SOLDIER_LEGGINGS_BLACK.get(), 1, 16, 20, 4, 25));
+        trades.get(4).add(sellForCoins(ArmorToolRegistry.SOLDIER_BOOTS_BLACK.get(), 1, 14, 18, 4, 25));
 
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 32, 8, 30));
-        trades.get(5).add(buyWithCoins(TsukiArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.KATANA.get(), 1, 20, 30, 4, 30));
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.KODACHI.get(), 1, 16, 24, 4, 30));
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SAKURA_KATANA.get(), 1, 30, 50, 2, 30));
-        trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.TACHI.get(), 1, 26, 40, 2, 30));
+        trades.get(5).add(sellForCoins(ArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 32, 8, 30));
+        trades.get(5).add(buyWithCoins(ArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
+        trades.get(5).add(sellForCoins(ArmorToolRegistry.KATANA.get(), 1, 20, 30, 4, 30));
+        trades.get(5).add(sellForCoins(ArmorToolRegistry.KODACHI.get(), 1, 16, 24, 4, 30));
+        trades.get(5).add(sellForCoins(ArmorToolRegistry.SAKURA_KATANA.get(), 1, 30, 50, 2, 30));
+        trades.get(5).add(sellForCoins(ArmorToolRegistry.TACHI.get(), 1, 26, 40, 2, 30));
         // trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 8, 14, 8, 30));
     }
 

@@ -1,14 +1,15 @@
 package cn.mcmod.tsuki.block.entity;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
+import cn.mcmod.mmlib.util.LevelUtil;
 import cn.mcmod.tsuki.block.capability.DoubleFluidHandler;
 import cn.mcmod.tsuki.container.FermenterContainer;
+import cn.mcmod.tsuki.init.RecipeTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.recipe.FermenterRecipe;
 import cn.mcmod.tsuki.block.capability.FermenterItemHandler;
-import cn.mcmod.tsuki.block.machines.FermenterBlock;
-import cn.mcmod.tsuki.recipes.FermenterRecipe;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
+import cn.mcmod.tsuki.block.machine.FermenterBlock;
 import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
-import cn.mcmod.mmlib.utils.LevelUtils;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -216,7 +217,7 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
                 double x = worldPosition.getX() + 0.5;
                 double y = worldPosition.getY() + 0.7;
                 double z = worldPosition.getZ() + 0.5;
-                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
+                LevelUtil.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
                         0.25F,
                         0F);
             }
@@ -242,7 +243,7 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
         for (Object2IntMap.Entry<ResourceLocation> entry : experienceTracker.object2IntEntrySet()) {
             world.getRecipeManager().byKey(entry.getKey()).ifPresent(holder -> {
                 if (holder.value() instanceof FermenterRecipe recipe) {
-                    LevelUtils.splitAndSpawnExperience(world, pos, entry.getIntValue(), recipe.getExperience());
+                    LevelUtil.splitAndSpawnExperience(world, pos, entry.getIntValue(), recipe.getExperience());
                 }
             });
         }

@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.data;
 
-import cn.mcmod.tsuki.fluid.FluidRegistry;
-import cn.mcmod.tsuki.tags.TsukiFluidTags;
+import cn.mcmod.tsuki.init.fluid.FluidRegistry;
+import cn.mcmod.tsuki.tag.TsukiFluidTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;

@@ -6,10 +6,10 @@ import java.util.List;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.block.BlockRegistry;
 import cn.mcmod.tsuki.block.entity.FermenterBlockEntity;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
-import cn.mcmod.tsuki.recipes.FermenterRecipe;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.recipe.FermenterRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;

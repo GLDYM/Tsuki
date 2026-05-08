@@ -4,8 +4,8 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.enchantment.TsukiEnchantments;
-import cn.mcmod.tsuki.tags.TsukiItemTags;
+import cn.mcmod.tsuki.init.EnchantmentRegistry;
+import cn.mcmod.tsuki.tag.TsukiItemTags;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.RegistrySetBuilder;
@@ -37,7 +37,7 @@ public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
         HolderSet<Enchantment> omnitoolExclusive = HolderSet.direct();
         HolderSet<Enchantment> freshFoodExclusive = HolderSet.direct();
 
-        bootstrap.register(TsukiEnchantments.ANTI_FIRE,
+        bootstrap.register(EnchantmentRegistry.ANTI_FIRE,
                 new Enchantment(
                         Component.translatable("enchantment.tsuki.anti_fire"),
                         Enchantment.definition(
@@ -52,7 +52,7 @@ public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
                         antiFireExclusive,
                         DataComponentMap.EMPTY));
 
-        bootstrap.register(TsukiEnchantments.SMASH,
+        bootstrap.register(EnchantmentRegistry.SMASH,
                 new Enchantment(
                         Component.translatable("enchantment.tsuki.smash"),
                         Enchantment.definition(
@@ -67,7 +67,7 @@ public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
                         smashExclusive,
                         DataComponentMap.EMPTY));
 
-        bootstrap.register(TsukiEnchantments.OMNITOOL,
+        bootstrap.register(EnchantmentRegistry.OMNITOOL,
                 new Enchantment(
                         Component.translatable("enchantment.tsuki.omnitool"),
                         Enchantment.definition(
@@ -82,7 +82,7 @@ public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
                         omnitoolExclusive,
                         DataComponentMap.EMPTY));
 
-        bootstrap.register(TsukiEnchantments.FRESH_FOOD,
+        bootstrap.register(EnchantmentRegistry.FRESH_FOOD,
                 new Enchantment(
                         Component.translatable("enchantment.tsuki.fresh_food"),
                         Enchantment.definition(

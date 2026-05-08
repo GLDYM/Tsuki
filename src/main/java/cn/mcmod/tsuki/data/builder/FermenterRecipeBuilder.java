@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.data.builder;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
-import cn.mcmod.tsuki.recipes.FermenterRecipe;
+import cn.mcmod.tsuki.recipe.FermenterRecipe;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;

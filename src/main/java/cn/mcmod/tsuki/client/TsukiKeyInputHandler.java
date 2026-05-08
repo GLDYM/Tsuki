@@ -1,9 +1,9 @@
 package cn.mcmod.tsuki.client;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.item.KatanaItem;
-import cn.mcmod.tsuki.item.SheathItem;
-import cn.mcmod.tsuki.item.SheathKatanaItem;
+import cn.mcmod.tsuki.item.tool.KatanaItem;
+import cn.mcmod.tsuki.item.tool.SheathItem;
+import cn.mcmod.tsuki.item.tool.SheathKatanaItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;

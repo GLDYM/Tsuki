@@ -6,12 +6,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import cn.mcmod.tsuki.block.capability.StoneMortarItemHandler;
+import cn.mcmod.tsuki.block.machine.StoneMortarBlock;
 import cn.mcmod.tsuki.container.StoneMortarContainer;
-import cn.mcmod.tsuki.block.machines.StoneMortarBlock;
-import cn.mcmod.tsuki.recipes.RecipeTypeRegistry;
-import cn.mcmod.tsuki.recipes.StoneMortarRecipe;
+import cn.mcmod.tsuki.init.RecipeTypeRegistry;
+import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
-import cn.mcmod.mmlib.utils.LevelUtils;
+import cn.mcmod.mmlib.util.LevelUtil;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.core.BlockPos;
@@ -213,7 +214,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
                 double x = worldPosition.getX() + 0.5;
                 double y = worldPosition.getY() + 0.7;
                 double z = worldPosition.getZ() + 0.5;
-                LevelUtils.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
+                LevelUtil.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
                         0.25F,
                         0F);
             }
@@ -239,7 +240,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         for (Object2IntMap.Entry<ResourceLocation> entry : experienceTracker.object2IntEntrySet()) {
             world.getRecipeManager().byKey(entry.getKey()).ifPresent(holder -> {
                 if (holder.value() instanceof StoneMortarRecipe recipe) {
-                    LevelUtils.splitAndSpawnExperience(world, pos, entry.getIntValue(), recipe.getExperience());
+                    LevelUtil.splitAndSpawnExperience(world, pos, entry.getIntValue(), recipe.getExperience());
                 }
             });
         }
@@ -353,4 +354,5 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     }
 
 }
-
+
+
