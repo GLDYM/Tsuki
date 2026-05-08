@@ -3,7 +3,7 @@
   "experience": 0,
   "ingredients": [
     {
-      "item": "minecraft:beetroot"
+      "tag": "c:crops/beetroot"
     }
   ],
   "recipeTime": 200,

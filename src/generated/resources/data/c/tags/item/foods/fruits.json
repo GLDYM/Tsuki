@@ -2,6 +2,9 @@
   "values": [
     "#c:foods/fruits/apple",
     "#c:foods/fruits/berries",
-    "#c:foods/fruits/melon_slice"
+    "#c:foods/fruits/melon_slice",
+    "tsuki:grape",
+    "tsuki:grape_green",
+    "tsuki:lemon"
   ]
 }

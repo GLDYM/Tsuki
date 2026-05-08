@@ -10,14 +10,9 @@
     "fluidTag": "c:water/water"
   },
   "ingredients": [
-    [
-      {
-        "item": "minecraft:apple"
-      },
-      {
-        "item": "minecraft:chorus_fruit"
-      }
-    ],
+    {
+      "tag": "c:fruits/apple"
+    },
     {
       "tag": "c:sugar"
     },

@@ -3,7 +3,7 @@
   "experience": 0,
   "ingredients": [
     {
-      "item": "minecraft:sugar_cane"
+      "tag": "c:crops/sugar_cane"
     }
   ],
   "recipeTime": 200,

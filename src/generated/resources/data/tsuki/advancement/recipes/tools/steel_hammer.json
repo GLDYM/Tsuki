@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "tsuki:steel_ingot"
+            "items": "#c:ingots/steel"
           }
         ]
       },

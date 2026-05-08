@@ -1,5 +1,6 @@
 {
   "values": [
-    "#c:dust/salt"
+    "#c:dusts/salt",
+    "#c:salt/salt"
   ]
 }

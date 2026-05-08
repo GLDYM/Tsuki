@@ -16,7 +16,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> STRIPPED_WOOD = TagUtil.forgeItemTag("stripped_woods");
 
     public static final TagKey<Item> SALT = TagUtil.forgeItemTag("salt");
-    public static final TagKey<Item> DUST_SALT = TagUtil.forgeItemTag("dust/salt");
+    public static final TagKey<Item> DUST_SALT = TagUtil.forgeItemTag("dusts/salt");
     public static final TagKey<Item> SALT_SALT = TagUtil.forgeItemTag("salt/salt");
 
     public static final TagKey<Item> SUGAR = TagUtil.forgeItemTag("sugar");
@@ -65,7 +65,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> FLOUR_BUCKWHEAT = TagUtil.forgeItemTag("flour/buckwheat");
     public static final TagKey<Item> FLOUR_RICE = TagUtil.forgeItemTag("flour/rice");
 
-    public static final TagKey<Item> DUST_CHARCOAL = TagUtil.forgeItemTag("dust/charcoal");
+    public static final TagKey<Item> DUST_CHARCOAL = TagUtil.forgeItemTag("dusts/charcoal");
 
     public static final TagKey<Item> DOUGH = TagUtil.forgeItemTag("dough");
     public static final TagKey<Item> DOUGH_WHEAT = TagUtil.forgeItemTag("dough/wheat");
@@ -75,6 +75,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> FOODS_COOKED_MEATS = TagUtil.forgeItemTag("foods/cooked_meats");
     public static final TagKey<Item> FOODS_RAW_MEAT = TagUtil.forgeItemTag("foods/raw_meat");
     public static final TagKey<Item> FOODS_RAW_MEATS = TagUtil.forgeItemTag("foods/raw_meats");
+    public static final TagKey<Item> FOODS_RAW_FISHES = TagUtil.forgeItemTag("foods/raw_fishes");
     public static final TagKey<Item> COOKED_BACON = TagUtil.forgeItemTag("cooked_bacon");
     public static final TagKey<Item> COOKED_BEEF = TagUtil.forgeItemTag("cooked_beef");
     public static final TagKey<Item> COOKED_CHICKEN = TagUtil.forgeItemTag("cooked_chicken");
@@ -87,7 +88,9 @@ public class TsukiItemTags {
 
     public static final TagKey<Item> CROPS = Tags.Items.CROPS;
     public static final TagKey<Item> CROPS_PUMPKIN = TagUtil.forgeItemTag("crops/pumpkin");
+    public static final TagKey<Item> CROPS_BEETROOT = TagUtil.forgeItemTag("crops/beetroot");
     public static final TagKey<Item> CROPS_CABBAGE = TagUtil.forgeItemTag("crops/cabbage");
+    public static final TagKey<Item> CROPS_CARROT = TagUtil.forgeItemTag("crops/carrot");
     public static final TagKey<Item> CROPS_ONION = TagUtil.forgeItemTag("crops/onion");
     public static final TagKey<Item> CROPS_BUCKWHEAT = TagUtil.forgeItemTag("crops/buckwheat");
     public static final TagKey<Item> CROPS_RICE = TagUtil.forgeItemTag("crops/rice");
@@ -95,12 +98,16 @@ public class TsukiItemTags {
     public static final TagKey<Item> CROPS_EGGPLANT = TagUtil.forgeItemTag("crops/eggplant");
     public static final TagKey<Item> CROPS_RADISH = TagUtil.forgeItemTag("crops/radish");
     public static final TagKey<Item> CROPS_TARO = TagUtil.forgeItemTag("crops/taro");
+    public static final TagKey<Item> CROPS_POTATO = TagUtil.forgeItemTag("crops/potato");
     public static final TagKey<Item> CROPS_REDBEAN = TagUtil.forgeItemTag("crops/redbean");
     public static final TagKey<Item> CROPS_SOYBEAN = TagUtil.forgeItemTag("crops/soybean");
     public static final TagKey<Item> CROPS_PEPPER = TagUtil.forgeItemTag("crops/pepper");
     public static final TagKey<Item> CROPS_VANILLA = TagUtil.forgeItemTag("crops/vanilla");
     public static final TagKey<Item> CROPS_GRAPE = TagUtil.forgeItemTag("crops/grape");
     public static final TagKey<Item> CROPS_HOP = TagUtil.forgeItemTag("crops/hop");
+    public static final TagKey<Item> CROPS_SUGAR_CANE = TagUtil.forgeItemTag("crops/sugar_cane");
+    public static final TagKey<Item> CROPS_COCOA_BEAN = TagUtil.forgeItemTag("crops/cocoa_bean");
+    public static final TagKey<Item> CROPS_CACTUS = TagUtil.forgeItemTag("crops/cactus");
     public static final TagKey<Item> GREEN_TEA_LEAVES = TagUtil.modItemTag(Tsuki.MODID, "green_tea_leaves");
     public static final TagKey<Item> BLACK_TEA_LEAVES = TagUtil.modItemTag(Tsuki.MODID, "black_tea_leaves");
 
@@ -207,6 +214,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> ORES = TagUtil.forgeItemTag("ores");
     public static final TagKey<Item> ORES_IRON = TagUtil.forgeItemTag("ores/iron");
     public static final TagKey<Item> ORES_SAKURA_DIAMOND = TagUtil.forgeItemTag("ores/sakura_diamond");
+    public static final TagKey<Item> INGOTS_STEEL = TagUtil.forgeItemTag("ingots/steel");
 
     public static final TagKey<Item> TOOLS = TagUtil.forgeItemTag("tools");
     public static final TagKey<Item> TOOLS_AXES = TagUtil.forgeItemTag("tools/axes");

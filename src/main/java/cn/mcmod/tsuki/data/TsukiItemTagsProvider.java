@@ -168,9 +168,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.LUMBER_UME).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_UME).get());
         this.tag(TsukiItemTags.GRAIN_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get());
         this.tag(TsukiItemTags.GRAIN_BUCKWHEAT).add(ItemRegistry.BUCKWHEAT.get());
-        this.tag(TsukiItemTags.SALT).addTag(TsukiItemTags.DUST_SALT);
-        this.tag(TsukiItemTags.DUST_SALT).addTag(TsukiItemTags.SALT_SALT);
+        this.tag(TsukiItemTags.SALT).addTag(TsukiItemTags.DUST_SALT).addTag(TsukiItemTags.SALT_SALT);
+        this.tag(TsukiItemTags.DUST_SALT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SALT).get());
         this.tag(TsukiItemTags.SALT_SALT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SALT).get());
+        this.tag(TsukiItemTags.INGOTS_STEEL).add(ArmorToolRegistry.STEEL_INGOT.get());
         this.tag(TsukiItemTags.SUGAR)
                 .add(TsukiNormalItemSet.MIRIN_KASU.getItem().get())
                 .add(TsukiNormalItemSet.MAPLE_SYRUP.getItem().get())
@@ -264,12 +265,18 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addTag(TsukiItemTags.SEEDS_GRAPE)
                 .addTag(TsukiItemTags.SEEDS_HOP);
         this.tag(TsukiItemTags.CROPS)
+                .addTag(TsukiItemTags.CROPS_BEETROOT)
                 .addTag(TsukiItemTags.CROPS_CABBAGE)
+                .addTag(TsukiItemTags.CROPS_CARROT)
                 .addTag(TsukiItemTags.CROPS_ONION)
                 .addTag(TsukiItemTags.CROPS_BUCKWHEAT)
+                .addTag(TsukiItemTags.CROPS_CACTUS)
+                .addTag(TsukiItemTags.CROPS_COCOA_BEAN)
                 .addTag(TsukiItemTags.CROPS_EGGPLANT)
+                .addTag(TsukiItemTags.CROPS_POTATO)
                 .addTag(TsukiItemTags.CROPS_RADISH)
                 .addTag(TsukiItemTags.CROPS_RICE)
+                .addTag(TsukiItemTags.CROPS_SUGAR_CANE)
                 .addTag(TsukiItemTags.CROPS_TOMATO)
                 .addTag(TsukiItemTags.CROPS_TARO)
                 .addTag(TsukiItemTags.SEEDS_RAPESEED)
@@ -279,6 +286,12 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addTag(TsukiItemTags.CROPS_GRAPE)
                 .addTag(TsukiItemTags.CROPS_HOP)
                 .addTag(TsukiItemTags.CROPS_PUMPKIN);
+        this.tag(TsukiItemTags.CROPS_BEETROOT).add(Items.BEETROOT);
+        this.tag(TsukiItemTags.CROPS_CARROT).add(Items.CARROT);
+        this.tag(TsukiItemTags.CROPS_POTATO).add(Items.POTATO);
+        this.tag(TsukiItemTags.CROPS_SUGAR_CANE).add(Items.SUGAR_CANE);
+        this.tag(TsukiItemTags.CROPS_COCOA_BEAN).add(Items.COCOA_BEANS);
+        this.tag(TsukiItemTags.CROPS_CACTUS).add(Items.CACTUS);
         this.tag(TsukiItemTags.CROPS_PUMPKIN).add(Items.PUMPKIN);
         this.tag(TsukiItemTags.VEGETABLES_PUMPKIN).add(Items.PUMPKIN);
         this.tag(TsukiItemTags.VEGETABLES)
@@ -338,12 +351,18 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.RAW_MUTTON).add(Items.MUTTON);
         this.tag(TsukiItemTags.FISHES).addTag(TsukiItemTags.RAW_FISHES);
         this.tag(TsukiItemTags.FRUITS).addTag(TsukiItemTags.FRUITS_APPLE).addTag(TsukiItemTags.FRUITS_BERRIES)
-                .addTag(TsukiItemTags.FRUITS_MELON_SLICE).addTag(TsukiItemTags.FRUITS_UME);
-        this.tag(TsukiItemTags.FRUITS).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHESTNUT).get());
+                .addTag(TsukiItemTags.FRUITS_MELON_SLICE)
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
+                .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHESTNUT).get());
         this.tag(TsukiItemTags.FOODS_FRUITS)
                 .addTag(TsukiItemTags.FOODS_FRUITS_APPLE)
                 .addTag(TsukiItemTags.FOODS_FRUITS_BERRIES)
-                .addTag(TsukiItemTags.FOODS_FRUITS_MELON_SLICE);
+                .addTag(TsukiItemTags.FOODS_FRUITS_MELON_SLICE)
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get());
         this.tag(TsukiItemTags.FOODS_FRUITS_APPLE).addTag(TsukiItemTags.FRUITS_APPLE);
         this.tag(TsukiItemTags.FOODS_FRUITS_BERRIES).addTag(TsukiItemTags.FRUITS_BERRIES);
         this.tag(TsukiItemTags.FOODS_FRUITS_MELON_SLICE).addTag(TsukiItemTags.FRUITS_MELON_SLICE);
@@ -358,6 +377,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addTag(TsukiItemTags.RAW_PORK)
                 .addTag(TsukiItemTags.RAW_CHICKEN)
                 .addTag(TsukiItemTags.RAW_BEEF);
+        this.tag(TsukiItemTags.FOODS_RAW_FISHES).addTag(TsukiItemTags.RAW_FISHES);
         this.tag(TsukiItemTags.FOODS_COOKED_MEATS).addTag(TsukiItemTags.FOODS_COOKED_MEAT);
         this.tag(TsukiItemTags.FOODS_COOKED_MEAT)
                 .addTag(TsukiItemTags.COOKED_FISHES)

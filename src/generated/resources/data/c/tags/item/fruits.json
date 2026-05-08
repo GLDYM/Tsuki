@@ -3,7 +3,9 @@
     "#c:fruits/apple",
     "#c:fruits/berries",
     "#c:fruits/melon_slice",
-    "#c:fruits/ume",
+    "tsuki:grape",
+    "tsuki:grape_green",
+    "tsuki:lemon",
     "tsuki:chestnut"
   ]
 }

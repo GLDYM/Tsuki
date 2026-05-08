@@ -7,7 +7,7 @@
   },
   "ingredients": [
     {
-      "tag": "c:dust/charcoal"
+      "tag": "c:dusts/charcoal"
     }
   ],
   "recipeTime": 500,

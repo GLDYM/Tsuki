@@ -9,7 +9,7 @@
       "item": "tsuki:orange_juice"
     },
     {
-      "item": "minecraft:apple"
+      "tag": "c:fruits/apple"
     }
   ],
   "result": {

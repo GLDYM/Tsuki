@@ -459,9 +459,9 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ArmorToolRegistry.STEEL_HAMMER.get())
                 .pattern("SS")
                 .pattern(" L")
-                .define('S', ArmorToolRegistry.STEEL_INGOT.get())
+                .define('S', TsukiItemTags.INGOTS_STEEL)
                 .define('L', Tags.Items.RODS_WOODEN)
-                .unlockedBy("has_steel_ingot", has(ArmorToolRegistry.STEEL_INGOT.get()))
+                .unlockedBy("has_steel_ingot", has(TsukiItemTags.INGOTS_STEEL))
                 .save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ArmorToolRegistry.SAKURA_HAMMER.get())
                 .pattern("DD")
@@ -534,7 +534,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("  M")
             .pattern(" M ")
             .pattern("L H")
-            .define('M', ArmorToolRegistry.STEEL_INGOT.get())
+            .define('M', TsukiItemTags.INGOTS_STEEL)
             .define('L', TsukiItemTags.LUMBER)
             .define('H', TsukiItemTags.TOOLS_HAMMERS)
             .unlockedBy("has_tamahagane", has(ArmorToolRegistry.TAMAHAGANE.get()))
@@ -542,10 +542,10 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ArmorToolRegistry.KODACHI.get())
             .pattern(" M")
             .pattern("LH")
-            .define('M', ArmorToolRegistry.STEEL_INGOT.get())
+            .define('M', TsukiItemTags.INGOTS_STEEL)
             .define('L', TsukiItemTags.LUMBER)
             .define('H', TsukiItemTags.TOOLS_HAMMERS)
-            .unlockedBy("has_steel_ingot", has(ArmorToolRegistry.STEEL_INGOT.get()))
+            .unlockedBy("has_steel_ingot", has(TsukiItemTags.INGOTS_STEEL))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kodachi"));
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ArmorToolRegistry.SHINAI.get())
             .pattern("  B")
@@ -559,10 +559,10 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .pattern("  S")
             .pattern("SS ")
             .pattern("L H")
-            .define('S', ArmorToolRegistry.STEEL_INGOT.get())
+            .define('S', TsukiItemTags.INGOTS_STEEL)
             .define('L', TsukiItemTags.LUMBER)
             .define('H', TsukiItemTags.TOOLS_HAMMERS)
-            .unlockedBy("has_steel_ingot", has(ArmorToolRegistry.STEEL_INGOT.get()))
+            .unlockedBy("has_steel_ingot", has(TsukiItemTags.INGOTS_STEEL))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tachi"));
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ArmorToolRegistry.SAKURA_KATANA.get())
             .pattern("  M")
@@ -2033,11 +2033,11 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_from_mortar"));
         StoneMortarRecipeBuilder.mortar(Items.SUGAR, 3)
             .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
-            .requires(Items.SUGAR_CANE)
+            .requires(TsukiItemTags.CROPS_SUGAR_CANE)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sugar_from_mortar"));
         StoneMortarRecipeBuilder.mortar(Items.SUGAR, 1)
             .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
-            .requires(Items.BEETROOT)
+            .requires(TsukiItemTags.CROPS_BEETROOT)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "beetsugar_from_mortar"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR).get(), 1)
             .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get(), 1)
@@ -2962,7 +2962,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100), FoodRegistry.FOODSET.get(TsukiFoodSet.FRUITSALAD).get(), 2
             )
-            .requires(Ingredient.fromValues(Stream.of(new ItemValue(new ItemStack(Items.APPLE)), new ItemValue(new ItemStack(Items.CHORUS_FRUIT)))))
+            .requires(TsukiItemTags.FRUITS_APPLE)
             .requires(TsukiItemTags.SUGAR)
             .requires(TsukiItemTags.FRUITS)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fruitsalad_cooking"));
@@ -3201,8 +3201,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
             new FluidStack((Fluid)FluidRegistry.RUM.get(), 500)
         )
-            .requires(Items.SUGAR_CANE)
-            .requires(Items.SUGAR_CANE)
+            .requires(TsukiItemTags.CROPS_SUGAR_CANE)
+            .requires(TsukiItemTags.CROPS_SUGAR_CANE)
             .requires(TsukiItemTags.YEAST)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rum_cane_distillation"));
         DistillerRecipeBuilder.distillation(
@@ -3224,9 +3224,9 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
             new FluidStack((Fluid)FluidRegistry.VODKA.get(), 500)
         )
-            .requires(Items.POTATO)
-            .requires(Items.POTATO)
-            .requires(Items.POTATO)
+            .requires(TsukiItemTags.CROPS_POTATO)
+            .requires(TsukiItemTags.CROPS_POTATO)
+            .requires(TsukiItemTags.CROPS_POTATO)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "vodka_distillation"));
         DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(
             TsukiFluidTags.BREWERS_ALCOHOL, 1000),
@@ -3240,8 +3240,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             FluidIngredient.fromTag(TsukiFluidTags.BREWERS_ALCOHOL, 1000),
             new FluidStack((Fluid)FluidRegistry.COCOA_LIQUEUR.get(), 1000)
         )
-            .requires(Items.COCOA_BEANS)
-            .requires(Items.COCOA_BEANS)
+            .requires(TsukiItemTags.CROPS_COCOA_BEAN)
+            .requires(TsukiItemTags.CROPS_COCOA_BEAN)
             .requires(Items.SUGAR)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cocoa_liqueur_distillation"));
         DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(
@@ -3256,8 +3256,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
             new FluidStack((Fluid)FluidRegistry.TEQUILA.get(), 500)
         )
-            .requires(Items.CACTUS)
-            .requires(Items.CACTUS)
+            .requires(TsukiItemTags.CROPS_CACTUS)
+            .requires(TsukiItemTags.CROPS_CACTUS)
             .requires(Items.SUGAR)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tequila_distillation"));
         DistillerRecipeBuilder.distillation(FluidIngredient.fromTag(
@@ -3565,7 +3565,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SANGRIA).get())
                 .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
-                .requires(Items.APPLE)
+                .requires(TsukiItemTags.FRUITS_APPLE)
                 .unlockedBy("has_red_wine", has(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_sangria"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SPRITZER).get())
@@ -3840,5 +3840,3 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .unlockedBy("has_ingredient", has(ingredient.get()));
     }
 }
-
-

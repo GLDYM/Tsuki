@@ -1,11 +1,17 @@
 {
   "values": [
+    "#c:crops/beetroot",
     "#c:crops/cabbage",
+    "#c:crops/carrot",
     "#c:crops/onion",
     "#c:crops/buckwheat",
+    "#c:crops/cactus",
+    "#c:crops/cocoa_bean",
     "#c:crops/eggplant",
+    "#c:crops/potato",
     "#c:crops/radish",
     "#c:crops/rice",
+    "#c:crops/sugar_cane",
     "#c:crops/tomato",
     "#c:crops/taro",
     "#c:seeds/rapeseed",

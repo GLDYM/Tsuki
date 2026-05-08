@@ -7,13 +7,13 @@
   },
   "ingredients": [
     {
-      "item": "minecraft:potato"
+      "tag": "c:crops/potato"
     },
     {
-      "item": "minecraft:potato"
+      "tag": "c:crops/potato"
     },
     {
-      "item": "minecraft:potato"
+      "tag": "c:crops/potato"
     }
   ],
   "recipeTime": 400,

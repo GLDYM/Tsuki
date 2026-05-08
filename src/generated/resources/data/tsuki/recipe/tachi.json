@@ -9,7 +9,7 @@
       "tag": "c:lumber"
     },
     "S": {
-      "item": "tsuki:steel_ingot"
+      "tag": "c:ingots/steel"
     }
   },
   "pattern": [

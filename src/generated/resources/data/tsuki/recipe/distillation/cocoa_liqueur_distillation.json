@@ -7,10 +7,10 @@
   },
   "ingredients": [
     {
-      "item": "minecraft:cocoa_beans"
+      "tag": "c:crops/cocoa_bean"
     },
     {
-      "item": "minecraft:cocoa_beans"
+      "tag": "c:crops/cocoa_bean"
     },
     {
       "item": "minecraft:sugar"
