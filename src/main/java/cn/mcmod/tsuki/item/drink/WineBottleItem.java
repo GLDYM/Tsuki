@@ -13,12 +13,13 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
 import java.util.List;
 import java.util.function.Supplier;
 
-public class WineBottleItem extends Item {
+public class WineBottleItem extends PlaceableDrinkItem {
     public static final int MAX_SIP_DAMAGE = 5;
 
     private final MobEffectInstance[] effects;
@@ -29,21 +30,23 @@ public class WineBottleItem extends Item {
 
     public WineBottleItem(
             Properties properties,
+            Supplier<? extends Block> placementBlock,
             Supplier<Item> containerItem,
             Supplier<Fluid> fluidSupplier,
             boolean alcoholic,
             MobEffectInstance... effects) {
-        this(properties, containerItem, fluidSupplier, alcoholic, null, effects);
+        this(properties, placementBlock, containerItem, fluidSupplier, alcoholic, null, effects);
     }
 
     public WineBottleItem(
             Properties properties,
+            Supplier<? extends Block> placementBlock,
             Supplier<Item> containerItem,
             Supplier<Fluid> fluidSupplier,
             boolean alcoholic,
             Component toolTip,
             MobEffectInstance... effects) {
-        super(properties.stacksTo(1).durability(MAX_SIP_DAMAGE));
+        super(properties.stacksTo(1).durability(MAX_SIP_DAMAGE), placementBlock);
         this.effects = effects;
         this.alcoholic = alcoholic;
         this.containerItem = containerItem;

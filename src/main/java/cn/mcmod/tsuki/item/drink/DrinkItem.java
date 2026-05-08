@@ -13,24 +13,27 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 
 import java.util.List;
 import java.util.function.Supplier;
 
-public class DrinkItem extends Item {
+public class DrinkItem extends PlaceableDrinkItem {
     private final MobEffectInstance[] effects;
     private final boolean alcoholic;
     private final Supplier<Item> containerItem;
     private final Component toolTip;
 
-    public DrinkItem(Properties properties, Supplier<Item> containerItem, boolean alcoholic,
+    public DrinkItem(Properties properties, Supplier<? extends Block> placementBlock, Supplier<Item> containerItem,
+            boolean alcoholic,
             MobEffectInstance... effects) {
-        this(properties, containerItem, alcoholic, null, effects);
+        this(properties, placementBlock, containerItem, alcoholic, null, effects);
     }
 
-    public DrinkItem(Properties properties, Supplier<Item> containerItem, boolean alcoholic, Component toolTip,
+    public DrinkItem(Properties properties, Supplier<? extends Block> placementBlock, Supplier<Item> containerItem,
+            boolean alcoholic, Component toolTip,
             MobEffectInstance... effects) {
-        super(properties.stacksTo(16));
+        super(properties.stacksTo(16), placementBlock);
         this.effects = effects;
         this.alcoholic = alcoholic;
         this.containerItem = containerItem;
@@ -69,6 +72,18 @@ public class DrinkItem extends Item {
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.DRINK;
+    }
+
+    public MobEffectInstance[] getEffects() {
+        return effects;
+    }
+
+    public boolean isAlcoholic() {
+        return alcoholic;
+    }
+
+    public Supplier<Item> getContainerItem() {
+        return containerItem;
     }
 
     @Override

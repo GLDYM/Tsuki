@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.init.block;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.entity.ChoppingBoardBlockEntity;
+import cn.mcmod.tsuki.block.entity.DrinkDisplayBlockEntity;
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
 import cn.mcmod.tsuki.block.entity.DistillerBlockEntity;
 import cn.mcmod.tsuki.block.entity.FermenterBlockEntity;
@@ -44,6 +45,12 @@ public class BlockEntityRegistry {
             .register(
                     "obon",
                     () -> BlockEntityType.Builder.of(ObonBlockEntity::new, BlockRegistry.OBON.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DrinkDisplayBlockEntity>> DRINK_DISPLAY = BLOCK_ENTITIES
+            .register(
+                    "drink_display",
+                    () -> BlockEntityType.Builder.of(DrinkDisplayBlockEntity::new, BlockRegistry.CUP.get(),
+                            BlockRegistry.WINE_BOTTLE.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ChoppingBoardBlockEntity>> CHOPPING_BOARD = BLOCK_ENTITIES
             .register(

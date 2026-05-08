@@ -7,6 +7,7 @@ import cn.mcmod.tsuki.client.particle.CookingParticle;
 import cn.mcmod.tsuki.client.particle.SyrupDropParticle;
 import cn.mcmod.tsuki.client.render.ChoppingBoardRender;
 import cn.mcmod.tsuki.client.render.CookingPotRender;
+import cn.mcmod.tsuki.client.render.DrinkDisplayRender;
 import cn.mcmod.tsuki.client.render.ObonRender;
 import cn.mcmod.tsuki.client.render.SeatEntityRenderer;
 import cn.mcmod.tsuki.client.render.ShojiRenderer;
@@ -81,6 +82,7 @@ public class ClientEvents {
             BlockEntityRenderers.register(BlockEntityRegistry.CHOPPING_BOARD.get(), ChoppingBoardRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.COOKING_POT.get(), CookingPotRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.OBON.get(), ObonRender::new);
+            BlockEntityRenderers.register(BlockEntityRegistry.DRINK_DISPLAY.get(), DrinkDisplayRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.SHOJI.get(), ShojiRenderer::new);
             EntityRenderers.register(EntityTypeRegistry.SEAT.get(), SeatEntityRenderer::new);
             EntityRenderers.register(EntityTypeRegistry.SAMURAI_ILLAGER.get(), SamuraiIllagerRenderer::new);
