@@ -208,7 +208,7 @@ public class ShakerBlock extends BaseEntityBlock {
             player.drop(extracted, false);
         }
         if (resetProgress) {
-            shaker.setShakeProgress(0);
+            shaker.clearRecipeProgress();
         }
         return true;
     }
@@ -255,7 +255,7 @@ public class ShakerBlock extends BaseEntityBlock {
             return false;
         }
         giveFilledByReplacingContainer(player, hand, extracted);
-        shaker.setShakeProgress(0);
+        shaker.clearRecipeProgress();
         level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.3F, 1.0F);
         return true;
     }

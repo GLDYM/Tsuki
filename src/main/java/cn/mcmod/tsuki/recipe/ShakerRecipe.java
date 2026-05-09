@@ -59,7 +59,7 @@ public class ShakerRecipe extends AbstractRecipe {
             }
         }
 
-        if (inputs.size() != this.getIngredients().size()) {
+        if (inputs.size() < this.getIngredients().size()) {
             return null;
         }
 

@@ -7,6 +7,7 @@ import cn.mcmod.tsuki.recipe.ShakerRecipe;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -55,6 +56,13 @@ public class ShakerItem extends BlockItem {
         if (player.isShiftKeyDown()) {
             return InteractionResultHolder.pass(stack);
         }
+        if (!level.isClientSide) {
+            ValidationResult validationResult = validateShakeInputs(stack, player);
+            if (!validationResult.valid()) {
+                player.displayClientMessage(validationResult.message(), true);
+                return InteractionResultHolder.fail(stack);
+            }
+        }
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(stack);
     }
@@ -69,35 +77,47 @@ public class ShakerItem extends BlockItem {
         ShakerDataHelper.load(stack, inventory, player.registryAccess());
 
         RecipeWrapper recipeWrapper = new RecipeWrapper(inventory);
-        List<net.minecraft.world.item.crafting.RecipeHolder<ShakerRecipe>> matches = level.getRecipeManager()
-                .getRecipesFor(RecipeTypeRegistry.SHAKER_RECIPE_TYPE.get(), recipeWrapper, level);
+        int alcoholCount = countAlcoholInputs(inventory);
+        int alcoholKinds = countDistinctAlcoholInputs(inventory);
+        boolean hasNonAlcoholIngredient = hasNonAlcoholIngredient(inventory);
+        if (alcoholCount <= 0) {
+            player.displayClientMessage(Component.translatable("item.tsuki.shaker.no_alcohol"), true);
+            ShakerDataHelper.save(stack, inventory, 0, "", false, player.registryAccess());
+            return stack;
+        }
+        if (!hasNonAlcoholIngredient && alcoholKinds <= 1) {
+            player.displayClientMessage(Component.translatable("item.tsuki.shaker.not_enough_ingredients"), true);
+            ShakerDataHelper.save(stack, inventory, 0, "", false, player.registryAccess());
+            return stack;
+        }
 
         int shakeProgress = ShakerDataHelper.loadShakeProgress(stack);
-        boolean crafted = false;
-
-        for (var holder : matches) {
-            ShakerRecipe recipe = holder.value();
-            int[] slots = recipe.findMatchingSlots(recipeWrapper);
-            if (slots == null || !canOutput(inventory, recipe.getResultItem(level.registryAccess()))) {
-                continue;
-            }
-
+        LockedTarget lockedTarget = resolveLockedTarget(level, recipeWrapper, inventory, stack, alcoholCount);
+        if (lockedTarget.recipe().isPresent()) {
+            SelectedRecipe selected = lockedTarget.recipe().get();
             shakeProgress++;
-            if (shakeProgress >= recipe.getShakeCount()) {
-                craftRecipe(inventory, recipe, slots, level);
+            if (shakeProgress >= selected.recipe().getShakeCount()) {
+                craftRecipe(inventory, selected.recipe(), selected.matchedSlots(), alcoholCount, level);
                 shakeProgress = 0;
+                lockedTarget = LockedTarget.none();
                 level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
                         0.4F, 1.0F);
             }
-            crafted = true;
-            break;
-        }
-
-        if (!crafted) {
+        } else if (lockedTarget.mysteryFallback()) {
+            shakeProgress++;
+            if (shakeProgress >= 12) {
+                craftMysteryMix(inventory, alcoholCount);
+                shakeProgress = 0;
+                lockedTarget = LockedTarget.none();
+                level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
+                        0.4F, 1.0F);
+            }
+        } else {
             shakeProgress = 0;
         }
 
-        ShakerDataHelper.save(stack, inventory, shakeProgress, player.registryAccess());
+        ShakerDataHelper.save(stack, inventory, shakeProgress, lockedTarget.recipeId(), lockedTarget.mysteryFallback(),
+                player.registryAccess());
         return stack;
     }
 
@@ -191,8 +211,117 @@ public class ShakerItem extends BlockItem {
                 inventory.getSlotLimit(ShakerDataHelper.SLOT_OUTPUT));
     }
 
-    private void craftRecipe(ItemStackHandler inventory, ShakerRecipe recipe, int[] slots, Level level) {
-        ItemStack result = recipe.getResultItem(level.registryAccess()).copy();
+    private ValidationResult validateShakeInputs(ItemStack shakerStack, Player player) {
+        ItemStackHandler inventory = ShakerDataHelper.createInventory();
+        ShakerDataHelper.load(shakerStack, inventory, player.registryAccess());
+        if (countAlcoholInputs(inventory) <= 0) {
+            return new ValidationResult(false, Component.translatable("item.tsuki.shaker.no_alcohol"));
+        }
+        if (!hasNonAlcoholIngredient(inventory) && countDistinctAlcoholInputs(inventory) <= 1) {
+            return new ValidationResult(false, Component.translatable("item.tsuki.shaker.not_enough_ingredients"));
+        }
+        return new ValidationResult(true, Component.empty());
+    }
+
+    private boolean hasNonAlcoholIngredient(ItemStackHandler inventory) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
+                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
+                ++slot) {
+            ItemStack slotStack = inventory.getStackInSlot(slot);
+            if (!slotStack.isEmpty() && !isAlcoholInput(slotStack)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int countDistinctAlcoholInputs(ItemStackHandler inventory) {
+        Map<ItemStackKey, Boolean> distinctAlcohols = new LinkedHashMap<>();
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
+                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
+                ++slot) {
+            ItemStack slotStack = inventory.getStackInSlot(slot);
+            if (isAlcoholInput(slotStack)) {
+                distinctAlcohols.putIfAbsent(new ItemStackKey(slotStack), Boolean.TRUE);
+            }
+        }
+        return distinctAlcohols.size();
+    }
+
+    private int countAlcoholInputs(ItemStackHandler inventory) {
+        int alcoholCount = 0;
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
+                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
+                ++slot) {
+            ItemStack slotStack = inventory.getStackInSlot(slot);
+            if (isAlcoholInput(slotStack)) {
+                alcoholCount += slotStack.getCount();
+            }
+        }
+        return alcoholCount;
+    }
+
+    private boolean isAlcoholInput(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return false;
+        }
+        if (stack.getItem() instanceof DrinkItem drinkItem) {
+            return drinkItem.isAlcoholic();
+        }
+        return stack.getItem() instanceof WineBottleItem;
+    }
+
+    private Optional<SelectedRecipe> selectRecipe(Level level, RecipeWrapper recipeWrapper, ItemStackHandler inventory) {
+        List<net.minecraft.world.item.crafting.RecipeHolder<ShakerRecipe>> matches = level.getRecipeManager()
+                .getRecipesFor(RecipeTypeRegistry.SHAKER_RECIPE_TYPE.get(), recipeWrapper, level);
+
+        SelectedRecipe best = null;
+        for (var holder : matches) {
+            ShakerRecipe recipe = holder.value();
+            int[] slots = recipe.findMatchingSlots(recipeWrapper);
+            if (slots == null || !canOutput(inventory, recipe.getResultItem(level.registryAccess()))) {
+                continue;
+            }
+            SelectedRecipe candidate = new SelectedRecipe(recipe, slots);
+            if (best == null || candidate.ingredientCount() > best.ingredientCount()) {
+                best = candidate;
+            }
+        }
+        return Optional.ofNullable(best);
+    }
+
+    private LockedTarget resolveLockedTarget(Level level, RecipeWrapper recipeWrapper, ItemStackHandler inventory,
+            ItemStack shakerStack, int alcoholCount) {
+        String lockedRecipeId = ShakerDataHelper.loadLockedRecipe(shakerStack);
+        boolean mysteryFallback = ShakerDataHelper.loadMysteryFallback(shakerStack);
+
+        if (!lockedRecipeId.isEmpty()) {
+            Optional<SelectedRecipe> lockedRecipe = selectRecipe(level, recipeWrapper, inventory)
+                    .filter(selected -> lockedRecipeId.equals(selected.recipeId()));
+            if (lockedRecipe.isPresent() && canOutput(inventory,
+                    lockedRecipe.get().recipe().getResultItem(level.registryAccess()).copyWithCount(alcoholCount))) {
+                return LockedTarget.recipe(lockedRecipe.get());
+            }
+        }
+
+        if (mysteryFallback && canOutput(inventory, new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), alcoholCount))) {
+            return LockedTarget.mystery();
+        }
+
+        Optional<SelectedRecipe> selectedRecipe = selectRecipe(level, recipeWrapper, inventory);
+        if (selectedRecipe.isPresent()) {
+            SelectedRecipe selected = selectedRecipe.get();
+            return LockedTarget.recipe(selected);
+        }
+
+        if (canOutput(inventory, new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), alcoholCount))) {
+            return LockedTarget.mystery();
+        }
+        return LockedTarget.none();
+    }
+
+    private void craftRecipe(ItemStackHandler inventory, ShakerRecipe recipe, int[] slots, int alcoholCount, Level level) {
+        ItemStack result = recipe.getResultItem(level.registryAccess()).copyWithCount(alcoholCount);
         ItemStack output = inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT);
         if (output.isEmpty()) {
             inventory.setStackInSlot(ShakerDataHelper.SLOT_OUTPUT, result);
@@ -202,6 +331,22 @@ public class ShakerItem extends BlockItem {
 
         for (int slot : slots) {
             inventory.extractItem(slot, 1, false);
+        }
+    }
+
+    private void craftMysteryMix(ItemStackHandler inventory, int alcoholCount) {
+        ItemStack result = new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), alcoholCount);
+        ItemStack output = inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT);
+        if (output.isEmpty()) {
+            inventory.setStackInSlot(ShakerDataHelper.SLOT_OUTPUT, result);
+        } else if (ItemStack.isSameItemSameComponents(output, result)) {
+            output.grow(result.getCount());
+        }
+
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
+                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
+                ++slot) {
+            inventory.setStackInSlot(slot, ItemStack.EMPTY);
         }
     }
 
@@ -247,5 +392,32 @@ public class ShakerItem extends BlockItem {
         public int hashCode() {
             return ItemStack.hashItemAndComponents(this.stack);
         }
+    }
+
+    private record SelectedRecipe(ShakerRecipe recipe, int[] matchedSlots) {
+        private int ingredientCount() {
+            return matchedSlots.length;
+        }
+
+        private String recipeId() {
+            return recipe.getId().toString();
+        }
+    }
+
+    private record LockedTarget(Optional<SelectedRecipe> recipe, String recipeId, boolean mysteryFallback) {
+        private static LockedTarget none() {
+            return new LockedTarget(Optional.empty(), "", false);
+        }
+
+        private static LockedTarget recipe(SelectedRecipe recipe) {
+            return new LockedTarget(Optional.of(recipe), recipe.recipeId(), false);
+        }
+
+        private static LockedTarget mystery() {
+            return new LockedTarget(Optional.empty(), "", true);
+        }
+    }
+
+    private record ValidationResult(boolean valid, Component message) {
     }
 }

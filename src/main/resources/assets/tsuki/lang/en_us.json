@@ -634,6 +634,8 @@
     "item.tsuki.seaweed_raw":  "Raw Seaweed",
     "item.tsuki.sheath":  "Sheath",
     "item.tsuki.shaker":  "Shaker",
+    "item.tsuki.shaker.no_alcohol":  "No alcoholic drink in the shaker",
+    "item.tsuki.shaker.not_enough_ingredients":  "Add more ingredients before shaking",
     "item.tsuki.shaker.tooltip.output":  "Output: ",
     "item.tsuki.shimeji":  "Shimeji",
     "item.tsuki.shinai":  "Shinai",

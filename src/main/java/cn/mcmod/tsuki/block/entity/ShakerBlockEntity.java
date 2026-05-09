@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.tag.TsukiItemTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,6 +18,8 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 public class ShakerBlockEntity extends SyncedBlockEntity {
     private final ItemStackHandler inventory;
     private int shakeProgress;
+    private String lockedRecipeId = "";
+    private boolean mysteryFallback;
 
     public ShakerBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.SHAKER.get(), pos, state);
@@ -28,6 +31,8 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
         super.loadAdditional(compound, registries);
         inventory.deserializeNBT(registries, compound.getCompound("Inventory"));
         shakeProgress = compound.getInt("ShakeProgress");
+        lockedRecipeId = compound.getString("LockedRecipe");
+        mysteryFallback = compound.getBoolean("MysteryFallback");
     }
 
     @Override
@@ -36,6 +41,12 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
         compound.put("Inventory", inventory.serializeNBT(registries));
         if (shakeProgress > 0) {
             compound.putInt("ShakeProgress", shakeProgress);
+        }
+        if (!lockedRecipeId.isEmpty()) {
+            compound.putString("LockedRecipe", lockedRecipeId);
+        }
+        if (mysteryFallback) {
+            compound.putBoolean("MysteryFallback", true);
         }
     }
 
@@ -53,6 +64,13 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
 
     public void setShakeProgress(int shakeProgress) {
         this.shakeProgress = Math.max(0, shakeProgress);
+        inventoryChanged();
+    }
+
+    public void clearRecipeProgress() {
+        this.shakeProgress = 0;
+        this.lockedRecipeId = "";
+        this.mysteryFallback = false;
         inventoryChanged();
     }
 
@@ -88,13 +106,19 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
 
     public ItemStack toItemStack(HolderLookup.Provider registries) {
         ItemStack stack = new ItemStack(DrinkRegistry.SHAKER.get());
-        ShakerDataHelper.save(stack, inventory, shakeProgress, registries);
+        ShakerDataHelper.save(stack, inventory, shakeProgress, lockedRecipeId, mysteryFallback, registries);
         return stack;
     }
 
     public void loadFromItemStack(ItemStack stack, HolderLookup.Provider registries) {
         ShakerDataHelper.load(stack, inventory, registries);
         this.shakeProgress = ShakerDataHelper.loadShakeProgress(stack);
+        this.lockedRecipeId = ShakerDataHelper.loadLockedRecipe(stack);
+        this.mysteryFallback = ShakerDataHelper.loadMysteryFallback(stack);
+        // BlockItem placement applies item components to the BE before setPlacedBy runs.
+        // Shaker data is stored explicitly on this BE, so the copied custom_data component
+        // would duplicate the same payload in saved block entity NBT.
+        this.setComponents(DataComponentMap.EMPTY);
         inventoryChanged();
     }
 
@@ -114,6 +138,8 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
             protected void onContentsChanged(int slot) {
                 if (slot != ShakerDataHelper.SLOT_OUTPUT) {
                     shakeProgress = 0;
+                    lockedRecipeId = "";
+                    mysteryFallback = false;
                 }
                 inventoryChanged();
             }

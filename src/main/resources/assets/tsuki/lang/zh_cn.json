@@ -1,4 +1,4 @@
-﻿{
+{
     "barrel.contains.fluid":  "这个桶含有%1$s液体",
     "barrel.contains.nonfluid":  "这个桶是空的",
     "block.tsuki.andon":  "青行灯",
@@ -636,6 +636,8 @@
     "item.tsuki.seaweed_raw":  "新鲜海草",
     "item.tsuki.sheath":  "鞘",
     "item.tsuki.shaker":  "雪克杯",
+    "item.tsuki.shaker.no_alcohol":  "没有加入酒类",
+    "item.tsuki.shaker.not_enough_ingredients":  "输入材料不足",
     "item.tsuki.shaker.tooltip.output":  "输出：",
     "item.tsuki.shimeji":  "食用菌",
     "item.tsuki.shinai":  "竹刀",

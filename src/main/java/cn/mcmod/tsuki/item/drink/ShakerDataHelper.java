@@ -18,6 +18,8 @@ public final class ShakerDataHelper {
     private static final String TAG_SHAKER = "ShakerData";
     private static final String TAG_INVENTORY = "Inventory";
     private static final String TAG_SHAKE_PROGRESS = "ShakeProgress";
+    private static final String TAG_LOCKED_RECIPE = "LockedRecipe";
+    private static final String TAG_MYSTERY_FALLBACK = "MysteryFallback";
     private static final String TAG_ITEMS = "Items";
     private static final String TAG_SLOT = "Slot";
     private static final String TAG_COUNT = "count";
@@ -51,8 +53,23 @@ public final class ShakerDataHelper {
         return data.getInt(TAG_SHAKE_PROGRESS);
     }
 
+    public static String loadLockedRecipe(ItemStack stack) {
+        CompoundTag data = getShakerData(stack);
+        return data.contains(TAG_LOCKED_RECIPE) ? data.getString(TAG_LOCKED_RECIPE) : "";
+    }
+
+    public static boolean loadMysteryFallback(ItemStack stack) {
+        CompoundTag data = getShakerData(stack);
+        return data.getBoolean(TAG_MYSTERY_FALLBACK);
+    }
+
     public static void save(ItemStack stack, ItemStackHandler inventory, int shakeProgress,
             HolderLookup.Provider registries) {
+        save(stack, inventory, shakeProgress, "", false, registries);
+    }
+
+    public static void save(ItemStack stack, ItemStackHandler inventory, int shakeProgress, String lockedRecipe,
+            boolean mysteryFallback, HolderLookup.Provider registries) {
         CompoundTag root = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
         boolean hasItems = false;
         for (int slot = 0; slot < SLOT_COUNT; ++slot) {
@@ -62,13 +79,19 @@ public final class ShakerDataHelper {
             }
         }
 
-        if (!hasItems && shakeProgress <= 0) {
+        if (!hasItems && shakeProgress <= 0 && lockedRecipe.isEmpty() && !mysteryFallback) {
             root.remove(TAG_SHAKER);
         } else {
             CompoundTag shakerData = new CompoundTag();
             shakerData.put(TAG_INVENTORY, inventory.serializeNBT(registries));
             if (shakeProgress > 0) {
                 shakerData.putInt(TAG_SHAKE_PROGRESS, shakeProgress);
+            }
+            if (!lockedRecipe.isEmpty()) {
+                shakerData.putString(TAG_LOCKED_RECIPE, lockedRecipe);
+            }
+            if (mysteryFallback) {
+                shakerData.putBoolean(TAG_MYSTERY_FALLBACK, true);
             }
             root.put(TAG_SHAKER, shakerData);
         }

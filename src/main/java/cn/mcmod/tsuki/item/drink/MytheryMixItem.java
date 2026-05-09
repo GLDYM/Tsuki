@@ -22,7 +22,7 @@ public class MytheryMixItem extends DrinkItem {
             DrinkRegistry::glassCupContainerItem,
             true,
             Component.translatable("item.tsuki.mythery_mix.tooltip").withStyle(ChatFormatting.GRAY),
-            new MobEffectInstance(MobEffectRegistry.SEIRAN, 200, 0)
+            new MobEffectInstance(MobEffectRegistry.SEIRAN, 100, 0)
         );
     }
 
