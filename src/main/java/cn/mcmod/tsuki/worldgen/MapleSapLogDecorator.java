@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import cn.mcmod.tsuki.init.TreeDecoratorTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 
 import java.util.HashSet;
@@ -27,7 +28,7 @@ public class MapleSapLogDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> type() {
-        return TsukiTreeDecoratorTypes.MAPLE_SAP_LOG.get();
+        return TreeDecoratorTypeRegistry.MAPLE_SAP_LOG.get();
     }
 
     @Override

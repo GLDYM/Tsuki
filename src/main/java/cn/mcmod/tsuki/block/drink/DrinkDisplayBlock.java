@@ -19,17 +19,20 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class DrinkCupBlock extends AbstractDrinkDisplayBlock {
-    public static final MapCodec<DrinkCupBlock> CODEC = simpleCodec(ignored -> new DrinkCupBlock());
+public class DrinkDisplayBlock extends AbstractDrinkDisplayBlock {
+    public static final MapCodec<DrinkDisplayBlock> CODEC = simpleCodec(ignored -> new DrinkDisplayBlock());
 
-    public DrinkCupBlock() {
+    public DrinkDisplayBlock() {
         super(BlockBehaviour.Properties.of().noOcclusion().strength(0.2F));
     }
 
     @Override
     protected boolean canAccept(ItemStack stack) {
-        return stack.is(DrinkRegistry.CUP.get()) || stack.is(DrinkRegistry.GLASS_CUP.get())
-                || stack.getItem() instanceof DrinkItem;
+        return stack.is(DrinkRegistry.CUP.get())
+                || stack.is(DrinkRegistry.GLASS_CUP.get())
+                || stack.is(DrinkRegistry.WINE_BOTTLE.get())
+                || stack.getItem() instanceof DrinkItem
+                || stack.getItem() instanceof WineBottleItem;
     }
 
     @Override

@@ -10,6 +10,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> OFFHAND_EQUIPMENT = TagUtil.modItemTag(Tsuki.MODID, "offhand_equipment");
     public static final TagKey<Item> DRINK_CONTAINERS = TagUtil.modItemTag(Tsuki.MODID, "drink_containers");
     public static final TagKey<Item> WINE_BOTTLES = TagUtil.modItemTag(Tsuki.MODID, "wine_bottles");
+    public static final TagKey<Item> INGREDIENT_BLACKLIST = TagUtil.modItemTag(Tsuki.MODID, "ingredient_blacklist");
     public static final TagKey<Item> SOUPS = TagUtil.modItemTag(Tsuki.MODID, "soups");
     public static final TagKey<Item> KAWARA_BLOCK = TagUtil.modItemTag(Tsuki.MODID, "kawara_block");
     public static final TagKey<Item> STRIPPED_LOG = TagUtil.forgeItemTag("stripped_logs");

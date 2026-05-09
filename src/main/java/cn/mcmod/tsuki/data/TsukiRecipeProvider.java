@@ -6,6 +6,7 @@ import cn.mcmod.tsuki.data.builder.ChoppingBoardRecipeBuilder;
 import cn.mcmod.tsuki.data.builder.CookingPotRecipeBuilder;
 import cn.mcmod.tsuki.data.builder.DistillerRecipeBuilder;
 import cn.mcmod.tsuki.data.builder.FermenterRecipeBuilder;
+import cn.mcmod.tsuki.data.builder.ShakerRecipeBuilder;
 import cn.mcmod.tsuki.data.builder.StoneMortarRecipeBuilder;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
 import cn.mcmod.tsuki.init.item.FoodRegistry;
@@ -281,6 +282,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('S', TsukiItemTags.STRAW)
             .unlockedBy("has_straw", has(TsukiItemTags.STRAW))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "futon"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DrinkRegistry.SHAKER.get())
+            .pattern("I")
+            .pattern("B")
+            .define('I', Items.IRON_INGOT)
+            .define('B', Items.BUCKET)
+            .unlockedBy("has_bucket", has(Items.BUCKET))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shaker"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.TORCH, 4)
             .pattern("C")
             .pattern("#")
@@ -3821,6 +3829,11 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
 
     public void whenModLoaded(StoneMortarRecipeBuilder recipe, RecipeOutput consumer, String modid, String path) {
         recipe.save(consumer.withConditions(new ModLoadedCondition(modid)), ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
+    }
+
+    public void whenModLoaded(ShakerRecipeBuilder recipe, RecipeOutput consumer, String modid, String path) {
+        recipe.save(consumer.withConditions(new ModLoadedCondition(modid)),
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
     }
 
     public ShapedRecipeBuilder makeIngotToBlock(Supplier<? extends Item> result, Supplier<? extends Item> ingredient) {

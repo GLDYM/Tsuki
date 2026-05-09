@@ -22,8 +22,7 @@ import cn.mcmod.tsuki.block.decoration.ShojiBlock;
 import cn.mcmod.tsuki.block.decoration.TaikoBlock;
 import cn.mcmod.tsuki.block.decoration.WindBellBlock;
 import cn.mcmod.tsuki.block.decoration.ZabutonBlock;
-import cn.mcmod.tsuki.block.drink.DrinkCupBlock;
-import cn.mcmod.tsuki.block.drink.WineBottleDisplayBlock;
+import cn.mcmod.tsuki.block.drink.DrinkDisplayBlock;
 import cn.mcmod.tsuki.block.decoration.tatami.TatamiBlock;
 import cn.mcmod.tsuki.block.decoration.tatami.TatamiSlabBlock;
 import cn.mcmod.tsuki.block.decoration.tatami.TatamiStairBlock;
@@ -36,6 +35,7 @@ import cn.mcmod.tsuki.block.machine.DistillerBlock;
 import cn.mcmod.tsuki.block.machine.FermenterBlock;
 import cn.mcmod.tsuki.block.machine.MapleCauldronBlock;
 import cn.mcmod.tsuki.block.machine.MapleSpileBlock;
+import cn.mcmod.tsuki.block.machine.ShakerBlock;
 import cn.mcmod.tsuki.block.machine.StoneMortarBlock;
 import cn.mcmod.tsuki.block.machine.TataraBlock;
 import cn.mcmod.tsuki.block.tree.BambooBlock;
@@ -549,10 +549,9 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> COOKING_POT = BLOCKS.register("cooking_pot", () -> new CookingPotBlock());
     public static final DeferredBlock<Block> FERMENTER = BLOCKS.register("fermenter", () -> new FermenterBlock());
     public static final DeferredBlock<Block> DISTILLER = BLOCKS.register("distiller", () -> new DistillerBlock());
+    public static final DeferredBlock<Block> SHAKER = BLOCKS.register("shaker", () -> new ShakerBlock());
     public static final DeferredBlock<Block> OBON = BLOCKS.register("obon", () -> new ObonBlock());
-    public static final DeferredBlock<Block> CUP = BLOCKS.register("cup", DrinkCupBlock::new);
-    public static final DeferredBlock<Block> WINE_BOTTLE = BLOCKS.register("wine_bottle",
-            WineBottleDisplayBlock::new);
+    public static final DeferredBlock<Block> DRINK_DISPLAY = BLOCKS.register("drink_display", DrinkDisplayBlock::new);
     public static final DeferredBlock<Block> CHOPPING_BOARD = BLOCKS.register("chopping_board",
             () -> new ChoppingBoardBlock());
     public static final DeferredBlock<Block> TEISHOUKU_FINISHED = BLOCKS.register("teishoku_finished",

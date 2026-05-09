@@ -2,6 +2,9 @@ package cn.mcmod.tsuki.worldgen;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+import cn.mcmod.tsuki.init.TreeDecoratorTypeRegistry;
+
 import java.util.Comparator;
 import java.util.List;
 import net.minecraft.core.BlockPos;
@@ -28,7 +31,7 @@ public class MapleFallenLeavesDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> type() {
-        return TsukiTreeDecoratorTypes.MAPLE_FALLEN_LEAVES.get();
+        return TreeDecoratorTypeRegistry.MAPLE_FALLEN_LEAVES.get();
     }
 
     @Override

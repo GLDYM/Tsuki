@@ -55,8 +55,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                                     && block.get() != BlockRegistry.SAKURA_DIAMOND_ORE.get()
                                     && block.get() != BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get()
                                     && block.get() != BlockRegistry.BAMBOO_DOOR.get()
-                                    && block.get() != BlockRegistry.CUP.get()
-                                    && block.get() != BlockRegistry.WINE_BOTTLE.get()
+                                    && block.get() != BlockRegistry.DRINK_DISPLAY.get()
+                                    && block.get() != BlockRegistry.SHAKER.get()
                                     && block.get() != BlockRegistry.SHOJI.get()
                                     && block.get() != BlockRegistry.SHOJI_1.get()
                                     && block.get() != BlockRegistry.SHOJI_2.get()
@@ -90,8 +90,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         this.add(BlockRegistry.SHOJI_4.get(), createDoor(BlockRegistry.SHOJI_4.get()));
         this.add(BlockRegistry.SHOJI_5.get(), createDoor(BlockRegistry.SHOJI_5.get()));
         this.add(BlockRegistry.FUTON.get(), createFutonDrops(BlockRegistry.FUTON.get()));
-        this.add(BlockRegistry.CUP.get(), LootTable.lootTable());
-        this.add(BlockRegistry.WINE_BOTTLE.get(), LootTable.lootTable());
+        this.add(BlockRegistry.DRINK_DISPLAY.get(), LootTable.lootTable());
+        this.add(BlockRegistry.SHAKER.get(), LootTable.lootTable());
         this.add(BlockRegistry.CHESTNUT_BURR.get(), createChestnutBurrDrops(BlockRegistry.CHESTNUT_BURR.get()));
 
         this.add(BlockRegistry.MAPLE_LEAVES_RED.get(), createLeavesDrops(BlockRegistry.MAPLE_LEAVES_RED.get(),

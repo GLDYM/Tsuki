@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.block.entity.DistillerBlockEntity;
 import cn.mcmod.tsuki.block.entity.FermenterBlockEntity;
 import cn.mcmod.tsuki.block.entity.MapleCauldronBlockEntity;
 import cn.mcmod.tsuki.block.entity.ObonBlockEntity;
+import cn.mcmod.tsuki.block.entity.ShakerBlockEntity;
 import cn.mcmod.tsuki.block.entity.ShojiBlockEntity;
 import cn.mcmod.tsuki.block.entity.StoneMortarBlockEntity;
 import net.minecraft.core.registries.Registries;
@@ -49,8 +50,13 @@ public class BlockEntityRegistry {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DrinkDisplayBlockEntity>> DRINK_DISPLAY = BLOCK_ENTITIES
             .register(
                     "drink_display",
-                    () -> BlockEntityType.Builder.of(DrinkDisplayBlockEntity::new, BlockRegistry.CUP.get(),
-                            BlockRegistry.WINE_BOTTLE.get()).build(null));
+                    () -> BlockEntityType.Builder.of(DrinkDisplayBlockEntity::new, BlockRegistry.DRINK_DISPLAY.get())
+                            .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ShakerBlockEntity>> SHAKER = BLOCK_ENTITIES
+            .register(
+                    "shaker",
+                    () -> BlockEntityType.Builder.of(ShakerBlockEntity::new, BlockRegistry.SHAKER.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ChoppingBoardBlockEntity>> CHOPPING_BOARD = BLOCK_ENTITIES
             .register(

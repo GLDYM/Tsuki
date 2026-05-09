@@ -249,8 +249,8 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.BAMBOO_LANTERN.get(), models().getExistingFile(modLoc("block/bamboo_lantern")));
         simpleBlock(BlockRegistry.WINDBELL.get(), models().getExistingFile(modLoc("block/windbell")));
         simpleBlock(BlockRegistry.ANDON.get(), models().getExistingFile(modLoc("block/andon")));
-        simpleBlock(BlockRegistry.CUP.get(), models().getExistingFile(modLoc("block/empty_cup_display")));
-        simpleBlock(BlockRegistry.WINE_BOTTLE.get(), models().getExistingFile(modLoc("block/empty_wine_bottle_display")));
+        simpleBlock(BlockRegistry.DRINK_DISPLAY.get(), models().getExistingFile(modLoc("block/empty_cup_display")));
+        simpleBlock(BlockRegistry.SHAKER.get(), models().withExistingParent("shaker", modLoc("item/shaker")));
         simpleBlock(BlockRegistry.ZABUTON.get(), models().getExistingFile(modLoc("block/zabuton")));
         futon(BlockRegistry.FUTON.get());
         simpleBlock(BlockRegistry.TAIKO.get(), models().getExistingFile(modLoc("block/taiko")));

@@ -1,7 +1,8 @@
 package cn.mcmod.tsuki.data;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.villager.VillagerRegistry;
+import cn.mcmod.tsuki.init.VillagerRegistry;
+
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

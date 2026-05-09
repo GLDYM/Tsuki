@@ -1,4 +1,4 @@
-package cn.mcmod.tsuki.villager;
+package cn.mcmod.tsuki.init;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.block.BlockRegistry;

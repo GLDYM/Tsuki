@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import cn.mcmod.tsuki.init.TreeDecoratorTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -23,7 +24,7 @@ public class ChestnutBurrDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> type() {
-        return TsukiTreeDecoratorTypes.CHESTNUT_BURR.get();
+        return TreeDecoratorTypeRegistry.CHESTNUT_BURR.get();
     }
 
     @Override

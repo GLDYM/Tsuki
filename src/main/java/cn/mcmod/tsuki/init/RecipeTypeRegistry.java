@@ -6,12 +6,15 @@ import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import cn.mcmod.tsuki.recipe.DistillerRecipe;
 import cn.mcmod.tsuki.recipe.FermenterRecipe;
+import cn.mcmod.tsuki.recipe.ShakerPourRecipe;
+import cn.mcmod.tsuki.recipe.ShakerRecipe;
 import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -29,6 +32,8 @@ public class RecipeTypeRegistry {
             .register("fermenting", () -> recipeType("fermenting"));
     public static final DeferredHolder<RecipeType<?>, RecipeType<DistillerRecipe>> DISTILLER_RECIPE_TYPE = RECIPE_TYPES
             .register("distillation", () -> recipeType("distillation"));
+    public static final DeferredHolder<RecipeType<?>, RecipeType<ShakerRecipe>> SHAKER_RECIPE_TYPE = RECIPE_TYPES
+            .register("shaker", () -> recipeType("shaker"));
     public static final DeferredHolder<RecipeType<?>, RecipeType<ChoppingRecipe>> CHOPPING_RECIPE_TYPE = RECIPE_TYPES
             .register("chopping", () -> recipeType("chopping"));
 
@@ -40,6 +45,10 @@ public class RecipeTypeRegistry {
             .register("fermenting", () -> new AbstractRecipeSerializer<FermenterRecipe>(FermenterRecipe.class));
     public static final DeferredHolder<RecipeSerializer<?>, AbstractRecipeSerializer<DistillerRecipe>> DISTILLER_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("distillation", () -> new AbstractRecipeSerializer<DistillerRecipe>(DistillerRecipe.class));
+    public static final DeferredHolder<RecipeSerializer<?>, AbstractRecipeSerializer<ShakerRecipe>> SHAKER_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
+            .register("shaker", () -> new AbstractRecipeSerializer<ShakerRecipe>(ShakerRecipe.class));
+    public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<ShakerPourRecipe>> SHAKER_POUR_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
+            .register("shaker_pour", () -> new SimpleCraftingRecipeSerializer<>(ShakerPourRecipe::new));
 
     public static final DeferredHolder<RecipeSerializer<?>, AbstractRecipeSerializer<ChoppingRecipe>> CHOPPING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("chopping", () -> new AbstractRecipeSerializer<ChoppingRecipe>(ChoppingRecipe.class));

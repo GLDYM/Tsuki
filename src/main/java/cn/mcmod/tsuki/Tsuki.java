@@ -2,13 +2,18 @@ package cn.mcmod.tsuki;
 
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.config.TsukiClientConfig;
+
 import cn.mcmod.tsuki.client.TsukiClient;
+import cn.mcmod.tsuki.client.particle.ParticleRegistry;
+
 import cn.mcmod.tsuki.init.CreativeModeTabRegistry;
 import cn.mcmod.tsuki.init.EntityTypeRegistry;
 import cn.mcmod.tsuki.init.LootModifiterRegistry;
 import cn.mcmod.tsuki.init.MenuTypeRegistry;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.SoundEventRegistry;
+import cn.mcmod.tsuki.init.TreeDecoratorTypeRegistry;
+import cn.mcmod.tsuki.init.VillagerRegistry;
 import cn.mcmod.tsuki.init.FeatureTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockEntityCapabilityRegistry;
 import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
@@ -26,16 +31,10 @@ import cn.mcmod.tsuki.init.item.BlockItemRegistry;
 import cn.mcmod.tsuki.init.item.BucketItemRegistry;
 import cn.mcmod.tsuki.init.MobEffectRegistry;
 
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
-
-import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideMeCompat;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideCompat;
 import cn.mcmod.tsuki.compat.terrablender.TsukiTerraBlenderCompat;
-import cn.mcmod.tsuki.villager.VillagerRegistry;
-import cn.mcmod.tsuki.worldgen.TsukiTreeDecoratorTypes;
+
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -45,6 +44,12 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
+
+
+import org.slf4j.Logger;
+
+import com.mojang.logging.LogUtils;
+
 
 @Mod(Tsuki.MODID)
 public class Tsuki {
@@ -61,6 +66,7 @@ public class Tsuki {
         modEventBus.addListener(ItemCapabilityRegistry::register);
         modEventBus.addListener(EntityTypeRegistry::registerAttributes);
         modEventBus.addListener(EntityTypeRegistry::registerSpawnPlacements);
+
 
         BlockRegistry.BLOCKS.register(modEventBus);
         FluidBlockRegistry.BLOCKS.register(modEventBus);
@@ -87,11 +93,11 @@ public class Tsuki {
         RecipeTypeRegistry.RECIPE_TYPES.register(modEventBus);
         RecipeTypeRegistry.RECIPE_SERIALIZERS.register(modEventBus);
         FeatureTypeRegistry.FEATURES.register(modEventBus);
-        TsukiTreeDecoratorTypes.TREE_DECORATOR_TYPES.register(modEventBus);
+        TreeDecoratorTypeRegistry.TREE_DECORATOR_TYPES.register(modEventBus);
         VillagerRegistry.POI_TYPES.register(modEventBus);
         VillagerRegistry.PROFESSIONS.register(modEventBus);
         CreativeModeTabRegistry.TABS.register(modEventBus);
-        
+
         if (ModList.get().isLoaded("guideme")) {
             TsukiGuideMeCompat.register();
         } else {

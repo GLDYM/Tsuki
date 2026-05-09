@@ -41,6 +41,10 @@ public final class BlockEntityCapabilityRegistry {
                 (blockEntity, side) -> blockEntity.getItemHandler(side));
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
+                BlockEntityRegistry.SHAKER.get(),
+                (blockEntity, side) -> blockEntity.getItemHandler(side));
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
                 BlockEntityRegistry.CHOPPING_BOARD.get(),
                 (blockEntity, side) -> blockEntity.getItemHandler(side));
         event.registerBlockEntity(

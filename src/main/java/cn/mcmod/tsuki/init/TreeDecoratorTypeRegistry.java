@@ -1,12 +1,15 @@
-package cn.mcmod.tsuki.worldgen;
+package cn.mcmod.tsuki.init;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.worldgen.ChestnutBurrDecorator;
+import cn.mcmod.tsuki.worldgen.MapleFallenLeavesDecorator;
+import cn.mcmod.tsuki.worldgen.MapleSapLogDecorator;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class TsukiTreeDecoratorTypes {
+public class TreeDecoratorTypeRegistry {
     public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATOR_TYPES = DeferredRegister.create(
             Registries.TREE_DECORATOR_TYPE,
             Tsuki.MODID);

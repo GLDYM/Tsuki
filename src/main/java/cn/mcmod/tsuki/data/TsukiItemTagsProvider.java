@@ -102,6 +102,48 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.DRINK_CONTAINERS).add(
                 DrinkRegistry.CUP.get(),
                 DrinkRegistry.WINE_BOTTLE.get());
+        this.tag(TsukiItemTags.INGREDIENT_BLACKLIST)
+                .addOptionalTag(ResourceLocation.parse("kaleidoscope_cookery:ingredient_blacklist"))
+                .addOptionalTag(ResourceLocation.parse("c:tools"))
+                .addOptionalTag(ResourceLocation.parse("c:armors"))
+                .addOptional(ResourceLocation.parse("kaleidoscope_cookery:recipe_item"));
+        this.tag(TsukiItemTags.INGREDIENT_BLACKLIST)
+                .add(
+                        DrinkRegistry.CUP.get(),
+                        DrinkRegistry.GLASS_CUP.get(),
+                        DrinkRegistry.SHAKER.get(),
+                        DrinkRegistry.WINE_BOTTLE.get(),
+                        Items.SHULKER_BOX,
+                        Items.WHITE_SHULKER_BOX,
+                        Items.ORANGE_SHULKER_BOX,
+                        Items.MAGENTA_SHULKER_BOX,
+                        Items.LIGHT_BLUE_SHULKER_BOX,
+                        Items.YELLOW_SHULKER_BOX,
+                        Items.LIME_SHULKER_BOX,
+                        Items.PINK_SHULKER_BOX,
+                        Items.GRAY_SHULKER_BOX,
+                        Items.LIGHT_GRAY_SHULKER_BOX,
+                        Items.CYAN_SHULKER_BOX,
+                        Items.PURPLE_SHULKER_BOX,
+                        Items.BLUE_SHULKER_BOX,
+                        Items.BROWN_SHULKER_BOX,
+                        Items.GREEN_SHULKER_BOX,
+                        Items.RED_SHULKER_BOX,
+                        Items.BLACK_SHULKER_BOX,
+                        Items.BUNDLE,
+                        Items.BUCKET,
+                        Items.MILK_BUCKET,
+                        Items.WATER_BUCKET,
+                        Items.LAVA_BUCKET,
+                        Items.POWDER_SNOW_BUCKET,
+                        Items.PUFFERFISH_BUCKET,
+                        Items.SALMON_BUCKET,
+                        Items.COD_BUCKET,
+                        Items.TROPICAL_FISH_BUCKET,
+                        Items.AXOLOTL_BUCKET,
+                        Items.TADPOLE_BUCKET,
+                        Items.BOWL,
+                        Items.GLASS_BOTTLE);
         DrinkRegistry.WINE_BOTTLES.values()
                 .forEach(bottle -> this.tag(TsukiItemTags.DRINK_CONTAINERS).add(bottle.get()));
         DrinkRegistry.WINE_BOTTLES.values().forEach(bottle -> this.tag(TsukiItemTags.WINE_BOTTLES).add(bottle.get()));

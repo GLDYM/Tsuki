@@ -55,6 +55,10 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                             modLoc("block/ghost_fire_0"));
                     return;
                 }
+                if (blockItem.getBlock() == BlockRegistry.SHAKER.get()) {
+                    normalItem(item);
+                    return;
+                }
                 if (blockItem.getBlock() == BlockRegistry.KAWARA.get()) {
                     withExistingParent(item.getId().getPath(), modLoc("block/" + item.getId().getPath()))
                             .transforms()

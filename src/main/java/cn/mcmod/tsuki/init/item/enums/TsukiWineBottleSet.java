@@ -2,7 +2,6 @@ package cn.mcmod.tsuki.init.item.enums;
 
 import cn.mcmod.tsuki.init.fluid.FluidRegistry;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
-import cn.mcmod.tsuki.init.item.enums.TsukiAlcoholSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.material.Fluid;
