@@ -18,9 +18,6 @@ public abstract class PlaceableDrinkItem extends Item {
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        if (context.getPlayer() != null && !context.getPlayer().isShiftKeyDown()) {
-            return InteractionResult.PASS;
-        }
         Level level = context.getLevel();
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;

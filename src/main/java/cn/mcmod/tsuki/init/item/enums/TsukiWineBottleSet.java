@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.init.item.enums;
 
 import cn.mcmod.tsuki.init.fluid.FluidRegistry;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
+import cn.mcmod.tsuki.init.item.enums.TsukiAlcoholSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.level.material.Fluid;
@@ -61,6 +62,20 @@ public enum TsukiWineBottleSet {
     public static DeferredItem<Item> itemFromFluid(Fluid fluid) {
         TsukiWineBottleSet set = fromFluid(fluid);
         return set == null ? null : DrinkRegistry.WINE_BOTTLES.get(set);
+    }
+
+    public DeferredItem<Item> alcoholItem() {
+        TsukiAlcoholSet[] alcohols = TsukiAlcoholSet.values();
+        int index = ordinal();
+        if (index < 0 || index >= alcohols.length) {
+            return null;
+        }
+        return DrinkRegistry.ALCOHOLS.get(alcohols[index]);
+    }
+
+    public static DeferredItem<Item> alcoholItemFromBottle(Item item) {
+        TsukiWineBottleSet set = fromItem(item);
+        return set == null ? null : set.alcoholItem();
     }
 
     public static TsukiWineBottleSet fromItem(Item item) {

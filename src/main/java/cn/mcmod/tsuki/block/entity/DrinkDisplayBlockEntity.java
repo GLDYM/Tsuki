@@ -69,6 +69,16 @@ public class DrinkDisplayBlockEntity extends SyncedBlockEntity {
         return result;
     }
 
+    public boolean setItem(int slot, ItemStack stack, float rotation) {
+        if (slot < 0 || slot >= SLOT_COUNT || stack.isEmpty()) {
+            return false;
+        }
+        inventory.setStackInSlot(slot, stack.copyWithCount(1));
+        rotations[slot] = rotation;
+        inventoryChanged();
+        return true;
+    }
+
     public int findFirstEmptySlot() {
         for (int i = 0; i < SLOT_COUNT; i++) {
             if (inventory.getStackInSlot(i).isEmpty()) {

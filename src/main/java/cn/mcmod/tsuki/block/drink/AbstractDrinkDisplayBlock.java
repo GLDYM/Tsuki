@@ -96,9 +96,6 @@ public abstract class AbstractDrinkDisplayBlock extends BaseEntityBlock {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
 
-        if (player != null && !player.isShiftKeyDown()) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
         if (placeItem(level, pos, player, drinkDisplay, stack, slot)) {
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
