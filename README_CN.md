@@ -62,3 +62,4 @@
 - 樱
 - 农夫乐事
 - 森罗物语：厨房
+- "MinecraftDungeonsPotion" (https://skfb.ly/oUXPQ) by kompotikivun is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).

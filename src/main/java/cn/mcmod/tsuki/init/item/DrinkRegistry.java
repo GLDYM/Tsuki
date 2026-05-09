@@ -9,6 +9,7 @@ import cn.mcmod.tsuki.init.item.enums.TsukiTeaSet;
 import cn.mcmod.tsuki.init.item.enums.TsukiWineBottleSet;
 import cn.mcmod.tsuki.item.drink.DrinkItem;
 import cn.mcmod.tsuki.item.drink.DrinkContainerItem;
+import cn.mcmod.tsuki.item.drink.MytheryMixItem;
 import cn.mcmod.tsuki.item.drink.WineBottleItem;
 import cn.mcmod.mmlib.registry.ItemRegistryUtil;
 import net.minecraft.world.item.Item;
@@ -27,6 +28,7 @@ public class DrinkRegistry {
             () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::wineBottleBlock));
     public static final DeferredItem<Item> GLASS_CUP = register("glass_cup",
             () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::cupBlock));
+    public static final DeferredItem<Item> MYTHERY_MIX = register("mythery_mix", MytheryMixItem::new);
 
     public static final Map<TsukiTeaSet, DeferredItem<Item>> TEAS = ItemRegistryUtil.mapOfKeys(
             TsukiTeaSet.class,
@@ -62,23 +64,23 @@ public class DrinkRegistry {
                     true,
                     cocktail.getEffects())));
 
-    private static Item cupContainerItem() {
+    public static Item cupContainerItem() {
         return CUP.get();
     }
 
-    private static Item bottleContainerItem() {
+    public static Item bottleContainerItem() {
         return WINE_BOTTLE.get();
     }
 
-    private static Item glassCupContainerItem() {
+    public static Item glassCupContainerItem() {
         return GLASS_CUP.get();
     }
 
-    private static DrinkCupBlock cupBlock() {
+    public static DrinkCupBlock cupBlock() {
         return (DrinkCupBlock) cn.mcmod.tsuki.init.block.BlockRegistry.CUP.get();
     }
 
-    private static WineBottleDisplayBlock wineBottleBlock() {
+    public static WineBottleDisplayBlock wineBottleBlock() {
         return (WineBottleDisplayBlock) cn.mcmod.tsuki.init.block.BlockRegistry.WINE_BOTTLE.get();
     }
 

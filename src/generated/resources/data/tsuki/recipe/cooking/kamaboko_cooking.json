@@ -11,7 +11,7 @@
   },
   "ingredients": [
     {
-      "tag": "c:dusts/salt"
+      "tag": "c:salt"
     },
     {
       "item": "tsuki:surimi"

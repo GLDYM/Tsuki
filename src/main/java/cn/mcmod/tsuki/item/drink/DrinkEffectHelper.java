@@ -24,7 +24,7 @@ public final class DrinkEffectHelper {
         if (extraTooltip != null) {
             tooltip.add(extraTooltip);
         }
-        PotionContents.addPotionTooltip(List.of(effects), tooltip::add, 1.0F, 1.0F);
+        PotionContents.addPotionTooltip(List.of(effects), tooltip::add, 1.0F, 20.0F);
     }
 
     private static void applyEffect(LivingEntity entity, MobEffectInstance incoming) {

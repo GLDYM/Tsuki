@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.client.render;
 import cn.mcmod.tsuki.block.entity.DrinkDisplayBlockEntity;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
 import cn.mcmod.tsuki.item.drink.DrinkItem;
+import cn.mcmod.tsuki.item.drink.MytheryMixItem;
 import cn.mcmod.tsuki.item.drink.WineBottleItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -35,6 +36,9 @@ public class DrinkDisplayRender implements BlockEntityRenderer<DrinkDisplayBlock
                 poseStack.translate(0.0D, 0.32D, 0.0D);
             } else if (stack.is(DrinkRegistry.CUP.get()) || (stack.getItem() instanceof DrinkItem drink && drink.getContainerItem().get() == DrinkRegistry.CUP.get())) {
                 poseStack.translate(0.0D, 0.32D, 0.0D);
+            } else if (stack.getItem() instanceof MytheryMixItem) {
+                poseStack.scale(0.6F / 0.9F, 0.6F / 0.9F, 0.6F / 0.9F);
+                poseStack.translate(0.0D, 0.1D, 0.0D);
             }
             poseStack.mulPose(Axis.YP.rotationDegrees(blockEntity.getRotation(slot)));
             int seed = (int) blockEntity.getBlockPos().asLong() + slot;

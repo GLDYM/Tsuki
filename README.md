@@ -60,3 +60,4 @@ This mod uses assets from the following mods, published here according to their 
 - Sakura
 - Farmer’s Delight
 - Kaleidoscope: Cookery
+- "MinecraftDungeonsPotion" (https://skfb.ly/oUXPQ) by kompotikivun is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
