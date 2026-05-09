@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.item.drink;
 
 import cn.mcmod.tsuki.block.entity.DrinkDisplayBlockEntity;
+import cn.mcmod.tsuki.client.render.item.ShakerRenderer;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
 import cn.mcmod.tsuki.recipe.ShakerRecipe;
@@ -8,30 +9,100 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.animatable.client.GeoRenderProvider;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.constant.DataTickets;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.util.GeckoLibUtil;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
-public class ShakerItem extends BlockItem {
+public class ShakerItem extends BlockItem implements GeoItem {
+    private static final RawAnimation SHAKE_START_ANIMATION = RawAnimation.begin()
+            .thenPlay("animation.tsuki.shaker.start");
+    private static final RawAnimation SHAKE_LOOP_ANIMATION = RawAnimation.begin()
+            .thenLoop("animation.tsuki.shaker.shake");
+    private static final RawAnimation SHAKE_END_ANIMATION = RawAnimation.begin()
+            .thenPlay("animation.tsuki.shaker.end");
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+
     public ShakerItem(Block block, Item.Properties properties) {
         super(block, properties.stacksTo(1));
+        GeoItem.registerSyncedAnimatable(this);
+    }
+
+    @Override
+    public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
+        consumer.accept(new GeoRenderProvider() {
+            private ShakerRenderer renderer;
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
+                if (this.renderer == null) {
+                    this.renderer = new ShakerRenderer();
+                }
+                return this.renderer;
+            }
+        });
+    }
+
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private ShakerRenderer renderer;
+
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                if (this.renderer == null) {
+                    this.renderer = new ShakerRenderer();
+                }
+                return this.renderer;
+            }
+
+            @Override
+            public boolean applyForgeHandTransform(PoseStack poseStack, LocalPlayer player, HumanoidArm arm,
+                    ItemStack itemInHand, float partialTick, float equipProcess, float swingProcess) {
+                if (!player.isUsingItem() || itemInHand.getItem() != ShakerItem.this
+                        || player.getUseItem().getItem() != ShakerItem.this) {
+                    return false;
+                }
+
+                int armDirection = arm == HumanoidArm.RIGHT ? 1 : -1;
+                poseStack.translate((float) armDirection * 0.56F, -0.52F + equipProcess * -0.6F, -0.72F);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -61,6 +132,9 @@ public class ShakerItem extends BlockItem {
             if (!validationResult.valid()) {
                 player.displayClientMessage(validationResult.message(), true);
                 return InteractionResultHolder.fail(stack);
+            }
+            if (level instanceof ServerLevel serverLevel) {
+                triggerShakeStart(player, stack, serverLevel);
             }
         }
         player.startUsingItem(hand);
@@ -100,6 +174,7 @@ public class ShakerItem extends BlockItem {
                 craftRecipe(inventory, selected.recipe(), selected.matchedSlots(), alcoholCount, level);
                 shakeProgress = 0;
                 lockedTarget = LockedTarget.none();
+                triggerShakeEnd(player, stack, level);
                 level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
                         0.4F, 1.0F);
             }
@@ -109,6 +184,7 @@ public class ShakerItem extends BlockItem {
                 craftMysteryMix(inventory, alcoholCount);
                 shakeProgress = 0;
                 lockedTarget = LockedTarget.none();
+                triggerShakeEnd(player, stack, level);
                 level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
                         0.4F, 1.0F);
             }
@@ -128,7 +204,49 @@ public class ShakerItem extends BlockItem {
 
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BLOCK;
+        return UseAnim.NONE;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "controller", 0, state -> isAnimatedPerspective(
+                state.getData(DataTickets.ITEM_RENDER_PERSPECTIVE)) ? PlayState.CONTINUE : PlayState.STOP)
+                .receiveTriggeredAnimations()
+                .triggerableAnim("start", SHAKE_START_ANIMATION)
+                .triggerableAnim("shake", SHAKE_LOOP_ANIMATION)
+                .triggerableAnim("end", SHAKE_END_ANIMATION));
+    }
+
+    @Override
+    public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
+        super.onUseTick(level, livingEntity, stack, remainingUseDuration);
+
+        if (level.isClientSide || !(livingEntity instanceof Player player) || !(level instanceof ServerLevel serverLevel)) {
+            return;
+        }
+
+        int elapsed = getUseDuration(stack, livingEntity) - remainingUseDuration;
+        if (elapsed == 5) {
+            triggerShakeLoop(player, stack, serverLevel);
+        }
+    }
+
+    @Override
+    public boolean isPerspectiveAware() {
+        return true;
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remainingUseTicks) {
+        if (!level.isClientSide && entity instanceof Player player && level instanceof ServerLevel serverLevel) {
+            triggerShakeEnd(player, stack, serverLevel);
+        }
+        super.releaseUsing(stack, level, entity, remainingUseTicks);
     }
 
     @Override
@@ -271,8 +389,33 @@ public class ShakerItem extends BlockItem {
         return stack.getItem() instanceof WineBottleItem;
     }
 
+    private void triggerShakeStart(Player player, ItemStack stack, ServerLevel level) {
+        long animId = GeoItem.getOrAssignId(stack, level);
+        triggerAnim(player, animId, "controller", "start");
+    }
+
+    private void triggerShakeLoop(Player player, ItemStack stack, ServerLevel level) {
+        long animId = GeoItem.getOrAssignId(stack, level);
+        triggerAnim(player, animId, "controller", "shake");
+    }
+
+    private void triggerShakeEnd(Player player, ItemStack stack, Level level) {
+        if (!(level instanceof ServerLevel serverLevel)) {
+            return;
+        }
+        long animId = GeoItem.getOrAssignId(stack, serverLevel);
+        triggerAnim(player, animId, "controller", "end");
+    }
+
+    private boolean isAnimatedPerspective(ItemDisplayContext perspective) {
+        return perspective == ItemDisplayContext.FIRST_PERSON_LEFT_HAND
+                || perspective == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND
+                || perspective == ItemDisplayContext.THIRD_PERSON_LEFT_HAND
+                || perspective == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
+    }
+
     private Optional<SelectedRecipe> selectRecipe(Level level, RecipeWrapper recipeWrapper, ItemStackHandler inventory) {
-        List<net.minecraft.world.item.crafting.RecipeHolder<ShakerRecipe>> matches = level.getRecipeManager()
+        List<RecipeHolder<ShakerRecipe>> matches = level.getRecipeManager()
                 .getRecipesFor(RecipeTypeRegistry.SHAKER_RECIPE_TYPE.get(), recipeWrapper, level);
 
         SelectedRecipe best = null;

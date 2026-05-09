@@ -56,7 +56,6 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                     return;
                 }
                 if (blockItem.getBlock() == BlockRegistry.SHAKER.get()) {
-                    normalItem(item);
                     return;
                 }
                 if (blockItem.getBlock() == BlockRegistry.KAWARA.get()) {
