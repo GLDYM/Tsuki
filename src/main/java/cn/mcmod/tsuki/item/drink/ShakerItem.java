@@ -5,10 +5,13 @@ import cn.mcmod.tsuki.client.render.item.ShakerRenderer;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
 import cn.mcmod.tsuki.recipe.ShakerRecipe;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 import java.util.function.Consumer;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -49,6 +52,8 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class ShakerItem extends BlockItem implements GeoItem {
+    private static final int START_ANIMATION_TICKS = 2;
+    private static final int SHAKE_PROGRESS_TICKS = 20;
     private static final RawAnimation SHAKE_START_ANIMATION = RawAnimation.begin()
             .thenPlay("animation.tsuki.shaker.start");
     private static final RawAnimation SHAKE_LOOP_ANIMATION = RawAnimation.begin()
@@ -56,6 +61,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
     private static final RawAnimation SHAKE_END_ANIMATION = RawAnimation.begin()
             .thenPlay("animation.tsuki.shaker.end");
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private final Set<UUID> suppressReleaseEndPlayers = new HashSet<>();
 
     public ShakerItem(Block block, Item.Properties properties) {
         super(block, properties.stacksTo(1));
@@ -134,6 +140,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
                 return InteractionResultHolder.fail(stack);
             }
             if (level instanceof ServerLevel serverLevel) {
+                this.suppressReleaseEndPlayers.remove(player.getUUID());
                 triggerShakeStart(player, stack, serverLevel);
             }
         }
@@ -143,63 +150,12 @@ public class ShakerItem extends BlockItem implements GeoItem {
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-        if (!(entity instanceof Player player) || level.isClientSide) {
-            return stack;
-        }
-
-        ItemStackHandler inventory = ShakerDataHelper.createInventory();
-        ShakerDataHelper.load(stack, inventory, player.registryAccess());
-
-        RecipeWrapper recipeWrapper = new RecipeWrapper(inventory);
-        int alcoholCount = countAlcoholInputs(inventory);
-        int alcoholKinds = countDistinctAlcoholInputs(inventory);
-        boolean hasNonAlcoholIngredient = hasNonAlcoholIngredient(inventory);
-        if (alcoholCount <= 0) {
-            player.displayClientMessage(Component.translatable("item.tsuki.shaker.no_alcohol"), true);
-            ShakerDataHelper.save(stack, inventory, 0, "", false, player.registryAccess());
-            return stack;
-        }
-        if (!hasNonAlcoholIngredient && alcoholKinds <= 1) {
-            player.displayClientMessage(Component.translatable("item.tsuki.shaker.not_enough_ingredients"), true);
-            ShakerDataHelper.save(stack, inventory, 0, "", false, player.registryAccess());
-            return stack;
-        }
-
-        int shakeProgress = ShakerDataHelper.loadShakeProgress(stack);
-        LockedTarget lockedTarget = resolveLockedTarget(level, recipeWrapper, inventory, stack, alcoholCount);
-        if (lockedTarget.recipe().isPresent()) {
-            SelectedRecipe selected = lockedTarget.recipe().get();
-            shakeProgress++;
-            if (shakeProgress >= selected.recipe().getShakeCount()) {
-                craftRecipe(inventory, selected.recipe(), selected.matchedSlots(), alcoholCount, level);
-                shakeProgress = 0;
-                lockedTarget = LockedTarget.none();
-                triggerShakeEnd(player, stack, level);
-                level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
-                        0.4F, 1.0F);
-            }
-        } else if (lockedTarget.mysteryFallback()) {
-            shakeProgress++;
-            if (shakeProgress >= 12) {
-                craftMysteryMix(inventory, alcoholCount);
-                shakeProgress = 0;
-                lockedTarget = LockedTarget.none();
-                triggerShakeEnd(player, stack, level);
-                level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
-                        0.4F, 1.0F);
-            }
-        } else {
-            shakeProgress = 0;
-        }
-
-        ShakerDataHelper.save(stack, inventory, shakeProgress, lockedTarget.recipeId(), lockedTarget.mysteryFallback(),
-                player.registryAccess());
         return stack;
     }
 
     @Override
     public int getUseDuration(ItemStack stack, LivingEntity entity) {
-        return 20;
+        return 72000;
     }
 
     @Override
@@ -226,8 +182,15 @@ public class ShakerItem extends BlockItem implements GeoItem {
         }
 
         int elapsed = getUseDuration(stack, livingEntity) - remainingUseDuration;
-        if (elapsed == 5) {
+        if (elapsed == START_ANIMATION_TICKS) {
             triggerShakeLoop(player, stack, serverLevel);
+        }
+        if (elapsed > 0 && elapsed % SHAKE_PROGRESS_TICKS == 0) {
+            if (processShakeProgress(stack, serverLevel, player)) {
+                this.suppressReleaseEndPlayers.add(player.getUUID());
+                triggerShakeEnd(player, stack, serverLevel);
+                player.stopUsingItem();
+            }
         }
     }
 
@@ -244,7 +207,9 @@ public class ShakerItem extends BlockItem implements GeoItem {
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remainingUseTicks) {
         if (!level.isClientSide && entity instanceof Player player && level instanceof ServerLevel serverLevel) {
-            triggerShakeEnd(player, stack, serverLevel);
+            if (!this.suppressReleaseEndPlayers.remove(player.getUUID())) {
+                triggerShakeEnd(player, stack, serverLevel);
+            }
         }
         super.releaseUsing(stack, level, entity, remainingUseTicks);
     }
@@ -412,6 +377,58 @@ public class ShakerItem extends BlockItem implements GeoItem {
                 || perspective == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND
                 || perspective == ItemDisplayContext.THIRD_PERSON_LEFT_HAND
                 || perspective == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
+    }
+
+    private boolean processShakeProgress(ItemStack stack, ServerLevel level, Player player) {
+        ItemStackHandler inventory = ShakerDataHelper.createInventory();
+        ShakerDataHelper.load(stack, inventory, player.registryAccess());
+
+        RecipeWrapper recipeWrapper = new RecipeWrapper(inventory);
+        int alcoholCount = countAlcoholInputs(inventory);
+        int alcoholKinds = countDistinctAlcoholInputs(inventory);
+        boolean hasNonAlcoholIngredient = hasNonAlcoholIngredient(inventory);
+        if (alcoholCount <= 0) {
+            player.displayClientMessage(Component.translatable("item.tsuki.shaker.no_alcohol"), true);
+            ShakerDataHelper.save(stack, inventory, 0, "", false, player.registryAccess());
+            return true;
+        }
+        if (!hasNonAlcoholIngredient && alcoholKinds <= 1) {
+            player.displayClientMessage(Component.translatable("item.tsuki.shaker.not_enough_ingredients"), true);
+            ShakerDataHelper.save(stack, inventory, 0, "", false, player.registryAccess());
+            return true;
+        }
+
+        int shakeProgress = ShakerDataHelper.loadShakeProgress(stack);
+        LockedTarget lockedTarget = resolveLockedTarget(level, recipeWrapper, inventory, stack, alcoholCount);
+        boolean completed = false;
+        if (lockedTarget.recipe().isPresent()) {
+            SelectedRecipe selected = lockedTarget.recipe().get();
+            shakeProgress++;
+            if (shakeProgress >= selected.recipe().getShakeCount()) {
+                craftRecipe(inventory, selected.recipe(), selected.matchedSlots(), alcoholCount, level);
+                shakeProgress = 0;
+                lockedTarget = LockedTarget.none();
+                completed = true;
+                level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
+                        0.4F, 1.0F);
+            }
+        } else if (lockedTarget.mysteryFallback()) {
+            shakeProgress++;
+            if (shakeProgress >= 12) {
+                craftMysteryMix(inventory, alcoholCount);
+                shakeProgress = 0;
+                lockedTarget = LockedTarget.none();
+                completed = true;
+                level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
+                        0.4F, 1.0F);
+            }
+        } else {
+            shakeProgress = 0;
+        }
+
+        ShakerDataHelper.save(stack, inventory, shakeProgress, lockedTarget.recipeId(), lockedTarget.mysteryFallback(),
+                player.registryAccess());
+        return completed;
     }
 
     private Optional<SelectedRecipe> selectRecipe(Level level, RecipeWrapper recipeWrapper, ItemStackHandler inventory) {
