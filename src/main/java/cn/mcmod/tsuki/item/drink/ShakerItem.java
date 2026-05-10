@@ -442,7 +442,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
             if (slots == null || !canOutput(inventory, recipe.getResultItem(level.registryAccess()))) {
                 continue;
             }
-            SelectedRecipe candidate = new SelectedRecipe(recipe, slots);
+            SelectedRecipe candidate = new SelectedRecipe(holder.id().toString(), recipe, slots);
             if (best == null || candidate.ingredientCount() > best.ingredientCount()) {
                 best = candidate;
             }
@@ -554,13 +554,9 @@ public class ShakerItem extends BlockItem implements GeoItem {
         }
     }
 
-    private record SelectedRecipe(ShakerRecipe recipe, int[] matchedSlots) {
+    private record SelectedRecipe(String recipeId, ShakerRecipe recipe, int[] matchedSlots) {
         private int ingredientCount() {
             return matchedSlots.length;
-        }
-
-        private String recipeId() {
-            return recipe.getId().toString();
         }
     }
 

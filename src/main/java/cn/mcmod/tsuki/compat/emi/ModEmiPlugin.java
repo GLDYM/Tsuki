@@ -7,6 +7,7 @@ import cn.mcmod.tsuki.compat.emi.category.EmiChoppingRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiCookingPotRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiDistillerRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiFermenterRecipe;
+import cn.mcmod.tsuki.compat.emi.category.EmiShakerRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiStoneMortarRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiTataraRecipe;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
@@ -18,6 +19,7 @@ import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import cn.mcmod.tsuki.recipe.DistillerRecipe;
 import cn.mcmod.tsuki.recipe.FermenterRecipe;
+import cn.mcmod.tsuki.recipe.ShakerRecipe;
 import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
@@ -43,6 +45,7 @@ public class ModEmiPlugin implements EmiPlugin {
         EmiStoneMortarRecipe.register(registry);
         EmiFermenterRecipe.register(registry);
         EmiDistillerRecipe.register(registry);
+        EmiShakerRecipe.register(registry);
         EmiChoppingRecipe.register(registry);
         EmiTataraRecipe.register(registry);
 
@@ -76,6 +79,11 @@ public class ModEmiPlugin implements EmiPlugin {
             registry.addRecipe(EmiDistillerRecipe.of(holder.id(), holder.value()));
         }
 
+        for (RecipeHolder<ShakerRecipe> holder : registry.getRecipeManager()
+                .getAllRecipesFor(RecipeTypeRegistry.SHAKER_RECIPE_TYPE.get())) {
+            registry.addRecipe(EmiShakerRecipe.of(holder.id(), holder.value()));
+        }
+
         for (RecipeHolder<ChoppingRecipe> holder : registry.getRecipeManager()
                 .getAllRecipesFor(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get())) {
             registry.addRecipe(EmiChoppingRecipe.of(holder.id(), holder.value()));
@@ -90,6 +98,7 @@ public class ModEmiPlugin implements EmiPlugin {
         registry.addWorkstation(EmiStoneMortarRecipe.CATEGORY, EmiStack.of(BlockRegistry.STONE_MORTAR.get()));
         registry.addWorkstation(EmiFermenterRecipe.CATEGORY, EmiStack.of(BlockRegistry.FERMENTER.get()));
         registry.addWorkstation(EmiDistillerRecipe.CATEGORY, EmiStack.of(BlockRegistry.DISTILLER.get()));
+        registry.addWorkstation(EmiShakerRecipe.CATEGORY, EmiStack.of(BlockRegistry.SHAKER.get()));
         registry.addWorkstation(EmiChoppingRecipe.CATEGORY, EmiStack.of(BlockRegistry.CHOPPING_BOARD.get()));
         registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(BlockRegistry.TATARA.get()));
         registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(ArmorToolRegistry.STONE_HAMMER.get()));

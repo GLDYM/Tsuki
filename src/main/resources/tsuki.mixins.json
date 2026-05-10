@@ -6,6 +6,9 @@
   "mixins": [
     "VillagerMixin"
   ],
+  "client": [
+    "client.ItemInHandRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

@@ -43,7 +43,8 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                 BlockItem blockItem = (BlockItem) item.get();
                 if (blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
                         || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()
-                        || blockItem.getBlock() == BlockRegistry.FUTON.get()) {
+                        || blockItem.getBlock() == BlockRegistry.FUTON.get()
+                        || blockItem.getBlock() == BlockRegistry.SHAKER.get()) {
                     return;
                 }
                 if (blockItem.getBlock() instanceof FallenLeavesBlock) {
@@ -53,9 +54,6 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                 if (blockItem.getBlock() == BlockRegistry.KITUNEBI.get()) {
                     singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0",
                             modLoc("block/ghost_fire_0"));
-                    return;
-                }
-                if (blockItem.getBlock() == BlockRegistry.SHAKER.get()) {
                     return;
                 }
                 if (blockItem.getBlock() == BlockRegistry.KAWARA.get()) {

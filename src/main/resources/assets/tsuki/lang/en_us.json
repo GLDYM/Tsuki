@@ -784,6 +784,7 @@
     "tsuki.jei.distillation":  "Distillation Barrel",
     "tsuki.jei.fermenting":  "Fermenting",
     "tsuki.jei.shaker":  "Shaker",
+    "tsuki.jei.shaker.shake_count": "Shake %s times",
     "tsuki.jei.liquid_item":  "Liquid to Bucket",
     "tsuki.jei.stone_mortar":  "Stone Mortar",
     "tsuki.jei.straw_web":  "Open-air Drying",

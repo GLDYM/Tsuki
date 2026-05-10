@@ -3459,6 +3459,11 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
                 .unlockedBy("has_white_wine", has(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kir"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kir"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR_ROYALE).get())
                 .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_CHAMPAGNE).get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())

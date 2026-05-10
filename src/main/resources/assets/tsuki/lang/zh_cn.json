@@ -784,6 +784,7 @@
     "tsuki.jei.distillation":  "蒸馏桶",
     "tsuki.jei.fermenting":  "酿造桶",
     "tsuki.jei.shaker":  "雪克杯",
+    "tsuki.jei.shaker.shake_count": "摇晃 %s 次",
     "tsuki.jei.stone_mortar":  "石磨",
     "tsuki.jei.tatara":  "锻铁炉炼铁",
     "tsuki.jei.tatara.iron.amount":  "可能数量：%s",

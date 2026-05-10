@@ -13,7 +13,7 @@ import net.minecraft.world.level.ItemLike;
 public class ShakerRecipeBuilder {
     private final NonNullList<Ingredient> ingredients = NonNullList.create();
     private final ItemStack result;
-    private int shakeCount = 1;
+    private int shakeCount = 12;
 
     private ShakerRecipeBuilder(ItemLike resultItem, int count) {
         this.result = new ItemStack(resultItem.asItem(), count);
