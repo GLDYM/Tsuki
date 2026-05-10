@@ -371,9 +371,10 @@ public class ShakerItem extends BlockItem implements GeoItem {
 
     private boolean isAnimatedPerspective(ItemDisplayContext perspective) {
         return perspective == ItemDisplayContext.FIRST_PERSON_LEFT_HAND
-                || perspective == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND
-                || perspective == ItemDisplayContext.THIRD_PERSON_LEFT_HAND
-                || perspective == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
+                || perspective == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND;
+                // TODO: enable third person shaking animation after fixing the held item transform
+                // || perspective == ItemDisplayContext.THIRD_PERSON_LEFT_HAND
+                // || perspective == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
     }
 
     private boolean processShakeProgress(ItemStack stack, ServerLevel level, Player player) {
@@ -406,7 +407,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
             SelectedRecipe selected = lockedTarget.recipe().get();
             shakeProgress++;
             if (shakeProgress >= selected.recipe().getShakeCount()) {
-                craftRecipe(inventory, selected.recipe(), selected.matchedSlots(), alcoholCount, level);
+                craftRecipe(inventory, selected.recipe(), alcoholCount, level);
                 shakeProgress = 0;
                 lockedTarget = LockedTarget.none();
                 completed = true;
@@ -481,7 +482,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
         return LockedTarget.none();
     }
 
-    private void craftRecipe(ItemStackHandler inventory, ShakerRecipe recipe, int[] slots, int alcoholCount, Level level) {
+    private void craftRecipe(ItemStackHandler inventory, ShakerRecipe recipe, int alcoholCount, Level level) {
         ItemStack result = recipe.getResultItem(level.registryAccess()).copyWithCount(alcoholCount);
         ItemStack output = inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT);
         if (output.isEmpty()) {
@@ -490,8 +491,10 @@ public class ShakerItem extends BlockItem implements GeoItem {
             output.grow(result.getCount());
         }
 
-        for (int slot : slots) {
-            inventory.extractItem(slot, 1, false);
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
+                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
+                ++slot) {
+            inventory.setStackInSlot(slot, ItemStack.EMPTY);
         }
     }
 

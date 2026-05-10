@@ -639,6 +639,7 @@
     "item.tsuki.shaker.no_alcohol":  "没有加入酒类",
     "item.tsuki.shaker.not_enough_ingredients":  "输入材料不足",
     "item.tsuki.shaker.output_not_empty":  "请先倒出酒",
+    "item.tsuki.shaker.full":  "摇酒器输入槽已满",
     "item.tsuki.shaker.tooltip.output":  "输出：",
     "item.tsuki.shimeji":  "食用菌",
     "item.tsuki.shinai":  "竹刀",

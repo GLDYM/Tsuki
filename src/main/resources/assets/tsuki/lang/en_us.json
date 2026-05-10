@@ -637,6 +637,7 @@
     "item.tsuki.shaker.no_alcohol":  "No alcoholic drink in the shaker",
     "item.tsuki.shaker.not_enough_ingredients":  "Add more ingredients before shaking",
     "item.tsuki.shaker.output_not_empty":  "Pour out the drink first",
+    "item.tsuki.shaker.full":  "Shaker input slots are full",
     "item.tsuki.shaker.tooltip.output":  "Output: ",
     "item.tsuki.shimeji":  "Shimeji",
     "item.tsuki.shinai":  "Shinai",

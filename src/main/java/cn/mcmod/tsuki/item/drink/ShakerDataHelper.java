@@ -143,6 +143,9 @@ public final class ShakerDataHelper {
         if (filledStack.isEmpty()) {
             return ItemStack.EMPTY;
         }
+        if (filledStack.hasCraftingRemainingItem()) {
+            return filledStack.getCraftingRemainingItem();
+        }
         if (filledStack.getItem() instanceof DrinkItem drinkItem) {
             return new ItemStack(drinkItem.getContainerItem().get());
         }

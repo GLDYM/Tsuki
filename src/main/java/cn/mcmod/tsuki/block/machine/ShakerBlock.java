@@ -76,7 +76,13 @@ public class ShakerBlock extends BaseEntityBlock {
         if (!(level.getBlockEntity(pos) instanceof ShakerBlockEntity shaker)) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
-        if (!stack.isEmpty()) {
+        if (stack.isEmpty()) {
+            if (takeInputWithoutContainer(level, pos, player, shaker)) {
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            }
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+        if (!stack.is(DrinkRegistry.SHAKER.get())) {
             if (takeOutputWithContainer(level, pos, player, hand, shaker)) {
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
@@ -84,13 +90,19 @@ public class ShakerBlock extends BaseEntityBlock {
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         }
-        if (!shaker.getOutputStack().isEmpty() && !stack.isEmpty() && !stack.is(DrinkRegistry.SHAKER.get())) {
+        if (!shaker.getOutputStack().isEmpty()) {
             if (!level.isClientSide) {
                 player.displayClientMessage(Component.translatable("item.tsuki.shaker.output_not_empty"), true);
             }
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
-        if (stack.isEmpty() || stack.is(DrinkRegistry.SHAKER.get())) {
+        if (shaker.findFirstEmptyInputSlot() < 0) {
+            if (!level.isClientSide) {
+                player.displayClientMessage(Component.translatable("item.tsuki.shaker.full"), true);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+        if (stack.is(DrinkRegistry.SHAKER.get())) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
         if (insertIngredient(level, pos, player, hand, shaker)) {
@@ -238,6 +250,15 @@ public class ShakerBlock extends BaseEntityBlock {
         return false;
     }
 
+    private boolean takeInputWithoutContainer(Level level, BlockPos pos, Player player, ShakerBlockEntity shaker) {
+        int slot = findLastLooseInputSlot(shaker);
+        if (slot >= 0 && takeOne(shaker, player, slot, false)) {
+            level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.3F, 1.0F);
+            return true;
+        }
+        return false;
+    }
+
     private boolean takeFilledItemWithContainer(Level level, BlockPos pos, Player player, InteractionHand hand,
             ShakerBlockEntity shaker, int slot) {
         ItemStack filledStack = shaker.getInventory().getStackInSlot(slot);
@@ -299,4 +320,5 @@ public class ShakerBlock extends BaseEntityBlock {
         }
         return -1;
     }
+
 }
