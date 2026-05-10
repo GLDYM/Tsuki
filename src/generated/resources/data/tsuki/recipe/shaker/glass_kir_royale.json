@@ -1,0 +1,20 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_champagne"
+    },
+    {
+      "item": "tsuki:soda_water"
+    },
+    {
+      "item": "tsuki:blackcurrant_juice"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_kir_royale"
+  },
+  "shake_count": 12
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:flour"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "item": "tsuki:maple_syrup"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "tsuki:maple_cookie"
+  }
+}

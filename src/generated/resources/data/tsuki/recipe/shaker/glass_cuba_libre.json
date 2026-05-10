@@ -1,0 +1,20 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_rum"
+    },
+    {
+      "item": "tsuki:soda_water"
+    },
+    {
+      "item": "tsuki:lemon"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_cuba_libre"
+  },
+  "shake_count": 12
+}

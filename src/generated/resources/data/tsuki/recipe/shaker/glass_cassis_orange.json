@@ -1,0 +1,20 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_cup"
+    },
+    {
+      "item": "tsuki:blackcurrant_juice"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_cassis_orange"
+  },
+  "shake_count": 12
+}

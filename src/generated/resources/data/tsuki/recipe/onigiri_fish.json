@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:rice_cooked"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "tag": "c:slices/raw_fishes"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "tsuki:onigiri_fish"
+  }
+}

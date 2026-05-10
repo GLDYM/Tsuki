@@ -1,0 +1,20 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_gin"
+    },
+    {
+      "item": "tsuki:lemon_juice"
+    },
+    {
+      "item": "tsuki:soda_water"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_gin_fizz"
+  },
+  "shake_count": 12
+}

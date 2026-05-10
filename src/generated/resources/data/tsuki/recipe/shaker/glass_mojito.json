@@ -1,0 +1,23 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_rum"
+    },
+    {
+      "item": "tsuki:lemon_juice"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "item": "tsuki:soda_water"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_mojito"
+  },
+  "shake_count": 12
+}

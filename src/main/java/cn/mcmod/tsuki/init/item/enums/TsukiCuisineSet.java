@@ -167,6 +167,16 @@ public enum TsukiCuisineSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    CHAWANMUSHI(
+            FoodInfo.builder()
+                    .name("chawanmushi")
+                    .amountAndCalories(6, 0.5F)
+                    .water(5.0F)
+                    .nutrients(0.0F, 0.0F, 3.0F, 3.0F, 3.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(2.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     CABBAGE_ROLL(
             FoodInfo.builder()
                     .name("cabbage_roll")
@@ -989,17 +999,6 @@ public enum TsukiCuisineSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
-    CHAWANMUSHI(
-            FoodInfo.builder()
-                    .name("chawanmushi")
-                    .amountAndCalories(6, 0.5F)
-                    .water(5.0F)
-                    .nutrients(0.0F, 0.0F, 3.0F, 3.0F, 3.0F)
-                    .decayModifier(5.0F)
-                    .heatCapacity(2.0F)
-                    .cookingTemp(480.0F)
-                    .build()),
-
     EHOUMAKI(
             FoodInfo.builder()
                     .name("ehoumaki")

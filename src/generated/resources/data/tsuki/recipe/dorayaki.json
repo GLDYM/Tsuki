@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:flour"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "item": "tsuki:red_bean_paste"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "tsuki:dorayaki"
+  }
+}

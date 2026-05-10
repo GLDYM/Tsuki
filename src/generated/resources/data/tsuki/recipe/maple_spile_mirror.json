@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "L": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    "LLL",
+    "III",
+    "  I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:maple_spile"
+  }
+}

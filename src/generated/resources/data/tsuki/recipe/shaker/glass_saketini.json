@@ -1,0 +1,17 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_sake"
+    },
+    {
+      "item": "tsuki:glass_gin"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_saketini"
+  },
+  "shake_count": 12
+}

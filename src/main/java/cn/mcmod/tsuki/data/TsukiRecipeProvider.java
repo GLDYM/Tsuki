@@ -43,6 +43,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Ingredient.ItemValue;
 import net.minecraft.world.item.crafting.Ingredient.TagValue;
@@ -70,6 +71,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.registerFermenterRecipe(consumer);
         this.registerDistillerRecipe(consumer);
         this.registerDrinkRecipes(consumer);
+        this.registerShakerDrinkRecipes(consumer);
         this.registerChoppingRecipes(consumer);
     }
 
@@ -378,6 +380,30 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .define('I', Tags.Items.INGOTS_IRON)
             .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "distiller"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.MAPLE_CAULDRON.get())
+            .pattern("ILI")
+            .pattern("ILI")
+            .pattern("I I")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_cauldron"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.MAPLE_SPILE.get())
+            .pattern("LLL")
+            .pattern("III")
+            .pattern("I  ")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_spile"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockItemRegistry.MAPLE_SPILE.get())
+            .pattern("LLL")
+            .pattern("III")
+            .pattern("  I")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('L', TsukiItemTags.LUMBER)
+            .unlockedBy("has_item", has(TsukiItemTags.LUMBER))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_spile_mirror"));
         this.registerFarmerDelightRecipes(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BlockRegistry.COOKING_POT.get())
             .pattern("#L#")
@@ -1061,6 +1087,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             0.35F,
             consumer
         );
+        this.foodSmeltingRecipes(
+            "matsutake_to_roast_matsutake",
+            FoodRegistry.FOODSET.get(TsukiFoodSet.MATSUTAKE).get(),
+            FoodRegistry.FOODSET.get(TsukiFoodSet.ROAST_MATSUTAKE).get(),
+            0.35F,
+            consumer
+        );
         SimpleCookingRecipeBuilder.smelting(
                 Ingredient.of(BlockItemRegistry.CHESTNUT_BURRS.get()),
                 RecipeCategory.MISC,
@@ -1285,12 +1318,45 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TEMPURA).get())
             .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
             .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_FISH).get(), 2)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(Items.DRIED_KELP)
+            .requires(TsukiItemTags.SLICES_RAW_FISHES)
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "onigiri_fish"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.ONIGIRI_MATSUTAKE).get(), 2)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(Items.DRIED_KELP)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MATSUTAKE).get())
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "onigiri_matsutake"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.CUISINES.get(TsukiCuisineSet.EHOUMAKI).get(), 3)
+            .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
+            .requires(Items.DRIED_KELP)
+            .requires(TsukiItemTags.VEGETABLES)
+            .requires(TsukiItemTags.FOODS_COOKED_MEAT)
+            .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ehoumaki"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.BUGGYS_MEAT).get(), 4)
+            .requires(TsukiItemTags.RAW_PORK)
+            .requires(TsukiItemTags.RAW_BEEF)
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.CROPS_ONION)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
+            .unlockedBy("has_raw_meat", has(TsukiItemTags.RAW_PORK))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "buggys_meat"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
             .requires(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
             .requires(TsukiItemTags.VINEGAR)
             .requires(TsukiItemTags.SUGAR)
             .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
             .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+            .requires(potion(Potions.WATER))
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.ALKALINE).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VINEGAR).get())
+            .unlockedBy("has_vinegar", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VINEGAR).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soda_water_from_water_bottle_alkaline_vinegar"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI).get(), 2)
             .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
             .requires(TsukiItemTags.SLICES_RAW_FISHES)
@@ -1376,6 +1442,45 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(BlockRegistry.SAKURA_LEAVES.get())
             .unlockedBy("has_mochi", has(FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHI).get()))
             .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.MAPLE_COOKIE).get(), 4)
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.SUGAR)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get())
+            .unlockedBy("has_maple_syrup", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maple_cookie"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.POUND_CAKE).get(), 2)
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.SUGAR)
+            .unlockedBy("has_flour", has(TsukiItemTags.FLOUR))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pound_cake"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.DORAYAKI).get(), 2)
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.SUGAR)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get())
+            .unlockedBy("has_redbean_paste", has(FoodRegistry.FOODSET.get(TsukiFoodSet.REDBEAN_PASTE).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dorayaki"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.TAIYAKI_MOCHA).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TAIYAKI).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get())
+            .unlockedBy("has_taiyaki", has(FoodRegistry.FOODSET.get(TsukiFoodSet.TAIYAKI).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "taiyaki_mocha"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.MOCHA_COOKIE).get(), 4)
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.SUGAR)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get())
+            .unlockedBy("has_mocha", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mocha_cookie"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.POUND_CAKE_MOCHA).get(), 2)
+            .requires(TsukiItemTags.FLOUR)
+            .requires(TsukiItemTags.EGGS)
+            .requires(TsukiItemTags.MILK)
+            .requires(TsukiItemTags.SUGAR)
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get())
+            .unlockedBy("has_mocha", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "pound_cake_mocha"));
         this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO))
             .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()))
             .save(consumer);
@@ -2518,6 +2623,24 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.SUGAR)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "redbean_paste_cooking"));
         CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.MABODOFU).get(), 2
+            )
+            .requires(TsukiFoodSet.TOFU.getItem().get())
+            .requires(TsukiFoodSet.MINCED_MEAT.getItem().get())
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(TsukiItemTags.VEGETABLES)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mabodofu_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.MABOQIEZI).get(), 2
+            )
+            .requires(TsukiFoodSet.EGGPLANT.getItem().get())
+            .requires(TsukiFoodSet.MINCED_MEAT.getItem().get())
+            .requires(TsukiItemTags.SOYSAUCE)
+            .requires(TsukiItemTags.VEGETABLES)
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "maboqiezi_cooking"));
+        CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 250), FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO_SAUCE).get(), 2
             )
             .requires(TsukiItemTags.CROPS_TOMATO)
@@ -2618,6 +2741,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.MUSHROOMS)
             .container(Items.BOWL)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_mushrooms_cooking"));
+        CookingPotRecipeBuilder.cooking(
+            FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_MATSUTAKE).get()
+            )
+            .requires(TsukiItemTags.RICE_RICE)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MATSUTAKE).get())
+            .container(Items.BOWL)
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_matsutake_cooking"));
         CookingPotRecipeBuilder.cooking(
             FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125), FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_BEEF).get()
             )
@@ -3459,11 +3589,6 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
                 .unlockedBy("has_white_wine", has(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kir"));
-        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR).get())
-                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get())
-                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
-                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kir"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR_ROYALE).get())
                 .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_CHAMPAGNE).get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
@@ -3474,14 +3599,12 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
-                .requires(DrinkRegistry.WINE_BOTTLE.get())
                 .unlockedBy("has_juice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cassis_orange"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_CASSIS_SODA).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
-                .requires(DrinkRegistry.WINE_BOTTLE.get())
                 .unlockedBy("has_juice", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cassis_soda"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MIMOSA).get())
@@ -3719,6 +3842,224 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
                 .unlockedBy("has_brandy", has(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BRANDY).get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_scorpion"));
+    }
+
+    private void registerShakerDrinkRecipes(RecipeOutput consumer) {
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kir"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR_ROYALE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_CHAMPAGNE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kir_royale"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_CASSIS_ORANGE).get())
+                .requires(DrinkRegistry.GLASS_CUP.get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cassis_orange"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_CASSIS_SODA).get())
+                .requires(DrinkRegistry.GLASS_CUP.get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cassis_soda"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MIMOSA).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_CHAMPAGNE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_mimosa"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SHANDY_GAFF).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BEER).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_shandy_gaff"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_RED_EYE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BEER).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO_SAUCE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_red_eye"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_HIGHBALL).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHISKEY).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_highball"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GIN_TONIC).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_GIN).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_gin_tonic"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GIMLET).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_GIN).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_gimlet"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GIN_FIZZ).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_GIN).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_gin_fizz"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SCREWDRIVER).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_screwdriver"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SALTY_DOG).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(TsukiItemTags.SALT)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_salty_dog"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MOSCOW_MULE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BEER).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_moscow_mule"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_TEQUILA_SUNRISE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_TEQUILA).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_tequila_sunrise"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MARGARITA).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_TEQUILA).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(TsukiItemTags.SALT)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_margarita"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_CUBA_LIBRE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RUM).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cuba_libre"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_DAIQUIRI).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RUM).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(TsukiItemTags.SUGAR)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_daiquiri"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GROG).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RUM).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(TsukiItemTags.SUGAR).requires(TsukiItemTags.SUGAR)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_grog"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_HOT_TODDY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHISKEY).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(TsukiItemTags.SUGAR)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_hot_toddy"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SANGRIA).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .requires(TsukiItemTags.FRUITS_APPLE)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_sangria"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SPRITZER).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_spritzer"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MARTINI).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_GIN).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_martini"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_AMERICANO).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_americano"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_NEGRONI).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_GIN).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_negroni"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_ALEXANDER).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BRANDY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_COCOA_LIQUEUR).get())
+                .requires(TsukiItemTags.MILK)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_alexander"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_BELLINI).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_CHAMPAGNE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_bellini"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KALIMOTXO).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kalimotxo"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KITTY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kitty"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_OPERATOR).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_operator"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MATADOR).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_TEQUILA).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_matador"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_HOT_BUTTERED_RUM).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RUM).get())
+                .requires(TsukiItemTags.SUGAR)
+                .requires(TsukiItemTags.MILK)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_hot_buttered_rum"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_PINA_COLADA).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RUM).get())
+                .requires(TsukiItemTags.MILK)
+                .requires(TsukiItemTags.SUGAR).requires(TsukiItemTags.SUGAR)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_pina_colada"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_BLACK_RUSSIAN).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_COCOA_LIQUEUR).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_black_russian"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GODFATHER).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHISKEY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ALMOND).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_godfather"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GODMOTHER).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ALMOND).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_godmother"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SIDECAR).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BRANDY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_sidecar"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_BLOODY_MARY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO_SAUCE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(TsukiItemTags.SALT)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_bloody_mary"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_OLD_FASHIONED).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHISKEY).get())
+                .requires(TsukiItemTags.SUGAR)
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_old_fashioned"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_WHISKEY_SOUR).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHISKEY).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(TsukiItemTags.SUGAR)
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_whiskey_sour"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MOJITO).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RUM).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
+                .requires(TsukiItemTags.SUGAR)
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_mojito"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_RUSTY_NAIL).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHISKEY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_rusty_nail"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SAKETINI).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_SAKE).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_GIN).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_saketini"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_STINGER).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BRANDY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
+                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MINT).get())
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_stinger"));
+        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SCORPION).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BRANDY).get())
+                .requires(DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RUM).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_scorpion"));
     }
 

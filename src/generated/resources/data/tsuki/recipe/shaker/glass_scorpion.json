@@ -1,0 +1,23 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_brandy"
+    },
+    {
+      "item": "tsuki:glass_rum"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    },
+    {
+      "item": "tsuki:lemon_juice"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_scorpion"
+  },
+  "shake_count": 12
+}

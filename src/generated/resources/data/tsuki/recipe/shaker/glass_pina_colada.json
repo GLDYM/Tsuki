@@ -1,0 +1,23 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_rum"
+    },
+    {
+      "tag": "c:milk"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:sugar"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_pina_colada"
+  },
+  "shake_count": 12
+}

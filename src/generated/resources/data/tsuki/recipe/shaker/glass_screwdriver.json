@@ -1,0 +1,17 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_vodka"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_screwdriver"
+  },
+  "shake_count": 12
+}

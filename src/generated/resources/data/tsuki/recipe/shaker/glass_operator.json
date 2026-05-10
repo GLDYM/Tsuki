@@ -1,0 +1,20 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_white_wine"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    },
+    {
+      "item": "tsuki:soda_water"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_operator"
+  },
+  "shake_count": 12
+}

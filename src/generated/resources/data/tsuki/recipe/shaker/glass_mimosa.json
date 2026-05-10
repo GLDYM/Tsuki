@@ -1,0 +1,17 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_champagne"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_mimosa"
+  },
+  "shake_count": 12
+}

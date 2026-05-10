@@ -1,0 +1,17 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_beer"
+    },
+    {
+      "item": "tsuki:tomato_sauce"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_red_eye"
+  },
+  "shake_count": 12
+}

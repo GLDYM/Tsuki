@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "type": "neoforge:components",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:water"
+        }
+      },
+      "items": "minecraft:potion"
+    },
+    {
+      "item": "tsuki:alkaline"
+    },
+    {
+      "item": "tsuki:vinegar"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:soda_water"
+  }
+}

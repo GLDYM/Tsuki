@@ -1,0 +1,20 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_tequila"
+    },
+    {
+      "item": "tsuki:orange_juice"
+    },
+    {
+      "item": "tsuki:lemon_juice"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_tequila_sunrise"
+  },
+  "shake_count": 12
+}

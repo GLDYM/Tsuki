@@ -1,0 +1,20 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_rum"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "tag": "c:milk"
+    }
+  ],
+  "recipeTime": 0,
+  "result": {
+    "id": "tsuki:glass_hot_buttered_rum"
+  },
+  "shake_count": 12
+}

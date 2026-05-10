@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:raw_pork"
+    },
+    {
+      "tag": "c:raw_beef"
+    },
+    {
+      "tag": "c:milk"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "item": "tsuki:breadcrumbs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "tsuki:buggys_meat"
+  }
+}
