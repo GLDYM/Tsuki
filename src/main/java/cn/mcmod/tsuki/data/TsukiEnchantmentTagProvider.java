@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.data;
 import cn.mcmod.tsuki.Tsuki;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
@@ -13,7 +14,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class TsukiEnchantmentTagProvider extends TagsProvider<Enchantment> {
     public TsukiEnchantmentTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider,
             ExistingFileHelper existingFileHelper) {
-        super(output, net.minecraft.core.registries.Registries.ENCHANTMENT, provider, Tsuki.MODID, existingFileHelper);
+        super(output, Registries.ENCHANTMENT, provider, Tsuki.MODID, existingFileHelper);
     }
 
     @Override

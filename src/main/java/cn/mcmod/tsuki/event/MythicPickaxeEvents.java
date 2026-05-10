@@ -6,7 +6,9 @@ import cn.mcmod.tsuki.item.tool.MythicPickaxeItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -21,8 +23,8 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 
 @EventBusSubscriber(modid = Tsuki.MODID)
 public class MythicPickaxeEvents {
-    private static final TagKey<Block> C_ORES_TAG = TagKey.create(net.minecraft.core.registries.Registries.BLOCK,
-            net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "ores"));
+    private static final TagKey<Block> C_ORES_TAG = TagKey.create(Registries.BLOCK,
+            ResourceLocation.fromNamespaceAndPath("c", "ores"));
     @SuppressWarnings("unchecked")
     private static final TagKey<Block>[] ORE_TAGS = new TagKey[] {
             BlockTags.COAL_ORES,

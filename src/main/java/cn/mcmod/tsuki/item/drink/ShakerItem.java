@@ -276,6 +276,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
         ShakerDataHelper.save(heldShaker, inventory, 0, context.getPlayer().registryAccess());
         context.getLevel().sendBlockUpdated(context.getClickedPos(), context.getLevel().getBlockState(context.getClickedPos()),
                 context.getLevel().getBlockState(context.getClickedPos()), Block.UPDATE_CLIENTS);
+        context.getLevel().playSound(null, context.getClickedPos(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.8F, 1.0F);
         return true;
     }
 
@@ -284,19 +285,15 @@ public class ShakerItem extends BlockItem implements GeoItem {
             return false;
         }
         ItemStack output = inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT);
-        if (output.isEmpty()) {
-            return true;
-        }
-        if (!ItemStack.isSameItemSameComponents(output, result)) {
-            return false;
-        }
-        return output.getCount() + result.getCount() <= Math.min(output.getMaxStackSize(),
-                inventory.getSlotLimit(ShakerDataHelper.SLOT_OUTPUT));
+        return output.isEmpty();
     }
 
     private ValidationResult validateShakeInputs(ItemStack shakerStack, Player player) {
         ItemStackHandler inventory = ShakerDataHelper.createInventory();
         ShakerDataHelper.load(shakerStack, inventory, player.registryAccess());
+        if (!inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT).isEmpty()) {
+            return new ValidationResult(false, Component.translatable("item.tsuki.shaker.output_not_empty"));
+        }
         if (countAlcoholInputs(inventory) <= 0) {
             return new ValidationResult(false, Component.translatable("item.tsuki.shaker.no_alcohol"));
         }
@@ -382,6 +379,10 @@ public class ShakerItem extends BlockItem implements GeoItem {
     private boolean processShakeProgress(ItemStack stack, ServerLevel level, Player player) {
         ItemStackHandler inventory = ShakerDataHelper.createInventory();
         ShakerDataHelper.load(stack, inventory, player.registryAccess());
+        if (!inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT).isEmpty()) {
+            player.displayClientMessage(Component.translatable("item.tsuki.shaker.output_not_empty"), true);
+            return false;
+        }
 
         RecipeWrapper recipeWrapper = new RecipeWrapper(inventory);
         int alcoholCount = countAlcoholInputs(inventory);

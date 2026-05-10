@@ -11,12 +11,14 @@ import cn.mcmod.tsuki.tag.TsukiItemTags;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -74,6 +76,12 @@ public class ShakerBlock extends BaseEntityBlock {
         if (!(level.getBlockEntity(pos) instanceof ShakerBlockEntity shaker)) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
+        if (!shaker.getOutputStack().isEmpty() && !stack.isEmpty() && !stack.is(DrinkRegistry.SHAKER.get())) {
+            if (!level.isClientSide) {
+                player.displayClientMessage(Component.translatable("item.tsuki.shaker.output_not_empty"), true);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
         if (!stack.isEmpty()) {
             if (takeOutputWithContainer(level, pos, player, hand, shaker)) {
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
@@ -110,7 +118,7 @@ public class ShakerBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable net.minecraft.world.entity.LivingEntity placer,
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer,
             ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
         if (!level.isClientSide && level.getBlockEntity(pos) instanceof ShakerBlockEntity shaker) {
@@ -195,7 +203,7 @@ public class ShakerBlock extends BaseEntityBlock {
             }
         }
 
-        level.playSound(null, pos, SoundEvents.LANTERN_PLACE, SoundSource.BLOCKS, 0.35F, 1.1F);
+        level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.6F, 1.0F);
         return true;
     }
 

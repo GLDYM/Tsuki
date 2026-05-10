@@ -13,6 +13,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.Util;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
 
@@ -68,7 +69,7 @@ public class ArmorMaterialRegistry {
                     }),
                     14,
                     SoundEvents.ARMOR_EQUIP_IRON,
-                    () -> Ingredient.of(net.neoforged.neoforge.common.Tags.Items.INGOTS_IRON),
+                    () -> Ingredient.of(Tags.Items.INGOTS_IRON),
                     List.of(
                             new ArmorMaterial.Layer(
                                     ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "soldier"))),

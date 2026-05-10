@@ -28,6 +28,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
@@ -63,7 +64,7 @@ public class MythicPickaxeItem extends PickaxeItem {
     }
 
     @Override
-    public void onCraftedBy(ItemStack stack, Level level, net.minecraft.world.entity.player.Player player) {
+    public void onCraftedBy(ItemStack stack, Level level, Player player) {
         super.onCraftedBy(stack, level, player);
         if (!level.isClientSide) {
             initializeFresh(stack, level.getRandom());

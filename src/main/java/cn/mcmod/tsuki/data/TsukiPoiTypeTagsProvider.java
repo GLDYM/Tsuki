@@ -5,6 +5,7 @@ import cn.mcmod.tsuki.init.VillagerRegistry;
 
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.PoiTypeTags;
@@ -14,7 +15,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class TsukiPoiTypeTagsProvider extends TagsProvider<PoiType> {
     public TsukiPoiTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider,
             ExistingFileHelper existingFileHelper) {
-        super(output, net.minecraft.core.registries.Registries.POINT_OF_INTEREST_TYPE, provider, Tsuki.MODID,
+        super(output, Registries.POINT_OF_INTEREST_TYPE, provider, Tsuki.MODID,
                 existingFileHelper);
     }
 

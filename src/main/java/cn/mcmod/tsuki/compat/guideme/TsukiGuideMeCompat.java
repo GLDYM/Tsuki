@@ -6,6 +6,7 @@ import cn.mcmod.tsuki.init.item.ItemRegistry;
 import guideme.Guide;
 import guideme.GuidesCommon;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionResult;
@@ -56,7 +57,7 @@ public final class TsukiGuideMeCompat {
         event.setCancellationResult(InteractionResult.SUCCESS);
     }
 
-    private static void giveGuide(net.minecraft.world.entity.player.Player player, ItemStack stack) {
+    private static void giveGuide(Player player, ItemStack stack) {
         if (player.addItem(stack)) {
             return;
         }
