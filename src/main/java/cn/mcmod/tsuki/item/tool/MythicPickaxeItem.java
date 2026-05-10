@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.annotations.SerializedName;
 import java.io.InputStream;
@@ -162,7 +163,7 @@ public class MythicPickaxeItem extends PickaxeItem {
         int fortuneLevel = EnchantmentHelper.getTagEnchantmentLevel(fortuneHolder, stack);
         int silkTouchLevel = EnchantmentHelper.getTagEnchantmentLevel(silkTouchHolder, stack);
 
-        if (fortuneLevel <= 0 && silkTouchLevel <= 0) {
+        if (fortuneLevel <= 0 && silkTouchLevel <= 0 && TsukiCommonConfig.MYTHIC_PICKAXE_ALLOW_BASIC_ENCHANT_UPGRADE.get()) {
             Holder.Reference<Enchantment> pick = random.nextBoolean() ? fortuneHolder : silkTouchHolder;
             EnchantRollResult result = tryUpgradeEnchantment(stack, pick, 1, pick.value().getMaxLevel());
             notifyEnchantRollResult(player, pick, result);
@@ -317,7 +318,7 @@ public class MythicPickaxeItem extends PickaxeItem {
 
     private static class ResourceLocationDeserializer implements JsonDeserializer<ResourceLocation> {
         @Override
-        public ResourceLocation deserialize(com.google.gson.JsonElement json, Type typeOfT,
+        public ResourceLocation deserialize(JsonElement json, Type typeOfT,
                 JsonDeserializationContext context) throws JsonParseException {
             if (!json.isJsonPrimitive()) {
                 throw new JsonParseException("Expected ResourceLocation string");
@@ -337,4 +338,3 @@ public class MythicPickaxeItem extends PickaxeItem {
         DROP
     }
 }
-
