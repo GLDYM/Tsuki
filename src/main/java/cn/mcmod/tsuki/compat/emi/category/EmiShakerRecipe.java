@@ -28,7 +28,7 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
     private static final int SHAKER_X = 64;
     private static final int SHAKER_Y = 13;
     private static final ResourceLocation SLOT = ResourceLocation.fromNamespaceAndPath("minecraft",
-            "textures/gui/sprites/container/slot.png");
+            "gui/sprites/container/slot.png");
 
     private final ShakerRecipe recipe;
 
@@ -61,14 +61,12 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
                 if (inputIndex < inputs.size()) {
                     int x = 4 + column * 18;
                     int y = 4 + row * 18;
-                    widgets.addTexture(SLOT, x - 1, y - 1, 18, 18, 0, 0);
-                    widgets.addSlot(inputs.get(inputIndex), x, y).drawBack(false).recipeContext(this);
+                    widgets.addSlot(inputs.get(inputIndex), x, y).drawBack(true).recipeContext(this);
                 }
             }
         }
 
-        widgets.addTexture(SLOT, 104, 18, 18, 18, 0, 0);
-        widgets.addSlot(outputs.get(0), 106, 20).drawBack(false).recipeContext(this);
+        widgets.addSlot(outputs.get(0), 106, 20).drawBack(true).recipeContext(this);
 
         widgets.addDrawable(SHAKER_X, SHAKER_Y, 32, 32, (draw, mouseX, mouseY, delta) -> {
             double time = (System.currentTimeMillis() % 600L) / 600.0D;

@@ -74,9 +74,10 @@ neoForge {
         }
     }
 }
+
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
-            mod_version            : version
+            mod_version: version
     ]
     inputs.properties replaceProperties
 

@@ -76,12 +76,6 @@ public class ShakerBlock extends BaseEntityBlock {
         if (!(level.getBlockEntity(pos) instanceof ShakerBlockEntity shaker)) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
-        if (!shaker.getOutputStack().isEmpty() && !stack.isEmpty() && !stack.is(DrinkRegistry.SHAKER.get())) {
-            if (!level.isClientSide) {
-                player.displayClientMessage(Component.translatable("item.tsuki.shaker.output_not_empty"), true);
-            }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
-        }
         if (!stack.isEmpty()) {
             if (takeOutputWithContainer(level, pos, player, hand, shaker)) {
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
@@ -89,6 +83,12 @@ public class ShakerBlock extends BaseEntityBlock {
             if (takeInputWithContainer(level, pos, player, hand, shaker)) {
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
+        }
+        if (!shaker.getOutputStack().isEmpty() && !stack.isEmpty() && !stack.is(DrinkRegistry.SHAKER.get())) {
+            if (!level.isClientSide) {
+                player.displayClientMessage(Component.translatable("item.tsuki.shaker.output_not_empty"), true);
+            }
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
         if (stack.isEmpty() || stack.is(DrinkRegistry.SHAKER.get())) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
