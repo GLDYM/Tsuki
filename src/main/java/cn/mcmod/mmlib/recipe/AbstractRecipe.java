@@ -11,8 +11,6 @@ public abstract class AbstractRecipe implements Recipe<RecipeWrapper> {
     public String group;
     @Expose
     public float experience;
-    @Expose
-    public int recipeTime;
 
     public void setId(ResourceLocation id) {
         this.id = id;
@@ -29,9 +27,5 @@ public abstract class AbstractRecipe implements Recipe<RecipeWrapper> {
 
     public float getExperience() {
         return experience;
-    }
-
-    public int getRecipeTime() {
-        return recipeTime;
     }
 }

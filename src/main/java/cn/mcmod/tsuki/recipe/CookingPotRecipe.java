@@ -22,6 +22,8 @@ import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class CookingPotRecipe extends AbstractRecipe {
     @Expose
+    public int recipeTime;
+    @Expose
     @SerializedName("ingredients")
     public NonNullList<Ingredient> inputItems;
     @Expose
@@ -50,6 +52,14 @@ public class CookingPotRecipe extends AbstractRecipe {
 
     public ItemStack getContainer() {
         return container == null ? ItemStack.EMPTY : container;
+    }
+
+    public void setRecipeTime(int recipeTime) {
+        this.recipeTime = recipeTime;
+    }
+
+    public int getRecipeTime() {
+        return recipeTime;
     }
 
     public boolean matchesWithFluid(FluidStack fluid, RecipeWrapper inv, Level worldIn) {

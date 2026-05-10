@@ -27,8 +27,6 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
     private static final int HEIGHT = 58;
     private static final int SHAKER_X = 64;
     private static final int SHAKER_Y = 13;
-    private static final ResourceLocation SLOT = ResourceLocation.fromNamespaceAndPath("minecraft",
-            "gui/sprites/container/slot.png");
 
     private final ShakerRecipe recipe;
 

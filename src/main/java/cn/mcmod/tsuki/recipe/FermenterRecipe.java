@@ -21,6 +21,8 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class FermenterRecipe extends AbstractRecipe {
+    @Expose
+    public int recipeTime;
 
     @Expose
     @SerializedName("ingredients")
@@ -95,6 +97,14 @@ public class FermenterRecipe extends AbstractRecipe {
 
     public FluidStack getResultFluid() {
         return outputFluid;
+    }
+
+    public int getRecipeTime() {
+        return recipeTime;
+    }
+
+    public void setRecipeTime(int recipeTime) {
+        this.recipeTime = recipeTime;
     }
 
     @Override

@@ -20,6 +20,8 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class ChoppingRecipe extends AbstractRecipe {
+    @Expose
+    public int recipeTime;
 
     @Expose
     @SerializedName("ingredient")
@@ -65,6 +67,14 @@ public class ChoppingRecipe extends AbstractRecipe {
 
     public NonNullList<ChanceResult> getByproducts() {
         return this.extraOutput;
+    }
+
+    public int getRecipeTime() {
+        return recipeTime;
+    }
+
+    public void setRecipeTime(int recipeTime) {
+        this.recipeTime = recipeTime;
     }
 
     public List<ItemStack> rollByproducts(RandomSource rand, int fortuneLevel) {

@@ -19,6 +19,8 @@ import net.neoforged.neoforge.common.util.RecipeMatcher;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class StoneMortarRecipe extends AbstractRecipe {
+    @Expose()
+    public int recipeTime;
 
     @Expose()
     @SerializedName("ingredients")
@@ -70,6 +72,14 @@ public class StoneMortarRecipe extends AbstractRecipe {
 
     public NonNullList<ItemStack> getResultItemList() {
         return this.output;
+    }
+
+    public int getRecipeTime() {
+        return recipeTime;
+    }
+
+    public void setRecipeTime(int recipeTime) {
+        this.recipeTime = recipeTime;
     }
 
     @Override
