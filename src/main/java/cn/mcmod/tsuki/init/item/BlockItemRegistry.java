@@ -60,7 +60,7 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.UME_PLANK_STAIRS.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> UME_PLANK_SLAB = ITEMS.register("slab_plank_ume",
             () -> new BlockItem(BlockRegistry.UME_PLANK_SLAB.get(), Tsuki.defaultItemProperties()));
-    
+
     // Bamboo
     public static final DeferredItem<Item> BAMBOO_BLOCK = ITEMS.register("bamboo_block",
             () -> new BlockItem(BlockRegistry.BAMBOO_BLOCK.get(), Tsuki.defaultItemProperties()));
@@ -166,7 +166,7 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_ORANGE.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> MAPLE_LEAVES_GREEN = ITEMS.register("mapleleaves_green",
             () -> new BlockItem(BlockRegistry.MAPLE_LEAVES_GREEN.get(), Tsuki.defaultItemProperties()));
-        
+
     public static final DeferredItem<Item> UME_LEAVES = ITEMS.register("umeleaves",
             () -> new BlockItem(BlockRegistry.UME_LEAVES.get(), Tsuki.defaultItemProperties()));
 
@@ -193,8 +193,8 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> SAKURA_SAPLING = ITEMS.register("sakura_sapling",
             () -> new BlockItem(BlockRegistry.SAKURA_SAPLING.get(), Tsuki.defaultItemProperties()));
 
-    public static final DeferredItem<Item> SACRED_SAKURA_SAPLING = ITEMS.register("sacred_sakura_sapling",
-            () -> new BlockItem(BlockRegistry.SACRED_SAKURA_SAPLING.get(), Tsuki.defaultItemProperties()));
+    // public static final DeferredItem<Item> SACRED_SAKURA_SAPLING = ITEMS.register("sacred_sakura_sapling",
+    //         () -> new BlockItem(BlockRegistry.SACRED_SAKURA_SAPLING.get(), Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> MAPLE_SAPLING_RED = ITEMS.register("maple_sapling_red",
             () -> new BlockItem(BlockRegistry.MAPLE_SAPLING_RED.get(), Tsuki.defaultItemProperties()));
@@ -248,7 +248,7 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.WINDBELL.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> ANDON = ITEMS.register("andon",
             () -> new BlockItem(BlockRegistry.ANDON.get(), Tsuki.defaultItemProperties()));
-    
+
     // Misc
     public static final DeferredItem<Item> ZABUTON = ITEMS.register("zabuton",
             () -> new BlockItem(BlockRegistry.ZABUTON.get(), Tsuki.defaultItemProperties()));

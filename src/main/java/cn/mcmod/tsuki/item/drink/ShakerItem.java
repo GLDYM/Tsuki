@@ -84,34 +84,6 @@ public class ShakerItem extends BlockItem implements GeoItem {
     }
 
     @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            private ShakerRenderer renderer;
-
-            @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                if (this.renderer == null) {
-                    this.renderer = new ShakerRenderer();
-                }
-                return this.renderer;
-            }
-
-            @Override
-            public boolean applyForgeHandTransform(PoseStack poseStack, LocalPlayer player, HumanoidArm arm,
-                    ItemStack itemInHand, float partialTick, float equipProcess, float swingProcess) {
-                if (!player.isUsingItem() || itemInHand.getItem() != ShakerItem.this
-                        || player.getUseItem().getItem() != ShakerItem.this) {
-                    return false;
-                }
-
-                int armDirection = arm == HumanoidArm.RIGHT ? 1 : -1;
-                poseStack.translate((float) armDirection * 0.56F, -0.52F + equipProcess * -0.6F, -0.72F);
-                return true;
-            }
-        });
-    }
-
-    @Override
     public InteractionResult useOn(UseOnContext context) {
         if (context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) {
             return super.useOn(context);
