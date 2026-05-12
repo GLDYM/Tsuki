@@ -838,5 +838,7 @@
 
     "tsuki.guide.name": "风土记",
     "tsuki.chat.sakura_guide.no_guideme": "\u00a76[月]\u00a7r 安装 GuideME 以查看模组内手册！\nhttps://www.curseforge.com/minecraft/mc-mods/guideme",
+
+    "biome.tsuki.maple_forest": "枫树林",
     "wailaharvestability.toolclass.forging_hammer":  "锻造锤"
 }

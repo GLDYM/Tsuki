@@ -85,23 +85,23 @@ public class BlockRegistry {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Tsuki.MODID);
 
     public static final DeferredBlock<Block> SAKURA_LEAVES = BLOCKS.register("sakuraleaves",
-            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion(), ParticleRegistry.SAKURA_LEAF));
 
     public static final DeferredBlock<Block> MAPLE_LEAVES_RED = BLOCKS.register("mapleleaves_red",
-            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion(), ParticleRegistry.RED_MAPLE_LEAF));
     public static final DeferredBlock<Block> MAPLE_LEAVES_GREEN = BLOCKS.register("mapleleaves_green",
-            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion(), ParticleRegistry.GREEN_MAPLE_LEAF));
     public static final DeferredBlock<Block> MAPLE_LEAVES_YELLOW = BLOCKS.register("mapleleaves_yellow",
-            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion(), ParticleRegistry.YELLOW_MAPLE_LEAF));
     public static final DeferredBlock<Block> MAPLE_LEAVES_ORANGE = BLOCKS.register("mapleleaves_orange",
-            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new TsukiLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion(), ParticleRegistry.ORANGE_MAPLE_LEAF));
     public static final DeferredBlock<Block> UME_LEAVES = BLOCKS.register("umeleaves",
-            () -> new UmeLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new UmeLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion(), ParticleRegistry.GREEN_MAPLE_LEAF));
 
     public static final DeferredBlock<RotatedPillarBlock> SAKURA_LOG = BLOCKS.register("sakura_log",
@@ -230,16 +230,16 @@ public class BlockRegistry {
                     Optional.empty())));
 
     public static final DeferredBlock<Block> FALLEN_LEAVES_RED = BLOCKS.register("fallen_leaves_red",
-            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion()));
     public static final DeferredBlock<Block> FALLEN_LEAVES_ORANGE = BLOCKS.register("fallen_leaves_orange",
-            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion()));
     public static final DeferredBlock<Block> FALLEN_LEAVES_YELLOW = BLOCKS.register("fallen_leaves_yellow",
-            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_YELLOW).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion()));
     public static final DeferredBlock<Block> FALLEN_LEAVES_GREEN = BLOCKS.register("fallen_leaves_green",
-            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().strength(0.2F).randomTicks()
+            () -> new FallenLeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN).strength(0.2F).randomTicks()
                     .sound(SoundType.GRASS).noOcclusion()));
     public static final DeferredBlock<Block> MUSHROOM_FALLEN_LEAVES = BLOCKS.register("fallen_leaves_mushroom",
             () -> new FallenLeavesMushroomBlock(FallenLeavesMushroomBlock.Type.MUSHROOM));

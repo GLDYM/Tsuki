@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.init.item;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.block.drink.DrinkDisplayBlock;
 import cn.mcmod.tsuki.init.item.enums.TsukiAlcoholSet;
 import cn.mcmod.tsuki.init.item.enums.TsukiCocktailSet;
@@ -23,7 +24,7 @@ public class DrinkRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Tsuki.MODID);
 
     public static final DeferredItem<Item> SHAKER = register("shaker",
-            () -> new ShakerItem(cn.mcmod.tsuki.init.block.BlockRegistry.SHAKER.get(), Tsuki.defaultItemProperties()));
+            () -> new ShakerItem(BlockRegistry.SHAKER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> CUP = register("cup",
             () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::cupBlock));
     public static final DeferredItem<Item> WINE_BOTTLE = register("wine_bottle",

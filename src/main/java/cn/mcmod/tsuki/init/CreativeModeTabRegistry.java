@@ -28,7 +28,6 @@ public class CreativeModeTabRegistry {
                     .title(Component.translatable("item_group.tsuki.blocks"))
                     .displayItems(
                             (parameters, output) -> {
-                                output.accept(new ItemStack(DrinkRegistry.SHAKER.get()));
                                 BlockItemRegistry.ITEMS.getEntries().forEach(
                                         (entry) -> output.accept(new ItemStack(entry.get())));
                             })
