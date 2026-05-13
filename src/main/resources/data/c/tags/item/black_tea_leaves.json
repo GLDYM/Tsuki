@@ -3,12 +3,12 @@
   "values": [
     "#tsuki:black_tea_leaves",
     {
-        "id": "#c:tea_leaves/black",
-        "required": false
+      "id": "#c:tea_leaves/black",
+      "required": false
     },
     {
-        "id": "herbalbrews:black_tea",
-        "required": false
+      "id": "herbalbrews:black_tea",
+      "required": false
     }
   ]
 }

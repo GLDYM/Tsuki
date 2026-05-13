@@ -1,111 +1,187 @@
 {
-	"format_version": "1.8.0",
-	"animations": {
-		"animation.samurai_illager.idle": {
-			"loop": true,
-			"animation_length": 38.6667,
-			"bones": {
-				"hat": {
-					"scale": 1
-				},
-				"arms": {
-					"rotation": [-43, 0, 0],
-					"scale": 1
-				},
-				"right_arm": {
-					"scale": 0
-				},
-				"left_arm": {
-					"scale": 0
-				},
-				"body": {
-					"rotation": [0, 0, 0],
-					"position": {
-						"0.0": [0, "Math.sin(query.anim_time * 4.0) * 0.05", 0],
-						"38.6667": [0, "Math.sin(query.anim_time * 4.0) * 0.05", 0]
-					}
-				}
-			}
-		},
-		"animation.samurai_illager.walk": {
-			"loop": true,
-			"bones": {
-				"hat": {
-					"scale": 1
-				},
-				"arms": {
-					"rotation": [-43, 0, 0],
-					"scale": 1
-				},
-				"right_arm": {
-					"scale": 0
-				},
-				"left_arm": {
-					"scale": 0
-				},
-				"right_leg": {
-					"rotation": ["Math.cos(query.anim_time * 38.17) * 28.0", 0, 0]
-				},
-				"left_leg": {
-					"rotation": ["Math.cos(query.anim_time * 38.17 + 180) * 28.0", 0, 0]
-				}
-			}
-		},
-		"animation.samurai_illager.aggressive_idle": {
-			"loop": true,
-			"bones": {
-				"hat": {
-					"scale": 1
-				},
-				"arms": {
-					"rotation": [0, 0, 0],
-					"position": [0, 0, 0],
-					"scale": 0
-				},
-				"right_arm": {
-					"rotation": ["-84 + Math.cos(query.anim_time * 5.0) * 2.5", -19.27, -19.27],
-					"scale": 1
-				},
-				"left_arm": {
-					"rotation": ["-84 - Math.cos(query.anim_time * 5.0) * 2.5", 19.27, 19.27],
-					"scale": 1
-				},
-				"head": {
-					"rotation": [0, 0, 0],
-					"position": [0, 0, 0],
-					"scale": 1
-				},
-				"body": {
-					"rotation": [0, 0, 0],
-					"position": [0, 0, 0],
-					"scale": 1
-				}
-			}
-		},
-		"animation.samurai_illager.aggressive_walk": {
-			"loop": true,
-			"bones": {
-				"hat": {
-					"scale": 1
-				},
-				"arms": {
-					"scale": 0
-				},
-				"right_arm": {
-					"rotation": ["-84 + Math.cos(query.anim_time * 38.17 + 3.14159) * 22.0", -19.27, -19.27],
-					"scale": 1
-				},
-				"left_arm": {
-					"rotation": ["-84 + Math.cos(query.anim_time * 38.17) * 22.0", 19.27, 19.27],
-					"scale": 1
-				},
-				"right_leg": {
-					"rotation": ["Math.cos(query.anim_time * 38.17) * 28.0", 0, 0]
-				},
-				"left_leg": {
-					"rotation": ["Math.cos(query.anim_time * 38.17 + 180) * 28.0", 0, 0]
-				}
-			}
-		}
-	}
+  "animations": {
+    "animation.samurai_illager.aggressive_idle": {
+      "bones": {
+        "arms": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "scale": 0
+        },
+        "body": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "scale": 1
+        },
+        "hat": {
+          "scale": 1
+        },
+        "head": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "scale": 1
+        },
+        "left_arm": {
+          "rotation": [
+            "-84 - Math.cos(query.anim_time * 5.0) * 2.5",
+            19.27,
+            19.27
+          ],
+          "scale": 1
+        },
+        "right_arm": {
+          "rotation": [
+            "-84 + Math.cos(query.anim_time * 5.0) * 2.5",
+            -19.27,
+            -19.27
+          ],
+          "scale": 1
+        }
+      },
+      "loop": true
+    },
+    "animation.samurai_illager.aggressive_walk": {
+      "bones": {
+        "arms": {
+          "scale": 0
+        },
+        "hat": {
+          "scale": 1
+        },
+        "left_arm": {
+          "rotation": [
+            "-84 + Math.cos(query.anim_time * 38.17) * 22.0",
+            19.27,
+            19.27
+          ],
+          "scale": 1
+        },
+        "left_leg": {
+          "rotation": [
+            "Math.cos(query.anim_time * 38.17 + 180) * 28.0",
+            0,
+            0
+          ]
+        },
+        "right_arm": {
+          "rotation": [
+            "-84 + Math.cos(query.anim_time * 38.17 + 3.14159) * 22.0",
+            -19.27,
+            -19.27
+          ],
+          "scale": 1
+        },
+        "right_leg": {
+          "rotation": [
+            "Math.cos(query.anim_time * 38.17) * 28.0",
+            0,
+            0
+          ]
+        }
+      },
+      "loop": true
+    },
+    "animation.samurai_illager.idle": {
+      "animation_length": 38.6667,
+      "bones": {
+        "arms": {
+          "rotation": [
+            -43,
+            0,
+            0
+          ],
+          "scale": 1
+        },
+        "body": {
+          "position": {
+            "0.0": [
+              0,
+              "Math.sin(query.anim_time * 4.0) * 0.05",
+              0
+            ],
+            "38.6667": [
+              0,
+              "Math.sin(query.anim_time * 4.0) * 0.05",
+              0
+            ]
+          },
+          "rotation": [
+            0,
+            0,
+            0
+          ]
+        },
+        "hat": {
+          "scale": 1
+        },
+        "left_arm": {
+          "scale": 0
+        },
+        "right_arm": {
+          "scale": 0
+        }
+      },
+      "loop": true
+    },
+    "animation.samurai_illager.walk": {
+      "bones": {
+        "arms": {
+          "rotation": [
+            -43,
+            0,
+            0
+          ],
+          "scale": 1
+        },
+        "hat": {
+          "scale": 1
+        },
+        "left_arm": {
+          "scale": 0
+        },
+        "left_leg": {
+          "rotation": [
+            "Math.cos(query.anim_time * 38.17 + 180) * 28.0",
+            0,
+            0
+          ]
+        },
+        "right_arm": {
+          "scale": 0
+        },
+        "right_leg": {
+          "rotation": [
+            "Math.cos(query.anim_time * 38.17) * 28.0",
+            0,
+            0
+          ]
+        }
+      },
+      "loop": true
+    }
+  },
+  "format_version": "1.8.0"
 }

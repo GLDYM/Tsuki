@@ -1,25 +1,25 @@
 {
-  "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": 8.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "tsuki:sakura_coin",
           "functions": [
             {
-              "function": "minecraft:set_count",
               "count": {
-                "type": "minecraft:uniform",
+                "max": 3.0,
                 "min": 1.0,
-                "max": 3.0
-              }
+                "type": "minecraft:uniform"
+              },
+              "function": "minecraft:set_count"
             }
-          ]
+          ],
+          "name": "tsuki:sakura_coin",
+          "type": "minecraft:item"
         }
-      ]
+      ],
+      "rolls": 8.0
     }
-  ]
+  ],
+  "type": "minecraft:chest"
 }

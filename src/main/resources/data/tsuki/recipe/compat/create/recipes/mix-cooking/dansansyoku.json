@@ -11,9 +11,9 @@
       "item": "minecraft:grass"
     },
     {
-      "type": "neoforge:single",
       "amount": 125,
-      "fluid": "minecraft:water"
+      "fluid": "minecraft:water",
+      "type": "neoforge:single"
     }
   ],
   "neoforge:conditions": [

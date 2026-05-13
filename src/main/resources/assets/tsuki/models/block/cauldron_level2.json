@@ -68,12 +68,12 @@
         3,
         0
       ],
+      "shade": false,
       "to": [
         2,
         16,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -142,12 +142,12 @@
         3,
         2
       ],
+      "shade": false,
       "to": [
         14,
         4,
         14
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -215,12 +215,12 @@
         3,
         0
       ],
+      "shade": false,
       "to": [
         16,
         16,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -288,12 +288,12 @@
         3,
         0
       ],
+      "shade": false,
       "to": [
         14,
         16,
         2
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -361,12 +361,12 @@
         3,
         14
       ],
+      "shade": false,
       "to": [
         14,
         16,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -430,12 +430,12 @@
         0,
         0
       ],
+      "shade": false,
       "to": [
         4,
         3,
         2
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -499,12 +499,12 @@
         0,
         2
       ],
+      "shade": false,
       "to": [
         2,
         3,
         4
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -568,12 +568,12 @@
         0,
         0
       ],
+      "shade": false,
       "to": [
         16,
         3,
         2
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -637,12 +637,12 @@
         0,
         2
       ],
+      "shade": false,
       "to": [
         16,
         3,
         4
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -706,12 +706,12 @@
         0,
         14
       ],
+      "shade": false,
       "to": [
         4,
         3,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -775,12 +775,12 @@
         0,
         12
       ],
+      "shade": false,
       "to": [
         2,
         3,
         14
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -844,12 +844,12 @@
         0,
         14
       ],
+      "shade": false,
       "to": [
         16,
         3,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -913,12 +913,12 @@
         0,
         12
       ],
+      "shade": false,
       "to": [
         16,
         3,
         14
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -937,12 +937,12 @@
         7,
         2
       ],
+      "shade": false,
       "to": [
         14,
         7,
         14
-      ],
-      "shade": false
+      ]
     }
   ],
   "textures": {

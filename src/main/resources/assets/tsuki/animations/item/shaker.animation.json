@@ -1,146 +1,290 @@
 {
-	"format_version": "1.8.0",
-	"animations": {
-		"animation.tsuki.shaker.use": {
-			"animation_length": 1,
-			"bones": {
-				"shaker": {
-					"rotation": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.16": {
-							"vector": [-8, 0, 12]
-						},
-						"0.28": {
-							"vector": [-18, 0, 24]
-						},
-						"0.36": {
-							"vector": [-10, 0, -18]
-						},
-						"0.44": {
-							"vector": [-18, 0, 22]
-						},
-						"0.52": {
-							"vector": [-10, 0, -16]
-						},
-						"0.6": {
-							"vector": [-17, 0, 20]
-						},
-						"0.68": {
-							"vector": [-10, 0, -14]
-						},
-						"0.78": {
-							"vector": [-8, 0, 12]
-						},
-						"1.0": {
-							"vector": [0, 0, 0]
-						}
-					},
-					"position": {
-						"0.0": {
-							"vector": [0, 0, 0]
-						},
-						"0.16": {
-							"vector": [1.8, 2.4, 0]
-						},
-						"0.28": {
-							"vector": [0.6, 1.6, -0.2]
-						},
-						"0.36": {
-							"vector": [-1.2, 0.3, -0.2]
-						},
-						"0.44": {
-							"vector": [1.1, 1.9, -0.1]
-						},
-						"0.52": {
-							"vector": [-1, 0.5, -0.2]
-						},
-						"0.6": {
-							"vector": [1, 1.8, -0.1]
-						},
-						"0.68": {
-							"vector": [-0.9, 0.6, -0.2]
-						},
-						"0.78": {
-							"vector": [1.8, 2.4, 0]
-						},
-						"1.0": {
-							"vector": [0, 0, 0]
-						}
-					}
-				}
-			}
-		},
-		"animation.tsuki.shaker.start": {
-			"loop": "hold_on_last_frame",
-			"animation_length": 0.25,
-			"bones": {
-				"shaker": {
-					"rotation": {
-						"0.0": [0, 0, 0],
-						"0.25": [-30, 10, 0]
-					},
-					"position": {
-						"0.0": [0, 0, 0],
-						"0.25": [0, 9, 0]
-					}
-				}
-			}
-		},
-		"animation.tsuki.shaker.shake": {
-			"loop": true,
-			"animation_length": 0.25,
-			"bones": {
-				"shaker": {
-					"rotation": {
-						"0.0": {
-							"post": [-30, 10, 0],
-							"lerp_mode": "catmullrom"
-						},
-						"0.125": {
-							"post": [-45, -10, 10],
-							"lerp_mode": "catmullrom"
-						},
-						"0.25": [-30, 10, 0]
-					},
-					"position": {
-						"0.0": {
-							"post": [0, 9, 0],
-							"lerp_mode": "catmullrom"
-						},
-						"0.0625": {
-							"post": [4, -3, -2],
-							"lerp_mode": "catmullrom"
-						},
-						"0.125": {
-							"post": [11, -11, -16],
-							"lerp_mode": "catmullrom"
-						},
-						"0.1875": {
-							"post": [6.5, 3.5, -10.5],
-							"lerp_mode": "catmullrom"
-						},
-						"0.25": [0, 9, 0]
-					}
-				}
-			}
-		},
-		"animation.tsuki.shaker.end": {
-			"loop": "hold_on_last_frame",
-			"animation_length": 0.25,
-			"bones": {
-				"shaker": {
-					"rotation": {
-						"0.0": [-30, 10, 0],
-						"0.25": [0, 0, 0]
-					},
-					"position": {
-						"0.0": [0, 9, 0],
-						"0.25": [0, 0, 0]
-					}
-				}
-			}
-		}
-	}
+  "animations": {
+    "animation.tsuki.shaker.end": {
+      "animation_length": 0.25,
+      "bones": {
+        "shaker": {
+          "position": {
+            "0.0": [
+              0,
+              9,
+              0
+            ],
+            "0.25": [
+              0,
+              0,
+              0
+            ]
+          },
+          "rotation": {
+            "0.0": [
+              -30,
+              10,
+              0
+            ],
+            "0.25": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "loop": "hold_on_last_frame"
+    },
+    "animation.tsuki.shaker.shake": {
+      "animation_length": 0.25,
+      "bones": {
+        "shaker": {
+          "position": {
+            "0.0": {
+              "lerp_mode": "catmullrom",
+              "post": [
+                0,
+                9,
+                0
+              ]
+            },
+            "0.0625": {
+              "lerp_mode": "catmullrom",
+              "post": [
+                4,
+                -3,
+                -2
+              ]
+            },
+            "0.125": {
+              "lerp_mode": "catmullrom",
+              "post": [
+                11,
+                -11,
+                -16
+              ]
+            },
+            "0.1875": {
+              "lerp_mode": "catmullrom",
+              "post": [
+                6.5,
+                3.5,
+                -10.5
+              ]
+            },
+            "0.25": [
+              0,
+              9,
+              0
+            ]
+          },
+          "rotation": {
+            "0.0": {
+              "lerp_mode": "catmullrom",
+              "post": [
+                -30,
+                10,
+                0
+              ]
+            },
+            "0.125": {
+              "lerp_mode": "catmullrom",
+              "post": [
+                -45,
+                -10,
+                10
+              ]
+            },
+            "0.25": [
+              -30,
+              10,
+              0
+            ]
+          }
+        }
+      },
+      "loop": true
+    },
+    "animation.tsuki.shaker.start": {
+      "animation_length": 0.25,
+      "bones": {
+        "shaker": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.25": [
+              0,
+              9,
+              0
+            ]
+          },
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.25": [
+              -30,
+              10,
+              0
+            ]
+          }
+        }
+      },
+      "loop": "hold_on_last_frame"
+    },
+    "animation.tsuki.shaker.use": {
+      "animation_length": 1,
+      "bones": {
+        "shaker": {
+          "position": {
+            "0.0": {
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            },
+            "0.16": {
+              "vector": [
+                1.8,
+                2.4,
+                0
+              ]
+            },
+            "0.28": {
+              "vector": [
+                0.6,
+                1.6,
+                -0.2
+              ]
+            },
+            "0.36": {
+              "vector": [
+                -1.2,
+                0.3,
+                -0.2
+              ]
+            },
+            "0.44": {
+              "vector": [
+                1.1,
+                1.9,
+                -0.1
+              ]
+            },
+            "0.52": {
+              "vector": [
+                -1,
+                0.5,
+                -0.2
+              ]
+            },
+            "0.6": {
+              "vector": [
+                1,
+                1.8,
+                -0.1
+              ]
+            },
+            "0.68": {
+              "vector": [
+                -0.9,
+                0.6,
+                -0.2
+              ]
+            },
+            "0.78": {
+              "vector": [
+                1.8,
+                2.4,
+                0
+              ]
+            },
+            "1.0": {
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "rotation": {
+            "0.0": {
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            },
+            "0.16": {
+              "vector": [
+                -8,
+                0,
+                12
+              ]
+            },
+            "0.28": {
+              "vector": [
+                -18,
+                0,
+                24
+              ]
+            },
+            "0.36": {
+              "vector": [
+                -10,
+                0,
+                -18
+              ]
+            },
+            "0.44": {
+              "vector": [
+                -18,
+                0,
+                22
+              ]
+            },
+            "0.52": {
+              "vector": [
+                -10,
+                0,
+                -16
+              ]
+            },
+            "0.6": {
+              "vector": [
+                -17,
+                0,
+                20
+              ]
+            },
+            "0.68": {
+              "vector": [
+                -10,
+                0,
+                -14
+              ]
+            },
+            "0.78": {
+              "vector": [
+                -8,
+                0,
+                12
+              ]
+            },
+            "1.0": {
+              "vector": [
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "format_version": "1.8.0"
 }

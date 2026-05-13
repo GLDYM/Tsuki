@@ -1,86 +1,312 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.samurai_illager",
-				"texture_width": 64,
-				"texture_height": 64,
-				"visible_bounds_width": 3,
-				"visible_bounds_height": 3.5,
-				"visible_bounds_offset": [0, 1.25, 0]
-			},
-			"bones": [
-				{
-					"name": "head",
-					"pivot": [0, 34, 0],
-					"cubes": [
-						{"origin": [-4, 24, -4], "size": [8, 10, 8], "uv": [0, 0]}
-					]
-				},
-				{
-					"name": "hat",
-					"parent": "head",
-					"pivot": [0, 34, 0],
-					"cubes": [
-						{"origin": [-4, 22, -4], "size": [8, 12, 8], "inflate": 0.45, "uv": [32, 0]}
-					]
-				},
-				{
-					"name": "nose",
-					"parent": "head",
-					"pivot": [0, 34, 0],
-					"cubes": [
-						{"origin": [-1, 24, -6], "size": [2, 4, 2], "uv": [24, 0]}
-					]
-				},
-				{
-					"name": "body",
-					"pivot": [0, 30, 0],
-					"cubes": [
-						{"origin": [-4, 12, -3], "size": [8, 12, 6], "uv": [16, 20]},
-						{"origin": [-4, 5, -3], "size": [8, 18, 6], "inflate": 0.5, "uv": [0, 38]}
-					]
-				},
-				{
-					"name": "arms",
-					"pivot": [0, 21, -1],
-					"rotation": [-43, 0, 0],
-					"cubes": [
-						{"origin": [-8, 16, -2], "size": [4, 8, 4], "uv": [44, 22]},
-						{"origin": [4, 16, -2], "size": [4, 8, 4], "uv": [44, 22]},
-						{"origin": [-4, 16, -2], "size": [8, 4, 4], "uv": [40, 38]}
-					]
-				},
-				{
-					"name": "right_arm",
-					"pivot": [-5, 22, 0],
-					"cubes": [
-						{"origin": [-8, 12, -2], "size": [4, 12, 4], "uv": [40, 46]}
-					]
-				},
-				{
-					"name": "left_arm",
-					"pivot": [5, 22, 0],
-					"cubes": [
-						{"origin": [4, 12, -2], "size": [4, 12, 4], "uv": [40, 46]}
-					]
-				},
-				{
-					"name": "right_leg",
-					"pivot": [-2, 12, 0],
-					"cubes": [
-						{"origin": [-4, 0, -2], "size": [4, 12, 4], "uv": [0, 22]}
-					]
-				},
-				{
-					"name": "left_leg",
-					"pivot": [2, 12, 0],
-					"cubes": [
-						{"origin": [0, 0, -2], "size": [4, 12, 4], "uv": [0, 22]}
-					]
-				}
-			]
-		}
-	]
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "bones": [
+        {
+          "cubes": [
+            {
+              "origin": [
+                -4,
+                24,
+                -4
+              ],
+              "size": [
+                8,
+                10,
+                8
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ],
+          "name": "head",
+          "pivot": [
+            0,
+            34,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "inflate": 0.45,
+              "origin": [
+                -4,
+                22,
+                -4
+              ],
+              "size": [
+                8,
+                12,
+                8
+              ],
+              "uv": [
+                32,
+                0
+              ]
+            }
+          ],
+          "name": "hat",
+          "parent": "head",
+          "pivot": [
+            0,
+            34,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                24,
+                -6
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                24,
+                0
+              ]
+            }
+          ],
+          "name": "nose",
+          "parent": "head",
+          "pivot": [
+            0,
+            34,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                -4,
+                12,
+                -3
+              ],
+              "size": [
+                8,
+                12,
+                6
+              ],
+              "uv": [
+                16,
+                20
+              ]
+            },
+            {
+              "inflate": 0.5,
+              "origin": [
+                -4,
+                5,
+                -3
+              ],
+              "size": [
+                8,
+                18,
+                6
+              ],
+              "uv": [
+                0,
+                38
+              ]
+            }
+          ],
+          "name": "body",
+          "pivot": [
+            0,
+            30,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                -8,
+                16,
+                -2
+              ],
+              "size": [
+                4,
+                8,
+                4
+              ],
+              "uv": [
+                44,
+                22
+              ]
+            },
+            {
+              "origin": [
+                4,
+                16,
+                -2
+              ],
+              "size": [
+                4,
+                8,
+                4
+              ],
+              "uv": [
+                44,
+                22
+              ]
+            },
+            {
+              "origin": [
+                -4,
+                16,
+                -2
+              ],
+              "size": [
+                8,
+                4,
+                4
+              ],
+              "uv": [
+                40,
+                38
+              ]
+            }
+          ],
+          "name": "arms",
+          "pivot": [
+            0,
+            21,
+            -1
+          ],
+          "rotation": [
+            -43,
+            0,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                -8,
+                12,
+                -2
+              ],
+              "size": [
+                4,
+                12,
+                4
+              ],
+              "uv": [
+                40,
+                46
+              ]
+            }
+          ],
+          "name": "right_arm",
+          "pivot": [
+            -5,
+            22,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                4,
+                12,
+                -2
+              ],
+              "size": [
+                4,
+                12,
+                4
+              ],
+              "uv": [
+                40,
+                46
+              ]
+            }
+          ],
+          "name": "left_arm",
+          "pivot": [
+            5,
+            22,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                -4,
+                0,
+                -2
+              ],
+              "size": [
+                4,
+                12,
+                4
+              ],
+              "uv": [
+                0,
+                22
+              ]
+            }
+          ],
+          "name": "right_leg",
+          "pivot": [
+            -2,
+            12,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                0,
+                0,
+                -2
+              ],
+              "size": [
+                4,
+                12,
+                4
+              ],
+              "uv": [
+                0,
+                22
+              ]
+            }
+          ],
+          "name": "left_leg",
+          "pivot": [
+            2,
+            12,
+            0
+          ]
+        }
+      ],
+      "description": {
+        "identifier": "geometry.samurai_illager",
+        "texture_height": 64,
+        "texture_width": 64,
+        "visible_bounds_height": 3.5,
+        "visible_bounds_offset": [
+          0,
+          1.25,
+          0
+        ],
+        "visible_bounds_width": 3
+      }
+    }
+  ]
 }

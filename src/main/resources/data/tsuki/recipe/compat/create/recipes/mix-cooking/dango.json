@@ -5,9 +5,9 @@
       "item": "tsuki:dough_rice"
     },
     {
-      "type": "neoforge:single",
       "amount": 125,
-      "fluid": "minecraft:water"
+      "fluid": "minecraft:water",
+      "type": "neoforge:single"
     }
   ],
   "neoforge:conditions": [

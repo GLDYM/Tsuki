@@ -1,6 +1,6 @@
 {
-  "credit": "Made with Blockbench",
   "ambientocclusion": false,
+  "credit": "Made with Blockbench",
   "display": {
     "firstperson_lefthand": {
       "rotation": [
@@ -140,12 +140,12 @@
         0,
         0
       ],
+      "shade": false,
       "to": [
         16,
         16,
         2
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -209,12 +209,12 @@
         0,
         0
       ],
+      "shade": false,
       "to": [
         2,
         16,
         2
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -278,12 +278,12 @@
         0,
         14
       ],
+      "shade": false,
       "to": [
         2,
         16,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -347,12 +347,12 @@
         2,
         0
       ],
+      "shade": false,
       "to": [
         14,
         16,
         2
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -425,12 +425,12 @@
           22
         ]
       },
+      "shade": false,
       "to": [
         14,
         16,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -494,12 +494,12 @@
         2,
         0
       ],
+      "shade": false,
       "to": [
         4,
         16,
         2
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -572,12 +572,12 @@
           22
         ]
       },
+      "shade": false,
       "to": [
         4,
         16,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -650,12 +650,12 @@
           22
         ]
       },
+      "shade": false,
       "to": [
         2,
         16,
         14
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -728,12 +728,12 @@
           22
         ]
       },
+      "shade": false,
       "to": [
         16,
         16,
         14
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -806,12 +806,12 @@
           22
         ]
       },
+      "shade": false,
       "to": [
         2,
         16,
         4
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -884,12 +884,12 @@
           22
         ]
       },
+      "shade": false,
       "to": [
         16,
         16,
         4
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -953,12 +953,12 @@
         0,
         14
       ],
+      "shade": false,
       "to": [
         16,
         16,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -1031,12 +1031,12 @@
           23
         ]
       },
+      "shade": false,
       "to": [
         12,
         16,
         2
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -1109,12 +1109,12 @@
           23
         ]
       },
+      "shade": false,
       "to": [
         12,
         16,
         16
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -1187,12 +1187,12 @@
           9
         ]
       },
+      "shade": false,
       "to": [
         16,
         16,
         12
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -1265,12 +1265,12 @@
           7
         ]
       },
+      "shade": false,
       "to": [
         2,
         16,
         12
-      ],
-      "shade": false
+      ]
     },
     {
       "faces": {
@@ -1334,12 +1334,12 @@
         4,
         2
       ],
+      "shade": false,
       "to": [
         14,
         5,
         14
-      ],
-      "shade": false
+      ]
     }
   ],
   "textures": {

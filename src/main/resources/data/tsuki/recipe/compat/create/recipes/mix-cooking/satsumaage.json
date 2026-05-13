@@ -8,9 +8,9 @@
       "item": "tsuki:surimi"
     },
     {
-      "type": "neoforge:tag",
       "amount": 125,
-      "tag": "c:food_oil"
+      "tag": "c:food_oil",
+      "type": "neoforge:tag"
     }
   ],
   "neoforge:conditions": [

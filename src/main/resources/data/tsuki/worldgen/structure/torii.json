@@ -1,13 +1,15 @@
 {
-  "type": "minecraft:jigsaw",
-  "start_pool": "tsuki:torii/start_pool",
-  "size": 1,
-  "start_height": { "absolute": 0 },
-  "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "use_expansion_hack": false,
-  "max_distance_from_center": 16,
   "biomes": "#tsuki:has_structure/torii",
+  "max_distance_from_center": 16,
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "size": 1,
+  "spawn_overrides": {},
+  "start_height": {
+    "absolute": 0
+  },
+  "start_pool": "tsuki:torii/start_pool",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
-  "spawn_overrides": {}
+  "type": "minecraft:jigsaw",
+  "use_expansion_hack": false
 }

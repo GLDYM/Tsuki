@@ -3,12 +3,12 @@
   "values": [
     "#tsuki:green_tea_leaves",
     {
-        "id": "#c:tea_leaves/green",
-        "required": false
+      "id": "#c:tea_leaves/green",
+      "required": false
     },
     {
-        "id": "herbalbrews:green_tea",
-        "required": false
+      "id": "herbalbrews:green_tea",
+      "required": false
     }
   ]
 }

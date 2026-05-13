@@ -1,6 +1,6 @@
 {
-  "fluid": "tsuki:vodka",
+  "amountConsumedPerTick": 1,
   "burnTime": 24,
-  "superHeat": true,
-  "amountConsumedPerTick" : 1
+  "fluid": "tsuki:vodka",
+  "superHeat": true
 }

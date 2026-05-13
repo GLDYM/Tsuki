@@ -1,15 +1,15 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "cn.mcmod.tsuki.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "VillagerMixin"
-  ],
   "client": [
     "client.ItemInHandRendererMixin"
   ],
+  "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "minVersion": "0.8",
+  "mixins": [
+    "VillagerMixin"
+  ],
+  "package": "cn.mcmod.tsuki.mixin",
+  "required": true
 }
