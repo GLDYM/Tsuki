@@ -10,6 +10,7 @@ import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
+import terrablender.worldgen.RegionUtils;
 
 public class TsukiOverworldRegion extends Region {
     public TsukiOverworldRegion(ResourceLocation name, int weight) {
@@ -18,11 +19,27 @@ public class TsukiOverworldRegion extends Region {
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
-        addBiomeSimilar(mapper, Biomes.FOREST, TsukiBiomeRegistry.MAPLE_FOREST);
-        // addBiomeSimilar(mapper, Biomes.FLOWER_FOREST, TsukiBiomeRegistry.MAPLE_FOREST);
-        addBiomeSimilar(mapper, Biomes.BIRCH_FOREST, TsukiBiomeRegistry.MAPLE_FOREST);
-        // addBiomeSimilar(mapper, Biomes.OLD_GROWTH_BIRCH_FOREST, TsukiBiomeRegistry.MAPLE_FOREST);
-        // addBiomeSimilar(mapper, Biomes.PLAINS, TsukiBiomeRegistry.MAPLE_FOREST);
-        // addBiomeSimilar(mapper, Biomes.SUNFLOWER_PLAINS, TsukiBiomeRegistry.MAPLE_FOREST);
+        addModifiedVanillaOverworldBiomes(mapper, builder -> {
+            RegionUtils.getVanillaParameterPoints(Biomes.FOREST).stream()
+                .filter(TsukiOverworldRegion::isStrictInlandSurfacePoint)
+                .forEach(point -> builder.replaceBiome(point, TsukiBiomeRegistry.MAPLE_FOREST));
+
+            RegionUtils.getVanillaParameterPoints(Biomes.BIRCH_FOREST).stream()
+                .filter(TsukiOverworldRegion::isStrictInlandSurfacePoint)
+                .forEach(point -> builder.replaceBiome(point, TsukiBiomeRegistry.MAPLE_FOREST));
+        });
+    }
+
+    private static boolean isStrictInlandSurfacePoint(Climate.ParameterPoint point) {
+        long coastUpper = Climate.quantizeCoord(-0.11F);
+        long nearInlandUpper = Climate.quantizeCoord(0.03F);
+        long maxAllowedWeirdness = Climate.quantizeCoord(0.8F);
+
+        boolean inlandEnough = point.continentalness().min() >= nearInlandUpper;
+        boolean notCoastOrOcean = point.continentalness().max() > coastUpper;
+        boolean surfaceLike = point.depth().max() >= 0L;
+        boolean avoidExtremeSlices = point.weirdness().min() > -maxAllowedWeirdness
+            && point.weirdness().max() < maxAllowedWeirdness;
+        return inlandEnough && notCoastOrOcean && surfaceLike && avoidExtremeSlices;
     }
 }
