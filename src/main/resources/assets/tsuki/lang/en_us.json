@@ -137,6 +137,7 @@
   "block.tsuki.stripped_sakura_wood": "Stripped Sakura Wood",
   "block.tsuki.stripped_ume_log": "Stripped Plum Log",
   "block.tsuki.stripped_ume_wood": "Stripped Plum Wood",
+  "block.tsuki.sunflower_crop": "Sunflower",
   "block.tsuki.sushi_plate": "Sushi Plate",
   "block.tsuki.taiko": "Taiko",
   "block.tsuki.tatami": "Tatami",
@@ -696,6 +697,7 @@
   "item.tsuki.straw": "Straw",
   "item.tsuki.straw_hat": "Straw Hat",
   "item.tsuki.suikatsugan": "Suikatsugan",
+  "item.tsuki.sunflower_seeds": "Sunflower Seeds",
   "item.tsuki.surimi": "Surimi",
   "item.tsuki.sushi": "Sushi",
   "item.tsuki.sushi_shrimp": "Shrimp Sushi",
@@ -776,11 +778,11 @@
   "tsuki.block.chopping_board.invalid_tool": "Invalid tool for chopping",
   "tsuki.block.nabe.not_cooked": "Not cooked yet.",
   "tsuki.block.rice.invalid_placement": "This place can't plant rice",
+  "tsuki.chat.easter_egg.rewarded": "§6[Tsuki]§r A special gift has been prepared for you.",
   "tsuki.chat.mythic_pickaxe.enchant_drop": "[%s] DROP",
   "tsuki.chat.mythic_pickaxe.enchant_max": "[%s] MAX",
   "tsuki.chat.mythic_pickaxe.enchant_up": "[%s] UP",
   "tsuki.chat.sakura_guide.no_guideme": "§6[Tsuki]§r Install GuideME to view in-game guide!\nhttps://www.curseforge.com/minecraft/mc-mods/guideme",
-  "tsuki.chat.easter_egg.rewarded": "§6[Tsuki]§r A special gift has been prepared for you.",
   "tsuki.config.allow_cooking_pot_input_stacking": "Allow Cooking Pot Input Stacking",
   "tsuki.config.allow_cooking_pot_input_stacking.tooltip": "Allow inserting cooking pot input items into occupied input slots.",
   "tsuki.config.bambooshot_weight": "BambooShot Weight",
@@ -835,7 +837,5 @@
   "tsuki.tooltip.mythic_pickaxe.mining_experience": "Mining Experience: %s/%s",
   "tsuki.tooltip.mythic_pickaxe.mining_level": "Mining Level: %s",
   "tsuki.tooltip.sheath_katana": "A crude imitation of another mod's feature.\nRight-click to put the katana in or take it out.",
-  "wailaharvestability.toolclass.forging_hammer": "Forging Hammer",
-  "block.tsuki.sunflower_crop": "Sunflower",
-  "item.tsuki.sunflower_seeds": "Sunflower Seeds"
+  "wailaharvestability.toolclass.forging_hammer": "Forging Hammer"
 }

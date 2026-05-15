@@ -137,6 +137,7 @@
   "block.tsuki.stripped_sakura_wood": "去皮山樱木",
   "block.tsuki.stripped_ume_log": "去皮梅树原木",
   "block.tsuki.stripped_ume_wood": "去皮梅树木",
+  "block.tsuki.sunflower_crop": "向日葵",
   "block.tsuki.sushi_plate": "盘装寿司",
   "block.tsuki.taiko": "太鼓",
   "block.tsuki.tatami": "榻榻米",
@@ -704,6 +705,7 @@
   "item.tsuki.straw": "稻草",
   "item.tsuki.straw_hat": "草帽",
   "item.tsuki.suikatsugan": "水渴丸",
+  "item.tsuki.sunflower_seeds": "向日葵种子",
   "item.tsuki.surimi": "鱼糜",
   "item.tsuki.sushi": "寿司",
   "item.tsuki.sushi_shrimp": "甜虾寿司",
@@ -783,11 +785,11 @@
   "tsuki.block.chopping_board.invalid_tool": "手持工具不适合处理这个物品",
   "tsuki.block.nabe.not_cooked": "还没煮熟。",
   "tsuki.block.rice.invalid_placement": "这地方无法种植水稻",
+  "tsuki.chat.easter_egg.rewarded": "§6[月]§r 为你准备的特殊礼物已送达。",
   "tsuki.chat.mythic_pickaxe.enchant_drop": "[%s] DROP",
   "tsuki.chat.mythic_pickaxe.enchant_max": "[%s] MAX",
   "tsuki.chat.mythic_pickaxe.enchant_up": "[%s] UP",
   "tsuki.chat.sakura_guide.no_guideme": "§6[月]§r 安装 GuideME 以查看模组内手册！\nhttps://www.curseforge.com/minecraft/mc-mods/guideme",
-  "tsuki.chat.easter_egg.rewarded": "§6[月]§r 为你准备的特殊礼物已送达。",
   "tsuki.config.allow_cooking_pot_input_stacking": "允许烹饪锅叠放",
   "tsuki.config.allow_cooking_pot_input_stacking.tooltip": "允许将烹饪锅输入物品插入到已占用的输入槽位中。",
   "tsuki.config.category.client": "客户端设置",
@@ -830,7 +832,5 @@
   "tsuki.tooltip.mythic_pickaxe.mining_experience": "挖掘经验: %s/%s",
   "tsuki.tooltip.mythic_pickaxe.mining_level": "挖掘等级: %s",
   "tsuki.tooltip.sheath_katana": "对某个模组的拙劣模仿罢了。\n右键可以拔刀横扫攻击。",
-  "wailaharvestability.toolclass.forging_hammer": "锻造锤",
-  "block.tsuki.sunflower_crop": "向日葵",
-  "item.tsuki.sunflower_seeds": "向日葵种子"
+  "wailaharvestability.toolclass.forging_hammer": "锻造锤"
 }

@@ -1,53 +1,344 @@
 {
-	"format_version": "1.21.110",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.ecru_model_sunflower_stage3_high",
-				"texture_width": 64,
-				"texture_height": 32,
-				"visible_bounds_width": 3,
-				"visible_bounds_height": 2,
-				"visible_bounds_offset": [0, 1, 0]
-			},
-			"bones": [
-				{
-					"name": "bb_main",
-					"pivot": [0, 0, 0],
-					"cubes": [
-						{"origin": [-1, 0, -1], "size": [2, 12, 2], "uv": [56, 0]}
-					]
-				},
-				{
-					"name": "flower",
-					"pivot": [0, 0, 0],
-					"rotation": [22.5, 0, 0],
-					"cubes": [
-						{"origin": [-1.5, 9.5, 4], "size": [3, 3, 2], "uv": [54, 15]},
-						{"origin": [-3, 8, 5.5], "size": [6, 6, 2], "uv": [17, 0]},
-						{"origin": [-6, 8.5, 6.3], "size": [12, 2, 1], "uv": [0, 9]},
-						{"origin": [-6, 11.5, 6.3], "size": [12, 2, 1], "uv": [0, 9]},
-						{"origin": [0.5, 5.5, 6.3], "size": [2, 12, 1], "uv": [0, 15]},
-						{"origin": [-2.5, 5.5, 6.3], "size": [2, 12, 1], "uv": [0, 15]},
-						{"origin": [3, 14, 6.3], "size": [2, 2, 1], "uv": [10, 15]},
-						{"origin": [-5, 14, 6.3], "size": [2, 2, 1], "uv": [10, 15]},
-						{"origin": [3, 6, 6.3], "size": [2, 2, 1], "uv": [10, 15]},
-						{"origin": [-5, 5.98338, 6.2034], "size": [2, 2, 1], "uv": [10, 15]}
-					]
-				},
-				{
-					"name": "A",
-					"parent": "flower",
-					"pivot": [0, 0, 0],
-					"rotation": [-22.5, 0, 0],
-					"cubes": [
-						{"origin": [1, -13, -2.1], "size": [8, 1, 4], "pivot": [0, -3, 0], "rotation": [0, 0, 171], "uv": [40, 27]},
-						{"origin": [1, 6, -1.9], "size": [8, 1, 4], "pivot": [0, -3, 0], "rotation": [0, 0, 9], "uv": [40, 27]},
-						{"origin": [-3, 5, -0.4], "size": [3, 1, 1], "inflate": -0.1, "pivot": [0, 5, 0], "rotation": [0, 0, 148], "uv": [56, 24]},
-						{"origin": [0, 5, -0.6], "size": [3, 1, 1], "inflate": -0.1, "pivot": [0, 5, 0], "rotation": [0, 0, -148], "uv": [56, 24]}
-					]
-				}
-			]
-		}
-	]
+  "format_version": "1.21.110",
+  "minecraft:geometry": [
+    {
+      "bones": [
+        {
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                0,
+                -1
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                56,
+                0
+              ]
+            }
+          ],
+          "name": "bb_main",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                -1.5,
+                9.5,
+                4
+              ],
+              "size": [
+                3,
+                3,
+                2
+              ],
+              "uv": [
+                54,
+                15
+              ]
+            },
+            {
+              "origin": [
+                -3,
+                8,
+                5.5
+              ],
+              "size": [
+                6,
+                6,
+                2
+              ],
+              "uv": [
+                17,
+                0
+              ]
+            },
+            {
+              "origin": [
+                -6,
+                8.5,
+                6.3
+              ],
+              "size": [
+                12,
+                2,
+                1
+              ],
+              "uv": [
+                0,
+                9
+              ]
+            },
+            {
+              "origin": [
+                -6,
+                11.5,
+                6.3
+              ],
+              "size": [
+                12,
+                2,
+                1
+              ],
+              "uv": [
+                0,
+                9
+              ]
+            },
+            {
+              "origin": [
+                0.5,
+                5.5,
+                6.3
+              ],
+              "size": [
+                2,
+                12,
+                1
+              ],
+              "uv": [
+                0,
+                15
+              ]
+            },
+            {
+              "origin": [
+                -2.5,
+                5.5,
+                6.3
+              ],
+              "size": [
+                2,
+                12,
+                1
+              ],
+              "uv": [
+                0,
+                15
+              ]
+            },
+            {
+              "origin": [
+                3,
+                14,
+                6.3
+              ],
+              "size": [
+                2,
+                2,
+                1
+              ],
+              "uv": [
+                10,
+                15
+              ]
+            },
+            {
+              "origin": [
+                -5,
+                14,
+                6.3
+              ],
+              "size": [
+                2,
+                2,
+                1
+              ],
+              "uv": [
+                10,
+                15
+              ]
+            },
+            {
+              "origin": [
+                3,
+                6,
+                6.3
+              ],
+              "size": [
+                2,
+                2,
+                1
+              ],
+              "uv": [
+                10,
+                15
+              ]
+            },
+            {
+              "origin": [
+                -5,
+                5.98338,
+                6.2034
+              ],
+              "size": [
+                2,
+                2,
+                1
+              ],
+              "uv": [
+                10,
+                15
+              ]
+            }
+          ],
+          "name": "flower",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            22.5,
+            0,
+            0
+          ]
+        },
+        {
+          "cubes": [
+            {
+              "origin": [
+                1,
+                -13,
+                -2.1
+              ],
+              "pivot": [
+                0,
+                -3,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                171
+              ],
+              "size": [
+                8,
+                1,
+                4
+              ],
+              "uv": [
+                40,
+                27
+              ]
+            },
+            {
+              "origin": [
+                1,
+                6,
+                -1.9
+              ],
+              "pivot": [
+                0,
+                -3,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                9
+              ],
+              "size": [
+                8,
+                1,
+                4
+              ],
+              "uv": [
+                40,
+                27
+              ]
+            },
+            {
+              "inflate": -0.1,
+              "origin": [
+                -3,
+                5,
+                -0.4
+              ],
+              "pivot": [
+                0,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                148
+              ],
+              "size": [
+                3,
+                1,
+                1
+              ],
+              "uv": [
+                56,
+                24
+              ]
+            },
+            {
+              "inflate": -0.1,
+              "origin": [
+                0,
+                5,
+                -0.6
+              ],
+              "pivot": [
+                0,
+                5,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                -148
+              ],
+              "size": [
+                3,
+                1,
+                1
+              ],
+              "uv": [
+                56,
+                24
+              ]
+            }
+          ],
+          "name": "A",
+          "parent": "flower",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            -22.5,
+            0,
+            0
+          ]
+        }
+      ],
+      "description": {
+        "identifier": "geometry.ecru_model_sunflower_stage3_high",
+        "texture_height": 32,
+        "texture_width": 64,
+        "visible_bounds_height": 2,
+        "visible_bounds_offset": [
+          0,
+          1,
+          0
+        ],
+        "visible_bounds_width": 3
+      }
+    }
+  ]
 }

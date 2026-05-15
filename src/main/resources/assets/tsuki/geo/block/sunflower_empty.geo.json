@@ -2,19 +2,19 @@
   "format_version": "1.21.110",
   "minecraft:geometry": [
     {
+      "bones": [],
       "description": {
         "identifier": "geometry.tsuki.sunflower_empty",
-        "texture_width": 16,
         "texture_height": 16,
-        "visible_bounds_width": 0,
+        "texture_width": 16,
         "visible_bounds_height": 0,
         "visible_bounds_offset": [
           0,
           0,
           0
-        ]
-      },
-      "bones": []
+        ],
+        "visible_bounds_width": 0
+      }
     }
   ]
 }

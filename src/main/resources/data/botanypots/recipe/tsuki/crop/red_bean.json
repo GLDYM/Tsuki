@@ -1,13 +1,13 @@
 {
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "botanypots"
-    }
-  ],
-  "type": "botanypots:block_derived_crop",
   "block": "tsuki:redbean_crop",
   "input": {
     "item": "tsuki:red_bean"
-  }
+  },
+  "neoforge:conditions": [
+    {
+      "modid": "botanypots",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "botanypots:block_derived_crop"
 }
