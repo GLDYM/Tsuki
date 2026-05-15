@@ -787,6 +787,7 @@
   "tsuki.chat.mythic_pickaxe.enchant_max": "[%s] MAX",
   "tsuki.chat.mythic_pickaxe.enchant_up": "[%s] UP",
   "tsuki.chat.sakura_guide.no_guideme": "§6[月]§r 安装 GuideME 以查看模组内手册！\nhttps://www.curseforge.com/minecraft/mc-mods/guideme",
+  "tsuki.chat.easter_egg.rewarded": "§6[月]§r 为你准备的特殊礼物已送达。",
   "tsuki.config.allow_cooking_pot_input_stacking": "允许烹饪锅叠放",
   "tsuki.config.allow_cooking_pot_input_stacking.tooltip": "允许将烹饪锅输入物品插入到已占用的输入槽位中。",
   "tsuki.config.category.client": "客户端设置",
