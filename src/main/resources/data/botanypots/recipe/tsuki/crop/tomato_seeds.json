@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "tsuki:tomato_crop",
+  "input": {
+    "item": "tsuki:tomato_seeds"
+  }
+}
