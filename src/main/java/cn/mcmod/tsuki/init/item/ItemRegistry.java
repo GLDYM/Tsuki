@@ -54,6 +54,8 @@ public class ItemRegistry {
             ItemRegistry::normalItem);
     public static final DeferredItem<Item> GRAPE_SEEDS = register("grape_seeds",
             ItemRegistry::normalItem);
+    public static final DeferredItem<Item> SUNFLOWER_SEEDS = register("sunflower_seeds",
+            () -> seed(BlockRegistry.SUNFLOWER_CROP.get()));
 
 
     public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = createMaterials();
@@ -89,4 +91,3 @@ public class ItemRegistry {
         return ITEMS.register(name, item);
     }
 }
-

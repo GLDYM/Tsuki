@@ -44,12 +44,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
-
-
 import org.slf4j.Logger;
-
 import com.mojang.logging.LogUtils;
-
 
 @Mod(Tsuki.MODID)
 public class Tsuki {

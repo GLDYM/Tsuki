@@ -36,7 +36,7 @@ public class SeedDropModifier extends LootModifier {
                 ItemRegistry.RICE_SEEDS.get(), ItemRegistry.RAPESEEDS.get(), ItemRegistry.TARO.get(),
                 ItemRegistry.BUCKWHEAT.get(), ItemRegistry.SOYBEAN.get(), ItemRegistry.RED_BEAN.get(),
                 ItemRegistry.GRAPE_SEEDS.get(), TsukiNormalItemSet.HOP.getItem().get(),
-                ItemRegistry.VANILLA_SEEDS.get(), ItemRegistry.PEPPER_SEEDS.get());
+                ItemRegistry.VANILLA_SEEDS.get(), ItemRegistry.PEPPER_SEEDS.get(), ItemRegistry.SUNFLOWER_SEEDS.get());
         generatedLoot.add(new ItemStack(seeds.get(context.getRandom().nextInt(seeds.size()))));
         return generatedLoot;
     }

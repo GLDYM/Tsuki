@@ -471,6 +471,9 @@
     "tsuki:straw": {
       "chance": 0.3
     },
+    "tsuki:sunflower_seeds": {
+      "chance": 0.3
+    },
     "tsuki:surimi": {
       "chance": 0.25
     },

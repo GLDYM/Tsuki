@@ -5,6 +5,7 @@ import cn.mcmod.tsuki.block.food.TeishokuBlock;
 import cn.mcmod.tsuki.block.machine.TataraBlock;
 import cn.mcmod.tsuki.block.tree.ChestnutBurrBlock;
 import cn.mcmod.tsuki.block.tree.UmeLeavesBlock;
+import cn.mcmod.tsuki.block.crop.SunflowerCropBlock;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -164,6 +165,7 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         ageModelBlock(BlockRegistry.GRAPE_LEAVES.get(), BlockStateProperties.AGE_7, age -> "grape_leaves_" + age);
         ageModelBlock(BlockRegistry.WILD_PEPPER.get(), BlockStateProperties.AGE_7, age -> "pepper_" + age);
         ageModelBlock(BlockRegistry.WILD_VANILLA.get(), BlockStateProperties.AGE_7, age -> "vanilla_" + age);
+        sunflower(BlockRegistry.SUNFLOWER_CROP.get());
 
         stageBlock(BlockRegistry.BUCKWHEAT_CROP.get(), BlockStateProperties.AGE_7);
         stageBlock(BlockRegistry.RAPESEED_CROP.get(), BlockStateProperties.AGE_7);
@@ -315,6 +317,11 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 .modelFile(
                         models().getExistingFile(modLoc("block/" + modelNameByAge.apply(state.getValue(ageProperty)))))
                 .build());
+    }
+
+    private void sunflower(Block block) {
+        ModelFile empty = models().getExistingFile(modLoc("block/sunflower"));
+        getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(empty).build());
     }
 
     private void facingSlabBlock(Block slab,

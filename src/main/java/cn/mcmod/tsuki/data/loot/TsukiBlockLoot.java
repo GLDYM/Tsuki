@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.data.loot;
 
 import cn.mcmod.tsuki.block.crop.RiceCropRoot;
+import cn.mcmod.tsuki.block.crop.SunflowerCropBlock;
 import cn.mcmod.tsuki.block.decoration.FutonBlock;
 import cn.mcmod.tsuki.block.food.TeishokuBlock;
 import cn.mcmod.tsuki.block.food.TeishokuFinishedBlock;
@@ -17,6 +18,7 @@ import cn.mcmod.mmlib.data.loot.AbstartctBlockLoot;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.DoorBlock;
@@ -29,6 +31,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 public class TsukiBlockLoot extends AbstartctBlockLoot {
 
@@ -160,6 +163,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                 ItemRegistry.PEPPER_SEEDS.get(), 7);
         createCrop(BlockRegistry.WILD_VANILLA.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
                 ItemRegistry.VANILLA_SEEDS.get(), 7);
+        createSunflowerCrop(BlockRegistry.SUNFLOWER_CROP.get());
     }
 
     private void createTeishoku(Block block) {
@@ -216,6 +220,48 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         return applyExplosionDecay(block, LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .add(LootItem.lootTableItem(block).when(lowerHalf))));
+    }
+
+    private void createSunflowerCrop(Block block) {
+        LootItemCondition.Builder upperPart = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties()
+                        .hasProperty(SunflowerCropBlock.PART, SunflowerCropBlock.Part.UPPER));
+        LootItemCondition.Builder age3 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SunflowerCropBlock.AGE, 3));
+        LootItemCondition.Builder age4 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SunflowerCropBlock.AGE, 4));
+        LootItemCondition.Builder age5 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SunflowerCropBlock.AGE, 5));
+        LootItemCondition.Builder age6 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SunflowerCropBlock.AGE, 6));
+        LootItemCondition.Builder age7 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SunflowerCropBlock.AGE, 7));
+        LootItemCondition.Builder age34 = age3.or(age4);
+        LootItemCondition.Builder age567 = age5.or(age6).or(age7);
+
+        this.add(block, applyExplosionDecay(block, LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .add(LootItem.lootTableItem(ItemRegistry.SUNFLOWER_SEEDS.get())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                                .when(upperPart)
+                                .when(age34))
+                        .add(LootItem.lootTableItem(ItemRegistry.SUNFLOWER_SEEDS.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3.0F, 6.0F)))
+                                .when(upperPart)
+                                .when(age567)))
+                .withPool(LootPool.lootPool()
+                        .add(LootItem.lootTableItem(Items.GLOWSTONE_DUST)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                .when(upperPart)
+                                .when(age5))
+                        .add(LootItem.lootTableItem(Items.GLOWSTONE_DUST)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)))
+                                .when(upperPart)
+                                .when(age6))
+                        .add(LootItem.lootTableItem(Items.GLOWSTONE_DUST)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(4.0F, 7.0F)))
+                                .when(upperPart)
+                                .when(age7)))));
     }
 }
 

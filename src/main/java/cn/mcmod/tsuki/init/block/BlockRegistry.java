@@ -10,6 +10,7 @@ import cn.mcmod.tsuki.block.crop.PepperCropBlock;
 import cn.mcmod.tsuki.block.crop.PepperSplintBlock;
 import cn.mcmod.tsuki.block.crop.RiceCrop;
 import cn.mcmod.tsuki.block.crop.RiceCropRoot;
+import cn.mcmod.tsuki.block.crop.SunflowerCropBlock;
 import cn.mcmod.tsuki.block.crop.VanillaCropBlock;
 import cn.mcmod.tsuki.block.crop.VanillaSplintBlock;
 import cn.mcmod.tsuki.block.crop.WildCropBlock;
@@ -397,6 +398,9 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> HOPS_CROP = BLOCKS.register("hops_crop",
             () -> new HopsCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F),
                     ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP)));
+    public static final DeferredBlock<Block> SUNFLOWER_CROP = BLOCKS.register("sunflower_crop",
+            () -> new SunflowerCropBlock(
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).strength(0.2F).noOcclusion()));
 
     public static final DeferredBlock<Block> PEPPER_SPLINT = BLOCKS.register("pepper_splint",
             PepperSplintBlock::new);

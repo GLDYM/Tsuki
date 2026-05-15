@@ -40,6 +40,7 @@ public class TsukiCompostableDataMapProvider extends DataMapProvider {
         registerHolder(builder, ItemRegistry.TOMATO_SEEDS, 0.3F);
         registerHolder(builder, ItemRegistry.TARO, 0.3F);
         registerHolder(builder, ItemRegistry.EGGPLANT_SEEDS, 0.3F);
+        registerHolder(builder, ItemRegistry.SUNFLOWER_SEEDS, 0.3F);
         registerHolder(builder, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.NUKA), 0.3F);
         registerSupplier(builder, TsukiNormalItemSet.KAESHI.getItem(), 0.3F);
         registerSupplier(builder, TsukiNormalItemSet.NOODLE_SOUP.getItem(), 0.3F);

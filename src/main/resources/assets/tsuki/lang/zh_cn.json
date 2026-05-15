@@ -829,5 +829,7 @@
   "tsuki.tooltip.mythic_pickaxe.mining_experience": "挖掘经验: %s/%s",
   "tsuki.tooltip.mythic_pickaxe.mining_level": "挖掘等级: %s",
   "tsuki.tooltip.sheath_katana": "对某个模组的拙劣模仿罢了。\n右键可以拔刀横扫攻击。",
-  "wailaharvestability.toolclass.forging_hammer": "锻造锤"
+  "wailaharvestability.toolclass.forging_hammer": "锻造锤",
+  "block.tsuki.sunflower_crop": "向日葵",
+  "item.tsuki.sunflower_seeds": "向日葵种子"
 }

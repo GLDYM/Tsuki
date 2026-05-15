@@ -1,0 +1,205 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "tsuki:sunflower_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "upper"
+              }
+            },
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "block": "tsuki:sunflower_crop",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "3"
+                  }
+                },
+                {
+                  "block": "tsuki:sunflower_crop",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "4"
+                  }
+                }
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "tsuki:sunflower_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "tsuki:sunflower_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "upper"
+              }
+            },
+            {
+              "condition": "minecraft:any_of",
+              "terms": [
+                {
+                  "block": "tsuki:sunflower_crop",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "5"
+                  }
+                },
+                {
+                  "block": "tsuki:sunflower_crop",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "6"
+                  }
+                },
+                {
+                  "block": "tsuki:sunflower_crop",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "7"
+                  }
+                }
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 6.0,
+                "min": 3.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "tsuki:sunflower_seeds"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "tsuki:sunflower_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "upper"
+              }
+            },
+            {
+              "block": "tsuki:sunflower_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "5"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 2.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:glowstone_dust"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "tsuki:sunflower_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "upper"
+              }
+            },
+            {
+              "block": "tsuki:sunflower_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "6"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:glowstone_dust"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "tsuki:sunflower_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "part": "upper"
+              }
+            },
+            {
+              "block": "tsuki:sunflower_crop",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "7"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 7.0,
+                "min": 4.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:glowstone_dust"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "tsuki:blocks/sunflower_crop"
+}

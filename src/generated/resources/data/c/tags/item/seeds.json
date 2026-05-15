@@ -12,6 +12,7 @@
     "#c:seeds/pepper",
     "#c:seeds/vanilla",
     "#c:seeds/grape",
-    "#c:seeds/hop"
+    "#c:seeds/hop",
+    "tsuki:sunflower_seeds"
   ]
 }

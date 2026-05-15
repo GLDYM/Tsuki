@@ -1,0 +1,76 @@
+{
+  "variants": {
+    "age=0,part=lower": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=0,part=middle": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=0,part=upper": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=1,part=lower": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=1,part=middle": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=1,part=upper": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=2,part=lower": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=2,part=middle": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=2,part=upper": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=3,part=lower": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=3,part=middle": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=3,part=upper": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=4,part=lower": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=4,part=middle": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=4,part=upper": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=5,part=lower": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=5,part=middle": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=5,part=upper": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=6,part=lower": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=6,part=middle": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=6,part=upper": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=7,part=lower": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=7,part=middle": {
+      "model": "tsuki:block/sunflower"
+    },
+    "age=7,part=upper": {
+      "model": "tsuki:block/sunflower"
+    }
+  }
+}

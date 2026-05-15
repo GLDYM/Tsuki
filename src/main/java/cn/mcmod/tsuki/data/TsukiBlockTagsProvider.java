@@ -92,6 +92,8 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                 .add(BlockRegistry.MATSUTAKE_FALLEN_LEAVES.get())
                 .add(BlockRegistry.ZABUTON.get());
         this.tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(BlockRegistry.BAMBOO_BLOCK.get())
+                .add(BlockRegistry.BAMBOO_BLOCK_SUNBURNT.get())
                 .add(BlockRegistry.SAKURA_PLANK.get())
                 .add(BlockRegistry.MAPLE_PLANK.get())
                 .add(BlockRegistry.UME_PLANK.get())
@@ -104,6 +106,8 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                 .add(BlockRegistry.MAPLE_PLANK_STAIRS.get())
                 .add(BlockRegistry.UME_PLANK_STAIRS.get())
                 .add(BlockRegistry.BAMBOO_PLANK_STAIRS.get())
+                .add(BlockRegistry.BAMBOO_BLOCK_SLAB.get())
+                .add(BlockRegistry.BAMBOO_BLOCK_SUNBURNT_SLAB.get())
                 .add(BlockRegistry.BAMBOO_BLOCK_STAIRS.get())
                 .add(BlockRegistry.BAMBOO_BLOCK_SUNBURNT_STAIRS.get())
                 .add(BlockRegistry.STRAW_BLOCK_STAIRS.get())

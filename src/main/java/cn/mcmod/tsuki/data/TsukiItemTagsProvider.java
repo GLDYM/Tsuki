@@ -305,7 +305,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addTag(TsukiItemTags.SEEDS_PEPPER)
                 .addTag(TsukiItemTags.SEEDS_VANILLA)
                 .addTag(TsukiItemTags.SEEDS_GRAPE)
-                .addTag(TsukiItemTags.SEEDS_HOP);
+                .addTag(TsukiItemTags.SEEDS_HOP)
+                .add(ItemRegistry.SUNFLOWER_SEEDS.get());
         this.tag(TsukiItemTags.CROPS)
                 .addTag(TsukiItemTags.CROPS_BEETROOT)
                 .addTag(TsukiItemTags.CROPS_CABBAGE)

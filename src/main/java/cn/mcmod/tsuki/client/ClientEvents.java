@@ -12,6 +12,7 @@ import cn.mcmod.tsuki.client.render.ObonRender;
 import cn.mcmod.tsuki.client.render.SeatEntityRenderer;
 import cn.mcmod.tsuki.client.render.ShojiRenderer;
 import cn.mcmod.tsuki.client.render.StoneMortarRenderer;
+import cn.mcmod.tsuki.client.render.SunflowerCropRenderer;
 import cn.mcmod.tsuki.client.render.entity.SamuraiIllagerRenderer;
 import cn.mcmod.tsuki.init.EntityTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
@@ -62,6 +63,7 @@ public class ClientEvents {
 
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_ODEN.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(BlockRegistry.NABE_SUKIYAKI.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(BlockRegistry.SUNFLOWER_CROP.get(), RenderType.cutoutMipped());
 
             BlockRegistry.BLOCKS.getEntries().forEach(block -> {
                 if (block.get() instanceof BushBlock) {
@@ -84,6 +86,7 @@ public class ClientEvents {
             BlockEntityRenderers.register(BlockEntityRegistry.OBON.get(), ObonRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.DRINK_DISPLAY.get(), DrinkDisplayRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.SHOJI.get(), ShojiRenderer::new);
+            BlockEntityRenderers.register(BlockEntityRegistry.SUNFLOWER_CROP.get(), SunflowerCropRenderer::new);
             EntityRenderers.register(EntityTypeRegistry.SEAT.get(), SeatEntityRenderer::new);
             EntityRenderers.register(EntityTypeRegistry.SAMURAI_ILLAGER.get(), SamuraiIllagerRenderer::new);
         });

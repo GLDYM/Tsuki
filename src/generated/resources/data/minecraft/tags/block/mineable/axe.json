@@ -1,5 +1,7 @@
 {
   "values": [
+    "tsuki:bamboo_block",
+    "tsuki:bamboo_block_sunburnt",
     "tsuki:plank_sakura",
     "tsuki:plank_maple",
     "tsuki:plank_ume",
@@ -12,6 +14,8 @@
     "tsuki:stairs_plank_maple",
     "tsuki:stairs_plank_ume",
     "tsuki:stairs_plank_bamboo",
+    "tsuki:slab_bamboo_block",
+    "tsuki:slab_bamboo_block_sunburnt",
     "tsuki:stairs_bamboo_block",
     "tsuki:stairs_bamboo_block_sunburnt",
     "tsuki:stairs_straw_block",

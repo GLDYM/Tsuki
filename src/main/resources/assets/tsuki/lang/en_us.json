@@ -834,5 +834,7 @@
   "tsuki.tooltip.mythic_pickaxe.mining_experience": "Mining Experience: %s/%s",
   "tsuki.tooltip.mythic_pickaxe.mining_level": "Mining Level: %s",
   "tsuki.tooltip.sheath_katana": "A crude imitation of another mod's feature.\nRight-click to put the katana in or take it out.",
-  "wailaharvestability.toolclass.forging_hammer": "Forging Hammer"
+  "wailaharvestability.toolclass.forging_hammer": "Forging Hammer",
+  "block.tsuki.sunflower_crop": "Sunflower",
+  "item.tsuki.sunflower_seeds": "Sunflower Seeds"
 }

@@ -11,6 +11,7 @@ import cn.mcmod.tsuki.block.entity.ObonBlockEntity;
 import cn.mcmod.tsuki.block.entity.ShakerBlockEntity;
 import cn.mcmod.tsuki.block.entity.ShojiBlockEntity;
 import cn.mcmod.tsuki.block.entity.StoneMortarBlockEntity;
+import cn.mcmod.tsuki.block.entity.SunflowerCropBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -80,5 +81,11 @@ public class BlockEntityRegistry {
             .register(
                     "maple_cauldron",
                     () -> BlockEntityType.Builder.of(MapleCauldronBlockEntity::new, BlockRegistry.MAPLE_CAULDRON.get())
+                            .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SunflowerCropBlockEntity>> SUNFLOWER_CROP = BLOCK_ENTITIES
+            .register(
+                    "sunflower_crop",
+                    () -> BlockEntityType.Builder.of(SunflowerCropBlockEntity::new, BlockRegistry.SUNFLOWER_CROP.get())
                             .build(null));
 }
