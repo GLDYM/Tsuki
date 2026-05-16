@@ -3,16 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "tsuki:glass_cup"
+      "item": "tsuki:glass_liqueur"
     },
     {
       "item": "tsuki:blackcurrant_juice"
     },
     {
       "item": "tsuki:soda_water"
-    },
-    {
-      "item": "tsuki:wine_bottle"
     }
   ],
   "result": {

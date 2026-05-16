@@ -13,7 +13,7 @@
       "tag": "c:crops/cocoa_bean"
     },
     {
-      "item": "minecraft:sugar"
+      "tag": "c:crops/vanilla"
     }
   ],
   "recipeTime": 400,

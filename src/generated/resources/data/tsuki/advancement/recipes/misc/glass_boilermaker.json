@@ -1,32 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "tsuki:glass_spritzer"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_white_wine": {
+    "has_brandy": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:white_wine_bottle"
+            "items": "tsuki:brandy_bottle"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:glass_boilermaker"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_white_wine"
+      "has_brandy"
     ]
   ],
   "rewards": {
     "recipes": [
-      "tsuki:glass_spritzer"
+      "tsuki:glass_boilermaker"
     ]
   }
 }

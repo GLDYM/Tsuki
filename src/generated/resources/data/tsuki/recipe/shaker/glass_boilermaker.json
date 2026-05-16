@@ -1,0 +1,22 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_brandy"
+    },
+    {
+      "item": "tsuki:glass_beer"
+    },
+    {
+      "item": "tsuki:glass_beer"
+    },
+    {
+      "item": "tsuki:glass_beer"
+    }
+  ],
+  "result": {
+    "id": "tsuki:glass_boilermaker"
+  },
+  "shake_count": 12
+}

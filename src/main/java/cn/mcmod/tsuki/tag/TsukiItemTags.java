@@ -25,6 +25,7 @@ public class TsukiItemTags {
 
     public static final TagKey<Item> WATER = TagUtil.forgeItemTag("water");
     public static final TagKey<Item> WATER_WATER = TagUtil.forgeItemTag("water/water");
+    public static final TagKey<Item> ICE_CUBES = TagUtil.forgeItemTag("ice_cubes");
 
     public static final TagKey<Item> KOUJI = TagUtil.forgeItemTag("kouji");
     public static final TagKey<Item> NATTO = TagUtil.forgeItemTag("natto");

@@ -52,14 +52,18 @@
 
 本模组使用了以下模组的源代码，根据各项目的开源协议，在此公布：
 
-- 樱
-- 妖怪之山通用库
-- 农夫乐事
-- 森罗物语：厨房
+- 樱（MIT）
+- 妖怪之山通用库（MIT）
+- 农夫乐事（MIT）
+- 森罗物语：厨房（BSD-3）
 
 本模组使用了以下模组的资产，根据各项目的协议，在此公布：
 
-- 樱
-- 农夫乐事
-- 森罗物语：厨房
-- "MinecraftDungeonsPotion" (https://skfb.ly/oUXPQ) by kompotikivun is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- 樱（MIT）
+- 农夫乐事（MIT）
+- 森罗物语：厨房（CC-BY-NC-SA 4.0）
+- [MinecraftDungeonsPotion](https://skfb.ly/oUXPQ) by kompotikivun (CC-BY 4.0)
+
+本模组参考了以下模组的资产，根据各项目的协议，在此公布：
+
+- 胡萝卜厨房 (MIT)

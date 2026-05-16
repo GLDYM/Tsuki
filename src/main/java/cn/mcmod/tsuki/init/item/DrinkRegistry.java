@@ -64,7 +64,7 @@ public class DrinkRegistry {
                     Tsuki.defaultItemProperties(),
                     DrinkRegistry::cupBlock,
                     DrinkRegistry::glassCupContainerItem,
-                    true,
+                    cocktail.isAlcoholic(),
                     cocktail.getEffects())));
 
     public static Item cupContainerItem() {

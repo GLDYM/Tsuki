@@ -50,14 +50,18 @@ This, is **Tsuki**. A higher version rework of *Sakura*. **Tsuki** is dedicated 
 
 This mod uses source code from the following mods, published here according to their open-source licenses:
 
-- Sakura
-- MMLib
-- Farmer’s Delight
-- Kaleidoscope: Cookery
+- Sakura (MIT)
+- MMLib (MIT)
+- Farmer’s Delight (MIT)
+- Kaleidoscope: Cookery (BSD-3)
 
 This mod uses assets from the following mods, published here according to their open-source licenses:
 
-- Sakura
-- Farmer’s Delight
-- Kaleidoscope: Cookery
-- "MinecraftDungeonsPotion" (https://skfb.ly/oUXPQ) by kompotikivun is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- Sakura (MIT)
+- Farmer’s Delight (MIT)
+- Kaleidoscope: Cookery (CC-BY-NC-SA 4.0)
+- [MinecraftDungeonsPotion](https://skfb.ly/oUXPQ) by kompotikivun (CC-BY 4.0)
+
+This mod refers assets from the following mods, published here according to their open-source licenses:
+
+- Kitchen Karrot (MIT)

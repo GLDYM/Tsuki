@@ -1,0 +1,16 @@
+{
+  "type": "tsuki:chopping",
+  "byproducts": [],
+  "experience": 1,
+  "ingredient": {
+    "item": "minecraft:ice"
+  },
+  "recipeTime": 1,
+  "result": {
+    "count": 8,
+    "id": "tsuki:ice_cube"
+  },
+  "tool": {
+    "tag": "minecraft:axes"
+  }
+}

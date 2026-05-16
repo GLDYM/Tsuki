@@ -1,9 +1,11 @@
 package cn.mcmod.tsuki.item.drink;
 
 import cn.mcmod.tsuki.block.entity.DrinkDisplayBlockEntity;
+import cn.mcmod.tsuki.init.item.FoodRegistry;
 import cn.mcmod.tsuki.client.render.item.ShakerRenderer;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
+import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.recipe.ShakerRecipe;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -262,56 +264,61 @@ public class ShakerItem extends BlockItem implements GeoItem {
         if (!inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT).isEmpty()) {
             return new ValidationResult(false, Component.translatable("item.tsuki.shaker.output_not_empty"));
         }
-        if (countAlcoholInputs(inventory) <= 0) {
+        if (countBaseDrinkInputs(inventory) <= 0) {
             return new ValidationResult(false, Component.translatable("item.tsuki.shaker.no_alcohol"));
         }
-        if (!hasNonAlcoholIngredient(inventory) && countDistinctAlcoholInputs(inventory) <= 1) {
+        if (!hasFlavorIngredient(inventory) && countDistinctBaseDrinkInputs(inventory) <= 1) {
             return new ValidationResult(false, Component.translatable("item.tsuki.shaker.not_enough_ingredients"));
         }
         return new ValidationResult(true, Component.empty());
     }
 
-    private boolean hasNonAlcoholIngredient(ItemStackHandler inventory) {
+    private boolean hasFlavorIngredient(ItemStackHandler inventory) {
         for (int slot = ShakerDataHelper.SLOT_INPUT_START;
                 slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
                 ++slot) {
             ItemStack slotStack = inventory.getStackInSlot(slot);
-            if (!slotStack.isEmpty() && !isAlcoholInput(slotStack)) {
+            if (!slotStack.isEmpty() && !isBaseDrinkInput(slotStack)) {
                 return true;
             }
         }
         return false;
     }
 
-    private int countDistinctAlcoholInputs(ItemStackHandler inventory) {
-        Map<ItemStackKey, Boolean> distinctAlcohols = new LinkedHashMap<>();
+    private int countDistinctBaseDrinkInputs(ItemStackHandler inventory) {
+        Map<ItemStackKey, Boolean> distinctBaseDrinks = new LinkedHashMap<>();
         for (int slot = ShakerDataHelper.SLOT_INPUT_START;
                 slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
                 ++slot) {
             ItemStack slotStack = inventory.getStackInSlot(slot);
-            if (isAlcoholInput(slotStack)) {
-                distinctAlcohols.putIfAbsent(new ItemStackKey(slotStack), Boolean.TRUE);
+            if (isBaseDrinkInput(slotStack)) {
+                distinctBaseDrinks.putIfAbsent(new ItemStackKey(slotStack), Boolean.TRUE);
             }
         }
-        return distinctAlcohols.size();
+        return distinctBaseDrinks.size();
     }
 
-    private int countAlcoholInputs(ItemStackHandler inventory) {
-        int alcoholCount = 0;
+    private int countBaseDrinkInputs(ItemStackHandler inventory) {
+        int baseDrinkCount = 0;
         for (int slot = ShakerDataHelper.SLOT_INPUT_START;
                 slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
                 ++slot) {
             ItemStack slotStack = inventory.getStackInSlot(slot);
-            if (isAlcoholInput(slotStack)) {
-                alcoholCount += slotStack.getCount();
+            if (isBaseDrinkInput(slotStack)) {
+                baseDrinkCount += slotStack.getCount();
             }
         }
-        return alcoholCount;
+        return baseDrinkCount;
     }
 
-    private boolean isAlcoholInput(ItemStack stack) {
+    private boolean isBaseDrinkInput(ItemStack stack) {
         if (stack.isEmpty()) {
             return false;
+        }
+        if (stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
+                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
+                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())) {
+            return true;
         }
         if (stack.getItem() instanceof DrinkItem drinkItem) {
             return drinkItem.isAlcoholic();
@@ -354,28 +361,28 @@ public class ShakerItem extends BlockItem implements GeoItem {
         }
 
         RecipeWrapper recipeWrapper = new RecipeWrapper(inventory);
-        int alcoholCount = countAlcoholInputs(inventory);
-        int alcoholKinds = countDistinctAlcoholInputs(inventory);
-        boolean hasNonAlcoholIngredient = hasNonAlcoholIngredient(inventory);
-        if (alcoholCount <= 0) {
+        int baseDrinkCount = countBaseDrinkInputs(inventory);
+        int baseDrinkKinds = countDistinctBaseDrinkInputs(inventory);
+        boolean hasFlavorIngredient = hasFlavorIngredient(inventory);
+        if (baseDrinkCount <= 0) {
             player.displayClientMessage(Component.translatable("item.tsuki.shaker.no_alcohol"), true);
             ShakerDataHelper.save(stack, inventory, 0, "", false, player.registryAccess());
             return true;
         }
-        if (!hasNonAlcoholIngredient && alcoholKinds <= 1) {
+        if (!hasFlavorIngredient && baseDrinkKinds <= 1) {
             player.displayClientMessage(Component.translatable("item.tsuki.shaker.not_enough_ingredients"), true);
             ShakerDataHelper.save(stack, inventory, 0, "", false, player.registryAccess());
             return true;
         }
 
         int shakeProgress = ShakerDataHelper.loadShakeProgress(stack);
-        LockedTarget lockedTarget = resolveLockedTarget(level, recipeWrapper, inventory, stack, alcoholCount);
+        LockedTarget lockedTarget = resolveLockedTarget(level, recipeWrapper, inventory, stack, baseDrinkCount);
         boolean completed = false;
         if (lockedTarget.recipe().isPresent()) {
             SelectedRecipe selected = lockedTarget.recipe().get();
             shakeProgress++;
             if (shakeProgress >= selected.recipe().getShakeCount()) {
-                craftRecipe(inventory, selected.recipe(), alcoholCount, level);
+                craftRecipe(inventory, selected.recipe(), baseDrinkCount, level);
                 shakeProgress = 0;
                 lockedTarget = LockedTarget.none();
                 completed = true;
@@ -385,7 +392,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
         } else if (lockedTarget.mysteryFallback()) {
             shakeProgress++;
             if (shakeProgress >= 12) {
-                craftMysteryMix(inventory, alcoholCount);
+                craftMysteryMix(inventory, baseDrinkCount);
                 shakeProgress = 0;
                 lockedTarget = LockedTarget.none();
                 completed = true;
@@ -421,7 +428,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
     }
 
     private LockedTarget resolveLockedTarget(Level level, RecipeWrapper recipeWrapper, ItemStackHandler inventory,
-            ItemStack shakerStack, int alcoholCount) {
+            ItemStack shakerStack, int baseDrinkCount) {
         String lockedRecipeId = ShakerDataHelper.loadLockedRecipe(shakerStack);
         boolean mysteryFallback = ShakerDataHelper.loadMysteryFallback(shakerStack);
 
@@ -429,12 +436,12 @@ public class ShakerItem extends BlockItem implements GeoItem {
             Optional<SelectedRecipe> lockedRecipe = selectRecipe(level, recipeWrapper, inventory)
                     .filter(selected -> lockedRecipeId.equals(selected.recipeId()));
             if (lockedRecipe.isPresent() && canOutput(inventory,
-                    lockedRecipe.get().recipe().getResultItem(level.registryAccess()).copyWithCount(alcoholCount))) {
+                    lockedRecipe.get().recipe().getResultItem(level.registryAccess()).copyWithCount(baseDrinkCount))) {
                 return LockedTarget.recipe(lockedRecipe.get());
             }
         }
 
-        if (mysteryFallback && canOutput(inventory, new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), alcoholCount))) {
+        if (mysteryFallback && canOutput(inventory, new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), baseDrinkCount))) {
             return LockedTarget.mystery();
         }
 
@@ -444,14 +451,14 @@ public class ShakerItem extends BlockItem implements GeoItem {
             return LockedTarget.recipe(selected);
         }
 
-        if (canOutput(inventory, new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), alcoholCount))) {
+        if (canOutput(inventory, new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), baseDrinkCount))) {
             return LockedTarget.mystery();
         }
         return LockedTarget.none();
     }
 
-    private void craftRecipe(ItemStackHandler inventory, ShakerRecipe recipe, int alcoholCount, Level level) {
-        ItemStack result = recipe.getResultItem(level.registryAccess()).copyWithCount(alcoholCount);
+    private void craftRecipe(ItemStackHandler inventory, ShakerRecipe recipe, int baseDrinkCount, Level level) {
+        ItemStack result = recipe.getResultItem(level.registryAccess()).copyWithCount(baseDrinkCount);
         ItemStack output = inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT);
         if (output.isEmpty()) {
             inventory.setStackInSlot(ShakerDataHelper.SLOT_OUTPUT, result);
@@ -466,8 +473,8 @@ public class ShakerItem extends BlockItem implements GeoItem {
         }
     }
 
-    private void craftMysteryMix(ItemStackHandler inventory, int alcoholCount) {
-        ItemStack result = new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), alcoholCount);
+    private void craftMysteryMix(ItemStackHandler inventory, int baseDrinkCount) {
+        ItemStack result = new ItemStack(DrinkRegistry.MYTHERY_MIX.get(), baseDrinkCount);
         ItemStack output = inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT);
         if (output.isEmpty()) {
             inventory.setStackInSlot(ShakerDataHelper.SLOT_OUTPUT, result);

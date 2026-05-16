@@ -223,6 +223,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.CHEESE_CHEESE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE).get());
         this.tag(TsukiItemTags.WATER).addTag(TsukiItemTags.WATER_WATER);
         this.tag(TsukiItemTags.WATER_WATER).add(Items.WATER_BUCKET);
+        this.tag(TsukiItemTags.ICE_CUBES).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.ICE_CUBE).get());
         this.tag(TsukiItemTags.FLOUR)
                 .addTag(TsukiItemTags.FLOUR_WHEAT)
                 .addTag(TsukiItemTags.FLOUR_BUCKWHEAT)

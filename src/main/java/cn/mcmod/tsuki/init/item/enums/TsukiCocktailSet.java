@@ -16,11 +16,11 @@ public enum TsukiCocktailSet {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 4000, 0),
             new MobEffectInstance(MobEffects.REGENERATION, 2000, 0)
     }),
-    GLASS_CASSIS_ORANGE("glass_cassis_orange", () -> new MobEffectInstance[] {
+    GLASS_CASSIS_ORANGE("glass_cassis_orange", false, () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 2000, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2000, 0)
     }),
-    GLASS_CASSIS_SODA("glass_cassis_soda", () -> new MobEffectInstance[] {
+    GLASS_CASSIS_SODA("glass_cassis_soda", false, () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 2000, 0),
             new MobEffectInstance(MobEffects.JUMP, 2000, 0)
     }),
@@ -126,6 +126,10 @@ public enum TsukiCocktailSet {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1000, 0),
             new MobEffectInstance(MobEffects.SATURATION, 8, 0)
     }),
+    GLASS_BOILERMAKER("glass_boilermaker", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.DIG_SPEED, 1000, 0),
+            new MobEffectInstance(MobEffects.SATURATION, 24, 0)
+    }),
     GLASS_TEQUILA_SUNRISE("glass_tequila_sunrise", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.HEAL, 3, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000, 0)
@@ -188,10 +192,16 @@ public enum TsukiCocktailSet {
     });
 
     private final String name;
+    private final boolean alcoholic;
     private final Supplier<MobEffectInstance[]> effectsSupplier;
 
     TsukiCocktailSet(String name, Supplier<MobEffectInstance[]> effectsSupplier) {
+        this(name, true, effectsSupplier);
+    }
+
+    TsukiCocktailSet(String name, boolean alcoholic, Supplier<MobEffectInstance[]> effectsSupplier) {
         this.name = name;
+        this.alcoholic = alcoholic;
         this.effectsSupplier = effectsSupplier;
     }
 
@@ -201,5 +211,9 @@ public enum TsukiCocktailSet {
 
     public MobEffectInstance[] getEffects() {
         return effectsSupplier.get();
+    }
+
+    public boolean isAlcoholic() {
+        return alcoholic;
     }
 }
