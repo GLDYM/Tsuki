@@ -4,9 +4,9 @@
 
 ## Feature
 
-- More Cocktail and ingredients
+- More Cocktails and ingredients
 - Now all cocktails have tooltips
-- Sunflower: 3-blocks Plant, always facing the sun, get glowstone when harvest
+- Sunflower: 3-block Plant, always facing the sun, gets glowstone when harvested
 - Easter Egg
 
 ## Compat
@@ -18,7 +18,7 @@
 
 - Taro is not edible
 - Bamboo block lost the wood tag
-- create compat recipes doesn't load correctly
+- Create compat recipes doesn't load correctly
 - Fluid marked as input in JEI
 
 # Tsuki 1.4.1
