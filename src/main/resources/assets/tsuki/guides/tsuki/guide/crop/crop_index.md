@@ -38,6 +38,7 @@ item_ids:
   - tsuki:chestnut_burrs
   - tsuki:chestnut
   - tsuki:ume
+  - tsuki:sunflower_seeds
 ---
 
 # Crops & Forestry
@@ -57,12 +58,13 @@ All crop seeds can be obtained by breaking grass. The [Japanese Farmer](../villa
 - Edodes<ItemImage id="tsuki:edodes" scale="0.6"/>，Shimeji<ItemImage id="tsuki:shimeji" scale="0.6"/>：Use shears and right-click Mushroom Fallen Leaves<ItemImage id="fallen_leaves_mushroom" scale="0.6"/> to harvest.
 - Matsutake<ItemImage id="tsuki:matsutake" scale="0.6"/>：Use shears and right-click Matsutake Fallen Leaves<ItemImage id="fallen_leaves_matsutake" scale="0.6"/> to harvest.
 
-## Saplings
+## Saplings & Flowers
 
 - Bamboo Shoot<ItemImage id="tsuki:bamboo_shoot" scale="0.6"/>: Naturally generates in plains, forests, jungle, swamps, and meadows; can also be obtained by fishing. Grows into Bamboo<ItemImage id="tsuki:bamboo" scale="0.6"/>. Bonemealing bamboo may spawn Bamboo Shoots within an 1-block radius.
 - Sakura Sapling<ItemImage id="tsuki:sakura_sapling" scale="0.6"/>: Obtained via crafting. A high-yield building material.
 - Maple Saplings<ItemImage id="tsuki:maple_sapling_red" scale="0.6"/><ItemImage id="tsuki:maple_sapling_yellow" scale="0.6"/><ItemImage id="tsuki:maple_sapling_orange" scale="0.6"/><ItemImage id="tsuki:maple_sapling_green" scale="0.6"/>: Obtained via crafting and naturally generate in maple forests. Maple trees always generate fallen leaves<ItemImage id="fallen_leaves_red" scale="0.6"/><ItemImage id="fallen_leaves_yellow" scale="0.6"/><ItemImage id="fallen_leaves_orange" scale="0.6"/><ItemImage id="fallen_leaves_green" scale="0.6"/>，put them on a maple log and use bone meal to change them into mushroom fallen leaves<ItemImage id="fallen_leaves_mushroom" scale="0.6"/><ItemImage id="fallen_leaves_matsutake" scale="0.6"/>. Sometimes a Maple Sap Log<ItemImage id="tsuki:maple_sap_log" scale="0.6"/> is generated; use a Maple Spile<ItemImage id="tsuki:maple_spile" scale="0.6"/> and Maple Cauldron<ItemImage id="tsuki:maple_cauldron" scale="0.6"/> to collect maple syrup. Chestnut Burrs<ItemImage id="tsuki:chestnut_burrs" scale="0.6"/> may occasionally spawn under green maples; right-click to harvest. Opening a Chestnut Burr yields Chestnut<ItemImage id="tsuki:chestnut" scale="0.6"/>.
 - Ume Sapling<ItemImage id="tsuki:ume_sapling" scale="0.6"/>: Obtained via crafting. Ume leaves occasionally grow Plums<ItemImage id="tsuki:ume" scale="0.6"/>, which can be harvested with right-click.
+- Sunflower<ItemImage id="tsuki:sunflower_seeds" scale="0.6"/>:  Obtained by breaking grass, could be planted on the dirt type block. The sunflower needs 3-blocks space to grow and could gain glowstone when harvesting.
 
 ## Fish
 
