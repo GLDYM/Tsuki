@@ -13,6 +13,7 @@ import cn.mcmod.tsuki.block.capability.SingleFluidHandler;
 import cn.mcmod.tsuki.block.machine.CookingPotBlock;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
+import cn.mcmod.tsuki.compat.kaleidoscope.KCPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.config.TsukiClientConfig;
 import cn.mcmod.tsuki.container.CookingPotContainer;
@@ -177,6 +178,15 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 // manager.
                 lastRecipeID = null;
                 return kcCompatRecipe;
+            }
+
+            Optional<CookingPotRecipe> kcPotCompatRecipe = KCPotCompat.findMatching(level, inventoryWrapper,
+                    this.fluidTank.getFluid());
+            if (kcPotCompatRecipe.isPresent()) {
+                // Compat recipe is generated at runtime and has no holder in this recipe
+                // manager.
+                lastRecipeID = null;
+                return kcPotCompatRecipe;
             }
         }
 
@@ -642,4 +652,3 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     }
 
 }
-

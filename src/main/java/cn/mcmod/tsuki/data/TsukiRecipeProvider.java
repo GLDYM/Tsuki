@@ -1166,6 +1166,9 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.makeItemToBucket(BucketItemRegistry.FOOD_OIL_BUCKET, Ingredient.of(TsukiItemTags.SEEDS_RAPESEED))
             .unlockedBy("has_seeds", has(TsukiItemTags.SEEDS_RAPESEED))
             .save(consumer);
+        this.makeItemToBucket(BucketItemRegistry.FOOD_OIL_BUCKET, Ingredient.of(ItemRegistry.SUNFLOWER_SEEDS.get()))
+            .unlockedBy("has_seeds", has(ItemRegistry.SUNFLOWER_SEEDS.get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "food_oil_bucket_from_sunflower_seeds"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.DOUGH).get(), 3)
             .requires(TsukiItemTags.FLOUR_WHEAT)
             .requires(TsukiItemTags.FLOUR_WHEAT)

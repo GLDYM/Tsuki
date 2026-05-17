@@ -6,6 +6,9 @@
       },
       {
         "item": "minecraft:sunflower"
+      },
+      {
+        "item": "tsuki:sunflower_seeds"
       }
     ]
   ],

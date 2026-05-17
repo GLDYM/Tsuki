@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:sunflower_seeds"
+    },
+    {
+      "item": "tsuki:sunflower_seeds"
+    },
+    {
+      "item": "tsuki:sunflower_seeds"
+    },
+    {
+      "item": "tsuki:sunflower_seeds"
+    },
+    {
+      "item": "tsuki:sunflower_seeds"
+    },
+    {
+      "item": "tsuki:sunflower_seeds"
+    },
+    {
+      "item": "tsuki:sunflower_seeds"
+    },
+    {
+      "item": "tsuki:sunflower_seeds"
+    },
+    {
+      "item": "minecraft:bucket"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:food_oil_bucket"
+  }
+}

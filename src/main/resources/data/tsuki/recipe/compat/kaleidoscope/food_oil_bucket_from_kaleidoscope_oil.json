@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "kaleidoscope_cookery:oil"
+    },
+    {
+      "item": "kaleidoscope_cookery:oil"
+    },
+    {
+      "item": "kaleidoscope_cookery:oil"
+    },
+    {
+      "item": "kaleidoscope_cookery:oil"
+    },
+    {
+      "item": "kaleidoscope_cookery:oil"
+    },
+    {
+      "item": "kaleidoscope_cookery:oil"
+    },
+    {
+      "item": "kaleidoscope_cookery:oil"
+    },
+    {
+      "item": "kaleidoscope_cookery:oil"
+    },
+    {
+      "item": "minecraft:bucket"
+    }
+  ],
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "kaleidoscope_cookery"
+    }
+  ],
+  "result": {
+    "id": "tsuki:food_oil_bucket",
+    "count": 1
+  }
+}

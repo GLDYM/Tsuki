@@ -11,6 +11,7 @@ import cn.mcmod.tsuki.compat.emi.category.EmiShakerRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiStoneMortarRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiTataraRecipe;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
+import cn.mcmod.tsuki.compat.kaleidoscope.KCPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
@@ -61,6 +62,11 @@ public class ModEmiPlugin implements EmiPlugin {
 
         List<CookingPotRecipe> kcRecipes = new ArrayList<>(KCCookingPotCompat.getAllForJei(mc.level));
         for (CookingPotRecipe recipe : kcRecipes) {
+            registry.addRecipe(EmiCookingPotRecipe.of(toSyncId(recipe.getId()), recipe));
+        }
+
+        List<CookingPotRecipe> kcPotRecipes = new ArrayList<>(KCPotCompat.getAllForJei(mc.level));
+        for (CookingPotRecipe recipe : kcPotRecipes) {
             registry.addRecipe(EmiCookingPotRecipe.of(toSyncId(recipe.getId()), recipe));
         }
 
