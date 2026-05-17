@@ -3599,8 +3599,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         ItemLike tequila = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_TEQUILA).get();
         ItemLike vodka = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get();
         ItemLike liqueur = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get();
-        ItemLike cocoaLiqueur = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_COCOA_LIQUEUR).get();
-        ItemLike sake = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_SAKE).get();
+        // ItemLike cocoaLiqueur = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_COCOA_LIQUEUR).get();
+        // ItemLike sake = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_SAKE).get();
 
         ItemLike blackcurrantJuice = FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get();
         ItemLike orangeJuice = FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get();
@@ -3612,7 +3612,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         ItemLike bitters = TsukiNormalItemSet.BITTERS.getItem().get();
         ItemLike mint = TsukiNormalItemSet.MINT.getItem().get();
         ItemLike lime = FoodRegistry.FOODSET.get(TsukiFoodSet.LIME).get();
-        ItemLike almond = FoodRegistry.FOODSET.get(TsukiFoodSet.ALMOND).get();
+        // ItemLike almond = FoodRegistry.FOODSET.get(TsukiFoodSet.ALMOND).get();
 
         ItemLike tomatoSauce = FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO_SAUCE).get();
         ItemLike worcesterSauce = ItemRegistry.MATERIALS.get(TsukiNormalItemSet.WORCESTER_SAUCE).get();

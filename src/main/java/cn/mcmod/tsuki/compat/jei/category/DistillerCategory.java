@@ -83,7 +83,7 @@ public class DistillerCategory implements IRecipeCategory<DistillerRecipe> {
             }
         }
         if (recipe.getRequiredFluid() != FluidIngredient.EMPTY)
-            builder.addSlot(RecipeIngredientRole.INPUT, 1, 1)
+            builder.addSlot(RecipeIngredientRole.CATALYST, 1, 1)
                     .setFluidRenderer(DistillerBlockEntity.TANK_CAPACITY, true, 16, 52)
                     .addIngredients(NeoForgeTypes.FLUID_STACK, recipe.getRequiredFluid().getMatchingFluidStacks());
 
