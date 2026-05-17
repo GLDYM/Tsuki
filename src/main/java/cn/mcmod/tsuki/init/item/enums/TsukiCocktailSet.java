@@ -1,11 +1,13 @@
 package cn.mcmod.tsuki.init.item.enums;
 
+import cn.mcmod.tsuki.init.MobEffectRegistry;
+import cn.mcmod.tsuki.init.item.DrinkRegistry;
+import java.util.function.Supplier;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-
-import java.util.function.Supplier;
-
-import cn.mcmod.tsuki.init.MobEffectRegistry;
+import net.minecraft.world.item.Item;
 
 public enum TsukiCocktailSet {
     GLASS_KIR("glass_kir", () -> new MobEffectInstance[] {
@@ -189,20 +191,92 @@ public enum TsukiCocktailSet {
     }),
     GLASS_SCORPION("glass_scorpion", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffectRegistry.SCORPION, 1000, 0)
+    }),
+    GLASS_AVIATION("glass_aviation", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.SLOW_FALLING, 2400, 0),
+            new MobEffectInstance(MobEffects.NIGHT_VISION, 1200, 0)
+    }),
+    GLASS_BEER_MARGARITA("glass_beer_margarita", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1200, 0),
+            new MobEffectInstance(MobEffects.SATURATION, 8, 0)
+    }),
+    GLASS_BETWEEN_THE_SHEETS("glass_between_the_sheets", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2000, 0),
+            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 0)
+    }),
+    GLASS_EGGNOG("glass_eggnog", false, () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.REGENERATION, 1200, 0),
+            new MobEffectInstance(MobEffects.ABSORPTION, 1200, 0)
+    }),
+    GLASS_FLYING_GRASSHOPPER("glass_flying_grasshopper", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.JUMP, 2400, 1),
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0)
+    }),
+    GLASS_FRENCH_SEVENFIVE("glass_french_sevenfive", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2800, 0),
+            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 0)
+    }),
+    GLASS_GRASSHOPPER("glass_grasshopper", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.JUMP, 2000, 0),
+            new MobEffectInstance(MobEffects.REGENERATION, 800, 0)
+    }),
+    GLASS_JOHN_COLLINS("glass_john_collins", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2200, 0),
+            new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0)
+    }),
+    GLASS_LEMON_MARGARITA("glass_lemon_margarita", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1000, 0),
+            new MobEffectInstance(MobEffects.LUCK, 1200, 0)
+    }),
+    GLASS_LONG_ISLAND_ICED_TEA("glass_long_island_iced_tea", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2000, 1),
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2000, 0),
+            new MobEffectInstance(MobEffectRegistry.GOLDEN_HEART, 500, 0)
+    }),
+    GLASS_MINT_JULEP("glass_mint_julep", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.DIG_SPEED, 2200, 0),
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1600, 0)
+    }),
+    GLASS_PANACHE("glass_panache", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.SATURATION, 6, 0),
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000, 0)
+    }),
+    GLASS_PARADISE("glass_paradise", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.LUCK, 2200, 0),
+            new MobEffectInstance(MobEffects.NIGHT_VISION, 1000, 0)
+    }),
+    GLASS_PORCHCRAWLER("glass_porchcrawler", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.CONFUSION, 600, 0),
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2000, 0)
+    }),
+    GLASS_PORTO_FLIP("glass_porto_flip", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.REGENERATION, 1000, 0),
+            new MobEffectInstance(MobEffects.ABSORPTION, 1000, 0)
+    }),
+    GLASS_RUSSIAN_SPRING("glass_russian_spring", () -> new MobEffectInstance[] {
+            new MobEffectInstance(MobEffects.JUMP, 2200, 0),
+            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2200, 0)
     });
 
     private final String name;
     private final boolean alcoholic;
+    private final Supplier<Item> containerItem;
     private final Supplier<MobEffectInstance[]> effectsSupplier;
 
+    TsukiCocktailSet(String name, boolean alcoholic, Supplier<Item> containerItem,
+            Supplier<MobEffectInstance[]> effectsSupplier) {
+        this.name = name;
+        this.alcoholic = alcoholic;
+        this.containerItem = containerItem;
+        this.effectsSupplier = effectsSupplier;
+    }
+
     TsukiCocktailSet(String name, Supplier<MobEffectInstance[]> effectsSupplier) {
-        this(name, true, effectsSupplier);
+        this(name, true, DrinkRegistry::glassCupContainerItem, effectsSupplier);
     }
 
     TsukiCocktailSet(String name, boolean alcoholic, Supplier<MobEffectInstance[]> effectsSupplier) {
-        this.name = name;
-        this.alcoholic = alcoholic;
-        this.effectsSupplier = effectsSupplier;
+        this(name, alcoholic, DrinkRegistry::glassCupContainerItem, effectsSupplier);
     }
 
     public String getName() {
@@ -215,5 +289,13 @@ public enum TsukiCocktailSet {
 
     public boolean isAlcoholic() {
         return alcoholic;
+    }
+
+    public Supplier<Item> getContainerItem() {
+        return containerItem;
+    }
+
+    public Component getTooltip() {
+        return Component.translatable("item.tsuki." + name + ".tooltip").withStyle(ChatFormatting.GRAY);
     }
 }

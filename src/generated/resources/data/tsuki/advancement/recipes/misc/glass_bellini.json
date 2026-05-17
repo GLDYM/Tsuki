@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_champagne": {
+    "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:champagne_bottle"
+            "items": "tsuki:glass_champagne"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_champagne"
+      "has_item"
     ]
   ],
   "rewards": {

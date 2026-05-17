@@ -12,7 +12,13 @@
       "item": "tsuki:lemon_juice"
     },
     {
+      "item": "tsuki:worcester_sauce"
+    },
+    {
       "tag": "c:salt"
+    },
+    {
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

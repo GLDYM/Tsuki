@@ -9,7 +9,10 @@
       "item": "tsuki:orange_juice"
     },
     {
-      "item": "tsuki:lemon_juice"
+      "item": "tsuki:blackcurrant_juice"
+    },
+    {
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

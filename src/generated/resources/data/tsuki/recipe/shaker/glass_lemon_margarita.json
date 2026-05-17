@@ -1,0 +1,25 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_tequila"
+    },
+    {
+      "item": "tsuki:glass_liqueur"
+    },
+    {
+      "item": "tsuki:lemon_juice"
+    },
+    {
+      "tag": "c:salt"
+    },
+    {
+      "item": "tsuki:ice_cube"
+    }
+  ],
+  "result": {
+    "id": "tsuki:glass_lemon_margarita"
+  },
+  "shake_count": 12
+}

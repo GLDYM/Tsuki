@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_brandy"
+    },
+    {
+      "tag": "c:milk"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "tag": "c:sugar"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_eggnog"
+  }
+}

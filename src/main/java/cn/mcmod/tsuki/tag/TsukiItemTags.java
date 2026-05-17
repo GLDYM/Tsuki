@@ -190,6 +190,17 @@ public class TsukiItemTags {
     public static final TagKey<Item> VEGETABLES_PUMPKIN = TagUtil.forgeItemTag("vegetables/pumpkin");
     public static final TagKey<Item> VEGETABLES_TOMATO = TagUtil.forgeItemTag("vegetables/tomato");
 
+    public static final TagKey<Item> FOODS_VEGETABLES = TagUtil.forgeItemTag("foods/vegetables");
+    public static final TagKey<Item> FOODS_VEGETABLES_BEETROOT = TagUtil.forgeItemTag("foods/vegetables/beetroot");
+    public static final TagKey<Item> FOODS_VEGETABLES_CARROT = TagUtil.forgeItemTag("foods/vegetables/carrot");
+    public static final TagKey<Item> FOODS_VEGETABLES_CABBAGE = TagUtil.forgeItemTag("foods/vegetables/cabbage");
+    public static final TagKey<Item> FOODS_VEGETABLES_ONION = TagUtil.forgeItemTag("foods/vegetables/onion");
+    public static final TagKey<Item> FOODS_VEGETABLES_EGGPLANT = TagUtil.forgeItemTag("foods/vegetables/eggplant");
+    public static final TagKey<Item> FOODS_VEGETABLES_RADISH = TagUtil.forgeItemTag("foods/vegetables/radish");
+    public static final TagKey<Item> FOODS_VEGETABLES_POTATO = TagUtil.forgeItemTag("foods/vegetables/potato");
+    public static final TagKey<Item> FOODS_VEGETABLES_PUMPKIN = TagUtil.forgeItemTag("foods/vegetables/pumpkin");
+    public static final TagKey<Item> FOODS_VEGETABLES_TOMATO = TagUtil.forgeItemTag("foods/vegetables/tomato");
+
     public static final TagKey<Item> LEAFYVEGETABLES = TagUtil.forgeItemTag("leafyvegetables");
     public static final TagKey<Item> LEAFYVEGETABLES_CABBAGE = TagUtil
             .forgeItemTag("leafyvegetables/cabbage");

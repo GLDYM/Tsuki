@@ -3,16 +3,13 @@
   "experience": 0,
   "ingredients": [
     {
-      "item": "tsuki:glass_brandy"
+      "item": "tsuki:glass_whiskey"
     },
     {
       "item": "tsuki:glass_beer"
     },
     {
-      "item": "tsuki:glass_beer"
-    },
-    {
-      "item": "tsuki:glass_beer"
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

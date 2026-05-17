@@ -1,0 +1,25 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_gin"
+    },
+    {
+      "item": "tsuki:glass_liqueur"
+    },
+    {
+      "item": "tsuki:glass_liqueur"
+    },
+    {
+      "item": "tsuki:lemon_juice"
+    },
+    {
+      "item": "tsuki:ice_cube"
+    }
+  ],
+  "result": {
+    "id": "tsuki:glass_aviation"
+  },
+  "shake_count": 12
+}

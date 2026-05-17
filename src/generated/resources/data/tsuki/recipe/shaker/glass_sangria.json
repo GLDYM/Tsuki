@@ -10,6 +10,12 @@
     },
     {
       "tag": "c:fruits/apple"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

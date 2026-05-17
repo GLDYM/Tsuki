@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_liqueur": {
+    "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:liqueur_bottle"
+            "items": "tsuki:glass_liqueur"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_liqueur"
+      "has_item"
     ]
   ],
   "rewards": {

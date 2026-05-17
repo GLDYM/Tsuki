@@ -1,27 +1,27 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:glass_vodka"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "tsuki:glass_bloody_mary"
       },
       "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_vodka": {
-      "conditions": {
-        "items": [
-          {
-            "items": "tsuki:vodka_bottle"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_vodka"
+      "has_item"
     ]
   ],
   "rewards": {

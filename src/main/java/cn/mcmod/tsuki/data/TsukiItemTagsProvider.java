@@ -101,6 +101,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 ArmorToolRegistry.SAKURA_KATANA_SHEATH.get());
         this.tag(TsukiItemTags.DRINK_CONTAINERS).add(
                 DrinkRegistry.CUP.get(),
+                DrinkRegistry.GLASS_CUP.get(),
                 DrinkRegistry.WINE_BOTTLE.get());
         this.tag(TsukiItemTags.INGREDIENT_BLACKLIST)
                 .addOptionalTag(ResourceLocation.parse("kaleidoscope_cookery:ingredient_blacklist"))
@@ -349,6 +350,26 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addTag(TsukiItemTags.VEGETABLES_TOMATO)
                 .addTag(TsukiItemTags.VEGETABLES_PUMPKIN)
                 .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.IMOGARA).get());
+        this.tag(TsukiItemTags.FOODS_VEGETABLES)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_BEETROOT)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_CARROT)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_CABBAGE)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_ONION)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_EGGPLANT)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_RADISH)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_POTATO)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_PUMPKIN)
+                .addTag(TsukiItemTags.FOODS_VEGETABLES_TOMATO)
+                .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.IMOGARA).get());
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_BEETROOT).addTag(TsukiItemTags.VEGETABLES_BEETROOT);
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_CARROT).addTag(TsukiItemTags.VEGETABLES_CARROT);
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_CABBAGE).addTag(TsukiItemTags.VEGETABLES_CABBAGE);
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_ONION).addTag(TsukiItemTags.VEGETABLES_ONION);
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_EGGPLANT).addTag(TsukiItemTags.VEGETABLES_EGGPLANT);
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_RADISH).addTag(TsukiItemTags.VEGETABLES_RADISH);
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_POTATO).addTag(TsukiItemTags.VEGETABLES_POTATO);
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_PUMPKIN).addTag(TsukiItemTags.VEGETABLES_PUMPKIN);
+        this.tag(TsukiItemTags.FOODS_VEGETABLES_TOMATO).addTag(TsukiItemTags.VEGETABLES_TOMATO);
         this.tag(TsukiItemTags.LEAFYVEGETABLES).addTag(TsukiItemTags.LEAFYVEGETABLES_CABBAGE);
         this.tag(TsukiItemTags.LEAFYVEGETABLES_CABBAGE).addTag(TsukiItemTags.VEGETABLES_CABBAGE);
         this.tag(TsukiItemTags.MUSHROOMS)
@@ -399,6 +420,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get())
                 .add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get())
                 .add(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME).get())
                 .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHESTNUT).get());
         this.tag(TsukiItemTags.FOODS_FRUITS)
                 .addTag(TsukiItemTags.FOODS_FRUITS_APPLE)
@@ -406,7 +428,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addTag(TsukiItemTags.FOODS_FRUITS_MELON_SLICE)
                 .add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get())
                 .add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get())
-                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get());
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME).get());
         this.tag(TsukiItemTags.FOODS_FRUITS_APPLE).addTag(TsukiItemTags.FRUITS_APPLE);
         this.tag(TsukiItemTags.FOODS_FRUITS_BERRIES).addTag(TsukiItemTags.FRUITS_BERRIES);
         this.tag(TsukiItemTags.FOODS_FRUITS_MELON_SLICE).addTag(TsukiItemTags.FRUITS_MELON_SLICE);

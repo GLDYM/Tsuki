@@ -54,6 +54,7 @@ public enum TsukiNormalItemSet {
     BLACK_PEPPER("black_pepper"),
     WHITE_PEPPER("white_pepper"),
     ICE_CUBE("ice_cube"),
+    BITTERS("bitters"),
 
     SAKE_KASU("sake_kasu"),
     MIRIN_KASU("mirin_kasu"),

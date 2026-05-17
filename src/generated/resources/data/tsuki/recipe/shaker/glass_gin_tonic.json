@@ -9,7 +9,10 @@
       "item": "tsuki:soda_water"
     },
     {
-      "item": "tsuki:lemon"
+      "item": "tsuki:lime"
+    },
+    {
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

@@ -966,9 +966,29 @@ public enum TsukiFoodSet {
                     .heatCapacity(1.0F)
                     .cookingTemp(480.0F)
                     .build()),
+    LIME(
+            FoodInfo.builder()
+                    .name("lime")
+                    .amountAndCalories(1, 0.1F)
+                    .water(5.0F)
+                    .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
+                    .decayModifier(3.5F)
+                    .heatCapacity(1.0F)
+                    .cookingTemp(480.0F)
+                    .build()),
     LEMON_JUICE(
             FoodInfo.builder()
                     .name("lemon_juice")
+                    .amountAndCalories(1, 0.1F)
+                    .water(40.0F)
+                    .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(0.0F)
+                    .cookingTemp(0.0F)
+                    .build()),
+    LIME_JUICE(
+            FoodInfo.builder()
+                    .name("lime_juice")
                     .amountAndCalories(1, 0.1F)
                     .water(40.0F)
                     .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
@@ -981,6 +1001,16 @@ public enum TsukiFoodSet {
                     .name("soda_water")
                     .amountAndCalories(1, 0.1F)
                     .water(50.0F)
+                    .nutrients(0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
+                    .decayModifier(5.0F)
+                    .heatCapacity(0.0F)
+                    .cookingTemp(0.0F)
+                    .build()),
+    COLA(
+            FoodInfo.builder()
+                    .name("cola")
+                    .amountAndCalories(1, 0.1F)
+                    .water(45.0F)
                     .nutrients(0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
                     .decayModifier(5.0F)
                     .heatCapacity(0.0F)

@@ -6,10 +6,13 @@
       "item": "tsuki:glass_rum"
     },
     {
-      "item": "tsuki:lemon_juice"
+      "item": "tsuki:lime_juice"
     },
     {
       "tag": "c:sugar"
+    },
+    {
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

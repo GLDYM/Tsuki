@@ -28,6 +28,6 @@ The shaker<ItemImage id="tsuki:shaker" scale="0.6"/> is a tool for mixing bevera
 
 ## Pouring
 
-- The shaker can be combined with the appropriate container (glass cup) at a crafting table to obtain cocktails.
-- After placing the shaker, right-click the placed shaker while holding the required container (glass cup) to extract the cocktail.
-- While holding the shaker, right-click a placed glass cup to pour drinks into it.
+- The shaker can be combined with the appropriate container at a crafting table to obtain cocktails.
+- After placing the shaker, right-click the placed shaker while holding the required container to extract the cocktail.
+- While holding the shaker, right-click a placed matching container to pour drinks into it.

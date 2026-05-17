@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_gin": {
+    "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:gin_bottle"
+            "items": "tsuki:glass_gin"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_gin"
+      "has_item"
     ]
   ],
   "rewards": {

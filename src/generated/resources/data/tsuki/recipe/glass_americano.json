@@ -10,10 +10,13 @@
     },
     {
       "item": "tsuki:soda_water"
+    },
+    {
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {
-    "count": 2,
+    "count": 1,
     "id": "tsuki:glass_americano"
   }
 }

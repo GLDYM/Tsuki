@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_tequila": {
+    "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:tequila_bottle"
+            "items": "tsuki:glass_tequila"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_tequila"
+      "has_item"
     ]
   ],
   "rewards": {

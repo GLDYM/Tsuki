@@ -1,0 +1,25 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_whiskey"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "item": "tsuki:mint"
+    },
+    {
+      "item": "tsuki:bitters"
+    },
+    {
+      "item": "tsuki:ice_cube"
+    }
+  ],
+  "result": {
+    "id": "tsuki:glass_mint_julep"
+  },
+  "shake_count": 12
+}

@@ -6,10 +6,13 @@
       "item": "tsuki:glass_whiskey"
     },
     {
+      "item": "tsuki:bitters"
+    },
+    {
       "tag": "c:sugar"
     },
     {
-      "item": "tsuki:lemon"
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

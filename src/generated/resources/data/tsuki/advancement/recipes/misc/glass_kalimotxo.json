@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_red_wine": {
+    "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:red_wine_bottle"
+            "items": "tsuki:glass_red_wine"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_red_wine"
+      "has_item"
     ]
   ],
   "rewards": {

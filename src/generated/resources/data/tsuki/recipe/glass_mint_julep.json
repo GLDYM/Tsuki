@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:glass_whiskey"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "item": "tsuki:mint"
+    },
+    {
+      "item": "tsuki:bitters"
+    },
+    {
+      "item": "tsuki:ice_cube"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:glass_mint_julep"
+  }
+}

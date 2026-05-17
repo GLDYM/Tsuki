@@ -217,10 +217,6 @@ public class ShakerItem extends BlockItem implements GeoItem {
             return false;
         }
         ItemStack displayStack = display.getStackInSlot(slot);
-        if (!displayStack.is(DrinkRegistry.GLASS_CUP.get())) {
-            return false;
-        }
-
         ItemStack heldShaker = context.getItemInHand();
         ItemStackHandler inventory = ShakerDataHelper.createInventory();
         ShakerDataHelper.load(heldShaker, inventory, context.getPlayer().registryAccess());
@@ -317,7 +313,9 @@ public class ShakerItem extends BlockItem implements GeoItem {
         }
         if (stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
                 || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
-                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())) {
+                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME_JUICE).get())
+                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.COLA).get())) {
             return true;
         }
         if (stack.getItem() instanceof DrinkItem drinkItem) {

@@ -106,6 +106,7 @@ public final class TsukiVillagerTrades {
         trades.get(2).add(buyWithCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.SASHIMI).get(), 1, 16, 32, 12, 10));
         trades.get(2).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.SASHIMI).get(), 1, 24, 48, 12, 10));
         trades.get(2).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get(), 8, 2, 4, 16, 10));
+        trades.get(2).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME).get(), 8, 2, 4, 16, 10));
         trades.get(2).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.ALMOND).get(), 8, 2, 4, 16, 10));
         trades.get(2).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MINT).get(), 8, 2, 4, 16, 10));
         trades.get(2).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get(), 8, 2, 4, 16, 10));
@@ -123,9 +124,12 @@ public final class TsukiVillagerTrades {
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.RICE_BREAD).get(), 8, 3, 5, 12, 15));
         trades.get(3).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MIRIN).get(), 8, 3, 5, 12, 15));
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get(), 8, 4, 7, 12, 15));
+        trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME_JUICE).get(), 8, 4, 7, 12, 15));
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get(), 8, 3, 5, 12, 15));
+        trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.COLA).get(), 8, 3, 5, 12, 15));
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get(), 8, 4, 7, 12, 15));
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get(), 8, 4, 7, 12, 15));
+        trades.get(3).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BITTERS).get(), 8, 4, 7, 12, 15));
 
         trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BEER_BOTTLE).get(), 1, 20, 30, 8, 25));
         trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BEER_BOTTLE).get(), 1, 10, 20, 8, 25));

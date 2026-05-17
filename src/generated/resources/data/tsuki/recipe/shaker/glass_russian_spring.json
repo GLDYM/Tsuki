@@ -1,0 +1,28 @@
+{
+  "type": "tsuki:shaker",
+  "experience": 0,
+  "ingredients": [
+    {
+      "item": "tsuki:glass_vodka"
+    },
+    {
+      "item": "tsuki:blackcurrant_juice"
+    },
+    {
+      "item": "tsuki:lemon_juice"
+    },
+    {
+      "tag": "c:sugar"
+    },
+    {
+      "item": "tsuki:glass_champagne"
+    },
+    {
+      "item": "tsuki:ice_cube"
+    }
+  ],
+  "result": {
+    "id": "tsuki:glass_russian_spring"
+  },
+  "shake_count": 12
+}

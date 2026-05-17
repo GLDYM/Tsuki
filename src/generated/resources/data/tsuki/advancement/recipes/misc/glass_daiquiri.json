@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_rum": {
+    "has_item": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:rum_bottle"
+            "items": "tsuki:glass_rum"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_rum"
+      "has_item"
     ]
   ],
   "rewards": {

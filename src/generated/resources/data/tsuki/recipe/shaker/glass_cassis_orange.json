@@ -3,10 +3,16 @@
   "experience": 0,
   "ingredients": [
     {
+      "item": "tsuki:glass_liqueur"
+    },
+    {
       "item": "tsuki:blackcurrant_juice"
     },
     {
       "item": "tsuki:orange_juice"
+    },
+    {
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

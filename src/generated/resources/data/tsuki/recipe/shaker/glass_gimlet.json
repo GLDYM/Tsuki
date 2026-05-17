@@ -6,7 +6,10 @@
       "item": "tsuki:glass_gin"
     },
     {
-      "item": "tsuki:lemon_juice"
+      "item": "tsuki:lime_juice"
+    },
+    {
+      "item": "tsuki:ice_cube"
     }
   ],
   "result": {

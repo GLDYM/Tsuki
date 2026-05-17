@@ -1,5 +1,8 @@
 package cn.mcmod.mmlib.item;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.jetbrains.annotations.Nullable;
 
 import cn.mcmod.mmlib.item.info.FoodInfo;
@@ -13,10 +16,13 @@ import net.minecraft.world.level.block.Block;
 public class ItemFoodSeeds extends ItemNameBlockItem implements IFoodLike{
     private final FoodInfo info;
     public ItemFoodSeeds(Block block, Item.Properties prop, FoodInfo info) {
-        super(block, prop);
+		super(block, prop.food(
+				new FoodProperties(info.getAmount(), info.getCalories(), info.isAlwaysEat(), info.getEatTime(),
+						Optional.empty(), List.of())
+		));
         this.info = info;
     }
-    
+
 	@Override
 	public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
 		FoodProperties.Builder food = new FoodProperties.Builder().nutrition(getFoodInfo().getAmount())
@@ -26,7 +32,7 @@ public class ItemFoodSeeds extends ItemNameBlockItem implements IFoodLike{
 		if (getFoodInfo().getEatTime() <= 16)
 		  food.fast();
 		this.getFoodInfo().getEffects().forEach((k) -> food.effect(k.getFirst(), k.getSecond()));
-		
+
 		return food.build();
 	}
 
@@ -36,7 +42,7 @@ public class ItemFoodSeeds extends ItemNameBlockItem implements IFoodLike{
 	    	return this.getFoodInfo().getEatTime();
 		return super.getUseDuration(stack, p_344979_);
 	}
-    
+
     @Override
     public FoodInfo getFoodInfo() {
         return info;

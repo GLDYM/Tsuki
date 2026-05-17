@@ -63,8 +63,9 @@ public class DrinkRegistry {
             cocktail -> register(cocktail.getName(), () -> new DrinkItem(
                     Tsuki.defaultItemProperties(),
                     DrinkRegistry::cupBlock,
-                    DrinkRegistry::glassCupContainerItem,
+                    cocktail.getContainerItem(),
                     cocktail.isAlcoholic(),
+                    cocktail.getTooltip(),
                     cocktail.getEffects())));
 
     public static Item cupContainerItem() {

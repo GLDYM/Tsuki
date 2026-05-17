@@ -9,7 +9,7 @@ item_ids:
   - tsuki:sakura_katana
   - tsuki:sheath
   - tsuki:katana_sheath
-  - tsuki:sakura_sheath_katana
+  - tsuki:sakura_katana_sheath
 ---
 
 # 打刀
