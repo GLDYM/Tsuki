@@ -7,6 +7,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import cn.mcmod.tsuki.block.machine.ChoppingBoardBlock;
+import cn.mcmod.tsuki.compat.farmersdelight.FDChoppingBoardCompat;
+import cn.mcmod.tsuki.compat.kaleidoscope.KCChoppingBoardCompat;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
 import cn.mcmod.tsuki.recipe.ChoppingRecipe;
@@ -134,6 +136,19 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         Optional<RecipeHolder<ChoppingRecipe>> recipe = recipeList.stream()
                 .filter(holder -> holder.value().getTool().test(toolStack)).findFirst();
         if (!recipe.isPresent()) {
+            Optional<ChoppingRecipe> fdCompatRecipe = FDChoppingBoardCompat.findMatching(level, recipeWrapper, toolStack);
+            if (fdCompatRecipe.isPresent()) {
+                lastRecipeID = null;
+                return fdCompatRecipe;
+            }
+
+            Optional<ChoppingRecipe> kcCompatRecipe = KCChoppingBoardCompat.findMatching(level, recipeWrapper.getItem(0),
+                    toolStack);
+            if (kcCompatRecipe.isPresent()) {
+                lastRecipeID = null;
+                return kcCompatRecipe;
+            }
+
             if (player != null)
                 player.displayClientMessage(Component.translatable("tsuki.block.chopping_board.invalid_tool"), true);
             return Optional.empty();
@@ -239,5 +254,4 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         };
     }
 }
-
 

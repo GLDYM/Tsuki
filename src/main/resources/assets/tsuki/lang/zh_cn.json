@@ -880,6 +880,7 @@
     "tsuki.guide.name":  "风土记",
     "tsuki.haori.texture":  "羽织材质",
     "tsuki.jade.cooking_pot.container":  "需盛装于：",
+    "tsuki.jei.chance": "%1$s%% 概率",
     "tsuki.jei.chopping":  "砧板",
     "tsuki.jei.chopping.count":  "需要切%s刀",
     "tsuki.jei.cooking":  "日式煮锅",

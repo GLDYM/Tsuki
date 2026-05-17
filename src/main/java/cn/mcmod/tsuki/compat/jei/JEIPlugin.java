@@ -7,6 +7,8 @@ import cn.mcmod.tsuki.client.screen.DistillerScreen;
 import cn.mcmod.tsuki.client.screen.FermenterScreen;
 import cn.mcmod.tsuki.client.screen.StoneMortarScreen;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
+import cn.mcmod.tsuki.compat.farmersdelight.FDChoppingBoardCompat;
+import cn.mcmod.tsuki.compat.kaleidoscope.KCChoppingBoardCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.compat.jei.category.ChoppingCategory;
@@ -106,7 +108,11 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipes(FERMENTER_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.FERMENTER_RECIPE_TYPE.get()));
         registration.addRecipes(DISTILLER_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.DISTILLER_RECIPE_TYPE.get()));
         registration.addRecipes(SHAKER_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.SHAKER_RECIPE_TYPE.get()));
-        registration.addRecipes(CHOPPING_JEI_TYPE, findRecipesByType(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get()));
+        List<ChoppingRecipe> choppingRecipes = new java.util.ArrayList<>(
+                findRecipesByType(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get()));
+        choppingRecipes.addAll(FDChoppingBoardCompat.getAllForJei(MC.level));
+        choppingRecipes.addAll(KCChoppingBoardCompat.getAllForJei(MC.level));
+        registration.addRecipes(CHOPPING_JEI_TYPE, choppingRecipes);
         registration.addRecipes(TATARA_JEI_TYPE, List.of(TataraJeiRecipe.create(
                 new ItemStack(BlockRegistry.TATARA.get()),
                 new ItemStack(Items.FLINT_AND_STEEL),

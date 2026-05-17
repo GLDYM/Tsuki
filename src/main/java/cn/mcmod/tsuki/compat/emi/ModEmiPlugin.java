@@ -10,7 +10,9 @@ import cn.mcmod.tsuki.compat.emi.category.EmiFermenterRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiShakerRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiStoneMortarRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiTataraRecipe;
+import cn.mcmod.tsuki.compat.farmersdelight.FDChoppingBoardCompat;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
+import cn.mcmod.tsuki.compat.kaleidoscope.KCChoppingBoardCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
@@ -93,6 +95,14 @@ public class ModEmiPlugin implements EmiPlugin {
         for (RecipeHolder<ChoppingRecipe> holder : registry.getRecipeManager()
                 .getAllRecipesFor(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get())) {
             registry.addRecipe(EmiChoppingRecipe.of(holder.id(), holder.value()));
+        }
+        List<ChoppingRecipe> fdChoppingRecipes = new ArrayList<>(FDChoppingBoardCompat.getAllForJei(mc.level));
+        for (ChoppingRecipe recipe : fdChoppingRecipes) {
+            registry.addRecipe(EmiChoppingRecipe.of(toSyncId(recipe.getId()), recipe));
+        }
+        List<ChoppingRecipe> kcChoppingRecipes = new ArrayList<>(KCChoppingBoardCompat.getAllForJei(mc.level));
+        for (ChoppingRecipe recipe : kcChoppingRecipes) {
+            registry.addRecipe(EmiChoppingRecipe.of(toSyncId(recipe.getId()), recipe));
         }
         registry.addRecipe(EmiTataraRecipe.create(
                 new ItemStack(BlockRegistry.TATARA.get()),
