@@ -11,6 +11,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 
@@ -19,7 +20,7 @@ public class MytheryMixItem extends DrinkItem {
         super(
             Tsuki.defaultItemProperties().rarity(Rarity.EPIC),
             DrinkRegistry::cupBlock,
-            DrinkRegistry::glassCupContainerItem,
+            () -> Items.GLASS_BOTTLE,
             true,
             Component.translatable("item.tsuki.mythery_mix.tooltip").withStyle(ChatFormatting.GRAY),
             new MobEffectInstance(MobEffectRegistry.SEIRAN, 140, 0)

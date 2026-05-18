@@ -6,6 +6,7 @@ import java.util.List;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.compat.jei.JEIPlugin;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
+import cn.mcmod.tsuki.item.drink.ShakerDataHelper;
 import cn.mcmod.tsuki.recipe.ShakerRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -37,7 +38,8 @@ public class ShakerCategory implements IRecipeCategory<ShakerRecipe> {
     private static final int SHAKER_WIDTH = 32;
     private static final int SHAKER_HEIGHT = 32;
     private static final int OUTPUT_X = 106;
-    private static final int OUTPUT_Y = 20;
+    private static final int CONTAINER_Y = 6;
+    private static final int OUTPUT_Y = 32;
 
     private final Component title;
     private final IDrawable background;
@@ -84,6 +86,10 @@ public class ShakerCategory implements IRecipeCategory<ShakerRecipe> {
             }
         }
 
+        ItemStack requiredContainer = ShakerDataHelper.getRequiredContainer(getResultStack(recipe));
+        if (!requiredContainer.isEmpty()) {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, CONTAINER_Y).addItemStack(requiredContainer);
+        }
         builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, OUTPUT_Y).addItemStack(getResultStack(recipe));
     }
 
@@ -97,6 +103,10 @@ public class ShakerCategory implements IRecipeCategory<ShakerRecipe> {
                     slot.draw(guiGraphics, INPUT_X + column * SLOT_SIZE - 1, INPUT_Y + row * SLOT_SIZE - 1);
                 }
             }
+        }
+        ItemStack requiredContainer = ShakerDataHelper.getRequiredContainer(getResultStack(recipe));
+        if (!requiredContainer.isEmpty()) {
+            slot.draw(guiGraphics, OUTPUT_X - 1, CONTAINER_Y - 1);
         }
         slot.draw(guiGraphics, OUTPUT_X - 1, OUTPUT_Y - 1);
 

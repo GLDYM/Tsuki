@@ -4,6 +4,8 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
 import cn.mcmod.tsuki.block.entity.DistillerBlockEntity;
 import cn.mcmod.tsuki.block.entity.FermenterBlockEntity;
+import cn.mcmod.tsuki.block.entity.ShakerBlockEntity;
+import cn.mcmod.tsuki.item.drink.ShakerDataHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -65,6 +67,11 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
         if (accessor.getBlockEntity() instanceof CookingPotBlockEntity cookingPot) {
             int[] progress = readProgress(accessor, cookingPot.getRecipeTime(), cookingPot.getRecipeTimeTotal());
             addCookingPotRows(tooltip, cookingPot, progress[0], progress[1]);
+            return;
+        }
+
+        if (accessor.getBlockEntity() instanceof ShakerBlockEntity shaker) {
+            addShakerRows(tooltip, shaker);
         }
     }
 
@@ -116,6 +123,30 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
 
         addFluidTank(tooltip, blockEntity.getFluidTank());
         addProgressBar(tooltip, recipeTime, recipeTimeTotal);
+    }
+
+    private static void addShakerRows(ITooltip tooltip, ShakerBlockEntity blockEntity) {
+        ItemStackHandler inventory = blockEntity.getInventory();
+        List<ItemStack> items = new ArrayList<>();
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
+                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
+                ++slot) {
+            ItemStack stack = inventory.getStackInSlot(slot);
+            if (stack != null && !stack.isEmpty() && !stack.is(Items.AIR)) {
+                items.add(stack);
+            }
+        }
+
+        ItemStack output = inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT);
+        if (!output.isEmpty()) {
+            items.add(output);
+        }
+        addItems(tooltip, items);
+
+        ItemStack requiredContainer = ShakerDataHelper.getRequiredContainer(output);
+        if (!requiredContainer.isEmpty()) {
+            addItemWithLabel(tooltip, requiredContainer, Component.translatable("tsuki.jade.shaker.container"));
+        }
     }
 
     private static void addItems(ITooltip tooltip, List<ItemStack> stacks) {

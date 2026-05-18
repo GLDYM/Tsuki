@@ -5,6 +5,7 @@ import java.util.List;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
+import cn.mcmod.tsuki.item.drink.ShakerDataHelper;
 import cn.mcmod.tsuki.recipe.ShakerRecipe;
 import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.BasicEmiRecipe;
@@ -27,6 +28,9 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
     private static final int HEIGHT = 58;
     private static final int SHAKER_X = 64;
     private static final int SHAKER_Y = 13;
+    private static final int OUTPUT_X = 106;
+    private static final int CONTAINER_Y = 6;
+    private static final int OUTPUT_Y = 32;
 
     private final ShakerRecipe recipe;
 
@@ -47,7 +51,13 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
             inputList.add(EmiIngredient.of(ingredient));
         }
 
-        List<EmiStack> outputList = List.of(EmiStack.of(getResultStack(recipe)));
+        ItemStack resultStack = getResultStack(recipe);
+        List<EmiStack> outputList = new ArrayList<>();
+        ItemStack requiredContainer = ShakerDataHelper.getRequiredContainer(resultStack);
+        if (!requiredContainer.isEmpty()) {
+            outputList.add(EmiStack.of(requiredContainer));
+        }
+        outputList.add(EmiStack.of(resultStack));
         return new EmiShakerRecipe(id, recipe, inputList, outputList);
     }
 
@@ -64,7 +74,11 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
             }
         }
 
-        widgets.addSlot(outputs.get(0), 106, 20).drawBack(true).recipeContext(this);
+        int outputIndex = 0;
+        if (outputs.size() > 1) {
+            widgets.addSlot(outputs.get(outputIndex++), OUTPUT_X, CONTAINER_Y).drawBack(true).recipeContext(this);
+        }
+        widgets.addSlot(outputs.get(outputIndex), OUTPUT_X, OUTPUT_Y).drawBack(true).recipeContext(this);
 
         widgets.addDrawable(SHAKER_X, SHAKER_Y, 32, 32, (draw, mouseX, mouseY, delta) -> {
             double time = (System.currentTimeMillis() % 600L) / 600.0D;

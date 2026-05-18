@@ -4425,7 +4425,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(liqueur)
                 .requires(beer)
                 .requires(limeJuice)
-                .requires(TsukiItemTags.SALT)
+                .requires(salt)
                 .requires(iceCube)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_beer_margarita"));
         ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_BETWEEN_THE_SHEETS).get())
@@ -4539,16 +4539,16 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_PORTO_FLIP).get())
                 .requires(brandy)
                 .requires(redWine)
-                .requires(TsukiItemTags.EGGS)
-                .requires(TsukiItemTags.SUGAR)
+                .requires(egg)
+                .requires(sugar)
                 .requires(iceCube)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_porto_flip"));
         ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_RUSSIAN_SPRING).get())
                 .requires(vodka)
+                .requires(champagne)
                 .requires(blackcurrantJuice)
                 .requires(lemonJuice)
-                .requires(TsukiItemTags.SUGAR)
-                .requires(champagne)
+                .requires(sugar)
                 .requires(iceCube)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_russian_spring"));
     }

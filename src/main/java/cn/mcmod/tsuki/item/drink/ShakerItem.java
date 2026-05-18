@@ -208,6 +208,11 @@ public class ShakerItem extends BlockItem implements GeoItem {
             tooltip.add(Component.translatable("item.tsuki.shaker.tooltip.output")
                     .append(Component.literal(output.getCount() + "x "))
                     .append(output.getHoverName()));
+            ItemStack requiredContainer = ShakerDataHelper.getRequiredContainer(output);
+            if (!requiredContainer.isEmpty()) {
+                tooltip.add(Component.translatable("item.tsuki.shaker.tooltip.container")
+                        .append(requiredContainer.getHoverName()));
+            }
         }
     }
 
