@@ -699,9 +699,9 @@
     "1": "tsuki:block/cooking_pot_side",
     "2": "tsuki:block/cooking_pot_top",
     "3": "tsuki:block/cooking_pot_top_side",
-    "4": "tsuki:block/models/dashi",
+    "4": "tsuki:block/model/dashi",
     "5": "tsuki:block/mushroom",
-    "6": "tsuki:block/models/bento/fried",
+    "6": "tsuki:block/bento/fried",
     "particle": "tsuki:block/cooking_pot_bottom"
   }
 }

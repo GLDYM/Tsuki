@@ -2477,11 +2477,11 @@
     "1": "tsuki:block/cooking_pot_side",
     "2": "tsuki:block/cooking_pot_top",
     "3": "tsuki:block/cooking_pot_top_side",
-    "4": "tsuki:block/models/bento/soy",
-    "5": "tsuki:block/models/bento/meat",
-    "6": "tsuki:block/models/tofu",
-    "7": "tsuki:block/models/bento/huluobo",
-    "8": "tsuki:block/models/bento/cong",
+    "4": "tsuki:block/bento/soy",
+    "5": "tsuki:block/bento/meat",
+    "6": "tsuki:block/model/tofu",
+    "7": "tsuki:block/bento/huluobo",
+    "8": "tsuki:block/bento/cong",
     "9": "tsuki:block/mushroom",
     "particle": "tsuki:block/cooking_pot_bottom"
   }

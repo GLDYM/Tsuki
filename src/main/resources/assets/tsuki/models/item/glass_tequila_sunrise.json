@@ -1550,7 +1550,7 @@
   ],
   "textures": {
     "0": "block/glass",
-    "1": "tsuki:block/models/sunrise",
+    "1": "tsuki:block/model/sunrise",
     "particle": "block/glass"
   }
 }

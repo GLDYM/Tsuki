@@ -1975,8 +1975,8 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/copper_block",
-    "1": "tsuki:block/models/mule",
-    "particle": "tsuki:block/models/copper_block"
+    "0": "tsuki:block/model/copper_block",
+    "1": "tsuki:block/model/mule",
+    "particle": "tsuki:block/model/copper_block"
   }
 }

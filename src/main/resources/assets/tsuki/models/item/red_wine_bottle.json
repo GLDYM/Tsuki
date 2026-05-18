@@ -1011,7 +1011,7 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/red_wine_bottle",
-    "particle": "tsuki:block/models/red_wine_bottle"
+    "0": "tsuki:block/model/red_wine_bottle",
+    "particle": "tsuki:block/model/red_wine_bottle"
   }
 }

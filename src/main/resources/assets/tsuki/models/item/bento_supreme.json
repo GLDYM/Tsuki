@@ -1807,13 +1807,13 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/bento/red2",
-    "1": "tsuki:block/models/bento/black",
-    "11": "tsuki:block/models/bento/rou",
-    "12": "tsuki:block/models/bento/roupi",
-    "3": "tsuki:block/models/bento/black2",
-    "4": "tsuki:block/models/bento/rice",
-    "5": "tsuki:block/models/bento/curry",
-    "particle": "tsuki:block/models/bento/red2"
+    "0": "tsuki:block/bento/red2",
+    "1": "tsuki:block/bento/black",
+    "11": "tsuki:block/bento/rou",
+    "12": "tsuki:block/bento/roupi",
+    "3": "tsuki:block/bento/black2",
+    "4": "tsuki:block/bento/rice",
+    "5": "tsuki:block/bento/curry",
+    "particle": "tsuki:block/bento/red2"
   }
 }

@@ -1011,7 +1011,7 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/vodka_bottle",
-    "particle": "tsuki:block/models/vodka_bottle"
+    "0": "tsuki:block/model/vodka_bottle",
+    "particle": "tsuki:block/model/vodka_bottle"
   }
 }

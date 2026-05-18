@@ -3285,17 +3285,17 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/bento/red2",
-    "1": "tsuki:block/models/bento/black",
-    "10": "tsuki:block/models/bento/yumi",
-    "11": "tsuki:block/models/bento/rou",
-    "12": "tsuki:block/models/bento/roupi",
-    "13": "tsuki:block/models/bento/cong",
-    "16": "tsuki:block/models/bento/zicai",
-    "3": "tsuki:block/models/bento/black2",
-    "4": "tsuki:block/models/bento/rice",
-    "5": "tsuki:block/models/bento/tianfuluo",
-    "6": "tsuki:block/models/bento/tianfuluoweiba",
-    "particle": "tsuki:block/models/bento/red2"
+    "0": "tsuki:block/bento/red2",
+    "1": "tsuki:block/bento/black",
+    "10": "tsuki:block/bento/yumi",
+    "11": "tsuki:block/bento/rou",
+    "12": "tsuki:block/bento/roupi",
+    "13": "tsuki:block/bento/cong",
+    "16": "tsuki:block/bento/zicai",
+    "3": "tsuki:block/bento/black2",
+    "4": "tsuki:block/bento/rice",
+    "5": "tsuki:block/bento/tianfuluo",
+    "6": "tsuki:block/bento/tianfuluoweiba",
+    "particle": "tsuki:block/bento/red2"
   }
 }

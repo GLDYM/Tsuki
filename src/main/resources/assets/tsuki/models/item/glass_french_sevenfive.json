@@ -1550,7 +1550,7 @@
   ],
   "textures": {
     "0": "block/glass",
-    "1": "tsuki:block/models/french_sevenfive",
+    "1": "tsuki:block/model/french_sevenfive",
     "particle": "block/glass"
   }
 }

@@ -1091,9 +1091,9 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/bento/red2",
-    "1": "tsuki:block/models/bento/black",
-    "3": "tsuki:block/models/bento/black2",
-    "particle": "tsuki:block/models/bento/red2"
+    "0": "tsuki:block/bento/red2",
+    "1": "tsuki:block/bento/black",
+    "3": "tsuki:block/bento/black2",
+    "particle": "tsuki:block/bento/red2"
   }
 }

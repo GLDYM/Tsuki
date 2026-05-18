@@ -2507,11 +2507,11 @@
   ],
   "textures": {
     "0": "tsuki:block/pant",
-    "1": "tsuki:block/models/bento/blue",
-    "2": "tsuki:block/models/bento/rice",
-    "3": "tsuki:block/models/bento/black",
-    "4": "tsuki:block/models/bento/red2",
-    "5": "tsuki:block/models/bento/miso_soup",
+    "1": "tsuki:block/bento/blue",
+    "2": "tsuki:block/bento/rice",
+    "3": "tsuki:block/bento/black",
+    "4": "tsuki:block/bento/red2",
+    "5": "tsuki:block/bento/miso_soup",
     "6": "tsuki:block/white_bg",
     "7": "tsuki:item/fish_bake_salt",
     "particle": "tsuki:block/pant"

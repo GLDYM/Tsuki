@@ -1550,7 +1550,7 @@
   ],
   "textures": {
     "0": "block/glass",
-    "1": "tsuki:block/models/whiskey_sour",
+    "1": "tsuki:block/model/whiskey_sour",
     "particle": "block/glass"
   }
 }

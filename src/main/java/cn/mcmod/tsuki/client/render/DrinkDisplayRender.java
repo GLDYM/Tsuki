@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
 public class DrinkDisplayRender implements BlockEntityRenderer<DrinkDisplayBlockEntity> {
-    private static final float DISPLAY_SCALE = 1.0F;
+    private static final float DISPLAY_SCALE = 0.6F;
     private static final float MYTHERY_MIX_SCALE = 0.6F;
     private static final float ITEM_RENDERER_CENTER_OFFSET = 0.3125F;
 

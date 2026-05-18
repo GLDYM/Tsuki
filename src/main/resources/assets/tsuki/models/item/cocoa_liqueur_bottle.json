@@ -1011,7 +1011,7 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/cocoa_liqueur_bottle",
-    "particle": "tsuki:block/models/cocoa_liqueur_bottle"
+    "0": "tsuki:block/model/cocoa_liqueur_bottle",
+    "particle": "tsuki:block/model/cocoa_liqueur_bottle"
   }
 }

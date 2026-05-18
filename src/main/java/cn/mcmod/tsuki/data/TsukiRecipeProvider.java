@@ -3627,7 +3627,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         TagKey<Item> apple = TsukiItemTags.FRUITS_APPLE;
 
         // Every recipe which contains multiple alcohols should not appear there.
-        // TODO: Make cocktail remain their container and add container in the recipes.
+        // TODO: Make cocktail remain their container and add container in all the shapeless recipes.
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR).get())
                 .requires(whiteWine)
                 .requires(blackcurrantJuice)

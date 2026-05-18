@@ -1011,7 +1011,7 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/doburoku_bottle",
-    "particle": "tsuki:block/models/doburoku_bottle"
+    "0": "tsuki:block/model/doburoku_bottle",
+    "particle": "tsuki:block/model/doburoku_bottle"
   }
 }

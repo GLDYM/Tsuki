@@ -1979,8 +1979,8 @@
   ],
   "textures": {
     "1_0": "tsuki:block/plank_bamboo",
-    "5": "tsuki:block/models/bento/tianfuluo",
-    "6": "tsuki:block/models/bento/tianfuluoweiba",
+    "5": "tsuki:block/bento/tianfuluo",
+    "6": "tsuki:block/bento/tianfuluoweiba",
     "particle": "tsuki:block/plank_bamboo"
   }
 }

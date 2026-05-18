@@ -1,7 +1,7 @@
 {
   "parent": "tsuki:block/stone_lantern_base",
   "textures": {
-    "lantern": "tsuki:block/models/lantern",
-    "stone": "tsuki:block/models/stone"
+    "lantern": "tsuki:block/model/lantern",
+    "stone": "tsuki:block/model/stone"
   }
 }

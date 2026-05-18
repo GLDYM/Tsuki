@@ -1550,7 +1550,7 @@
   ],
   "textures": {
     "0": "block/glass",
-    "1": "tsuki:block/models/porto_flip",
+    "1": "tsuki:block/model/porto_flip",
     "particle": "block/glass"
   }
 }

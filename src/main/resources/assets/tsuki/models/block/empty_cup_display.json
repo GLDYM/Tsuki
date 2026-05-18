@@ -1,6 +1,6 @@
 {
   "elements": [],
   "textures": {
-    "particle": "tsuki:block/models/cup"
+    "particle": "tsuki:block/model/cup"
   }
 }

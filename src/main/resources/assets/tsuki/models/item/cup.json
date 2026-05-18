@@ -795,7 +795,7 @@
   ],
   "format_version": "1.21.11",
   "textures": {
-    "1": "tsuki:block/models/cup",
-    "particle": "tsuki:block/models/cup"
+    "1": "tsuki:block/model/cup",
+    "particle": "tsuki:block/model/cup"
   }
 }

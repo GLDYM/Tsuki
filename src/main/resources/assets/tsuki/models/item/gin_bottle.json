@@ -1011,7 +1011,7 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/gin_bottle",
-    "particle": "tsuki:block/models/gin_bottle"
+    "0": "tsuki:block/model/gin_bottle",
+    "particle": "tsuki:block/model/gin_bottle"
   }
 }

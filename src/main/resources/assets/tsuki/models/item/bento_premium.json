@@ -1545,11 +1545,11 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/bento/red2",
-    "1": "tsuki:block/models/bento/black",
-    "10": "tsuki:block/models/bento/yumi",
-    "3": "tsuki:block/models/bento/black2",
-    "4": "tsuki:block/models/bento/rice",
-    "particle": "tsuki:block/models/bento/red2"
+    "0": "tsuki:block/bento/red2",
+    "1": "tsuki:block/bento/black",
+    "10": "tsuki:block/bento/yumi",
+    "3": "tsuki:block/bento/black2",
+    "4": "tsuki:block/bento/rice",
+    "particle": "tsuki:block/bento/red2"
   }
 }

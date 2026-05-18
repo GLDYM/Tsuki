@@ -1550,7 +1550,7 @@
   ],
   "textures": {
     "0": "block/glass",
-    "1": "tsuki:block/models/lemon_margarita",
+    "1": "tsuki:block/model/lemon_margarita",
     "particle": "block/glass"
   }
 }

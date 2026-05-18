@@ -1011,7 +1011,7 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/liqueur_bottle",
-    "particle": "tsuki:block/models/liqueur_bottle"
+    "0": "tsuki:block/model/liqueur_bottle",
+    "particle": "tsuki:block/model/liqueur_bottle"
   }
 }

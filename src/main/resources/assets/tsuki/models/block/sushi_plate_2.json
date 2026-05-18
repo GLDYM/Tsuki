@@ -1936,14 +1936,14 @@
     21
   ],
   "textures": {
-    "14": "tsuki:block/models/bento/buri",
-    "15": "tsuki:block/models/bento/buri_l",
-    "16": "tsuki:block/models/bento/zicai",
-    "17": "tsuki:block/models/bento/sake",
-    "18": "tsuki:block/models/bento/sake_l",
+    "14": "tsuki:block/bento/buri",
+    "15": "tsuki:block/bento/buri_l",
+    "16": "tsuki:block/bento/zicai",
+    "17": "tsuki:block/bento/sake",
+    "18": "tsuki:block/bento/sake_l",
     "1_0": "tsuki:block/plank_bamboo",
-    "3": "tsuki:block/models/bento/wandou",
-    "4": "tsuki:block/models/bento/rice",
+    "3": "tsuki:block/bento/wandou",
+    "4": "tsuki:block/bento/rice",
     "particle": "tsuki:block/plank_bamboo"
   }
 }

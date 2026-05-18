@@ -2159,15 +2159,15 @@
   ],
   "textures": {
     "0": "tsuki:block/pant",
-    "1": "tsuki:block/models/bento/blue",
-    "2": "tsuki:block/models/bento/rice",
-    "3": "tsuki:block/models/bento/black",
-    "4": "tsuki:block/models/bento/red2",
-    "5": "tsuki:block/models/bento/miso_soup",
+    "1": "tsuki:block/bento/blue",
+    "2": "tsuki:block/bento/rice",
+    "3": "tsuki:block/bento/black",
+    "4": "tsuki:block/bento/red2",
+    "5": "tsuki:block/bento/miso_soup",
     "6": "tsuki:block/white_bg",
-    "7": "tsuki:block/models/bento/meat",
-    "8": "tsuki:block/models/bento/roupi",
-    "9": "tsuki:block/models/bento/soy",
+    "7": "tsuki:block/bento/meat",
+    "8": "tsuki:block/bento/roupi",
+    "9": "tsuki:block/bento/soy",
     "particle": "tsuki:block/pant"
   }
 }

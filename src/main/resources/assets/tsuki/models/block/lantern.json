@@ -701,7 +701,7 @@
     }
   ],
   "textures": {
-    "0": "tsuki:block/models/red_lantern",
-    "particle": "tsuki:block/models/red_lantern"
+    "0": "tsuki:block/model/red_lantern",
+    "particle": "tsuki:block/model/red_lantern"
   }
 }

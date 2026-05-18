@@ -872,8 +872,8 @@
   ],
   "format_version": "1.21.11",
   "textures": {
-    "1": "tsuki:block/models/cup",
-    "2": "tsuki:block/models/black_tea",
-    "particle": "tsuki:block/models/cup"
+    "1": "tsuki:block/model/cup",
+    "2": "tsuki:block/model/black_tea",
+    "particle": "tsuki:block/model/cup"
   }
 }

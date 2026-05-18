@@ -1,7 +1,7 @@
 {
   "parent": "tsuki:item/cup_drink",
   "textures": {
-    "1": "tsuki:block/models/cup",
-    "2": "tsuki:block/models/green_tea"
+    "1": "tsuki:block/model/cup",
+    "2": "tsuki:block/model/green_tea"
   }
 }
