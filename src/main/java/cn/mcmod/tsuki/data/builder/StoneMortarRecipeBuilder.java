@@ -1,5 +1,6 @@
 package cn.mcmod.tsuki.data.builder;
 
+import cn.mcmod.mmlib.recipe.CountedIngredient;
 import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -12,7 +13,8 @@ import net.minecraft.world.level.ItemLike;
 
 public class StoneMortarRecipeBuilder {
     private final NonNullList<ItemStack> result = NonNullList.create();
-    private final NonNullList<Ingredient> ingredients = NonNullList.create();
+    private Ingredient ingredient = Ingredient.EMPTY;
+    private int ingredientCount = 1;
     private final float experience;
     private final int recipeTime;
 
@@ -39,7 +41,11 @@ public class StoneMortarRecipeBuilder {
     }
 
     public StoneMortarRecipeBuilder requires(TagKey<Item> tag) {
-        return this.requires(Ingredient.of(tag));
+        return this.requires(tag, 1);
+    }
+
+    public StoneMortarRecipeBuilder requires(TagKey<Item> tag, int count) {
+        return this.requires(Ingredient.of(tag), count);
     }
 
     public StoneMortarRecipeBuilder requires(ItemLike item) {
@@ -47,10 +53,7 @@ public class StoneMortarRecipeBuilder {
     }
 
     public StoneMortarRecipeBuilder requires(ItemLike item, int count) {
-        for (int i = 0; i < count; ++i) {
-            this.requires(Ingredient.of(item));
-        }
-        return this;
+        return this.requires(Ingredient.of(item), count);
     }
 
     public StoneMortarRecipeBuilder requires(Ingredient ingre) {
@@ -58,9 +61,8 @@ public class StoneMortarRecipeBuilder {
     }
 
     public StoneMortarRecipeBuilder requires(Ingredient ingre, int count) {
-        for (int i = 0; i < count; ++i) {
-            this.ingredients.add(ingre);
-        }
+        this.ingredient = ingre;
+        this.ingredientCount = Math.max(1, count);
         return this;
     }
 
@@ -78,7 +80,7 @@ public class StoneMortarRecipeBuilder {
         StoneMortarRecipe recipe = new StoneMortarRecipe();
         recipe.setId(resolvedId);
         recipe.output = this.result;
-        recipe.inputItems = this.ingredients;
+        recipe.input = new CountedIngredient(this.ingredient, this.ingredientCount);
         recipe.experience = this.experience;
         recipe.recipeTime = this.recipeTime;
         output.accept(resolvedId, recipe, null);

@@ -11,9 +11,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public interface StoneMortarRecipeSchema {
-    RecipeKey<List<Ingredient>> INGREDIENTS = IngredientComponent.INGREDIENT.instance().asListOrSelf().inputKey("ingredients");
+    RecipeKey<Ingredient> INGREDIENT = IngredientComponent.INGREDIENT.inputKey("ingredient");
     RecipeKey<List<ItemStack>> RESULTS = ListRecipeComponent.create(ItemStackComponent.ITEM_STACK.instance(), false, true).outputKey("results");
     RecipeKey<Integer> RECIPE_TIME = NumberComponent.INT.otherKey("recipeTime").optional(200);
     RecipeKey<Float> EXPERIENCE = NumberComponent.FLOAT.otherKey("experience").optional(0F);
-    RecipeSchema SCHEMA = new RecipeSchema(INGREDIENTS, RESULTS, RECIPE_TIME, EXPERIENCE);
+    RecipeSchema SCHEMA = new RecipeSchema(INGREDIENT, RESULTS, RECIPE_TIME, EXPERIENCE);
 }

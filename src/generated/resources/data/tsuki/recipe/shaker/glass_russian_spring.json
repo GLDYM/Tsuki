@@ -6,6 +6,9 @@
       "item": "tsuki:glass_vodka"
     },
     {
+      "item": "tsuki:glass_champagne"
+    },
+    {
       "item": "tsuki:blackcurrant_juice"
     },
     {
@@ -13,9 +16,6 @@
     },
     {
       "tag": "c:sugar"
-    },
-    {
-      "item": "tsuki:glass_champagne"
     },
     {
       "item": "tsuki:ice_cube"

@@ -1,20 +1,10 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "item": "tsuki:green_tea_leaves"
-    },
-    {
-      "item": "tsuki:green_tea_leaves"
-    },
-    {
-      "item": "tsuki:green_tea_leaves"
-    },
-    {
-      "item": "tsuki:green_tea_leaves"
-    }
-  ],
+  "ingredient": {
+    "count": 4,
+    "item": "tsuki:green_tea_leaves"
+  },
   "recipeTime": 200,
   "results": [
     {

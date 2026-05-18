@@ -12,8 +12,10 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
+import java.util.Arrays;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public class EmiStoneMortarRecipe extends BasicEmiRecipe {
@@ -43,8 +45,19 @@ public class EmiStoneMortarRecipe extends BasicEmiRecipe {
 
     public static EmiStoneMortarRecipe of(ResourceLocation id, StoneMortarRecipe recipe) {
         List<EmiIngredient> inputList = new ArrayList<>();
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            inputList.add(EmiIngredient.of(ingredient));
+        if (!recipe.getIngredients().isEmpty()) {
+            Ingredient ingredient = recipe.getIngredients().get(0);
+            ItemStack[] stacks = ingredient.getItems();
+            if (stacks.length > 0) {
+                List<EmiStack> countedStacks = Arrays.stream(stacks)
+                        .map(ItemStack::copy)
+                        .peek(stack -> stack.setCount(recipe.getInputCount()))
+                        .map(EmiStack::of)
+                        .toList();
+                inputList.add(EmiIngredient.of(countedStacks));
+            } else {
+                inputList.add(EmiIngredient.of(ingredient));
+            }
         }
 
         List<EmiStack> outputList = recipe.getResultItemList().stream().map(EmiStack::of).toList();
@@ -57,13 +70,8 @@ public class EmiStoneMortarRecipe extends BasicEmiRecipe {
         widgets.addTexture(BG, 42, 20, 14, 16, 176, 0);
         widgets.addTexture(BG, 41, 36, 16, 6, 190, 18);
 
-        for (int row = 0; row < 2; ++row) {
-            for (int column = 0; column < 2; ++column) {
-                int inputIndex = row * 2 + column;
-                if (inputIndex < inputs.size()) {
-                    widgets.addSlot(inputs.get(inputIndex), column * 18, 13 + row * 18).drawBack(false);
-                }
-            }
+        if (!inputs.isEmpty()) {
+            widgets.addSlot(inputs.get(0), 0, 13).drawBack(false);
         }
 
         widgets.addSlot(outputs.get(0), 65, 4).drawBack(false).recipeContext(this);

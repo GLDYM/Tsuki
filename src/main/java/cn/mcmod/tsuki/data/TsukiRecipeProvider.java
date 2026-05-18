@@ -1396,6 +1396,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(TsukiItemTags.TOMATOSAUCE)
             .unlockedBy("has_bun", has(FoodRegistry.FOODSET.get(TsukiFoodSet.BUN).get()))
             .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(), 4)
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get())
+            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
+            .requires(TsukiItemTags.CROPS_ONION)
+            .requires(TsukiItemTags.EGGS)
+            .unlockedBy("has_minced_meat", has(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get()))
+            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "burger_raw"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.CHEESE).get())
             .requires(TsukiItemTags.MILK)
             .requires(TsukiItemTags.SALT)
@@ -2085,22 +2092,15 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .requires(Tags.Items.STONES)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "alkaline_from_mortar"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHARCOAL_POWDER).get(), 1)
-            .requires(Ingredient.of(Items.CHARCOAL, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
-            .requires(Ingredient.of(Items.CHARCOAL, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()))
+            .requires(Ingredient.of(Items.CHARCOAL, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()), 2)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "charcoal_powder"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get(), 1)
             .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get(), 1)
-            .requires(TsukiItemTags.SEEDS_RICE)
-            .requires(TsukiItemTags.SEEDS_RICE)
-            .requires(TsukiItemTags.SEEDS_RICE)
-            .requires(TsukiItemTags.SEEDS_RICE)
+            .requires(TsukiItemTags.SEEDS_RICE, 4)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "brown_rice_from_mortar"));
         StoneMortarRecipeBuilder.mortar(Items.GREEN_DYE, 1)
             .addResult(Items.GREEN_DYE, 1)
-            .requires(ItemTags.LEAVES)
-            .requires(ItemTags.LEAVES)
-            .requires(ItemTags.LEAVES)
-            .requires(ItemTags.LEAVES)
+            .requires(ItemTags.LEAVES, 4)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "dye_green_from_leaves"));
         StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get(), 2)
             .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get(), 2)
@@ -2122,16 +2122,10 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                     new TagValue(TsukiItemTags.RAW_BEEF),
                     new TagValue(TsukiItemTags.RAW_MUTTON)
                 )
-            )
+            ),
+            2
             )
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "minced_meat"));
-        StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(), 2)
-            .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.BURGER_RAW).get(), 2)
-            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MINCED_MEAT).get())
-            .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.BREADCRUMBS).get())
-            .requires(TsukiItemTags.CROPS_ONION)
-            .requires(TsukiItemTags.EGGS)
-            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "burger_raw"));
         StoneMortarRecipeBuilder.mortar(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get(), 1)
             .addResult(FoodRegistry.FOODSET.get(TsukiFoodSet.SURIMI).get(), 1)
             .requires(TsukiItemTags.FISHES)
@@ -2146,8 +2140,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "breadcrumbs_from_breads"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RICE).get(), 1)
             .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.NUKA).get())
-            .requires(TsukiItemTags.RICE_BROWN)
-            .requires(TsukiItemTags.RICE_BROWN)
+            .requires(TsukiItemTags.RICE_BROWN, 2)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_from_mortar"));
         StoneMortarRecipeBuilder.mortar(Items.SUGAR, 3)
             .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOLASSES).get())
@@ -2169,10 +2162,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_rice_from_mortar"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get(), 3)
             .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get(), 3)
-            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
-            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
-            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
-            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
+            .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get(), 4)
             .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mocha_from_mortar"));
     }
 

@@ -1,13 +1,10 @@
 package cn.mcmod.tsuki.recipe;
 
-import java.util.List;
-
-import com.google.common.collect.Lists;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
+import cn.mcmod.mmlib.recipe.CountedIngredient;
 import cn.mcmod.mmlib.recipe.AbstractRecipe;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +12,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.util.RecipeMatcher;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class StoneMortarRecipe extends AbstractRecipe {
@@ -23,8 +19,8 @@ public class StoneMortarRecipe extends AbstractRecipe {
     public int recipeTime;
 
     @Expose()
-    @SerializedName("ingredients")
-    public NonNullList<Ingredient> inputItems;
+    @SerializedName("ingredient")
+    public CountedIngredient input = new CountedIngredient(Ingredient.EMPTY, 1);
 
     @Expose()
     @SerializedName("results")
@@ -32,7 +28,7 @@ public class StoneMortarRecipe extends AbstractRecipe {
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return this.inputItems;
+        return NonNullList.of(Ingredient.EMPTY, this.input.ingredient());
     }
 
     @Override
@@ -42,17 +38,25 @@ public class StoneMortarRecipe extends AbstractRecipe {
 
     @Override
     public boolean matches(RecipeWrapper inv, Level worldIn) {
-        List<ItemStack> inputs = Lists.newArrayList();
-        int i = 0;
-
-        for (int j = 0; j < 4; ++j) {
-            ItemStack itemstack = inv.getItem(j);
-            if (!itemstack.isEmpty()) {
-                ++i;
-                inputs.add(itemstack);
+        for (int slot = 0; slot < 4; ++slot) {
+            ItemStack stack = inv.getItem(slot);
+            if (matchesInput(stack)) {
+                return true;
             }
         }
-        return i == this.getIngredients().size() && RecipeMatcher.findMatches(inputs, this.getIngredients()) != null;
+        return false;
+    }
+
+    public boolean matchesInput(ItemStack stack) {
+        return !stack.isEmpty() && this.input.ingredient().test(stack) && stack.getCount() >= getInputCount();
+    }
+
+    public int getInputCount() {
+        return this.input.getCount();
+    }
+
+    public Ingredient getInputIngredient() {
+        return this.input.ingredient();
     }
 
     @Override

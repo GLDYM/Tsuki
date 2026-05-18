@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:minced_meat"
+    },
+    {
+      "item": "tsuki:breadcrumbs"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:eggs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "tsuki:burger_raw"
+  }
+}

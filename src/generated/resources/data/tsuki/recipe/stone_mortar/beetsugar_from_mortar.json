@@ -1,11 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "tag": "c:crops/beetroot"
-    }
-  ],
+  "ingredient": {
+    "tag": "c:crops/beetroot"
+  },
   "recipeTime": 200,
   "results": [
     {

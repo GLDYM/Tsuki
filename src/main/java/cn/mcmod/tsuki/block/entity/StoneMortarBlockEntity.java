@@ -49,6 +49,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
 
     private ResourceLocation lastRecipeID;
     private boolean checkNewRecipe;
+    private int workingInputSlot = -1;
 
     public StoneMortarBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.STONE_MORTAR.get(), pos, state);
@@ -107,11 +108,32 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         if (level == null) {
             return Optional.empty();
         }
+        workingInputSlot = -1;
+        for (int slot = 0; slot < 4; slot++) {
+            ItemStack stack = inventory.getStackInSlot(slot);
+            if (stack.isEmpty()) {
+                continue;
+            }
 
-        if (lastRecipeID != null) {
-            Optional<RecipeHolder<?>> holder = level.getRecipeManager().byKey(lastRecipeID);
-            if (holder.isPresent() && holder.get().value() instanceof StoneMortarRecipe recipe
-                    && recipe.matches(inventoryWrapper, level)) {
+            if (lastRecipeID != null) {
+                Optional<RecipeHolder<?>> cachedHolder = level.getRecipeManager().byKey(lastRecipeID);
+                if (cachedHolder.isPresent() && cachedHolder.get().value() instanceof StoneMortarRecipe cachedRecipe
+                        && cachedRecipe.matchesInput(stack) && canWork(cachedRecipe, level)) {
+                    workingInputSlot = slot;
+                    checkNewRecipe = false;
+                    return Optional.of(cachedRecipe);
+                }
+            }
+
+            for (RecipeHolder<StoneMortarRecipe> holder : level.getRecipeManager()
+                    .getAllRecipesFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get())) {
+                StoneMortarRecipe recipe = holder.value();
+                if (!recipe.matchesInput(stack) || !canWork(recipe, level)) {
+                    continue;
+                }
+                lastRecipeID = holder.id();
+                workingInputSlot = slot;
+                checkNewRecipe = false;
                 return Optional.of(recipe);
             }
         }
@@ -120,16 +142,9 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
             return Optional.empty();
         }
 
-        Optional<RecipeHolder<StoneMortarRecipe>> recipeHolder = level.getRecipeManager()
-                .getRecipeFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get(), inventoryWrapper, level);
         checkNewRecipe = false;
-        if (recipeHolder.isPresent()) {
-            lastRecipeID = recipeHolder.get().id();
-            return Optional.of(recipeHolder.get().value());
-        }
-
         lastRecipeID = null;
-        checkNewRecipe = false;
+        workingInputSlot = -1;
         return Optional.empty();
     }
 
@@ -177,6 +192,13 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         if (level == null) {
             return false;
         }
+        if (workingInputSlot < 0 || workingInputSlot >= 4) {
+            return false;
+        }
+        ItemStack inputStack = inventory.getStackInSlot(workingInputSlot);
+        if (!recipe.matchesInput(inputStack)) {
+            return false;
+        }
 
         ++recipeTime;
         recipeTimeTotal = recipe.getRecipeTime();
@@ -208,19 +230,14 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
             trackRecipeExperience(lastRecipeID);
         }
 
-        for (int i = 0; i < 4; ++i) {
-            ItemStack slotStack = inventory.getStackInSlot(i);
-            if (slotStack.hasCraftingRemainingItem()) {
-                double x = worldPosition.getX() + 0.5;
-                double y = worldPosition.getY() + 0.7;
-                double z = worldPosition.getZ() + 0.5;
-                LevelUtil.spawnItemEntity(level, inventory.getStackInSlot(i).getCraftingRemainingItem(), x, y, z, 0F,
-                        0.25F,
-                        0F);
-            }
-            if (!slotStack.isEmpty()) {
-                slotStack.shrink(1);
-            }
+        if (inputStack.hasCraftingRemainingItem()) {
+            double x = worldPosition.getX() + 0.5;
+            double y = worldPosition.getY() + 0.7;
+            double z = worldPosition.getZ() + 0.5;
+            LevelUtil.spawnItemEntity(level, inputStack.getCraftingRemainingItem(), x, y, z, 0F, 0.25F, 0F);
+        }
+        if (!inputStack.isEmpty()) {
+            inputStack.shrink(recipe.getInputCount());
         }
         return true;
     }
@@ -354,5 +371,3 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     }
 
 }
-
-

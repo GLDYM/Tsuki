@@ -1,11 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "tag": "c:grain/wheat"
-    }
-  ],
+  "ingredient": {
+    "tag": "c:grain/wheat"
+  },
   "recipeTime": 200,
   "results": [
     {

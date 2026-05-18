@@ -1,11 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "tag": "c:crops/sugar_cane"
-    }
-  ],
+  "ingredient": {
+    "tag": "c:crops/sugar_cane"
+  },
   "recipeTime": 200,
   "results": [
     {

@@ -1,16 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    [
-      {
-        "item": "minecraft:charcoal"
-      },
-      {
-        "item": "tsuki:bamboo_charcoal"
-      }
-    ],
-    [
+  "ingredient": {
+    "count": 2,
+    "ingredient": [
       {
         "item": "minecraft:charcoal"
       },
@@ -18,7 +11,7 @@
         "item": "tsuki:bamboo_charcoal"
       }
     ]
-  ],
+  },
   "recipeTime": 200,
   "results": [
     {

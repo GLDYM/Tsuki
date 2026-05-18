@@ -1,11 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "tag": "c:stones"
-    }
-  ],
+  "ingredient": {
+    "tag": "c:stones"
+  },
   "recipeTime": 200,
   "results": [
     {

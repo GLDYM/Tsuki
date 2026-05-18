@@ -1,11 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "tag": "c:gravels"
-    }
-  ],
+  "ingredient": {
+    "tag": "c:gravels"
+  },
   "recipeTime": 200,
   "results": [
     {

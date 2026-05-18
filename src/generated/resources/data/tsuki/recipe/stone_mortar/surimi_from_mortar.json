@@ -1,11 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "tag": "c:fishes"
-    }
-  ],
+  "ingredient": {
+    "tag": "c:fishes"
+  },
   "recipeTime": 200,
   "results": [
     {

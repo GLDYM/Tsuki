@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_minced_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:minced_meat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:burger_raw"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_minced_meat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:burger_raw"
+    ]
+  }
+}

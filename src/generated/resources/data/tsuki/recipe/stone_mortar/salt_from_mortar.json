@@ -1,11 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "tag": "c:cobblestones"
-    }
-  ],
+  "ingredient": {
+    "tag": "c:cobblestones"
+  },
   "recipeTime": 200,
   "results": [
     {

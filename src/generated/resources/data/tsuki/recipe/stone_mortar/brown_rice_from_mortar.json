@@ -1,20 +1,10 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    {
-      "tag": "c:seeds/rice"
-    },
-    {
-      "tag": "c:seeds/rice"
-    },
-    {
-      "tag": "c:seeds/rice"
-    },
-    {
-      "tag": "c:seeds/rice"
-    }
-  ],
+  "ingredient": {
+    "count": 4,
+    "tag": "c:seeds/rice"
+  },
   "recipeTime": 200,
   "results": [
     {

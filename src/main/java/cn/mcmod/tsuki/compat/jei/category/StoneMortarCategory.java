@@ -67,14 +67,19 @@ public class StoneMortarCategory implements IRecipeCategory<StoneMortarRecipe> {
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, StoneMortarRecipe recipe, IFocusGroup focuses) {
         NonNullList<Ingredient> recipeIngredients = recipe.getIngredients();
-        int borderSlotSize = 18;
-        for (int row = 0; row < 2; ++row) {
-            for (int column = 0; column < 2; ++column) {
-                int inputIndex = row * 2 + column;
-                if (inputIndex < recipeIngredients.size()) {
-                    builder.addSlot(RecipeIngredientRole.INPUT, 1 + column * borderSlotSize, 14 + row * borderSlotSize)
-                            .addIngredients(recipeIngredients.get(inputIndex));
+        if (!recipeIngredients.isEmpty()) {
+            Ingredient ingredient = recipeIngredients.get(0);
+            ItemStack[] stacks = ingredient.getItems();
+            if (stacks.length > 0) {
+                List<ItemStack> countedStacks = new ArrayList<>();
+                for (ItemStack stack : stacks) {
+                    ItemStack copy = stack.copy();
+                    copy.setCount(recipe.getInputCount());
+                    countedStacks.add(copy);
                 }
+                builder.addSlot(RecipeIngredientRole.INPUT, 1, 14).addItemStacks(countedStacks);
+            } else {
+                builder.addSlot(RecipeIngredientRole.INPUT, 1, 14).addIngredients(ingredient);
             }
         }
         builder.addSlot(RecipeIngredientRole.OUTPUT, 66, 5).addItemStack(recipe.getResultItemList().get(0));

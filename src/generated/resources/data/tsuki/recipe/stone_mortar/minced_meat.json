@@ -1,22 +1,9 @@
 {
   "type": "tsuki:stone_mortar",
   "experience": 0,
-  "ingredients": [
-    [
-      {
-        "tag": "c:raw_chicken"
-      },
-      {
-        "tag": "c:raw_pork"
-      },
-      {
-        "tag": "c:raw_beef"
-      },
-      {
-        "tag": "c:raw_mutton"
-      }
-    ],
-    [
+  "ingredient": {
+    "count": 2,
+    "ingredient": [
       {
         "tag": "c:raw_chicken"
       },
@@ -30,7 +17,7 @@
         "tag": "c:raw_mutton"
       }
     ]
-  ],
+  },
   "recipeTime": 200,
   "results": [
     {

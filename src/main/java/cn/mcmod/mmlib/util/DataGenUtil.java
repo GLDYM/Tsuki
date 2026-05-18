@@ -21,6 +21,7 @@ import com.mojang.serialization.JsonOps;
 
 import cn.mcmod.mmlib.fluid.FluidIngredient;
 import cn.mcmod.mmlib.recipe.ChanceResult;
+import cn.mcmod.mmlib.recipe.CountedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.lang.reflect.ParameterizedType;
@@ -41,6 +42,7 @@ public final class DataGenUtil {
                 .registerTypeAdapter(ChanceResult.class, new ChanceResultAdapter())
                 .registerTypeAdapter(FluidStack.class, new FluidStackAdapter())
                 .registerTypeAdapter(FluidIngredient.class, new FluidIngredientAdapter())
+                .registerTypeAdapter(CountedIngredient.class, new CountedIngredientAdapter())
                 .registerTypeAdapter(NonNullList.class, new NonNullListAdapter())
                 .create();
     }
@@ -175,6 +177,45 @@ public final class DataGenUtil {
                 array.add(context.serialize(element));
             }
             return array;
+        }
+    }
+
+    private static final class CountedIngredientAdapter implements JsonSerializer<CountedIngredient>,
+            JsonDeserializer<CountedIngredient> {
+        @Override
+        public CountedIngredient deserialize(JsonElement json, Type typeOfT,
+                JsonDeserializationContext context) throws JsonParseException {
+            if (!json.isJsonObject()) {
+                Ingredient ingredient = context.deserialize(json, Ingredient.class);
+                return new CountedIngredient(ingredient, 1);
+            }
+
+            JsonObject object = json.getAsJsonObject();
+            int count = object.has("count") ? object.get("count").getAsInt() : 1;
+
+            JsonObject ingredientObject = object.deepCopy();
+            ingredientObject.remove("count");
+            Ingredient ingredient = context.deserialize(ingredientObject, Ingredient.class);
+            return new CountedIngredient(ingredient, count);
+        }
+
+        @Override
+        public JsonElement serialize(CountedIngredient src, Type typeOfSrc,
+                JsonSerializationContext context) {
+            JsonElement ingredientJson = context.serialize(src.ingredient(), Ingredient.class);
+            JsonObject object;
+            if (ingredientJson != null && ingredientJson.isJsonObject()) {
+                object = ingredientJson.getAsJsonObject().deepCopy();
+            } else {
+                object = new JsonObject();
+                if (ingredientJson != null) {
+                    object.add("ingredient", ingredientJson);
+                }
+            }
+            if (src.count() != 1) {
+                object.addProperty("count", src.count());
+            }
+            return object;
         }
     }
 }
