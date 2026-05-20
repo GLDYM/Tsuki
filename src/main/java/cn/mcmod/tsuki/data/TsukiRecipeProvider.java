@@ -1496,9 +1496,9 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO))
             .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()))
             .save(consumer);
-        this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, () -> Items.BAMBOO)
-            .unlockedBy("has_item", has(Items.BAMBOO))
-            .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_from_vanilla_bamboo"));
+        // this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK, () -> Items.BAMBOO)
+        //     .unlockedBy("has_item", has(Items.BAMBOO))
+        //     .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "bamboo_block_from_vanilla_bamboo"));
         this.makeIngotToBlock(BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT))
             .unlockedBy("has_item", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()))
             .save(consumer);
