@@ -1,7 +1,7 @@
 {
   "conditions": [
     {
-      "chance": 0.0625,
+      "chance": 0.625,
       "condition": "minecraft:random_chance"
     },
     {
@@ -16,9 +16,10 @@
       }
     },
     {
-      "block": "minecraft:tall_grass",
-      "condition": "minecraft:block_state_property"
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/tall_grass"
     }
   ],
-  "type": "tsuki:grass_drops"
+  "table": "tsuki:gameplay/seed_drop",
+  "type": "neoforge:add_table"
 }

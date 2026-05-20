@@ -1,0 +1,76 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:cabbage_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:eggplant_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:onion_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:radish_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:tomato_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:rice_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:rapeseeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:taro"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:buckwheat"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:soybean"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:red_bean"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:grape_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:hop"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:vanilla_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:pepper_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:sunflower_seeds"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "tsuki:gameplay/seed_drop"
+}

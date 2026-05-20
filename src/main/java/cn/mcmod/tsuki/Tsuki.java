@@ -8,7 +8,6 @@ import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 
 import cn.mcmod.tsuki.init.CreativeModeTabRegistry;
 import cn.mcmod.tsuki.init.EntityTypeRegistry;
-import cn.mcmod.tsuki.init.LootModifiterRegistry;
 import cn.mcmod.tsuki.init.MenuTypeRegistry;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.SoundEventRegistry;
@@ -85,7 +84,6 @@ public class Tsuki {
         ParticleRegistry.PARTICLE_TYPES.register(modEventBus);
         MenuTypeRegistry.CONTAINER_TYPES.register(modEventBus);
         MobEffectRegistry.MOB_EFFECTS.register(modEventBus);
-        LootModifiterRegistry.GLM.register(modEventBus);
         RecipeTypeRegistry.RECIPE_TYPES.register(modEventBus);
         RecipeTypeRegistry.RECIPE_SERIALIZERS.register(modEventBus);
         FeatureTypeRegistry.FEATURES.register(modEventBus);

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:fishing",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:shrimp"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:bonito"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "tsuki:bamboo_shoot"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "tsuki:gameplay/fishing/tsuki_fish"
+}

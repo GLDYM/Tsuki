@@ -66,6 +66,6 @@
       "condition": "minecraft:random_chance"
     }
   ],
-  "lootTable": "tsuki:curry_powder",
-  "type": "tsuki:add_loot_table"
+  "table": "tsuki:curry_powder",
+  "type": "neoforge:add_table"
 }

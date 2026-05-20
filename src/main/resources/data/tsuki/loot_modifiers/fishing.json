@@ -22,5 +22,6 @@
       ]
     }
   ],
-  "type": "tsuki:fishing_modifiter"
+  "table": "tsuki:gameplay/fishing/tsuki_fish",
+  "type": "neoforge:add_table"
 }

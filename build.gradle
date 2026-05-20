@@ -177,9 +177,9 @@ dependencies {
 
     // Dev Tools
     // MCMOD Export Tool
-    // runtimeOnly "curse.maven:let-me-see-see-your-code-1229018:6777654"
+    runtimeOnly "curse.maven:let-me-see-see-your-code-1229018:6777654"
     // Loot Info
-    // runtimeOnly "curse.maven:advanced-loot-info-1205426:7938903"
+    runtimeOnly "curse.maven:advanced-loot-info-1205426:7938903"
     // We need a tech mod to test fluid.
     runtimeOnly "curse.maven:create-328085:7963363"
 
