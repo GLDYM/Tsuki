@@ -1,0 +1,45 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "youkaisfeasts"
+    }
+  ],
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 250,
+    "fluid": "youkaisfeasts:soy_sauce"
+  },
+  "ingredients": [
+    {
+      "tag": "c:crops/soybean"
+    },
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "youkaisfeasts:tofu"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "recipeTime": 400,
+  "result": {
+    "count": 2,
+    "id": "youkaisfeasts:miso_soup"
+  }
+}

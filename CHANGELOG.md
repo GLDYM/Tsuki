@@ -1,5 +1,25 @@
 # Changelog
 
+# Tsuki 1.4.3
+
+## Feature
+
+- Make all loot tables data-driven
+- Add tooltip to the Shaker
+- Change the logic of the Stone Mortar
+- \[WIP!\] Add new models
+
+## Compat
+
+- The Japanese Cooking Pot could cook Kaileidoscope's Stir-fry Pot Recipe & Youkai's Feasts Recipe
+- The Cutting Board could process Farmer's Delight's & Kaleidoscope's Cutting Board Recipe
+
+## Bug Fix
+
+- Remove minecraft:bamboo -> tsuki:bamboo_block
+- Slightly change the language
+
+
 # Tsuki 1.4.2
 
 ## Feature

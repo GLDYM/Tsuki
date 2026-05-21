@@ -16,7 +16,7 @@ The Stone Mortar<ItemImage id="tsuki:stone_mortar" scale="0.6"/> will start work
 
 ## Usage
 
-The Stone Mortar has 4 input slots and 2 output slots. It works similar to a crafting table, only working when all 4 slots match a recipe. (This may be changed in the future.)
+The Stone Mortar has 4 input slots and 2 output slots. It scans input slots from left to right, top to bottom, attempting to match recipes. Once a recipe is matched, the Stone Mortar records it. Only after processing all inputs that match the recorded recipe will it clear the record and attempt to match the next recipe.
 
 ## Automation
 
