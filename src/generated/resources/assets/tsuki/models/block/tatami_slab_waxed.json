@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/slab",
+  "parent": "tsuki:block/facing_slab",
   "textures": {
     "bottom": "tsuki:block/tatami",
     "side": "tsuki:block/tatami",

@@ -1,5 +1,12 @@
 # Changelog
 
+# Tsuki 1.4.4
+
+## Bug Fix
+
+- The FacingSlab renders a wrong model.
+- The loot tables of slabs are all wrong.
+
 # Tsuki 1.4.3
 
 ## Feature
@@ -18,7 +25,6 @@
 
 - Remove minecraft:bamboo -> tsuki:bamboo_block
 - Slightly change the language
-
 
 # Tsuki 1.4.2
 

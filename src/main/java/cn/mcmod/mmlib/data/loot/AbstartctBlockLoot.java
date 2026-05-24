@@ -23,7 +23,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.fml.util.ObfuscationReflectionHelper;
 
 public abstract class AbstartctBlockLoot extends BlockLootSubProvider {
-    
+
 	private final Set<Block> knownBlocks = new HashSet<>();
 	// [VanillaCopy] super
 	public static final float[] DEFAULT_SAPLING_DROP_RATES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
@@ -42,9 +42,9 @@ public abstract class AbstartctBlockLoot extends BlockLootSubProvider {
         super.add(block, builder);
         knownBlocks.add(block);
     }
-    
+
     public abstract void addTables();
-    
+
     @Override
     protected void generate() {
         this.addTables();

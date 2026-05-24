@@ -307,33 +307,33 @@ public class BlockRegistry {
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.COLOR_GRAY)));
 
     public static final DeferredBlock<Block> TATAMI = BLOCKS.register("tatami",
-            () -> new TatamiBlock(BlockBehaviour.Properties.of()));
+            () -> new TatamiBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_WAXED = BLOCKS.register("tatami_waxed",
-            () -> new BaseHorizonBlock(BlockBehaviour.Properties.of()));
+            () -> new BaseHorizonBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_SUNBURNT = BLOCKS.register("tatami_sunburnt",
-            () -> new BaseHorizonBlock(BlockBehaviour.Properties.of()));
+            () -> new BaseHorizonBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<FacingSlab> TATAMI_SLAB = BLOCKS.register("tatami_slab",
-            () -> new TatamiSlabBlock(BlockBehaviour.Properties.of()));
+            () -> new TatamiSlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<FacingSlab> TATAMI_SLAB_WAXED = BLOCKS.register("tatami_slab_waxed",
-            () -> new FacingSlab(BlockBehaviour.Properties.of()));
+            () -> new FacingSlab(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<FacingSlab> TATAMI_SLAB_SUNBURNT = BLOCKS.register("tatami_slab_sunburnt",
-            () -> new FacingSlab(BlockBehaviour.Properties.of()));
+            () -> new FacingSlab(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_STAIRS = BLOCKS.register("tatami_stairs",
             () -> new TatamiStairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_STAIRS_WAXED = BLOCKS.register("tatami_stairs_waxed",
             () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_STAIRS_SUNBURNT = BLOCKS.register("tatami_stairs_sunburnt",
             () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.SAND).strength(0.5F).sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_CARPET = BLOCKS.register("tatami_carpet",
             () -> new CarpetBlock(
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)
                             .sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_CARPET_NS = BLOCKS.register("tatami_ns_carpet",
             () -> new CarpetBlock(
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)
                             .sound(SoundType.GRASS)));
     public static final DeferredBlock<Block> TATAMI_CARPET_TAN = BLOCKS.register("tatami_tan_carpet",
             () -> new CarpetBlock(

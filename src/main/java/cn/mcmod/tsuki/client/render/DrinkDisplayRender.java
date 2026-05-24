@@ -64,6 +64,7 @@ public class DrinkDisplayRender implements BlockEntityRenderer<DrinkDisplayBlock
         return DISPLAY_SCALE;
     }
 
+    // TODO: 放置玻璃瓶的逻辑还没实现，而且玻璃瓶容易冲突，大概需要个新的
     private BakedModel getRenderModel(ItemRenderer itemRenderer, ItemStack stack) {
         if (stack.is(Items.GLASS_BOTTLE)) {
             return Minecraft.getInstance().getModelManager().getModel(EMPTY_GLASS_BOTTLE_MODEL);

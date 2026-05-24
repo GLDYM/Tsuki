@@ -18,7 +18,7 @@ public class FacingSlab extends SlabBlock {
         super(prop);
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
-    
+
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos pos = context.getClickedPos();
@@ -26,10 +26,10 @@ public class FacingSlab extends SlabBlock {
         BlockState state = world.getBlockState(pos);
         if (state.is(this) && state.getValue(SlabBlock.TYPE) == SlabType.TOP) {
             return super.getStateForPlacement(context).setValue(FACING, state.getValue(FACING));
-         }else 
+        } else
             return super.getStateForPlacement(context).setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
-    
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);

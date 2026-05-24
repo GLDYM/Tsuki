@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -46,10 +47,15 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                 .getEntries()
                 .forEach(
                         block -> {
+                            if (block.get() instanceof SlabBlock) {
+                                registerSlab((SlabBlock) block.get());
+                            }
+
                             if (!(block.get() instanceof LeavesBlock)
                                     && !(block.get() instanceof CropBlock)
                                     && !(block.get() instanceof TeishokuBlock)
                                     && !(block.get() instanceof RiceCropRoot)
+                                    && !(block.get() instanceof SlabBlock)
                                     && block.get() != BlockRegistry.MAPLE_SAP_LOG.get()
                                     && block.get() != BlockRegistry.CHESTNUT_BURR.get()
                                     && block.get() != BlockRegistry.FUTON.get()
@@ -65,7 +71,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                                     && block.get() != BlockRegistry.SHOJI_2.get()
                                     && block.get() != BlockRegistry.SHOJI_3.get()
                                     && block.get() != BlockRegistry.SHOJI_4.get()
-                                    && block.get() != BlockRegistry.SHOJI_5.get()) {
+                                    && block.get() != BlockRegistry.SHOJI_5.get()
+                            ) {
                                 if (block.get() instanceof BambooPlant) {
                                     this.dropOther(block.get(),
                                             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
@@ -164,6 +171,20 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         createCrop(BlockRegistry.WILD_VANILLA.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
                 ItemRegistry.VANILLA_SEEDS.get(), 7);
         createSunflowerCrop(BlockRegistry.SUNFLOWER_CROP.get());
+
+        // Handle Slabs
+        // createSlabItemTable(BlockRegistry.BAMBOO_BLOCK_SLAB.get());
+        // createSlabItemTable(BlockRegistry.BAMBOO_BLOCK_SUNBURNT_SLAB.get());
+        // createSlabItemTable(BlockRegistry.SAKURA_PLANK_SLAB.get());
+        // createSlabItemTable(BlockRegistry.MAPLE_PLANK_SLAB.get());
+        // createSlabItemTable(BlockRegistry.UME_PLANK_SLAB.get());
+        // createSlabItemTable(BlockRegistry.BAMBOO_PLANK_SLAB.get());
+        // createSlabItemTable(BlockRegistry.STRAW_BLOCK_SLAB.get());
+        // createSlabItemTable(BlockRegistry.TATAMI_SLAB.get());
+        // createSlabItemTable(BlockRegistry.TATAMI_SLAB_WAXED.get());
+        // createSlabItemTable(BlockRegistry.TATAMI_SLAB_SUNBURNT.get());
+        // createSlabItemTable(BlockRegistry.KAWARA_SLAB.get());
+        // createSlabItemTable(BlockRegistry.KAWARA_SLAB_ALTER.get());
     }
 
     private void createTeishoku(Block block) {

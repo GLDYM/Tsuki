@@ -1,5 +1,6 @@
 package cn.mcmod.tsuki.data.client;
 
+import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.decoration.FutonBlock;
 import cn.mcmod.tsuki.block.food.TeishokuBlock;
 import cn.mcmod.tsuki.block.machine.TataraBlock;
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -323,12 +325,32 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(empty).build());
     }
 
-    private void facingSlabBlock(Block slab,
-            ResourceLocation side,
-            ResourceLocation top,
-            ResourceLocation bottom) {
-        simpleBlock(slab, models().slab(name(slab), side, bottom, top));
-        simpleBlockItem(slab, models().slab(name(slab), side, bottom, top));
+    public void facingSlabBlock(SlabBlock block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        facingSlabBlock(block,
+                models().withExistingParent(name(block), ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "block/facing_slab"))
+                .texture("side", side)
+                .texture("bottom", bottom)
+                .texture("top", top),
+                models().withExistingParent(name(block) + "_top", ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "block/facing_slab_top"))
+                .texture("side", side)
+                .texture("bottom", bottom)
+                .texture("top", top),
+                models().withExistingParent(name(block) + "_double", ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "block/facing_block"))
+                .texture("side", side)
+                .texture("bottom", bottom)
+                .texture("top", top)
+        );
+    }
+
+    public void facingSlabBlock(SlabBlock block, ModelFile bottom, ModelFile top, ModelFile doubleslab) {
+        getVariantBuilder(block)
+            .forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(
+                        state.getValue(SlabBlock.TYPE) == SlabType.DOUBLE ? doubleslab :
+                            state.getValue(SlabBlock.TYPE) == SlabType.BOTTOM ? bottom : top)
+                .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360)
+                .build()
+            );
     }
 
     private void crossBlock(Block block) {
