@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "youkaishomecoming"
+    }
+  ],
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 250,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:tofu"
+    },
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "tag": "c:foods/vegetable"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "tag": "c:foods/raw_eel"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "count": 2,
+    "id": "youkaishomecoming:shirayuki"
+  }
+}

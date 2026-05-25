@@ -1,0 +1,51 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "youkaishomecoming"
+    }
+  ],
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 250,
+    "fluidTag": "c:water/water"
+  },
+  "ingredients": [
+    {
+      "item": "youkaishomecoming:bowl_of_cream"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "tag": "c:foods/tomato"
+    },
+    {
+      "tag": "c:foods/tomato"
+    },
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:foods/raw_beef"
+    }
+  ],
+  "recipeTime": 400,
+  "result": {
+    "count": 2,
+    "id": "youkaishomecoming:borscht"
+  }
+}

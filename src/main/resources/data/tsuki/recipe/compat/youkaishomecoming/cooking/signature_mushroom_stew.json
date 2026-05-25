@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "youkaishomecoming"
+    }
+  ],
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 250,
+    "fluid": "youkaishomecoming:soy_sauce"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:red_mushroom"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "tag": "c:mushrooms"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "count": 1,
+    "id": "youkaishomecoming:signature_mushroom_stew"
+  }
+}

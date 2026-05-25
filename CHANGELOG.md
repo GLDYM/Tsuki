@@ -2,6 +2,10 @@
 
 # Tsuki 1.4.4
 
+## Compat
+
+- Support Youkai's homecoming unofficial.
+
 ## Bug Fix
 
 - The FacingSlab renders a wrong model.
