@@ -36,6 +36,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.Shapes;
 
 import javax.annotation.Nullable;
 
@@ -119,15 +120,25 @@ public class ShojiBlock extends BaseEntityBlock {
     @Override
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos,
             CollisionContext context) {
-        if (state.getValue(OPEN)) {
-            return switch (state.getValue(FACING)) {
-                case NORTH -> SHAPE_OPEN_NORTH;
-                case SOUTH -> SHAPE_OPEN_SOUTH;
-                case WEST -> SHAPE_OPEN_WEST;
-                case EAST -> SHAPE_OPEN_EAST;
-                default -> SHAPE_NS;
-            };
-        }
+        return state.getValue(OPEN) ? getOpenInteractionShape(state.getValue(FACING)) : getClosedShape(state);
+    }
+
+    @Override
+    public VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return state.getValue(OPEN) ? getOpenInteractionShape(state.getValue(FACING)) : getClosedShape(state);
+    }
+
+    @Override
+    protected VoxelShape getBlockSupportShape(BlockState state, BlockGetter level, BlockPos pos) {
+        return Shapes.empty();
+    }
+
+    @Override
+    protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return Shapes.empty();
+    }
+
+    private static VoxelShape getClosedShape(BlockState state) {
         Direction facing = state.getValue(FACING);
         return (facing == Direction.NORTH || facing == Direction.SOUTH) ? SHAPE_NS : SHAPE_EW;
     }

@@ -2,6 +2,10 @@
 
 # Tsuki 1.4.5
 
+## Feature
+
+- Shoji could be interactive in the adjacent blocka when opening.
+
 ## Bug Fix
 
 - Stone Mortar Parser cannot parse list ingredients.

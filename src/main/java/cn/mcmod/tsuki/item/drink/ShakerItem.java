@@ -350,7 +350,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
     private boolean isAnimatedPerspective(ItemDisplayContext perspective) {
         return perspective == ItemDisplayContext.FIRST_PERSON_LEFT_HAND
                 || perspective == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND;
-                // TODO: enable third person shaking animation after fixing the held item transform
+                // TODO: enable third person shaking animation after fixing the held item transform. Seem we need PAL Lib to do this.
                 // || perspective == ItemDisplayContext.THIRD_PERSON_LEFT_HAND
                 // || perspective == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
     }
