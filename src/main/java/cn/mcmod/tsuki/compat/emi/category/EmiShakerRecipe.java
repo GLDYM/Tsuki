@@ -34,7 +34,8 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
 
     private final ShakerRecipe recipe;
 
-    private EmiShakerRecipe(ResourceLocation id, ShakerRecipe recipe, List<EmiIngredient> inputs, List<EmiStack> outputs) {
+    private EmiShakerRecipe(ResourceLocation id, ShakerRecipe recipe, List<EmiIngredient> inputs,
+            List<EmiStack> outputs) {
         super(CATEGORY, id, WIDTH, HEIGHT);
         this.recipe = recipe;
         this.inputs = inputs;

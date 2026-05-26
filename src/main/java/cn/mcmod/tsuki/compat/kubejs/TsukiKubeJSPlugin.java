@@ -16,10 +16,14 @@ public class TsukiKubeJSPlugin implements KubeJSPlugin {
     public void registerRecipeSchemas(RecipeSchemaRegistry registry) {
         var namespace = registry.namespace(Tsuki.MODID);
         namespace.register(RecipeTypeRegistry.COOKING_RECIPE_SERIALIZER.getId().getPath(), CookingRecipeSchema.SCHEMA);
-        namespace.register(RecipeTypeRegistry.STONE_MORTAR_RECIPE_SERIALIZER.getId().getPath(), StoneMortarRecipeSchema.SCHEMA);
-        namespace.register(RecipeTypeRegistry.FERMENTER_RECIPE_SERIALIZER.getId().getPath(), FermentingRecipeSchema.SCHEMA);
-        namespace.register(RecipeTypeRegistry.DISTILLER_RECIPE_SERIALIZER.getId().getPath(), DistillationRecipeSchema.SCHEMA);
+        namespace.register(RecipeTypeRegistry.STONE_MORTAR_RECIPE_SERIALIZER.getId().getPath(),
+                StoneMortarRecipeSchema.SCHEMA);
+        namespace.register(RecipeTypeRegistry.FERMENTER_RECIPE_SERIALIZER.getId().getPath(),
+                FermentingRecipeSchema.SCHEMA);
+        namespace.register(RecipeTypeRegistry.DISTILLER_RECIPE_SERIALIZER.getId().getPath(),
+                DistillationRecipeSchema.SCHEMA);
         namespace.register(RecipeTypeRegistry.SHAKER_RECIPE_SERIALIZER.getId().getPath(), ShakerRecipeSchema.SCHEMA);
-        namespace.register(RecipeTypeRegistry.CHOPPING_RECIPE_SERIALIZER.getId().getPath(), ChoppingRecipeSchema.SCHEMA);
+        namespace.register(RecipeTypeRegistry.CHOPPING_RECIPE_SERIALIZER.getId().getPath(),
+                ChoppingRecipeSchema.SCHEMA);
     }
 }

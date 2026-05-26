@@ -24,8 +24,6 @@ public class SheathItem extends Item {
         super(properties.durability(Tiers.WOOD.getUses()));
     }
 
-
-    
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack sheathStack = player.getItemInHand(hand);

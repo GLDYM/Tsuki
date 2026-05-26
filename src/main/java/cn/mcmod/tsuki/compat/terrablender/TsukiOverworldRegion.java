@@ -21,12 +21,12 @@ public class TsukiOverworldRegion extends Region {
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
         addModifiedVanillaOverworldBiomes(mapper, builder -> {
             RegionUtils.getVanillaParameterPoints(Biomes.FOREST).stream()
-                .filter(TsukiOverworldRegion::isStrictInlandSurfacePoint)
-                .forEach(point -> builder.replaceBiome(point, TsukiBiomeRegistry.MAPLE_FOREST));
+                    .filter(TsukiOverworldRegion::isStrictInlandSurfacePoint)
+                    .forEach(point -> builder.replaceBiome(point, TsukiBiomeRegistry.MAPLE_FOREST));
 
             RegionUtils.getVanillaParameterPoints(Biomes.BIRCH_FOREST).stream()
-                .filter(TsukiOverworldRegion::isStrictInlandSurfacePoint)
-                .forEach(point -> builder.replaceBiome(point, TsukiBiomeRegistry.MAPLE_FOREST));
+                    .filter(TsukiOverworldRegion::isStrictInlandSurfacePoint)
+                    .forEach(point -> builder.replaceBiome(point, TsukiBiomeRegistry.MAPLE_FOREST));
         });
     }
 
@@ -39,7 +39,7 @@ public class TsukiOverworldRegion extends Region {
         boolean notCoastOrOcean = point.continentalness().max() > coastUpper;
         boolean surfaceLike = point.depth().max() >= 0L;
         boolean avoidExtremeSlices = point.weirdness().min() > -maxAllowedWeirdness
-            && point.weirdness().max() < maxAllowedWeirdness;
+                && point.weirdness().max() < maxAllowedWeirdness;
         return inlandEnough && notCoastOrOcean && surfaceLike && avoidExtremeSlices;
     }
 }

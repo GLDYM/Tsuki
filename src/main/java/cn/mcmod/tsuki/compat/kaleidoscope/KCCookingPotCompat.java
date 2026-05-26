@@ -242,4 +242,3 @@ public final class KCCookingPotCompat {
         Tsuki.getLogger().info("[KC Stockpot Compat] " + message, args);
     }
 }
-

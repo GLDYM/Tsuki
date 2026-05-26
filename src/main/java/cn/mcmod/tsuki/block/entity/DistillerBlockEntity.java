@@ -413,5 +413,3 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
 }
-
-

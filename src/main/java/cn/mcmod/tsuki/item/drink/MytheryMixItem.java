@@ -18,17 +18,17 @@ import net.minecraft.world.item.Rarity;
 public class MytheryMixItem extends DrinkItem {
     public MytheryMixItem() {
         super(
-            Tsuki.defaultItemProperties().rarity(Rarity.EPIC),
-            DrinkRegistry::cupBlock,
-            () -> Items.GLASS_BOTTLE,
-            true,
-            Component.translatable("item.tsuki.mythery_mix.tooltip").withStyle(ChatFormatting.GRAY),
-            new MobEffectInstance(MobEffectRegistry.SEIRAN, 140, 0)
-        );
+                Tsuki.defaultItemProperties().rarity(Rarity.EPIC),
+                DrinkRegistry::cupBlock,
+                () -> Items.GLASS_BOTTLE,
+                true,
+                Component.translatable("item.tsuki.mythery_mix.tooltip").withStyle(ChatFormatting.GRAY),
+                new MobEffectInstance(MobEffectRegistry.SEIRAN, 140, 0));
     }
 
     @Override
-    public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
+    public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target,
+            InteractionHand hand) {
         if (!target.isAlive()) {
             return InteractionResult.PASS;
         }

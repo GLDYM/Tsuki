@@ -13,9 +13,11 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 public interface FermentingRecipeSchema {
-    RecipeKey<List<Ingredient>> INGREDIENTS = IngredientComponent.INGREDIENT.instance().asListOrSelf().inputKey("ingredients");
+    RecipeKey<List<Ingredient>> INGREDIENTS = IngredientComponent.INGREDIENT.instance().asListOrSelf()
+            .inputKey("ingredients");
     RecipeKey<FluidStack> FLUID = FluidStackComponent.FLUID_STACK.inputKey("fluid");
-    RecipeKey<List<ItemStack>> RESULTS = ListRecipeComponent.create(ItemStackComponent.ITEM_STACK.instance(), false, true).outputKey("results").optional(List.of());
+    RecipeKey<List<ItemStack>> RESULTS = ListRecipeComponent
+            .create(ItemStackComponent.ITEM_STACK.instance(), false, true).outputKey("results").optional(List.of());
     RecipeKey<FluidStack> RESULT_FLUID = FluidStackComponent.FLUID_STACK.outputKey("result_fluid");
     RecipeKey<Integer> RECIPE_TIME = NumberComponent.INT.otherKey("recipeTime").optional(400);
     RecipeKey<Float> EXPERIENCE = NumberComponent.FLOAT.otherKey("experience").optional(0F);

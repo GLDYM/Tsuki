@@ -136,13 +136,15 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         Optional<RecipeHolder<ChoppingRecipe>> recipe = recipeList.stream()
                 .filter(holder -> holder.value().getTool().test(toolStack)).findFirst();
         if (!recipe.isPresent()) {
-            Optional<ChoppingRecipe> fdCompatRecipe = FDChoppingBoardCompat.findMatching(level, recipeWrapper, toolStack);
+            Optional<ChoppingRecipe> fdCompatRecipe = FDChoppingBoardCompat.findMatching(level, recipeWrapper,
+                    toolStack);
             if (fdCompatRecipe.isPresent()) {
                 lastRecipeID = null;
                 return fdCompatRecipe;
             }
 
-            Optional<ChoppingRecipe> kcCompatRecipe = KCChoppingBoardCompat.findMatching(level, recipeWrapper.getItem(0),
+            Optional<ChoppingRecipe> kcCompatRecipe = KCChoppingBoardCompat.findMatching(level,
+                    recipeWrapper.getItem(0),
                     toolStack);
             if (kcCompatRecipe.isPresent()) {
                 lastRecipeID = null;
@@ -254,4 +256,3 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         };
     }
 }
-

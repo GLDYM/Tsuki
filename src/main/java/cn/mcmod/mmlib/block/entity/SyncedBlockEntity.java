@@ -24,16 +24,17 @@ public class SyncedBlockEntity extends BlockEntity {
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
-    
+
     @Override
     public CompoundTag getUpdateTag(Provider registries) {
-    	return this.saveWithoutMetadata(registries);
+        return this.saveWithoutMetadata(registries);
     }
 
-//    @Override
-//    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
-//        load(pkt.getTag());
-//    }
+    // @Override
+    // public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket
+    // pkt) {
+    // load(pkt.getTag());
+    // }
 
     protected void inventoryChanged() {
         super.setChanged();

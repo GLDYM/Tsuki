@@ -30,7 +30,8 @@ public class TsukiCommonConfig {
                 .defineInRange("iron_sand_amount", 128, 1, 5120);
 
         mythicPickaxeExpNeeded = builder
-                .comment("Changes the experience needed to upgrade Mythic Pickaxe. Increase value to make it harder to upgrade.")
+                .comment(
+                        "Changes the experience needed to upgrade Mythic Pickaxe. Increase value to make it harder to upgrade.")
                 .translation("tsuki.config.mythic_pickaxe_exp_needed")
                 .defineInRange("mythic_pickaxe_exp_needed", 10000, 1, Integer.MAX_VALUE);
 
@@ -40,7 +41,8 @@ public class TsukiCommonConfig {
                 .define("mythic_pickaxe_allow_basic_enchant_upgrade", true);
 
         giveGuideOnFirstLogin = builder
-                .comment("Gives the Tsuki guide book to players the first time they join a world when GuideME is installed.")
+                .comment(
+                        "Gives the Tsuki guide book to players the first time they join a world when GuideME is installed.")
                 .translation("tsuki.config.give_guide_on_first_login")
                 .define("give_guide_on_first_login", true);
 

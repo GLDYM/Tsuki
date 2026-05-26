@@ -86,5 +86,3 @@ public class TsukiCompostableDataMapProvider extends DataMapProvider {
         builder.add(itemId, new Compostable(chance), false);
     }
 }
-
-

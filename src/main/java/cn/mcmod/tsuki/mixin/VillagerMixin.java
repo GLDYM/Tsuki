@@ -34,7 +34,8 @@ public abstract class VillagerMixin extends AbstractVillager {
 
         Int2ObjectMap<VillagerTrades.ItemListing[]> tradeMap;
         if (this.level().enabledFeatures().contains(FeatureFlags.TRADE_REBALANCE)) {
-            Int2ObjectMap<VillagerTrades.ItemListing[]> expMap = VillagerTrades.EXPERIMENTAL_TRADES.get(data.getProfession());
+            Int2ObjectMap<VillagerTrades.ItemListing[]> expMap = VillagerTrades.EXPERIMENTAL_TRADES
+                    .get(data.getProfession());
             tradeMap = expMap != null ? expMap : VillagerTrades.TRADES.get(data.getProfession());
         } else {
             tradeMap = VillagerTrades.TRADES.get(data.getProfession());
@@ -43,8 +44,8 @@ public abstract class VillagerMixin extends AbstractVillager {
         if (tradeMap != null && !tradeMap.isEmpty()) {
             VillagerTrades.ItemListing[] listings = tradeMap.get(data.getLevel());
             if (listings != null) {
-                VillagerTrades.ItemListing[] selected =
-                        TsukiVillagerTrades.selectFourWithAtLeastOneBuy((Villager) (Object) this, listings, this.random);
+                VillagerTrades.ItemListing[] selected = TsukiVillagerTrades
+                        .selectFourWithAtLeastOneBuy((Villager) (Object) this, listings, this.random);
                 MerchantOffers offers = this.offers;
                 this.addOffersFromItemListings(offers, selected, Math.min(4, selected.length));
             }

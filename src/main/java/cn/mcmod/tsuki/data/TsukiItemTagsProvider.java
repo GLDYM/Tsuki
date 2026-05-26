@@ -186,8 +186,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.CROPS_VANILLA).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get());
         this.tag(TsukiItemTags.CROPS_GRAPE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get());
         this.tag(TsukiItemTags.CROPS_HOP).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get());
-        this.tag(TsukiItemTags.GREEN_TEA_LEAVES).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get());
-        this.tag(TsukiItemTags.BLACK_TEA_LEAVES).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get());
+        this.tag(TsukiItemTags.GREEN_TEA_LEAVES)
+                .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get());
+        this.tag(TsukiItemTags.BLACK_TEA_LEAVES)
+                .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get());
         this.tag(TsukiItemTags.CROPS_RICE).add(ItemRegistry.RICE_SEEDS.get());
         this.tag(TsukiItemTags.CROPS_TARO).add(ItemRegistry.TARO.get());
         this.tag(TsukiItemTags.VEGETABLES_CABBAGE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get());
@@ -202,8 +204,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .addOptional(ResourceLocation.parse("farmersdelight:straw"));
         this.tag(TsukiItemTags.RICE).addTag(TsukiItemTags.RICE_BROWN).addTag(TsukiItemTags.RICE_RICE);
         this.tag(TsukiItemTags.LUMBER)
-            .addTag(TsukiItemTags.LUMBER_BAMBOO).addTag(TsukiItemTags.LUMBER_MAPLE)
-            .addTag(TsukiItemTags.LUMBER_SAKURA).addTag(TsukiItemTags.LUMBER_UME);
+                .addTag(TsukiItemTags.LUMBER_BAMBOO).addTag(TsukiItemTags.LUMBER_MAPLE)
+                .addTag(TsukiItemTags.LUMBER_SAKURA).addTag(TsukiItemTags.LUMBER_UME);
         this.tag(TsukiItemTags.LUMBER_TFC).addTag(TsukiItemTags.LUMBER);
         this.tag(TsukiItemTags.LUMBER_BAMBOO).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_BAMBOO).get());
         this.tag(TsukiItemTags.LUMBER_MAPLE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE).get());

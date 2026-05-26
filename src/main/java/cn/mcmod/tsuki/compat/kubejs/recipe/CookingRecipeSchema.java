@@ -12,7 +12,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 public interface CookingRecipeSchema {
-    RecipeKey<List<Ingredient>> INGREDIENTS = IngredientComponent.INGREDIENT.instance().asListOrSelf().inputKey("ingredients");
+    RecipeKey<List<Ingredient>> INGREDIENTS = IngredientComponent.INGREDIENT.instance().asListOrSelf()
+            .inputKey("ingredients");
     RecipeKey<FluidStack> FLUID = FluidStackComponent.FLUID_STACK.inputKey("fluid");
     RecipeKey<ItemStack> RESULT = ItemStackComponent.ITEM_STACK.outputKey("result");
     RecipeKey<ItemStack> CONTAINER = ItemStackComponent.ITEM_STACK.otherKey("container").optional(ItemStack.EMPTY);

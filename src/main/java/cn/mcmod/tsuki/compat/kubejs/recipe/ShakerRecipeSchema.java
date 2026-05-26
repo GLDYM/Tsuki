@@ -10,7 +10,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public interface ShakerRecipeSchema {
-    RecipeKey<List<Ingredient>> INGREDIENTS = IngredientComponent.INGREDIENT.instance().asListOrSelf().inputKey("ingredients");
+    RecipeKey<List<Ingredient>> INGREDIENTS = IngredientComponent.INGREDIENT.instance().asListOrSelf()
+            .inputKey("ingredients");
     RecipeKey<ItemStack> RESULT = ItemStackComponent.ITEM_STACK.outputKey("result");
     RecipeKey<Integer> SHAKE_COUNT = NumberComponent.INT.otherKey("shake_count").optional(1);
     RecipeKey<Float> EXPERIENCE = NumberComponent.FLOAT.otherKey("experience").optional(0F);

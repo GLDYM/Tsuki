@@ -22,5 +22,3 @@ public class TatamiBlock extends BaseHorizonBlock {
     }
 
 }
-
-

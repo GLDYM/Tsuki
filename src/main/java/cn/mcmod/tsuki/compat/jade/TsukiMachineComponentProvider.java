@@ -52,14 +52,16 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
 
         if (accessor.getBlockEntity() instanceof DistillerBlockEntity distiller) {
             int[] progress = readProgress(accessor, distiller.getRecipeTime(), distiller.getRecipeTimeTotal());
-            addMachineRows(tooltip, distiller.getInventory(), distiller.getInputFluidTank(), distiller.getOutputFluidTank(),
+            addMachineRows(tooltip, distiller.getInventory(), distiller.getInputFluidTank(),
+                    distiller.getOutputFluidTank(),
                     progress[0], progress[1]);
             return;
         }
 
         if (accessor.getBlockEntity() instanceof FermenterBlockEntity fermenter) {
             int[] progress = readProgress(accessor, fermenter.getRecipeTime(), fermenter.getRecipeTimeTotal());
-            addMachineRows(tooltip, fermenter.getInventory(), fermenter.getInputFluidTank(), fermenter.getOutputFluidTank(),
+            addMachineRows(tooltip, fermenter.getInventory(), fermenter.getInputFluidTank(),
+                    fermenter.getOutputFluidTank(),
                     progress[0], progress[1]);
             return;
         }
@@ -75,7 +77,8 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
         }
     }
 
-    private static void addMachineRows(ITooltip tooltip, ItemStackHandler inventory, FluidTank inputTank, FluidTank outputTank,
+    private static void addMachineRows(ITooltip tooltip, ItemStackHandler inventory, FluidTank inputTank,
+            FluidTank outputTank,
             int recipeTime, int recipeTimeTotal) {
         addItems(tooltip, List.of(
                 inventory.getStackInSlot(0),
@@ -90,7 +93,8 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
         addProgressBar(tooltip, recipeTime, recipeTimeTotal);
     }
 
-    private static void addCookingPotRows(ITooltip tooltip, CookingPotBlockEntity blockEntity, int recipeTime, int recipeTimeTotal) {
+    private static void addCookingPotRows(ITooltip tooltip, CookingPotBlockEntity blockEntity, int recipeTime,
+            int recipeTimeTotal) {
         ItemStackHandler inventory = blockEntity.getInventory();
         List<ItemStack> items = new ArrayList<>();
         for (int slot = 0; slot < 9; slot++) {
@@ -114,7 +118,6 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
             addItems(tooltip, items);
         }
 
-
         if (!display.isEmpty() && !blockEntity.getCurrentMealContainer().isEmpty()) {
             ItemStack containerStack = blockEntity.getCurrentMealContainer();
             addItemWithLabel(tooltip, containerStack, Component.translatable("tsuki.jade.cooking_pot.container"));
@@ -128,9 +131,8 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
     private static void addShakerRows(ITooltip tooltip, ShakerBlockEntity blockEntity) {
         ItemStackHandler inventory = blockEntity.getInventory();
         List<ItemStack> items = new ArrayList<>();
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
-                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
-                ++slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START; slot < ShakerDataHelper.SLOT_INPUT_START
+                + ShakerDataHelper.SLOT_INPUT_COUNT; ++slot) {
             ItemStack stack = inventory.getStackInSlot(slot);
             if (stack != null && !stack.isEmpty() && !stack.is(Items.AIR)) {
                 items.add(stack);
@@ -178,9 +180,7 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
         }
         tooltip.add(List.of(
                 ELEMENT.text(label),
-                ELEMENT.item(stack).translate(new Vec2(0F, -5.5F))
-            )
-        );
+                ELEMENT.item(stack).translate(new Vec2(0F, -5.5F))));
         tooltip.setLineMargin(-1, ScreenDirection.UP, 4);
         tooltip.setLineMargin(-1, ScreenDirection.DOWN, -5);
     }
@@ -192,17 +192,18 @@ public class TsukiMachineComponentProvider implements IBlockComponentProvider, I
                 ? JadeFluidObject.empty()
                 : JadeFluidObject.of(fluid.getFluid(), fluid.getAmount());
         FluidView fluidView = FluidView.readDefault(FluidView.writeDefault(fluidObject, tank.getCapacity()));
-        Component amountText = Component.translatable("jade.fluid.with_capacity", fluidView.current, fluidView.max).withStyle(ChatFormatting.WHITE);
+        Component amountText = Component.translatable("jade.fluid.with_capacity", fluidView.current, fluidView.max)
+                .withStyle(ChatFormatting.WHITE);
         Component fullText;
         if (fluidView.fluidName == null) {
             fullText = amountText;
         } else if (fluidObject.getType().isSame(Fluids.EMPTY)) {
             fullText = Component.translatable("jade.fluid",
                     Component.translatable("jade.fluid.empty"),
-                    fluidView.max
-                ).withStyle(ChatFormatting.GRAY);
+                    fluidView.max).withStyle(ChatFormatting.GRAY);
         } else {
-            fullText = Component.translatable("jade.fluid", fluidView.fluidName, amountText).withStyle(ChatFormatting.WHITE);
+            fullText = Component.translatable("jade.fluid", fluidView.fluidName, amountText)
+                    .withStyle(ChatFormatting.WHITE);
         }
 
         BoxStyle boxStyle = BoxStyle.getNestedBox();

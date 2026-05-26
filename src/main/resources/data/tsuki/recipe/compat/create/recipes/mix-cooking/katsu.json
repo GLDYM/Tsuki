@@ -1,4 +1,11 @@
 {
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "create:mixing",
   "heatRequirement": "heated",
   "ingredients": [
     {
@@ -16,17 +23,10 @@
       "type": "neoforge:tag"
     }
   ],
-  "neoforge:conditions": [
-    {
-      "modid": "create",
-      "type": "neoforge:mod_loaded"
-    }
-  ],
   "results": [
     {
       "count": 2,
       "id": "tsuki:katsu"
     }
-  ],
-  "type": "create:mixing"
+  ]
 }

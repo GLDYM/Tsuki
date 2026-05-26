@@ -55,7 +55,8 @@ public class DistillerBlock extends BaseEntityBlock {
 
     public DistillerBlock() {
         this(BlockBehaviour.Properties.of());
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TRAY_SUPPORT, false));
+        this.registerDefaultState(
+                this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TRAY_SUPPORT, false));
     }
 
     @Override

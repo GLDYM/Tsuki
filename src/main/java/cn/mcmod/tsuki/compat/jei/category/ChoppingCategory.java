@@ -107,5 +107,3 @@ public class ChoppingCategory implements IRecipeCategory<ChoppingRecipe> {
     }
 
 }
-
-

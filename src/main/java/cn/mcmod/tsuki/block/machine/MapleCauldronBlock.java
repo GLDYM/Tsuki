@@ -41,7 +41,8 @@ import net.neoforged.neoforge.fluids.capability.wrappers.FluidBucketWrapper;
 public class MapleCauldronBlock extends BaseEntityBlock {
     public static final MapCodec<MapleCauldronBlock> CODEC = simpleCodec(MapleCauldronBlock::new);
     public static final IntegerProperty LEVEL = IntegerProperty.create("level", 0, 7);
-    // Match vanilla cauldron shell shape for correct light occlusion and smooth lighting.
+    // Match vanilla cauldron shell shape for correct light occlusion and smooth
+    // lighting.
     private static final VoxelShape SHAPE = Shapes.or(
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D),

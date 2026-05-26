@@ -28,7 +28,6 @@ import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-
 @EventBusSubscriber(modid = Tsuki.MODID)
 public final class EasterEggRewardEvent {
     private static final String DATA_NAME = Tsuki.MODID + "_easter_egg_rewards";
@@ -39,8 +38,7 @@ public final class EasterEggRewardEvent {
             RewardRule.builder()
                     .names("Dev")
                     .rewards(
-                        stack(ArmorToolRegistry.SAKURA_DIAMOND, 4)
-                    )
+                            stack(ArmorToolRegistry.SAKURA_DIAMOND, 4))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
             // Polaris_Light
@@ -48,51 +46,44 @@ public final class EasterEggRewardEvent {
                     .names("Polaris_Light")
                     .uuids("cf6bcfbc-3e2a-4aa4-be23-b45d2482fd98")
                     .rewards(
-                        stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64)
-                    )
+                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
             RewardRule.builder()
                     // .names("Polaris_Light")
                     .uuids("befa7fff-4d8e-3ff9-a6ae-6f122a2e4bb8")
                     .rewards(
-                        stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64)
-                    )
+                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
             RewardRule.builder()
                     .names("Stargz_10")
                     .uuids("0302463f-0cdf-42a8-aea6-996b84fceffa")
                     .rewards(
-                        stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64)
-                    )
+                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
             RewardRule.builder()
                     // .names("Stargz_10")
                     .uuids("c0c97bf5-b51a-352f-bd10-3058da95118f")
                     .rewards(
-                        stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64)
-                    )
+                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
             RewardRule.builder()
                     .names("Syameimaru_Zheng")
                     .uuids("f1191641-34ab-4077-a6df-5c03a1a1170a")
                     .rewards(
-                        stack(TsukiFoodSet.SUSHI.getItem(), 64)
-                    )
+                            stack(TsukiFoodSet.SUSHI.getItem(), 64))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
             RewardRule.builder()
                     .names("bagu_chan")
                     .uuids("e1db1fa2-d0be-4075-8c16-9c489e3a2941")
                     .rewards(
-                        stack(TsukiFoodSet.BUGGYS_MEAT.getItem(), 16)
-                    )
+                            stack(TsukiFoodSet.BUGGYS_MEAT.getItem(), 16))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
-                    .build()
-    );
+                    .build());
 
     private EasterEggRewardEvent() {
     }

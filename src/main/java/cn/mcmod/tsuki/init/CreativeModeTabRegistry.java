@@ -33,7 +33,6 @@ public class CreativeModeTabRegistry {
                             })
                     .build());
 
-
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEMS = TABS.register(
             "items",
             () -> CreativeModeTab.builder()

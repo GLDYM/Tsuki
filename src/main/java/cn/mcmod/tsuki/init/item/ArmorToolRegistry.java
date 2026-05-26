@@ -99,7 +99,6 @@ public class ArmorToolRegistry {
                             .component(DataComponents.UNBREAKABLE, new Unbreakable(true))
                             .attributes(PickaxeItem.createAttributes(SAKURA_TOOL_TIER, 1.0F, -2.8F))));
 
-
     public static final DeferredItem<Item> IRON_FISH_KNIFE = register("knife_fish",
             () -> new KnifeItem(Tiers.IRON, 1F, -2.0F, Tsuki.defaultItemProperties().stacksTo(1)));
     public static final DeferredItem<Item> IRON_NOODLE_KNIFE = register("knife_noodle",

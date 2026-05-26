@@ -18,16 +18,13 @@ public abstract class ItemInHandRendererMixin {
     @Final
     private Minecraft minecraft;
 
-    @Redirect(
-            method = "tick",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/neoforged/neoforge/client/ClientHooks;shouldCauseReequipAnimation(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;I)Z"))
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/client/ClientHooks;shouldCauseReequipAnimation(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemStack;I)Z"))
     private boolean tsuki$skipShakerReequip(ItemStack from, ItemStack to, int slotChanged) {
         LocalPlayer player = this.minecraft.player;
         if (player != null && player.isUsingItem()) {
             InteractionHand usedHand = player.getUsedItemHand();
-            ItemStack handStack = usedHand == InteractionHand.MAIN_HAND ? player.getMainHandItem() : player.getOffhandItem();
+            ItemStack handStack = usedHand == InteractionHand.MAIN_HAND ? player.getMainHandItem()
+                    : player.getOffhandItem();
 
             if (handStack.getItem() instanceof ShakerItem
                     && from.getItem() instanceof ShakerItem

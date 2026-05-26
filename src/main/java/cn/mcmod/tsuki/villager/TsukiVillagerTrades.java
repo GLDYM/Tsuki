@@ -109,7 +109,8 @@ public final class TsukiVillagerTrades {
         trades.get(2).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME).get(), 8, 2, 4, 16, 10));
         trades.get(2).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.ALMOND).get(), 8, 2, 4, 16, 10));
         trades.get(2).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MINT).get(), 8, 2, 4, 16, 10));
-        trades.get(2).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get(), 8, 2, 4, 16, 10));
+        trades.get(2).add(
+                sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get(), 8, 2, 4, 16, 10));
 
         trades.get(3).add(buyWithCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(), 4, 6, 10, 12, 15));
         trades.get(3).add(buyWithCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.SHIMEJI).get(), 4, 6, 10, 12, 15));
@@ -127,43 +128,74 @@ public final class TsukiVillagerTrades {
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME_JUICE).get(), 8, 4, 7, 12, 15));
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get(), 8, 3, 5, 12, 15));
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.COLA).get(), 8, 3, 5, 12, 15));
-        trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get(), 8, 4, 7, 12, 15));
+        trades.get(3)
+                .add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get(), 8, 4, 7, 12, 15));
         trades.get(3).add(sellForCoins(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get(), 8, 4, 7, 12, 15));
         trades.get(3).add(sellForCoins(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BITTERS).get(), 8, 4, 7, 12, 15));
 
-        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BEER_BOTTLE).get(), 1, 20, 30, 8, 25));
-        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BEER_BOTTLE).get(), 1, 10, 20, 8, 25));
-        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.DOBUROKU_BOTTLE).get(), 1, 20, 30, 8, 25));
-        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.DOBUROKU_BOTTLE).get(), 1, 10, 20, 8, 25));
-        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RED_WINE_BOTTLE).get(), 1, 20, 30, 8, 25));
-        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RED_WINE_BOTTLE).get(), 1, 10, 20, 8, 25));
-        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHITE_WINE_BOTTLE).get(), 1, 20, 30, 8, 25));
-        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHITE_WINE_BOTTLE).get(), 1, 10, 20, 8, 25));
-        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SAKE_BOTTLE).get(), 1, 40, 60, 8, 25));
-        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SAKE_BOTTLE).get(), 1, 20, 35, 8, 25));
-        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get(), 1, 40, 60, 8, 25));
-        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get(), 1, 20, 35, 8, 25));
+        trades.get(4).add(
+                sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BEER_BOTTLE).get(), 1, 20, 30, 8, 25));
+        trades.get(4).add(
+                buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BEER_BOTTLE).get(), 1, 10, 20, 8, 25));
+        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.DOBUROKU_BOTTLE).get(), 1, 20,
+                30, 8, 25));
+        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.DOBUROKU_BOTTLE).get(), 1, 10,
+                20, 8, 25));
+        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RED_WINE_BOTTLE).get(), 1, 20,
+                30, 8, 25));
+        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RED_WINE_BOTTLE).get(), 1, 10,
+                20, 8, 25));
+        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHITE_WINE_BOTTLE).get(), 1,
+                20, 30, 8, 25));
+        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHITE_WINE_BOTTLE).get(), 1,
+                10, 20, 8, 25));
+        trades.get(4).add(
+                sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SAKE_BOTTLE).get(), 1, 40, 60, 8, 25));
+        trades.get(4).add(
+                buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SAKE_BOTTLE).get(), 1, 20, 35, 8, 25));
+        trades.get(4).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get(), 1, 40,
+                60, 8, 25));
+        trades.get(4).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get(), 1, 20,
+                35, 8, 25));
 
         trades.get(5).add(sellForCoins(ArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 30, 32, 8, 30));
         trades.get(5).add(buyWithCoins(ArmorToolRegistry.SAKURA_DIAMOND.get(), 1, 32, 64, 8, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get(), 1, 40, 45, 4, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RUM_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RUM_BOTTLE).get(), 1, 40, 45, 4, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.VODKA_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.VODKA_BOTTLE).get(), 1, 40, 45, 4, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHISKEY_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHISKEY_BOTTLE).get(), 1, 40, 45, 4, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BRANDY_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BRANDY_BOTTLE).get(), 1, 40, 45, 4, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.GIN_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.GIN_BOTTLE).get(), 1, 40, 45, 4, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.TEQUILA_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.TEQUILA_BOTTLE).get(), 1, 40, 45, 4, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.LIQUEUR_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.LIQUEUR_BOTTLE).get(), 1, 40, 45, 4, 30));
-        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.COCOA_LIQUEUR_BOTTLE).get(), 1, 60, 64, 4, 30));
-        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.COCOA_LIQUEUR_BOTTLE).get(), 1, 40, 45, 4, 30));
+        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get(), 1, 60,
+                64, 4, 30));
+        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get(), 1, 40,
+                45, 4, 30));
+        trades.get(5).add(
+                sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RUM_BOTTLE).get(), 1, 60, 64, 4, 30));
+        trades.get(5).add(
+                buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RUM_BOTTLE).get(), 1, 40, 45, 4, 30));
+        trades.get(5).add(
+                sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.VODKA_BOTTLE).get(), 1, 60, 64, 4, 30));
+        trades.get(5).add(
+                buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.VODKA_BOTTLE).get(), 1, 40, 45, 4, 30));
+        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHISKEY_BOTTLE).get(), 1, 60,
+                64, 4, 30));
+        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHISKEY_BOTTLE).get(), 1, 40,
+                45, 4, 30));
+        trades.get(5).add(
+                sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BRANDY_BOTTLE).get(), 1, 60, 64, 4, 30));
+        trades.get(5).add(
+                buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BRANDY_BOTTLE).get(), 1, 40, 45, 4, 30));
+        trades.get(5).add(
+                sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.GIN_BOTTLE).get(), 1, 60, 64, 4, 30));
+        trades.get(5).add(
+                buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.GIN_BOTTLE).get(), 1, 40, 45, 4, 30));
+        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.TEQUILA_BOTTLE).get(), 1, 60,
+                64, 4, 30));
+        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.TEQUILA_BOTTLE).get(), 1, 40,
+                45, 4, 30));
+        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.LIQUEUR_BOTTLE).get(), 1, 60,
+                64, 4, 30));
+        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.LIQUEUR_BOTTLE).get(), 1, 40,
+                45, 4, 30));
+        trades.get(5).add(sellForCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.COCOA_LIQUEUR_BOTTLE).get(), 1,
+                60, 64, 4, 30));
+        trades.get(5).add(buyWithCoins(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.COCOA_LIQUEUR_BOTTLE).get(), 1,
+                40, 45, 4, 30));
     }
 
     private static void registerWaTraderTrades(Int2ObjectMap<List<VillagerTrades.ItemListing>> trades) {
@@ -216,11 +248,13 @@ public final class TsukiVillagerTrades {
         trades.get(5).add(sellForCoins(ArmorToolRegistry.KODACHI.get(), 1, 16, 24, 4, 30));
         trades.get(5).add(sellForCoins(ArmorToolRegistry.SAKURA_KATANA.get(), 1, 30, 50, 2, 30));
         trades.get(5).add(sellForCoins(ArmorToolRegistry.TACHI.get(), 1, 26, 40, 2, 30));
-        // trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 8, 14, 8, 30));
+        // trades.get(5).add(sellForCoins(TsukiArmorToolRegistry.SHEATH.get(), 1, 8, 14,
+        // 8, 30));
     }
 
     // All the buy and sell is from Village Perspective
-    private static VillagerTrades.ItemListing buyWithCoins(ItemLike item, int count, int minCoins, int maxCoins, int maxTrades, int xp) {
+    private static VillagerTrades.ItemListing buyWithCoins(ItemLike item, int count, int minCoins, int maxCoins,
+            int maxTrades, int xp) {
         int coinPrice = pickCoinPrice(minCoins, maxCoins);
         return new BasicItemListing(
                 new ItemStack(item, count),
@@ -230,7 +264,8 @@ public final class TsukiVillagerTrades {
                 0.05F);
     }
 
-    private static VillagerTrades.ItemListing sellForCoins(ItemLike item, int count, int minCoins, int maxCoins, int maxTrades, int xp) {
+    private static VillagerTrades.ItemListing sellForCoins(ItemLike item, int count, int minCoins, int maxCoins,
+            int maxTrades, int xp) {
         int coinPrice = pickCoinPrice(minCoins, maxCoins);
         return new BasicItemListing(
                 new ItemStack(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SAKURA_COIN).get(), coinPrice),

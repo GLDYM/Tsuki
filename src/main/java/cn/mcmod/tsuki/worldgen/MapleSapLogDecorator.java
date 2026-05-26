@@ -44,7 +44,8 @@ public class MapleSapLogDecorator extends TreeDecorator {
         }
 
         Set<BlockPos> logSet = new HashSet<>(logs);
-        // Prefer the second block above trunk roots, which is stable for both worldgen and sapling growth.
+        // Prefer the second block above trunk roots, which is stable for both worldgen
+        // and sapling growth.
         List<BlockPos> candidates = logs.stream()
                 .filter(pos -> logSet.contains(pos.below()) && !logSet.contains(pos.below(2)))
                 .toList();

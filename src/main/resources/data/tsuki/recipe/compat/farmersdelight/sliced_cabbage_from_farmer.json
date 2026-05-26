@@ -1,13 +1,14 @@
 {
-  "ingredients": [
-    {
-      "item": "tsuki:cabbage"
-    }
-  ],
   "neoforge:conditions": [
     {
       "modid": "farmersdelight",
       "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "tsuki:cabbage"
     }
   ],
   "result": [
@@ -20,6 +21,5 @@
   ],
   "tool": {
     "tag": "c:tools/knives"
-  },
-  "type": "farmersdelight:cutting"
+  }
 }

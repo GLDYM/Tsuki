@@ -52,7 +52,8 @@ public class MythicPickaxeEvents {
             addMythicPickaxeExperience(player, event, mainHand);
         }
 
-        int freshFoodLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.FRESH_FOOD, mainHand);
+        int freshFoodLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.FRESH_FOOD,
+                mainHand);
         if (freshFoodLevel <= 0) {
             return;
         }
@@ -95,7 +96,8 @@ public class MythicPickaxeEvents {
         return false;
     }
 
-    private static int getOreExtraExperience(Block block, Level level, BlockPos pos, ServerPlayer player, ItemStack stack) {
+    private static int getOreExtraExperience(Block block, Level level, BlockPos pos, ServerPlayer player,
+            ItemStack stack) {
         if (block instanceof DropExperienceBlock dropExperienceBlock) {
             int extra = dropExperienceBlock.getExpDrop(level.getBlockState(pos), level, pos, null, player, stack);
             return Math.max(0, extra);

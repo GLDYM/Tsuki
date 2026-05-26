@@ -241,7 +241,6 @@ public class TsukiItemTags {
     public static final TagKey<Item> TOOLS_KNIVES_FISH = TagUtil.modItemTag(Tsuki.MODID, "tools/knives/fish");
     public static final TagKey<Item> TOOLS_KNIVES_NOODLE = TagUtil.modItemTag(Tsuki.MODID, "tools/knives/noodle");
 
-
     public static final TagKey<Item> AXES = TagUtil.vanillaItemTag("axes");
     public static final TagKey<Item> HOES = TagUtil.vanillaItemTag("hoes");
     public static final TagKey<Item> PICKAXES = TagUtil.vanillaItemTag("pickaxes");

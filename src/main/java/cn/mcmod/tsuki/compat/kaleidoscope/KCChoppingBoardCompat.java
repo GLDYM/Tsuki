@@ -28,7 +28,8 @@ public final class KCChoppingBoardCompat {
     }
 
     public static Optional<ChoppingRecipe> findMatching(Level level, ItemStack inputStack, ItemStack toolStack) {
-        if (level == null || !isEnabled() || inputStack.isEmpty() || !Ingredient.of(TsukiItemTags.TOOLS_KNIVES).test(toolStack)) {
+        if (level == null || !isEnabled() || inputStack.isEmpty()
+                || !Ingredient.of(TsukiItemTags.TOOLS_KNIVES).test(toolStack)) {
             return Optional.empty();
         }
 

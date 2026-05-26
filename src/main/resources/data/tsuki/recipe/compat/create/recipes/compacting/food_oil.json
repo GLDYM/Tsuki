@@ -1,4 +1,11 @@
 {
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "create:compacting",
   "ingredients": [
     [
       {
@@ -12,17 +19,10 @@
       }
     ]
   ],
-  "neoforge:conditions": [
-    {
-      "modid": "create",
-      "type": "neoforge:mod_loaded"
-    }
-  ],
   "results": [
     {
       "amount": 125,
       "id": "tsuki:food_oil"
     }
-  ],
-  "type": "create:compacting"
+  ]
 }

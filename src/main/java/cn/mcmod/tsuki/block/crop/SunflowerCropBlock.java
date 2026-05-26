@@ -114,7 +114,8 @@ public class SunflowerCropBlock extends CropBlock implements EntityBlock {
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level,
             BlockPos pos, BlockPos neighborPos) {
-        return state.canSurvive(level, pos) ? super.updateShape(state, direction, neighborState, level, pos, neighborPos)
+        return state.canSurvive(level, pos)
+                ? super.updateShape(state, direction, neighborState, level, pos, neighborPos)
                 : Blocks.AIR.defaultBlockState();
     }
 
@@ -206,7 +207,8 @@ public class SunflowerCropBlock extends CropBlock implements EntityBlock {
         int age = state.getValue(AGE);
 
         if (part == Part.UPPER) {
-            level.setBlock(pos, state.setValue(AGE, Math.min(this.getMaxAge(), age + getBonemealAgeIncrease(level))), 2);
+            level.setBlock(pos, state.setValue(AGE, Math.min(this.getMaxAge(), age + getBonemealAgeIncrease(level))),
+                    2);
             return;
         }
 

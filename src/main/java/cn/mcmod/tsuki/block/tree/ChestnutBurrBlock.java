@@ -66,8 +66,8 @@ public class ChestnutBurrBlock extends BushBlock implements BonemealableBlock {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-            return level.getBlockState(pos.above()).is(BlockTags.LEAVES);
-        }
+        return level.getBlockState(pos.above()).is(BlockTags.LEAVES);
+    }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player,

@@ -42,7 +42,8 @@ public class EmiChoppingRecipe extends BasicEmiRecipe {
     }
 
     public static EmiChoppingRecipe of(ResourceLocation id, ChoppingRecipe recipe) {
-        List<EmiIngredient> inputList = List.of(EmiIngredient.of(recipe.getIngredients().get(0)), EmiIngredient.of(recipe.getTool()));
+        List<EmiIngredient> inputList = List.of(EmiIngredient.of(recipe.getIngredients().get(0)),
+                EmiIngredient.of(recipe.getTool()));
 
         List<EmiStack> outputList = new ArrayList<>();
         outputList.add(EmiStack.of(recipe.getResultItem(null)));
@@ -70,7 +71,8 @@ public class EmiChoppingRecipe extends BasicEmiRecipe {
             widgets.addSlot(outputs.get(i + 1), i * 18 + 11, 51)
                     .drawBack(false)
                     .recipeContext(this)
-                    .appendTooltip(Component.translatable("mmlib.gui.chance", Math.round(chanceResult.chance() * 100.0f) + "%"));
+                    .appendTooltip(Component.translatable("mmlib.gui.chance",
+                            Math.round(chanceResult.chance() * 100.0f) + "%"));
         }
 
         widgets.addText(Component.translatable("tsuki.jei.chopping.count", recipe.getRecipeTime()), 33, 32, 0xFEFEFE,

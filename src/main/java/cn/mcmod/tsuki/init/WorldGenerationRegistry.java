@@ -151,4 +151,3 @@ public class WorldGenerationRegistry {
     // BlockPredicate.allOf(BlockPredicate.ONLY_IN_AIR_PREDICATE, plantedOn)));
     // }
 }
-

@@ -1,4 +1,11 @@
 {
+  "neoforge:conditions": [
+    {
+      "modid": "twilightforest",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
       "item": "tsuki:ramen"
@@ -7,15 +14,8 @@
       "item": "twilightforest:hydra_chop"
     }
   ],
-  "neoforge:conditions": [
-    {
-      "modid": "twilightforest",
-      "type": "neoforge:mod_loaded"
-    }
-  ],
   "result": {
     "count": 1,
     "id": "tsuki:hydra_ramen"
-  },
-  "type": "minecraft:crafting_shapeless"
+  }
 }

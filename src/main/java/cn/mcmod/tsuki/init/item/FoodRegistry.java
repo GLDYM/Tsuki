@@ -44,5 +44,3 @@ public class FoodRegistry {
         return ITEMS.register(name, item);
     }
 }
-
-

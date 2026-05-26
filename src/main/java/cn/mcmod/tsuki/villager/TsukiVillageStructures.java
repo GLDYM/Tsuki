@@ -22,19 +22,17 @@ import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 
 @EventBusSubscriber(modid = Tsuki.MODID)
 public final class TsukiVillageStructures {
-    public static final ResourceLocation PLAINS_HOUSES_POOL =
-            ResourceLocation.parse("minecraft:village/plains/houses");
-    public static final ResourceLocation TAIGA_HOUSES_POOL =
-            ResourceLocation.parse("minecraft:village/taiga/houses");
-    public static final ResourceLocation JAPANESE_HOUSE_TEMPLATE =
-            ResourceLocation.parse("tsuki:village/houses/japanese_house");
+    public static final ResourceLocation PLAINS_HOUSES_POOL = ResourceLocation.parse("minecraft:village/plains/houses");
+    public static final ResourceLocation TAIGA_HOUSES_POOL = ResourceLocation.parse("minecraft:village/taiga/houses");
+    public static final ResourceLocation JAPANESE_HOUSE_TEMPLATE = ResourceLocation
+            .parse("tsuki:village/houses/japanese_house");
 
     @SubscribeEvent
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {
-        Registry<StructureTemplatePool> templatePools =
-                event.getServer().registryAccess().registry(Registries.TEMPLATE_POOL).orElseThrow();
-        Registry<StructureProcessorList> processorLists =
-                event.getServer().registryAccess().registry(Registries.PROCESSOR_LIST).orElseThrow();
+        Registry<StructureTemplatePool> templatePools = event.getServer().registryAccess()
+                .registry(Registries.TEMPLATE_POOL).orElseThrow();
+        Registry<StructureProcessorList> processorLists = event.getServer().registryAccess()
+                .registry(Registries.PROCESSOR_LIST).orElseThrow();
 
         addBuildingToPool(templatePools, processorLists, PLAINS_HOUSES_POOL, JAPANESE_HOUSE_TEMPLATE.toString(), 4);
         addBuildingToPool(templatePools, processorLists, TAIGA_HOUSES_POOL, JAPANESE_HOUSE_TEMPLATE.toString(), 4);
@@ -72,9 +70,10 @@ public final class TsukiVillageStructures {
             }
             templatesField.set(pool, mutableTemplates);
 
-            Field rawTemplatesField = ObfuscationReflectionHelper.findField(StructureTemplatePool.class, "rawTemplates");
-            List<Pair<StructurePoolElement, Integer>> currentRaw =
-                    (List<Pair<StructurePoolElement, Integer>>) rawTemplatesField.get(pool);
+            Field rawTemplatesField = ObfuscationReflectionHelper.findField(StructureTemplatePool.class,
+                    "rawTemplates");
+            List<Pair<StructurePoolElement, Integer>> currentRaw = (List<Pair<StructurePoolElement, Integer>>) rawTemplatesField
+                    .get(pool);
             List<Pair<StructurePoolElement, Integer>> mutableRaw = new ArrayList<>(currentRaw);
             mutableRaw.add(Pair.of(piece, weight));
             rawTemplatesField.set(pool, mutableRaw);

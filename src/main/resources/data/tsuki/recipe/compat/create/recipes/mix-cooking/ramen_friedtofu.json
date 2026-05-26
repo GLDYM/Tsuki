@@ -1,4 +1,11 @@
 {
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "create:mixing",
   "heatRequirement": "heated",
   "ingredients": [
     {
@@ -16,16 +23,9 @@
       "type": "neoforge:single"
     }
   ],
-  "neoforge:conditions": [
-    {
-      "modid": "create",
-      "type": "neoforge:mod_loaded"
-    }
-  ],
   "results": [
     {
       "id": "tsuki:ramen_friedtofu"
     }
-  ],
-  "type": "create:mixing"
+  ]
 }

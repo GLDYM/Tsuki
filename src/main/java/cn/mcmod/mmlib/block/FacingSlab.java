@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.SlabType;
 
 public class FacingSlab extends SlabBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+
     public FacingSlab(Properties prop) {
         super(prop);
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));

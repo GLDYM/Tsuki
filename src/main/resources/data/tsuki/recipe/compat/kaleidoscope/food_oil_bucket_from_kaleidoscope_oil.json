@@ -1,4 +1,10 @@
 {
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "kaleidoscope_cookery"
+    }
+  ],
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
@@ -27,12 +33,6 @@
     },
     {
       "item": "minecraft:bucket"
-    }
-  ],
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "kaleidoscope_cookery"
     }
   ],
   "result": {

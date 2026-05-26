@@ -57,7 +57,6 @@ public class ItemRegistry {
     public static final DeferredItem<Item> SUNFLOWER_SEEDS = register("sunflower_seeds",
             () -> seed(BlockRegistry.SUNFLOWER_CROP.get()));
 
-
     public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = createMaterials();
 
     public static final DeferredItem<Item> SAMURAI_ILLAGER_SPAWN_EGG = register("samurai_illager_spawn_egg",

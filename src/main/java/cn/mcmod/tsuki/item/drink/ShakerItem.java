@@ -147,7 +147,8 @@ public class ShakerItem extends BlockItem implements GeoItem {
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
         super.onUseTick(level, livingEntity, stack, remainingUseDuration);
 
-        if (level.isClientSide || !(livingEntity instanceof Player player) || !(level instanceof ServerLevel serverLevel)) {
+        if (level.isClientSide || !(livingEntity instanceof Player player)
+                || !(level instanceof ServerLevel serverLevel)) {
             return;
         }
 
@@ -191,17 +192,16 @@ public class ShakerItem extends BlockItem implements GeoItem {
         ShakerDataHelper.load(stack, inventory, context.registries());
 
         Map<ItemStackKey, Integer> mergedInputs = new LinkedHashMap<>();
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
-                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
-                ++slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START; slot < ShakerDataHelper.SLOT_INPUT_START
+                + ShakerDataHelper.SLOT_INPUT_COUNT; ++slot) {
             ItemStack slotStack = inventory.getStackInSlot(slot);
             if (!slotStack.isEmpty()) {
                 mergedInputs.merge(new ItemStackKey(slotStack), slotStack.getCount(), Integer::sum);
             }
         }
 
-        mergedInputs.forEach((key, count) ->
-                tooltip.add(Component.literal("- " + count + "x ").append(key.displayName())));
+        mergedInputs
+                .forEach((key, count) -> tooltip.add(Component.literal("- " + count + "x ").append(key.displayName())));
 
         ItemStack output = inventory.getStackInSlot(ShakerDataHelper.SLOT_OUTPUT);
         if (!output.isEmpty()) {
@@ -245,9 +245,11 @@ public class ShakerItem extends BlockItem implements GeoItem {
             inventory.setStackInSlot(ShakerDataHelper.SLOT_OUTPUT, ItemStack.EMPTY);
         }
         ShakerDataHelper.save(heldShaker, inventory, 0, context.getPlayer().registryAccess());
-        context.getLevel().sendBlockUpdated(context.getClickedPos(), context.getLevel().getBlockState(context.getClickedPos()),
+        context.getLevel().sendBlockUpdated(context.getClickedPos(),
+                context.getLevel().getBlockState(context.getClickedPos()),
                 context.getLevel().getBlockState(context.getClickedPos()), Block.UPDATE_CLIENTS);
-        context.getLevel().playSound(null, context.getClickedPos(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.8F, 1.0F);
+        context.getLevel().playSound(null, context.getClickedPos(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 0.8F,
+                1.0F);
         return true;
     }
 
@@ -275,9 +277,8 @@ public class ShakerItem extends BlockItem implements GeoItem {
     }
 
     private boolean hasFlavorIngredient(ItemStackHandler inventory) {
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
-                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
-                ++slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START; slot < ShakerDataHelper.SLOT_INPUT_START
+                + ShakerDataHelper.SLOT_INPUT_COUNT; ++slot) {
             ItemStack slotStack = inventory.getStackInSlot(slot);
             if (!slotStack.isEmpty() && !isBaseDrinkInput(slotStack)) {
                 return true;
@@ -288,9 +289,8 @@ public class ShakerItem extends BlockItem implements GeoItem {
 
     private int countDistinctBaseDrinkInputs(ItemStackHandler inventory) {
         Map<ItemStackKey, Boolean> distinctBaseDrinks = new LinkedHashMap<>();
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
-                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
-                ++slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START; slot < ShakerDataHelper.SLOT_INPUT_START
+                + ShakerDataHelper.SLOT_INPUT_COUNT; ++slot) {
             ItemStack slotStack = inventory.getStackInSlot(slot);
             if (isBaseDrinkInput(slotStack)) {
                 distinctBaseDrinks.putIfAbsent(new ItemStackKey(slotStack), Boolean.TRUE);
@@ -301,9 +301,8 @@ public class ShakerItem extends BlockItem implements GeoItem {
 
     private int countBaseDrinkInputs(ItemStackHandler inventory) {
         int baseDrinkCount = 0;
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
-                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
-                ++slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START; slot < ShakerDataHelper.SLOT_INPUT_START
+                + ShakerDataHelper.SLOT_INPUT_COUNT; ++slot) {
             ItemStack slotStack = inventory.getStackInSlot(slot);
             if (isBaseDrinkInput(slotStack)) {
                 baseDrinkCount += slotStack.getCount();
@@ -350,9 +349,10 @@ public class ShakerItem extends BlockItem implements GeoItem {
     private boolean isAnimatedPerspective(ItemDisplayContext perspective) {
         return perspective == ItemDisplayContext.FIRST_PERSON_LEFT_HAND
                 || perspective == ItemDisplayContext.FIRST_PERSON_RIGHT_HAND;
-                // TODO: enable third person shaking animation after fixing the held item transform. Seem we need PAL Lib to do this.
-                // || perspective == ItemDisplayContext.THIRD_PERSON_LEFT_HAND
-                // || perspective == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
+        // TODO: enable third person shaking animation after fixing the held item
+        // transform. Seem we need PAL Lib to do this.
+        // || perspective == ItemDisplayContext.THIRD_PERSON_LEFT_HAND
+        // || perspective == ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
     }
 
     private boolean processShakeProgress(ItemStack stack, ServerLevel level, Player player) {
@@ -411,7 +411,8 @@ public class ShakerItem extends BlockItem implements GeoItem {
         return completed;
     }
 
-    private Optional<SelectedRecipe> selectRecipe(Level level, RecipeWrapper recipeWrapper, ItemStackHandler inventory) {
+    private Optional<SelectedRecipe> selectRecipe(Level level, RecipeWrapper recipeWrapper,
+            ItemStackHandler inventory) {
         List<RecipeHolder<ShakerRecipe>> matches = level.getRecipeManager()
                 .getRecipesFor(RecipeTypeRegistry.SHAKER_RECIPE_TYPE.get(), recipeWrapper, level);
 
@@ -469,9 +470,8 @@ public class ShakerItem extends BlockItem implements GeoItem {
             output.grow(result.getCount());
         }
 
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
-                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
-                ++slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START; slot < ShakerDataHelper.SLOT_INPUT_START
+                + ShakerDataHelper.SLOT_INPUT_COUNT; ++slot) {
             inventory.setStackInSlot(slot, ItemStack.EMPTY);
         }
     }
@@ -485,9 +485,8 @@ public class ShakerItem extends BlockItem implements GeoItem {
             output.grow(result.getCount());
         }
 
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
-                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
-                ++slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START; slot < ShakerDataHelper.SLOT_INPUT_START
+                + ShakerDataHelper.SLOT_INPUT_COUNT; ++slot) {
             inventory.setStackInSlot(slot, ItemStack.EMPTY);
         }
     }

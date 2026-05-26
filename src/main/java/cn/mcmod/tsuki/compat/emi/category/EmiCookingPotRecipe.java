@@ -91,8 +91,10 @@ public class EmiCookingPotRecipe extends BasicEmiRecipe {
         }
 
         if (recipe.getRequiredFluid() != FluidIngredient.EMPTY) {
-            FluidStack fs = recipe.getRequiredFluid().getMatchingFluidStacks().stream().findFirst().orElse(FluidStack.EMPTY);
-            widgets.addTank(EmiStack.of(fs.getFluid(), fs.getAmount()), 0, 0, 18, 54, CookingPotBlockEntity.TANK_CAPACITY)
+            FluidStack fs = recipe.getRequiredFluid().getMatchingFluidStacks().stream().findFirst()
+                    .orElse(FluidStack.EMPTY);
+            widgets.addTank(EmiStack.of(fs.getFluid(), fs.getAmount()), 0, 0, 18, 54,
+                    CookingPotBlockEntity.TANK_CAPACITY)
                     .drawBack(false);
         }
 

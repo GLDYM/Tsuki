@@ -21,8 +21,10 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 
 public class TsukiEnchantmentProvider extends DatapackBuiltinEntriesProvider {
 
-    public TsukiEnchantmentProvider(PackOutput output, CompletableFuture<net.minecraft.core.HolderLookup.Provider> registries) {
-        super(output, registries, new RegistrySetBuilder().add(Registries.ENCHANTMENT, TsukiEnchantmentProvider::bootstrap),
+    public TsukiEnchantmentProvider(PackOutput output,
+            CompletableFuture<net.minecraft.core.HolderLookup.Provider> registries) {
+        super(output, registries,
+                new RegistrySetBuilder().add(Registries.ENCHANTMENT, TsukiEnchantmentProvider::bootstrap),
                 Set.of(Tsuki.MODID));
     }
 

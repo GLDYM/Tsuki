@@ -58,9 +58,10 @@ public class TsukiTreeFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_UME_KEY = ResourceKey
             .create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fancy_ume"));
 
-    // public static final ResourceKey<ConfiguredFeature<?, ?>> MASSIVE_SAKURA_KEY = ResourceKey
-    //         .create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "massive_sakura"));
-
+    // public static final ResourceKey<ConfiguredFeature<?, ?>> MASSIVE_SAKURA_KEY =
+    // ResourceKey
+    // .create(Registries.CONFIGURED_FEATURE,
+    // ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "massive_sakura"));
 
     public static synchronized void bootstrapEntries() {
         if (initialized) {
@@ -98,8 +99,9 @@ public class TsukiTreeFeatures {
         registryTree(FANCY_UME_KEY, createFancyTree(BlockRegistry.UME_LOG.get(), BlockRegistry.UME_LEAVES.get()));
 
         // ENTRY.add(new Pair<>(
-        //         MASSIVE_SAKURA_KEY,
-        //         new ConfiguredFeature<>(FeatureTypeRegistry.MASSIVE_TREE.get(), NoneFeatureConfiguration.INSTANCE)));
+        // MASSIVE_SAKURA_KEY,
+        // new ConfiguredFeature<>(FeatureTypeRegistry.MASSIVE_TREE.get(),
+        // NoneFeatureConfiguration.INSTANCE)));
     }
 
     private static ConfiguredFeature<?, ?> registryTree(ResourceKey<ConfiguredFeature<?, ?>> key,

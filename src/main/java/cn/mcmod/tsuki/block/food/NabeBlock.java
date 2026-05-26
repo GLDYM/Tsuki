@@ -160,5 +160,3 @@ public class NabeBlock extends Block implements HeatableBlockEntity {
         }
     }
 }
-
-

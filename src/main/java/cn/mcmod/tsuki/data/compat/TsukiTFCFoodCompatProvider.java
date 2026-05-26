@@ -28,5 +28,3 @@ public class TsukiTFCFoodCompatProvider extends TFCFoodDefinitionProvider {
         return "Tsuki TFC FoodDefinition Provider";
     }
 }
-
-

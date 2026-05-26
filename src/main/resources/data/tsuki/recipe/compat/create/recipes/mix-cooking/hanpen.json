@@ -1,4 +1,11 @@
 {
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "create:mixing",
   "heatRequirement": "heated",
   "ingredients": [
     {
@@ -24,17 +31,10 @@
       "type": "neoforge:single"
     }
   ],
-  "neoforge:conditions": [
-    {
-      "modid": "create",
-      "type": "neoforge:mod_loaded"
-    }
-  ],
   "results": [
     {
       "count": 4,
       "id": "tsuki:fishcake"
     }
-  ],
-  "type": "create:mixing"
+  ]
 }

@@ -76,8 +76,10 @@ public class EmiDistillerRecipe extends BasicEmiRecipe {
         }
 
         if (recipe.getRequiredFluid() != FluidIngredient.EMPTY) {
-            FluidStack fs = recipe.getRequiredFluid().getMatchingFluidStacks().stream().findFirst().orElse(FluidStack.EMPTY);
-            widgets.addTank(EmiStack.of(fs.getFluid(), fs.getAmount()), 0, 0, 18, 54, DistillerBlockEntity.TANK_CAPACITY)
+            FluidStack fs = recipe.getRequiredFluid().getMatchingFluidStacks().stream().findFirst()
+                    .orElse(FluidStack.EMPTY);
+            widgets.addTank(EmiStack.of(fs.getFluid(), fs.getAmount()), 0, 0, 18, 54,
+                    DistillerBlockEntity.TANK_CAPACITY)
                     .drawBack(false);
         }
 
@@ -88,7 +90,8 @@ public class EmiDistillerRecipe extends BasicEmiRecipe {
         }
 
         if (!recipe.getResultFluid().isEmpty()) {
-            widgets.addTank(EmiStack.of(recipe.getResultFluid().getFluid(), recipe.getResultFluid().getAmount()), 92, 0, 18, 54, DistillerBlockEntity.TANK_CAPACITY)
+            widgets.addTank(EmiStack.of(recipe.getResultFluid().getFluid(), recipe.getResultFluid().getAmount()), 92, 0,
+                    18, 54, DistillerBlockEntity.TANK_CAPACITY)
                     .drawBack(false)
                     .recipeContext(this);
         }

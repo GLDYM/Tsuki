@@ -414,4 +414,3 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
 }
-

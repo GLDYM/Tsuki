@@ -131,7 +131,8 @@ public final class KCPotCompat {
     }
 
     private static boolean matchesOil(FluidStack fluid) {
-        return !fluid.isEmpty() && fluid.getAmount() >= REQUIRED_OIL_AMOUNT && fluid.getFluid().isSame(FluidRegistry.FOOD_OIL.get());
+        return !fluid.isEmpty() && fluid.getAmount() >= REQUIRED_OIL_AMOUNT
+                && fluid.getFluid().isSame(FluidRegistry.FOOD_OIL.get());
     }
 
     private static boolean isEnabled() {

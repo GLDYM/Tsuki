@@ -199,7 +199,7 @@ public class FoodInfo {
     public float getCalories() {
         return calories;
     }
-    
+
     public float getCompostChance() {
         return compostChance;
     }

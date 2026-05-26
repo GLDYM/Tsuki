@@ -79,25 +79,28 @@ public class CookingPotBlock extends BaseEntityBlock {
 
     // F****, it not sync server
     // @Override
-    // public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-    //     BlockEntity blockEntity = level.getBlockEntity(pos);
-    //     if (!(blockEntity instanceof CookingPotBlockEntity cookingPot) || cookingPot.getRecipeTimeTotal() <= 0
-    //             || random.nextInt(2) != 0) {
-    //         CookingPotBlockEntity cookingPotEntity = (CookingPotBlockEntity) blockEntity;
-    //         // Tsuki.getLogger().debug("WTF is you working? {}", cookingPotEntity.isWorking());
-    //         return;
-    //     }
+    // public void animateTick(BlockState state, Level level, BlockPos pos,
+    // RandomSource random) {
+    // BlockEntity blockEntity = level.getBlockEntity(pos);
+    // if (!(blockEntity instanceof CookingPotBlockEntity cookingPot) ||
+    // cookingPot.getRecipeTimeTotal() <= 0
+    // || random.nextInt(2) != 0) {
+    // CookingPotBlockEntity cookingPotEntity = (CookingPotBlockEntity) blockEntity;
+    // // Tsuki.getLogger().debug("WTF is you working? {}",
+    // cookingPotEntity.isWorking());
+    // return;
+    // }
 
-    //     int count = 2 + random.nextInt(2);
-    //     for (int i = 0; i < count; i++) {
-    //         double x = pos.getX() + 0.5D + (random.nextDouble() * 0.5D - 0.25D);
-    //         double y = pos.getY() + 0.72D;
-    //         double z = pos.getZ() + 0.5D + (random.nextDouble() * 0.5D - 0.25D);
-    //         double xd = (random.nextDouble() - 0.5D) * 0.012D;
-    //         double yd = 0.01D + random.nextDouble() * 0.012D;
-    //         double zd = (random.nextDouble() - 0.5D) * 0.012D;
-    //         level.addParticle(ParticleRegistry.COOKING.get(), x, y, z, xd, yd, zd);
-    //     }
+    // int count = 2 + random.nextInt(2);
+    // for (int i = 0; i < count; i++) {
+    // double x = pos.getX() + 0.5D + (random.nextDouble() * 0.5D - 0.25D);
+    // double y = pos.getY() + 0.72D;
+    // double z = pos.getZ() + 0.5D + (random.nextDouble() * 0.5D - 0.25D);
+    // double xd = (random.nextDouble() - 0.5D) * 0.012D;
+    // double yd = 0.01D + random.nextDouble() * 0.012D;
+    // double zd = (random.nextDouble() - 0.5D) * 0.012D;
+    // level.addParticle(ParticleRegistry.COOKING.get(), x, y, z, xd, yd, zd);
+    // }
     // }
 
     @Override

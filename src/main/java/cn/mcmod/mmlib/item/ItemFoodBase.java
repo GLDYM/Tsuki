@@ -19,9 +19,8 @@ public class ItemFoodBase extends Item implements IFoodLike {
 
     public ItemFoodBase(Item.Properties prop, FoodInfo info) {
         super(prop.food(
-        		new FoodProperties(info.getAmount(), info.getCalories(), info.isAlwaysEat(), info.getEatTime(), 
-        				Optional.empty(), List.of())
-        		));
+                new FoodProperties(info.getAmount(), info.getCalories(), info.isAlwaysEat(), info.getEatTime(),
+                        Optional.empty(), List.of())));
         this.info = info;
     }
 
@@ -51,35 +50,35 @@ public class ItemFoodBase extends Item implements IFoodLike {
     public SoundEvent getEatingSound() {
         return super.getEatingSound();
     }
-    
+
     @Override
     public FoodInfo getFoodInfo() {
         return info;
     }
 
-	@Override
-	public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
-		FoodProperties.Builder food = new FoodProperties.Builder().nutrition(getFoodInfo().getAmount())
-		      .saturationModifier(getFoodInfo().getCalories());
-		if (getFoodInfo().isAlwaysEat())
-		  food.alwaysEdible();
-		if (getFoodInfo().getEatTime() <= 16)
-		  food.fast();
-		this.getFoodInfo().getEffects().forEach((k) -> food.effect(k.getFirst(), k.getSecond()));
-		
-		return food.build();
-	}
+    @Override
+    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
+        FoodProperties.Builder food = new FoodProperties.Builder().nutrition(getFoodInfo().getAmount())
+                .saturationModifier(getFoodInfo().getCalories());
+        if (getFoodInfo().isAlwaysEat())
+            food.alwaysEdible();
+        if (getFoodInfo().getEatTime() <= 16)
+            food.fast();
+        this.getFoodInfo().getEffects().forEach((k) -> food.effect(k.getFirst(), k.getSecond()));
 
-	@Override
-	public int getUseDuration(ItemStack stack, LivingEntity p_344979_) {
-	    if (this.getFoodInfo() != null)
-	    	return this.getFoodInfo().getEatTime();
-		return super.getUseDuration(stack, p_344979_);
-	}
+        return food.build();
+    }
 
-	@Override
-	public boolean shouldAddEffectTooltips() {
-		return this.info != null;
-	}
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity p_344979_) {
+        if (this.getFoodInfo() != null)
+            return this.getFoodInfo().getEatTime();
+        return super.getUseDuration(stack, p_344979_);
+    }
+
+    @Override
+    public boolean shouldAddEffectTooltips() {
+        return this.info != null;
+    }
 
 }

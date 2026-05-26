@@ -1,13 +1,14 @@
 {
-  "ingredients": [
-    {
-      "item": "tsuki:sakura_wood"
-    }
-  ],
   "neoforge:conditions": [
     {
       "modid": "farmersdelight",
       "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "tsuki:sakura_wood"
     }
   ],
   "result": [
@@ -30,6 +31,5 @@
   "tool": {
     "action": "axe_strip",
     "type": "farmersdelight:item_ability"
-  },
-  "type": "farmersdelight:cutting"
+  }
 }

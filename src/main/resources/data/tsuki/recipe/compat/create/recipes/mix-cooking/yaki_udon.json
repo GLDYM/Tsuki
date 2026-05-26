@@ -1,4 +1,11 @@
 {
+  "neoforge:conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "create:mixing",
   "heatRequirement": "heated",
   "ingredients": [
     {
@@ -19,16 +26,9 @@
       "type": "neoforge:tag"
     }
   ],
-  "neoforge:conditions": [
-    {
-      "modid": "create",
-      "type": "neoforge:mod_loaded"
-    }
-  ],
   "results": [
     {
       "id": "tsuki:yaki_udon"
     }
-  ],
-  "type": "create:mixing"
+  ]
 }

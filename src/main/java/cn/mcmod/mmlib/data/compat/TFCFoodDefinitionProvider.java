@@ -36,30 +36,31 @@ public class TFCFoodDefinitionProvider implements DataProvider {
     }
 
     public void addData(Item item) {
-        if(item instanceof IFoodLike food)
+        if (item instanceof IFoodLike food)
             this.addData(item, food.getFoodInfo());
     }
 
     public void addData(Item item, FoodInfo data) {
-        this.datas.computeIfAbsent(BuiltInRegistries.ITEM.getKey(item), loc->{
+        this.datas.computeIfAbsent(BuiltInRegistries.ITEM.getKey(item), loc -> {
             existingFileHelper.trackGenerated(loc, resourceType);
             return data;
         });
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput cache){
+    public CompletableFuture<?> run(CachedOutput cache) {
         this.datas.clear();
         this.addDatas();
         final Path outputFolder = output.getOutputFolder();
         List<CompletableFuture<?>> futureList = Lists.newArrayList();
 
-        this.datas.forEach( (loc, data) -> {
-            String pathString = String.join("/", PackType.SERVER_DATA.getDirectory(), this.modId, "tfc", "food_items", loc.getPath()+".json");
+        this.datas.forEach((loc, data) -> {
+            String pathString = String.join("/", PackType.SERVER_DATA.getDirectory(), this.modId, "tfc", "food_items",
+                    loc.getPath() + ".json");
             Path path = outputFolder.resolve(pathString);
 
             JsonObject jsonObj = new JsonObject();
-//            jsonObj.add("ingredient", Ingredient.of(BuiltInRegistries.ITEM.get(loc)));
+            // jsonObj.add("ingredient", Ingredient.of(BuiltInRegistries.ITEM.get(loc)));
             jsonObj.addProperty("hunger", data.getAmount());
             jsonObj.addProperty("saturation", data.getCalories());
             jsonObj.addProperty("decayModifier", data.getDecayModifier());

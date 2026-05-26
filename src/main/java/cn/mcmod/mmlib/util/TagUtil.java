@@ -12,54 +12,54 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
 public class TagUtil {
-   public TagUtil() {
-   }
+    public TagUtil() {
+    }
 
-   public static TagKey<Item> vanillaItemTag(String path) {
-      return ItemTags.create(ResourceLocation.tryBuild("minecraft", path));
-   }
+    public static TagKey<Item> vanillaItemTag(String path) {
+        return ItemTags.create(ResourceLocation.tryBuild("minecraft", path));
+    }
 
-   public static TagKey<Block> vanillaBlockTag(String path) {
-      return BlockTags.create(ResourceLocation.tryBuild("minecraft", path));
-   }
+    public static TagKey<Block> vanillaBlockTag(String path) {
+        return BlockTags.create(ResourceLocation.tryBuild("minecraft", path));
+    }
 
-   public static TagKey<EntityType<?>> vanillaEntityTag(String path) {
-      return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.tryBuild("minecraft", path));
-   }
+    public static TagKey<EntityType<?>> vanillaEntityTag(String path) {
+        return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.tryBuild("minecraft", path));
+    }
 
-   public static TagKey<Fluid> vanillaFluidTag(String path) {
-      return FluidTags.create(ResourceLocation.tryBuild("minecraft", path));
-   }
+    public static TagKey<Fluid> vanillaFluidTag(String path) {
+        return FluidTags.create(ResourceLocation.tryBuild("minecraft", path));
+    }
 
-   public static TagKey<Item> modItemTag(String modid, String path) {
-      return ItemTags.create(ResourceLocation.tryBuild(modid, path));
-   }
+    public static TagKey<Item> modItemTag(String modid, String path) {
+        return ItemTags.create(ResourceLocation.tryBuild(modid, path));
+    }
 
-   public static TagKey<Block> modBlockTag(String modid, String path) {
-      return BlockTags.create(ResourceLocation.tryBuild(modid, path));
-   }
+    public static TagKey<Block> modBlockTag(String modid, String path) {
+        return BlockTags.create(ResourceLocation.tryBuild(modid, path));
+    }
 
-   public static TagKey<EntityType<?>> modEntityTag(String modid, String path) {
-      return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.tryBuild(modid, path));
-   }
+    public static TagKey<EntityType<?>> modEntityTag(String modid, String path) {
+        return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.tryBuild(modid, path));
+    }
 
-   public static TagKey<Fluid> modFluidTag(String modid, String path) {
-      return FluidTags.create(ResourceLocation.tryBuild(modid, path));
-   }
+    public static TagKey<Fluid> modFluidTag(String modid, String path) {
+        return FluidTags.create(ResourceLocation.tryBuild(modid, path));
+    }
 
-   public static TagKey<Item> forgeItemTag(String path) {
-      return ItemTags.create(ResourceLocation.tryBuild("c", path));
-   }
+    public static TagKey<Item> forgeItemTag(String path) {
+        return ItemTags.create(ResourceLocation.tryBuild("c", path));
+    }
 
-   public static TagKey<Block> forgeBlockTag(String path) {
-      return BlockTags.create(ResourceLocation.tryBuild("c", path));
-   }
+    public static TagKey<Block> forgeBlockTag(String path) {
+        return BlockTags.create(ResourceLocation.tryBuild("c", path));
+    }
 
-   public static TagKey<EntityType<?>> forgeEntityTag(String path) {
-      return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.tryBuild("c", path));
-   }
+    public static TagKey<EntityType<?>> forgeEntityTag(String path) {
+        return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.tryBuild("c", path));
+    }
 
-   public static TagKey<Fluid> forgeFluidTag(String path) {
-      return FluidTags.create(ResourceLocation.tryBuild("c", path));
-   }
+    public static TagKey<Fluid> forgeFluidTag(String path) {
+        return FluidTags.create(ResourceLocation.tryBuild("c", path));
+    }
 }

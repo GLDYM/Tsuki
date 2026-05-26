@@ -1,11 +1,12 @@
 {
-  "entity": "minecraft:villager",
   "neoforge:conditions": [
     {
       "modid": "cagedmobs",
       "type": "neoforge:mod_loaded"
     }
   ],
+  "type": "cagedmobs:additional_loot_data",
+  "entity": "minecraft:villager",
   "results": [
     {
       "chance": 0.4,
@@ -13,6 +14,5 @@
       "minAmount": 1,
       "output": "tsuki:sakura_coin"
     }
-  ],
-  "type": "cagedmobs:additional_loot_data"
+  ]
 }

@@ -68,5 +68,3 @@ public class ShojiBlockEntity extends SyncedBlockEntity {
         compound.putFloat("animation_progress", animationProgress);
     }
 }
-
-

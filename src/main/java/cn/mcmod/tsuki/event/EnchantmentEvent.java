@@ -33,7 +33,8 @@ public class EnchantmentEvent {
         }
 
         ItemStack mainHand = player.getMainHandItem();
-        int antiFireLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.ANTI_FIRE, mainHand);
+        int antiFireLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.ANTI_FIRE,
+                mainHand);
         if (antiFireLevel <= 0) {
             return;
         }
@@ -50,12 +51,14 @@ public class EnchantmentEvent {
 
         ItemStack mainHand = player.getMainHandItem();
         int smashLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.SMASH, mainHand);
-        int omnitoolLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.OMNITOOL, mainHand);
+        int omnitoolLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.OMNITOOL,
+                mainHand);
         if (smashLevel <= 0) {
             return;
         }
 
-        float hardness = event.getState().getDestroySpeed(player.level(), event.getPosition().orElse(player.blockPosition()));
+        float hardness = event.getState().getDestroySpeed(player.level(),
+                event.getPosition().orElse(player.blockPosition()));
         if (hardness <= 0.0F) {
             return;
         }
@@ -94,7 +97,8 @@ public class EnchantmentEvent {
         }
 
         ItemStack mainHand = player.getMainHandItem();
-        int omnitoolLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.OMNITOOL, mainHand);
+        int omnitoolLevel = EnchantmentRegistry.getLevel(player.registryAccess(), EnchantmentRegistry.OMNITOOL,
+                mainHand);
         if (omnitoolLevel <= 0) {
             return;
         }

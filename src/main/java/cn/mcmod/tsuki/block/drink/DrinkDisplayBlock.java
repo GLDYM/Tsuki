@@ -73,7 +73,8 @@ public class DrinkDisplayBlock extends AbstractDrinkDisplayBlock {
         }
 
         if (player != null && !player.getAbilities().instabuild) {
-            EquipmentSlot equipmentSlot = hand == InteractionHand.OFF_HAND ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
+            EquipmentSlot equipmentSlot = hand == InteractionHand.OFF_HAND ? EquipmentSlot.OFFHAND
+                    : EquipmentSlot.MAINHAND;
             stack.hurtAndBreak(1, player, equipmentSlot);
         }
         level.sendBlockUpdated(pos, state, state, Block.UPDATE_CLIENTS);

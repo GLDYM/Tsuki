@@ -122,17 +122,16 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
             normalItem(item);
         });
 
-        ItemRegistry.ITEMS.getEntries().forEach( item -> {
+        ItemRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get()
-                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()
-                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()
-                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RAMEN_BLOCK).get()
-                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.UDON_BLOCK).get()
-                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SOBA_BLOCK).get()
-                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PASTA_BLOCK).get()
-                || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get()
-                || item.get() == ItemRegistry.SAMURAI_ILLAGER_SPAWN_EGG.get())
-                {
+                    || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT).get()
+                    || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL).get()
+                    || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RAMEN_BLOCK).get()
+                    || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.UDON_BLOCK).get()
+                    || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SOBA_BLOCK).get()
+                    || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PASTA_BLOCK).get()
+                    || item.get() == ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BENTO_BOX).get()
+                    || item.get() == ItemRegistry.SAMURAI_ILLAGER_SPAWN_EGG.get()) {
                 return;
             } else {
                 normalItem(item);

@@ -71,8 +71,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                                     && block.get() != BlockRegistry.SHOJI_2.get()
                                     && block.get() != BlockRegistry.SHOJI_3.get()
                                     && block.get() != BlockRegistry.SHOJI_4.get()
-                                    && block.get() != BlockRegistry.SHOJI_5.get()
-                            ) {
+                                    && block.get() != BlockRegistry.SHOJI_5.get()) {
                                 if (block.get() instanceof BambooPlant) {
                                     this.dropOther(block.get(),
                                             ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO).get());
@@ -164,7 +163,8 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                 ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VANILLA).get(),
                 ItemRegistry.VANILLA_SEEDS.get(), 7, BlockItemRegistry.VANILLA_SPLINT.get());
         createCropWithSupport(BlockRegistry.HOPS_CROP.get(), ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get(),
-                ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get(), 7, BlockItemRegistry.GRAPE_SPLINT_STAND.get());
+                ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get(), 7,
+                BlockItemRegistry.GRAPE_SPLINT_STAND.get());
         createCrop(BlockRegistry.WILD_PEPPER.get(),
                 ItemRegistry.MATERIALS.get(TsukiNormalItemSet.PEPPERCORN_GREEN).get(),
                 ItemRegistry.PEPPER_SEEDS.get(), 7);
@@ -285,5 +285,3 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                                 .when(age7)))));
     }
 }
-
-

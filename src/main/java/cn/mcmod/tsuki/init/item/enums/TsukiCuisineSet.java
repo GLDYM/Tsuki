@@ -1095,5 +1095,3 @@ public enum TsukiCuisineSet {
         return container;
     }
 }
-
-

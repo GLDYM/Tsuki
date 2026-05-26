@@ -38,7 +38,8 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
     }
 
     @Override
-    public void render(CookingPotBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource buffer,
+    public void render(CookingPotBlockEntity blockEntity, float partialTicks, PoseStack poseStack,
+            MultiBufferSource buffer,
             int combinedLight, int combinedOverlay) {
         BlockState state = blockEntity.getBlockState();
         if (!(state.getBlock() instanceof CookingPotBlock) || !state.getValue(CookingPotBlock.OPEN)) {
@@ -60,14 +61,16 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
                 || !blockEntity.getInventory().getStackInSlot(CookingPotBlockEntity.SLOT_MEAL_DISPLAY).isEmpty();
     }
 
-    private void renderFinishedSurface(PoseStack poseStack, MultiBufferSource buffer, int combinedLight, int combinedOverlay) {
+    private void renderFinishedSurface(PoseStack poseStack, MultiBufferSource buffer, int combinedLight,
+            int combinedOverlay) {
         TextureAtlasSprite sprite = Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS)
                 .apply(FINISHED_TEXTURE);
         VertexConsumer vc = buffer.getBuffer(RenderType.entityTranslucentCull(InventoryMenu.BLOCK_ATLAS));
         var pose = poseStack.last();
         float y = FLUID_MAX_Y;
 
-        vc.addVertex(pose.pose(), FLUID_MIN_X, y, FLUID_MIN_Z).setColor(0xFFFFFFFF).setUv(sprite.getU0(), sprite.getV0())
+        vc.addVertex(pose.pose(), FLUID_MIN_X, y, FLUID_MIN_Z).setColor(0xFFFFFFFF)
+                .setUv(sprite.getU0(), sprite.getV0())
                 .setOverlay(combinedOverlay).setLight(combinedLight).setNormal(pose, 0, 1, 0);
         vc.addVertex(pose.pose(), FLUID_MIN_X, y, FLUID_MAX_Z)
                 .setColor(0xFFFFFFFF)
@@ -89,7 +92,8 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
                 .setNormal(pose, 0, 1, 0);
     }
 
-    private void renderFluid(CookingPotBlockEntity blockEntity, PoseStack poseStack, MultiBufferSource buffer, int combinedLight,
+    private void renderFluid(CookingPotBlockEntity blockEntity, PoseStack poseStack, MultiBufferSource buffer,
+            int combinedLight,
             float y) {
         FluidStack fluid = blockEntity.getFluidTank().getFluid();
         if (fluid.isEmpty()) {
@@ -104,7 +108,8 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
         var pose = poseStack.last();
         vc.addVertex(pose.pose(), FLUID_MIN_X, y, FLUID_MIN_Z).setColor(tint).setUv(sprite.getU0(), sprite.getV0())
                 .setOverlay(OverlayTexture.NO_OVERLAY).setLight(combinedLight).setNormal(pose, 0, 1, 0);
-        vc.addVertex(pose.pose(), FLUID_MIN_X, y, FLUID_MAX_Z).setColor(tint).setUv(sprite.getU0(), sprite.getV(10 / 16.0F))
+        vc.addVertex(pose.pose(), FLUID_MIN_X, y, FLUID_MAX_Z).setColor(tint)
+                .setUv(sprite.getU0(), sprite.getV(10 / 16.0F))
                 .setOverlay(OverlayTexture.NO_OVERLAY).setLight(combinedLight).setNormal(pose, 0, 1, 0);
         vc.addVertex(pose.pose(), FLUID_MAX_X, y, FLUID_MAX_Z)
                 .setColor(tint)
@@ -112,7 +117,8 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
                 .setOverlay(OverlayTexture.NO_OVERLAY)
                 .setLight(combinedLight)
                 .setNormal(pose, 0, 1, 0);
-        vc.addVertex(pose.pose(), FLUID_MAX_X, y, FLUID_MIN_Z).setColor(tint).setUv(sprite.getU(10 / 16.0F), sprite.getV0())
+        vc.addVertex(pose.pose(), FLUID_MAX_X, y, FLUID_MIN_Z).setColor(tint)
+                .setUv(sprite.getU(10 / 16.0F), sprite.getV0())
                 .setOverlay(OverlayTexture.NO_OVERLAY).setLight(combinedLight).setNormal(pose, 0, 1, 0);
     }
 
@@ -138,7 +144,7 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
 
             poseStack.pushPose();
             if (shouldFloat) {
-                poseStack.translate(0.0F, fluidSurfaceY - 0.1F , 0.0F);
+                poseStack.translate(0.0F, fluidSurfaceY - 0.1F, 0.0F);
                 poseStack.scale(0.5F, 0.5F, 0.5F);
                 poseStack.translate(0.8F + offsetX, offsetY, 0.8F + offsetZ);
                 poseStack.mulPose(Axis.XP.rotationDegrees(85.0F + (random % 10)));

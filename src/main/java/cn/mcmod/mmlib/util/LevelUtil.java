@@ -22,7 +22,8 @@ public class LevelUtil {
         }
     }
 
-    public static void spawnItemEntity(Level world, ItemStack stack, double x, double y, double z, double xMotion, double yMotion, double zMotion) {
+    public static void spawnItemEntity(Level world, ItemStack stack, double x, double y, double z, double xMotion,
+            double yMotion, double zMotion) {
         ItemEntity entity = new ItemEntity(world, x, y, z, stack);
         entity.setDeltaMovement(xMotion, yMotion, zMotion);
         world.addFreshEntity(entity);

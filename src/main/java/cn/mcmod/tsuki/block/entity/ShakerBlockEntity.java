@@ -75,9 +75,8 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
     }
 
     public int findFirstEmptyInputSlot() {
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START;
-                slot < ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT;
-                ++slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START; slot < ShakerDataHelper.SLOT_INPUT_START
+                + ShakerDataHelper.SLOT_INPUT_COUNT; ++slot) {
             if (inventory.getStackInSlot(slot).isEmpty()) {
                 return slot;
             }
@@ -86,9 +85,8 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
     }
 
     public int findLastOccupiedInputSlot() {
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT - 1;
-                slot >= ShakerDataHelper.SLOT_INPUT_START;
-                --slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT
+                - 1; slot >= ShakerDataHelper.SLOT_INPUT_START; --slot) {
             if (!inventory.getStackInSlot(slot).isEmpty()) {
                 return slot;
             }
@@ -115,8 +113,10 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
         this.shakeProgress = ShakerDataHelper.loadShakeProgress(stack);
         this.lockedRecipeId = ShakerDataHelper.loadLockedRecipe(stack);
         this.mysteryFallback = ShakerDataHelper.loadMysteryFallback(stack);
-        // BlockItem placement applies item components to the BE before setPlacedBy runs.
-        // Shaker data is stored explicitly on this BE, so the copied custom_data component
+        // BlockItem placement applies item components to the BE before setPlacedBy
+        // runs.
+        // Shaker data is stored explicitly on this BE, so the copied custom_data
+        // component
         // would duplicate the same payload in saved block entity NBT.
         this.setComponents(DataComponentMap.EMPTY);
         inventoryChanged();

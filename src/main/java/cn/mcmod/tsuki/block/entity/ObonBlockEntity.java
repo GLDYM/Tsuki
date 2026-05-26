@@ -86,5 +86,3 @@ public class ObonBlockEntity extends SyncedBlockEntity {
         };
     }
 }
-
-

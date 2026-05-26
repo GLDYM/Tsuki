@@ -23,7 +23,8 @@ public final class EnchantmentRegistry {
         return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path));
     }
 
-    public static int getLevel(RegistryAccess registryAccess, ResourceKey<Enchantment> enchantmentKey, ItemStack stack) {
+    public static int getLevel(RegistryAccess registryAccess, ResourceKey<Enchantment> enchantmentKey,
+            ItemStack stack) {
         Holder<Enchantment> holder = registryAccess.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(enchantmentKey);
         return EnchantmentHelper.getTagEnchantmentLevel(holder, stack);
     }

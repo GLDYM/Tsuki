@@ -73,12 +73,16 @@ public class MythicPickaxeItem extends PickaxeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip,
+            TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
         int level = getMiningLevel(stack);
         int experience = getMiningExperience(stack);
-        tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_level", level).withStyle(ChatFormatting.GOLD));
-        tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_experience", experience, TsukiCommonConfig.MYTHIC_PICKAXE_EXP_NEEDED.get())
+        tooltip.add(Component.translatable("tsuki.tooltip.mythic_pickaxe.mining_level", level)
+                .withStyle(ChatFormatting.GOLD));
+        tooltip.add(Component
+                .translatable("tsuki.tooltip.mythic_pickaxe.mining_experience", experience,
+                        TsukiCommonConfig.MYTHIC_PICKAXE_EXP_NEEDED.get())
                 .withStyle(ChatFormatting.AQUA));
     }
 
@@ -87,7 +91,8 @@ public class MythicPickaxeItem extends PickaxeItem {
         return true;
     }
 
-    public static int addMiningExperience(ItemStack stack, int addAmount, RandomSource random, RegistryAccess registryAccess,
+    public static int addMiningExperience(ItemStack stack, int addAmount, RandomSource random,
+            RegistryAccess registryAccess,
             ServerPlayer player) {
         if (addAmount <= 0) {
             return 0;
@@ -163,7 +168,8 @@ public class MythicPickaxeItem extends PickaxeItem {
         int fortuneLevel = EnchantmentHelper.getTagEnchantmentLevel(fortuneHolder, stack);
         int silkTouchLevel = EnchantmentHelper.getTagEnchantmentLevel(silkTouchHolder, stack);
 
-        if (fortuneLevel <= 0 && silkTouchLevel <= 0 && TsukiCommonConfig.MYTHIC_PICKAXE_ALLOW_BASIC_ENCHANT_UPGRADE.get()) {
+        if (fortuneLevel <= 0 && silkTouchLevel <= 0
+                && TsukiCommonConfig.MYTHIC_PICKAXE_ALLOW_BASIC_ENCHANT_UPGRADE.get()) {
             Holder.Reference<Enchantment> pick = random.nextBoolean() ? fortuneHolder : silkTouchHolder;
             EnchantRollResult result = tryUpgradeEnchantment(stack, pick, 1, pick.value().getMaxLevel());
             notifyEnchantRollResult(player, pick, result);
@@ -182,7 +188,8 @@ public class MythicPickaxeItem extends PickaxeItem {
                 return;
             }
 
-            Optional<Holder.Reference<Enchantment>> enchantmentHolder = getEnchantmentHolder(rolled.id, enchantmentRegistry);
+            Optional<Holder.Reference<Enchantment>> enchantmentHolder = getEnchantmentHolder(rolled.id,
+                    enchantmentRegistry);
             if (enchantmentHolder.isEmpty()) {
                 table.pool.remove(rolled);
                 Tsuki.getLogger().error("MYTHIC_PICKAXE table removed unknown enchantment id: {}", rolled.id);
@@ -199,7 +206,7 @@ public class MythicPickaxeItem extends PickaxeItem {
 
     private static EnchantRollResult tryUpgradeEnchantment(ItemStack stack, Holder<Enchantment> target, int addLevel,
             int maxLevel) {
-        final EnchantRollResult[] result = new EnchantRollResult[] {EnchantRollResult.DROP};
+        final EnchantRollResult[] result = new EnchantRollResult[] { EnchantRollResult.DROP };
         EnchantmentHelper.updateEnchantments(stack, mutable -> {
             int currentLevel = mutable.getLevel(target);
             if (currentLevel <= 0) {
@@ -223,7 +230,8 @@ public class MythicPickaxeItem extends PickaxeItem {
         return result[0];
     }
 
-    private static void notifyEnchantRollResult(ServerPlayer player, Holder<Enchantment> enchantment, EnchantRollResult result) {
+    private static void notifyEnchantRollResult(ServerPlayer player, Holder<Enchantment> enchantment,
+            EnchantRollResult result) {
         if (player == null || enchantment == null || result == null) {
             return;
         }
@@ -237,7 +245,8 @@ public class MythicPickaxeItem extends PickaxeItem {
         player.sendSystemMessage(Component.translatable(key, enchantment.value().description().copy()));
     }
 
-    private static Optional<Holder.Reference<Enchantment>> getEnchantmentHolder(ResourceLocation id, Registry<Enchantment> registry) {
+    private static Optional<Holder.Reference<Enchantment>> getEnchantmentHolder(ResourceLocation id,
+            Registry<Enchantment> registry) {
         if (id == null) {
             return Optional.empty();
         }
@@ -285,7 +294,8 @@ public class MythicPickaxeItem extends PickaxeItem {
                 CACHED_TABLE = GSON.fromJson(reader, MythicEnchantmentTable.class);
             }
             if (CACHED_TABLE == null) {
-                Tsuki.getLogger().error("Failed to parse MYTHIC_PICKAXE enchantment table: {}", ENCHANTMENT_TABLE_RESOURCE);
+                Tsuki.getLogger().error("Failed to parse MYTHIC_PICKAXE enchantment table: {}",
+                        ENCHANTMENT_TABLE_RESOURCE);
                 return null;
             }
             if (CACHED_TABLE.pool == null) {
@@ -293,7 +303,8 @@ public class MythicPickaxeItem extends PickaxeItem {
             }
             return CACHED_TABLE;
         } catch (Exception exception) {
-            Tsuki.getLogger().error("Error loading MYTHIC_PICKAXE enchantment table: {}", ENCHANTMENT_TABLE_RESOURCE, exception);
+            Tsuki.getLogger().error("Error loading MYTHIC_PICKAXE enchantment table: {}", ENCHANTMENT_TABLE_RESOURCE,
+                    exception);
             return null;
         }
     }

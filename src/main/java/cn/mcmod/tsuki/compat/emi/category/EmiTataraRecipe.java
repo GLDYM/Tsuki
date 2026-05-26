@@ -18,7 +18,8 @@ public class EmiTataraRecipe extends BasicEmiRecipe {
             ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "tatara"),
             EmiStack.of(BlockRegistry.TATARA.get()));
 
-    private static final ResourceLocation ARROW = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "textures/gui/pot.png");
+    private static final ResourceLocation ARROW = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+            "textures/gui/pot.png");
 
     private static final int WIDTH = 119;
     private static final int HEIGHT = 58;

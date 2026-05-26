@@ -1251,4 +1251,3 @@ public enum TsukiFoodSet {
         return FoodRegistry.FOODSET.get(this);
     }
 }
-

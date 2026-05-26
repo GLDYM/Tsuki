@@ -106,4 +106,3 @@ public class StoneMortarBlock extends BaseEntityBlock {
                 StoneMortarBlockEntity::workingTick);
     }
 }
-

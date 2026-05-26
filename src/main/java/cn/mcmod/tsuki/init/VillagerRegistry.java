@@ -12,10 +12,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class VillagerRegistry {
-    public static final DeferredRegister<PoiType> POI_TYPES =
-            DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, Tsuki.MODID);
-    public static final DeferredRegister<VillagerProfession> PROFESSIONS =
-            DeferredRegister.create(Registries.VILLAGER_PROFESSION, Tsuki.MODID);
+    public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE,
+            Tsuki.MODID);
+    public static final DeferredRegister<VillagerProfession> PROFESSIONS = DeferredRegister
+            .create(Registries.VILLAGER_PROFESSION, Tsuki.MODID);
 
     public static final DeferredHolder<PoiType, PoiType> WA_FARMER_POI = POI_TYPES.register("wa_farmer",
             () -> new PoiType(ImmutableSet.copyOf(

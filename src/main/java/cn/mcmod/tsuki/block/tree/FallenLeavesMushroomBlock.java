@@ -95,11 +95,14 @@ public class FallenLeavesMushroomBlock extends FallenLeavesBlock {
             ItemStack normal;
 
             switch (level.random.nextInt(4)) {
-                case 0 -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(), 5 + level.random.nextInt(3));
-                case 1 -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.SHIMEJI).get(), 5 + level.random.nextInt(3));
+                case 0 -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(),
+                        5 + level.random.nextInt(3));
+                case 1 -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.SHIMEJI).get(),
+                        5 + level.random.nextInt(3));
                 case 2 -> normal = new ItemStack(Items.BROWN_MUSHROOM, 5 + level.random.nextInt(3));
                 case 3 -> normal = new ItemStack(Items.RED_MUSHROOM, 5 + level.random.nextInt(3));
-                default -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(), 5 + level.random.nextInt(3));
+                default -> normal = new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.EDODES).get(),
+                        5 + level.random.nextInt(3));
             }
             ItemStack drop = type == Type.MATSUTAKE
                     ? new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.MATSUTAKE).get(), 5 + level.random.nextInt(3))

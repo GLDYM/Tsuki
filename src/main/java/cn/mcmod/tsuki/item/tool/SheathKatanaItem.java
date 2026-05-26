@@ -38,11 +38,12 @@ public class SheathKatanaItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip,
+            TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
         tooltip.add(Component.translatable("tsuki.tooltip.sheath_katana")
-            .withStyle(ChatFormatting.GRAY)
-            .withStyle(ChatFormatting.ITALIC));
+                .withStyle(ChatFormatting.GRAY)
+                .withStyle(ChatFormatting.ITALIC));
     }
 
     @Override
@@ -138,7 +139,7 @@ public class SheathKatanaItem extends Item {
             return;
         }
         float baseDamage = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE)
-            + blade.getDamageValue() * 1.2F;
+                + blade.getDamageValue() * 1.2F;
         AABB aabb = player.getBoundingBox().inflate(2.5D, 0.5D, 2.5D);
         List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, aabb,
                 target -> target != player && !player.isAlliedTo(target) && player.distanceToSqr(target) < 10.0D);

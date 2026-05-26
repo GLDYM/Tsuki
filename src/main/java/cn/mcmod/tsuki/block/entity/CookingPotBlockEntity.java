@@ -283,7 +283,6 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         }
     }
 
-
     private boolean moveMealToOutput() {
         ItemStack mealStack = inventory.getStackInSlot(SLOT_MEAL_DISPLAY);
         if (mealStack.isEmpty()) {

@@ -119,7 +119,8 @@ public abstract class AbstractDrinkDisplayBlock extends BaseEntityBlock {
         }
     }
 
-    protected boolean placeItem(Level level, BlockPos pos, Player player, DrinkDisplayBlockEntity blockEntity, ItemStack stack,
+    protected boolean placeItem(Level level, BlockPos pos, Player player, DrinkDisplayBlockEntity blockEntity,
+            ItemStack stack,
             int slot) {
         if (!canAccept(stack) || !blockEntity.getStackInSlot(slot).isEmpty()) {
             return false;
@@ -127,7 +128,8 @@ public abstract class AbstractDrinkDisplayBlock extends BaseEntityBlock {
         if (level.isClientSide) {
             return true;
         }
-        ItemStack toStore = player != null && player.getAbilities().instabuild ? stack.copyWithCount(1) : stack.split(1);
+        ItemStack toStore = player != null && player.getAbilities().instabuild ? stack.copyWithCount(1)
+                : stack.split(1);
         if (toStore.isEmpty()) {
             return false;
         }
@@ -140,7 +142,8 @@ public abstract class AbstractDrinkDisplayBlock extends BaseEntityBlock {
         return true;
     }
 
-    protected boolean removeItem(Level level, BlockPos pos, Player player, DrinkDisplayBlockEntity blockEntity, int slot) {
+    protected boolean removeItem(Level level, BlockPos pos, Player player, DrinkDisplayBlockEntity blockEntity,
+            int slot) {
         if (blockEntity.getStackInSlot(slot).isEmpty()) {
             return false;
         }

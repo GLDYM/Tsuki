@@ -240,9 +240,8 @@ public class ShakerBlock extends BaseEntityBlock {
 
     private boolean takeInputWithContainer(Level level, BlockPos pos, Player player, InteractionHand hand,
             ShakerBlockEntity shaker) {
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT - 1;
-                slot >= ShakerDataHelper.SLOT_INPUT_START;
-                --slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT
+                - 1; slot >= ShakerDataHelper.SLOT_INPUT_START; --slot) {
             if (takeFilledItemWithContainer(level, pos, player, hand, shaker, slot)) {
                 return true;
             }
@@ -310,9 +309,8 @@ public class ShakerBlock extends BaseEntityBlock {
     }
 
     private int findLastLooseInputSlot(ShakerBlockEntity shaker) {
-        for (int slot = ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT - 1;
-                slot >= ShakerDataHelper.SLOT_INPUT_START;
-                --slot) {
+        for (int slot = ShakerDataHelper.SLOT_INPUT_START + ShakerDataHelper.SLOT_INPUT_COUNT
+                - 1; slot >= ShakerDataHelper.SLOT_INPUT_START; --slot) {
             ItemStack stack = shaker.getInventory().getStackInSlot(slot);
             if (!stack.isEmpty() && ShakerDataHelper.getRequiredContainer(stack).isEmpty()) {
                 return slot;
