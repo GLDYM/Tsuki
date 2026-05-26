@@ -1,5 +1,12 @@
 # Changelog
 
+# Tsuki 1.4.5
+
+## Bug Fix
+
+- Stone Mortar Parser cannot parse list ingredients.
+- Farmers Delight's rice have a wrong brown rice tag.
+
 # Tsuki 1.4.4
 
 ## Compat

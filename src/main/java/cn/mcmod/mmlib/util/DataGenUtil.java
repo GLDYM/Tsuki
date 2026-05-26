@@ -193,9 +193,16 @@ public final class DataGenUtil {
             JsonObject object = json.getAsJsonObject();
             int count = object.has("count") ? object.get("count").getAsInt() : 1;
 
-            JsonObject ingredientObject = object.deepCopy();
-            ingredientObject.remove("count");
-            Ingredient ingredient = context.deserialize(ingredientObject, Ingredient.class);
+            JsonElement ingredientJson;
+            if (object.has("ingredient")) {
+                ingredientJson = object.get("ingredient");
+            } else {
+                JsonObject ingredientObject = object.deepCopy();
+                ingredientObject.remove("count");
+                ingredientJson = ingredientObject;
+            }
+
+            Ingredient ingredient = context.deserialize(ingredientJson, Ingredient.class);
             return new CountedIngredient(ingredient, count);
         }
 

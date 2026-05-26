@@ -195,8 +195,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.VEGETABLES_ONION).add(FoodRegistry.FOODSET.get(TsukiFoodSet.ONION).get());
         this.tag(TsukiItemTags.VEGETABLES_RADISH).add(FoodRegistry.FOODSET.get(TsukiFoodSet.RADISH).get());
         this.tag(TsukiItemTags.VEGETABLES_TOMATO).add(FoodRegistry.FOODSET.get(TsukiFoodSet.TOMATO).get());
-        this.tag(TsukiItemTags.RICE_BROWN).addTag(TsukiItemTags.GRAIN_RICE);
-        this.tag(TsukiItemTags.RICE_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RICE).get());
+        this.tag(TsukiItemTags.RICE_BROWN).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get());
+        this.tag(TsukiItemTags.RICE_RICE).addTag(TsukiItemTags.GRAIN_RICE);
         this.tag(TsukiItemTags.STRAW)
                 .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.STRAW).get())
                 .addOptional(ResourceLocation.parse("farmersdelight:straw"));
