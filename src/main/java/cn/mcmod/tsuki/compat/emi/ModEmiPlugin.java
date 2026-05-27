@@ -3,9 +3,11 @@ package cn.mcmod.tsuki.compat.emi;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.mcmod.tsuki.compat.EquipmentDyeDisplay;
 import cn.mcmod.tsuki.compat.emi.category.EmiChoppingRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiCookingPotRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiDistillerRecipe;
+import cn.mcmod.tsuki.compat.emi.category.EmiEquipmentDyeRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiFermenterRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiShakerRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiStoneMortarRecipe;
@@ -27,6 +29,7 @@ import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
 import dev.emi.emi.api.EmiEntrypoint;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
+import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -109,6 +112,9 @@ public class ModEmiPlugin implements EmiPlugin {
                 new ItemStack(Items.FLINT_AND_STEEL),
                 new ItemStack(Items.IRON_INGOT),
                 new ItemStack(ArmorToolRegistry.TAMAHAGANE.get())));
+        for (EquipmentDyeDisplay.Entry entry : EquipmentDyeDisplay.entries()) {
+            registry.addRecipe(EmiEquipmentDyeRecipe.of(toSyncId(entry.recipeId()), entry));
+        }
 
         registry.addWorkstation(EmiCookingPotRecipe.CATEGORY, EmiStack.of(BlockRegistry.COOKING_POT.get()));
         registry.addWorkstation(EmiStoneMortarRecipe.CATEGORY, EmiStack.of(BlockRegistry.STONE_MORTAR.get()));
@@ -121,6 +127,7 @@ public class ModEmiPlugin implements EmiPlugin {
         registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(ArmorToolRegistry.IRON_HAMMER.get()));
         registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(ArmorToolRegistry.STEEL_HAMMER.get()));
         registry.addWorkstation(EmiTataraRecipe.CATEGORY, EmiStack.of(ArmorToolRegistry.SAKURA_HAMMER.get()));
+        registry.addWorkstation(VanillaEmiRecipeCategories.CRAFTING, EmiStack.of(Items.CRAFTING_TABLE));
     }
 
     private static ResourceLocation toSyncId(ResourceLocation id) {

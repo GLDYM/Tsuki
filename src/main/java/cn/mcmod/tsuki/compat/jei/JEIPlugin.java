@@ -19,6 +19,7 @@ import cn.mcmod.tsuki.compat.jei.category.ShakerCategory;
 import cn.mcmod.tsuki.compat.jei.category.StoneMortarCategory;
 import cn.mcmod.tsuki.compat.jei.category.TataraCategory;
 import cn.mcmod.tsuki.compat.jei.recipe.TataraJeiRecipe;
+import cn.mcmod.tsuki.compat.EquipmentDyeDisplay;
 import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import cn.mcmod.tsuki.recipe.DistillerRecipe;
@@ -34,6 +35,7 @@ import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
@@ -41,6 +43,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -118,6 +121,8 @@ public class JEIPlugin implements IModPlugin {
                 new ItemStack(Items.FLINT_AND_STEEL),
                 new ItemStack(Items.IRON_INGOT),
                 new ItemStack(ArmorToolRegistry.TAMAHAGANE.get()))));
+        registration.addRecipes(RecipeTypes.CRAFTING,
+                EquipmentDyeDisplay.entries().stream().map(JEIPlugin::toCraftingRecipeHolder).toList());
     }
 
     @Override
@@ -154,6 +159,10 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
         return PLUGIN_ID;
+    }
+
+    private static RecipeHolder<CraftingRecipe> toCraftingRecipeHolder(EquipmentDyeDisplay.Entry entry) {
+        return new RecipeHolder<>(entry.recipeId(), entry.toShapelessRecipe());
     }
 
 }
