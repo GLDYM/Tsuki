@@ -33,6 +33,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
@@ -45,6 +46,7 @@ public class ShojiBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
+    public static final EnumProperty<DoorHingeSide> HINGE = BlockStateProperties.DOOR_HINGE;
 
     protected static final VoxelShape SHAPE_NS = Block.box(0.0D, 0.0D, 7.0D, 16.0D, 16.0D, 9.0D);
     protected static final VoxelShape SHAPE_EW = Block.box(7.0D, 0.0D, 0.0D, 9.0D, 16.0D, 16.0D);
@@ -60,6 +62,7 @@ public class ShojiBlock extends BaseEntityBlock {
             29.0D);
     protected static final VoxelShape INTERACTION_SHAPE_OPEN_EAST = Block.box(7.0D, 0.0D, -13.0D, 9.0D, 16.0D,
             3.0D);
+    private static final double FACING_SHAPE_OFFSET = 1.0D / 16.0D;
 
     private final int type;
 
@@ -77,6 +80,7 @@ public class ShojiBlock extends BaseEntityBlock {
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(OPEN, false)
+                .setValue(HINGE, DoorHingeSide.RIGHT)
                 .setValue(HALF, DoubleBlockHalf.LOWER));
     }
 
@@ -110,22 +114,21 @@ public class ShojiBlock extends BaseEntityBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Direction facing = state.getValue(FACING);
         if (state.getValue(OPEN)) {
-            return getOpenInteractionShape(facing);
+            return getOpenInteractionShape(state);
         }
-        return (facing == Direction.NORTH || facing == Direction.SOUTH) ? SHAPE_NS : SHAPE_EW;
+        return getClosedShape(state);
     }
 
     @Override
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos,
             CollisionContext context) {
-        return state.getValue(OPEN) ? getOpenInteractionShape(state.getValue(FACING)) : getClosedShape(state);
+        return state.getValue(OPEN) ? getOpenInteractionShape(state) : getClosedShape(state);
     }
 
     @Override
     public VoxelShape getInteractionShape(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.getValue(OPEN) ? getOpenInteractionShape(state.getValue(FACING)) : getClosedShape(state);
+        return state.getValue(OPEN) ? getOpenInteractionShape(state) : getClosedShape(state);
     }
 
     @Override
@@ -140,17 +143,27 @@ public class ShojiBlock extends BaseEntityBlock {
 
     private static VoxelShape getClosedShape(BlockState state) {
         Direction facing = state.getValue(FACING);
-        return (facing == Direction.NORTH || facing == Direction.SOUTH) ? SHAPE_NS : SHAPE_EW;
+        VoxelShape shape = (facing == Direction.NORTH || facing == Direction.SOUTH) ? SHAPE_NS : SHAPE_EW;
+        return moveTowardFacing(shape, facing);
     }
 
-    private static VoxelShape getOpenInteractionShape(Direction facing) {
-        return switch (facing) {
+    private static VoxelShape getOpenInteractionShape(BlockState state) {
+        Direction facing = state.getValue(FACING);
+        if (state.getValue(HINGE) == DoorHingeSide.LEFT) {
+            facing = facing.getOpposite();
+        }
+        VoxelShape shape = switch (facing) {
             case NORTH -> INTERACTION_SHAPE_OPEN_NORTH;
             case SOUTH -> INTERACTION_SHAPE_OPEN_SOUTH;
             case WEST -> INTERACTION_SHAPE_OPEN_WEST;
             case EAST -> INTERACTION_SHAPE_OPEN_EAST;
             default -> SHAPE_NS;
         };
+        return moveTowardFacing(shape, state.getValue(FACING));
+    }
+
+    private static VoxelShape moveTowardFacing(VoxelShape shape, Direction facing) {
+        return shape.move(facing.getStepX() * FACING_SHAPE_OFFSET, 0.0D, facing.getStepZ() * FACING_SHAPE_OFFSET);
     }
 
     @Override
@@ -189,7 +202,17 @@ public class ShojiBlock extends BaseEntityBlock {
         }
         return this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                .setValue(HINGE, getHinge(context, context.getHorizontalDirection().getOpposite()))
                 .setValue(HALF, DoubleBlockHalf.LOWER);
+    }
+
+    private static DoorHingeSide getHinge(BlockPlaceContext context, Direction facing) {
+        BlockPos pos = context.getClickedPos();
+        Direction right = facing.getClockWise();
+        double localX = context.getClickLocation().x - pos.getX() - 0.5D;
+        double localZ = context.getClickLocation().z - pos.getZ() - 0.5D;
+        double side = localX * right.getStepX() + localZ * right.getStepZ();
+        return side >= 0.0D ? DoorHingeSide.LEFT : DoorHingeSide.RIGHT;
     }
 
     @Override
@@ -209,7 +232,7 @@ public class ShojiBlock extends BaseEntityBlock {
 
     @Override
     protected BlockState mirror(BlockState state, Mirror mirror) {
-        return state.setValue(FACING, mirror.mirror(state.getValue(FACING)));
+        return state.rotate(mirror.getRotation(state.getValue(FACING))).cycle(HINGE);
     }
 
     @Override
@@ -221,12 +244,14 @@ public class ShojiBlock extends BaseEntityBlock {
                 return neighborState.is(this) && neighborState.getValue(HALF) == DoubleBlockHalf.UPPER
                         ? state.setValue(OPEN, neighborState.getValue(OPEN))
                                 .setValue(FACING, neighborState.getValue(FACING))
+                                .setValue(HINGE, neighborState.getValue(HINGE))
                         : Blocks.AIR.defaultBlockState();
             }
             if (half == DoubleBlockHalf.UPPER && direction == Direction.DOWN) {
                 return neighborState.is(this) && neighborState.getValue(HALF) == DoubleBlockHalf.LOWER
                         ? state.setValue(OPEN, neighborState.getValue(OPEN))
                                 .setValue(FACING, neighborState.getValue(FACING))
+                                .setValue(HINGE, neighborState.getValue(HINGE))
                         : Blocks.AIR.defaultBlockState();
             }
         }
@@ -254,6 +279,6 @@ public class ShojiBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING, OPEN, HALF);
+        builder.add(FACING, OPEN, HALF, HINGE);
     }
 }

@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.data.client;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.decoration.FutonBlock;
+import cn.mcmod.tsuki.block.decoration.ShojiBlock;
 import cn.mcmod.tsuki.block.food.TeishokuBlock;
 import cn.mcmod.tsuki.block.machine.TataraBlock;
 import cn.mcmod.tsuki.block.tree.ChestnutBurrBlock;
@@ -18,8 +19,10 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -404,11 +407,23 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
     }
 
     private void shoji(Block block) {
+        ModelFile closed = models().getExistingFile(modLoc("block/" + name(block)));
+        ModelFile empty = models().getExistingFile(modLoc("block/" + name(block) + "_empty"));
+        ModelFile open = models().getExistingFile(modLoc("block/" + name(block) + "_open"));
         getVariantBuilder(block).forAllStates(state -> {
-            Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+            Direction facing = state.getValue(ShojiBlock.FACING);
             int yRot = ((int) facing.toYRot() + 180) % 360;
+            ModelFile model;
+            if (state.getValue(ShojiBlock.HALF) == DoubleBlockHalf.UPPER) {
+                model = empty;
+            } else {
+                model = state.getValue(ShojiBlock.OPEN) ? open : closed;
+                if (state.getValue(ShojiBlock.HINGE) == DoorHingeSide.LEFT) {
+                    yRot = (yRot + 180) % 360;
+                }
+            }
             return ConfiguredModel.builder()
-                    .modelFile(models().getExistingFile(modLoc("block/" + name(block) + "_empty")))
+                    .modelFile(model)
                     .rotationY(yRot)
                     .build();
         });

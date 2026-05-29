@@ -4,9 +4,12 @@
 
 ## Feature
 
-- Shoji could be interactive in the adjacent blocka when opening.
+- Add hinge blockstate to Shoji.
+- Shoji could be interactive in the adjacent block when opening.
 - Slight change teh recipe of soda water.
 - Move the sliced cabbage into c:crops/cabbage and change the recipe to match Farmers Delight.
+- Change drink display to sneak + right-click.
+
 
 ## Bug Fix
 

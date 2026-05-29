@@ -13,12 +13,14 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
 public class ShojiRenderer implements BlockEntityRenderer<ShojiBlockEntity> {
     private static final int MAX_TYPES = 6;
+    private static final float FACING_MODEL_OFFSET = 1.0F / 16.0F;
     private static final ResourceLocation[] TEXTURES = new ResourceLocation[MAX_TYPES];
 
     private static final float TW = 64f;
@@ -71,6 +73,7 @@ public class ShojiRenderer implements BlockEntityRenderer<ShojiBlockEntity> {
 
         poseStack.pushPose();
         poseStack.translate(0.5, 0.0, 0.5);
+        poseStack.translate(facing.getStepX() * FACING_MODEL_OFFSET, 0.0F, facing.getStepZ() * FACING_MODEL_OFFSET);
 
         float yRot = switch (facing) {
             case SOUTH -> 0f;
@@ -80,6 +83,9 @@ public class ShojiRenderer implements BlockEntityRenderer<ShojiBlockEntity> {
             default -> 0f;
         };
         poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
+        if (state.getValue(ShojiBlock.HINGE) == DoorHingeSide.LEFT) {
+            poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
+        }
         poseStack.translate(-openFactor * 0.8, 0.0, 0.0);
 
         float panelLeft = -0.5f;
