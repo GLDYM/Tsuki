@@ -11,7 +11,7 @@
   ],
   "experience": 1,
   "ingredient": {
-    "tag": "c:crops/cabbage"
+    "item": "tsuki:cabbage"
   },
   "recipeTime": 1,
   "result": {

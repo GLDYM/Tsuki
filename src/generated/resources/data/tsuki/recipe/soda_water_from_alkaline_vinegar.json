@@ -3,15 +3,6 @@
   "category": "misc",
   "ingredients": [
     {
-      "type": "neoforge:components",
-      "components": {
-        "minecraft:potion_contents": {
-          "potion": "minecraft:water"
-        }
-      },
-      "items": "minecraft:potion"
-    },
-    {
       "item": "tsuki:alkaline"
     },
     {

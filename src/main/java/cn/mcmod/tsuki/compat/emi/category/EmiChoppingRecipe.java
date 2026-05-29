@@ -71,7 +71,7 @@ public class EmiChoppingRecipe extends BasicEmiRecipe {
             widgets.addSlot(outputs.get(i + 1), i * 18 + 11, 51)
                     .drawBack(false)
                     .recipeContext(this)
-                    .appendTooltip(Component.translatable("mmlib.gui.chance",
+                    .appendTooltip(Component.translatable("tsuki.jei.chance",
                             Math.round(chanceResult.chance() * 100.0f) + "%"));
         }
 

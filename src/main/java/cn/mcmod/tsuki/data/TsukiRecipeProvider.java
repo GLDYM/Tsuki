@@ -1129,12 +1129,11 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .unlockedBy("has_rice", has(FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get()))
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
-                .requires(potion(Potions.WATER))
                 .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.ALKALINE).get())
                 .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VINEGAR).get())
                 .unlockedBy("has_vinegar", has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.VINEGAR).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
-                        "soda_water_from_water_bottle_alkaline_vinegar"));
+                        "soda_water_from_alkaline_vinegar"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FoodRegistry.FOODSET.get(TsukiFoodSet.SUSHI).get(), 2)
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.VINEGAR_RICE).get())
                 .requires(TsukiItemTags.SLICES_RAW_FISHES)
@@ -4525,7 +4524,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .addByproduceWithChance(Items.BONE_MEAL, 0.5F)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "machined_bonito_chopping"));
         ChoppingBoardRecipeBuilder.chop(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get())
-                .requires(TsukiItemTags.CROPS_CABBAGE)
+                .requires(TsukiFoodSet.CABBAGE.getItem().get())
                 .requiresTool(TsukiItemTags.TOOLS_KNIVES_FISH)
                 .addByproduce(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get())
                 .addByproduceWithChance(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get(), 0.5F)

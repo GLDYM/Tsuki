@@ -11,6 +11,7 @@
 - Stone Mortar Parser cannot parse list ingredients.
 - Farmers Delight's rice have a wrong brown rice tag.
 - The components of armors will be lost after dyeing.
+- The compat recipe of chopping board doesn't work.
 
 # Tsuki 1.4.4
 

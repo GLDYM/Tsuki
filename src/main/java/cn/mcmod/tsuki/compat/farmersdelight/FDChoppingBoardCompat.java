@@ -37,13 +37,14 @@ public final class FDChoppingBoardCompat {
         }
 
         RecipeHolder<CuttingBoardRecipe> bestMatch = null;
-        int bestIngredientCount = -1;
+        int bestSpecificity = -1;
         for (RecipeHolder<CuttingBoardRecipe> holder : level.getRecipeManager().getAllRecipesFor(cuttingType)) {
             CuttingBoardRecipe recipe = holder.value();
             if (recipe.matches(new CuttingBoardRecipeInput(wrapper.getItem(0), toolStack), level)) {
-                int ingredientCount = getNonEmptyIngredientCount(recipe);
-                if (ingredientCount > bestIngredientCount) {
-                    bestIngredientCount = ingredientCount;
+                int specificity = getSpecificity(recipe, wrapper.getItem(0), toolStack);
+                if (specificity > bestSpecificity
+                        || specificity == bestSpecificity && isLexicographicallyEarlier(holder, bestMatch)) {
+                    bestSpecificity = specificity;
                     bestMatch = holder;
                 }
             }
@@ -102,17 +103,38 @@ public final class FDChoppingBoardCompat {
         return recipe;
     }
 
-    private static int getNonEmptyIngredientCount(CuttingBoardRecipe recipe) {
-        int count = 0;
+    private static int getSpecificity(CuttingBoardRecipe recipe, ItemStack inputStack, ItemStack toolStack) {
+        int score = 0;
+        if (!recipe.getIngredients().isEmpty()) {
+            score += getIngredientSpecificity(recipe.getIngredients().getFirst(), inputStack) * 10;
+        }
+        score += getIngredientSpecificity(recipe.getTool(), toolStack) * 10;
         for (Ingredient ingredient : recipe.getIngredients()) {
             if (!ingredient.isEmpty()) {
-                count++;
+                score++;
             }
         }
         if (!recipe.getTool().isEmpty()) {
-            count++;
+            score++;
         }
-        return count;
+        return score;
+    }
+
+    private static int getIngredientSpecificity(Ingredient ingredient, ItemStack stack) {
+        if (ingredient.isEmpty()) {
+            return 0;
+        }
+
+        ItemStack[] matchingStacks = ingredient.getItems();
+        if (matchingStacks.length == 1 && ItemStack.isSameItemSameComponents(matchingStacks[0], stack)) {
+            return 2;
+        }
+        return 1;
+    }
+
+    private static boolean isLexicographicallyEarlier(RecipeHolder<CuttingBoardRecipe> candidate,
+            RecipeHolder<CuttingBoardRecipe> currentBest) {
+        return currentBest == null || candidate.id().toString().compareTo(currentBest.id().toString()) < 0;
     }
 
     private static boolean isEnabled() {

@@ -175,7 +175,9 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.CROPS_BUCKWHEAT).add(ItemRegistry.BUCKWHEAT.get());
         this.tag(TsukiItemTags.CROPS_RICE).add(ItemRegistry.RICE_SEEDS.get());
         this.tag(TsukiItemTags.CROPS_TARO).add(ItemRegistry.TARO.get());
-        this.tag(TsukiItemTags.CROPS_CABBAGE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get());
+        this.tag(TsukiItemTags.CROPS_CABBAGE)
+            .add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get())
+            .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get());
         this.tag(TsukiItemTags.CROPS_EGGPLANT).add(FoodRegistry.FOODSET.get(TsukiFoodSet.EGGPLANT).get());
         this.tag(TsukiItemTags.CROPS_ONION).add(FoodRegistry.FOODSET.get(TsukiFoodSet.ONION).get());
         this.tag(TsukiItemTags.CROPS_RADISH).add(FoodRegistry.FOODSET.get(TsukiFoodSet.RADISH).get());

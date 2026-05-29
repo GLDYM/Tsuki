@@ -39,14 +39,15 @@ public final class KCChoppingBoardCompat {
         }
 
         RecipeHolder<ChoppingBoardRecipe> bestMatch = null;
-        int bestIngredientCount = -1;
+        int bestSpecificity = -1;
         SingleRecipeInput input = new SingleRecipeInput(inputStack);
         for (RecipeHolder<ChoppingBoardRecipe> holder : level.getRecipeManager().getAllRecipesFor(choppingType)) {
             ChoppingBoardRecipe recipe = holder.value();
             if (recipe.matches(input, level)) {
-                int ingredientCount = recipe.getIngredient().isEmpty() ? 0 : 1;
-                if (ingredientCount > bestIngredientCount) {
-                    bestIngredientCount = ingredientCount;
+                int specificity = getSpecificity(recipe.getIngredient(), inputStack);
+                if (specificity > bestSpecificity
+                        || specificity == bestSpecificity && isLexicographicallyEarlier(holder, bestMatch)) {
+                    bestSpecificity = specificity;
                     bestMatch = holder;
                 }
             }
@@ -92,6 +93,23 @@ public final class KCChoppingBoardCompat {
         recipe.experience = 0.0F;
         recipe.recipeTime = 1;
         return recipe;
+    }
+
+    private static int getSpecificity(Ingredient ingredient, ItemStack inputStack) {
+        if (ingredient.isEmpty()) {
+            return 0;
+        }
+
+        ItemStack[] matchingStacks = ingredient.getItems();
+        if (matchingStacks.length == 1 && ItemStack.isSameItemSameComponents(matchingStacks[0], inputStack)) {
+            return 2;
+        }
+        return 1;
+    }
+
+    private static boolean isLexicographicallyEarlier(RecipeHolder<ChoppingBoardRecipe> candidate,
+            RecipeHolder<ChoppingBoardRecipe> currentBest) {
+        return currentBest == null || candidate.id().toString().compareTo(currentBest.id().toString()) < 0;
     }
 
     private static boolean isEnabled() {

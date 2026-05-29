@@ -78,15 +78,6 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
 
         matchingRecipe.ifPresent(recipe -> {
             this.recipeTimeTotal = recipe.getRecipeTime();
-
-            List<ItemStack> results = recipe.rollByproducts(level.random, 0);
-            for (ItemStack resultStack : results) {
-                Direction direction = getBlockState().getValue(ChoppingBoardBlock.FACING).getCounterClockWise();
-                LevelUtil.spawnItemEntity(level, resultStack.copy(),
-                        worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2), worldPosition.getY() + 0.2,
-                        worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2), direction.getStepX() * 0.2F, 0.0F,
-                        direction.getStepZ() * 0.2F);
-            }
             if (player != null) {
                 toolStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
             } else {
@@ -101,8 +92,7 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
             if (this.recipeTime < recipeTimeTotal - 1) {
                 this.recipeTime++;
             } else {
-                if (!setResult(recipe))
-                    removeItem();
+                finishRecipe(recipe);
             }
         });
 
@@ -128,35 +118,34 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
 
         List<RecipeHolder<ChoppingRecipe>> recipeList = level.getRecipeManager()
                 .getRecipesFor(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get(), recipeWrapper, level);
-        if (recipeList.isEmpty()) {
-            if (player != null)
-                player.displayClientMessage(Component.translatable("tsuki.block.chopping_board.invalid_item"), true);
-            return Optional.empty();
-        }
         Optional<RecipeHolder<ChoppingRecipe>> recipe = recipeList.stream()
                 .filter(holder -> holder.value().getTool().test(toolStack)).findFirst();
-        if (!recipe.isPresent()) {
-            Optional<ChoppingRecipe> fdCompatRecipe = FDChoppingBoardCompat.findMatching(level, recipeWrapper,
-                    toolStack);
-            if (fdCompatRecipe.isPresent()) {
-                lastRecipeID = null;
-                return fdCompatRecipe;
-            }
-
-            Optional<ChoppingRecipe> kcCompatRecipe = KCChoppingBoardCompat.findMatching(level,
-                    recipeWrapper.getItem(0),
-                    toolStack);
-            if (kcCompatRecipe.isPresent()) {
-                lastRecipeID = null;
-                return kcCompatRecipe;
-            }
-
-            if (player != null)
-                player.displayClientMessage(Component.translatable("tsuki.block.chopping_board.invalid_tool"), true);
-            return Optional.empty();
+        if (recipe.isPresent()) {
+            lastRecipeID = recipe.get().id();
+            return Optional.of(recipe.get().value());
         }
-        lastRecipeID = recipe.get().id();
-        return Optional.of(recipe.get().value());
+
+        Optional<ChoppingRecipe> fdCompatRecipe = FDChoppingBoardCompat.findMatching(level, recipeWrapper,
+                toolStack);
+        if (fdCompatRecipe.isPresent()) {
+            lastRecipeID = null;
+            return fdCompatRecipe;
+        }
+
+        Optional<ChoppingRecipe> kcCompatRecipe = KCChoppingBoardCompat.findMatching(level, recipeWrapper.getItem(0),
+                toolStack);
+        if (kcCompatRecipe.isPresent()) {
+            lastRecipeID = null;
+            return kcCompatRecipe;
+        }
+
+        if (player != null) {
+            Component message = recipeList.isEmpty()
+                    ? Component.translatable("tsuki.block.chopping_board.invalid_item")
+                    : Component.translatable("tsuki.block.chopping_board.invalid_tool");
+            player.displayClientMessage(message, true);
+        }
+        return Optional.empty();
     }
 
     public void playProcessingSound(ItemStack tool, ItemStack boardItem) {
@@ -187,27 +176,33 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
         return false;
     }
 
-    public boolean setResult(ChoppingRecipe recipe) {
+    private void finishRecipe(ChoppingRecipe recipe) {
         if (level == null) {
-            return false;
+            return;
         }
-        ItemStack resultItem = recipe.getResultItem(level.registryAccess());
+
+        ItemStack resultItem = recipe.getResultItem(level.registryAccess()).copy();
         if (!resultItem.isEmpty()) {
-            if (resultItem.getCount() > 1) {
-                for (int i = 1; i < resultItem.getCount(); i++) {
-                    Direction direction = getBlockState().getValue(ChoppingBoardBlock.FACING).getCounterClockWise();
-                    LevelUtil.spawnItemEntity(level, resultItem.copy().split(1),
-                            worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2), worldPosition.getY() + 0.2,
-                            worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2), direction.getStepX() * 0.2F,
-                            0.0F,
-                            direction.getStepZ() * 0.2F);
-                }
-            }
-            inventory.setStackInSlot(0, resultItem.copy().split(1));
-            inventoryChanged();
-            return true;
+            spawnResultStack(resultItem);
         }
-        return false;
+
+        List<ItemStack> byproducts = recipe.rollByproducts(level.random, 0);
+        for (ItemStack byproduct : byproducts) {
+            spawnResultStack(byproduct.copy());
+        }
+
+        removeItem();
+    }
+
+    private void spawnResultStack(ItemStack stack) {
+        if (level == null || stack.isEmpty()) {
+            return;
+        }
+
+        Direction direction = getBlockState().getValue(ChoppingBoardBlock.FACING).getCounterClockWise();
+        LevelUtil.spawnItemEntity(level, stack, worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2),
+                worldPosition.getY() + 0.2, worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2),
+                direction.getStepX() * 0.2F, 0.0F, direction.getStepZ() * 0.2F);
     }
 
     public ItemStack removeItem() {
