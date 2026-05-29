@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "tsuki:block/tatami_tan_ns_carpet",
+      "y": 90
+    },
+    "facing=north": {
       "model": "tsuki:block/tatami_tan_ns_carpet"
+    },
+    "facing=south": {
+      "model": "tsuki:block/tatami_tan_ns_carpet",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "tsuki:block/tatami_tan_ns_carpet",
+      "y": 270
     }
   }
 }

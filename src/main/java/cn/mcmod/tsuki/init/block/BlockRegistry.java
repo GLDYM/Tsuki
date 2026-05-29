@@ -25,6 +25,7 @@ import cn.mcmod.tsuki.block.decoration.WindBellBlock;
 import cn.mcmod.tsuki.block.decoration.ZabutonBlock;
 import cn.mcmod.tsuki.block.drink.DrinkDisplayBlock;
 import cn.mcmod.tsuki.block.decoration.tatami.TatamiBlock;
+import cn.mcmod.tsuki.block.decoration.tatami.TatamiCarpetBlock;
 import cn.mcmod.tsuki.block.decoration.tatami.TatamiSlabBlock;
 import cn.mcmod.tsuki.block.decoration.tatami.TatamiStairBlock;
 import cn.mcmod.tsuki.block.food.NabeBlock;
@@ -56,6 +57,7 @@ import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
 import cn.mcmod.tsuki.worldgen.TsukiTreeFeatures;
 import cn.mcmod.mmlib.block.Age3CropBlock;
 import cn.mcmod.mmlib.block.BaseCropBlock;
+import cn.mcmod.mmlib.block.FacingCarpet;
 import cn.mcmod.mmlib.block.BaseHorizonBlock;
 import cn.mcmod.mmlib.block.FacingSlab;
 import cn.mcmod.mmlib.block.HighCropBlock;
@@ -64,7 +66,6 @@ import java.util.Optional;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CarpetBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.FenceBlock;
@@ -354,20 +355,20 @@ public class BlockRegistry {
             () -> new StairBlock(Blocks.OAK_PLANKS.defaultBlockState(),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.SAND).strength(0.5F)
                             .sound(SoundType.GRASS)));
-    public static final DeferredBlock<Block> TATAMI_CARPET = BLOCKS.register("tatami_carpet",
-            () -> new CarpetBlock(
+    public static final DeferredBlock<FacingCarpet> TATAMI_CARPET = BLOCKS.register("tatami_carpet",
+            () -> new TatamiCarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)
                             .sound(SoundType.GRASS)));
-    public static final DeferredBlock<Block> TATAMI_CARPET_NS = BLOCKS.register("tatami_ns_carpet",
-            () -> new CarpetBlock(
+    public static final DeferredBlock<FacingCarpet> TATAMI_CARPET_NS = BLOCKS.register("tatami_ns_carpet",
+            () -> new TatamiCarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)
                             .sound(SoundType.GRASS)));
-    public static final DeferredBlock<Block> TATAMI_CARPET_TAN = BLOCKS.register("tatami_tan_carpet",
-            () -> new CarpetBlock(
+    public static final DeferredBlock<FacingCarpet> TATAMI_CARPET_TAN = BLOCKS.register("tatami_tan_carpet",
+            () -> new TatamiCarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
                             .sound(SoundType.GRASS)));
-    public static final DeferredBlock<Block> TATAMI_CARPET_TAN_NS = BLOCKS.register("tatami_tan_ns_carpet",
-            () -> new CarpetBlock(
+    public static final DeferredBlock<FacingCarpet> TATAMI_CARPET_TAN_NS = BLOCKS.register("tatami_tan_ns_carpet",
+            () -> new TatamiCarpetBlock(
                     BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
                             .sound(SoundType.GRASS)));
 

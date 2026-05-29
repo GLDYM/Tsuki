@@ -5,6 +5,8 @@
 ## Feature
 
 - Shoji could be interactive in the adjacent blocka when opening.
+- Slight change teh recipe of soda water.
+- Move the sliced cabbage into c:crops/cabbage and change the recipe to match Farmers Delight.
 
 ## Bug Fix
 

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/carpet",
+  "parent": "tsuki:block/facing_carpet",
   "textures": {
     "wool": "tsuki:block/tatami_tan"
   }

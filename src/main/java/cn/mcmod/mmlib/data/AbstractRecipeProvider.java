@@ -260,6 +260,14 @@ public abstract class AbstractRecipeProvider extends RecipeProvider implements I
                 .unlockedBy("has_item", has(blockIn.get())).save(consumer);
     }
 
+    public void makeCarpet(RecipeOutput consumer, Supplier<? extends ItemLike> carpetOut,
+            Supplier<? extends ItemLike> blockIn) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, carpetOut.get(), 6)
+                .pattern("MMM")
+                .define('M', blockIn.get())
+                .unlockedBy("has_item", has(blockIn.get())).save(consumer);
+    }
+
     public void makeSlabCraftingOrCutting(RecipeOutput consumer, Supplier<? extends ItemLike> slabOut,
             Supplier<? extends ItemLike> blockIn) {
         makeSlab(consumer, slabOut, blockIn);

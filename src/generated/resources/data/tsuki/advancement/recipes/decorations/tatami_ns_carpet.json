@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_tatami_carpet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:tatami_carpet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:tatami_ns_carpet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tatami_carpet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:tatami_ns_carpet"
+    ]
+  }
+}

@@ -7,6 +7,7 @@ import cn.mcmod.tsuki.block.machine.TataraBlock;
 import cn.mcmod.tsuki.block.tree.ChestnutBurrBlock;
 import cn.mcmod.tsuki.block.tree.UmeLeavesBlock;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.mmlib.block.FacingCarpet;
 import net.minecraft.data.PackOutput;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -223,10 +224,10 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 texture("tatami_tan"),
                 texture("tatami_tan"),
                 texture("tatami_tan"));
-        carpet(BlockRegistry.TATAMI_CARPET.get(), "tatami");
-        carpet(BlockRegistry.TATAMI_CARPET_NS.get(), "tatami_ns");
-        carpet(BlockRegistry.TATAMI_CARPET_TAN.get(), "tatami_tan");
-        carpet(BlockRegistry.TATAMI_CARPET_TAN_NS.get(), "tatami_tan_ns");
+        facingCarpet(BlockRegistry.TATAMI_CARPET.get(), "tatami");
+        facingCarpet(BlockRegistry.TATAMI_CARPET_NS.get(), "tatami_ns");
+        facingCarpet(BlockRegistry.TATAMI_CARPET_TAN.get(), "tatami_tan");
+        facingCarpet(BlockRegistry.TATAMI_CARPET_TAN_NS.get(), "tatami_tan_ns");
 
         ModelFile kawaraCube = models().cubeAll("kawara_block", texture("kawara"));
         ModelFile kawaraAlterCube = models().cubeAll("kawara_block_alter", texture("kawara_alter"));
@@ -379,9 +380,16 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 .texture("layer0", texture);
     }
 
-    private void carpet(Block block, String texture) {
+    private void facingCarpet(FacingCarpet block, String texture) {
         String name = name(block);
-        simpleBlock(block, models().carpet(name, modLoc("block/" + texture)));
+        ModelFile model = models().withExistingParent(name,
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "block/facing_carpet"))
+                .texture("wool", modLoc("block/" + texture));
+        getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(model)
+                .rotationY(((int) state.getValue(BlockStateProperties.HORIZONTAL_FACING).toYRot() + 180) % 360)
+                .build());
+        simpleBlockItem(block, model);
     }
 
     private void noren(Block block, String modelName) {

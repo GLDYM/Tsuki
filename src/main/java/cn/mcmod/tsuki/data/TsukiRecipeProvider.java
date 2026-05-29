@@ -128,6 +128,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB, BlockRegistry.TATAMI);
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_WAXED, BlockRegistry.TATAMI_WAXED);
         this.makeSlab(consumer, BlockRegistry.TATAMI_SLAB_SUNBURNT, BlockRegistry.TATAMI_SUNBURNT);
+        this.makeCarpet(consumer, BlockRegistry.TATAMI_CARPET, BlockRegistry.TATAMI);
+        this.makeCarpet(consumer, BlockRegistry.TATAMI_CARPET_TAN, BlockRegistry.TATAMI_SUNBURNT);
         this.makeSlab(consumer, BlockRegistry.SAKURA_PLANK_SLAB, BlockRegistry.SAKURA_PLANK);
         this.makeSlab(consumer, BlockRegistry.MAPLE_PLANK_SLAB, BlockRegistry.MAPLE_PLANK);
         this.makeSlab(consumer, BlockRegistry.UME_PLANK_SLAB, BlockRegistry.UME_PLANK);
@@ -167,6 +169,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(BlockRegistry.TATAMI.get())
                 .requires(Items.HONEYCOMB)
                 .unlockedBy("has_tatami", has(BlockRegistry.TATAMI.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TATAMI_CARPET_NS.get())
+                .requires(BlockRegistry.TATAMI_CARPET.get())
+                .unlockedBy("has_tatami_carpet", has(BlockRegistry.TATAMI_CARPET.get()))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, BlockRegistry.TATAMI_CARPET_TAN_NS.get())
+                .requires(BlockRegistry.TATAMI_CARPET_TAN.get())
+                .unlockedBy("has_tatami_tan_carpet", has(BlockRegistry.TATAMI_CARPET_TAN.get()))
                 .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.HONEY_BOTTLE)
                 .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get())

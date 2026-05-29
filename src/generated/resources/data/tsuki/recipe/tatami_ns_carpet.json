@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tsuki:tatami_carpet"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:tatami_ns_carpet"
+  }
+}
