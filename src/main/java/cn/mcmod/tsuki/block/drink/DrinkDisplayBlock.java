@@ -49,6 +49,9 @@ public class DrinkDisplayBlock extends AbstractDrinkDisplayBlock {
         if (!(stack.getItem() instanceof WineBottleItem)) {
             return false;
         }
+        // if (player != null && !player.isShiftKeyDown()) {
+        //     return false;
+        // }
         if (!(level.getBlockEntity(pos) instanceof DrinkDisplayBlockEntity drinkDisplay)) {
             return false;
         }

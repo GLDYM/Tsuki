@@ -11,7 +11,7 @@ item_ids:
 
 # Tea & Drinks
 
-All containers and drinks can be sneak + right-click placed as blocks. Each block can hold up to four containers or drinks.
+All containers and drinks can be **sneak + right-click** placed as blocks, **right-click** the display block again could add the drink on the corresponding position. Each display block can hold up to four containers or drinks.
 
 ## Tea
 
