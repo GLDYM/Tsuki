@@ -25,26 +25,17 @@ Thanks to the development of AI technology, it is now easy to migrate low-versio
 
 This, is **Tsuki**. A higher version rework of *Sakura*. **Tsuki** is dedicated to migrating *Sakura* and a series of Japanese-style mods to higher versions, while building integration with other modern mods to better fit the high-version ecosystem.
 
-## Migrated Content
+## Main Content
 
-- All content from Sakura 1.20.1
-- Most content from Sakura 1.12.2
-
-## Completed Integrations
-
-- Farmer’s Delight: Japanese cooking pot can cook any Farmer’s Delight pot recipe
-- Kaleidoscope: Cookery: Japanese cooking pot can cook any Kaleidoscope soup pot recipe
-- Create: Some recipes can be cooked with Create
-- Create: Liquid Fuel: Seed oil, vodka, and sake can be used as fuel in Blaze Burners
-- Touhou Little Maid: Unfinished altars randomly generate in the world
-
-## Planned Migration & Integration Targets
-
-- Maple
-- Bamboo
-- TFC: TNG
-- Create
-- Gensokyo Delight ~~ Youkai' Feast
+- 10+ Various Crops
+- 230+ Japanese Foods
+- 100+ Japanese-Style Tea & Cocktail
+- New Ore & Material: Iron Sand, Sakura Diamond & Steel
+- New Tools & Armors: Haori, Kimono, Samurai Armors, Katana …
+- Japanese Decorative Blocks: Tatami, Kawara, Lantern …
+- New Maple Tree Biome (when Terrablender is installed)
+- New Villager & illager: Japanese Farmer, Japanese Trader, Samurai Illager
+- Full Mod Linkage: TFC: TNG, Create, Farmer’s Delight, Kaleidoscope: Cookery …
 
 ## Copyright
 
