@@ -32,4 +32,4 @@ PRs should contain this content：
 - If the PR adds new feature or modify existing feature, show the difference;
 - `gradlew build`, `gradlew runClient`, `gradlew runServer` passed, no errors；
 - If necessary, modify the guideme in `src/main/resource/assets/tsuki/guides` and `gradlew runGuide` have no errors;
-- If necessarg, modify `CHANGELOG.md`.
+- If necessary, modify `CHANGELOG.md`.
