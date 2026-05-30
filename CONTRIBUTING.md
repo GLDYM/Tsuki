@@ -14,6 +14,7 @@ PR 需要包含如下信息：
 - 如果是新增内容或对现有功能的修改，详细说明前后表现的差异；
 - `gradlew build`, `gradlew runClient`, `gradlew runServer` 均通过，不发生崩溃；
 - 如有必要，修改 `src/main/resource/assets/tsuki/guides` 内的 guideme 指南，`gradlew runGuide` 不出现报错。
+- 如有必要，修改 `CHANGELOG.md` 内的更新日志。
 
 ## English
 
@@ -30,4 +31,5 @@ PRs should contain this content：
 - The feature this PR implements；
 - If the PR adds new feature or modify existing feature, show the difference;
 - `gradlew build`, `gradlew runClient`, `gradlew runServer` passed, no errors；
-- If necessary, modify the guideme in `src/main/resource/assets/tsuki/guides` and `gradlew runGuide` have no errors.
+- If necessary, modify the guideme in `src/main/resource/assets/tsuki/guides` and `gradlew runGuide` have no errors;
+- If necessarg, modify `CHANGELOG.md`.
