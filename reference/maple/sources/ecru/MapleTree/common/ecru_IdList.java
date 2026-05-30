@@ -1,0 +1,274 @@
+package ecru.MapleTree.common;
+
+import ecru.MapleTree.mod_ecru_MapleTree;
+import java.util.Arrays;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.util.StatCollector;
+
+public class ecru_IdList {
+    private final int NUM = 2;
+    public Item[][] blockId;
+    public String[][] blockName;
+    public int[][] blockWateMax;
+    public int[][] blockFertilizerMax;
+    public int[][] blockInfo;
+    public int[][] blockAffinityRed;
+    public Item[] redFertilizerItemId;
+    public int[] redFertilizerItemMeta;
+    public int[][] redFertilizerModifi;
+    public String[][] redFertilizerName;
+    public int[][] dropOreNum;
+    public static Item[] dropItemId;
+    public Block[] flowerBlockId;
+    public int waterBucket;
+    public int fertilizer1set;
+
+    public ecru_IdList() {
+        dropItemId = new Item[4];
+        this.flowerBlockId = new Block[4];
+        this.dropOreNum = new int[4][8];
+        this.redFertilizerItemId = new Item[7];
+        this.redFertilizerItemMeta = new int[7];
+        this.redFertilizerModifi = new int[4][7];
+        this.redFertilizerName = new String[2][7];
+        this.waterBucket = 500;
+        this.fertilizer1set = 24;
+        this.blockId = new Item[2][14];
+        this.blockName = new String[2][14];
+        this.blockWateMax = new int[2][14];
+        this.blockFertilizerMax = new int[2][14];
+        this.blockInfo = new int[2][14];
+        this.blockAffinityRed = new int[4][14];
+        this.blockId[0][0] = Item.func_150898_a(Blocks.field_150350_a);
+        this.blockId[0][1] = Item.func_150898_a(Blocks.field_150348_b);
+        this.blockId[0][2] = Item.func_150898_a(mod_ecru_MapleTree.blockMapleWood);
+        this.blockId[0][3] = Item.func_150898_a(Blocks.field_150346_d);
+        this.blockId[0][4] = Item.func_150898_a(Blocks.field_150354_m);
+        this.blockId[0][5] = Item.func_150898_a(Blocks.field_150351_n);
+        this.blockId[0][6] = Item.func_150898_a(Blocks.field_150432_aD);
+        this.blockId[0][7] = Item.func_150898_a(Blocks.field_150433_aE);
+        this.blockId[0][8] = Item.func_150898_a(Blocks.field_150435_aG);
+        this.blockId[0][9] = Item.func_150898_a(Blocks.field_150424_aL);
+        this.blockId[0][10] = Item.func_150898_a(Blocks.field_150425_aM);
+        this.blockId[0][11] = Item.func_150898_a(Blocks.field_150391_bh);
+        this.blockId[0][12] = Item.func_150898_a(Blocks.field_150377_bs);
+        this.blockId[0][13] = Items.field_151129_at;
+        this.blockName[0][0] = "";
+        this.blockName[0][1] = "stone";
+        this.blockName[0][2] = "mapletree:wood";
+        this.blockName[0][3] = "dirt";
+        this.blockName[0][4] = "sand";
+        this.blockName[0][5] = "gravel";
+        this.blockName[0][6] = "ice";
+        this.blockName[0][7] = "snow";
+        this.blockName[0][8] = "clay";
+        this.blockName[0][9] = "netherrack";
+        this.blockName[0][10] = "soul_sand";
+        this.blockName[0][11] = "mycelium_top";
+        this.blockName[0][12] = "end_stone";
+        this.blockName[0][13] = "lava_still";
+        this.blockWateMax[0][0] = 0;
+        this.blockWateMax[0][1] = 700;
+        this.blockWateMax[0][2] = 1000;
+        this.blockWateMax[0][3] = 3000;
+        this.blockWateMax[0][4] = 500;
+        this.blockWateMax[0][5] = 500;
+        this.blockWateMax[0][6] = 200;
+        this.blockWateMax[0][7] = 500;
+        this.blockWateMax[0][8] = 4000;
+        this.blockWateMax[0][9] = 300;
+        this.blockWateMax[0][10] = 1000;
+        this.blockWateMax[0][11] = 4000;
+        this.blockWateMax[0][12] = 4000;
+        this.blockWateMax[0][13] = 100;
+        this.blockFertilizerMax[0][0] = 0;
+        this.blockFertilizerMax[0][1] = 700;
+        this.blockFertilizerMax[0][2] = 3000;
+        this.blockFertilizerMax[0][3] = 2000;
+        this.blockFertilizerMax[0][4] = 500;
+        this.blockFertilizerMax[0][5] = 500;
+        this.blockFertilizerMax[0][6] = 100;
+        this.blockFertilizerMax[0][7] = 200;
+        this.blockFertilizerMax[0][8] = 700;
+        this.blockFertilizerMax[0][9] = 1000;
+        this.blockFertilizerMax[0][10] = 500;
+        this.blockFertilizerMax[0][11] = 3000;
+        this.blockFertilizerMax[0][12] = 4000;
+        this.blockFertilizerMax[0][13] = 200;
+        this.blockAffinityRed[0][0] = 1;
+        this.blockAffinityRed[0][1] = 1;
+        this.blockAffinityRed[0][2] = 4;
+        this.blockAffinityRed[0][3] = 4;
+        this.blockAffinityRed[0][4] = 2;
+        this.blockAffinityRed[0][5] = 2;
+        this.blockAffinityRed[0][6] = 1;
+        this.blockAffinityRed[0][7] = 1;
+        this.blockAffinityRed[0][8] = 4;
+        this.blockAffinityRed[0][9] = 5;
+        this.blockAffinityRed[0][10] = 5;
+        this.blockAffinityRed[0][11] = 2;
+        this.blockAffinityRed[0][12] = 2;
+        this.blockAffinityRed[0][13] = 8;
+        this.blockAffinityRed[1][0] = 1;
+        this.blockAffinityRed[1][1] = 5;
+        this.blockAffinityRed[1][2] = 1;
+        this.blockAffinityRed[1][3] = 4;
+        this.blockAffinityRed[1][4] = 5;
+        this.blockAffinityRed[1][5] = 5;
+        this.blockAffinityRed[1][6] = 1;
+        this.blockAffinityRed[1][7] = 1;
+        this.blockAffinityRed[1][8] = 3;
+        this.blockAffinityRed[1][9] = 3;
+        this.blockAffinityRed[1][10] = 3;
+        this.blockAffinityRed[1][11] = 2;
+        this.blockAffinityRed[1][12] = 4;
+        this.blockAffinityRed[1][13] = 8;
+        this.blockAffinityRed[2][0] = 1;
+        this.blockAffinityRed[2][1] = 1;
+        this.blockAffinityRed[2][2] = 4;
+        this.blockAffinityRed[2][3] = 4;
+        this.blockAffinityRed[2][4] = 2;
+        this.blockAffinityRed[2][5] = 2;
+        this.blockAffinityRed[2][6] = 1;
+        this.blockAffinityRed[2][7] = 1;
+        this.blockAffinityRed[2][8] = 4;
+        this.blockAffinityRed[2][9] = 5;
+        this.blockAffinityRed[2][10] = 5;
+        this.blockAffinityRed[2][11] = 2;
+        this.blockAffinityRed[2][12] = 2;
+        this.blockAffinityRed[2][13] = 8;
+        this.blockAffinityRed[3][0] = 1;
+        this.blockAffinityRed[3][1] = 5;
+        this.blockAffinityRed[3][2] = 2;
+        this.blockAffinityRed[3][3] = 3;
+        this.blockAffinityRed[3][4] = 2;
+        this.blockAffinityRed[3][5] = 2;
+        this.blockAffinityRed[3][6] = 6;
+        this.blockAffinityRed[3][7] = 1;
+        this.blockAffinityRed[3][8] = 4;
+        this.blockAffinityRed[3][9] = 3;
+        this.blockAffinityRed[3][10] = 5;
+        this.blockAffinityRed[3][11] = 5;
+        this.blockAffinityRed[3][12] = 6;
+        this.blockAffinityRed[3][13] = 8;
+        this.redFertilizerItemId[0] = null;
+        this.redFertilizerItemId[1] = Items.field_151078_bh;
+        this.redFertilizerItemId[2] = Items.field_151014_N;
+        this.redFertilizerItemId[3] = Item.func_150898_a(Blocks.field_150347_e);
+        this.redFertilizerItemId[4] = Items.field_151100_aR;
+        this.redFertilizerItemId[5] = Items.field_151100_aR;
+        this.redFertilizerItemId[6] = Items.field_151110_aK;
+        this.redFertilizerItemMeta[0] = 0;
+        this.redFertilizerItemMeta[1] = 0;
+        this.redFertilizerItemMeta[2] = 0;
+        this.redFertilizerItemMeta[3] = 0;
+        this.redFertilizerItemMeta[4] = 3;
+        this.redFertilizerItemMeta[5] = 15;
+        this.redFertilizerItemMeta[6] = 0;
+        this.redFertilizerModifi[0][0] = 0;
+        this.redFertilizerModifi[0][1] = 3;
+        this.redFertilizerModifi[0][2] = 5;
+        this.redFertilizerModifi[0][3] = 2;
+        this.redFertilizerModifi[0][4] = 12;
+        this.redFertilizerModifi[0][5] = 7;
+        this.redFertilizerModifi[0][6] = 9;
+        this.redFertilizerModifi[1][0] = 0;
+        this.redFertilizerModifi[1][1] = 3;
+        this.redFertilizerModifi[1][2] = 5;
+        this.redFertilizerModifi[1][3] = 2;
+        this.redFertilizerModifi[1][4] = 12;
+        this.redFertilizerModifi[1][5] = 7;
+        this.redFertilizerModifi[1][6] = 9;
+        this.redFertilizerModifi[2][0] = 0;
+        this.redFertilizerModifi[2][1] = 3;
+        this.redFertilizerModifi[2][2] = 5;
+        this.redFertilizerModifi[2][3] = 2;
+        this.redFertilizerModifi[2][4] = 12;
+        this.redFertilizerModifi[2][5] = 7;
+        this.redFertilizerModifi[2][6] = 9;
+        this.redFertilizerModifi[3][0] = 0;
+        this.redFertilizerModifi[3][1] = 3;
+        this.redFertilizerModifi[3][2] = 5;
+        this.redFertilizerModifi[3][3] = 2;
+        this.redFertilizerModifi[3][4] = 12;
+        this.redFertilizerModifi[3][5] = 7;
+        this.redFertilizerModifi[3][6] = 9;
+        this.redFertilizerName[0][0] = "EMPTY";
+        this.redFertilizerName[0][1] = StatCollector.func_74838_a("MapleTree.text.FER_1");
+        this.redFertilizerName[0][2] = StatCollector.func_74838_a("MapleTree.text.FER_2");
+        this.redFertilizerName[0][3] = StatCollector.func_74838_a("MapleTree.text.FER_3");
+        this.redFertilizerName[0][4] = StatCollector.func_74838_a("MapleTree.text.FER_4");
+        this.redFertilizerName[0][5] = StatCollector.func_74838_a("MapleTree.text.FER_5");
+        this.redFertilizerName[0][6] = StatCollector.func_74838_a("MapleTree.text.FER_6");
+        this.dropOreNum[0][0] = 0;
+        this.dropOreNum[0][1] = 1;
+        this.dropOreNum[0][2] = 2;
+        this.dropOreNum[0][3] = 3;
+        this.dropOreNum[0][4] = 5;
+        this.dropOreNum[0][5] = 10;
+        this.dropOreNum[0][6] = 15;
+        this.dropOreNum[0][7] = 40;
+        this.dropOreNum[1][0] = 0;
+        this.dropOreNum[1][1] = 1;
+        this.dropOreNum[1][2] = 2;
+        this.dropOreNum[1][3] = 3;
+        this.dropOreNum[1][4] = 5;
+        this.dropOreNum[1][5] = 8;
+        this.dropOreNum[1][6] = 10;
+        this.dropOreNum[1][7] = 40;
+        this.dropOreNum[2][0] = 0;
+        this.dropOreNum[2][1] = 1;
+        this.dropOreNum[2][2] = 2;
+        this.dropOreNum[2][3] = 3;
+        this.dropOreNum[2][4] = 5;
+        this.dropOreNum[2][5] = 8;
+        this.dropOreNum[2][6] = 10;
+        this.dropOreNum[2][7] = 30;
+        this.dropOreNum[3][0] = 0;
+        this.dropOreNum[3][1] = 1;
+        this.dropOreNum[3][2] = 2;
+        this.dropOreNum[3][3] = 8;
+        this.dropOreNum[3][4] = 12;
+        this.dropOreNum[3][5] = 15;
+        this.dropOreNum[3][6] = 20;
+        this.dropOreNum[3][7] = 30;
+        this.flowerBlockId[0] = mod_ecru_MapleTree.blockOreFlowerRed;
+        this.flowerBlockId[1] = mod_ecru_MapleTree.blockOreFlowerIron;
+        this.flowerBlockId[2] = mod_ecru_MapleTree.blockOreFlowerGold;
+        this.flowerBlockId[3] = mod_ecru_MapleTree.blockOreFlowerMarble;
+        dropItemId[0] = Items.field_151137_ax;
+        dropItemId[1] = Items.field_151042_j;
+        dropItemId[2] = Items.field_151043_k;
+        dropItemId[3] = mod_ecru_MapleTree.Item_jewel;
+    }
+
+    public String getName(int id) {
+        int ret = Arrays.binarySearch(this.blockId, Integer.valueOf(id));
+        if (ret > 0) {
+            return this.blockName[0][ret];
+        }
+        return null;
+    }
+
+    public int getNum(Item id) {
+        for (int i = 1; i < this.blockId[0].length; i++) {
+            if (this.blockId[0][i] == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int getFertilizer(int id, int meta) {
+        for (int i = 1; i < this.redFertilizerItemId.length; i++) {
+            Item item = this.redFertilizerItemId[i];
+            if (Item.func_150891_b(this.redFertilizerItemId[i]) == id && this.redFertilizerItemMeta[i] == meta) {
+                return i;
+            }
+        }
+        return 0;
+    }
+}

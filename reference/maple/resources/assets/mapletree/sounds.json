@@ -1,0 +1,83 @@
+{
+  "entity.damage": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:entity/damage1",
+      "mapletree:entity/damage2",
+      "mapletree:entity/damage3",
+      "mapletree:entity/damage4"
+    ]
+  },
+  "entity.attack": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:entity/attack1",
+      "mapletree:entity/attack2",
+      "mapletree:entity/attack3",
+      "mapletree:entity/attack4"
+    ]
+  },
+  "entity.item": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:entity/item1"
+    ]
+  },
+  "entity.tamed": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:entity/tamed1"
+    ]
+  },
+  "cooking.boil": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:cooking/boil1",
+      "mapletree:cooking/boil2",
+      "mapletree:cooking/boil3"
+    ]
+  },
+  "cooking.fly": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:cooking/fly1",
+      "mapletree:cooking/fly2",
+      "mapletree:cooking/fly3"
+    ]
+  },
+  "machine.engine": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:machine/engine1"
+    ]
+  },
+  "entity.chest_full": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:entity/chest_full1"
+    ]
+  },
+  "entity.death": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:entity/death1"
+    ]
+  },
+  "entity.idling": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:entity/idling1"
+    ]
+  },
+  "entity.eat": {
+    "category": "ambient",
+    "sounds": [
+      "mapletree:entity/eat1"
+    ]
+  }
+  
+  
+}
+
+
+
