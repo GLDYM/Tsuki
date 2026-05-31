@@ -13,10 +13,10 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = Tsuki.MODID)
@@ -30,9 +30,8 @@ public final class MagatamaWhiteEvent {
     private static final AttributeModifier MAX_HEALTH_MODIFIER = new AttributeModifier(MAX_HEALTH_MODIFIER_ID, -10.0D,
             AttributeModifier.Operation.ADD_VALUE);
     private static final int HOTBAR_SIZE = 9;
-    private static final int CHECK_INTERVAL_TICKS = 5;
+    private static final int CHECK_INTERVAL_TICKS = 20;
     private static final int SLOW_FALLING_DURATION_TICKS = 200;
-    private static final int HASTE_DURATION_TICKS = 25;
 
     private MagatamaWhiteEvent() {
     }
@@ -72,7 +71,6 @@ public final class MagatamaWhiteEvent {
             if (player.hasEffect(MobEffects.SLOW_FALLING)) {
                 player.removeEffect(MobEffects.SLOW_FALLING);
             }
-            applyMiningSpeedBoost(player);
             return;
         }
 
@@ -91,22 +89,30 @@ public final class MagatamaWhiteEvent {
         }
     }
 
-    private static void applyMiningSpeedBoost(Player player) {
-        if (!TsukiCommonConfig.MAGATAMA_WHITE_ENABLE_MINING_SPEED_AMPLIFIER.get()) {
+    @SubscribeEvent
+    public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
+        Player player = event.getEntity();
+        if (player == null || !isMiningSpeedCompensationActive(player)) {
             return;
         }
 
-        if (!player.mayFly()) {
+        float currentSpeed = event.getNewSpeed();
+        if (currentSpeed <= 0.0F) {
             return;
         }
 
-        BlockState blockState = player.level().getBlockState(player.blockPosition().below());
-        if (!blockState.isAir()) {
-            return;
-        }
+        event.setNewSpeed(currentSpeed * getMiningSpeedCompensationMultiplier());
+    }
 
-        player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, HASTE_DURATION_TICKS,
-                TsukiCommonConfig.MAGATAMA_WHITE_MINING_SPEED_AMPLIFIER.get(), false, false));
+    private static boolean isMiningSpeedCompensationActive(Player player) {
+        if (!TsukiCommonConfig.MAGATAMA_WHITE_ENABLE_MINING_SPEED_COMPENSATION.get()) {
+            return false;
+        }
+        return isWhiteMagatamaActive(player) && player.mayFly() && !player.onGround();
+    }
+
+    private static float getMiningSpeedCompensationMultiplier() {
+        return (float) Math.max(1.0D, TsukiCommonConfig.MAGATAMA_WHITE_MINING_SPEED_COMPENSATION_MULTIPLIER.get());
     }
 
     private static void updateMaxHealth(Player player, boolean active) {
