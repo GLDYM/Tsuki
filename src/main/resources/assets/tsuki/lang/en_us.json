@@ -565,6 +565,8 @@
   "item.tsuki.magatama_white.tooltip": "Grants creative flight while in your hotbar or Curios slot, but can reduce your max health.",
   "item.tsuki.magatama_blue": "Blue Magatama",
   "item.tsuki.magatama_blue.tooltip": "Use to convert weather at the cost of health. Cooldown: 60s.",
+  "item.tsuki.magatama_red": "Red Magatama",
+  "item.tsuki.magatama_red.tooltip": "Every 2s, eradicates 24 blocks away phantoms, seagulls, vultures, and pixies.",
   "item.tsuki.maple_syrup": "Maple Syrup",
   "item.tsuki.maple_syrup_bucket": "Bucket of Maple Syrup",
   "item.tsuki.mashed_potato": "Mashed Potato",

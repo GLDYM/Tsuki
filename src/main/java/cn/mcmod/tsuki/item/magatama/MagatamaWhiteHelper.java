@@ -40,6 +40,10 @@ public final class MagatamaWhiteHelper {
                 return stack;
             }
         }
+        ItemStack offhand = player.getOffhandItem();
+        if (offhand.is(ArmorToolRegistry.MAGATAMA_WHITE.get())) {
+            return offhand;
+        }
         return CuriosCompat.findFirstEquippedStack(player, ArmorToolRegistry.MAGATAMA_WHITE.get());
     }
 }
