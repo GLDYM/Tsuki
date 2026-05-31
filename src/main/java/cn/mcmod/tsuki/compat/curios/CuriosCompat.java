@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.compat.curios;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.fml.ModList;
 
 public final class CuriosCompat {
@@ -13,5 +14,12 @@ public final class CuriosCompat {
             return false;
         }
         return CuriosCompatImpl.isEquipped(player, item);
+    }
+
+    public static ItemStack findFirstEquippedStack(Player player, Item item) {
+        if (!ModList.get().isLoaded("curios")) {
+            return ItemStack.EMPTY;
+        }
+        return CuriosCompatImpl.findFirstEquippedStack(player, item);
     }
 }

@@ -16,9 +16,15 @@ public class TsukiKeyMappings {
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_V,
             "key.categories.tsuki");
+    public static final KeyMapping MAGATAMA_MODE_TOGGLE = new KeyMapping(
+            "key.tsuki.magatama_mode_toggle",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_X,
+            "key.categories.tsuki");
 
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(SHEATH_ACTION);
+        event.register(MAGATAMA_MODE_TOGGLE);
     }
 }

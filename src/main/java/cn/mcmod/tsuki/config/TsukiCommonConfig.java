@@ -9,6 +9,8 @@ public class TsukiCommonConfig {
     public static final ModConfigSpec.IntValue MYTHIC_PICKAXE_EXP_NEEDED = INSTANCE.mythicPickaxeExpNeeded;
     public static final ModConfigSpec.BooleanValue MYTHIC_PICKAXE_ALLOW_BASIC_ENCHANT_UPGRADE = INSTANCE.mythicPickaxeAllowBasicEnchantUpgrade;
     public static final ModConfigSpec.BooleanValue GIVE_GUIDE_ON_FIRST_LOGIN = INSTANCE.giveGuideOnFirstLogin;
+    public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_PENALTY = INSTANCE.magatamaWhiteEnablePenalty;
+    public static final ModConfigSpec.DoubleValue MAGATAMA_WHITE_PENALTY_HEALTH = INSTANCE.magatamaWhitePenaltyHealth;
     public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_MINING_SPEED_COMPENSATION = INSTANCE.magatamaWhiteEnableMiningSpeedCompensation;
     public static final ModConfigSpec.DoubleValue MAGATAMA_WHITE_MINING_SPEED_COMPENSATION_MULTIPLIER = INSTANCE.magatamaWhiteMiningSpeedCompensationMultiplier;
     public static final ModConfigSpec.BooleanValue DEBUG_MODE = INSTANCE.debugMode;
@@ -18,6 +20,8 @@ public class TsukiCommonConfig {
     public final ModConfigSpec.IntValue mythicPickaxeExpNeeded;
     public final ModConfigSpec.BooleanValue mythicPickaxeAllowBasicEnchantUpgrade;
     public final ModConfigSpec.BooleanValue giveGuideOnFirstLogin;
+    public final ModConfigSpec.BooleanValue magatamaWhiteEnablePenalty;
+    public final ModConfigSpec.DoubleValue magatamaWhitePenaltyHealth;
     public final ModConfigSpec.BooleanValue magatamaWhiteEnableMiningSpeedCompensation;
     public final ModConfigSpec.DoubleValue magatamaWhiteMiningSpeedCompensationMultiplier;
     public final ModConfigSpec.BooleanValue debugMode;
@@ -49,6 +53,16 @@ public class TsukiCommonConfig {
                         "Gives the Tsuki guide book to players the first time they join a world when GuideME is installed.")
                 .translation("tsuki.config.give_guide_on_first_login")
                 .define("give_guide_on_first_login", true);
+
+        magatamaWhiteEnablePenalty = builder
+                .comment("Enables the White Magatama max health penalty.")
+                .translation("tsuki.config.magatama_white_enable_penalty")
+                .define("magatama_white_enable_penalty", true);
+
+        magatamaWhitePenaltyHealth = builder
+                .comment("Sets the White Magatama target max health while the penalty is active.")
+                .translation("tsuki.config.magatama_white_penalty_health")
+                .defineInRange("magatama_white_penalty_health", 10.0D, 1.0D, 1024.0D);
 
         magatamaWhiteEnableMiningSpeedCompensation = builder
                 .comment("Enables the White Magatama airborne mining speed compensation.")

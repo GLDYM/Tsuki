@@ -46,14 +46,16 @@ public final class EasterEggRewardEvent {
                     .names("Polaris_Light")
                     .uuids("cf6bcfbc-3e2a-4aa4-be23-b45d2482fd98")
                     .rewards(
-                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64))
+                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64),
+                            stack(ArmorToolRegistry.MAGATAMA_WHITE, 1))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
             RewardRule.builder()
                     // .names("Polaris_Light")
                     .uuids("befa7fff-4d8e-3ff9-a6ae-6f122a2e4bb8")
                     .rewards(
-                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64))
+                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64),
+                            stack(ArmorToolRegistry.MAGATAMA_WHITE, 1))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
             RewardRule.builder()

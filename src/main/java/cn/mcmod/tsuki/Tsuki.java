@@ -33,6 +33,7 @@ import cn.mcmod.tsuki.init.MobEffectRegistry;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideMeCompat;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideCompat;
 import cn.mcmod.tsuki.compat.terrablender.TsukiTerraBlenderCompat;
+import cn.mcmod.tsuki.network.TsukiNetwork;
 
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
@@ -61,6 +62,7 @@ public class Tsuki {
         modEventBus.addListener(ItemCapabilityRegistry::register);
         modEventBus.addListener(EntityTypeRegistry::registerAttributes);
         modEventBus.addListener(EntityTypeRegistry::registerSpawnPlacements);
+        modEventBus.addListener(TsukiNetwork::register);
 
         BlockRegistry.BLOCKS.register(modEventBus);
         FluidBlockRegistry.BLOCKS.register(modEventBus);
