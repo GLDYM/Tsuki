@@ -16,7 +16,7 @@ item_ids:
   - tsuki:shinai
   - tsuki:kodachi
   - tsuki:sakura_kodachi
-  - tsuki:tachi
+  - tsuki:taichi
 ---
 
 # Tools & Weapons
