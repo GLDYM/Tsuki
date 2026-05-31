@@ -574,7 +574,7 @@
   "item.tsuki.magatama_blue": "蓝色勾玉",
   "item.tsuki.magatama_blue.tooltip": "使用后以生命为代价转化天气，冷却为 60 秒。",
   "item.tsuki.magatama_red": "红色勾玉",
-  "item.tsuki.magatama_red.tooltip": "每2秒处决24格范围内的幻翼、海鸥、秃鹫和小精灵。",
+  "item.tsuki.magatama_red.tooltip": "位于快捷栏或 Curios 饰品栏每2秒或使用后，处决32格范围内的幻翼、海鸥、秃鹫和小精灵。",
   "item.tsuki.maple_syrup": "枫糖浆",
   "item.tsuki.maple_syrup_bucket": "枫糖浆桶",
   "item.tsuki.mashed_potato": "土豆泥",

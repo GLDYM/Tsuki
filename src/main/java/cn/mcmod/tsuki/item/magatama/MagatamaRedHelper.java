@@ -16,7 +16,7 @@ import net.minecraft.world.phys.AABB;
 public final class MagatamaRedHelper {
     private static final int HOTBAR_SIZE = 9;
 
-    private static final double RANGE_XZ = 48.0D;
+    private static final double RANGE_XZ = 32.0D;
     private static final double RANGE_UP = 48.0D;
     private static final double RANGE_DOWN = 16.0D;
     private static final Set<ResourceLocation> TARGET_ENTITY_IDS = Set.of(
