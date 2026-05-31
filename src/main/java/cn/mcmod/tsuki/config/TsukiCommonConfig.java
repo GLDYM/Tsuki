@@ -9,6 +9,8 @@ public class TsukiCommonConfig {
     public static final ModConfigSpec.IntValue MYTHIC_PICKAXE_EXP_NEEDED = INSTANCE.mythicPickaxeExpNeeded;
     public static final ModConfigSpec.BooleanValue MYTHIC_PICKAXE_ALLOW_BASIC_ENCHANT_UPGRADE = INSTANCE.mythicPickaxeAllowBasicEnchantUpgrade;
     public static final ModConfigSpec.BooleanValue GIVE_GUIDE_ON_FIRST_LOGIN = INSTANCE.giveGuideOnFirstLogin;
+    public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_MINING_SPEED_AMPLIFIER = INSTANCE.magatamaWhiteEnableMiningSpeedAmplifier;
+    public static final ModConfigSpec.IntValue MAGATAMA_WHITE_MINING_SPEED_AMPLIFIER = INSTANCE.magatamaWhiteMiningSpeedAmplifier;
     public static final ModConfigSpec.BooleanValue DEBUG_MODE = INSTANCE.debugMode;
 
     public final ModConfigSpec spec;
@@ -16,6 +18,8 @@ public class TsukiCommonConfig {
     public final ModConfigSpec.IntValue mythicPickaxeExpNeeded;
     public final ModConfigSpec.BooleanValue mythicPickaxeAllowBasicEnchantUpgrade;
     public final ModConfigSpec.BooleanValue giveGuideOnFirstLogin;
+    public final ModConfigSpec.BooleanValue magatamaWhiteEnableMiningSpeedAmplifier;
+    public final ModConfigSpec.IntValue magatamaWhiteMiningSpeedAmplifier;
     public final ModConfigSpec.BooleanValue debugMode;
 
     public TsukiCommonConfig() {
@@ -45,6 +49,16 @@ public class TsukiCommonConfig {
                         "Gives the Tsuki guide book to players the first time they join a world when GuideME is installed.")
                 .translation("tsuki.config.give_guide_on_first_login")
                 .define("give_guide_on_first_login", true);
+
+        magatamaWhiteEnableMiningSpeedAmplifier = builder
+                .comment("Enables the White Magatama mining speed amplifier while flying.")
+                .translation("tsuki.config.magatama_white_enable_mining_speed_amplifier")
+                .define("magatama_white_enable_mining_speed_amplifier", true);
+
+        magatamaWhiteMiningSpeedAmplifier = builder
+                .comment("Sets the White Magatama mining speed amplifier while flying.")
+                .translation("tsuki.config.magatama_white_mining_speed_amplifier")
+                .defineInRange("magatama_white_mining_speed_amplifier", 25, 1, 255);
 
         debugMode = builder
                 .comment("Enables debug mode.")

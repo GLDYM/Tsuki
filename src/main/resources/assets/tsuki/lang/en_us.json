@@ -561,6 +561,8 @@
   "item.tsuki.machined_bonito": "Machined Bonito",
   "item.tsuki.machined_fish": "Machined Fish",
   "item.tsuki.maple_cookie": "Maple Cookie",
+  "item.tsuki.magatama_white": "White Magatama",
+  "item.tsuki.magatama_white.tooltip": "Grants creative flight while in your hotbar or Curios slot, but limits you to 5 hearts.",
   "item.tsuki.maple_syrup": "Maple Syrup",
   "item.tsuki.maple_syrup_bucket": "Bucket of Maple Syrup",
   "item.tsuki.mashed_potato": "Mashed Potato",

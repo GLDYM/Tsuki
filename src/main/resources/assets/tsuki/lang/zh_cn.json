@@ -569,6 +569,8 @@
   "item.tsuki.machined_bonito": "加工柴鱼",
   "item.tsuki.machined_fish": "鱼片",
   "item.tsuki.maple_cookie": "枫糖曲奇",
+  "item.tsuki.magatama_white": "白色勾玉",
+  "item.tsuki.magatama_white.tooltip": "位于快捷栏或 Curios 饰品栏时获得创造飞行，但生命上限降低至 5 心。",
   "item.tsuki.maple_syrup": "枫糖浆",
   "item.tsuki.maple_syrup_bucket": "枫糖浆桶",
   "item.tsuki.mashed_potato": "土豆泥",
