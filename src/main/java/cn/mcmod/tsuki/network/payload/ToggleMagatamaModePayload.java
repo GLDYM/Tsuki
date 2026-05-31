@@ -1,8 +1,11 @@
 package cn.mcmod.tsuki.network.payload;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.item.magatama.MagatamaBlueHelper;
+import cn.mcmod.tsuki.item.magatama.MagatamaBlueItem;
 import cn.mcmod.tsuki.item.magatama.MagatamaWhiteHelper;
 import cn.mcmod.tsuki.item.magatama.MagatamaWhiteItem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -26,11 +29,20 @@ public record ToggleMagatamaModePayload() implements CustomPacketPayload {
     public static void handle(ToggleMagatamaModePayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player) {
+                MagatamaBlueItem.WeatherMode weatherMode = MagatamaBlueHelper.toggleMainHandMode(player);
+                if (weatherMode != null) {
+                    player.displayClientMessage(
+                            Component.translatable("tsuki.tooltip.magatama_blue.mode",
+                                    Component.translatable(weatherMode.getTranslationKey()).withStyle(ChatFormatting.AQUA)),
+                            true);
+                    return;
+                }
+
                 MagatamaWhiteItem.FlightMode mode = MagatamaWhiteHelper.toggleActiveMode(player);
                 if (mode != null) {
                     player.displayClientMessage(
                             Component.translatable("tsuki.tooltip.magatama_white.mode",
-                                    Component.translatable(mode.getTranslationKey())),
+                                    Component.translatable(mode.getTranslationKey()).withStyle(ChatFormatting.AQUA)),
                             true);
                 }
             }

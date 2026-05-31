@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.item.armor.KimonoItem;
 import cn.mcmod.tsuki.item.armor.SamuraiItem;
 import cn.mcmod.tsuki.item.armor.SoldierItem;
 import cn.mcmod.tsuki.item.armor.StrawHatItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaBlueItem;
 import cn.mcmod.tsuki.item.magatama.MagatamaWhiteItem;
 import cn.mcmod.tsuki.item.tool.BroomItem;
 import cn.mcmod.tsuki.item.tool.HammerItem;
@@ -273,6 +274,8 @@ public class ArmorToolRegistry {
 
     public static final DeferredItem<Item> MAGATAMA_WHITE = register("magatama_white",
             () -> new MagatamaWhiteItem(Tsuki.defaultItemProperties().stacksTo(1)));
+    public static final DeferredItem<Item> MAGATAMA_BLUE = register("magatama_blue",
+            () -> new MagatamaBlueItem(Tsuki.defaultItemProperties().stacksTo(1)));
 
 
     public static final DeferredItem<Item> MUSIC_DISC_MIKO = register("music_disc_miko",
