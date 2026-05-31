@@ -15,8 +15,6 @@
 
 </div>
 
-**THIS MOD IS STILL ALPHA, Use at your own risk.**
-
 After 1.7.10, Japanese-style mods declined, with many authors fading from development. *Sakura* emerged, combining the strengths of *Bamboo*, *Maple*, and *WA*, forging a revival of Japanese-style mods. Six years have passed,  *Farmer’s Delight* and *Kaleidoscope* flourishing everywhere; yet Sakura remains at 1.12.2, missing much content awaiting migration. *Urushi* also needs to stabilize on 1.20.1 and has no plans to migrate to NeoForge for now.
 
 **Japanese-style mods have once again fallen into slumber.**
