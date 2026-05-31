@@ -2,13 +2,13 @@ package cn.mcmod.tsuki.init.item;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.JukeboxSongRegistry;
-import cn.mcmod.tsuki.item.MagatamaItem;
 import cn.mcmod.tsuki.item.SakuraDiamondItem;
 import cn.mcmod.tsuki.item.armor.HaoriItem;
 import cn.mcmod.tsuki.item.armor.KimonoItem;
 import cn.mcmod.tsuki.item.armor.SamuraiItem;
 import cn.mcmod.tsuki.item.armor.SoldierItem;
 import cn.mcmod.tsuki.item.armor.StrawHatItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaWhiteItem;
 import cn.mcmod.tsuki.item.tool.BroomItem;
 import cn.mcmod.tsuki.item.tool.HammerItem;
 import cn.mcmod.tsuki.item.tool.KatanaItem;
@@ -272,7 +272,7 @@ public class ArmorToolRegistry {
                     Tsuki.defaultItemProperties().stacksTo(1).durability(481)));
 
     public static final DeferredItem<Item> MAGATAMA_WHITE = register("magatama_white",
-            () -> new MagatamaItem(Tsuki.defaultItemProperties().stacksTo(1)));
+            () -> new MagatamaWhiteItem(Tsuki.defaultItemProperties().stacksTo(1)));
 
 
     public static final DeferredItem<Item> MUSIC_DISC_MIKO = register("music_disc_miko",
