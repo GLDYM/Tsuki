@@ -17,12 +17,23 @@ public final class MagatamaWhiteHelper {
 
     public static boolean isCreativeModeActive(Player player) {
         ItemStack stack = findActiveStack(player);
-        return !stack.isEmpty() && MagatamaWhiteItem.getFlightMode(stack) == MagatamaWhiteItem.FlightMode.CREATIVE;
+        if (stack.isEmpty()) {
+            return false;
+        }
+        MagatamaWhiteItem.FlightMode mode = MagatamaWhiteItem.getFlightMode(stack);
+        return mode == MagatamaWhiteItem.FlightMode.CREATIVE
+                || mode == MagatamaWhiteItem.FlightMode.CREATIVE_INSTANT_STOP;
     }
 
     public static boolean isElytraModeActive(Player player) {
         ItemStack stack = findActiveStack(player);
         return !stack.isEmpty() && MagatamaWhiteItem.getFlightMode(stack) == MagatamaWhiteItem.FlightMode.ELYTRA;
+    }
+
+    public static boolean isCreativeInstantStopModeActive(Player player) {
+        ItemStack stack = findActiveStack(player);
+        return !stack.isEmpty()
+                && MagatamaWhiteItem.getFlightMode(stack) == MagatamaWhiteItem.FlightMode.CREATIVE_INSTANT_STOP;
     }
 
     public static MagatamaWhiteItem.FlightMode toggleActiveMode(Player player) {

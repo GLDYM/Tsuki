@@ -57,6 +57,7 @@ public class MagatamaWhiteItem extends Item {
 
     public enum FlightMode {
         CREATIVE("creative", "tsuki.tooltip.magatama_white.mode.creative"),
+        CREATIVE_INSTANT_STOP("creative_instant_stop", "tsuki.tooltip.magatama_white.mode.creative_instant_stop"),
         ELYTRA("elytra", "tsuki.tooltip.magatama_white.mode.elytra");
 
         private final String serializedName;
@@ -76,7 +77,11 @@ public class MagatamaWhiteItem extends Item {
         }
 
         public FlightMode next() {
-            return this == CREATIVE ? ELYTRA : CREATIVE;
+            return switch (this) {
+                case CREATIVE -> CREATIVE_INSTANT_STOP;
+                case CREATIVE_INSTANT_STOP -> ELYTRA;
+                case ELYTRA -> CREATIVE;
+            };
         }
 
         public static FlightMode fromSerializedName(String name) {
