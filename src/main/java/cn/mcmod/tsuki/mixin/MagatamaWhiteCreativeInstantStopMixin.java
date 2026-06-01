@@ -16,9 +16,11 @@ public abstract class MagatamaWhiteCreativeInstantStopMixin {
         if (!player.getAbilities().flying || !MagatamaWhiteHelper.isCreativeInstantStopModeActive(player)) {
             return;
         }
-        if (travelVector.x == 0.0D && travelVector.z == 0.0D) {
-            player.setDeltaMovement(0.0D, player.getDeltaMovement().y, 0.0D);
+        if (travelVector.x != 0.0D || travelVector.z != 0.0D) {
+            return;
         }
+        Vec3 delta = player.getDeltaMovement();
+        player.setDeltaMovement(delta.x * 0.5D, delta.y, delta.z * 0.5D);
     }
 }
 

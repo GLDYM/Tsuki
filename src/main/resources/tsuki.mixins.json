@@ -10,6 +10,7 @@
   },
   "minVersion": "0.8",
   "mixins": [
+    "MagatamaPurplePacifyMixin",
     "MagatamaWhiteCreativeInstantStopMixin",
     "MagatamaWhiteElytraServerMixin",
     "MagatamaWhiteElytraUpdateMixin",
