@@ -1,5 +1,11 @@
 # Changelog
 
+# Tsuki 1.4.6
+
+## Bug Fix
+
+- Fix the recipe of rice flour.
+
 # Tsuki 1.4.5
 
 ## Feature

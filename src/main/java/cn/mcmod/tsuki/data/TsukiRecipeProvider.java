@@ -1957,7 +1957,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(TsukiItemTags.GRAIN_BUCKWHEAT)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_buckwheat_from_mortar"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FLOUR_RICE).get(), 1)
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_rice_from_mortar"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get(), 3)
                 .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get(), 3)
