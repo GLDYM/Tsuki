@@ -48,10 +48,10 @@ public class TsukiKeyInputHandler {
         long gameTime = minecraft.player.level().getGameTime();
 
         if (TsukiCommonConfig.DEBUG_MODE.get() && gameTime - lastMagatamaBoostDebugTick >= 20) {
-            Tsuki.getLogger().info(
-                    "[MagatamaWhite] Client boost check: fallFlying={}, elytraMode={}, forward={}, sprint={}, localModeStackPresent={}",
-                    isFallFlying, elytraModeActive, hasForwardImpulse, minecraft.player.isSprinting(),
-                    !MagatamaWhiteHelper.findActiveStack(minecraft.player).isEmpty());
+            // Tsuki.getLogger().info(
+            //         "[MagatamaWhite] Client boost check: fallFlying={}, elytraMode={}, forward={}, sprint={}, localModeStackPresent={}",
+            //         isFallFlying, elytraModeActive, hasForwardImpulse, minecraft.player.isSprinting(),
+            //         !MagatamaWhiteHelper.findActiveStack(minecraft.player).isEmpty());
             lastMagatamaBoostDebugTick = gameTime;
         }
 
