@@ -10,7 +10,7 @@ import net.minecraft.world.phys.AABB;
 public final class MagatamaPurpleHelper {
     private static final int HOTBAR_SIZE = 9;
     private static final String ATTACK_COOLDOWN_UNTIL_TAG = "TsukiMagatamaPurpleCooldownUntil";
-    private static final int ATTACK_COOLDOWN_TICKS = 600;
+    public static final int ATTACK_COOLDOWN_TICKS = 600;
     private static final double HATE_CLEAR_RANGE = 32.0D;
 
     private MagatamaPurpleHelper() {
@@ -40,8 +40,13 @@ public final class MagatamaPurpleHelper {
     }
 
     public static boolean isInAttackCooldown(Player player) {
+        return getRemainingAttackCooldownTicks(player) > 0;
+    }
+
+    public static int getRemainingAttackCooldownTicks(Player player) {
+        long now = player.level().getGameTime();
         long until = player.getPersistentData().getLong(ATTACK_COOLDOWN_UNTIL_TAG);
-        return player.level().getGameTime() < until;
+        return (int) Math.max(0L, until - now);
     }
 
     public static void clearNearbyMobTargets(Player player) {

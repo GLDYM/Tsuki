@@ -15,7 +15,6 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 @EventBusSubscriber(modid = Tsuki.MODID)
 public final class MagatamaPurpleEvent {
     private static final int HATE_CLEAR_INTERVAL_TICKS = 20;
-    private static final int ATTACK_COOLDOWN_TICKS = 600;
 
     private MagatamaPurpleEvent() {
     }
@@ -29,7 +28,7 @@ public final class MagatamaPurpleEvent {
             return;
         }
         MagatamaPurpleHelper.triggerAttackCooldown(player);
-        player.getCooldowns().addCooldown(ArmorToolRegistry.MAGATAMA_PURPLE.get(), ATTACK_COOLDOWN_TICKS);
+        syncDisplayedCooldown(player);
     }
 
     @SubscribeEvent
@@ -37,6 +36,7 @@ public final class MagatamaPurpleEvent {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
+        syncDisplayedCooldown(player);
         if (!MagatamaPurpleHelper.hasActivePurpleMagatama(player)
                 || MagatamaPurpleHelper.isInAttackCooldown(player)
                 || player.tickCount % HATE_CLEAR_INTERVAL_TICKS != 0) {
@@ -68,5 +68,12 @@ public final class MagatamaPurpleEvent {
             return;
         }
         event.setAmount(event.getAmount() * 2.0F);
+    }
+
+    private static void syncDisplayedCooldown(ServerPlayer player) {
+        int remainingTicks = MagatamaPurpleHelper.getRemainingAttackCooldownTicks(player);
+        if (remainingTicks > 0) {
+            player.getCooldowns().addCooldown(ArmorToolRegistry.MAGATAMA_PURPLE.get(), remainingTicks);
+        }
     }
 }
