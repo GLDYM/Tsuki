@@ -1,16 +1,18 @@
 package cn.mcmod.tsuki.item.magatama;
 
+import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.tag.TsukiItemTags;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public final class MagatamaGreenHelper {
     private static final float MIN_ALLOWED_REMAINING_HEALTH = 0.1F;
@@ -44,12 +46,15 @@ public final class MagatamaGreenHelper {
 
     private static List<Item> getRewardPool() {
         Set<Item> uniqueItems = new LinkedHashSet<>();
-        for (Item item : BuiltInRegistries.ITEM) {
-            var holder = BuiltInRegistries.ITEM.wrapAsHolder(item);
-            if (holder.is(TsukiItemTags.SEEDS) || holder.is(TsukiItemTags.CROPS)) {
-                uniqueItems.add(item);
-            }
-        }
+        addTagItems(uniqueItems, TsukiItemTags.SEEDS);
+        addTagItems(uniqueItems, TsukiItemTags.CROPS);
         return new ArrayList<>(uniqueItems);
+    }
+
+    private static void addTagItems(Set<Item> items, TagKey<Item> tag) {
+        BuiltInRegistries.ITEM.getTag(tag)
+                .ifPresent(holders -> holders.stream()
+                        .map(Holder::value)
+                        .forEach(items::add));
     }
 }
