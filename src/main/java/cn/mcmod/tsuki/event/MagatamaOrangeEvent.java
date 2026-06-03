@@ -1,7 +1,6 @@
 package cn.mcmod.tsuki.event;
 
 import cn.mcmod.tsuki.Tsuki;
-import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.item.magatama.MagatamaOrangeHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,7 +21,6 @@ public final class MagatamaOrangeEvent {
     private static final float SATURATION_DRAIN_MIN = 2.0F;
     private static final int HUNGER_DRAIN = 1;
     private static final int HUNGER_THRESHOLD = 10;
-    private static final int DEBUG_LOG_INTERVAL_TICKS = 20;
     private static final ResourceLocation MAX_ABSORPTION_MODIFIER_ID = ResourceLocation.fromNamespaceAndPath(
             Tsuki.MODID, "magatama_orange_max_absorption");
 
@@ -59,35 +57,28 @@ public final class MagatamaOrangeEvent {
         updateMaxAbsorptionModifier(player);
 
         float saturation = player.getFoodData().getSaturationLevel();
-        int hunger = player.getFoodData().getFoodLevel();
-        float healthBefore = player.getHealth();
-        float absorptionBefore = player.getAbsorptionAmount();
-        float saturationBefore = saturation;
-        int hungerBefore = hunger;
-        boolean usedSaturation = false;
-        boolean usedHunger = false;
-        float saturationDrain = 0.0F;
-        int hungerDrain = 0;
         if (saturation > 0.0F) {
             if (tryRecover(player, HEAL_PER_TICK)) {
-                float drain = Math.max(saturation * SATURATION_DRAIN_RATE, SATURATION_DRAIN_MIN);
-                player.getFoodData().setSaturation(Math.max(0.0F, saturation - drain));
-                usedSaturation = true;
-                saturationDrain = drain;
+                drainSaturation(player, saturation);
             }
-            logDebug(player, healthBefore, absorptionBefore, saturationBefore, hungerBefore, usedSaturation,
-                    usedHunger, saturationDrain, hungerDrain);
             return;
         }
+
+        int hunger = player.getFoodData().getFoodLevel();
         if (hunger > HUNGER_THRESHOLD) {
             if (tryRecover(player, HEAL_PER_TICK)) {
-                player.getFoodData().setFoodLevel(Math.max(0, hunger - HUNGER_DRAIN));
-                usedHunger = true;
-                hungerDrain = HUNGER_DRAIN;
+                drainHunger(player, hunger);
             }
         }
-        logDebug(player, healthBefore, absorptionBefore, saturationBefore, hungerBefore, usedSaturation, usedHunger,
-                saturationDrain, hungerDrain);
+    }
+
+    private static void drainSaturation(ServerPlayer player, float saturation) {
+        float drain = Math.max(saturation * SATURATION_DRAIN_RATE, SATURATION_DRAIN_MIN);
+        player.getFoodData().setSaturation(Math.max(0.0F, saturation - drain));
+    }
+
+    private static void drainHunger(ServerPlayer player, int hunger) {
+        player.getFoodData().setFoodLevel(Math.max(0, hunger - HUNGER_DRAIN));
     }
 
     private static boolean tryRecover(ServerPlayer player, float healAmount) {
@@ -131,31 +122,5 @@ public final class MagatamaOrangeEvent {
         if (player.getAbsorptionAmount() > player.getMaxAbsorption()) {
             player.setAbsorptionAmount(player.getMaxAbsorption());
         }
-    }
-
-    private static void logDebug(ServerPlayer player, float healthBefore, float absorptionBefore, float saturationBefore,
-            int hungerBefore, boolean usedSaturation, boolean usedHunger, float saturationDrain, int hungerDrain) {
-        if (!TsukiCommonConfig.DEBUG_MODE.get()) {
-            return;
-        }
-        if (player.tickCount % DEBUG_LOG_INTERVAL_TICKS != 0) {
-            return;
-        }
-        Tsuki.getLogger().info(
-                "[MagatamaOrange] tick={} player={} before(health={},absorption={},saturation={},hunger={}) after(health={},absorption={},saturation={},hunger={}) usedSaturation={} saturationDrain={} usedHunger={} hungerDrain={}",
-                player.tickCount,
-                player.getGameProfile().getName(),
-                healthBefore,
-                absorptionBefore,
-                saturationBefore,
-                hungerBefore,
-                player.getHealth(),
-                player.getAbsorptionAmount(),
-                player.getFoodData().getSaturationLevel(),
-                player.getFoodData().getFoodLevel(),
-                usedSaturation,
-                saturationDrain,
-                usedHunger,
-                hungerDrain);
     }
 }
