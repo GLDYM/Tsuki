@@ -28,6 +28,7 @@ item_ids:
 - Fish Knives<ItemImage id="tsuki:knife_fish" scale="0.6"/><ItemImage id="tsuki:sakura_knife_fish" scale="0.6"/> / Noodle Knives<ItemImage id="tsuki:knife_noodle" scale="0.6"/><ItemImage id="tsuki:sakura_knife_noodle" scale="0.6"/>: Used for processing corresponding foods on the chopping board.
 - Broom<ItemImage id="tsuki:broom" scale="0.6"/>: Right-click fallen leaves to quickly break them; right-click dirt blocks to convert them to grass paths.
 - [????](mythic_pickaxe.md)<ItemImage id="tsuki:mythic_pickaxe" scale="0.6"/>: Forged using paper as a medium to bridge two magically-imbued materials. See detailed page.
+- [Magatama](./magatama.md)<ItemImage id="tsuki:magatama_white" scale="0.6"/><ItemImage id="tsuki:magatama_blue" scale="0.6"/><ItemImage id="tsuki:magatama_green" scale="0.6"/><ItemImage id="tsuki:magatama_orange" scale="0.6"/><ItemImage id="tsuki:magatama_pink" scale="0.6"/><ItemImage id="tsuki:magatama_purple" scale="0.6"/><ItemImage id="tsuki:magatama_red" scale="0.6"/>: Powerful relics unexpectedly uncovered while exploring the past. See detailed page.
 
 ## Weapons
 
