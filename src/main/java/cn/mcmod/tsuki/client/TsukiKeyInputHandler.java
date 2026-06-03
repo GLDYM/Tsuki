@@ -20,7 +20,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 @EventBusSubscriber(modid = Tsuki.MODID, value = Dist.CLIENT)
 public class TsukiKeyInputHandler {
     private static long lastMagatamaBoostTick;
-    private static long lastMagatamaBoostDebugTick;
+    // private static long lastMagatamaBoostDebugTick;
 
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
@@ -47,13 +47,13 @@ public class TsukiKeyInputHandler {
         boolean hasForwardImpulse = minecraft.player.input.hasForwardImpulse();
         long gameTime = minecraft.player.level().getGameTime();
 
-        if (TsukiCommonConfig.DEBUG_MODE.get() && gameTime - lastMagatamaBoostDebugTick >= 20) {
+        // if (TsukiCommonConfig.DEBUG_MODE.get() && gameTime - lastMagatamaBoostDebugTick >= 20) {
             // Tsuki.getLogger().info(
             //         "[MagatamaWhite] Client boost check: fallFlying={}, elytraMode={}, forward={}, sprint={}, localModeStackPresent={}",
             //         isFallFlying, elytraModeActive, hasForwardImpulse, minecraft.player.isSprinting(),
             //         !MagatamaWhiteHelper.findActiveStack(minecraft.player).isEmpty());
-            lastMagatamaBoostDebugTick = gameTime;
-        }
+        //     lastMagatamaBoostDebugTick = gameTime;
+        // }
 
         if (isFallFlying && elytraModeActive && hasForwardImpulse) {
             if (gameTime - lastMagatamaBoostTick >= 20) {
