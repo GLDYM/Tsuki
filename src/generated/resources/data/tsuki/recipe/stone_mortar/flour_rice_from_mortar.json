@@ -2,7 +2,7 @@
   "type": "tsuki:stone_mortar",
   "experience": 0,
   "ingredient": {
-    "tag": "tsuki:rice/rice"
+    "item": "tsuki:rice"
   },
   "recipeTime": 200,
   "results": [
