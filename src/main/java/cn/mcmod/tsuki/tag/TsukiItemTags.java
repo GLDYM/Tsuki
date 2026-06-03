@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.Tags;
 
 public class TsukiItemTags {
+    public static final TagKey<Item> MAGATAMAS = TagUtil.modItemTag(Tsuki.MODID, "magatamas");
     public static final TagKey<Item> OFFHAND_EQUIPMENT = TagUtil.modItemTag(Tsuki.MODID, "offhand_equipment");
     public static final TagKey<Item> DRINK_CONTAINERS = TagUtil.modItemTag(Tsuki.MODID, "drink_containers");
     public static final TagKey<Item> WINE_BOTTLES = TagUtil.modItemTag(Tsuki.MODID, "wine_bottles");

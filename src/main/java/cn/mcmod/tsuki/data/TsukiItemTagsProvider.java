@@ -99,6 +99,14 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 ArmorToolRegistry.SHEATH.get(),
                 ArmorToolRegistry.KATANA_SHEATH.get(),
                 ArmorToolRegistry.SAKURA_KATANA_SHEATH.get());
+        this.tag(TsukiItemTags.MAGATAMAS).add(
+                ArmorToolRegistry.MAGATAMA_WHITE.get(),
+                ArmorToolRegistry.MAGATAMA_BLUE.get(),
+                ArmorToolRegistry.MAGATAMA_GREEN.get(),
+                ArmorToolRegistry.MAGATAMA_ORANGE.get(),
+                ArmorToolRegistry.MAGATAMA_PINK.get(),
+                ArmorToolRegistry.MAGATAMA_PURPLE.get(),
+                ArmorToolRegistry.MAGATAMA_RED.get());
         this.tag(TsukiItemTags.DRINK_CONTAINERS).add(
                 DrinkRegistry.CUP.get(),
                 DrinkRegistry.GLASS_CUP.get(),
