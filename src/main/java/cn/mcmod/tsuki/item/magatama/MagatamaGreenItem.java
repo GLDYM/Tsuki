@@ -26,13 +26,21 @@ public class MagatamaGreenItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
+        if (player.getCooldowns().isOnCooldown(this)) {
+            return InteractionResultHolder.fail(stack);
+        }
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return InteractionResultHolder.sidedSuccess(stack, true);
         }
 
         return MagatamaGreenHelper.use(serverPlayer)
-                ? InteractionResultHolder.success(stack)
+                ? applyCooldownAndSuccess(serverPlayer, stack)
                 : InteractionResultHolder.fail(stack);
+    }
+
+    private InteractionResultHolder<ItemStack> applyCooldownAndSuccess(ServerPlayer player, ItemStack stack) {
+        player.getCooldowns().addCooldown(this, MagatamaGreenHelper.COOLDOWN_TICKS);
+        return InteractionResultHolder.success(stack);
     }
 
     @Override
@@ -41,4 +49,3 @@ public class MagatamaGreenItem extends Item {
         tooltip.add(Component.translatable("item.tsuki.magatama_green.tooltip").withStyle(ChatFormatting.GRAY));
     }
 }
-

@@ -14,6 +14,7 @@ import java.util.Set;
 
 public final class MagatamaGreenHelper {
     private static final float MIN_ALLOWED_REMAINING_HEALTH = 0.1F;
+    public static final int COOLDOWN_TICKS = 6000;
 
     private MagatamaGreenHelper() {
     }

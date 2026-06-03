@@ -8,6 +8,8 @@ import net.minecraft.world.item.ItemStack;
 
 public final class MagatamaPinkHelper {
     private static final int HOTBAR_SIZE = 9;
+    public static final int RESTORE_INTERVAL_TICKS = 1200;
+    public static final int ACTIVE_COOLDOWN_TICKS = 1200;
 
     private MagatamaPinkHelper() {
     }
@@ -36,4 +38,3 @@ public final class MagatamaPinkHelper {
         foodData.setSaturation(20.0F);
     }
 }
-

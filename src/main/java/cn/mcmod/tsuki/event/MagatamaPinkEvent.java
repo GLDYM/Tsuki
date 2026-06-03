@@ -9,8 +9,6 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = Tsuki.MODID)
 public final class MagatamaPinkEvent {
-    private static final int RESTORE_INTERVAL_TICKS = 200;
-
     private MagatamaPinkEvent() {
     }
 
@@ -19,7 +17,7 @@ public final class MagatamaPinkEvent {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
-        if (player.tickCount % RESTORE_INTERVAL_TICKS != 0) {
+        if (player.tickCount % MagatamaPinkHelper.RESTORE_INTERVAL_TICKS != 0) {
             return;
         }
         if (!MagatamaPinkHelper.hasActivePinkMagatama(player)) {
@@ -28,4 +26,3 @@ public final class MagatamaPinkEvent {
         MagatamaPinkHelper.restoreFood(player);
     }
 }
-

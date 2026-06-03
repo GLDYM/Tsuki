@@ -25,8 +25,12 @@ public class MagatamaPinkItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
+        if (player.getCooldowns().isOnCooldown(this)) {
+            return InteractionResultHolder.fail(stack);
+        }
         if (!level.isClientSide) {
             MagatamaPinkHelper.restoreFood(player);
+            player.getCooldowns().addCooldown(this, MagatamaPinkHelper.ACTIVE_COOLDOWN_TICKS);
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
     }
@@ -37,4 +41,3 @@ public class MagatamaPinkItem extends Item {
         tooltip.add(Component.translatable("item.tsuki.magatama_pink.tooltip").withStyle(ChatFormatting.GRAY));
     }
 }
-
