@@ -3,7 +3,7 @@ navigation:
   title: Magatama
   icon: magatama_white
   parent: tool/tool_index.md
-  position: 2
+  position: 1
 item_ids:
   - tsuki:magatama_white
   - tsuki:magatama_blue
