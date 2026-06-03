@@ -1,0 +1,33 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_cooking_pot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:cooking_pot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.cooking_pot.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:cooking_pot"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.cooking_pot.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cooking_pot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

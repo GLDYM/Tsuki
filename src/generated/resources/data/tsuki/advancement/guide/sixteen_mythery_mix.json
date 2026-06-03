@@ -1,0 +1,40 @@
+{
+  "parent": "tsuki:guide/moonlit_shaker",
+  "criteria": {
+    "has_16_mythery_mix": {
+      "conditions": {
+        "items": [
+          {
+            "count": {
+              "min": 16
+            },
+            "items": "tsuki:mythery_mix"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.sixteen_mythery_mix.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "tsuki:mythery_mix"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.sixteen_mythery_mix.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_16_mythery_mix"
+    ]
+  ],
+  "rewards": {
+    "function": "tsuki:advancements/magatama_blue"
+  },
+  "sends_telemetry_event": true
+}

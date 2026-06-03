@@ -1,0 +1,442 @@
+{
+  "parent": "tsuki:guide/cooking_pot",
+  "criteria": {
+    "brown_rice_cooked": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:brown_rice_cooked"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "curry_omurice": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:curry_omurice"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "dried_brown_rice": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:dried_brown_rice"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "dried_rice": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:dried_rice"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "fried_brown_rice": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:fried_brown_rice"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ochazuke": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ochazuke"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "omurice": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:omurice"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "onigiri": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:onigiri"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "onigiri_bamboo": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:onigiri_bamboo"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "onigiri_fish": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:onigiri_fish"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "onigiri_matsutake": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:onigiri_matsutake"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "onigiri_mushroom": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:onigiri_mushroom"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "onigiri_seaweed": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:onigiri_seaweed"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "onigiri_tempura": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:onigiri_tempura"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_bamboo": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_bamboo"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_beef": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_beef"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_beef_egg": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_beef_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_cooked": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_cooked"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_curry": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_curry"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_curry_burger": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_curry_burger"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_curry_cheese": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_curry_cheese"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_curry_cheese_burger": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_curry_cheese_burger"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_curry_cheese_katsu": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_curry_cheese_katsu"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_curry_katsu": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_curry_katsu"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_egg": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_fish": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_fish"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_fried": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_fried"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_matsutake": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_matsutake"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_mushroom": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_mushroom"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_natto": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_natto"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_natto_egg": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_natto_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_oyako": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_oyako"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_oyako_fish": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_oyako_fish"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_pork": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_pork"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_pork_egg": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_pork_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_pork_fried": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_pork_fried"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "rice_redbean": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:rice_redbean"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "vinegar_rice": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:vinegar_rice"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.rice_dishes.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "tsuki:rice_beef"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.rice_dishes.title"
+    }
+  },
+  "requirements": [
+    [
+      "brown_rice_cooked"
+    ],
+    [
+      "rice_cooked"
+    ],
+    [
+      "rice_redbean"
+    ],
+    [
+      "rice_bamboo"
+    ],
+    [
+      "rice_beef"
+    ],
+    [
+      "rice_fish"
+    ],
+    [
+      "rice_pork"
+    ],
+    [
+      "rice_pork_fried"
+    ],
+    [
+      "rice_mushroom"
+    ],
+    [
+      "rice_matsutake"
+    ],
+    [
+      "rice_egg"
+    ],
+    [
+      "rice_beef_egg"
+    ],
+    [
+      "rice_pork_egg"
+    ],
+    [
+      "rice_oyako"
+    ],
+    [
+      "rice_oyako_fish"
+    ],
+    [
+      "rice_natto"
+    ],
+    [
+      "rice_natto_egg"
+    ],
+    [
+      "omurice"
+    ],
+    [
+      "curry_omurice"
+    ],
+    [
+      "rice_fried"
+    ],
+    [
+      "rice_curry"
+    ],
+    [
+      "rice_curry_katsu"
+    ],
+    [
+      "rice_curry_burger"
+    ],
+    [
+      "rice_curry_cheese"
+    ],
+    [
+      "rice_curry_cheese_katsu"
+    ],
+    [
+      "rice_curry_cheese_burger"
+    ],
+    [
+      "ochazuke"
+    ],
+    [
+      "onigiri"
+    ],
+    [
+      "onigiri_bamboo"
+    ],
+    [
+      "onigiri_fish"
+    ],
+    [
+      "onigiri_mushroom"
+    ],
+    [
+      "onigiri_matsutake"
+    ],
+    [
+      "onigiri_seaweed"
+    ],
+    [
+      "onigiri_tempura"
+    ],
+    [
+      "vinegar_rice"
+    ],
+    [
+      "fried_brown_rice"
+    ],
+    [
+      "dried_brown_rice"
+    ],
+    [
+      "dried_rice"
+    ]
+  ],
+  "rewards": {
+    "function": "tsuki:advancements/magatama_green"
+  },
+  "sends_telemetry_event": true
+}

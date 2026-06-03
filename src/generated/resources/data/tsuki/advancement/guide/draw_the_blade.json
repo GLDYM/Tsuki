@@ -1,0 +1,44 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_katana": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:katana"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sakura_katana": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:sakura_katana"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.draw_the_blade.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:katana"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.draw_the_blade.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_katana",
+      "has_sakura_katana"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

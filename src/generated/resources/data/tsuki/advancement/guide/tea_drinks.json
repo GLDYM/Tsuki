@@ -1,0 +1,33 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_cup": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:cup"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.tea_drinks.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:cup"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.tea_drinks.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cup"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

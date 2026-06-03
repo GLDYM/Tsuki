@@ -1,0 +1,33 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_shaker": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:shaker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.moonlit_shaker.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:shaker"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.moonlit_shaker.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_shaker"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

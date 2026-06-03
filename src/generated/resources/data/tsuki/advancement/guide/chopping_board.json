@@ -1,0 +1,33 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_chopping_board": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:chopping_board"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.chopping_board.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:chopping_board"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.chopping_board.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_chopping_board"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_sakura_diamond": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:sakura_diamond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.ore_smelting.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:sakura_diamond"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.ore_smelting.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sakura_diamond"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

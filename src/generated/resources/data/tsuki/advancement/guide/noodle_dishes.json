@@ -1,0 +1,431 @@
+{
+  "parent": "tsuki:guide/chopping_board",
+  "criteria": {
+    "pasta_mushroom": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:pasta_mushroom"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "pasta_tomato": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:pasta_tomato"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "pasta_whitesauce": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:pasta_whitesauce"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_beef": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_beef"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_chicken": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_chicken"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_croquette": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_croquette"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_curry": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_curry"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_egg": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_friedtofu": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_friedtofu"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_katsu": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_katsu"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_large": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_large"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "ramen_tempura": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:ramen_tempura"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_beef": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_beef"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_chicken": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_chicken"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_croquette": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_croquette"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_curry": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_curry"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_egg": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_friedtofu": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_friedtofu"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_katsu": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_katsu"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_large": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_large"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_tempura": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_tempura"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "soba_zaru": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:soba_zaru"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_beef": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_beef"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_chicken": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_chicken"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_croquette": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_croquette"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_curry": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_curry"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_egg": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_egg"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_friedtofu": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_friedtofu"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_katsu": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_katsu"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_large": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_large"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "udon_tempura": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:udon_tempura"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "yaki_pasta": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:yaki_pasta"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "yaki_soba": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:yaki_soba"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "yaki_udon": {
+      "conditions": {
+        "item": {
+          "items": "tsuki:yaki_udon"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.noodle_dishes.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "tsuki:ramen"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.noodle_dishes.title"
+    }
+  },
+  "requirements": [
+    [
+      "ramen"
+    ],
+    [
+      "ramen_beef"
+    ],
+    [
+      "ramen_egg"
+    ],
+    [
+      "ramen_tempura"
+    ],
+    [
+      "ramen_friedtofu"
+    ],
+    [
+      "ramen_chicken"
+    ],
+    [
+      "ramen_croquette"
+    ],
+    [
+      "ramen_katsu"
+    ],
+    [
+      "ramen_curry"
+    ],
+    [
+      "ramen_large"
+    ],
+    [
+      "udon"
+    ],
+    [
+      "udon_beef"
+    ],
+    [
+      "udon_egg"
+    ],
+    [
+      "udon_tempura"
+    ],
+    [
+      "udon_friedtofu"
+    ],
+    [
+      "udon_chicken"
+    ],
+    [
+      "udon_croquette"
+    ],
+    [
+      "udon_katsu"
+    ],
+    [
+      "udon_curry"
+    ],
+    [
+      "udon_large"
+    ],
+    [
+      "yaki_udon"
+    ],
+    [
+      "soba"
+    ],
+    [
+      "soba_beef"
+    ],
+    [
+      "soba_egg"
+    ],
+    [
+      "soba_tempura"
+    ],
+    [
+      "soba_friedtofu"
+    ],
+    [
+      "soba_chicken"
+    ],
+    [
+      "soba_croquette"
+    ],
+    [
+      "soba_katsu"
+    ],
+    [
+      "soba_curry"
+    ],
+    [
+      "soba_large"
+    ],
+    [
+      "soba_zaru"
+    ],
+    [
+      "yaki_soba"
+    ],
+    [
+      "pasta_tomato"
+    ],
+    [
+      "pasta_mushroom"
+    ],
+    [
+      "pasta_whitesauce"
+    ],
+    [
+      "yaki_pasta"
+    ]
+  ],
+  "rewards": {
+    "function": "tsuki:advancements/magatama_pink"
+  },
+  "sends_telemetry_event": true
+}

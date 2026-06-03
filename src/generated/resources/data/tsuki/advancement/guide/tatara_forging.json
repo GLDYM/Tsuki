@@ -1,0 +1,33 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_tatara": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:tatara"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.tatara_forging.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:tatara"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.tatara_forging.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_tatara"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

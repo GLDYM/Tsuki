@@ -1,0 +1,26 @@
+{
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancement.tsuki.guide.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:sakura_guide"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "tick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
