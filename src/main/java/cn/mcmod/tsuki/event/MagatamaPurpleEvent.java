@@ -5,7 +5,6 @@ import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
 import cn.mcmod.tsuki.item.magatama.MagatamaPurpleHelper;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;

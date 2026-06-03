@@ -12,6 +12,8 @@ public class TsukiCommonConfig {
     public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_PENALTY = INSTANCE.magatamaWhiteEnablePenalty;
     public static final ModConfigSpec.DoubleValue MAGATAMA_WHITE_PENALTY_HEALTH = INSTANCE.magatamaWhitePenaltyHealth;
     public static final ModConfigSpec.DoubleValue MAGATAMA_BLUE_HEALTH_COST = INSTANCE.magatamaBlueHealthCost;
+    public static final ModConfigSpec.DoubleValue MAGATAMA_GREEN_REMAINING_HEALTH = INSTANCE.magatamaGreenRemainingHealth;
+    public static final ModConfigSpec.IntValue MAGATAMA_GREEN_DRAW_COUNT = INSTANCE.magatamaGreenDrawCount;
     public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_MINING_SPEED_COMPENSATION = INSTANCE.magatamaWhiteEnableMiningSpeedCompensation;
     public static final ModConfigSpec.DoubleValue MAGATAMA_WHITE_MINING_SPEED_COMPENSATION_MULTIPLIER = INSTANCE.magatamaWhiteMiningSpeedCompensationMultiplier;
     public static final ModConfigSpec.BooleanValue DEBUG_MODE = INSTANCE.debugMode;
@@ -24,6 +26,8 @@ public class TsukiCommonConfig {
     public final ModConfigSpec.BooleanValue magatamaWhiteEnablePenalty;
     public final ModConfigSpec.DoubleValue magatamaWhitePenaltyHealth;
     public final ModConfigSpec.DoubleValue magatamaBlueHealthCost;
+    public final ModConfigSpec.DoubleValue magatamaGreenRemainingHealth;
+    public final ModConfigSpec.IntValue magatamaGreenDrawCount;
     public final ModConfigSpec.BooleanValue magatamaWhiteEnableMiningSpeedCompensation;
     public final ModConfigSpec.DoubleValue magatamaWhiteMiningSpeedCompensationMultiplier;
     public final ModConfigSpec.BooleanValue debugMode;
@@ -70,6 +74,16 @@ public class TsukiCommonConfig {
                 .comment("Sets the Blue Magatama health cost per weather conversion.")
                 .translation("tsuki.config.magatama_blue_health_cost")
                 .defineInRange("magatama_blue_health_cost", 4.0D, 0.0D, 1024.0D);
+
+        magatamaGreenRemainingHealth = builder
+                .comment("Sets the remaining health after using the Green Magatama.")
+                .translation("tsuki.config.magatama_green_remaining_health")
+                .defineInRange("magatama_green_remaining_health", 1.0D, 0.1D, 1024.0D);
+
+        magatamaGreenDrawCount = builder
+                .comment("Sets how many crop or seed drops the Green Magatama draws per use.")
+                .translation("tsuki.config.magatama_green_draw_count")
+                .defineInRange("magatama_green_draw_count", 32, 1, 1024);
 
         magatamaWhiteEnableMiningSpeedCompensation = builder
                 .comment("Enables the White Magatama airborne mining speed compensation.")

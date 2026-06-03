@@ -9,6 +9,7 @@ import cn.mcmod.tsuki.item.armor.SamuraiItem;
 import cn.mcmod.tsuki.item.armor.SoldierItem;
 import cn.mcmod.tsuki.item.armor.StrawHatItem;
 import cn.mcmod.tsuki.item.magatama.MagatamaBlueItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaGreenItem;
 import cn.mcmod.tsuki.item.magatama.MagatamaOrangeItem;
 import cn.mcmod.tsuki.item.magatama.MagatamaPinkItem;
 import cn.mcmod.tsuki.item.magatama.MagatamaPurpleItem;
@@ -280,6 +281,8 @@ public class ArmorToolRegistry {
             () -> new MagatamaWhiteItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<Item> MAGATAMA_BLUE = register("magatama_blue",
             () -> new MagatamaBlueItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> MAGATAMA_GREEN = register("magatama_green",
+            () -> new MagatamaGreenItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<Item> MAGATAMA_ORANGE = register("magatama_orange",
             () -> new MagatamaOrangeItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredItem<Item> MAGATAMA_PINK = register("magatama_pink",
