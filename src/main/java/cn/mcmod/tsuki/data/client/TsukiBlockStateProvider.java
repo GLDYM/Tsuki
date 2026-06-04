@@ -8,22 +8,24 @@ import cn.mcmod.tsuki.block.machine.TataraBlock;
 import cn.mcmod.tsuki.block.tree.ChestnutBurrBlock;
 import cn.mcmod.tsuki.block.tree.UmeLeavesBlock;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.block.FluidBlockRegistry;
 import cn.mcmod.mmlib.block.FacingCarpet;
 import net.minecraft.data.PackOutput;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.DoorHingeSide;
-import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -272,6 +274,23 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.BAMBOO_LANTERN.get(), models().getExistingFile(modLoc("block/bamboo_lantern")));
         simpleBlock(BlockRegistry.WINDBELL.get(), models().getExistingFile(modLoc("block/windbell")));
         simpleBlock(BlockRegistry.ANDON.get(), models().getExistingFile(modLoc("block/andon")));
+        fluidBlock(FluidBlockRegistry.FOOD_OIL_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.DOBUROKU_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.SAKE_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.SHOUCHU_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.BEER_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.WHISKEY_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.RED_WINE_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.WHITE_WINE_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.BRANDY_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.RUM_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.CHAMPAGNE_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.VODKA_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.LIQUEUR_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.COCOA_LIQUEUR_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.GIN_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.TEQUILA_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.MAPLE_SYRUP_BLOCK.get());
         simpleBlock(BlockRegistry.DRINK_DISPLAY.get(), models().getExistingFile(modLoc("block/empty_cup_display")));
         simpleBlock(BlockRegistry.ZABUTON.get(), models().getExistingFile(modLoc("block/zabuton")));
         futon(BlockRegistry.FUTON.get());
@@ -343,6 +362,11 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
     private void sunflower(Block block) {
         ModelFile empty = models().getExistingFile(modLoc("block/sunflower"));
         getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(empty).build());
+    }
+
+    private void fluidBlock(LiquidBlock block) {
+        ModelFile model = models().getExistingFile(modLoc("block/food_oil"));
+        getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(model).build());
     }
 
     public void facingSlabBlock(SlabBlock block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {

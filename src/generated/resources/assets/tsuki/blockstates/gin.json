@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "level=0": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=1": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=10": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=11": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=12": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=13": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=14": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=15": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=2": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=3": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=4": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=5": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=6": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=7": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=8": {
+      "model": "tsuki:block/food_oil"
+    },
+    "level=9": {
+      "model": "tsuki:block/food_oil"
+    }
+  }
+}
