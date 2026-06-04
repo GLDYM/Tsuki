@@ -4,7 +4,8 @@
 
 ## Feature
 
-- Magatama: Powerful tools as the rewards of progress.
+- Magatama: Powerful tools as the rewards of progress
+- Kakeziku: Japanese style paintings, from Bamboo mod
 
 ## Bug Fix
 

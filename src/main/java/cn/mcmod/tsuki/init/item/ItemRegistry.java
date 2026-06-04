@@ -4,6 +4,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.EntityTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
+import cn.mcmod.tsuki.item.KakezikuItem;
 import cn.mcmod.tsuki.item.RiceSeedsItem;
 import cn.mcmod.mmlib.item.ItemFoodSeeds;
 import cn.mcmod.mmlib.item.info.FoodInfo;
@@ -58,6 +59,9 @@ public class ItemRegistry {
             () -> seed(BlockRegistry.SUNFLOWER_CROP.get()));
 
     public static final Map<TsukiNormalItemSet, DeferredItem<Item>> MATERIALS = createMaterials();
+
+    public static final DeferredItem<Item> KAKEZIKU = register("kakeziku",
+            () -> new KakezikuItem(Tsuki.defaultItemProperties()));
 
     public static final DeferredItem<Item> SAMURAI_ILLAGER_SPAWN_EGG = register("samurai_illager_spawn_egg",
             () -> new DeferredSpawnEggItem(EntityTypeRegistry.SAMURAI_ILLAGER, 9804699, 2580065,

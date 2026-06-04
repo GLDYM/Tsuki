@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "tsuki:bamboo"
+    },
+    "S": {
+      "item": "tsuki:silk"
+    }
+  },
+  "pattern": [
+    "B",
+    "S",
+    "B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:kakeziku"
+  }
+}

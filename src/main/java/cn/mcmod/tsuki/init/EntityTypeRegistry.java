@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.init;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.entity.KakezikuEntity;
 import cn.mcmod.tsuki.entity.SamuraiIllagerEntity;
 import cn.mcmod.tsuki.entity.SeatEntity;
 import net.minecraft.core.registries.Registries;
@@ -32,6 +33,14 @@ public class EntityTypeRegistry {
                     .clientTrackingRange(4)
                     .updateInterval(20)
                     .build("tsuki:seat"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<KakezikuEntity>> KAKEZIKU = ENTITY_TYPES.register(
+            "kakeziku",
+            () -> EntityType.Builder.<KakezikuEntity>of(KakezikuEntity::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F)
+                    .clientTrackingRange(10)
+                    .updateInterval(Integer.MAX_VALUE)
+                    .build("tsuki:kakeziku"));
 
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(SAMURAI_ILLAGER.get(), SamuraiIllagerEntity.createAttributes().build());

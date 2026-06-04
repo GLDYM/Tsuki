@@ -297,6 +297,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('B', Items.BUCKET)
                 .unlockedBy("has_bucket", has(Items.BUCKET))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shaker"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ItemRegistry.KAKEZIKU.get())
+                .pattern("B")
+                .pattern("S")
+                .pattern("B")
+                .define('B', TsukiNormalItemSet.BAMBOO.getItem().get())
+                .define('S', TsukiNormalItemSet.SILK.getItem().get())
+                .unlockedBy("has_silk", has(TsukiNormalItemSet.SILK.getItem().get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "kakeziku"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Items.TORCH, 4)
                 .pattern("C")
                 .pattern("#")

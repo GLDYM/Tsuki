@@ -4,6 +4,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
 import cn.mcmod.tsuki.item.magatama.MagatamaPurpleHelper;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -22,6 +23,9 @@ public final class MagatamaPurpleEvent {
     @SubscribeEvent
     public static void onAttackEntity(AttackEntityEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
+        if (!(event.getTarget() instanceof LivingEntity)) {
             return;
         }
         if (!MagatamaPurpleHelper.hasActivePurpleMagatama(player)) {

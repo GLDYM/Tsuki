@@ -22,6 +22,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.PaintingRenderer;
 import net.minecraft.world.level.block.BushBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
@@ -88,6 +89,7 @@ public class ClientEvents {
             BlockEntityRenderers.register(BlockEntityRegistry.SHOJI.get(), ShojiRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.SUNFLOWER_CROP.get(), SunflowerCropRenderer::new);
             EntityRenderers.register(EntityTypeRegistry.SEAT.get(), SeatEntityRenderer::new);
+            EntityRenderers.register(EntityTypeRegistry.KAKEZIKU.get(), context -> new PaintingRenderer(context));
             EntityRenderers.register(EntityTypeRegistry.SAMURAI_ILLAGER.get(), SamuraiIllagerRenderer::new);
         });
     }

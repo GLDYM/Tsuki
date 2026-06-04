@@ -1,0 +1,31 @@
+﻿
+
+{
+    "replace":  false,
+    "values":  [
+                   "tsuki:kakeziku_1x2_01",
+                   "tsuki:kakeziku_1x2_02",
+                   "tsuki:kakeziku_1x2_03",
+                   "tsuki:kakeziku_1x2_04",
+                   "tsuki:kakeziku_1x2_05",
+                   "tsuki:kakeziku_1x2_06",
+                   "tsuki:kakeziku_1x2_07",
+                   "tsuki:kakeziku_1x2_08",
+                   "tsuki:kakeziku_1x2_09",
+                   "tsuki:kakeziku_1x2_10",
+                   "tsuki:kakeziku_1x2_11",
+                   "tsuki:kakeziku_1x2_12",
+                   "tsuki:kakeziku_1x3_01",
+                   "tsuki:kakeziku_1x3_02",
+                   "tsuki:kakeziku_1x3_03",
+                   "tsuki:kakeziku_1x3_04",
+                   "tsuki:kakeziku_1x3_05",
+                   "tsuki:kakeziku_1x3_06",
+                   "tsuki:kakeziku_1x3_07",
+                   "tsuki:kakeziku_1x3_08",
+                   "tsuki:kakeziku_1x3_09",
+                   "tsuki:kakeziku_1x3_10",
+                   "tsuki:kakeziku_1x3_11",
+                   "tsuki:kakeziku_1x3_12"
+               ]
+}
