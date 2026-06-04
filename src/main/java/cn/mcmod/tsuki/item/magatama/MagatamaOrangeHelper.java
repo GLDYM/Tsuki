@@ -29,4 +29,3 @@ public final class MagatamaOrangeHelper {
         return CuriosCompat.findFirstEquippedStack(player, ArmorToolRegistry.MAGATAMA_ORANGE.get());
     }
 }
-

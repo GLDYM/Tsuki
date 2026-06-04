@@ -554,6 +554,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('#', Tags.Items.GLASS_PANES)
                 .unlockedBy("has_glass", has(Tags.Items.GLASS_PANES))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cup"));
+        cuttingRecipe(consumer, () -> Items.GLASS, DrinkRegistry.COLLINS_GLASS, 4);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ArmorToolRegistry.IRON_FISH_KNIFE.get())
                 .pattern("  I")
@@ -852,7 +853,6 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('L', Items.LEATHER)
                 .unlockedBy("has_item", has(Tags.Items.INGOTS_IRON))
                 .save(consumer);
-
 
         this.foodSmeltingRecipes(
                 "eggplant_bake",

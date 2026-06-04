@@ -29,9 +29,11 @@ public class MagatamaWhiteItem extends Item {
         super.appendHoverText(stack, context, tooltip, flag);
         tooltip.add(Component.translatable("item.tsuki.magatama_white.tooltip").withStyle(ChatFormatting.GRAY));
         tooltip.add(Component.translatable("tsuki.tooltip.magatama_white.key",
-                Component.keybind("key.tsuki.magatama_mode_toggle").withStyle(ChatFormatting.GRAY)).withStyle(ChatFormatting.DARK_GRAY));
+                Component.keybind("key.tsuki.magatama_mode_toggle").withStyle(ChatFormatting.GRAY))
+                .withStyle(ChatFormatting.DARK_GRAY));
         tooltip.add(Component.translatable("tsuki.tooltip.magatama_white.mode",
-                Component.translatable(getFlightMode(stack).getTranslationKey()).withStyle(ChatFormatting.AQUA)).withStyle(ChatFormatting.GRAY));
+                Component.translatable(getFlightMode(stack).getTranslationKey()).withStyle(ChatFormatting.AQUA))
+                .withStyle(ChatFormatting.GRAY));
     }
 
     public static FlightMode getFlightMode(ItemStack stack) {

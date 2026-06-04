@@ -31,6 +31,8 @@ public class DrinkRegistry {
             () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::wineBottleBlock));
     public static final DeferredItem<Item> GLASS_CUP = register("glass_cup",
             () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::cupBlock));
+    public static final DeferredItem<Item> COLLINS_GLASS = register("collins_glass",
+            () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::cupBlock));
     public static final DeferredItem<Item> MYTHERY_MIX = register("mythery_mix", MytheryMixItem::new);
 
     public static final Map<TsukiTeaSet, DeferredItem<Item>> TEAS = ItemRegistryUtil.mapOfKeys(
@@ -78,6 +80,10 @@ public class DrinkRegistry {
 
     public static Item glassCupContainerItem() {
         return GLASS_CUP.get();
+    }
+
+    public static Item collinsGlassContainerItem() {
+        return COLLINS_GLASS.get();
     }
 
     public static DrinkDisplayBlock cupBlock() {

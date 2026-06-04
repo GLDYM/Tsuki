@@ -23,4 +23,3 @@ public abstract class MagatamaWhiteCreativeInstantStopMixin {
         player.setDeltaMovement(delta.x * 0.5D, delta.y, delta.z * 0.5D);
     }
 }
-

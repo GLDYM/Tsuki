@@ -228,7 +228,8 @@ public enum TsukiCocktailSet {
             new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1000, 0),
             new MobEffectInstance(MobEffects.LUCK, 1200, 0)
     }),
-    GLASS_LONG_ISLAND_ICED_TEA("glass_long_island_iced_tea", () -> new MobEffectInstance[] {
+    GLASS_LONG_ISLAND_ICED_TEA("glass_long_island_iced_tea", DrinkRegistry::collinsGlassContainerItem,
+            () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2000, 1),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2000, 0),
             new MobEffectInstance(MobEffectRegistry.GOLDEN_HEART, 500, 0)
@@ -273,6 +274,10 @@ public enum TsukiCocktailSet {
 
     TsukiCocktailSet(String name, Supplier<MobEffectInstance[]> effectsSupplier) {
         this(name, true, DrinkRegistry::glassCupContainerItem, effectsSupplier);
+    }
+
+    TsukiCocktailSet(String name, Supplier<Item> containerItem, Supplier<MobEffectInstance[]> effectsSupplier) {
+        this(name, true, containerItem, effectsSupplier);
     }
 
     TsukiCocktailSet(String name, boolean alcoholic, Supplier<MobEffectInstance[]> effectsSupplier) {

@@ -54,7 +54,8 @@ public final class MagatamaRedHelper {
                 player.getY() + RANGE_UP,
                 player.getZ() + RANGE_XZ);
 
-        for (LivingEntity entity : player.level().getEntitiesOfClass(LivingEntity.class, checkBox, MagatamaRedHelper::isTargetEntity)) {
+        for (LivingEntity entity : player.level().getEntitiesOfClass(LivingEntity.class, checkBox,
+                MagatamaRedHelper::isTargetEntity)) {
             entity.hurt(player.damageSources().outOfBorder(), Float.MAX_VALUE);
         }
     }
@@ -69,4 +70,3 @@ public final class MagatamaRedHelper {
         return TARGET_ENTITY_IDS.contains(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()));
     }
 }
-

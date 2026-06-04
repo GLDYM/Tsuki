@@ -188,8 +188,12 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .add(bottle.get()));
         this.tag(TsukiItemTags.DRINK_CONTAINERS).add(
                 DrinkRegistry.CUP.get(),
+                DrinkRegistry.COLLINS_GLASS.get(),
                 DrinkRegistry.GLASS_CUP.get(),
                 DrinkRegistry.WINE_BOTTLE.get());
+        this.tag(TsukiItemTags.DRINK_GLASSES).add(
+                DrinkRegistry.GLASS_CUP.get(),
+                DrinkRegistry.COLLINS_GLASS.get());
         this.tag(TsukiItemTags.INGREDIENT_BLACKLIST)
                 .addOptionalTag(ResourceLocation.parse("kaleidoscope_cookery:ingredient_blacklist"))
                 .addOptionalTag(ResourceLocation.parse("c:tools"))
@@ -198,6 +202,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.INGREDIENT_BLACKLIST)
                 .add(
                         DrinkRegistry.CUP.get(),
+                        DrinkRegistry.COLLINS_GLASS.get(),
                         DrinkRegistry.GLASS_CUP.get(),
                         DrinkRegistry.SHAKER.get(),
                         DrinkRegistry.WINE_BOTTLE.get(),
@@ -263,8 +268,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.CROPS_RICE).add(ItemRegistry.RICE_SEEDS.get());
         this.tag(TsukiItemTags.CROPS_TARO).add(ItemRegistry.TARO.get());
         this.tag(TsukiItemTags.CROPS_CABBAGE)
-            .add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get())
-            .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get());
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get())
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get());
         this.tag(TsukiItemTags.CROPS_EGGPLANT).add(FoodRegistry.FOODSET.get(TsukiFoodSet.EGGPLANT).get());
         this.tag(TsukiItemTags.CROPS_ONION).add(FoodRegistry.FOODSET.get(TsukiFoodSet.ONION).get());
         this.tag(TsukiItemTags.CROPS_RADISH).add(FoodRegistry.FOODSET.get(TsukiFoodSet.RADISH).get());

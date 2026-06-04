@@ -17,6 +17,7 @@
       "required": false
     },
     "tsuki:cup",
+    "tsuki:collins_glass",
     "tsuki:glass_cup",
     "tsuki:shaker",
     "tsuki:wine_bottle",

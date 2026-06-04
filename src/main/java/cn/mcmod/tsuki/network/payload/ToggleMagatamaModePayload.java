@@ -33,7 +33,8 @@ public record ToggleMagatamaModePayload() implements CustomPacketPayload {
                 if (weatherMode != null) {
                     player.displayClientMessage(
                             Component.translatable("tsuki.tooltip.magatama_blue.mode",
-                                    Component.translatable(weatherMode.getTranslationKey()).withStyle(ChatFormatting.AQUA)),
+                                    Component.translatable(weatherMode.getTranslationKey())
+                                            .withStyle(ChatFormatting.AQUA)),
                             true);
                     return;
                 }

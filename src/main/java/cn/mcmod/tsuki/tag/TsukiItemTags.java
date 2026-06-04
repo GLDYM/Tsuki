@@ -8,11 +8,14 @@ import net.neoforged.neoforge.common.Tags;
 
 public class TsukiItemTags {
     public static final TagKey<Item> MAGATAMAS = TagUtil.modItemTag(Tsuki.MODID, "magatamas");
-    public static final TagKey<Item> ADVANCEMENT_RICE_DISHES = TagUtil.modItemTag(Tsuki.MODID, "advancements/rice_dishes");
-    public static final TagKey<Item> ADVANCEMENT_NOODLE_DISHES = TagUtil.modItemTag(Tsuki.MODID, "advancements/noodle_dishes");
+    public static final TagKey<Item> ADVANCEMENT_RICE_DISHES = TagUtil.modItemTag(Tsuki.MODID,
+            "advancements/rice_dishes");
+    public static final TagKey<Item> ADVANCEMENT_NOODLE_DISHES = TagUtil.modItemTag(Tsuki.MODID,
+            "advancements/noodle_dishes");
     public static final TagKey<Item> ADVANCEMENT_BASE_WINE_BOTTLES = TagUtil.modItemTag(Tsuki.MODID,
             "advancements/base_wine_bottles");
     public static final TagKey<Item> OFFHAND_EQUIPMENT = TagUtil.modItemTag(Tsuki.MODID, "offhand_equipment");
+    public static final TagKey<Item> DRINK_GLASSES = TagUtil.modItemTag(Tsuki.MODID, "drink_glasses");
     public static final TagKey<Item> DRINK_CONTAINERS = TagUtil.modItemTag(Tsuki.MODID, "drink_containers");
     public static final TagKey<Item> WINE_BOTTLES = TagUtil.modItemTag(Tsuki.MODID, "wine_bottles");
     public static final TagKey<Item> INGREDIENT_BLACKLIST = TagUtil.modItemTag(Tsuki.MODID, "ingredient_blacklist");

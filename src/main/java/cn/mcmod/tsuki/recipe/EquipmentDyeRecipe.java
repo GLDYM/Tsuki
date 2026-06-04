@@ -95,7 +95,8 @@ public class EquipmentDyeRecipe extends CustomRecipe {
                 }
                 equipment = stack;
             } else {
-                // Crafting recipes consume one item per occupied slot, regardless of stack size.
+                // Crafting recipes consume one item per occupied slot, regardless of stack
+                // size.
                 ingredients.merge(stack.getItem(), 1, Integer::sum);
             }
         }

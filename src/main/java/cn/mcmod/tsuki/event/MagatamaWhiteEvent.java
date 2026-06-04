@@ -19,7 +19,8 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = Tsuki.MODID)
 public final class MagatamaWhiteEvent {
-    private static final ResourceLocation CREATIVE_FLIGHT_MODIFIER_ID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+    private static final ResourceLocation CREATIVE_FLIGHT_MODIFIER_ID = ResourceLocation.fromNamespaceAndPath(
+            Tsuki.MODID,
             "magatama_white_creative_flight");
     private static final ResourceLocation MAX_HEALTH_MODIFIER_ID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
             "magatama_white_max_health");

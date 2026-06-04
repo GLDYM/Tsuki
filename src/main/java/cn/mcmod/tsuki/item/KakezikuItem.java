@@ -30,7 +30,8 @@ public class KakezikuItem extends HangingEntityItem {
         }
 
         Level level = context.getLevel();
-        HangingEntity entity = KakezikuEntity.createKakeziku(level, placementPos, context.getClickedFace()).orElse(null);
+        HangingEntity entity = KakezikuEntity.createKakeziku(level, placementPos, context.getClickedFace())
+                .orElse(null);
         if (entity == null) {
             return InteractionResult.CONSUME;
         }

@@ -5,6 +5,7 @@ import cn.mcmod.tsuki.init.item.DrinkRegistry;
 import cn.mcmod.tsuki.init.item.enums.TsukiWineBottleSet;
 import cn.mcmod.tsuki.item.drink.DrinkItem;
 import cn.mcmod.tsuki.item.drink.WineBottleItem;
+import cn.mcmod.tsuki.tag.TsukiItemTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -28,9 +29,7 @@ public class DrinkDisplayBlock extends AbstractDrinkDisplayBlock {
 
     @Override
     protected boolean canAccept(ItemStack stack) {
-        return stack.is(DrinkRegistry.CUP.get())
-                || stack.is(DrinkRegistry.GLASS_CUP.get())
-                || stack.is(DrinkRegistry.WINE_BOTTLE.get())
+        return stack.is(TsukiItemTags.DRINK_CONTAINERS)
                 || stack.getItem() instanceof DrinkItem
                 || stack.getItem() instanceof WineBottleItem;
     }
@@ -50,7 +49,7 @@ public class DrinkDisplayBlock extends AbstractDrinkDisplayBlock {
             return false;
         }
         // if (player != null && !player.isShiftKeyDown()) {
-        //     return false;
+        // return false;
         // }
         if (!(level.getBlockEntity(pos) instanceof DrinkDisplayBlockEntity drinkDisplay)) {
             return false;

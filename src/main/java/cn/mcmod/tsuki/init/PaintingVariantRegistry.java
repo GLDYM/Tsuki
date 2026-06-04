@@ -40,6 +40,7 @@ public final class PaintingVariantRegistry {
     }
 
     private static ResourceKey<PaintingVariant> create(String name) {
-        return ResourceKey.create(Registries.PAINTING_VARIANT, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, name));
+        return ResourceKey.create(Registries.PAINTING_VARIANT,
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, name));
     }
 }
