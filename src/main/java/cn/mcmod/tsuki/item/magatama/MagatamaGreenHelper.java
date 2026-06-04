@@ -1,6 +1,5 @@
 package cn.mcmod.tsuki.item.magatama;
 
-import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.tag.TsukiItemTags;
 import java.util.ArrayList;

@@ -20,6 +20,7 @@ import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
@@ -133,6 +134,7 @@ public class TsukiGuideAdvancements implements AdvancementProvider.AdvancementGe
                     .get()
     };
 
+    @SuppressWarnings("unused")
     @Override
     public void generate(
             HolderLookup.Provider provider,
@@ -301,7 +303,7 @@ public class TsukiGuideAdvancements implements AdvancementProvider.AdvancementGe
     }
 
     private static String idFromItem(ItemLike item) {
-        return item.asItem().builtInRegistryHolder().key().location().getPath();
+        return BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
     }
 
     private static ResourceLocation rl(String path) {
