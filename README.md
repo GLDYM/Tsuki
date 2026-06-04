@@ -43,6 +43,9 @@ This mod uses source code from the following mods, published here according to t
 - MMLib (MIT)
 - Farmer’s Delight (MIT)
 - Kaleidoscope: Cookery (BSD-3)
+- BalancedFlight (MIT)
+- CrockPot (MIT)
+- Youkai's Homecoming (LGPL 2.1)
 
 This mod uses assets from the following mods, published here according to their open-source licenses:
 

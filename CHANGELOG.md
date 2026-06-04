@@ -6,6 +6,10 @@
 
 - Magatama: Powerful tools as the rewards of progress.
 
+## Bug Fix
+
+- The models of fluid lost their blockstates.
+
 # Tsuki 1.4.6
 
 ## Bug Fix
