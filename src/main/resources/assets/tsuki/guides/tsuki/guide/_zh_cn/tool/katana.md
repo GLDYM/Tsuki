@@ -3,7 +3,7 @@ navigation:
   title: 打刀
   icon: katana
   parent: tool/tool_index.md
-  position: 1
+  position: 2
 item_ids:
   - tsuki:katana
   - tsuki:sakura_katana

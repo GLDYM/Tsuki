@@ -1,7 +1,8 @@
 {
   "client": [
     "client.GameRendererMixin",
-    "client.ItemInHandRendererMixin"
+    "client.ItemInHandRendererMixin",
+    "client.MagatamaWhiteElytraClientMixin"
   ],
   "compatibilityLevel": "JAVA_21",
   "injectors": {
@@ -9,6 +10,10 @@
   },
   "minVersion": "0.8",
   "mixins": [
+    "MagatamaPurplePacifyMixin",
+    "MagatamaWhiteCreativeInstantStopMixin",
+    "MagatamaWhiteElytraServerMixin",
+    "MagatamaWhiteElytraUpdateMixin",
     "VillagerMixin"
   ],
   "package": "cn.mcmod.tsuki.mixin",

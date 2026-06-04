@@ -1,0 +1,102 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_magatama_blue": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:magatama_blue"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_magatama_green": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:magatama_green"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_magatama_orange": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:magatama_orange"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_magatama_pink": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:magatama_pink"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_magatama_purple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:magatama_purple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_magatama_red": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:magatama_red"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.sevenfold_return.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "tsuki:magatama_white"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.sevenfold_return.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_magatama_blue"
+    ],
+    [
+      "has_magatama_green"
+    ],
+    [
+      "has_magatama_orange"
+    ],
+    [
+      "has_magatama_pink"
+    ],
+    [
+      "has_magatama_purple"
+    ],
+    [
+      "has_magatama_red"
+    ]
+  ],
+  "rewards": {
+    "function": "tsuki:advancements/magatama_white"
+  },
+  "sends_telemetry_event": true
+}

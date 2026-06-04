@@ -1,0 +1,37 @@
+{
+  "parent": "tsuki:guide/ore_smelting",
+  "criteria": {
+    "has_mythic_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:mythic_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.nameless_pickaxe.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "tsuki:mythic_pickaxe"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.nameless_pickaxe.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_mythic_pickaxe"
+    ]
+  ],
+  "rewards": {
+    "function": "tsuki:advancements/magatama_purple"
+  },
+  "sends_telemetry_event": true
+}

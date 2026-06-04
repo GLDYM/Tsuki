@@ -1,0 +1,19 @@
+{
+  "values": [
+    "tsuki:beer_bottle",
+    "tsuki:doburoku_bottle",
+    "tsuki:sake_bottle",
+    "tsuki:shouchu_bottle",
+    "tsuki:red_wine_bottle",
+    "tsuki:white_wine_bottle",
+    "tsuki:champagne_bottle",
+    "tsuki:rum_bottle",
+    "tsuki:vodka_bottle",
+    "tsuki:whiskey_bottle",
+    "tsuki:brandy_bottle",
+    "tsuki:gin_bottle",
+    "tsuki:tequila_bottle",
+    "tsuki:liqueur_bottle",
+    "tsuki:cocoa_liqueur_bottle"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "tsuki:magatama_orange",
+    "tsuki:magatama_pink",
+    "tsuki:magatama_purple",
+    "tsuki:magatama_red",
+    "tsuki:magatama_white"
+  ]
+}

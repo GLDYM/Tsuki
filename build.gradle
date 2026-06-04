@@ -118,25 +118,21 @@ repositories {
 
 dependencies {
     // Ageratum, embedded via Jar-in-Jar.
-    // F, we need Ponder.
-    // jarJar(implementation("curse.maven:ageratum-1500610:7935946"))
-    // runtimeOnly ("curse.maven:ageratum-1500610:7935946")
+    // compileOnly "curse.maven:ageratum-1500610:7935946"
+    // runtimeOnly "curse.maven:ageratum-1500610:7935946"
     // GuideME
     compileOnly 'org.appliedenergistics:guideme:21.1.15:api'
     // runtimeOnly 'org.appliedenergistics:guideme:21.1.15'
     // Geckolib
     compileOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
     runtimeOnly "software.bernie.geckolib:geckolib-neoforge-${mc_version}:${geckolib_version}"
-    // Patchouli, will be removed in the future, but not now
-    // compileOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
-    // runtimeOnly ("vazkii.patchouli:Patchouli:1.21.1-93-NEOFORGE")
 
     // Compact
     // Epic Fight, Hm?
     // implementation ("maven.modrinth:epic-fight:20.9.2")
     // CuriosAPI, now we don't use it.
     compileOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api")
-    // runtimeOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1")
+    runtimeOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1")
     // Jade
     compileOnly "curse.maven:jade-324717:7545219"
     runtimeOnly "curse.maven:jade-324717:7545219"

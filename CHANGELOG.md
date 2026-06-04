@@ -1,5 +1,11 @@
 # Changelog
 
+# Tsuki 1.5.0
+
+## Feature
+
+- Magatama: Powerful tools as the rewards of progress.
+
 # Tsuki 1.4.6
 
 ## Bug Fix

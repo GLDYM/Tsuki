@@ -1,0 +1,33 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_stone_mortar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:stone_mortar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.stone_mortar.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:stone_mortar"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.stone_mortar.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_stone_mortar"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

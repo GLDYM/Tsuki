@@ -1,0 +1,219 @@
+{
+  "parent": "tsuki:guide/brewers_craft",
+  "criteria": {
+    "beer_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:beer_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "brandy_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:brandy_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "champagne_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:champagne_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cocoa_liqueur_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:cocoa_liqueur_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "doburoku_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:doburoku_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "gin_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:gin_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "liqueur_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:liqueur_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "red_wine_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:red_wine_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "rum_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:rum_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sake_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:sake_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "shouchu_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:shouchu_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tequila_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:tequila_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "vodka_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:vodka_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "whiskey_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:whiskey_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "white_wine_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:white_wine_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.base_wine_collection.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "tsuki:sake_bottle"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.base_wine_collection.title"
+    }
+  },
+  "requirements": [
+    [
+      "beer_bottle"
+    ],
+    [
+      "doburoku_bottle"
+    ],
+    [
+      "sake_bottle"
+    ],
+    [
+      "shouchu_bottle"
+    ],
+    [
+      "red_wine_bottle"
+    ],
+    [
+      "white_wine_bottle"
+    ],
+    [
+      "champagne_bottle"
+    ],
+    [
+      "rum_bottle"
+    ],
+    [
+      "vodka_bottle"
+    ],
+    [
+      "whiskey_bottle"
+    ],
+    [
+      "brandy_bottle"
+    ],
+    [
+      "gin_bottle"
+    ],
+    [
+      "tequila_bottle"
+    ],
+    [
+      "liqueur_bottle"
+    ],
+    [
+      "cocoa_liqueur_bottle"
+    ]
+  ],
+  "rewards": {
+    "function": "tsuki:advancements/magatama_red"
+  },
+  "sends_telemetry_event": true
+}

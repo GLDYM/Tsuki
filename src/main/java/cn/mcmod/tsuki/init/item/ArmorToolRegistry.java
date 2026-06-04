@@ -8,6 +8,13 @@ import cn.mcmod.tsuki.item.armor.KimonoItem;
 import cn.mcmod.tsuki.item.armor.SamuraiItem;
 import cn.mcmod.tsuki.item.armor.SoldierItem;
 import cn.mcmod.tsuki.item.armor.StrawHatItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaBlueItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaGreenItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaOrangeItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaPinkItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaPurpleItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaRedItem;
+import cn.mcmod.tsuki.item.magatama.MagatamaWhiteItem;
 import cn.mcmod.tsuki.item.tool.BroomItem;
 import cn.mcmod.tsuki.item.tool.HammerItem;
 import cn.mcmod.tsuki.item.tool.KatanaItem;
@@ -269,6 +276,22 @@ public class ArmorToolRegistry {
     public static final DeferredItem<Item> SAMURAI_BOOTS_BLACK = register("samurai_boots_black",
             () -> new SamuraiItem("samurai_black", ArmorMaterialRegistry.SAMURAI, ArmorItem.Type.BOOTS,
                     Tsuki.defaultItemProperties().stacksTo(1).durability(481)));
+
+    public static final DeferredItem<Item> MAGATAMA_WHITE = register("magatama_white",
+            () -> new MagatamaWhiteItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> MAGATAMA_BLUE = register("magatama_blue",
+            () -> new MagatamaBlueItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> MAGATAMA_GREEN = register("magatama_green",
+            () -> new MagatamaGreenItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> MAGATAMA_ORANGE = register("magatama_orange",
+            () -> new MagatamaOrangeItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> MAGATAMA_PINK = register("magatama_pink",
+            () -> new MagatamaPinkItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> MAGATAMA_PURPLE = register("magatama_purple",
+            () -> new MagatamaPurpleItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredItem<Item> MAGATAMA_RED = register("magatama_red",
+            () -> new MagatamaRedItem(Tsuki.defaultItemProperties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+
 
     public static final DeferredItem<Item> MUSIC_DISC_MIKO = register("music_disc_miko",
             () -> new Item(Tsuki.defaultItemProperties()

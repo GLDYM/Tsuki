@@ -1,0 +1,37 @@
+{
+  "parent": "tsuki:guide/draw_the_blade",
+  "criteria": {
+    "has_sakura_katana_sheath": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:sakura_katana_sheath"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.blossom_sheath.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "tsuki:sakura_katana_sheath"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.blossom_sheath.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_sakura_katana_sheath"
+    ]
+  ],
+  "rewards": {
+    "function": "tsuki:advancements/magatama_orange"
+  },
+  "sends_telemetry_event": true
+}

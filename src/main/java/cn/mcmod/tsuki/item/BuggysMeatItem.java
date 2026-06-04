@@ -18,9 +18,7 @@ public class BuggysMeatItem extends ItemFoodBase {
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip,
             TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
-        if (flag.isAdvanced()) {
-            tooltip.add(Component.translatable("tsuki.tooltip.buggys_meat.1").withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("tsuki.tooltip.buggys_meat.2").withStyle(ChatFormatting.GRAY));
-        }
+        tooltip.add(Component.translatable("tsuki.tooltip.buggys_meat.1").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tsuki.tooltip.buggys_meat.2").withStyle(ChatFormatting.GRAY));
     }
 }

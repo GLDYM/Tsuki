@@ -1,0 +1,46 @@
+{
+  "parent": "tsuki:guide/root",
+  "criteria": {
+    "has_distiller": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:distiller"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fermenter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:fermenter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.tsuki.guide.brewers_craft.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tsuki:fermenter"
+    },
+    "title": {
+      "translate": "advancement.tsuki.guide.brewers_craft.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_fermenter"
+    ],
+    [
+      "has_distiller"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
