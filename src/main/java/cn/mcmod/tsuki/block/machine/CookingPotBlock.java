@@ -141,13 +141,17 @@ public class CookingPotBlock extends BaseEntityBlock {
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        // bucket
+        // fluid container
         IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1))
                 .orElse(null);
-        if (handler != null && handler instanceof FluidBucketWrapper) {
-            FluidUtil.interactWithFluidHandler(player, handIn, cookingPot.getFluidTank());
-            cookingPot.inventoryChanged();
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        if (handler != null) {
+            if (FluidUtil.interactWithFluidHandler(player, handIn, cookingPot.getFluidTank())) {
+                cookingPot.inventoryChanged();
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            }
+            if (handler instanceof FluidBucketWrapper) {
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            }
         }
 
         if (!level.isClientSide()) {
