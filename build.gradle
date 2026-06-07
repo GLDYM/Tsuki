@@ -131,14 +131,14 @@ dependencies {
     // Epic Fight, Hm?
     // implementation ("maven.modrinth:epic-fight:20.9.2")
     // CuriosAPI, now we don't use it.
-    compileOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api")
-    runtimeOnly ("top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1")
+    compileOnly "top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1"
     // Jade
-    compileOnly "curse.maven:jade-324717:7545219"
-    runtimeOnly "curse.maven:jade-324717:7545219"
+    compileOnly "maven.modrinth:jade:15.10.5+neoforge"
+    runtimeOnly "maven.modrinth:jade:15.10.5+neoforge"
     // JEI
-    compileOnly ("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    compileOnly ("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}")
+    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
     // runtimeOnly ("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
     // EMI
 	compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
@@ -148,11 +148,11 @@ dependencies {
     compileOnly "dev.latvian.mods:kubejs-neoforge:2101.7.2-build.336"
     // runtimeOnly "dev.latvian.mods:kubejs-neoforge:2101.7.2-build.336"
     // Farmers Delight
-    compileOnly ("maven.modrinth:farmers-delight:1.21.1-1.3.0")
-    runtimeOnly ("maven.modrinth:farmers-delight:1.21.1-1.3.0")
+    compileOnly "maven.modrinth:farmers-delight:1.21.1-1.3.0"
+    runtimeOnly "maven.modrinth:farmers-delight:1.21.1-1.3.0"
     // Kaleidoscope Cookery
-    compileOnly ("curse.maven:kaleidoscope-cookery-1309203:7966281")
-    runtimeOnly ("curse.maven:kaleidoscope-cookery-1309203:7966281")
+    compileOnly "maven.modrinth:kaleidoscope-cookery:1.3.0-neoforge+mc1.21.1"
+    runtimeOnly "maven.modrinth:kaleidoscope-cookery:1.3.0-neoforge+mc1.21.1"
     // TerraBlender
     compileOnly "com.github.glitchfiend:TerraBlender-neoforge:${mc_version}-4.1.0.8"
     // runtimeOnly "com.github.glitchfiend:TerraBlender-neoforge:${mc_version}-4.1.0.8"
