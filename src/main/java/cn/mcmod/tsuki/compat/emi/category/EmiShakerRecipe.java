@@ -53,12 +53,11 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
         }
 
         ItemStack resultStack = getResultStack(recipe);
-        List<EmiStack> outputList = new ArrayList<>();
         ItemStack requiredContainer = ShakerDataHelper.getRequiredContainer(resultStack);
         if (!requiredContainer.isEmpty()) {
-            outputList.add(EmiStack.of(requiredContainer));
+            inputList.add(EmiStack.of(requiredContainer));
         }
-        outputList.add(EmiStack.of(resultStack));
+        List<EmiStack> outputList = List.of(EmiStack.of(resultStack));
         return new EmiShakerRecipe(id, recipe, inputList, outputList);
     }
 
@@ -75,11 +74,10 @@ public class EmiShakerRecipe extends BasicEmiRecipe {
             }
         }
 
-        int outputIndex = 0;
-        if (outputs.size() > 1) {
-            widgets.addSlot(outputs.get(outputIndex++), OUTPUT_X, CONTAINER_Y).drawBack(true).recipeContext(this);
+        if (inputs.size() > 9) {
+            widgets.addSlot(inputs.get(9), OUTPUT_X, CONTAINER_Y).drawBack(true).recipeContext(this);
         }
-        widgets.addSlot(outputs.get(outputIndex), OUTPUT_X, OUTPUT_Y).drawBack(true).recipeContext(this);
+        widgets.addSlot(outputs.getFirst(), OUTPUT_X, OUTPUT_Y).drawBack(true).recipeContext(this);
 
         widgets.addDrawable(SHAKER_X, SHAKER_Y, 32, 32, (draw, mouseX, mouseY, delta) -> {
             double time = (System.currentTimeMillis() % 600L) / 600.0D;

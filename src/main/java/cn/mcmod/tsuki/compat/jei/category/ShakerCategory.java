@@ -88,7 +88,7 @@ public class ShakerCategory implements IRecipeCategory<ShakerRecipe> {
 
         ItemStack requiredContainer = ShakerDataHelper.getRequiredContainer(getResultStack(recipe));
         if (!requiredContainer.isEmpty()) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, CONTAINER_Y).addItemStack(requiredContainer);
+            builder.addSlot(RecipeIngredientRole.CATALYST, OUTPUT_X, CONTAINER_Y).addItemStack(requiredContainer);
         }
         builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_X, OUTPUT_Y).addItemStack(getResultStack(recipe));
     }

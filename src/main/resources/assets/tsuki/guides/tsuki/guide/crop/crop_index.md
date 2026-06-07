@@ -48,7 +48,7 @@ item_ids:
 All crop seeds can be obtained by breaking grass. The [Japanese Farmer](../villager/villager_index.md) sells some seeds and buys various crops.
 
 - Onion<ItemImage id="tsuki:onion_seeds" scale="0.6"/><ItemImage id="tsuki:onion" scale="0.6"/>, Radish<ItemImage id="tsuki:radish_seeds" scale="0.6"/><ItemImage id="tsuki:radish" scale="0.6"/>, Cabbage<ItemImage id="tsuki:cabbage_seeds" scale="0.6"/><ItemImage id="tsuki:cabbage" scale="0.6"/>: Standard crops.
-- Rapeseed<ItemImage id="tsuki:rapeseeds" scale="0.6"/>, Red Bean<ItemImage id="tsuki:red_bean" scale="0.6"/>, Soybean<ItemImage id="tsuki:soybean" scale="0.6"/>, Buckwheat<ItemImage id="tsuki:buckwheat" scale="0.6"/>, Taro<ItemImage id="tsuki:taro" scale="0.6"/>: Standard crops.
+- Canola<ItemImage id="tsuki:rapeseeds" scale="0.6"/>, Red Bean<ItemImage id="tsuki:red_bean" scale="0.6"/>, Soybean<ItemImage id="tsuki:soybean" scale="0.6"/>, Buckwheat<ItemImage id="tsuki:buckwheat" scale="0.6"/>, Taro<ItemImage id="tsuki:taro" scale="0.6"/>: Standard crops.
 - Tomato<ItemImage id="tsuki:tomato_seeds" scale="0.6"/><ItemImage id="tsuki:tomato" scale="0.6"/>, Eggplant<ItemImage id="tsuki:eggplant_seeds" scale="0.6"/><ItemImage id="tsuki:eggplant" scale="0.6"/>: Two-block-high crops that continue growing upward after maturity.
 - Rice<ItemImage id="tsuki:rice_seeds" scale="0.6"/>: Must be planted in single-block-deep water. When mature it becomes two blocks high and emerges above water; harvest only the top half to leave the root intact.
 - Vanilla<ItemImage id="tsuki:vanilla_seeds" scale="0.6"/><ItemImage id="tsuki:vanilla" scale="0.6"/>: Seeds can be found wild. Must be planted on a Vanilla Splint<ItemImage id="tsuki:vanilla_splint" scale="0.6"/>; harvest with right-click.
