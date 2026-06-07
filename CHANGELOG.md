@@ -1,5 +1,11 @@
 # Changelog
 
+# Tsuki 1.5.1
+
+## Feature
+
+- Cooking Pot now support ItemFluidHandler.
+
 # Tsuki 1.5.0
 
 ## Feature
