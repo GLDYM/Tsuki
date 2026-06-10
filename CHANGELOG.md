@@ -1,5 +1,11 @@
 # Changelog
 
+# Tsuki 1.5.2
+
+## Bug Fix
+
+- [Critical] Break trunk of Ume Tree when Ume Leaves is Age 5 cause the game crash
+
 # Tsuki 1.5.1
 
 ## Feature

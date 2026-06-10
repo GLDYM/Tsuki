@@ -48,11 +48,28 @@ public class UmeLeavesBlock extends TsukiLeavesBlock implements BonemealableBloc
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        super.randomTick(state, level, pos, random);
         boolean persistent = state.getValue(PERSISTENT);
-        if (random.nextInt(5) == 0 && !persistent) {
-            int age = state.getValue(AGE);
-            level.setBlock(pos, state.setValue(AGE, age + 1), 2);
+        int age = state.getValue(AGE);
+
+        if (!persistent && state.getValue(DISTANCE) == 7) {
+            if (age >= FRUIT_START_AGE) {
+                int count = age - (FRUIT_START_AGE - 1);
+                popResource(level, pos, new ItemStack(FoodRegistry.FOODSET.get(TsukiFoodSet.UME).get(), count));
+            }
+            super.randomTick(state, level, pos, random);
+            return;
+        }
+
+        super.randomTick(state, level, pos, random);
+
+        BlockState currentState = level.getBlockState(pos);
+        if (!currentState.is(this)) {
+            return;
+        }
+
+        if (random.nextInt(5) == 0 && !persistent && age < FRUIT_START_AGE) {
+            currentState = level.getBlockState(pos);
+            level.setBlock(pos, currentState.setValue(AGE, age + 1), 2);
         }
     }
 
