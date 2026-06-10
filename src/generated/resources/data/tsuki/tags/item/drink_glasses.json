@@ -1,6 +1,8 @@
 {
   "values": [
+    "tsuki:classic_glass",
     "tsuki:glass_cup",
-    "tsuki:collins_glass"
+    "tsuki:collins_glass",
+    "tsuki:shot"
   ]
 }

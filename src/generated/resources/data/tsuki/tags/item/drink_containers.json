@@ -1,8 +1,10 @@
 {
   "values": [
     "tsuki:cup",
+    "tsuki:classic_glass",
     "tsuki:collins_glass",
     "tsuki:glass_cup",
+    "tsuki:shot",
     "tsuki:wine_bottle",
     "tsuki:beer_bottle",
     "tsuki:doburoku_bottle",

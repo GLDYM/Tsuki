@@ -33,6 +33,10 @@ public class DrinkRegistry {
             () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::cupBlock));
     public static final DeferredItem<Item> COLLINS_GLASS = register("collins_glass",
             () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::cupBlock));
+    public static final DeferredItem<Item> CLASSIC_GLASS = register("classic_glass",
+            () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::cupBlock));
+    public static final DeferredItem<Item> SHOT = register("shot",
+            () -> new DrinkContainerItem(Tsuki.defaultItemProperties(), DrinkRegistry::cupBlock));
     public static final DeferredItem<Item> MYTHERY_MIX = register("mythery_mix", MytheryMixItem::new);
 
     public static final Map<TsukiTeaSet, DeferredItem<Item>> TEAS = ItemRegistryUtil.mapOfKeys(
@@ -57,7 +61,7 @@ public class DrinkRegistry {
             alcohol -> register(alcohol.getName(), () -> new DrinkItem(
                     Tsuki.defaultItemProperties(),
                     DrinkRegistry::cupBlock,
-                    DrinkRegistry::glassCupContainerItem,
+                    DrinkRegistry::shotContainerItem,
                     true,
                     alcohol.getEffects())));
     public static final Map<TsukiCocktailSet, DeferredItem<Item>> COCKTAILS = ItemRegistryUtil.mapOfKeys(
@@ -84,6 +88,14 @@ public class DrinkRegistry {
 
     public static Item collinsGlassContainerItem() {
         return COLLINS_GLASS.get();
+    }
+
+    public static Item classicGlassContainerItem() {
+        return CLASSIC_GLASS.get();
+    }
+
+    public static Item shotContainerItem() {
+        return SHOT.get();
     }
 
     public static DrinkDisplayBlock cupBlock() {

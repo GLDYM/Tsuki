@@ -188,12 +188,16 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .add(bottle.get()));
         this.tag(TsukiItemTags.DRINK_CONTAINERS).add(
                 DrinkRegistry.CUP.get(),
+                DrinkRegistry.CLASSIC_GLASS.get(),
                 DrinkRegistry.COLLINS_GLASS.get(),
                 DrinkRegistry.GLASS_CUP.get(),
+                DrinkRegistry.SHOT.get(),
                 DrinkRegistry.WINE_BOTTLE.get());
         this.tag(TsukiItemTags.DRINK_GLASSES).add(
+                DrinkRegistry.CLASSIC_GLASS.get(),
                 DrinkRegistry.GLASS_CUP.get(),
-                DrinkRegistry.COLLINS_GLASS.get());
+                DrinkRegistry.COLLINS_GLASS.get(),
+                DrinkRegistry.SHOT.get());
         this.tag(TsukiItemTags.INGREDIENT_BLACKLIST)
                 .addOptionalTag(ResourceLocation.parse("kaleidoscope_cookery:ingredient_blacklist"))
                 .addOptionalTag(ResourceLocation.parse("c:tools"))
@@ -202,8 +206,10 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.INGREDIENT_BLACKLIST)
                 .add(
                         DrinkRegistry.CUP.get(),
+                        DrinkRegistry.CLASSIC_GLASS.get(),
                         DrinkRegistry.COLLINS_GLASS.get(),
                         DrinkRegistry.GLASS_CUP.get(),
+                        DrinkRegistry.SHOT.get(),
                         DrinkRegistry.SHAKER.get(),
                         DrinkRegistry.WINE_BOTTLE.get(),
                         Items.SHULKER_BOX,
