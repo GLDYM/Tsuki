@@ -1,5 +1,11 @@
 # Changelog
 
+# Tsuki 1.5.3
+
+## Bug Fix
+
+- Fix Emi Display
+
 # Tsuki 1.5.2
 
 ## Bug Fix
