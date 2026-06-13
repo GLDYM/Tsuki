@@ -243,6 +243,8 @@
   "fluid_type.tsuki.white_wine": "白葡萄酒",
   "fluid_type.tsuki.yeast_liquid": "酵母液",
   "gui.tsuki.cooking_pot.served_on": "需盛装于：%s",
+  "tsuki.recipe.time.seconds": "耗时：%s 秒",
+  "tsuki.recipe.experience": "经验：%s",
   "item.tsuki.alkaline": "碱",
   "item.tsuki.almond": "杏仁",
   "item.tsuki.bamboo": "桂竹",

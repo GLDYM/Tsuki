@@ -74,14 +74,14 @@ public class EmiStoneMortarRecipe extends BasicEmiRecipe {
             widgets.addSlot(inputs.get(0), 0, 13).drawBack(false);
         }
 
-        widgets.addSlot(outputs.get(0), 65, 4).drawBack(false).recipeContext(this);
+        widgets.addSlot(outputs.get(0), 61, 0).large(true).drawBack(false).recipeContext(this);
         if (outputs.size() > 1) {
-            widgets.addSlot(outputs.get(1), 65, 40).drawBack(false).recipeContext(this);
+            widgets.addSlot(outputs.get(1), 61, 36).large(true).drawBack(false).recipeContext(this);
         }
 
         widgets.addTooltipText(List.of(
-                Component.translatable("gui.jei.category.smelting.time.seconds", recipe.getRecipeTime() / 20),
-                Component.translatable("gui.jei.category.smelting.experience", recipe.getExperience())),
+                Component.translatable("tsuki.recipe.time.seconds", recipe.getRecipeTime() / 20),
+                Component.translatable("tsuki.recipe.experience", recipe.getExperience())),
                 40, 19, 18, 24);
     }
 }

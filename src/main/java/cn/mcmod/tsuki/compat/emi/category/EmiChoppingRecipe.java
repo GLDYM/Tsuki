@@ -58,9 +58,9 @@ public class EmiChoppingRecipe extends BasicEmiRecipe {
     public void addWidgets(WidgetHolder widgets) {
         widgets.addTexture(BG, 0, 0, WIDTH, HEIGHT, 4, 4);
 
-        widgets.addSlot(inputs.get(0), 14, 7).drawBack(false);
-        widgets.addSlot(inputs.get(1), 14, 29).drawBack(false);
-        widgets.addSlot(outputs.get(0), 62, 7).drawBack(false).recipeContext(this);
+        widgets.addSlot(inputs.get(0), 13, 6).drawBack(false);
+        widgets.addSlot(inputs.get(1), 13, 28).drawBack(false);
+        widgets.addSlot(outputs.get(0), 61, 6).drawBack(false).recipeContext(this);
 
         List<ChanceResult> byproducts = recipe.getByproducts();
         for (int i = 0; i < Math.min(4, byproducts.size()); i++) {
@@ -68,7 +68,7 @@ public class EmiChoppingRecipe extends BasicEmiRecipe {
             if (chanceResult.chance() != 1.0f) {
                 widgets.addTexture(BG, i * 18 + 10, 50, 18, 18, 100, 0);
             }
-            widgets.addSlot(outputs.get(i + 1), i * 18 + 11, 51)
+            widgets.addSlot(outputs.get(i + 1), i * 18 + 10, 50)
                     .drawBack(false)
                     .recipeContext(this)
                     .appendTooltip(Component.translatable("tsuki.jei.chance",
