@@ -246,6 +246,8 @@
   "fluid_type.tsuki.white_wine": "White Wine",
   "fluid_type.tsuki.yeast_liquid": "Yeast Liquid",
   "gui.tsuki.cooking_pot.served_on": "Served on: %s",
+  "tsuki.recipe.time.seconds": "Cooking Time: %s s",
+  "tsuki.recipe.experience": "Experience: %s",
   "item.tsuki.alkaline": "Alkaline",
   "item.tsuki.almond": "Almond",
   "item.tsuki.bamboo": "Bamboo",

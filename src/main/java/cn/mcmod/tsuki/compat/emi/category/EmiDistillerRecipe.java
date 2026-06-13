@@ -97,8 +97,8 @@ public class EmiDistillerRecipe extends BasicEmiRecipe {
         }
 
         widgets.addTooltipText(List.of(
-                Component.translatable("gui.jei.category.smelting.time.seconds", recipe.getRecipeTime() / 20),
-                Component.translatable("gui.jei.category.smelting.experience", recipe.getExperience())),
+                Component.translatable("tsuki.recipe.time.seconds", recipe.getRecipeTime() / 20),
+                Component.translatable("tsuki.recipe.experience", recipe.getExperience())),
                 43, 9, 24, 36);
     }
 }

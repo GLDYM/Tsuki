@@ -107,8 +107,8 @@ public class EmiCookingPotRecipe extends BasicEmiRecipe {
         widgets.addSlot(outputs.get(1), 126, 36).drawBack(false).recipeContext(this);
 
         widgets.addTooltipText(List.of(
-                Component.translatable("gui.jei.category.smelting.time.seconds", recipe.getRecipeTime() / 20),
-                Component.translatable("gui.jei.category.smelting.experience", recipe.getExperience())),
+                Component.translatable("tsuki.recipe.time.seconds", recipe.getRecipeTime() / 20),
+                Component.translatable("tsuki.recipe.experience", recipe.getExperience())),
                 81, 0, 34, 29);
     }
 }
