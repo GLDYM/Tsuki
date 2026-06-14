@@ -1,8 +1,7 @@
 package cn.mcmod.tsuki.item.magatama;
 
-import java.util.Set;
-
 import cn.mcmod.tsuki.compat.curios.CuriosCompat;
+import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -13,16 +12,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.phys.AABB;
 
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 public final class MagatamaRedHelper {
     private static final int HOTBAR_SIZE = 9;
 
     private static final double RANGE_XZ = 32.0D;
     private static final double RANGE_UP = 48.0D;
     private static final double RANGE_DOWN = 16.0D;
-    private static final Set<ResourceLocation> TARGET_ENTITY_IDS = Set.of(
-            ResourceLocation.fromNamespaceAndPath("alexsmobs", "seagull"),
-            ResourceLocation.fromNamespaceAndPath("naturalist", "vulture"),
-            ResourceLocation.fromNamespaceAndPath("iceandfire", "if_pixie"));
 
     private MagatamaRedHelper() {
     }
@@ -64,9 +63,36 @@ public final class MagatamaRedHelper {
         if (!entity.isAlive()) {
             return false;
         }
-        if (entity.getType() == EntityType.PHANTOM) {
-            return true;
+        return getTargetEntityIds().contains(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()));
+    }
+
+    public static List<EntityType<?>> getConfiguredTargetEntityTypes() {
+        List<? extends String> configuredIds = TsukiCommonConfig.MAGATAMA_RED_TARGET_ENTITIES.get();
+        Set<EntityType<?>> entityTypes = new LinkedHashSet<>();
+        for (String configuredId : configuredIds) {
+            ResourceLocation location = ResourceLocation.tryParse(configuredId);
+            if (location == null) {
+                continue;
+            }
+            if (!BuiltInRegistries.ENTITY_TYPE.containsKey(location)) {
+                continue;
+            }
+            EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(location);
+            if (entityType != null) {
+                entityTypes.add(entityType);
+            }
         }
-        return TARGET_ENTITY_IDS.contains(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()));
+        return List.copyOf(entityTypes);
+    }
+
+    private static Set<ResourceLocation> getTargetEntityIds() {
+        Set<ResourceLocation> ids = new LinkedHashSet<>();
+        for (String configuredId : TsukiCommonConfig.MAGATAMA_RED_TARGET_ENTITIES.get()) {
+            ResourceLocation location = ResourceLocation.tryParse(configuredId);
+            if (location != null) {
+                ids.add(location);
+            }
+        }
+        return ids;
     }
 }

@@ -1,13 +1,13 @@
 package cn.mcmod.tsuki.item.magatama;
 
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
-import cn.mcmod.tsuki.tag.TsukiItemTags;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -45,9 +45,18 @@ public final class MagatamaGreenHelper {
 
     private static List<Item> getRewardPool() {
         Set<Item> uniqueItems = new LinkedHashSet<>();
-        addTagItems(uniqueItems, TsukiItemTags.SEEDS);
-        addTagItems(uniqueItems, TsukiItemTags.CROPS);
+        for (String tagId : TsukiCommonConfig.MAGATAMA_GREEN_REWARD_TAGS.get()) {
+            TagKey<Item> tag = parseItemTag(tagId);
+            if (tag != null) {
+                addTagItems(uniqueItems, tag);
+            }
+        }
         return new ArrayList<>(uniqueItems);
+    }
+
+    private static TagKey<Item> parseItemTag(String tagId) {
+        ResourceLocation location = ResourceLocation.tryParse(tagId);
+        return location == null ? null : TagKey.create(BuiltInRegistries.ITEM.key(), location);
     }
 
     private static void addTagItems(Set<Item> items, TagKey<Item> tag) {

@@ -2,6 +2,8 @@ package cn.mcmod.tsuki.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 
+import java.util.List;
+
 public class TsukiCommonConfig {
     public static final TsukiCommonConfig INSTANCE = new TsukiCommonConfig();
     public static final ModConfigSpec SPEC = INSTANCE.spec;
@@ -14,6 +16,8 @@ public class TsukiCommonConfig {
     public static final ModConfigSpec.DoubleValue MAGATAMA_BLUE_HEALTH_COST = INSTANCE.magatamaBlueHealthCost;
     public static final ModConfigSpec.DoubleValue MAGATAMA_GREEN_REMAINING_HEALTH = INSTANCE.magatamaGreenRemainingHealth;
     public static final ModConfigSpec.IntValue MAGATAMA_GREEN_DRAW_COUNT = INSTANCE.magatamaGreenDrawCount;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> MAGATAMA_GREEN_REWARD_TAGS = INSTANCE.magatamaGreenRewardTags;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> MAGATAMA_RED_TARGET_ENTITIES = INSTANCE.magatamaRedTargetEntities;
     public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_MINING_SPEED_COMPENSATION = INSTANCE.magatamaWhiteEnableMiningSpeedCompensation;
     public static final ModConfigSpec.DoubleValue MAGATAMA_WHITE_MINING_SPEED_COMPENSATION_MULTIPLIER = INSTANCE.magatamaWhiteMiningSpeedCompensationMultiplier;
     public static final ModConfigSpec.BooleanValue DEBUG_MODE = INSTANCE.debugMode;
@@ -28,6 +32,8 @@ public class TsukiCommonConfig {
     public final ModConfigSpec.DoubleValue magatamaBlueHealthCost;
     public final ModConfigSpec.DoubleValue magatamaGreenRemainingHealth;
     public final ModConfigSpec.IntValue magatamaGreenDrawCount;
+    public final ModConfigSpec.ConfigValue<List<? extends String>> magatamaGreenRewardTags;
+    public final ModConfigSpec.ConfigValue<List<? extends String>> magatamaRedTargetEntities;
     public final ModConfigSpec.BooleanValue magatamaWhiteEnableMiningSpeedCompensation;
     public final ModConfigSpec.DoubleValue magatamaWhiteMiningSpeedCompensationMultiplier;
     public final ModConfigSpec.BooleanValue debugMode;
@@ -60,15 +66,6 @@ public class TsukiCommonConfig {
                 .translation("tsuki.config.give_guide_on_first_login")
                 .define("give_guide_on_first_login", true);
 
-        magatamaWhiteEnablePenalty = builder
-                .comment("Enables the White Magatama max health penalty.")
-                .translation("tsuki.config.magatama_white_enable_penalty")
-                .define("magatama_white_enable_penalty", true);
-
-        magatamaWhitePenaltyHealth = builder
-                .comment("Sets the White Magatama target max health while the penalty is active.")
-                .translation("tsuki.config.magatama_white_penalty_health")
-                .defineInRange("magatama_white_penalty_health", 10.0D, 1.0D, 1024.0D);
 
         magatamaBlueHealthCost = builder
                 .comment("Sets the Blue Magatama health cost per weather conversion.")
@@ -84,6 +81,36 @@ public class TsukiCommonConfig {
                 .comment("Sets how many crop or seed drops the Green Magatama draws per use.")
                 .translation("tsuki.config.magatama_green_draw_count")
                 .defineInRange("magatama_green_draw_count", 32, 1, 1024);
+
+        magatamaGreenRewardTags = builder
+                .comment("Sets the item tag list used by the Green Magatama reward pool.")
+                .translation("tsuki.config.magatama_green_reward_tags")
+                .defineListAllowEmpty(List.of("magatama_green_reward_tags"), () -> List.of("c:seeds",  "c:fishes", "c:raw_meat", "c:raw_meats", "c:eggs", "c:milk", "c:vegetables", "c:fruits", "c:crops", "c:mushrooms"),
+                        () -> "c:seeds",
+                        value -> value instanceof String string && !string.isBlank());
+
+        magatamaRedTargetEntities = builder
+                .comment("Sets the entity id list executed by the Red Magatama.")
+                .translation("tsuki.config.magatama_red_target_entities")
+                .defineListAllowEmpty(List.of("magatama_red_target_entities"), () -> List.of(
+                        "minecraft:phantom",
+                        "alexsmobs:seagull",
+                        "alexsmobs:crimson_mosquit",
+                        "naturalist:vulture",
+                        "iceandfire:if_pixie",
+                        "touhou_little_maid:maid_fairy"),
+                        () -> "minecraft:phantom",
+                        value -> value instanceof String string && !string.isBlank());
+
+        magatamaWhiteEnablePenalty = builder
+                .comment("Enables the White Magatama max health penalty.")
+                .translation("tsuki.config.magatama_white_enable_penalty")
+                .define("magatama_white_enable_penalty", true);
+
+        magatamaWhitePenaltyHealth = builder
+                .comment("Sets the White Magatama target max health while the penalty is active.")
+                .translation("tsuki.config.magatama_white_penalty_health")
+                .defineInRange("magatama_white_penalty_health", 10.0D, 1.0D, 1024.0D);
 
         magatamaWhiteEnableMiningSpeedCompensation = builder
                 .comment("Enables the White Magatama airborne mining speed compensation.")

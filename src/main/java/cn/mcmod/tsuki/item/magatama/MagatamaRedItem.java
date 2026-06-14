@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -37,5 +38,20 @@ public class MagatamaRedItem extends Item {
             TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
         tooltip.add(Component.translatable("item.tsuki.magatama_red.tooltip").withStyle(ChatFormatting.GRAY));
+        List<EntityType<?>> targetTypes = MagatamaRedHelper.getConfiguredTargetEntityTypes();
+        if (!targetTypes.isEmpty()) {
+            tooltip.add(Component.translatable("item.tsuki.magatama_red.tooltip.targets",
+                    Component.literal(joinTargetNames(targetTypes)).withStyle(ChatFormatting.AQUA))
+                    .withStyle(ChatFormatting.DARK_GRAY));
+        }
+    }
+
+    private static String joinTargetNames(List<EntityType<?>> targetTypes) {
+        return targetTypes.stream()
+                .map(EntityType::getDescription)
+                .map(Component::getString)
+                .distinct()
+                .reduce((left, right) -> left + ", " + right)
+                .orElse("");
     }
 }

@@ -1,5 +1,6 @@
 package cn.mcmod.tsuki.item.magatama;
 
+import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -47,6 +48,7 @@ public class MagatamaGreenItem extends Item {
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip,
             TooltipFlag flag) {
         super.appendHoverText(stack, context, tooltip, flag);
-        tooltip.add(Component.translatable("item.tsuki.magatama_green.tooltip").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("item.tsuki.magatama_green.tooltip",
+                TsukiCommonConfig.MAGATAMA_GREEN_DRAW_COUNT.get()).withStyle(ChatFormatting.GRAY));
     }
 }
