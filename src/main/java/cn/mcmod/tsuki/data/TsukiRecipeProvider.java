@@ -3168,14 +3168,12 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
                 new FluidStack((Fluid) FluidRegistry.RED_WINE.get(), 500))
                 .requires(TsukiItemTags.CROPS_GRAPE)
-                .requires(TsukiItemTags.CROPS_GRAPE)
                 .requires(TsukiItemTags.SUGAR)
                 .requires(TsukiItemTags.YEAST)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "red_wine_fermenting"));
         FermenterRecipeBuilder.fermenting(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 1000),
                 new FluidStack((Fluid) FluidRegistry.WHITE_WINE.get(), 500))
-                .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE_GREEN).get())
                 .requires(TsukiItemTags.SUGAR)
                 .requires(TsukiItemTags.YEAST)
