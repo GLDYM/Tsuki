@@ -21,6 +21,7 @@ import cn.mcmod.mmlib.data.AbstractItemModelProvider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.BushBlock;
@@ -99,6 +100,8 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
                     || item.get() instanceof ShinaiItem
                     || item.get() instanceof BroomItem) {
                 return;
+            } else if (item.get() instanceof DiggerItem) {
+                handheldItem(item);
             } else {
                 normalItem(item);
             }
@@ -141,6 +144,11 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
 
     private void normalItem(DeferredHolder<Item, ? extends Item> item) {
         singleTexture(item.getId().getPath(), mcLoc("item/generated"), "layer0",
+                modLoc("item/" + item.getId().getPath()));
+    }
+
+    private void handheldItem(DeferredHolder<Item, ? extends Item> item) {
+        singleTexture(item.getId().getPath(), mcLoc("item/handheld"), "layer0",
                 modLoc("item/" + item.getId().getPath()));
     }
 

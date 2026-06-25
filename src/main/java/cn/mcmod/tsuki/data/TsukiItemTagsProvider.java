@@ -305,7 +305,7 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.LUMBER_MAPLE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_MAPLE).get());
         this.tag(TsukiItemTags.LUMBER_SAKURA).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_SAKURA).get());
         this.tag(TsukiItemTags.LUMBER_UME).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.LUMBER_UME).get());
-        this.tag(TsukiItemTags.GRAIN_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BROWN_RICE).get());
+        this.tag(TsukiItemTags.GRAIN_RICE).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RICE).get());
         this.tag(TsukiItemTags.GRAIN_BUCKWHEAT).add(ItemRegistry.BUCKWHEAT.get());
         this.tag(TsukiItemTags.SALT).addTag(TsukiItemTags.DUST_SALT).addTag(TsukiItemTags.SALT_SALT);
         this.tag(TsukiItemTags.DUST_SALT).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.SALT).get());

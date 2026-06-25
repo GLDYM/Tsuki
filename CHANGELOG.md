@@ -1,5 +1,18 @@
 # Changelog
 
+# Tsuki 1.5.5
+
+## Bug Fix
+
+- Fix handheld item model.
+- Fix Recipes.
+
+# Tsuki 1.5.4
+
+## Feature
+
+- Add config of green magatama & red magatama.
+
 # Tsuki 1.5.3
 
 ## Bug Fix

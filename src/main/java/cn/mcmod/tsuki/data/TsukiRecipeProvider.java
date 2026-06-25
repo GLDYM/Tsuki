@@ -2555,13 +2555,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_COOKED).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_REDBEAN).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.CROPS_REDBEAN)
                 .requires(TsukiItemTags.SUGAR)
                 .container(Items.BOWL)
@@ -2575,14 +2575,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_NATTO).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.NATTO)
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_natto_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_NATTO_EGG).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.NATTO)
                 .requires(TsukiItemTags.EGGS)
                 .container(Items.BOWL)
@@ -2590,56 +2590,56 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_BAMBOO).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(BlockRegistry.BAMBOOSHOOT.get())
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_bamboo_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_MUSHROOM).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.MUSHROOMS)
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_mushrooms_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_MATSUTAKE).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.MATSUTAKE).get())
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_matsutake_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_BEEF).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.RAW_BEEF)
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_beef_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_PORK).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.RAW_PORK)
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_pork_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_FISH).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.RAW_FISHES)
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_fish_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_EGG).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.EGGS)
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_eggs_cooking"));
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_BEEF_EGG).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.RAW_BEEF)
                 .requires(TsukiItemTags.EGGS)
                 .container(Items.BOWL)
@@ -2647,7 +2647,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_PORK_EGG).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.RAW_PORK)
                 .requires(TsukiItemTags.EGGS)
                 .container(Items.BOWL)
@@ -2655,7 +2655,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_KATSU).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.KATSU).get())
                 .requires(TsukiItemTags.EGGS)
                 .container(Items.BOWL)
@@ -2663,7 +2663,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_OYAKO).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.RAW_CHICKEN)
                 .requires(TsukiItemTags.EGGS)
                 .container(Items.BOWL)
@@ -2671,7 +2671,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_OYAKO_FISH).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.RAW_FISHES)
                 .requires(TsukiItemTags.EGGS)
                 .container(Items.BOWL)
@@ -2679,7 +2679,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder
                 .cooking(FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125),
                         FoodRegistry.CUISINES.get(TsukiCuisineSet.OMURICE).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(
                         Ingredient.fromValues(
                                 Stream.of(
@@ -2882,7 +2882,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.FOOD_OIL, 125),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_FRIED).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.EGGS)
                 .requires(TsukiItemTags.VEGETABLES)
                 .requires(TsukiItemTags.SALT)
@@ -2905,7 +2905,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.OCHAZUKE).get(), 2)
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.EGGS)
                 .requires(TsukiNormalItemSet.WHITE_PEPPER.getItem().get())
                 .requires(TsukiItemTags.SOYSAUCE)
@@ -2984,7 +2984,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 200),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.ZOSUI).get(), 2)
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiItemTags.FOODS_RAW_MEAT)
                 .requires(TsukiItemTags.VEGETABLES)
                 .requires(TsukiItemTags.SOYSAUCE)
@@ -2993,7 +2993,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cooking(
                 FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 100),
                 FoodRegistry.CUISINES.get(TsukiCuisineSet.ZOSUI_ZUIKI).get())
-                .requires(TsukiItemTags.RICE_RICE)
+                .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiNormalItemSet.IMOGARA.getItem().get())
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "zosui_zuiki_cooking"));

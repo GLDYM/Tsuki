@@ -10,7 +10,7 @@
   },
   "ingredients": [
     {
-      "tag": "tsuki:rice/rice"
+      "item": "tsuki:rice"
     }
   ],
   "recipeTime": 200,
