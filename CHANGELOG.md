@@ -1,5 +1,11 @@
 # Changelog
 
+# Tsuki 1.5.6
+
+## Bug Fix
+
+- Fix: Bamboo shoot do not apply random tick.
+
 # Tsuki 1.5.5
 
 ## Bug Fix
