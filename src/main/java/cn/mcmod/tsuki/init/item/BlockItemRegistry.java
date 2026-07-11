@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.init.item;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.item.block.CookingPotItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -279,7 +280,7 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> STONE_MORTAR = ITEMS.register("stone_mortar",
             () -> new BlockItem(BlockRegistry.STONE_MORTAR.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> COOKING_POT = ITEMS.register("cooking_pot",
-            () -> new BlockItem(BlockRegistry.COOKING_POT.get(), Tsuki.defaultItemProperties()));
+            () -> new CookingPotItem(BlockRegistry.COOKING_POT.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> FERMENTER = ITEMS.register("fermenter",
             () -> new BlockItem(BlockRegistry.FERMENTER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> DISTILLER = ITEMS.register("distiller",

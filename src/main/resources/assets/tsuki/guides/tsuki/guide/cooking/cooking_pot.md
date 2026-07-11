@@ -18,13 +18,13 @@ The Japanese Cooking Pot<ItemImage id="tsuki:cooking_pot" scale="0.6"/> requires
     <Block id="minecraft:magma_block" />
     <Block y="1" id="tsuki:cooking_pot" p:facing="north"/>
     <Block x="1" id="minecraft:magma_block" />
-    <Block x="1" y="1" id="minecraft:hopper" p:facing="north"/> 
+    <Block x="1" y="1" id="minecraft:hopper" p:facing="north"/>
     <Block x="1" y="2" id="tsuki:cooking_pot" p:facing="north"/>
 </GameScene>
 
 ## Usage
 
-The Japanese Cooking Pot can cook recipes from this mod, Farmer's Delight cooking pot recipes, and Kaleidoscope soup pot recipes. Use a fluid bucket on the pot to input fluids, or use an empty bucket<ItemImage id="minecraft:bucket" scale="0.6"/> to extract fluids.
+The Japanese Cooking Pot can cook recipes from this mod, Farmer's Delight cooking pot recipes, and Kaleidoscope stockpot & pot recipes. Use a fluid bucket on the pot to input fluids, or use an empty bucket<ItemImage id="minecraft:bucket" scale="0.6"/> to extract fluids.
 
 The Japanese Cooking Pot has two working modes: Farmer's Delight mode (closed) and Kaleidoscope mode (open). Sneak right-click to toggle between modes.
 
@@ -32,7 +32,7 @@ The Japanese Cooking Pot has two working modes: Farmer's Delight mode (closed) a
 
 Right-click to open the GUI. The pot has 1 fluid tank, 9 input slots, 1 display slot, 1 container slot, and 1 output slot.
 
-The operation logic is similar to Farmer's Delight; however, breaking the pot will not preserve the contents of the display slot. Item input logic is similar to the vanilla Crafter, see Automation section below.
+The operation logic is similar to Farmer's Delight. Breaking the pot preserves the contents of the display slot inside the dropped pot item, while other slots drop normally. A pot holding displayed food can also be used in crafting together with the required serving container to obtain the corresponding food item. Item input logic is similar to the vanilla Crafter, see Automation section below.
 
 ### Kaleidoscope Mode: GUI-less cooking
 

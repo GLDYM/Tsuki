@@ -4,6 +4,7 @@ import cn.mcmod.mmlib.recipe.AbstractRecipeSerializer;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import cn.mcmod.tsuki.recipe.CookingPotRecipe;
+import cn.mcmod.tsuki.recipe.CookingPotServingRecipe;
 import cn.mcmod.tsuki.recipe.DistillerRecipe;
 import cn.mcmod.tsuki.recipe.EquipmentDyeRecipe;
 import cn.mcmod.tsuki.recipe.FermenterRecipe;
@@ -52,6 +53,8 @@ public class RecipeTypeRegistry {
             .register("shaker_pour", () -> new SimpleCraftingRecipeSerializer<>(ShakerPourRecipe::new));
     public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<EquipmentDyeRecipe>> EQUIPMENT_DYE_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("equipment_dye", () -> new SimpleCraftingRecipeSerializer<>(EquipmentDyeRecipe::new));
+    public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<CookingPotServingRecipe>> COOKING_POT_SERVING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
+            .register("cooking_pot_serving", () -> new SimpleCraftingRecipeSerializer<>(CookingPotServingRecipe::new));
 
     public static final DeferredHolder<RecipeSerializer<?>, AbstractRecipeSerializer<ChoppingRecipe>> CHOPPING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("chopping", () -> new AbstractRecipeSerializer<ChoppingRecipe>(ChoppingRecipe.class));

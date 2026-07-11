@@ -20,6 +20,7 @@ import cn.mcmod.tsuki.container.CookingPotContainer;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.item.BlockItemRegistry;
 import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
 import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
@@ -29,6 +30,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -45,6 +48,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.item.component.CustomData;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
@@ -54,6 +58,8 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProvider, HeatableBlockEntity {
+    private static final String TAG_MEAL = "Meal";
+    private static final String TAG_CONTAINER = "Container";
 
     public static final int TANK_CAPACITY = 2000;
     public static final int SLOT_INPUT_START = 0;
@@ -348,6 +354,55 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         return this.mealContainer;
     }
 
+    public static ItemStack getMealFromItem(ItemStack cookingPotStack) {
+        CompoundTag tag = getCookingPotData(cookingPotStack);
+        if (tag == null || !tag.contains(TAG_MEAL)) {
+            return ItemStack.EMPTY;
+        }
+        return readSimpleStack(tag.getCompound(TAG_MEAL));
+    }
+
+    public static ItemStack getContainerFromItem(ItemStack cookingPotStack) {
+        CompoundTag tag = getCookingPotData(cookingPotStack);
+        if (tag == null || !tag.contains(TAG_CONTAINER)) {
+            return ItemStack.EMPTY;
+        }
+        return readSimpleStack(tag.getCompound(TAG_CONTAINER));
+    }
+
+    public static ItemStack takeServingFromItem(ItemStack cookingPotStack) {
+        CompoundTag root = getOrCreateCookingPotData(cookingPotStack);
+        ItemStack mealStack = readSimpleStack(root.getCompound(TAG_MEAL));
+        mealStack.shrink(1);
+        if (mealStack.isEmpty()) {
+            cookingPotStack.remove(DataComponents.CUSTOM_DATA);
+            return cookingPotStack;
+        }
+        root.put(TAG_MEAL, writeSimpleStack(mealStack));
+        cookingPotStack.set(DataComponents.CUSTOM_DATA, CustomData.of(root));
+        return cookingPotStack;
+    }
+
+    public ItemStack getAsItem() {
+        ItemStack stack = new ItemStack(BlockItemRegistry.COOKING_POT.get());
+        CompoundTag root = new CompoundTag();
+        if (!getMeal().isEmpty()) {
+            root.put(TAG_MEAL, writeSimpleStack(getMeal()));
+        }
+        if (!getCurrentMealContainer().isEmpty()) {
+            root.put(TAG_CONTAINER, writeSimpleStack(getCurrentMealContainer()));
+        }
+        if (!root.isEmpty()) {
+            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(root));
+        }
+        return stack;
+    }
+
+    public void loadFromItem(ItemStack stack) {
+        this.mealContainer = getContainerFromItem(stack);
+        this.inventory.setStackInSlot(SLOT_MEAL_DISPLAY, getMealFromItem(stack));
+    }
+
     public boolean tryTakeMealWithContainer(Player player, InteractionHand hand) {
         ItemStack handStack = player.getItemInHand(hand);
         if (handStack.isEmpty() || !isServingContainer(handStack)) {
@@ -500,10 +555,24 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         return inventory;
     }
 
+    public ItemStack getMeal() {
+        return inventory.getStackInSlot(SLOT_MEAL_DISPLAY);
+    }
+
     public NonNullList<ItemStack> getDroppableInventory() {
         NonNullList<ItemStack> drops = NonNullList.create();
         for (int i = 0; i < SLOT_COUNT; ++i) {
             drops.add(inventory.getStackInSlot(i));
+        }
+        return drops;
+    }
+
+    public NonNullList<ItemStack> getDroppableInventoryWithoutMealDisplay() {
+        NonNullList<ItemStack> drops = NonNullList.create();
+        for (int i = 0; i < SLOT_COUNT; ++i) {
+            if (i != SLOT_MEAL_DISPLAY) {
+                drops.add(inventory.getStackInSlot(i).copy());
+            }
         }
         return drops;
     }
@@ -648,6 +717,38 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     @Override
     public void inventoryChanged() {
         super.inventoryChanged();
+    }
+
+    private static CompoundTag getCookingPotData(ItemStack stack) {
+        if (!stack.is(BlockItemRegistry.COOKING_POT.get())) {
+            return null;
+        }
+        return stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+    }
+
+    private static CompoundTag getOrCreateCookingPotData(ItemStack stack) {
+        CompoundTag tag = getCookingPotData(stack);
+        return tag == null ? new CompoundTag() : tag;
+    }
+
+    private static CompoundTag writeSimpleStack(ItemStack stack) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("id", BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
+        if (stack.getCount() != 1) {
+            tag.putInt("count", stack.getCount());
+        }
+        return tag;
+    }
+
+    private static ItemStack readSimpleStack(CompoundTag tag) {
+        if (tag == null || !tag.contains("id")) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack stack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(tag.getString("id"))));
+        if (tag.contains("count")) {
+            stack.setCount(tag.getInt("count"));
+        }
+        return stack;
     }
 
 }

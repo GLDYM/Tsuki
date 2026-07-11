@@ -98,7 +98,7 @@ public class TsukiCommonConfig {
                         "alexsmobs:crimson_mosquit",
                         "naturalist:vulture",
                         "iceandfire:if_pixie",
-                        "touhou_little_maid:maid_fairy"),
+                        "touhou_little_maid:fairy"),
                         () -> "minecraft:phantom",
                         value -> value instanceof String string && !string.isBlank());
 

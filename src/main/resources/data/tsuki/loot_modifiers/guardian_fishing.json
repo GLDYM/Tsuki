@@ -1,0 +1,23 @@
+{
+  "conditions": [
+    {
+      "chance": 0.25,
+      "condition": "minecraft:random_chance"
+    },
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/guardian"
+        },
+        {
+          "condition": "neoforge:loot_table_id",
+          "loot_table_id": "minecraft:entities/elder_guardian"
+        }
+      ]
+    }
+  ],
+  "table": "tsuki:gameplay/fishing/tsuki_fish",
+  "type": "neoforge:add_table"
+}

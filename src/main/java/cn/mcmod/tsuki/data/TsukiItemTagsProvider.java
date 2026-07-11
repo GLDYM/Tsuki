@@ -93,6 +93,16 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.SLICES_RAW_FISHES_SALMON)
                 .addOptional(ResourceLocation.parse("farmersdelight:salmon_slice"));
         this.tag(TsukiItemTags.SLICES_CABBAGE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.SLICED_CABBAGE).get());
+        this.tag(TsukiItemTags.CROPS_CABBAGE)
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get())
+                .addOptional(ResourceLocation.parse("farmersdelight:cabbage"));
+        this.tag(TsukiItemTags.SEEDS_CABBAGE)
+                .addOptional(ResourceLocation.parse("farmersdelight:cabbage_seeds"));
+        this.tag(TsukiItemTags.CROPS_RICE)
+                .add(ItemRegistry.RICE_SEEDS.get())
+                .addOptional(ResourceLocation.parse("farmersdelight:rice"));
+        this.tag(TsukiItemTags.SEEDS_RICE)
+                .addOptional(ResourceLocation.parse("farmersdelight:rice_panicle"));
         this.tag(TsukiItemTags.DUST_CHARCOAL).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.CHARCOAL_POWDER).get());
         this.tag(TsukiItemTags.OFFHAND_EQUIPMENT).add(
                 Items.SHIELD,

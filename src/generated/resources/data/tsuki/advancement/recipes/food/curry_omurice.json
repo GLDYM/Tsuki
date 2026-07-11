@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_omurice": {
+    "has_curry": {
       "conditions": {
         "items": [
           {
-            "items": "tsuki:omurice"
+            "items": "tsuki:curry_sauce"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tsuki:curry_omurice"
+        "recipe": "tsuki:cooking/curry_omurice"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_omurice"
+      "has_curry"
     ]
   ],
   "rewards": {
     "recipes": [
-      "tsuki:curry_omurice"
+      "tsuki:cooking/curry_omurice"
     ]
   }
 }

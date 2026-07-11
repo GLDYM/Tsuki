@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tsuki:rice_curry_cheese"
+        "recipe": "tsuki:cooking/rice_curry_cheese"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "tsuki:rice_curry_cheese"
+      "tsuki:cooking/rice_curry_cheese"
     ]
   }
 }

@@ -13,17 +13,14 @@
       "item": "tsuki:rice"
     },
     {
-      "base": {
-        "tag": "c:mushrooms"
-      },
-      "subtracted": {
-        "item": "tsuki:matsutake"
-      },
-      "type": "neoforge:difference"
+      "item": "tsuki:curry_sauce"
+    },
+    {
+      "item": "tsuki:burger"
     }
   ],
   "recipeTime": 200,
   "result": {
-    "id": "tsuki:rice_mushroom"
+    "id": "tsuki:rice_curry_burger"
   }
 }

@@ -12,7 +12,13 @@
       "tag": "tsuki:rice/rice"
     },
     {
-      "tag": "c:mushrooms"
+      "base": {
+        "tag": "c:mushrooms"
+      },
+      "subtracted": {
+        "item": "tsuki:matsutake"
+      },
+      "type": "neoforge:difference"
     },
     {
       "amount": 125,

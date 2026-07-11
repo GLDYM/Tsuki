@@ -1,0 +1,48 @@
+{
+  "type": "tsuki:cooking",
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "experience": 0,
+  "fluid": {
+    "amount": 125,
+    "fluidTag": "c:food_oil"
+  },
+  "ingredients": [
+    {
+      "item": "tsuki:rice"
+    },
+    {
+      "values": [
+        {
+          "tag": "c:foods/raw_chicken"
+        },
+        {
+          "tag": "c:foods/raw_pork"
+        },
+        {
+          "tag": "c:foods/raw_beef"
+        },
+        {
+          "tag": "c:foods/raw_mutton"
+        },
+        {
+          "tag": "c:fishes"
+        }
+      ]
+    },
+    {
+      "tag": "c:tomato_sauce"
+    },
+    {
+      "tag": "c:eggs"
+    },
+    {
+      "item": "tsuki:curry_sauce"
+    }
+  ],
+  "recipeTime": 200,
+  "result": {
+    "id": "tsuki:curry_omurice"
+  }
+}

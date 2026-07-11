@@ -185,11 +185,22 @@ public class CookingPotBlock extends BaseEntityBlock {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = worldIn.getBlockEntity(pos);
             if (blockEntity instanceof CookingPotBlockEntity potBlockEntity) {
-                Containers.dropContents(worldIn, pos, potBlockEntity.getDroppableInventory());
+                Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), potBlockEntity.getAsItem());
+                Containers.dropContents(worldIn, pos, potBlockEntity.getDroppableInventoryWithoutMealDisplay());
                 potBlockEntity.grantStoredRecipeExperience(worldIn, Vec3.atCenterOf(pos));
                 worldIn.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(state, worldIn, pos, newState, isMoving);
+        }
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable net.minecraft.world.entity.LivingEntity placer,
+            ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        if (level.getBlockEntity(pos) instanceof CookingPotBlockEntity cookingPot) {
+            cookingPot.loadFromItem(stack);
+            cookingPot.inventoryChanged();
         }
     }
 
