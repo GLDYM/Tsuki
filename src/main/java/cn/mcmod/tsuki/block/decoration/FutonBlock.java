@@ -130,6 +130,11 @@ public class FutonBlock extends Block {
             return InteractionResult.SUCCESS;
         }
 
+        if (level.isDay()) {
+            player.startSleeping(pos);
+            return InteractionResult.SUCCESS;
+        }
+
         player.startSleepInBed(pos).ifLeft(problem -> {
             if (problem.getMessage() != null) {
                 player.displayClientMessage(problem.getMessage(), true);

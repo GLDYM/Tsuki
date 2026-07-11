@@ -9,6 +9,7 @@
   - Shapeless crafting Japanese Cooking Pot with the containers could serve the meal inside it.
 - Refactor curry rice recipe into Japanese Cooking Pot to avoid bowl-return loops.
 - Sakura leaves provide 8 light level.
+- Futons can now be used for daytime resting with configurable time acceleration while a player remains lying down. Nighttime use still follows vanilla bed sleep behavior.
 
 ## Bug Fix
 

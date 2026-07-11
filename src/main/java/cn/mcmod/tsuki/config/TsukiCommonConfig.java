@@ -20,6 +20,8 @@ public class TsukiCommonConfig {
     public static final ModConfigSpec.ConfigValue<List<? extends String>> MAGATAMA_RED_TARGET_ENTITIES = INSTANCE.magatamaRedTargetEntities;
     public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_MINING_SPEED_COMPENSATION = INSTANCE.magatamaWhiteEnableMiningSpeedCompensation;
     public static final ModConfigSpec.DoubleValue MAGATAMA_WHITE_MINING_SPEED_COMPENSATION_MULTIPLIER = INSTANCE.magatamaWhiteMiningSpeedCompensationMultiplier;
+    public static final ModConfigSpec.DoubleValue FUTON_DAYTIME_PER_TICK = INSTANCE.futonDaytimePerTick;
+    public static final ModConfigSpec.BooleanValue FUTON_ACCELERATE_ONLY_DAY = INSTANCE.futonAccelerateOnlyDay;
     public static final ModConfigSpec.BooleanValue DEBUG_MODE = INSTANCE.debugMode;
 
     public final ModConfigSpec spec;
@@ -36,6 +38,8 @@ public class TsukiCommonConfig {
     public final ModConfigSpec.ConfigValue<List<? extends String>> magatamaRedTargetEntities;
     public final ModConfigSpec.BooleanValue magatamaWhiteEnableMiningSpeedCompensation;
     public final ModConfigSpec.DoubleValue magatamaWhiteMiningSpeedCompensationMultiplier;
+    public final ModConfigSpec.DoubleValue futonDaytimePerTick;
+    public final ModConfigSpec.BooleanValue futonAccelerateOnlyDay;
     public final ModConfigSpec.BooleanValue debugMode;
 
     public TsukiCommonConfig() {
@@ -121,6 +125,16 @@ public class TsukiCommonConfig {
                 .comment("Sets the White Magatama airborne mining speed compensation multiplier.")
                 .translation("tsuki.config.magatama_white_mining_speed_compensation_multiplier")
                 .defineInRange("magatama_white_mining_speed_compensation_multiplier", 5.0D, 1.0D, 64.0D);
+
+        futonDaytimePerTick = builder
+                .comment("Sets the time speed per tick while a player is resting on a futon.")
+                .translation("tsuki.config.futon_daytime_per_tick")
+                .defineInRange("futon_daytime_per_tick", 25.0D, 0.1D, 1024.0D);
+
+        futonAccelerateOnlyDay = builder
+                .comment("If true, futon time acceleration only works during daytime.")
+                .translation("tsuki.config.futon_accelerate_only_day")
+                .define("futon_accelerate_only_day", true);
 
         debugMode = builder
                 .comment("Enables debug mode.")
