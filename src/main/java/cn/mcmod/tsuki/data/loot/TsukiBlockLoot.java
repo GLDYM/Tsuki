@@ -28,11 +28,15 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import cn.mcmod.tsuki.init.ItemDataComponentRegistry;
+import net.minecraft.core.component.DataComponents;
 
 public class TsukiBlockLoot extends AbstartctBlockLoot {
 
@@ -101,6 +105,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
         this.add(BlockRegistry.FUTON.get(), createFutonDrops(BlockRegistry.FUTON.get()));
         this.add(BlockRegistry.DRINK_DISPLAY.get(), LootTable.lootTable());
         this.add(BlockRegistry.SHAKER.get(), LootTable.lootTable());
+        this.add(BlockRegistry.COOKING_POT.get(), createCookingPotDrops(BlockRegistry.COOKING_POT.get()));
         this.add(BlockRegistry.CHESTNUT_BURR.get(), createChestnutBurrDrops(BlockRegistry.CHESTNUT_BURR.get()));
 
         this.add(BlockRegistry.MAPLE_LEAVES_RED.get(), createLeavesDrops(BlockRegistry.MAPLE_LEAVES_RED.get(),
@@ -232,6 +237,17 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                         .add(LootItem.lootTableItem(BlockItemRegistry.CHESTNUT_BURRS.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
                                 .when(mature))));
+    }
+
+    private LootTable.Builder createCookingPotDrops(Block block) {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .when(ExplosionCondition.survivesExplosion())
+                        .add(LootItem.lootTableItem(BlockItemRegistry.COOKING_POT.get())
+                                .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                        .include(DataComponents.CUSTOM_NAME)
+                                        .include(ItemDataComponentRegistry.MEAL.get())
+                                        .include(ItemDataComponentRegistry.CONTAINER.get()))));
     }
 
     private LootTable.Builder createDoor(Block block) {

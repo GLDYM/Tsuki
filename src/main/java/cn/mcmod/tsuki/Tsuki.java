@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 
 import cn.mcmod.tsuki.init.CreativeModeTabRegistry;
 import cn.mcmod.tsuki.init.EntityTypeRegistry;
+import cn.mcmod.tsuki.init.ItemDataComponentRegistry;
 import cn.mcmod.tsuki.init.MenuTypeRegistry;
 import cn.mcmod.tsuki.init.LootModifierRegistry;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
@@ -94,6 +95,7 @@ public class Tsuki {
         VillagerRegistry.POI_TYPES.register(modEventBus);
         VillagerRegistry.PROFESSIONS.register(modEventBus);
         CreativeModeTabRegistry.TABS.register(modEventBus);
+        ItemDataComponentRegistry.DATA_COMPONENTS.register(modEventBus);
 
         if (ModList.get().isLoaded("guideme")) {
             TsukiGuideMeCompat.register();

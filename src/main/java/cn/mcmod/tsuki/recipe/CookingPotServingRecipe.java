@@ -48,7 +48,7 @@ public class CookingPotServingRecipe extends CustomRecipe {
         return !cookingPotStack.isEmpty()
                 && !secondStack.isEmpty()
                 && !containerStack.isEmpty()
-                && ItemStack.isSameItemSameComponents(secondStack, containerStack);
+                && secondStack.is(containerStack.getItem());
     }
 
     @Override
@@ -73,7 +73,9 @@ public class CookingPotServingRecipe extends CustomRecipe {
             if (selectedStack.hasCraftingRemainingItem()) {
                 remainders.set(i, selectedStack.getCraftingRemainingItem());
             } else if (selectedStack.is(BlockItemRegistry.COOKING_POT.get())) {
-                ItemStack newCookingPotStack = CookingPotBlockEntity.takeServingFromItem(selectedStack.copy());
+                CookingPotBlockEntity.takeServingFromItem(selectedStack);
+                ItemStack newCookingPotStack = selectedStack.copy();
+                newCookingPotStack.setCount(1);
                 remainders.set(i, newCookingPotStack);
                 break;
             }

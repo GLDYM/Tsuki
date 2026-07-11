@@ -76,6 +76,9 @@ public class FermenterBlock extends BaseEntityBlock {
         if (!(blockentity instanceof FermenterBlockEntity cookingPot)) {
             return ItemInteractionResult.FAIL;
         }
+        if (player.isSpectator()) {
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
 
         IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1))
                 .orElse(null);

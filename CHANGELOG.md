@@ -2,15 +2,20 @@
 
 # Tsuki 1.6.0
 
+## Feature
+
+- Sync Japanese Cooking Pot dropping behavior to Farmer's Delight Cooking Pot.
+  - Breaking Japanese Cooking Pot will remain the display meal.
+  - Shapeless crafting Japanese Cooking Pot with the containers could serve the meal inside it.
+- Refactor curry rice recipe into Japanese Cooking Pot to avoid bowl-return loops.
+- Sakura leaves provide 8 light level.
+
 ## Bug Fix
 
-- Fix Japanese Cooking Pot dropping displayed meals directly when broken; it now preserves container-dependent serving behavior when possible.
-- Fix Japanese Cooking Pot break behavior to preserve display-slot meals inside the dropped pot item, matching Farmer's Delight style serving logic.
-- Refactor curry rice and curry omurice upgrade dishes into Japanese Cooking Pot recipes built from base ingredients, avoiding bowl-return loops in multi-step crafting.
-- Fix mushroom rice to exclude matsutake via NeoForge difference tag ingredients.
-- Fix missing Farmers Delight compatibility tags for cabbage and rice.
-- Fix Sakura leaves not emitting light.
-- Fix Tsuki fishing catches not appearing from normal open-water fishing by handling the main fishing loot flow directly while preserving guardian loot additions.
+- Mushroom Rice recipe override Matsutake Rice recipe.
+- Farmers Delight compatibility tags for cabbage and rice is missing.
+- Tsuki fishing does not appear in normal open-water fishing.
+- Spectator interaction with Tsuki machine containers causing client disconnects from invalid custom menu open packets.
 
 # Tsuki 1.5.6
 

@@ -17,10 +17,12 @@ import cn.mcmod.tsuki.compat.kaleidoscope.KCPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
 import cn.mcmod.tsuki.config.TsukiClientConfig;
 import cn.mcmod.tsuki.container.CookingPotContainer;
+import cn.mcmod.tsuki.init.ItemDataComponentRegistry;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.init.item.BlockItemRegistry;
+import cn.mcmod.tsuki.item.component.ItemStackWrapper;
 import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
 import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
@@ -30,8 +32,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -46,9 +47,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.item.component.CustomData;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler.FluidAction;
@@ -58,9 +59,6 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProvider, HeatableBlockEntity {
-    private static final String TAG_MEAL = "Meal";
-    private static final String TAG_CONTAINER = "Container";
-
     public static final int TANK_CAPACITY = 2000;
     public static final int SLOT_INPUT_START = 0;
     public static final int SLOT_INPUT_COUNT = 9;
@@ -347,7 +345,10 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         if (mealStack.isEmpty()) {
             return ItemStack.EMPTY;
         }
-        return mealContainer;
+        if (!mealContainer.isEmpty()) {
+            return mealContainer;
+        }
+        return mealStack.getCraftingRemainingItem();
     }
 
     public ItemStack getCurrentMealContainer() {
@@ -355,52 +356,36 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     }
 
     public static ItemStack getMealFromItem(ItemStack cookingPotStack) {
-        CompoundTag tag = getCookingPotData(cookingPotStack);
-        if (tag == null || !tag.contains(TAG_MEAL)) {
+        if (!cookingPotStack.is(BlockItemRegistry.COOKING_POT.get())) {
             return ItemStack.EMPTY;
         }
-        return readSimpleStack(tag.getCompound(TAG_MEAL));
+        return cookingPotStack.getOrDefault(ItemDataComponentRegistry.MEAL.get(), ItemStackWrapper.EMPTY).getStack();
     }
 
     public static ItemStack getContainerFromItem(ItemStack cookingPotStack) {
-        CompoundTag tag = getCookingPotData(cookingPotStack);
-        if (tag == null || !tag.contains(TAG_CONTAINER)) {
+        if (!cookingPotStack.is(BlockItemRegistry.COOKING_POT.get())) {
             return ItemStack.EMPTY;
         }
-        return readSimpleStack(tag.getCompound(TAG_CONTAINER));
+        return cookingPotStack.getOrDefault(ItemDataComponentRegistry.CONTAINER.get(), ItemStackWrapper.EMPTY).getStack();
     }
 
-    public static ItemStack takeServingFromItem(ItemStack cookingPotStack) {
-        CompoundTag root = getOrCreateCookingPotData(cookingPotStack);
-        ItemStack mealStack = readSimpleStack(root.getCompound(TAG_MEAL));
-        mealStack.shrink(1);
-        if (mealStack.isEmpty()) {
-            cookingPotStack.remove(DataComponents.CUSTOM_DATA);
-            return cookingPotStack;
+    public static void takeServingFromItem(ItemStack cookingPotStack) {
+        if (!cookingPotStack.is(BlockItemRegistry.COOKING_POT.get())) {
+            return;
         }
-        root.put(TAG_MEAL, writeSimpleStack(mealStack));
-        cookingPotStack.set(DataComponents.CUSTOM_DATA, CustomData.of(root));
-        return cookingPotStack;
+        ItemStack mealStack = getMealFromItem(cookingPotStack).copy();
+        mealStack.shrink(1);
+        cookingPotStack.set(ItemDataComponentRegistry.MEAL.get(), new ItemStackWrapper(mealStack));
+        if (mealStack.isEmpty()) {
+            cookingPotStack.remove(ItemDataComponentRegistry.MEAL.get());
+            cookingPotStack.remove(ItemDataComponentRegistry.CONTAINER.get());
+        }
     }
 
     public ItemStack getAsItem() {
         ItemStack stack = new ItemStack(BlockItemRegistry.COOKING_POT.get());
-        CompoundTag root = new CompoundTag();
-        if (!getMeal().isEmpty()) {
-            root.put(TAG_MEAL, writeSimpleStack(getMeal()));
-        }
-        if (!getCurrentMealContainer().isEmpty()) {
-            root.put(TAG_CONTAINER, writeSimpleStack(getCurrentMealContainer()));
-        }
-        if (!root.isEmpty()) {
-            stack.set(DataComponents.CUSTOM_DATA, CustomData.of(root));
-        }
+        stack.applyComponents(collectComponents());
         return stack;
-    }
-
-    public void loadFromItem(ItemStack stack) {
-        this.mealContainer = getContainerFromItem(stack);
-        this.inventory.setStackInSlot(SLOT_MEAL_DISPLAY, getMealFromItem(stack));
     }
 
     public boolean tryTakeMealWithContainer(Player player, InteractionHand hand) {
@@ -611,6 +596,33 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         compound.put("RecipesUsed", compoundRecipes);
     }
 
+    @Override
+    protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        this.inventory.setStackInSlot(SLOT_MEAL_DISPLAY,
+                componentInput.getOrDefault(ItemDataComponentRegistry.MEAL.get(), ItemStackWrapper.EMPTY).getStack());
+        this.mealContainer = componentInput.getOrDefault(ItemDataComponentRegistry.CONTAINER.get(), ItemStackWrapper.EMPTY)
+                .getStack();
+    }
+
+    @Override
+    protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        if (!getMeal().isEmpty()) {
+            components.set(ItemDataComponentRegistry.MEAL.get(), new ItemStackWrapper(getMeal()));
+        }
+        if (!getServingContainerForMeal(getMeal()).isEmpty()) {
+            components.set(ItemDataComponentRegistry.CONTAINER.get(),
+                    new ItemStackWrapper(getServingContainerForMeal(getMeal())));
+        }
+    }
+
+    @Override
+    public void removeComponentsFromTag(CompoundTag tag) {
+        tag.remove("meal");
+        tag.remove("container");
+    }
+
     private ItemStackHandler createHandler() {
         return new ItemStackHandler(SLOT_COUNT) {
             @Override
@@ -717,38 +729,6 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     @Override
     public void inventoryChanged() {
         super.inventoryChanged();
-    }
-
-    private static CompoundTag getCookingPotData(ItemStack stack) {
-        if (!stack.is(BlockItemRegistry.COOKING_POT.get())) {
-            return null;
-        }
-        return stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-    }
-
-    private static CompoundTag getOrCreateCookingPotData(ItemStack stack) {
-        CompoundTag tag = getCookingPotData(stack);
-        return tag == null ? new CompoundTag() : tag;
-    }
-
-    private static CompoundTag writeSimpleStack(ItemStack stack) {
-        CompoundTag tag = new CompoundTag();
-        tag.putString("id", BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
-        if (stack.getCount() != 1) {
-            tag.putInt("count", stack.getCount());
-        }
-        return tag;
-    }
-
-    private static ItemStack readSimpleStack(CompoundTag tag) {
-        if (tag == null || !tag.contains("id")) {
-            return ItemStack.EMPTY;
-        }
-        ItemStack stack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.parse(tag.getString("id"))));
-        if (tag.contains("count")) {
-            stack.setCount(tag.getInt("count"));
-        }
-        return stack;
     }
 
 }

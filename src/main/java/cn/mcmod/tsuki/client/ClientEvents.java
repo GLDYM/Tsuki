@@ -5,6 +5,7 @@ import cn.mcmod.tsuki.client.particle.FallenLeafParticle;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.client.particle.CookingParticle;
 import cn.mcmod.tsuki.client.particle.SyrupDropParticle;
+import cn.mcmod.tsuki.client.gui.CookingPotTooltip;
 import cn.mcmod.tsuki.client.render.ChoppingBoardRender;
 import cn.mcmod.tsuki.client.render.CookingPotRender;
 import cn.mcmod.tsuki.client.render.DrinkDisplayRender;
@@ -26,6 +27,7 @@ import net.minecraft.client.renderer.entity.PaintingRenderer;
 import net.minecraft.world.level.block.BushBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -110,6 +112,11 @@ public class ClientEvents {
                 SyrupDropParticle.Factory::new);
         event.registerSpriteSet(ParticleRegistry.COOKING.get(),
                 CookingParticle.Factory::new);
+    }
+
+    @SubscribeEvent
+    public static void registerCustomTooltipRenderers(RegisterClientTooltipComponentFactoriesEvent event) {
+        event.register(CookingPotTooltip.CookingPotTooltipComponent.class, CookingPotTooltip::new);
     }
 
 }

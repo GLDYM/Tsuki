@@ -21,6 +21,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -34,6 +35,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -131,6 +133,9 @@ public class CookingPotBlock extends BaseEntityBlock {
         if (!(blockentity instanceof CookingPotBlockEntity cookingPot)) {
             return ItemInteractionResult.FAIL;
         }
+        if (player.isSpectator()) {
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
         // open/close
         if (stack.isEmpty() && player.isShiftKeyDown()) {
             if (!level.isClientSide()) {
@@ -185,7 +190,6 @@ public class CookingPotBlock extends BaseEntityBlock {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = worldIn.getBlockEntity(pos);
             if (blockEntity instanceof CookingPotBlockEntity potBlockEntity) {
-                Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), potBlockEntity.getAsItem());
                 Containers.dropContents(worldIn, pos, potBlockEntity.getDroppableInventoryWithoutMealDisplay());
                 potBlockEntity.grantStoredRecipeExperience(worldIn, Vec3.atCenterOf(pos));
                 worldIn.updateNeighbourForOutputSignal(pos, this);
@@ -195,13 +199,19 @@ public class CookingPotBlock extends BaseEntityBlock {
     }
 
     @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+        ItemStack stack = new ItemStack(this);
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof CookingPotBlockEntity cookingPot) {
+            stack = cookingPot.getAsItem();
+        }
+        return stack;
+    }
+
+    @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable net.minecraft.world.entity.LivingEntity placer,
             ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
-        if (level.getBlockEntity(pos) instanceof CookingPotBlockEntity cookingPot) {
-            cookingPot.loadFromItem(stack);
-            cookingPot.inventoryChanged();
-        }
     }
 
     @Override

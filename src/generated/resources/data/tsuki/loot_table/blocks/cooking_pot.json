@@ -11,6 +11,17 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "include": [
+                "minecraft:custom_name",
+                "tsuki:meal",
+                "tsuki:container"
+              ],
+              "source": "block_entity"
+            }
+          ],
           "name": "tsuki:cooking_pot"
         }
       ],

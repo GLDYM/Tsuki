@@ -60,6 +60,9 @@ public class StoneMortarBlock extends BaseEntityBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos,
             Player player, InteractionHand handIn, BlockHitResult result) {
+        if (player.isSpectator()) {
+            return ItemInteractionResult.sidedSuccess(world.isClientSide);
+        }
         if (!world.isClientSide()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof StoneMortarBlockEntity mortarBlockEntity) {

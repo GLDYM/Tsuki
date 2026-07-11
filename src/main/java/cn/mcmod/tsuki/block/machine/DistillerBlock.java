@@ -96,6 +96,9 @@ public class DistillerBlock extends BaseEntityBlock {
         if (!(blockentity instanceof DistillerBlockEntity cookingPot)) {
             return ItemInteractionResult.FAIL;
         }
+        if (player.isSpectator()) {
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
 
         IFluidHandlerItem handler = FluidUtil.getFluidHandler(stack.copyWithCount(1))
                 .orElse(null);
