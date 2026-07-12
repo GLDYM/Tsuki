@@ -9,13 +9,14 @@
   - Shapeless crafting Japanese Cooking Pot with the containers could serve the meal inside it.
 - Refactor curry rice recipe into Japanese Cooking Pot to avoid bowl-return loops.
 - Sakura leaves provide 8 light level.
-- Futons can now be used for daytime resting with configurable time acceleration while a player remains lying down. Nighttime use still follows vanilla bed sleep behavior.
+- Futons can be used to acclerate daytime.
+  - Nighttime use still follows vanilla bed sleep behavior.
 
 ## Bug Fix
 
 - Mushroom Rice recipe override Matsutake Rice recipe.
 - Farmers Delight compatibility tags for cabbage and rice is missing.
-- Tsuki fishing does not appear in normal open-water fishing.
+- Tsuki fishing does not appear in fishing.
 - Spectator interaction with Tsuki machine containers causing client disconnects from invalid custom menu open packets.
 
 # Tsuki 1.5.6
