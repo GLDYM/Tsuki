@@ -1,6 +1,7 @@
 
 package cn.mcmod.tsuki.block.tree;
 
+import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.core.BlockPos;
@@ -93,9 +94,12 @@ public class BambooPlant extends Block implements BonemealableBlock {
     }
 
     public void spreadingTick(ServerLevel levelIn, BlockPos pos, RandomSource random) {
+        if (!TsukiCommonConfig.BAMBOO_ENABLE_SPREAD.get()) {
+            return;
+        }
         int j = this.getHeightAboveUpToMax(levelIn, pos) + 1;
         if (j >= 16) {
-            if (levelIn.isRaining() || random.nextFloat() < 0.15) {
+            if (levelIn.isRaining() || random.nextFloat() < TsukiCommonConfig.BAMBOO_SPREAD_CHANCE.get().floatValue()) {
                 growBambooShoot(levelIn, pos, random);
             }
         }

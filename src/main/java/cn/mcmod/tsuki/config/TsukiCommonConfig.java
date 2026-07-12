@@ -23,6 +23,8 @@ public class TsukiCommonConfig {
     public static final ModConfigSpec.ConfigValue<List<? extends String>> MAGATAMA_RED_TARGET_ENTITIES = INSTANCE.magatamaRedTargetEntities;
     public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_MINING_SPEED_COMPENSATION = INSTANCE.magatamaWhiteEnableMiningSpeedCompensation;
     public static final ModConfigSpec.DoubleValue MAGATAMA_WHITE_MINING_SPEED_COMPENSATION_MULTIPLIER = INSTANCE.magatamaWhiteMiningSpeedCompensationMultiplier;
+    public static final ModConfigSpec.BooleanValue BAMBOO_ENABLE_SPREAD = INSTANCE.bambooEnableSpread;
+    public static final ModConfigSpec.DoubleValue BAMBOO_SPREAD_CHANCE = INSTANCE.bambooSpreadChance;
     public static final ModConfigSpec.DoubleValue FUTON_DAYTIME_PER_TICK = INSTANCE.futonDaytimePerTick;
     public static final ModConfigSpec.BooleanValue FUTON_ACCELERATE_ONLY_DAY = INSTANCE.futonAccelerateOnlyDay;
     public static final ModConfigSpec.BooleanValue DEBUG_MODE = INSTANCE.debugMode;
@@ -44,6 +46,8 @@ public class TsukiCommonConfig {
     public final ModConfigSpec.ConfigValue<List<? extends String>> magatamaRedTargetEntities;
     public final ModConfigSpec.BooleanValue magatamaWhiteEnableMiningSpeedCompensation;
     public final ModConfigSpec.DoubleValue magatamaWhiteMiningSpeedCompensationMultiplier;
+    public final ModConfigSpec.BooleanValue bambooEnableSpread;
+    public final ModConfigSpec.DoubleValue bambooSpreadChance;
     public final ModConfigSpec.DoubleValue futonDaytimePerTick;
     public final ModConfigSpec.BooleanValue futonAccelerateOnlyDay;
     public final ModConfigSpec.BooleanValue debugMode;
@@ -177,6 +181,19 @@ public class TsukiCommonConfig {
                 .translation("tsuki.config.magatama_white_mining_speed_compensation_multiplier")
                 .defineInRange("magatama_white_mining_speed_compensation_multiplier", 5.0D, 1.0D, 64.0D);
         builder.pop();
+        builder.pop();
+
+        builder.comment("Bamboo settings")
+                .translation("tsuki.config.category.bamboo")
+                .push("bamboo");
+        bambooEnableSpread = builder
+                .comment("Enables bamboo spreading.")
+                .translation("tsuki.config.bamboo_enable_spread")
+                .define("bamboo_enable_spread", true);
+        bambooSpreadChance = builder
+                .comment("Sets the bamboo spreading chance per random tick.")
+                .translation("tsuki.config.bamboo_spread_chance")
+                .defineInRange("bamboo_spread_chance", 0.15D, 0.0D, 1.0D);
         builder.pop();
 
         builder.comment("Futon settings")
