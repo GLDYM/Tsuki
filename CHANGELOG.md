@@ -11,6 +11,7 @@
 - Sakura leaves provide 8 light level.
 - Futons can be used to acclerate daytime.
   - Nighttime use still follows vanilla bed sleep behavior.
+- Orange Magatama effect is configuable.  
 
 ## Bug Fix
 

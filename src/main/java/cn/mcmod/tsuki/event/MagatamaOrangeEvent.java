@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.event;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.item.magatama.MagatamaOrangeHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,7 +17,6 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 @EventBusSubscriber(modid = Tsuki.MODID)
 public final class MagatamaOrangeEvent {
-    private static final float HEAL_PER_TICK = 1.0F;
     private static final float SATURATION_DRAIN_RATE = 0.25F;
     private static final float SATURATION_DRAIN_MIN = 2.0F;
     private static final int HUNGER_DRAIN = 1;
@@ -58,27 +58,38 @@ public final class MagatamaOrangeEvent {
 
         float saturation = player.getFoodData().getSaturationLevel();
         if (saturation > 0.0F) {
-            if (tryRecover(player, HEAL_PER_TICK)) {
-                drainSaturation(player, saturation);
+            float drain = getSaturationDrain(saturation);
+            float healAmount = drain * getSaturationToHealthRatio();
+            if (tryRecover(player, healAmount)) {
+                drainSaturation(player, saturation, drain);
             }
             return;
         }
 
         int hunger = player.getFoodData().getFoodLevel();
         if (hunger > HUNGER_THRESHOLD) {
-            if (tryRecover(player, HEAL_PER_TICK)) {
-                drainHunger(player, hunger);
+            float drain = getHungerDrain();
+            float healAmount = drain * getHungerToHealthRatio();
+            if (tryRecover(player, healAmount)) {
+                drainHunger(player, hunger, drain);
             }
         }
     }
 
-    private static void drainSaturation(ServerPlayer player, float saturation) {
-        float drain = Math.max(saturation * SATURATION_DRAIN_RATE, SATURATION_DRAIN_MIN);
+    private static float getSaturationDrain(float saturation) {
+        return Math.max(saturation * SATURATION_DRAIN_RATE, SATURATION_DRAIN_MIN);
+    }
+
+    private static void drainSaturation(ServerPlayer player, float saturation, float drain) {
         player.getFoodData().setSaturation(Math.max(0.0F, saturation - drain));
     }
 
-    private static void drainHunger(ServerPlayer player, int hunger) {
-        player.getFoodData().setFoodLevel(Math.max(0, hunger - HUNGER_DRAIN));
+    private static float getHungerDrain() {
+        return HUNGER_DRAIN;
+    }
+
+    private static void drainHunger(ServerPlayer player, int hunger, float drain) {
+        player.getFoodData().setFoodLevel(Math.max(0, hunger - Math.round(drain)));
     }
 
     private static boolean tryRecover(ServerPlayer player, float healAmount) {
@@ -88,7 +99,9 @@ public final class MagatamaOrangeEvent {
 
         float healthGain = Math.min(healAmount, Math.max(0.0F, maxHealth - health));
         float overflow = healAmount - healthGain;
-        float absorptionGain = Math.min(Math.max(0.0F, maxHealth - absorption), Math.max(0.0F, overflow));
+        float absorptionGain = Math.min(
+                Math.max(0.0F, maxHealth - absorption),
+                Math.max(0.0F, overflow * getAbsorptionRatio()));
         float totalGain = healthGain + absorptionGain;
         if (totalGain <= 1.0E-4F) {
             return false;
@@ -122,5 +135,17 @@ public final class MagatamaOrangeEvent {
         if (player.getAbsorptionAmount() > player.getMaxAbsorption()) {
             player.setAbsorptionAmount(player.getMaxAbsorption());
         }
+    }
+
+    private static float getAbsorptionRatio() {
+        return TsukiCommonConfig.MAGATAMA_ORANGE_ABSORPTION_RATIO.get().floatValue();
+    }
+
+    private static float getSaturationToHealthRatio() {
+        return TsukiCommonConfig.MAGATAMA_ORANGE_SATURATION_TO_HEALTH_RATIO.get().floatValue();
+    }
+
+    private static float getHungerToHealthRatio() {
+        return TsukiCommonConfig.MAGATAMA_ORANGE_HUNGER_TO_HEALTH_RATIO.get().floatValue();
     }
 }

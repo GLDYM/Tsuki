@@ -17,6 +17,9 @@ public class TsukiCommonConfig {
     public static final ModConfigSpec.DoubleValue MAGATAMA_GREEN_REMAINING_HEALTH = INSTANCE.magatamaGreenRemainingHealth;
     public static final ModConfigSpec.IntValue MAGATAMA_GREEN_DRAW_COUNT = INSTANCE.magatamaGreenDrawCount;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> MAGATAMA_GREEN_REWARD_TAGS = INSTANCE.magatamaGreenRewardTags;
+    public static final ModConfigSpec.DoubleValue MAGATAMA_ORANGE_ABSORPTION_RATIO = INSTANCE.magatamaOrangeAbsorptionRatio;
+    public static final ModConfigSpec.DoubleValue MAGATAMA_ORANGE_SATURATION_TO_HEALTH_RATIO = INSTANCE.magatamaOrangeSaturationToHealthRatio;
+    public static final ModConfigSpec.DoubleValue MAGATAMA_ORANGE_HUNGER_TO_HEALTH_RATIO = INSTANCE.magatamaOrangeHungerToHealthRatio;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> MAGATAMA_RED_TARGET_ENTITIES = INSTANCE.magatamaRedTargetEntities;
     public static final ModConfigSpec.BooleanValue MAGATAMA_WHITE_ENABLE_MINING_SPEED_COMPENSATION = INSTANCE.magatamaWhiteEnableMiningSpeedCompensation;
     public static final ModConfigSpec.DoubleValue MAGATAMA_WHITE_MINING_SPEED_COMPENSATION_MULTIPLIER = INSTANCE.magatamaWhiteMiningSpeedCompensationMultiplier;
@@ -35,6 +38,9 @@ public class TsukiCommonConfig {
     public final ModConfigSpec.DoubleValue magatamaGreenRemainingHealth;
     public final ModConfigSpec.IntValue magatamaGreenDrawCount;
     public final ModConfigSpec.ConfigValue<List<? extends String>> magatamaGreenRewardTags;
+    public final ModConfigSpec.DoubleValue magatamaOrangeAbsorptionRatio;
+    public final ModConfigSpec.DoubleValue magatamaOrangeSaturationToHealthRatio;
+    public final ModConfigSpec.DoubleValue magatamaOrangeHungerToHealthRatio;
     public final ModConfigSpec.ConfigValue<List<? extends String>> magatamaRedTargetEntities;
     public final ModConfigSpec.BooleanValue magatamaWhiteEnableMiningSpeedCompensation;
     public final ModConfigSpec.DoubleValue magatamaWhiteMiningSpeedCompensationMultiplier;
@@ -92,6 +98,21 @@ public class TsukiCommonConfig {
                 .defineListAllowEmpty(List.of("magatama_green_reward_tags"), () -> List.of("c:seeds",  "c:fishes", "c:raw_meat", "c:raw_meats", "c:eggs", "c:milk", "c:vegetables", "c:fruits", "c:crops", "c:mushrooms"),
                         () -> "c:seeds",
                         value -> value instanceof String string && !string.isBlank());
+
+        magatamaOrangeAbsorptionRatio = builder
+                .comment("Sets the Orange Magatama overflow healing to absorption conversion ratio.")
+                .translation("tsuki.config.magatama_orange_absorption_ratio")
+                .defineInRange("magatama_orange_absorption_ratio", 1.0D, 0.0D, 1024.0D);
+
+        magatamaOrangeSaturationToHealthRatio = builder
+                .comment("Sets how much health the Orange Magatama restores per 1 saturation converted.")
+                .translation("tsuki.config.magatama_orange_saturation_to_health_ratio")
+                .defineInRange("magatama_orange_saturation_to_health_ratio", 0.5D, 0.0D, 1024.0D);
+
+        magatamaOrangeHungerToHealthRatio = builder
+                .comment("Sets how much health the Orange Magatama restores per 1 hunger converted.")
+                .translation("tsuki.config.magatama_orange_hunger_to_health_ratio")
+                .defineInRange("magatama_orange_hunger_to_health_ratio", 1.0D, 0.0D, 1024.0D);
 
         magatamaRedTargetEntities = builder
                 .comment("Sets the entity id list executed by the Red Magatama.")
