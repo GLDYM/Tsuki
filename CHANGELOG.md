@@ -2,6 +2,11 @@
 
 # Tsuki 1.6.0
 
+## Refactor
+
+- **Re-arrange the common config**
+  - **For Modpack Creator & Server Hoster，you need to re-configure all configuration!**
+
 ## Feature
 
 - Sync Japanese Cooking Pot dropping behavior to Farmer's Delight Cooking Pot.

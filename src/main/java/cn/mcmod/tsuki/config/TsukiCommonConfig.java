@@ -54,11 +54,18 @@ public class TsukiCommonConfig {
                 .translation("tsuki.config.category.general")
                 .push("general");
 
+        builder.comment("World generation settings")
+                .translation("tsuki.config.category.worldgen")
+                .push("worldgen");
         ironSandAmount = builder
                 .comment("Changes generate amount of Iron Sand. Increase value to gen more Iron Sand.")
                 .translation("tsuki.config.iron_sand_amount")
                 .defineInRange("iron_sand_amount", 128, 1, 5120);
+        builder.pop();
 
+        builder.comment("Progression settings")
+                .translation("tsuki.config.category.progression")
+                .push("progression");
         mythicPickaxeExpNeeded = builder
                 .comment(
                         "Changes the experience needed to upgrade Mythic Pickaxe. Increase value to make it harder to upgrade.")
@@ -75,13 +82,24 @@ public class TsukiCommonConfig {
                         "Gives the Tsuki guide book to players the first time they join a world when GuideME is installed.")
                 .translation("tsuki.config.give_guide_on_first_login")
                 .define("give_guide_on_first_login", true);
+        builder.pop();
 
+        builder.comment("Magatama settings")
+                .translation("tsuki.config.category.magatama")
+                .push("magatama");
 
+        builder.comment("Blue Magatama settings")
+                .translation("tsuki.config.category.magatama.blue")
+                .push("blue");
         magatamaBlueHealthCost = builder
                 .comment("Sets the Blue Magatama health cost per weather conversion.")
                 .translation("tsuki.config.magatama_blue_health_cost")
                 .defineInRange("magatama_blue_health_cost", 4.0D, 0.0D, 1024.0D);
+        builder.pop();
 
+        builder.comment("Green Magatama settings")
+                .translation("tsuki.config.category.magatama.green")
+                .push("green");
         magatamaGreenRemainingHealth = builder
                 .comment("Sets the remaining health after using the Green Magatama.")
                 .translation("tsuki.config.magatama_green_remaining_health")
@@ -98,7 +116,11 @@ public class TsukiCommonConfig {
                 .defineListAllowEmpty(List.of("magatama_green_reward_tags"), () -> List.of("c:seeds",  "c:fishes", "c:raw_meat", "c:raw_meats", "c:eggs", "c:milk", "c:vegetables", "c:fruits", "c:crops", "c:mushrooms"),
                         () -> "c:seeds",
                         value -> value instanceof String string && !string.isBlank());
+        builder.pop();
 
+        builder.comment("Orange Magatama settings")
+                .translation("tsuki.config.category.magatama.orange")
+                .push("orange");
         magatamaOrangeAbsorptionRatio = builder
                 .comment("Sets the Orange Magatama overflow healing to absorption conversion ratio.")
                 .translation("tsuki.config.magatama_orange_absorption_ratio")
@@ -113,7 +135,11 @@ public class TsukiCommonConfig {
                 .comment("Sets how much health the Orange Magatama restores per 1 hunger converted.")
                 .translation("tsuki.config.magatama_orange_hunger_to_health_ratio")
                 .defineInRange("magatama_orange_hunger_to_health_ratio", 1.0D, 0.0D, 1024.0D);
+        builder.pop();
 
+        builder.comment("Red Magatama settings")
+                .translation("tsuki.config.category.magatama.red")
+                .push("red");
         magatamaRedTargetEntities = builder
                 .comment("Sets the entity id list executed by the Red Magatama.")
                 .translation("tsuki.config.magatama_red_target_entities")
@@ -126,7 +152,11 @@ public class TsukiCommonConfig {
                         "touhou_little_maid:fairy"),
                         () -> "minecraft:phantom",
                         value -> value instanceof String string && !string.isBlank());
+        builder.pop();
 
+        builder.comment("White Magatama settings")
+                .translation("tsuki.config.category.magatama.white")
+                .push("white");
         magatamaWhiteEnablePenalty = builder
                 .comment("Enables the White Magatama max health penalty.")
                 .translation("tsuki.config.magatama_white_enable_penalty")
@@ -146,7 +176,12 @@ public class TsukiCommonConfig {
                 .comment("Sets the White Magatama airborne mining speed compensation multiplier.")
                 .translation("tsuki.config.magatama_white_mining_speed_compensation_multiplier")
                 .defineInRange("magatama_white_mining_speed_compensation_multiplier", 5.0D, 1.0D, 64.0D);
+        builder.pop();
+        builder.pop();
 
+        builder.comment("Futon settings")
+                .translation("tsuki.config.category.futon")
+                .push("futon");
         futonDaytimePerTick = builder
                 .comment("Sets the time speed per tick while a player is resting on a futon.")
                 .translation("tsuki.config.futon_daytime_per_tick")
@@ -156,12 +191,16 @@ public class TsukiCommonConfig {
                 .comment("If true, futon time acceleration only works during daytime.")
                 .translation("tsuki.config.futon_accelerate_only_day")
                 .define("futon_accelerate_only_day", true);
+        builder.pop();
 
+        builder.comment("Debug settings")
+                .translation("tsuki.config.category.debug")
+                .push("debug");
         debugMode = builder
                 .comment("Enables debug mode.")
                 .translation("tsuki.config.debug_mode")
                 .define("debug_mode", false);
-
+        builder.pop();
         builder.pop();
         spec = builder.build();
     }
