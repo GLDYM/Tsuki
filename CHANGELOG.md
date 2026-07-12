@@ -4,8 +4,9 @@
 
 ## Refactor
 
-- **Re-arrange the common config**
-  - **For Modpack Creator & Server Hoster，you need to re-configure all configuration!**
+- **Re-arrange the common config 重构配置文件** 
+  - **For Modpack Creator & Server Hoster，please re-configure all configuration!**
+  - **对于整合包创作者与服主，请务必重新配置所有配置！**
 
 ## Feature
 
@@ -16,7 +17,8 @@
 - Sakura leaves provide 8 light level.
 - Futons can be used to acclerate daytime.
   - Nighttime use still follows vanilla bed sleep behavior.
-- Orange Magatama effect is configuable.  
+- Orange Magatama effect is configuable.
+- Bamboo Spread is configuable.
 
 ## Bug Fix
 
@@ -54,7 +56,7 @@
 
 ## Bug Fix
 
-- [Critical] Break trunk of Ume Tree when Ume Leaves is Age 5 cause the game crash
+- [Critical] Break trunk of Ume Tree when Ume Leaves is Age 5 cause the game crash.
 
 # Tsuki 1.5.1
 

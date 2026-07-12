@@ -11,9 +11,9 @@ item_ids:
 
 ![Logo](assets/logo.png)
 
-Fudoki are local records of regional customs, geography, history, agriculture, myths, and folklore in Japan.
+*八雲立つ  出雲八重垣  妻籠に  八重垣作る  その八重垣は*
 
-This guide follows that tradition, documenting the agriculture, customs, geography, and history of this mod.
+Fudoki are local records of regional customs, geography, history, agriculture, myths, and folklore.
 
 ## Contents
 

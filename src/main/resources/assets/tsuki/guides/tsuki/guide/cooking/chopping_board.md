@@ -3,7 +3,7 @@ navigation:
   title: Chopping Board
   icon: chopping_board
   parent: cooking/cooking_index.md
-  position: 1
+  position: 2
 item_ids:
   - tsuki:chopping_board
 ---

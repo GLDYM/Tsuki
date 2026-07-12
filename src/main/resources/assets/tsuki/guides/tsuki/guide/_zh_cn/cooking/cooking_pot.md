@@ -3,7 +3,7 @@ navigation:
   title: 日式煮锅
   icon: cooking_pot
   parent: cooking/cooking_index.md
-  position: 2
+  position: 3
 item_ids:
   - tsuki:cooking_pot
 ---

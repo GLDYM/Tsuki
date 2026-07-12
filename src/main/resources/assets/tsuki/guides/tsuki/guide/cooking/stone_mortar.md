@@ -3,7 +3,7 @@ navigation:
   title: Stone Mortar
   icon: stone_mortar
   parent: cooking/cooking_index.md
-  position: 0
+  position: 1
 item_ids:
   - tsuki:stone_mortar
 ---
