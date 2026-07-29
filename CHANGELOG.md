@@ -15,10 +15,10 @@
   - Shapeless crafting Japanese Cooking Pot with the containers could serve the meal inside it.
 - Refactor curry rice recipe into Japanese Cooking Pot to avoid bowl-return loops.
 - Sakura leaves provide 8 light level.
-- Futons can be used to acclerate daytime.
+- Futons can be used to accelerate daytime.
   - Nighttime use still follows vanilla bed sleep behavior.
-- Orange Magatama effect is configuable.
-- Bamboo Spread is configuable.
+- Orange Magatama effect is configurable.
+- Bamboo Spread is configurable.
 
 ## Bug Fix
 

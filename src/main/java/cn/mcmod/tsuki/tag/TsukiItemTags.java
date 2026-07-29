@@ -243,7 +243,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> TOOLS_PICKAXES = TagUtil.forgeItemTag("tools/pickaxes");
     public static final TagKey<Item> TOOLS_SHOVELS = TagUtil.forgeItemTag("tools/shovels");
     public static final TagKey<Item> TOOLS_SWORDS = TagUtil.forgeItemTag("tools/swords");
-    public static final TagKey<Item> TOOLS_KNIVES = TagUtil.forgeItemTag("tools/knives");
+    public static final TagKey<Item> TOOLS_KNIVES = TagUtil.forgeItemTag("tools/knife");
     public static final TagKey<Item> TOOLS_HAMMERS = TagUtil.forgeItemTag("tools/hammers");
     public static final TagKey<Item> TOOLS_KATANAS = TagUtil.modItemTag(Tsuki.MODID, "tools/katanas");
     public static final TagKey<Item> TOOLS_KNIVES_FISH = TagUtil.modItemTag(Tsuki.MODID, "tools/knives/fish");

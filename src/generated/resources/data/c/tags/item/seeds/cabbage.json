@@ -1,5 +1,9 @@
 {
   "values": [
-    "tsuki:cabbage_seeds"
+    "tsuki:cabbage_seeds",
+    {
+      "id": "farmersdelight:cabbage_seeds",
+      "required": false
+    }
   ]
 }

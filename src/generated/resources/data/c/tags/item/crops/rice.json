@@ -1,6 +1,11 @@
 {
   "values": [
     "tsuki:rice_seeds",
+    {
+      "id": "farmersdelight:rice",
+      "required": false
+    },
+    "tsuki:rice_seeds",
     "tsuki:rice_seeds"
   ]
 }

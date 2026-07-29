@@ -13,13 +13,13 @@
       "item": "tsuki:rice"
     },
     {
+      "type": "neoforge:difference",
       "base": {
         "tag": "c:mushrooms"
       },
       "subtracted": {
         "item": "tsuki:matsutake"
-      },
-      "type": "neoforge:difference"
+      }
     }
   ],
   "recipeTime": 200,

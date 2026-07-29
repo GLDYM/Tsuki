@@ -1962,7 +1962,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 "farmersdelight",
                 "farmer_tatami_from_sakura");
         this.whenModLoaded(
-                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ROPE.get(), 3)
+                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ROPE.get(), 6)
                         .pattern("s")
                         .pattern("s")
                         .pattern("s")

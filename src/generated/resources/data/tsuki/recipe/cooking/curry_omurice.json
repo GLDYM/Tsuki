@@ -12,27 +12,25 @@
     {
       "item": "tsuki:rice"
     },
+    [
+      {
+        "tag": "c:raw_chicken"
+      },
+      {
+        "tag": "c:raw_pork"
+      },
+      {
+        "tag": "c:raw_beef"
+      },
+      {
+        "tag": "c:raw_mutton"
+      },
+      {
+        "tag": "c:fishes"
+      }
+    ],
     {
-      "values": [
-        {
-          "tag": "c:foods/raw_chicken"
-        },
-        {
-          "tag": "c:foods/raw_pork"
-        },
-        {
-          "tag": "c:foods/raw_beef"
-        },
-        {
-          "tag": "c:foods/raw_mutton"
-        },
-        {
-          "tag": "c:fishes"
-        }
-      ]
-    },
-    {
-      "tag": "c:tomato_sauce"
+      "tag": "c:tomatosauce"
     },
     {
       "tag": "c:eggs"
