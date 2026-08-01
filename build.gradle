@@ -164,6 +164,7 @@ dependencies {
     runtimeOnly "curse.maven:advanced-loot-info-1205426:7938903"
     // We need a tech mod to test fluid.
     runtimeOnly "curse.maven:create-328085:7963363"
+    runtimeOnly "maven.modrinth:worldedit:7.3.8"
 
     // Guide
     guideRunRuntimeOnly 'org.appliedenergistics:guideme:21.1.15'

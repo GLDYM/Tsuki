@@ -26,4 +26,4 @@ item_ids:
 - 橙の勾玉<ItemImage id="tsuki:magatama_orange" scale="0.6"/>: 満腹でも食事できるようになり、満腹度や空腹度を継続的に体力へ変換します。あふれた回復は吸収ハートへ変わります。
 - 桃の勾玉<ItemImage id="tsuki:magatama_pink" scale="0.6"/>: 60 秒ごとに空腹度と満腹度を自動で全回復します。能動使用でも即時全回復でき、その後 60 秒のクールダウンに入ります。
 - 紫の勾玉<ItemImage id="tsuki:magatama_purple" scale="0.6"/>: 周囲モンスターの敵対を解除します。ただし能動攻撃を行うと 30 秒のクールダウンに入り、その間は受けるダメージが 2 倍になります。
-- 赤の勾玉<ItemImage id="tsuki:magatama_red" scale="0.6"/>: 半径 32 ブロック以内のファントム、カモメ、ハゲワシ、小妖精を 2 秒ごとに処理します。能動使用すると即時に処理を実行します。
+- 赤の勾玉<ItemImage id="tsuki:magatama_red" scale="0.6"/>: 半径 32 ブロック以内の特定生物を 2 秒ごとに処理します。能動使用すると即時に処理を実行します。

@@ -1,10 +1,21 @@
 # Changelog
 
+# Tsuki 1.6.1
+
+## Feature
+
+- Allow Sakura Guide Crafting without GuideME to compat Abyss Sonata.
+- Improve Guide.
+
+## Bug Fix
+
+- Knives have a wrong tag.
+
 # Tsuki 1.6.0
 
 ## Refactor
 
-- **Re-arrange the common config 重构配置文件** 
+- **Re-arrange the common config 重构配置文件**
   - **For Modpack Creator & Server Hoster，please re-configure all configuration!**
   - **对于整合包创作者与服主，请务必重新配置所有配置！**
 

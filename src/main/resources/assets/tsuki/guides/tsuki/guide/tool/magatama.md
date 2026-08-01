@@ -26,4 +26,4 @@ Magatama cannot be crafted, and can only be obtained through specific advancemen
 - Orange Magatama<ItemImage id="tsuki:magatama_orange" scale="0.6"/>: Lets you keep eating even when full, and continuously converts saturation or hunger into healing. Overflow healing becomes absorption.
 - Pink Magatama<ItemImage id="tsuki:magatama_pink" scale="0.6"/>: Automatically restores hunger and saturation every 60s. Using it restores them instantly and starts a 60s cooldown.
 - Purple Magatama<ItemImage id="tsuki:magatama_purple" scale="0.6"/>: Clears nearby monster aggro. After you attack, it enters a 30s cooldown during which you take double damage.
-- Red Magatama<ItemImage id="tsuki:magatama_red" scale="0.6"/>: Every 2s executes phantoms, seagulls, vultures, and pixies within 32 blocks. Using it executes them instantly.
+- Red Magatama<ItemImage id="tsuki:magatama_red" scale="0.6"/>: Every 2s executes specific entities within 32 blocks. Using it executes them instantly.

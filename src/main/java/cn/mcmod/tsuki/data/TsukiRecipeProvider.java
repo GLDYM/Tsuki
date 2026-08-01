@@ -199,22 +199,17 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(TsukiItemTags.SALT)
                 .unlockedBy("has_egg", has(TsukiItemTags.EGGS))
                 .save(consumer);
-        whenModLoaded(
-                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.SAKURA_GUIDE.get())
-                        .requires(Items.BOOK)
-                        .requires(TsukiNormalItemSet.BAMBOO.getItem().get())
-                        .unlockedBy("has_book", has(Items.BOOK)),
-                consumer,
-                "guideme",
-                "sakura_guide_from_bamboo_and_book");
-        whenModLoaded(
-                ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.SAKURA_GUIDE.get())
-                        .requires(Items.BOOK)
-                        .requires(BlockItemRegistry.SAKURA_SAPLING.get())
-                        .unlockedBy("has_sakura_sapling", has(BlockItemRegistry.SAKURA_SAPLING.get())),
-                consumer,
-                "guideme",
-                "sakura_guide_from_sakura_sapling_and_book");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.SAKURA_GUIDE.get())
+                .requires(Items.BOOK)
+                .requires(TsukiNormalItemSet.BAMBOO.getItem().get())
+                .unlockedBy("has_book", has(Items.BOOK))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_guide_from_bamboo_and_book"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.SAKURA_GUIDE.get())
+                .requires(Items.BOOK)
+                .requires(BlockItemRegistry.SAKURA_SAPLING.get())
+                .unlockedBy("has_sakura_sapling", has(BlockItemRegistry.SAKURA_SAPLING.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_guide_from_sakura_sapling_and_book"));
         this.foodCooking(TsukiFoodSet.DOUGH_OKINOYAKI.getItem(), TsukiFoodSet.OKINOYAKI.getItem(), 1.0F, consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.OKINOYAKI_PLUS.getItem().get())
                 .requires(TsukiFoodSet.OKINOYAKI.getItem().get())

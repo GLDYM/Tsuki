@@ -22,9 +22,9 @@ The shaker<ItemImage id="tsuki:shaker" scale="0.6"/> is a tool for mixing bevera
 ## Mixing
 
 - Hold the shaker containing ingredients and hold right-click to mix.
-- The shaker must contain multiple alcohols, or a single alcohol with ingredients, to mix.
+- The shaker must contain multiple alcohols/soft drinks, or a single alcohol/soft drink with ingredients, to mix.
 - Most recipes require 12s of shaking.
-- When mixing completes, all materials inside are consumed and the cocktail is produced based on the inputs. The recipe that requires the most matching ingredients is chosen first. If no recipe matches, the output is [Tskimi Seiran's Mythery Mix](mythery_mix.md)<ItemImage id="tsuki:mythery_mix" scale="0.6"/>. The number of cocktails produced equals the number of alcohol items input.
+- When mixing completes, all materials inside are consumed and the cocktail is produced based on the inputs. The recipe that requires the most matching ingredients is chosen first. If no recipe matches, the output is [Tskimi Seiran's Mythery Mix](mythery_mix.md)<ItemImage id="tsuki:mythery_mix" scale="0.6"/>. The number of cocktails produced equals the number of alcohol/soft drink items input.
 
 ## Pouring
 
