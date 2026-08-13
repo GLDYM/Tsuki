@@ -12,6 +12,7 @@ public class ScreensRegistry {
     @SubscribeEvent
     public static void screenRegistry(final RegisterMenuScreensEvent event) {
         event.register(MenuTypeRegistry.STONE_MORTAR.get(), StoneMortarScreen::new);
+        event.register(MenuTypeRegistry.LIGHTHOUSE_ILLUMINATION.get(), LighthouseIlluminationScreen::new);
         event.register(MenuTypeRegistry.COOKING_POT.get(), CookingPotScreen::new);
         event.register(MenuTypeRegistry.FERMENTER.get(), FermenterScreen::new);
         event.register(MenuTypeRegistry.DISTILLER.get(), DistillerScreen::new);

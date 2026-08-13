@@ -11,6 +11,7 @@ import cn.mcmod.tsuki.block.entity.ObonBlockEntity;
 import cn.mcmod.tsuki.block.entity.ShakerBlockEntity;
 import cn.mcmod.tsuki.block.entity.ShojiBlockEntity;
 import cn.mcmod.tsuki.block.entity.StoneMortarBlockEntity;
+import cn.mcmod.tsuki.block.entity.LighthouseIlluminationBlockEntity;
 import cn.mcmod.tsuki.block.entity.SprinklerBlockEntity;
 import cn.mcmod.tsuki.block.entity.SunflowerCropBlockEntity;
 import net.minecraft.core.registries.Registries;
@@ -25,6 +26,10 @@ public class BlockEntityRegistry {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<StoneMortarBlockEntity>> STONE_MORTAR = BLOCK_ENTITIES
             .register("stone_mortar", () -> BlockEntityType.Builder
                     .of(StoneMortarBlockEntity::new, BlockRegistry.STONE_MORTAR.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LighthouseIlluminationBlockEntity>> LIGHTHOUSE_ILLUMINATION = BLOCK_ENTITIES
+            .register("lighthouse_illumination", () -> BlockEntityType.Builder
+                    .of(LighthouseIlluminationBlockEntity::new, BlockRegistry.LIGHTHOUSE_ILLUMINATION.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SprinklerBlockEntity>> SPRINKLER = BLOCK_ENTITIES
             .register("sprinkler", () -> BlockEntityType.Builder.of(SprinklerBlockEntity::new,

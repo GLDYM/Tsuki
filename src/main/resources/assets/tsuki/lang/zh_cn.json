@@ -1075,5 +1075,12 @@
   "item.tsuki.iron_sprinkler": "铁洒水器",
   "item.tsuki.gold_sprinkler": "金洒水器",
   "item.tsuki.diamond_sprinkler": "钻石洒水器",
-  "item.tsuki.sakura_diamond_sprinkler": "樱色钻石洒水器"
+  "item.tsuki.sakura_diamond_sprinkler": "樱色钻石洒水器",
+  "block.tsuki.lighthouse_illumination": "照明灯塔",
+  "container.tsuki.lighthouse_illumination": "照明灯塔",
+  "gui.tsuki.lighthouse.apply": "应用",
+  "gui.tsuki.lighthouse.color": "光束颜色",
+  "gui.tsuki.lighthouse.length": "长度：%s",
+  "gui.tsuki.lighthouse.width": "半径：%s",
+  "gui.tsuki.lighthouse.transparency": "不透明度"
 }

@@ -1070,5 +1070,12 @@
   "wailaharvestability.toolclass.forging_hammer": "鍛造ハンマー",
   "item.tsuki.glass_red_eyes": "レッド・アイズ",
   "item.tsuki.glass_royal_kir": "ロワイヤル・キール",
-  "item.tsuki.glass_screw_driver": "スクリュードライバー"
+  "item.tsuki.glass_screw_driver": "スクリュードライバー",
+  "block.tsuki.lighthouse_illumination": "灯台照明",
+  "container.tsuki.lighthouse_illumination": "灯台照明",
+  "gui.tsuki.lighthouse.apply": "適用",
+  "gui.tsuki.lighthouse.color": "光線の色",
+  "gui.tsuki.lighthouse.length": "長さ: %s",
+  "gui.tsuki.lighthouse.width": "光線の幅: %s",
+  "gui.tsuki.lighthouse.transparency": "不透明度"
 }

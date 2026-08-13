@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=false": { "model": "tsuki:block/lighthouse_illumination" },
+    "lit=true": { "model": "tsuki:block/lighthouse_illumination" }
+  }
+}

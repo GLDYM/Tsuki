@@ -1074,5 +1074,12 @@
   "item.tsuki.iron_sprinkler": "Iron Sprinkler",
   "item.tsuki.gold_sprinkler": "Gold Sprinkler",
   "item.tsuki.diamond_sprinkler": "Diamond Sprinkler",
-  "item.tsuki.sakura_diamond_sprinkler": "Sakura Diamond Sprinkler"
+  "item.tsuki.sakura_diamond_sprinkler": "Sakura Diamond Sprinkler",
+  "block.tsuki.lighthouse_illumination": "Lighthouse Illumination",
+  "container.tsuki.lighthouse_illumination": "Lighthouse Illumination",
+  "gui.tsuki.lighthouse.apply": "Apply",
+  "gui.tsuki.lighthouse.color": "Beam Color",
+  "gui.tsuki.lighthouse.length": "Length: %s",
+  "gui.tsuki.lighthouse.width": "Beam Width: %s",
+  "gui.tsuki.lighthouse.transparency": "Opacity"
 }

@@ -39,6 +39,7 @@ import cn.mcmod.tsuki.block.machine.MapleCauldronBlock;
 import cn.mcmod.tsuki.block.machine.MapleSpileBlock;
 import cn.mcmod.tsuki.block.machine.ShakerBlock;
 import cn.mcmod.tsuki.block.machine.StoneMortarBlock;
+import cn.mcmod.tsuki.block.machine.LighthouseIlluminationBlock;
 import cn.mcmod.tsuki.block.machine.SprinklerBlock;
 import cn.mcmod.tsuki.block.machine.TataraBlock;
 import cn.mcmod.tsuki.block.tree.BambooBlock;
@@ -579,6 +580,8 @@ public class BlockRegistry {
 
     public static final DeferredBlock<Block> STONE_MORTAR = BLOCKS.register("stone_mortar",
             () -> new StoneMortarBlock());
+    public static final DeferredBlock<Block> LIGHTHOUSE_ILLUMINATION = BLOCKS.register("lighthouse_illumination",
+            () -> new LighthouseIlluminationBlock());
     public static final DeferredBlock<Block> IRON_SPRINKLER = BLOCKS.register("iron_sprinkler",
             () -> new SprinklerBlock(SprinklerBlock.Material.IRON));
     public static final DeferredBlock<Block> GOLD_SPRINKLER = BLOCKS.register("gold_sprinkler",

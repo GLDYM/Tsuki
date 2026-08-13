@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.network;
 
 import cn.mcmod.tsuki.network.payload.MagatamaBoostPayload;
 import cn.mcmod.tsuki.network.payload.ToggleMagatamaModePayload;
+import cn.mcmod.tsuki.network.payload.ConfigureLighthousePayload;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
@@ -15,5 +16,7 @@ public final class TsukiNetwork {
                 ToggleMagatamaModePayload::handle);
         registrar.playToServer(MagatamaBoostPayload.TYPE, MagatamaBoostPayload.STREAM_CODEC,
                 MagatamaBoostPayload::handle);
+        registrar.playToServer(ConfigureLighthousePayload.TYPE, ConfigureLighthousePayload.STREAM_CODEC,
+                ConfigureLighthousePayload::handle);
     }
 }
