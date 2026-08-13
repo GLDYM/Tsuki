@@ -279,6 +279,14 @@ public class BlockItemRegistry {
             () -> new BlockItem(BlockRegistry.GRAPE_SPLINT.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> STONE_MORTAR = ITEMS.register("stone_mortar",
             () -> new BlockItem(BlockRegistry.STONE_MORTAR.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> IRON_SPRINKLER = ITEMS.register("iron_sprinkler",
+            () -> new BlockItem(BlockRegistry.IRON_SPRINKLER.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> GOLD_SPRINKLER = ITEMS.register("gold_sprinkler",
+            () -> new BlockItem(BlockRegistry.GOLD_SPRINKLER.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> DIAMOND_SPRINKLER = ITEMS.register("diamond_sprinkler",
+            () -> new BlockItem(BlockRegistry.DIAMOND_SPRINKLER.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAKURA_DIAMOND_SPRINKLER = ITEMS.register("sakura_diamond_sprinkler",
+            () -> new BlockItem(BlockRegistry.SAKURA_DIAMOND_SPRINKLER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> COOKING_POT = ITEMS.register("cooking_pot",
             () -> new CookingPotItem(BlockRegistry.COOKING_POT.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> FERMENTER = ITEMS.register("fermenter",

@@ -92,6 +92,10 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
     }
 
     private void registerCraftingRecipe(RecipeOutput consumer) {
+        sprinklerRecipe(consumer, BlockRegistry.IRON_SPRINKLER.get(), Items.IRON_INGOT);
+        sprinklerRecipe(consumer, BlockRegistry.GOLD_SPRINKLER.get(), Items.GOLD_INGOT);
+        sprinklerRecipe(consumer, BlockRegistry.DIAMOND_SPRINKLER.get(), Items.DIAMOND);
+        sprinklerRecipe(consumer, BlockRegistry.SAKURA_DIAMOND_SPRINKLER.get(), ArmorToolRegistry.SAKURA_DIAMOND.get());
         this.foodSmeltingRecipes(
                 "boiled_bonito_to_smoked_bonito",
                 TsukiFoodSet.BOILED_BONITO.getItem().get(),
@@ -1527,6 +1531,20 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(TsukiItemTags.EGGS)
                 .requires(TsukiItemTags.WATER)
                 .unlockedBy("has_eggs", has(TsukiItemTags.EGGS))
+                .save(consumer);
+    }
+
+    private void sprinklerRecipe(RecipeOutput consumer, Block result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result)
+                .pattern("IRI")
+                .pattern("LPL")
+                .pattern("MMM")
+                .define('I', Items.IRON_INGOT)
+                .define('R', Items.REDSTONE)
+                .define('L', Items.LAPIS_LAZULI)
+                .define('P', ItemTags.PLANKS)
+                .define('M', material)
+                .unlockedBy("has_" + getItemName(material), has(material))
                 .save(consumer);
     }
 

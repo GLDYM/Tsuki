@@ -1066,5 +1066,13 @@
   "painting.tsuki.kakeziku_1x3_12.title": "Paulownia and Fenghuang",
   "painting.tsuki.kakeziku_1x3_12.author": "ruby",
   "tsuki.tooltip.sheath_katana": "A crude imitation of another mod's feature.\nRight-click to put the katana in or take it out.",
-  "wailaharvestability.toolclass.forging_hammer": "Forging Hammer"
+  "wailaharvestability.toolclass.forging_hammer": "Forging Hammer",
+  "block.tsuki.iron_sprinkler": "Iron Sprinkler",
+  "block.tsuki.gold_sprinkler": "Gold Sprinkler",
+  "block.tsuki.diamond_sprinkler": "Diamond Sprinkler",
+  "block.tsuki.sakura_diamond_sprinkler": "Sakura Diamond Sprinkler",
+  "item.tsuki.iron_sprinkler": "Iron Sprinkler",
+  "item.tsuki.gold_sprinkler": "Gold Sprinkler",
+  "item.tsuki.diamond_sprinkler": "Diamond Sprinkler",
+  "item.tsuki.sakura_diamond_sprinkler": "Sakura Diamond Sprinkler"
 }

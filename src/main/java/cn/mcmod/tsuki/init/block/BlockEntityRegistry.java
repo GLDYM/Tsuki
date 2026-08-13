@@ -11,6 +11,7 @@ import cn.mcmod.tsuki.block.entity.ObonBlockEntity;
 import cn.mcmod.tsuki.block.entity.ShakerBlockEntity;
 import cn.mcmod.tsuki.block.entity.ShojiBlockEntity;
 import cn.mcmod.tsuki.block.entity.StoneMortarBlockEntity;
+import cn.mcmod.tsuki.block.entity.SprinklerBlockEntity;
 import cn.mcmod.tsuki.block.entity.SunflowerCropBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -24,6 +25,11 @@ public class BlockEntityRegistry {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<StoneMortarBlockEntity>> STONE_MORTAR = BLOCK_ENTITIES
             .register("stone_mortar", () -> BlockEntityType.Builder
                     .of(StoneMortarBlockEntity::new, BlockRegistry.STONE_MORTAR.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SprinklerBlockEntity>> SPRINKLER = BLOCK_ENTITIES
+            .register("sprinkler", () -> BlockEntityType.Builder.of(SprinklerBlockEntity::new,
+                    BlockRegistry.IRON_SPRINKLER.get(), BlockRegistry.GOLD_SPRINKLER.get(),
+                    BlockRegistry.DIAMOND_SPRINKLER.get(), BlockRegistry.SAKURA_DIAMOND_SPRINKLER.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CookingPotBlockEntity>> COOKING_POT = BLOCK_ENTITIES
             .register(

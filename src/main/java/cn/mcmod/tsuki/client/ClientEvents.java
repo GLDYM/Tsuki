@@ -5,6 +5,7 @@ import cn.mcmod.tsuki.client.particle.FallenLeafParticle;
 import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.client.particle.CookingParticle;
 import cn.mcmod.tsuki.client.particle.SyrupDropParticle;
+import cn.mcmod.tsuki.client.particle.SprinklerWaterParticle;
 import cn.mcmod.tsuki.client.gui.CookingPotTooltip;
 import cn.mcmod.tsuki.client.render.ChoppingBoardRender;
 import cn.mcmod.tsuki.client.render.CookingPotRender;
@@ -110,6 +111,8 @@ public class ClientEvents {
                 FallenLeafParticle.Factory::new);
         event.registerSpriteSet(ParticleRegistry.SYRUP_DROP.get(),
                 SyrupDropParticle.Factory::new);
+        event.registerSpriteSet(ParticleRegistry.SPRINKLER_WATER.get(),
+                SprinklerWaterParticle.Factory::new);
         event.registerSpriteSet(ParticleRegistry.COOKING.get(),
                 CookingParticle.Factory::new);
     }

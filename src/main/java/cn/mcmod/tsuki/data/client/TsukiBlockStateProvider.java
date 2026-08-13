@@ -92,6 +92,11 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         simpleBlock(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
         simpleBlock(BlockRegistry.SAKURA_DIAMOND_BLOCK.get());
         simpleBlock(BlockRegistry.IRON_SAND.get());
+        simpleBlock(BlockRegistry.IRON_SPRINKLER.get(), models().getExistingFile(modLoc("block/iron_sprinkler")));
+        simpleBlock(BlockRegistry.GOLD_SPRINKLER.get(), models().getExistingFile(modLoc("block/gold_sprinkler")));
+        simpleBlock(BlockRegistry.DIAMOND_SPRINKLER.get(), models().getExistingFile(modLoc("block/diamond_sprinkler")));
+        simpleBlock(BlockRegistry.SAKURA_DIAMOND_SPRINKLER.get(),
+                models().getExistingFile(modLoc("block/sakura_diamond_sprinkler")));
 
         simpleBlock(BlockRegistry.MAPLE_LEAVES_RED.get());
         simpleBlock(BlockRegistry.MAPLE_LEAVES_YELLOW.get());

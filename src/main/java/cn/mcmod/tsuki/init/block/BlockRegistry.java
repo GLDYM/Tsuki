@@ -39,6 +39,7 @@ import cn.mcmod.tsuki.block.machine.MapleCauldronBlock;
 import cn.mcmod.tsuki.block.machine.MapleSpileBlock;
 import cn.mcmod.tsuki.block.machine.ShakerBlock;
 import cn.mcmod.tsuki.block.machine.StoneMortarBlock;
+import cn.mcmod.tsuki.block.machine.SprinklerBlock;
 import cn.mcmod.tsuki.block.machine.TataraBlock;
 import cn.mcmod.tsuki.block.tree.BambooBlock;
 import cn.mcmod.tsuki.block.tree.BambooLanternBlock;
@@ -578,6 +579,14 @@ public class BlockRegistry {
 
     public static final DeferredBlock<Block> STONE_MORTAR = BLOCKS.register("stone_mortar",
             () -> new StoneMortarBlock());
+    public static final DeferredBlock<Block> IRON_SPRINKLER = BLOCKS.register("iron_sprinkler",
+            () -> new SprinklerBlock(SprinklerBlock.Material.IRON));
+    public static final DeferredBlock<Block> GOLD_SPRINKLER = BLOCKS.register("gold_sprinkler",
+            () -> new SprinklerBlock(SprinklerBlock.Material.GOLD));
+    public static final DeferredBlock<Block> DIAMOND_SPRINKLER = BLOCKS.register("diamond_sprinkler",
+            () -> new SprinklerBlock(SprinklerBlock.Material.DIAMOND));
+    public static final DeferredBlock<Block> SAKURA_DIAMOND_SPRINKLER = BLOCKS.register("sakura_diamond_sprinkler",
+            () -> new SprinklerBlock(SprinklerBlock.Material.SAKURA_DIAMOND));
     public static final DeferredBlock<Block> COOKING_POT = BLOCKS.register("cooking_pot", () -> new CookingPotBlock());
     public static final DeferredBlock<Block> FERMENTER = BLOCKS.register("fermenter", () -> new FermenterBlock());
     public static final DeferredBlock<Block> DISTILLER = BLOCKS.register("distiller", () -> new DistillerBlock());
