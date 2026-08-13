@@ -241,6 +241,42 @@ public class SunflowerCropBlock extends CropBlock implements EntityBlock {
         placeTall(level, pos, upperAge);
     }
 
+    public void growFromSprinkler(ServerLevel level, BlockPos pos, BlockState state, int growthStages) {
+        if (state.getValue(PART) != Part.LOWER || growthStages <= 0) {
+            return;
+        }
+
+        int remainingStages = growthStages;
+        int lowerAge = state.getValue(AGE);
+        if (lowerAge < 1) {
+            int grownAge = Math.min(1, lowerAge + remainingStages);
+            level.setBlock(pos, state.setValue(AGE, grownAge), 2);
+            remainingStages -= grownAge - lowerAge;
+            if (remainingStages == 0) {
+                return;
+            }
+            state = level.getBlockState(pos);
+        }
+
+        if (state.getValue(AGE) == 1) {
+            if (!canFormTall(level, pos)) {
+                return;
+            }
+            placeTall(level, pos, Math.min(getMaxAge(), 3 + remainingStages - 1));
+            return;
+        }
+
+        BlockPos upperPos = pos.above(2);
+        BlockState upperState = level.getBlockState(upperPos);
+        if (upperState.is(this) && upperState.getValue(PART) == Part.UPPER) {
+            int upperAge = upperState.getValue(AGE);
+            if (upperAge < getMaxAge()) {
+                level.setBlock(upperPos, upperState.setValue(AGE,
+                        Math.min(getMaxAge(), upperAge + remainingStages)), 2);
+            }
+        }
+    }
+
     @Override
     public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (!level.isClientSide()) {

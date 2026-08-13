@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.block.entity;
 
 import cn.mcmod.tsuki.block.machine.SprinklerBlock;
+import cn.mcmod.tsuki.block.crop.SunflowerCropBlock;
 import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -49,6 +50,11 @@ public class SprinklerBlockEntity extends BlockEntity {
     }
 
     private static void growByAge(ServerLevel level, BlockPos pos, BlockState state, int growthStages) {
+        if (state.getBlock() instanceof SunflowerCropBlock sunflower) {
+            sunflower.growFromSprinkler(level, pos, state, growthStages);
+            return;
+        }
+
         if (state.hasProperty(BlockStateProperties.AGE_7)) {
             int currentAge = state.getValue(BlockStateProperties.AGE_7);
             if (currentAge < 7) {
