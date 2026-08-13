@@ -1082,5 +1082,6 @@
   "gui.tsuki.lighthouse.color": "光束颜色",
   "gui.tsuki.lighthouse.length": "长度：%s",
   "gui.tsuki.lighthouse.width": "半径：%s",
-  "gui.tsuki.lighthouse.transparency": "不透明度"
+  "gui.tsuki.lighthouse.transparency": "不透明度",
+  "gui.tsuki.lighthouse.polygon_count": "多边形边数：%s"
 }

@@ -1077,5 +1077,6 @@
   "gui.tsuki.lighthouse.color": "光線の色",
   "gui.tsuki.lighthouse.length": "長さ: %s",
   "gui.tsuki.lighthouse.width": "光線の幅: %s",
-  "gui.tsuki.lighthouse.transparency": "不透明度"
+  "gui.tsuki.lighthouse.transparency": "不透明度",
+  "gui.tsuki.lighthouse.polygon_count": "多角形の辺数: %s"
 }

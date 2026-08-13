@@ -1081,5 +1081,6 @@
   "gui.tsuki.lighthouse.color": "Beam Color",
   "gui.tsuki.lighthouse.length": "Length: %s",
   "gui.tsuki.lighthouse.width": "Beam Width: %s",
-  "gui.tsuki.lighthouse.transparency": "Opacity"
+  "gui.tsuki.lighthouse.transparency": "Opacity",
+  "gui.tsuki.lighthouse.polygon_count": "Polygon Count: %s"
 }

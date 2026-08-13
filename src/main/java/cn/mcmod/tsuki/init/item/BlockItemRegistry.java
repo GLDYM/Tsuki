@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.init.item;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.item.LighthouseIlluminationItem;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.item.block.CookingPotItem;
 import net.minecraft.world.item.BlockItem;
@@ -280,7 +281,7 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> STONE_MORTAR = ITEMS.register("stone_mortar",
             () -> new BlockItem(BlockRegistry.STONE_MORTAR.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> LIGHTHOUSE_ILLUMINATION = ITEMS.register("lighthouse_illumination",
-            () -> new BlockItem(BlockRegistry.LIGHTHOUSE_ILLUMINATION.get(), Tsuki.defaultItemProperties()));
+            () -> new LighthouseIlluminationItem(BlockRegistry.LIGHTHOUSE_ILLUMINATION.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> IRON_SPRINKLER = ITEMS.register("iron_sprinkler",
             () -> new BlockItem(BlockRegistry.IRON_SPRINKLER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> GOLD_SPRINKLER = ITEMS.register("gold_sprinkler",

@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.client.render;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.entity.LighthouseIlluminationBlockEntity;
+import cn.mcmod.tsuki.block.machine.LighthouseIlluminationBlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import software.bernie.geckolib.animation.AnimationState;
@@ -26,6 +27,10 @@ public class LighthouseIlluminationGeoModel extends GeoModel<LighthouseIlluminat
         super.setCustomAnimations(entity, instanceId, animationState);
         GeoBone upper = getAnimationProcessor().getBone("upper");
         if (upper == null || entity.getLevel() == null) return;
+        if (!entity.getBlockState().getValue(LighthouseIlluminationBlock.LIT)) {
+            upper.setRotY(0.0F);
+            return;
+        }
         float degrees = (entity.getLevel().getGameTime() + animationState.getPartialTick()) * 2.0F;
         upper.setRotY(degrees * Mth.DEG_TO_RAD);
     }
