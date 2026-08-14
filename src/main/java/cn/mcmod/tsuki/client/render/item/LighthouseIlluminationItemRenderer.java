@@ -20,10 +20,14 @@ public class LighthouseIlluminationItemRenderer extends GeoItemRenderer<Lighthou
                 "textures/block/lighthouse_illumination.png");
 
         @Override
-        public ResourceLocation getModelResource(LighthouseIlluminationItem animatable) { return MODEL; }
+        public ResourceLocation getModelResource(LighthouseIlluminationItem animatable) {
+            return MODEL;
+        }
 
         @Override
-        public ResourceLocation getTextureResource(LighthouseIlluminationItem animatable) { return TEXTURE; }
+        public ResourceLocation getTextureResource(LighthouseIlluminationItem animatable) {
+            return TEXTURE;
+        }
 
         @Override
         public ResourceLocation getAnimationResource(LighthouseIlluminationItem animatable) {

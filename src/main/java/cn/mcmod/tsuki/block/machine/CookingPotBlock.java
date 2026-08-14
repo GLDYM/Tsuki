@@ -199,7 +199,8 @@ public class CookingPotBlock extends BaseEntityBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos,
+            Player player) {
         ItemStack stack = new ItemStack(this);
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof CookingPotBlockEntity cookingPot) {
@@ -209,7 +210,8 @@ public class CookingPotBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable net.minecraft.world.entity.LivingEntity placer,
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state,
+            @Nullable net.minecraft.world.entity.LivingEntity placer,
             ItemStack stack) {
         super.setPlacedBy(level, pos, state, placer, stack);
     }

@@ -56,7 +56,8 @@ public class VanillaCropBlock extends BaseCropBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos,
+            Player player) {
         return new ItemStack(BlockRegistry.VANILLA_SPLINT.get());
     }
 

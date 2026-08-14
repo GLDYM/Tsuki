@@ -29,7 +29,8 @@ public class BlockEntityRegistry {
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<LighthouseIlluminationBlockEntity>> LIGHTHOUSE_ILLUMINATION = BLOCK_ENTITIES
             .register("lighthouse_illumination", () -> BlockEntityType.Builder
-                    .of(LighthouseIlluminationBlockEntity::new, BlockRegistry.LIGHTHOUSE_ILLUMINATION.get()).build(null));
+                    .of(LighthouseIlluminationBlockEntity::new, BlockRegistry.LIGHTHOUSE_ILLUMINATION.get())
+                    .build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SprinklerBlockEntity>> SPRINKLER = BLOCK_ENTITIES
             .register("sprinkler", () -> BlockEntityType.Builder.of(SprinklerBlockEntity::new,

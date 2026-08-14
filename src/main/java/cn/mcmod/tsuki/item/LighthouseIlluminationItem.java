@@ -26,14 +26,16 @@ public class LighthouseIlluminationItem extends BlockItem implements GeoItem {
 
             @Override
             public BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
-                if (renderer == null) renderer = new LighthouseIlluminationItemRenderer();
+                if (renderer == null)
+                    renderer = new LighthouseIlluminationItemRenderer();
                 return renderer;
             }
         });
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {}
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+    }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {

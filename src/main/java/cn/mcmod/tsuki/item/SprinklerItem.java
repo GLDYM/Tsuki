@@ -25,7 +25,9 @@ public class SprinklerItem extends BlockItem implements GeoItem {
         GeoItem.registerSyncedAnimatable(this);
     }
 
-    public ResourceLocation getModelResource() { return model; }
+    public ResourceLocation getModelResource() {
+        return model;
+    }
 
     @Override
     public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
@@ -34,15 +36,19 @@ public class SprinklerItem extends BlockItem implements GeoItem {
 
             @Override
             public BlockEntityWithoutLevelRenderer getGeoItemRenderer() {
-                if (renderer == null) renderer = new SprinklerItemRenderer();
+                if (renderer == null)
+                    renderer = new SprinklerItemRenderer();
                 return renderer;
             }
         });
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {}
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+    }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() { return cache; }
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
 }

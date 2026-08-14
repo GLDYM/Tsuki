@@ -117,7 +117,9 @@ public class TsukiCommonConfig {
         magatamaGreenRewardTags = builder
                 .comment("Sets the item tag list used by the Green Magatama reward pool.")
                 .translation("tsuki.config.magatama_green_reward_tags")
-                .defineListAllowEmpty(List.of("magatama_green_reward_tags"), () -> List.of("c:seeds",  "c:fishes", "c:raw_meat", "c:raw_meats", "c:eggs", "c:milk", "c:vegetables", "c:fruits", "c:crops", "c:mushrooms"),
+                .defineListAllowEmpty(List.of("magatama_green_reward_tags"),
+                        () -> List.of("c:seeds", "c:fishes", "c:raw_meat", "c:raw_meats", "c:eggs", "c:milk",
+                                "c:vegetables", "c:fruits", "c:crops", "c:mushrooms"),
                         () -> "c:seeds",
                         value -> value instanceof String string && !string.isBlank());
         builder.pop();

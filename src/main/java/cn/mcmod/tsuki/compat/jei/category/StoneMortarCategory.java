@@ -87,8 +87,8 @@ public class StoneMortarCategory implements IRecipeCategory<StoneMortarRecipe> {
                 .addItemStack(recipe.getResultItemList().get(0));
         if (recipe.getResultItemList().size() > 1) {
             builder.addSlot(RecipeIngredientRole.OUTPUT, 66, 41)
-                .setOutputSlotBackground()
-                .addItemStack(recipe.getResultItemList().get(1));
+                    .setOutputSlotBackground()
+                    .addItemStack(recipe.getResultItemList().get(1));
         }
     }
 

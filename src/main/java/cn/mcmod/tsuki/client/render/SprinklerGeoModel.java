@@ -21,15 +21,23 @@ public class SprinklerGeoModel extends GeoModel<SprinklerBlockEntity> {
         return ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "geo/block/" + material + "_sprinkler.geo.json");
     }
 
-    @Override public ResourceLocation getTextureResource(SprinklerBlockEntity entity) { return TEXTURE; }
-    @Override public ResourceLocation getAnimationResource(SprinklerBlockEntity entity) { return ANIMATION; }
+    @Override
+    public ResourceLocation getTextureResource(SprinklerBlockEntity entity) {
+        return TEXTURE;
+    }
+
+    @Override
+    public ResourceLocation getAnimationResource(SprinklerBlockEntity entity) {
+        return ANIMATION;
+    }
 
     @Override
     public void setCustomAnimations(SprinklerBlockEntity entity, long instanceId,
             AnimationState<SprinklerBlockEntity> animationState) {
         super.setCustomAnimations(entity, instanceId, animationState);
         GeoBone rotor = getAnimationProcessor().getBone("rotor");
-        if (rotor == null || entity.getLevel() == null) return;
+        if (rotor == null || entity.getLevel() == null)
+            return;
         if (!entity.getBlockState().getValue(SprinklerBlock.ENABLED)) {
             rotor.setRotY(0.0F);
             return;

@@ -230,10 +230,10 @@ public enum TsukiCocktailSet {
     }),
     GLASS_LONG_ISLAND_ICED_TEA("glass_long_island_iced_tea", DrinkRegistry::collinsGlassContainerItem,
             () -> new MobEffectInstance[] {
-            new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2000, 1),
-            new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2000, 0),
-            new MobEffectInstance(MobEffectRegistry.GOLDEN_HEART, 500, 0)
-    }),
+                    new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2000, 1),
+                    new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2000, 0),
+                    new MobEffectInstance(MobEffectRegistry.GOLDEN_HEART, 500, 0)
+            }),
     GLASS_MINT_JULEP("glass_mint_julep", () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 2200, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1600, 0)

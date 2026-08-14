@@ -282,7 +282,8 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> STONE_MORTAR = ITEMS.register("stone_mortar",
             () -> new BlockItem(BlockRegistry.STONE_MORTAR.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> LIGHTHOUSE_ILLUMINATION = ITEMS.register("lighthouse_illumination",
-            () -> new LighthouseIlluminationItem(BlockRegistry.LIGHTHOUSE_ILLUMINATION.get(), Tsuki.defaultItemProperties()));
+            () -> new LighthouseIlluminationItem(BlockRegistry.LIGHTHOUSE_ILLUMINATION.get(),
+                    Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> IRON_SPRINKLER = ITEMS.register("iron_sprinkler",
             () -> new SprinklerItem(BlockRegistry.IRON_SPRINKLER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> GOLD_SPRINKLER = ITEMS.register("gold_sprinkler",

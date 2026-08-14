@@ -87,7 +87,8 @@ public class ClientEvents {
             });
 
             BlockEntityRenderers.register(BlockEntityRegistry.STONE_MORTAR.get(), StoneMortarRenderer::new);
-            BlockEntityRenderers.register(BlockEntityRegistry.LIGHTHOUSE_ILLUMINATION.get(), LighthouseIlluminationRenderer::new);
+            BlockEntityRenderers.register(BlockEntityRegistry.LIGHTHOUSE_ILLUMINATION.get(),
+                    LighthouseIlluminationRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.SPRINKLER.get(), SprinklerRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.CHOPPING_BOARD.get(), ChoppingBoardRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.COOKING_POT.get(), CookingPotRender::new);

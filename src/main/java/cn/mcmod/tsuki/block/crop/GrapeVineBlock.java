@@ -66,7 +66,8 @@ public class GrapeVineBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos,
+            Player player) {
         return new ItemStack(BlockRegistry.GRAPE_SPLINT_STAND.get());
     }
 

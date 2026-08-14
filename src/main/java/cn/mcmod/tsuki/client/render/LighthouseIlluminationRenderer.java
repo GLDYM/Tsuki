@@ -32,9 +32,19 @@ public class LighthouseIlluminationRenderer extends GeoBlockRenderer<LighthouseI
         }
     }
 
-    public LighthouseIlluminationRenderer(BlockEntityRendererProvider.Context context) { super(new LighthouseIlluminationGeoModel()); }
-    @Override public boolean shouldRenderOffScreen(LighthouseIlluminationBlockEntity entity) { return true; }
-    @Override public int getViewDistance() { return LIGHTHOUSE_VIEW_DISTANCE; }
+    public LighthouseIlluminationRenderer(BlockEntityRendererProvider.Context context) {
+        super(new LighthouseIlluminationGeoModel());
+    }
+
+    @Override
+    public boolean shouldRenderOffScreen(LighthouseIlluminationBlockEntity entity) {
+        return true;
+    }
+
+    @Override
+    public int getViewDistance() {
+        return LIGHTHOUSE_VIEW_DISTANCE;
+    }
 
     @Override
     public AABB getRenderBoundingBox(LighthouseIlluminationBlockEntity entity) {
@@ -50,10 +60,14 @@ public class LighthouseIlluminationRenderer extends GeoBlockRenderer<LighthouseI
         return cameraPosition.closerThan(Vec3.atCenterOf(entity.getBlockPos()), range);
     }
 
-    @Override public void render(LighthouseIlluminationBlockEntity entity, float partialTick, PoseStack poseStack, MultiBufferSource buffers, int light, int overlay) {
+    @Override
+    public void render(LighthouseIlluminationBlockEntity entity, float partialTick, PoseStack poseStack,
+            MultiBufferSource buffers, int light, int overlay) {
         super.render(entity, partialTick, poseStack, buffers, light, overlay);
-        if (!entity.getBlockState().getValue(LighthouseIlluminationBlock.LIT)) return;
-        int color = entity.getColor(); int r = color >> 16 & 255, g = color >> 8 & 255, b = color & 255;
+        if (!entity.getBlockState().getValue(LighthouseIlluminationBlock.LIT))
+            return;
+        int color = entity.getColor();
+        int r = color >> 16 & 255, g = color >> 8 & 255, b = color & 255;
         float time = (entity.getLevel().getGameTime() + partialTick) * 2.0F;
         poseStack.pushPose();
         // The lens is at model coordinates (8, 10.5, 8).
@@ -105,6 +119,7 @@ public class LighthouseIlluminationRenderer extends GeoBlockRenderer<LighthouseI
         out.addVertex(pose, x2, y2, length).setColor(r, g, b, 0);
         out.addVertex(pose, 0, 0, 0).setColor(r, g, b, alpha);
     }
+
     private static void triangleBeam(VertexConsumer out, Matrix4f pose, float length, float width,
             int r, int g, int b, int alpha) {
         // RenderType.lightning batches vertices as quads. Duplicate the apex to

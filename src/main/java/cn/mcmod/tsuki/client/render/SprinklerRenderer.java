@@ -18,7 +18,8 @@ public class SprinklerRenderer extends GeoBlockRenderer<SprinklerBlockEntity> {
             MultiBufferSource buffers, int light, int overlay) {
         super.render(entity, partialTick, poseStack, buffers, light, overlay);
         if (!entity.getBlockState().getValue(SprinklerBlock.ENABLED) || entity.getLevel() == null
-                || !entity.markParticlesEmitted(entity.getLevel().getGameTime())) return;
+                || !entity.markParticlesEmitted(entity.getLevel().getGameTime()))
+            return;
 
         // Match the rotor's local +X/-X nozzle directions and its Y rotation.
         double angle = Math.toRadians((entity.getLevel().getGameTime() + partialTick) * 12.0D);

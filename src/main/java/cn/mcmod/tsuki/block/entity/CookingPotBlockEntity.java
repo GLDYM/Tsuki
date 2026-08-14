@@ -366,7 +366,8 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         if (!cookingPotStack.is(BlockItemRegistry.COOKING_POT.get())) {
             return ItemStack.EMPTY;
         }
-        return cookingPotStack.getOrDefault(ItemDataComponentRegistry.CONTAINER.get(), ItemStackWrapper.EMPTY).getStack();
+        return cookingPotStack.getOrDefault(ItemDataComponentRegistry.CONTAINER.get(), ItemStackWrapper.EMPTY)
+                .getStack();
     }
 
     public static void takeServingFromItem(ItemStack cookingPotStack) {
@@ -601,7 +602,8 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         super.applyImplicitComponents(componentInput);
         this.inventory.setStackInSlot(SLOT_MEAL_DISPLAY,
                 componentInput.getOrDefault(ItemDataComponentRegistry.MEAL.get(), ItemStackWrapper.EMPTY).getStack());
-        this.mealContainer = componentInput.getOrDefault(ItemDataComponentRegistry.CONTAINER.get(), ItemStackWrapper.EMPTY)
+        this.mealContainer = componentInput
+                .getOrDefault(ItemDataComponentRegistry.CONTAINER.get(), ItemStackWrapper.EMPTY)
                 .getStack();
     }
 

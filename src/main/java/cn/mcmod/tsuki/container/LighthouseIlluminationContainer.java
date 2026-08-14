@@ -15,11 +15,31 @@ import net.minecraft.world.item.ItemStack;
 public class LighthouseIlluminationContainer extends AbstractContainerMenu {
     private final ContainerLevelAccess access;
     public final LighthouseIlluminationBlockEntity blockEntity;
+
     public LighthouseIlluminationContainer(int id, Inventory inventory, LighthouseIlluminationBlockEntity blockEntity) {
-        super(MenuTypeRegistry.LIGHTHOUSE_ILLUMINATION.get(), id); this.blockEntity = blockEntity; access = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
+        super(MenuTypeRegistry.LIGHTHOUSE_ILLUMINATION.get(), id);
+        this.blockEntity = blockEntity;
+        access = ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos());
     }
-    public LighthouseIlluminationContainer(int id, Inventory inventory, FriendlyByteBuf data) { this(id, inventory, getBlockEntity(inventory, data.readBlockPos())); }
-    private static LighthouseIlluminationBlockEntity getBlockEntity(Inventory inventory, BlockPos pos) { Objects.requireNonNull(inventory); if (inventory.player.level().getBlockEntity(pos) instanceof LighthouseIlluminationBlockEntity entity) return entity; throw new IllegalStateException("Expected lighthouse block entity at " + pos); }
-    @Override public boolean stillValid(Player player) { return stillValid(access, player, BlockRegistry.LIGHTHOUSE_ILLUMINATION.get()); }
-    @Override public ItemStack quickMoveStack(Player player, int slot) { return ItemStack.EMPTY; }
+
+    public LighthouseIlluminationContainer(int id, Inventory inventory, FriendlyByteBuf data) {
+        this(id, inventory, getBlockEntity(inventory, data.readBlockPos()));
+    }
+
+    private static LighthouseIlluminationBlockEntity getBlockEntity(Inventory inventory, BlockPos pos) {
+        Objects.requireNonNull(inventory);
+        if (inventory.player.level().getBlockEntity(pos) instanceof LighthouseIlluminationBlockEntity entity)
+            return entity;
+        throw new IllegalStateException("Expected lighthouse block entity at " + pos);
+    }
+
+    @Override
+    public boolean stillValid(Player player) {
+        return stillValid(access, player, BlockRegistry.LIGHTHOUSE_ILLUMINATION.get());
+    }
+
+    @Override
+    public ItemStack quickMoveStack(Player player, int slot) {
+        return ItemStack.EMPTY;
+    }
 }

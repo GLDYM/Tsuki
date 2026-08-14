@@ -25,26 +25,33 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 public class SprinklerBlockEntity extends BlockEntity implements GeoBlockEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private long lastParticleTick = Long.MIN_VALUE;
+
     public SprinklerBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.SPRINKLER.get(), pos, state);
     }
 
     public boolean markParticlesEmitted(long gameTime) {
-        if (lastParticleTick == gameTime) return false;
+        if (lastParticleTick == gameTime)
+            return false;
         lastParticleTick = gameTime;
         return true;
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {}
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+    }
 
     @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() { return cache; }
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, SprinklerBlockEntity sprinkler) {
-        if (level.isClientSide) return;
+        if (level.isClientSide)
+            return;
         ServerLevel server = (ServerLevel) level;
-        if (level.getGameTime() % 20 == 0) wetFarmland(server, pos);
+        if (level.getGameTime() % 20 == 0)
+            wetFarmland(server, pos);
         SprinklerBlock.Material material = state.getValue(SprinklerBlock.MATERIAL);
         if (server.random.nextInt(material.growthRate()) == 0) {
             accelerate(server, pos, material.growthStages());
@@ -101,7 +108,8 @@ public class SprinklerBlockEntity extends BlockEntity implements GeoBlockEntity 
                 for (int y = 1; y >= -1; y--) {
                     BlockPos pos = center.offset(x, y, z);
                     BlockState state = level.getBlockState(pos);
-                    if (!level.isEmptyBlock(pos.above())) continue;
+                    if (!level.isEmptyBlock(pos.above()))
+                        continue;
                     UseOnContext context = new UseOnContext(level, player, hand, hoe,
                             new BlockHitResult(pos.getCenter(), Direction.UP, pos, false));
                     BlockState tilled = state.getToolModifiedState(context, ItemAbilities.HOE_TILL, false);

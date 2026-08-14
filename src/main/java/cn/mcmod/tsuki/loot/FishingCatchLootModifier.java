@@ -27,7 +27,8 @@ public class FishingCatchLootModifier extends LootModifier {
 
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        LootTable tsukiFishingTable = context.getLevel().getServer().reloadableRegistries().getLootTable(TSUKI_FISHING_TABLE);
+        LootTable tsukiFishingTable = context.getLevel().getServer().reloadableRegistries()
+                .getLootTable(TSUKI_FISHING_TABLE);
         tsukiFishingTable.getRandomItems(context, generatedLoot::add);
         return generatedLoot;
     }

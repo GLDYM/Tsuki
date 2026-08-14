@@ -37,7 +37,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SprinklerBlock extends BaseEntityBlock {
-    public static final MapCodec<SprinklerBlock> CODEC = simpleCodec(properties -> new SprinklerBlock(properties, Material.IRON));
+    public static final MapCodec<SprinklerBlock> CODEC = simpleCodec(
+            properties -> new SprinklerBlock(properties, Material.IRON));
     public static final BooleanProperty ENABLED = BooleanProperty.create("enabled");
     public static final EnumProperty<Material> MATERIAL = EnumProperty.create("material", Material.class);
     private static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 6, 14);
@@ -59,9 +60,18 @@ public class SprinklerBlock extends BaseEntityBlock {
             this.name = name;
         }
 
-        public int growthStages() { return growthStages; }
-        public int growthRate() { return growthRate; }
-        @Override public String getSerializedName() { return name; }
+        public int growthStages() {
+            return growthStages;
+        }
+
+        public int growthRate() {
+            return growthRate;
+        }
+
+        @Override
+        public String getSerializedName() {
+            return name;
+        }
     }
 
     public SprinklerBlock() {
@@ -87,10 +97,21 @@ public class SprinklerBlock extends BaseEntityBlock {
         registerDefaultState(stateDefinition.any().setValue(ENABLED, true).setValue(MATERIAL, material));
     }
 
-    @Override protected MapCodec<? extends BaseEntityBlock> codec() { return CODEC; }
-    @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.ENTITYBLOCK_ANIMATED; }
-    @Override public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos,
-            CollisionContext context) { return SHAPE; }
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.ENTITYBLOCK_ANIMATED;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos,
+            CollisionContext context) {
+        return SHAPE;
+    }
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
@@ -106,7 +127,9 @@ public class SprinklerBlock extends BaseEntityBlock {
         }
         return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos);
     }
-    @Override public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return BlockEntityRegistry.SPRINKLER.get().create(pos, state);
     }
 
@@ -134,7 +157,9 @@ public class SprinklerBlock extends BaseEntityBlock {
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
-    public Material material() { return material; }
+    public Material material() {
+        return material;
+    }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

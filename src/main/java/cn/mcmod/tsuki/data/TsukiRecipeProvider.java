@@ -209,12 +209,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(Items.BOOK)
                 .requires(TsukiNormalItemSet.BAMBOO.getItem().get())
                 .unlockedBy("has_book", has(Items.BOOK))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_guide_from_bamboo_and_book"));
+                .save(consumer,
+                        ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_guide_from_bamboo_and_book"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ItemRegistry.SAKURA_GUIDE.get())
                 .requires(Items.BOOK)
                 .requires(BlockItemRegistry.SAKURA_SAPLING.get())
                 .unlockedBy("has_sakura_sapling", has(BlockItemRegistry.SAKURA_SAPLING.get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "sakura_guide_from_sakura_sapling_and_book"));
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+                        "sakura_guide_from_sakura_sapling_and_book"));
         this.foodCooking(TsukiFoodSet.DOUGH_OKINOYAKI.getItem(), TsukiFoodSet.OKINOYAKI.getItem(), 1.0F, consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.DECORATIONS, TsukiFoodSet.OKINOYAKI_PLUS.getItem().get())
                 .requires(TsukiFoodSet.OKINOYAKI.getItem().get())
@@ -2652,39 +2654,39 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_katsu_cooking"));
         CookingPotRecipeBuilder.cooking(
-                        FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
-                        TsukiCuisineSet.RICE_CURRY.getItem().get())
+                FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
+                TsukiCuisineSet.RICE_CURRY.getItem().get())
                 .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cooking/rice_curry"));
         CookingPotRecipeBuilder.cooking(
-                        FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
-                        TsukiCuisineSet.RICE_CURRY_KATSU.getItem().get())
+                FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
+                TsukiCuisineSet.RICE_CURRY_KATSU.getItem().get())
                 .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
                 .requires(TsukiFoodSet.KATSU.getItem().get())
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cooking/rice_curry_katsu"));
         CookingPotRecipeBuilder.cooking(
-                        FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
-                        TsukiCuisineSet.RICE_CURRY_BURGER.getItem().get())
+                FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
+                TsukiCuisineSet.RICE_CURRY_BURGER.getItem().get())
                 .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
                 .requires(TsukiFoodSet.BURGER.getItem().get())
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cooking/rice_curry_burger"));
         CookingPotRecipeBuilder.cooking(
-                        FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
-                        TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
+                FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
+                TsukiCuisineSet.RICE_CURRY_CHEESE.getItem().get())
                 .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
                 .requires(TsukiItemTags.CHEESE)
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cooking/rice_curry_cheese"));
         CookingPotRecipeBuilder.cooking(
-                        FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
-                        TsukiCuisineSet.RICE_CURRY_CHEESE_KATSU.getItem().get())
+                FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
+                TsukiCuisineSet.RICE_CURRY_CHEESE_KATSU.getItem().get())
                 .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
                 .requires(TsukiItemTags.CHEESE)
@@ -2692,8 +2694,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .container(Items.BOWL)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "cooking/rice_curry_cheese_katsu"));
         CookingPotRecipeBuilder.cooking(
-                        FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
-                        TsukiCuisineSet.RICE_CURRY_CHEESE_BURGER.getItem().get())
+                FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
+                TsukiCuisineSet.RICE_CURRY_CHEESE_BURGER.getItem().get())
                 .requires(TsukiNormalItemSet.RICE.getItem().get())
                 .requires(TsukiNormalItemSet.CURRY_SAUCE.getItem().get())
                 .requires(TsukiItemTags.CHEESE)

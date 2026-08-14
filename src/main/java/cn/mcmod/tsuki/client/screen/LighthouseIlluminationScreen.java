@@ -38,20 +38,60 @@ public class LighthouseIlluminationScreen extends AbstractContainerScreen<Lighth
         transparencyField.setValue(Integer.toString(menu.blockEntity.getTransparency()));
         addRenderableWidget(transparencyField);
 
-        addRenderableWidget(Button.builder(Component.literal("-"), button -> changeLength(-1)).bounds(x + 98, y + 82, 22, 22).build());
-        addRenderableWidget(Button.builder(Component.literal("+"), button -> changeLength(1)).bounds(x + 134, y + 82, 22, 22).build());
-        addRenderableWidget(Button.builder(Component.literal("-"), button -> changeWidth(-1)).bounds(x + 98, y + 117, 22, 22).build());
-        addRenderableWidget(Button.builder(Component.literal("+"), button -> changeWidth(1)).bounds(x + 134, y + 117, 22, 22).build());
-        addRenderableWidget(Button.builder(Component.literal("-"), button -> changePolygonCount(-1)).bounds(x + 98, y + 152, 22, 22).build());
-        addRenderableWidget(Button.builder(Component.literal("+"), button -> changePolygonCount(1)).bounds(x + 134, y + 152, 22, 22).build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.tsuki.lighthouse.apply"), button -> apply()).bounds(x + 218, y + 225, 122, 24).build());
+        addRenderableWidget(Button.builder(Component.literal("-"), button -> changeLength(-1))
+                .bounds(x + 98, y + 82, 22, 22).build());
+        addRenderableWidget(Button.builder(Component.literal("+"), button -> changeLength(1))
+                .bounds(x + 134, y + 82, 22, 22).build());
+        addRenderableWidget(Button.builder(Component.literal("-"), button -> changeWidth(-1))
+                .bounds(x + 98, y + 117, 22, 22).build());
+        addRenderableWidget(Button.builder(Component.literal("+"), button -> changeWidth(1))
+                .bounds(x + 134, y + 117, 22, 22).build());
+        addRenderableWidget(Button.builder(Component.literal("-"), button -> changePolygonCount(-1))
+                .bounds(x + 98, y + 152, 22, 22).build());
+        addRenderableWidget(Button.builder(Component.literal("+"), button -> changePolygonCount(1))
+                .bounds(x + 134, y + 152, 22, 22).build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.tsuki.lighthouse.apply"), button -> apply())
+                .bounds(x + 218, y + 225, 122, 24).build());
     }
-    private void changeLength(int amount) { send(menu.blockEntity.getColor(), Math.clamp(menu.blockEntity.getLength() + amount, 1, 31), menu.blockEntity.getWidth(), menu.blockEntity.getTransparency(), menu.blockEntity.getPolygonCount()); }
-    private void changeWidth(int amount) { send(menu.blockEntity.getColor(), menu.blockEntity.getLength(), Math.clamp(menu.blockEntity.getWidth() + amount, 1, 15), menu.blockEntity.getTransparency(), menu.blockEntity.getPolygonCount()); }
-    private void changePolygonCount(int amount) { send(menu.blockEntity.getColor(), menu.blockEntity.getLength(), menu.blockEntity.getWidth(), menu.blockEntity.getTransparency(), Math.clamp(menu.blockEntity.getPolygonCount() + amount, 2, 10)); }
-    private void apply() { try { int color = Integer.parseInt(colorField.getValue(), 16); int alpha = Integer.parseInt(transparencyField.getValue()); send(color, menu.blockEntity.getLength(), menu.blockEntity.getWidth(), alpha, menu.blockEntity.getPolygonCount()); } catch (NumberFormatException ignored) {} }
-    private void send(int color, int length, int width, int alpha, int polygonCount) { PacketDistributor.sendToServer(new ConfigureLighthousePayload(menu.blockEntity.getBlockPos(), color, length, width, alpha, polygonCount)); }
-    @Override public void render(GuiGraphics graphics, int mouseX, int mouseY, float partial) { renderBackground(graphics, mouseX, mouseY, partial); super.render(graphics, mouseX, mouseY, partial); renderTooltip(graphics, mouseX, mouseY); }
+
+    private void changeLength(int amount) {
+        send(menu.blockEntity.getColor(), Math.clamp(menu.blockEntity.getLength() + amount, 1, 31),
+                menu.blockEntity.getWidth(), menu.blockEntity.getTransparency(), menu.blockEntity.getPolygonCount());
+    }
+
+    private void changeWidth(int amount) {
+        send(menu.blockEntity.getColor(), menu.blockEntity.getLength(),
+                Math.clamp(menu.blockEntity.getWidth() + amount, 1, 15), menu.blockEntity.getTransparency(),
+                menu.blockEntity.getPolygonCount());
+    }
+
+    private void changePolygonCount(int amount) {
+        send(menu.blockEntity.getColor(), menu.blockEntity.getLength(), menu.blockEntity.getWidth(),
+                menu.blockEntity.getTransparency(), Math.clamp(menu.blockEntity.getPolygonCount() + amount, 2, 10));
+    }
+
+    private void apply() {
+        try {
+            int color = Integer.parseInt(colorField.getValue(), 16);
+            int alpha = Integer.parseInt(transparencyField.getValue());
+            send(color, menu.blockEntity.getLength(), menu.blockEntity.getWidth(), alpha,
+                    menu.blockEntity.getPolygonCount());
+        } catch (NumberFormatException ignored) {
+        }
+    }
+
+    private void send(int color, int length, int width, int alpha, int polygonCount) {
+        PacketDistributor.sendToServer(new ConfigureLighthousePayload(menu.blockEntity.getBlockPos(), color, length,
+                width, alpha, polygonCount));
+    }
+
+    @Override
+    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partial) {
+        renderBackground(graphics, mouseX, mouseY, partial);
+        super.render(graphics, mouseX, mouseY, partial);
+        renderTooltip(graphics, mouseX, mouseY);
+    }
+
     @Override
     protected void renderBg(GuiGraphics graphics, float partial, int mouseX, int mouseY) {
         int x = leftPos, y = topPos;
@@ -81,9 +121,14 @@ public class LighthouseIlluminationScreen extends AbstractContainerScreen<Lighth
     protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
         graphics.drawString(font, title, 14, 10, 0xFFF0F0F0, false);
         graphics.drawString(font, Component.translatable("gui.tsuki.lighthouse.color"), 22, 34, 0xFFE0E0E0, false);
-        graphics.drawString(font, Component.translatable("gui.tsuki.lighthouse.length", menu.blockEntity.getLength()), 22, 72, 0xFFE0E0E0, false);
-        graphics.drawString(font, Component.translatable("gui.tsuki.lighthouse.width", menu.blockEntity.getWidth()), 22, 107, 0xFFE0E0E0, false);
-        graphics.drawString(font, Component.translatable("gui.tsuki.lighthouse.polygon_count", menu.blockEntity.getPolygonCount()), 22, 142, 0xFFE0E0E0, false);
-        graphics.drawString(font, Component.translatable("gui.tsuki.lighthouse.transparency"), 22, 181, 0xFFE0E0E0, false);
+        graphics.drawString(font, Component.translatable("gui.tsuki.lighthouse.length", menu.blockEntity.getLength()),
+                22, 72, 0xFFE0E0E0, false);
+        graphics.drawString(font, Component.translatable("gui.tsuki.lighthouse.width", menu.blockEntity.getWidth()), 22,
+                107, 0xFFE0E0E0, false);
+        graphics.drawString(font,
+                Component.translatable("gui.tsuki.lighthouse.polygon_count", menu.blockEntity.getPolygonCount()), 22,
+                142, 0xFFE0E0E0, false);
+        graphics.drawString(font, Component.translatable("gui.tsuki.lighthouse.transparency"), 22, 181, 0xFFE0E0E0,
+                false);
     }
 }

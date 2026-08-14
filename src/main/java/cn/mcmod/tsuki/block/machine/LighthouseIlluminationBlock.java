@@ -30,25 +30,50 @@ public class LighthouseIlluminationBlock extends BaseEntityBlock {
         registerDefaultState(stateDefinition.any().setValue(LIT, false));
     }
 
-    public LighthouseIlluminationBlock() { this(Properties.of().strength(3.5F).noOcclusion().lightLevel(state -> state.getValue(LIT) ? 15 : 0)); }
-
-    @Override protected MapCodec<? extends BaseEntityBlock> codec() { return CODEC; }
-    @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.ENTITYBLOCK_ANIMATED; }
-    @Override public VoxelShape getShape(BlockState state, net.minecraft.world.level.BlockGetter level, BlockPos pos, CollisionContext context) { return SHAPE; }
-    @Override public BlockEntity newBlockEntity(BlockPos pos, BlockState state) { return BlockEntityRegistry.LIGHTHOUSE_ILLUMINATION.get().create(pos, state); }
+    public LighthouseIlluminationBlock() {
+        this(Properties.of().strength(3.5F).noOcclusion().lightLevel(state -> state.getValue(LIT) ? 15 : 0));
+    }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.ENTITYBLOCK_ANIMATED;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, net.minecraft.world.level.BlockGetter level, BlockPos pos,
+            CollisionContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return BlockEntityRegistry.LIGHTHOUSE_ILLUMINATION.get().create(pos, state);
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+            Player player,
             InteractionHand hand, BlockHitResult hit) {
         if (player.isShiftKeyDown()) {
-            if (!level.isClientSide()) level.setBlock(pos, state.cycle(LIT), 3);
+            if (!level.isClientSide())
+                level.setBlock(pos, state.cycle(LIT), 3);
             return ItemInteractionResult.sidedSuccess(level.isClientSide());
         }
-        if (!level.isClientSide() && level.getBlockEntity(pos) instanceof LighthouseIlluminationBlockEntity lighthouse) {
+        if (!level.isClientSide()
+                && level.getBlockEntity(pos) instanceof LighthouseIlluminationBlockEntity lighthouse) {
             ((ServerPlayer) player).openMenu(lighthouse, pos);
         }
         return ItemInteractionResult.sidedSuccess(level.isClientSide());
     }
 
-    @Override protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) { builder.add(LIT); }
+    @Override
+    protected void createBlockStateDefinition(
+            StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
+        builder.add(LIT);
+    }
 }

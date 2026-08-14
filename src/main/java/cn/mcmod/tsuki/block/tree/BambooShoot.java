@@ -34,7 +34,8 @@ public class BambooShoot extends BushBlock implements BonemealableBlock {
     }
 
     public BambooShoot() {
-        this(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_SAPLING).randomTicks().noCollission().instabreak().sound(BlockRegistry.BAMBOO_PLANT.get().defaultBlockState().getSoundType()));
+        this(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_SAPLING).randomTicks().noCollission().instabreak()
+                .sound(BlockRegistry.BAMBOO_PLANT.get().defaultBlockState().getSoundType()));
     }
 
     @Override
@@ -51,14 +52,14 @@ public class BambooShoot extends BushBlock implements BonemealableBlock {
     public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         super.randomTick(state, worldIn, pos, rand);
         if (!worldIn.isAreaLoaded(pos, 1)) {
-           return;
+            return;
         }
         if (worldIn.getRawBrightness(pos.above(), 0) > 6) {
             if (worldIn.getBrightness(LightLayer.BLOCK, pos) > 0) {
                 if (rand.nextInt(3) == 0) {
                     if (CommonHooks.canCropGrow(worldIn, pos, state, true)) {
                         growBamboo(worldIn, pos);
-                   CommonHooks.fireCropGrowPost(worldIn, pos, state);
+                        CommonHooks.fireCropGrowPost(worldIn, pos, state);
                     }
                 }
             }
