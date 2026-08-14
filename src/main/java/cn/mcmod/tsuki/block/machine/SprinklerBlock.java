@@ -3,12 +3,10 @@ package cn.mcmod.tsuki.block.machine;
 import javax.annotation.Nullable;
 
 import cn.mcmod.tsuki.block.entity.SprinklerBlockEntity;
-import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -90,7 +88,7 @@ public class SprinklerBlock extends BaseEntityBlock {
     }
 
     @Override protected MapCodec<? extends BaseEntityBlock> codec() { return CODEC; }
-    @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.MODEL; }
+    @Override public RenderShape getRenderShape(BlockState state) { return RenderShape.ENTITYBLOCK_ANIMATED; }
     @Override public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos,
             CollisionContext context) { return SHAPE; }
 
@@ -136,24 +134,7 @@ public class SprinklerBlock extends BaseEntityBlock {
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (!state.getValue(ENABLED)) {
-            return;
-        }
-
-        double angle = Math.toRadians((level.getGameTime() * 12L + random.nextInt(12)) % 360L);
-        spawnWaterJet(level, pos, angle);
-        spawnWaterJet(level, pos, angle + Math.PI);
-    }
-
-    private static void spawnWaterJet(Level level, BlockPos pos, double angle) {
-        double velocityX = Math.sin(angle) * 0.18D;
-        double velocityZ = Math.cos(angle) * 0.18D;
-        level.addParticle(ParticleRegistry.SPRINKLER_WATER.get(),
-                pos.getX() + 0.5D, pos.getY() + 0.4D, pos.getZ() + 0.5D,
-                velocityX, 0.0D, velocityZ);
-    }
+    public Material material() { return material; }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

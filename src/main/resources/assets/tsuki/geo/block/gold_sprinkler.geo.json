@@ -1,0 +1,41 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.gold_sprinkler",
+        "texture_width": 64,
+        "texture_height": 32,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 1.5,
+        "visible_bounds_offset": [0, 0.25, 0]
+      },
+      "bones": [
+        {
+          "name": "base",
+          "pivot": [8, 0, -8],
+          "cubes": [
+            {"origin": [-3, 0, -3], "size": [6, 1, 6], "uv": [0, 4]},
+            {"origin": [-2, 0.5, -2], "size": [4, 1, 4], "uv": [17, 26]},
+            {"origin": [-6, 0.3, -0.5], "size": [12, 1, 1], "pivot": [0, 0.7, 0], "rotation": [0, -45, 0], "uv": [0, 0]},
+            {"origin": [-6, 0.3, -0.5], "size": [12, 1, 1], "pivot": [0, 0.7, 0], "rotation": [0, 45, 0], "uv": [0, 0]},
+            {"origin": [4, 0, 4], "size": [2, 2, 2], "uv": [0, 14]},
+            {"origin": [4, 0, -6], "size": [2, 2, 2], "uv": [0, 14]},
+            {"origin": [-6, 0, 4], "size": [2, 2, 2], "uv": [0, 14]},
+            {"origin": [-6, 0, -6], "size": [2, 2, 2], "uv": [0, 14], "mirror": true},
+            {"origin": [-0.5, 1.3, -0.5], "size": [1, 2, 1], "uv": [34, 0]}
+          ]
+        },
+        {
+          "name": "rotor",
+          "pivot": [0, 3.13394, 0],
+          "cubes": [
+            {"origin": [0.5, 3.7, -0.5], "size": [2, 1, 1], "pivot": [4, 4.3, 0], "rotation": [0, 0, -22.5], "uv": [32, 13], "mirror": true},
+            {"origin": [-1, 2.4, -1], "size": [2, 1, 2], "uv": [30, 4]},
+            {"origin": [-2.5, 3.7, -0.5], "size": [2, 1, 1], "pivot": [-4, 4.3, 0], "rotation": [0, 0, 22.5], "uv": [32, 9]}
+          ]
+        }
+      ]
+    }
+  ]
+}

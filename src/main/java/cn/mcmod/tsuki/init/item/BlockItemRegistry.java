@@ -2,6 +2,7 @@ package cn.mcmod.tsuki.init.item;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.item.LighthouseIlluminationItem;
+import cn.mcmod.tsuki.item.SprinklerItem;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.item.block.CookingPotItem;
 import net.minecraft.world.item.BlockItem;
@@ -283,13 +284,13 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> LIGHTHOUSE_ILLUMINATION = ITEMS.register("lighthouse_illumination",
             () -> new LighthouseIlluminationItem(BlockRegistry.LIGHTHOUSE_ILLUMINATION.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> IRON_SPRINKLER = ITEMS.register("iron_sprinkler",
-            () -> new BlockItem(BlockRegistry.IRON_SPRINKLER.get(), Tsuki.defaultItemProperties()));
+            () -> new SprinklerItem(BlockRegistry.IRON_SPRINKLER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> GOLD_SPRINKLER = ITEMS.register("gold_sprinkler",
-            () -> new BlockItem(BlockRegistry.GOLD_SPRINKLER.get(), Tsuki.defaultItemProperties()));
+            () -> new SprinklerItem(BlockRegistry.GOLD_SPRINKLER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> DIAMOND_SPRINKLER = ITEMS.register("diamond_sprinkler",
-            () -> new BlockItem(BlockRegistry.DIAMOND_SPRINKLER.get(), Tsuki.defaultItemProperties()));
+            () -> new SprinklerItem(BlockRegistry.DIAMOND_SPRINKLER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> SAKURA_DIAMOND_SPRINKLER = ITEMS.register("sakura_diamond_sprinkler",
-            () -> new BlockItem(BlockRegistry.SAKURA_DIAMOND_SPRINKLER.get(), Tsuki.defaultItemProperties()));
+            () -> new SprinklerItem(BlockRegistry.SAKURA_DIAMOND_SPRINKLER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> COOKING_POT = ITEMS.register("cooking_pot",
             () -> new CookingPotItem(BlockRegistry.COOKING_POT.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> FERMENTER = ITEMS.register("fermenter",

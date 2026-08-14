@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import software.bernie.geckolib.animatable.GeoItem;
 
 import java.util.function.Supplier;
 
@@ -42,7 +43,8 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         BlockItemRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof BlockItem) {
                 BlockItem blockItem = (BlockItem) item.get();
-                if (blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
+                if (blockItem instanceof GeoItem
+                        || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
                         || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()
                         || blockItem.getBlock() == BlockRegistry.FUTON.get()
                         || blockItem.getBlock() == BlockRegistry.SHAKER.get()) {

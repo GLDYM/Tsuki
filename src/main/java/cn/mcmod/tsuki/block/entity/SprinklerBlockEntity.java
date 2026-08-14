@@ -17,11 +17,29 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.core.Direction;
 import net.neoforged.neoforge.common.ItemAbilities;
+import software.bernie.geckolib.animatable.GeoBlockEntity;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class SprinklerBlockEntity extends BlockEntity {
+public class SprinklerBlockEntity extends BlockEntity implements GeoBlockEntity {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    private long lastParticleTick = Long.MIN_VALUE;
     public SprinklerBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.SPRINKLER.get(), pos, state);
     }
+
+    public boolean markParticlesEmitted(long gameTime) {
+        if (lastParticleTick == gameTime) return false;
+        lastParticleTick = gameTime;
+        return true;
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {}
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() { return cache; }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, SprinklerBlockEntity sprinkler) {
         if (level.isClientSide) return;
