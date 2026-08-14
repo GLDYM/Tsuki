@@ -92,6 +92,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
     }
 
     private void registerCraftingRecipe(RecipeOutput consumer) {
+        lighthouseRecipe(consumer);
         sprinklerRecipe(consumer, BlockRegistry.IRON_SPRINKLER.get(), Items.IRON_INGOT);
         sprinklerRecipe(consumer, BlockRegistry.GOLD_SPRINKLER.get(), Items.GOLD_INGOT);
         sprinklerRecipe(consumer, BlockRegistry.DIAMOND_SPRINKLER.get(), Items.DIAMOND);
@@ -1545,6 +1546,20 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('P', ItemTags.PLANKS)
                 .define('M', material)
                 .unlockedBy("has_" + getItemName(material), has(material))
+                .save(consumer);
+    }
+
+    private void lighthouseRecipe(RecipeOutput consumer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockRegistry.LIGHTHOUSE_ILLUMINATION.get())
+                .pattern("SRS")
+                .pattern("GPG")
+                .pattern("BBB")
+                .define('S', Items.GLOWSTONE)
+                .define('R', Items.REDSTONE)
+                .define('G', Tags.Items.GLASS_BLOCKS)
+                .define('P', ItemTags.PLANKS)
+                .define('B', Tags.Items.OBSIDIANS)
+                .unlockedBy("has_glowstone", has(Items.GLOWSTONE))
                 .save(consumer);
     }
 
