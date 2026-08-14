@@ -436,7 +436,9 @@
     ]
   ],
   "rewards": {
-    "function": "tsuki:advancements/magatama_green"
+    "loot": [
+      "tsuki:advancements/magatama_green"
+    ]
   },
   "sends_telemetry_event": true
 }

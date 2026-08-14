@@ -1543,7 +1543,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('I', Items.IRON_INGOT)
                 .define('R', Items.REDSTONE)
                 .define('L', Items.LAPIS_LAZULI)
-                .define('P', ItemTags.PLANKS)
+                .define('P', TsukiItemTags.LUMBER)
                 .define('M', material)
                 .unlockedBy("has_" + getItemName(material), has(material))
                 .save(consumer);
@@ -1557,7 +1557,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('S', Items.GLOWSTONE)
                 .define('R', Items.REDSTONE)
                 .define('G', Tags.Items.GLASS_BLOCKS)
-                .define('P', ItemTags.PLANKS)
+                .define('P', TsukiItemTags.LUMBER)
                 .define('B', Tags.Items.OBSIDIANS)
                 .unlockedBy("has_glowstone", has(Items.GLOWSTONE))
                 .save(consumer);

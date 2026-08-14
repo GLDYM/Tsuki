@@ -425,7 +425,9 @@
     ]
   ],
   "rewards": {
-    "function": "tsuki:advancements/magatama_pink"
+    "loot": [
+      "tsuki:advancements/magatama_pink"
+    ]
   },
   "sends_telemetry_event": true
 }

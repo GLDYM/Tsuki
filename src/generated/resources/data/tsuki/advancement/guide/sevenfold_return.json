@@ -96,7 +96,9 @@
     ]
   ],
   "rewards": {
-    "function": "tsuki:advancements/magatama_white"
+    "loot": [
+      "tsuki:advancements/magatama_white"
+    ]
   },
   "sends_telemetry_event": true
 }

@@ -20,9 +20,11 @@ import net.minecraft.advancements.critereon.PlayerTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -193,23 +195,23 @@ public class TsukiGuideAdvancements implements AdvancementProvider.AdvancementGe
                 .save(consumer, rl("guide/draw_the_blade"), existingFileHelper);
 
         Advancement.Builder riceBuilder = child(cookingPot, FoodRegistry.CUISINES.get(TsukiCuisineSet.RICE_BEEF).get(),
-                "rice_dishes", AdvancementType.GOAL, rewardFunction("magatama_green"));
+                "rice_dishes", AdvancementType.GOAL, rewardLoot("magatama_green"));
         addConsumeCriteria(riceBuilder, RICE_DISHES);
         riceBuilder.save(consumer, rl("guide/rice_dishes"), existingFileHelper);
 
         Advancement.Builder noodleBuilder = child(choppingBoard, FoodRegistry.CUISINES.get(TsukiCuisineSet.RAMEN).get(),
-                "noodle_dishes", AdvancementType.GOAL, rewardFunction("magatama_pink"));
+                "noodle_dishes", AdvancementType.GOAL, rewardLoot("magatama_pink"));
         addConsumeCriteria(noodleBuilder, NOODLE_DISHES);
         noodleBuilder.save(consumer, rl("guide/noodle_dishes"), existingFileHelper);
 
         Advancement.Builder baseWineBuilder = child(brewersCraft,
                 DrinkRegistry.WINE_BOTTLES.get(cn.mcmod.tsuki.init.item.enums.TsukiWineBottleSet.SAKE_BOTTLE).get(),
-                "base_wine_collection", AdvancementType.GOAL, rewardFunction("magatama_red"));
+                "base_wine_collection", AdvancementType.GOAL, rewardLoot("magatama_red"));
         addInventoryCriteria(baseWineBuilder, BASE_WINE_BOTTLES);
         baseWineBuilder.save(consumer, rl("guide/base_wine_collection"), existingFileHelper);
 
         child(moonlitShaker, DrinkRegistry.MYTHERY_MIX.get(), "sixteen_mythery_mix", AdvancementType.CHALLENGE,
-                rewardFunction("magatama_blue"))
+                rewardLoot("magatama_blue"))
                 .addCriterion("has_16_mythery_mix", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ItemPredicate.Builder.item()
                                 .of(DrinkRegistry.MYTHERY_MIX.get())
@@ -217,19 +219,19 @@ public class TsukiGuideAdvancements implements AdvancementProvider.AdvancementGe
                 .save(consumer, rl("guide/sixteen_mythery_mix"), existingFileHelper);
 
         child(drawTheBlade, ArmorToolRegistry.SAKURA_KATANA_SHEATH.get(), "blossom_sheath", AdvancementType.GOAL,
-                rewardFunction("magatama_orange"))
+                rewardLoot("magatama_orange"))
                 .addCriterion("has_sakura_katana_sheath",
                         InventoryChangeTrigger.TriggerInstance.hasItems(ArmorToolRegistry.SAKURA_KATANA_SHEATH.get()))
                 .save(consumer, rl("guide/blossom_sheath"), existingFileHelper);
 
         child(oreSmelting, ArmorToolRegistry.MYTHIC_PICKAXE.get(), "nameless_pickaxe", AdvancementType.CHALLENGE,
-                rewardFunction("magatama_purple"))
+                rewardLoot("magatama_purple"))
                 .addCriterion("has_mythic_pickaxe",
                         InventoryChangeTrigger.TriggerInstance.hasItems(ArmorToolRegistry.MYTHIC_PICKAXE.get()))
                 .save(consumer, rl("guide/nameless_pickaxe"), existingFileHelper);
 
         child(root, ArmorToolRegistry.MAGATAMA_WHITE.get(), "sevenfold_return", AdvancementType.CHALLENGE,
-                rewardFunction("magatama_white"))
+                rewardLoot("magatama_white"))
                 .addCriterion("has_magatama_blue",
                         InventoryChangeTrigger.TriggerInstance.hasItems(ArmorToolRegistry.MAGATAMA_BLUE.get()))
                 .addCriterion("has_magatama_green",
@@ -297,9 +299,11 @@ public class TsukiGuideAdvancements implements AdvancementProvider.AdvancementGe
         builder.requirements(AdvancementRequirements.Strategy.AND);
     }
 
-    private static AdvancementRewards.Builder rewardFunction(String rewardId) {
-        return AdvancementRewards.Builder.function(ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
-                "advancements/" + rewardId));
+    private static AdvancementRewards.Builder rewardLoot(String rewardId) {
+        ResourceKey<net.minecraft.world.level.storage.loot.LootTable> lootTable = ResourceKey.create(
+                Registries.LOOT_TABLE,
+                ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "advancements/" + rewardId));
+        return AdvancementRewards.Builder.loot(lootTable);
     }
 
     private static String idFromItem(ItemLike item) {

@@ -9,7 +9,7 @@
       "tag": "c:glass_blocks"
     },
     "P": {
-      "tag": "minecraft:planks"
+      "tag": "c:lumber"
     },
     "R": {
       "item": "minecraft:redstone"
