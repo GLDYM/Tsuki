@@ -66,6 +66,10 @@ All crop seeds can be obtained by breaking grass. The [Japanese Farmer](../villa
 - Ume Sapling<ItemImage id="tsuki:ume_sapling" scale="0.6"/>: Obtained via crafting. Ume leaves occasionally grow Plums<ItemImage id="tsuki:ume" scale="0.6"/>, which can be harvested with right-click.
 - Sunflower<ItemImage id="tsuki:sunflower_seeds" scale="0.6"/>:  Obtained by breaking grass, could be planted on the dirt type block. The sunflower needs 3-block space to grow and could gain glowstone when harvesting.
 
+## Agricultural Equipment
+
+- [Sprinkler](sprinkler.md)<ItemImage id="tsuki:iron_sprinkler" scale="0.6"/><ItemImage id="tsuki:gold_sprinkler" scale="0.6"/><ItemImage id="tsuki:diamond_sprinkler" scale="0.6"/><ItemImage id="tsuki:sakura_diamond_sprinkler" scale="0.6"/>: Irrigates farmland and accelerates crop growth; see the detailed guide.
+
 ## Fish
 
 - Shrimp<ItemImage id="tsuki:shrimp" scale="0.6"/>, Bonito<ItemImage id="tsuki:bonito" scale="0.6"/>: Obtained by fishing. The [Fisherman](../villager/villager_index.md) also sells Shrimp or Bonito.

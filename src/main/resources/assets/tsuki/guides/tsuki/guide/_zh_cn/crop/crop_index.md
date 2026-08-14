@@ -66,6 +66,10 @@ item_ids:
 - 梅树<ItemImage id="tsuki:ume_sapling" scale="0.6"/>：合成获得。梅树树叶会不定期生长出梅子<ItemImage id="tsuki:ume" scale="0.6"/>，右键可收获。
 - 向日葵<ItemImage id="tsuki:sunflower_seeds" scale="0.6"/>：破坏草获得，可种植于泥土类方块上。向日葵需要三格高度以生长，成熟时收获获得萤石粉。
 
+## 农业设备
+
+- [洒水器](sprinkler.md)<ItemImage id="tsuki:iron_sprinkler" scale="0.6"/><ItemImage id="tsuki:gold_sprinkler" scale="0.6"/><ItemImage id="tsuki:diamond_sprinkler" scale="0.6"/><ItemImage id="tsuki:sakura_diamond_sprinkler" scale="0.6"/>：用于灌溉耕地并加速作物生长，见详情页。
+
 ## 鱼
 
 - 虾<ItemImage id="tsuki:shrimp" scale="0.6"/>、柴鱼<ItemImage id="tsuki:bonito" scale="0.6"/>：钓鱼获得，亦可通过与[渔夫](../villager/villager_index.md)交易获得。

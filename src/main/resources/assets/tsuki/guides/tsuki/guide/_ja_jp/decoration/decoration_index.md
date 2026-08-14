@@ -64,3 +64,7 @@ navigation:
 ### お盆<ItemImage id="tsuki:obon" scale="0.6"/>
 
 アイテムを手に持って右クリックすると、その場でお盆に載せて展示できます。展示される向きはお盆の向きに従います。定食クラフトにも利用できます。
+
+### 灯台照明<ItemImage id="tsuki:lighthouse_illumination" scale="0.6"/>
+
+灯台照明は、動く光線を表示する装飾ブロックです。詳しい使い方は[詳細ページ](lighthouse.md)を参照してください。

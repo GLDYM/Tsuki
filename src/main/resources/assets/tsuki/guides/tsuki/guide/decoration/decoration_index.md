@@ -68,3 +68,7 @@ Can be struck with a wooden stick while holding to produce sound.
 ### Obon<ItemImage id="tsuki:obon" scale="0.6"/>
 
 Right-click while holding an item to place it in the obon and display it. The displayed item's facing matches the obon's facing. Can also be used to craft set meals.
+
+### Lighthouse Illumination<ItemImage id="tsuki:lighthouse_illumination" scale="0.6"/>
+
+Lighthouse Illumination is a decorative block with a dynamic beam. See the [detailed guide](lighthouse.md) for usage information.

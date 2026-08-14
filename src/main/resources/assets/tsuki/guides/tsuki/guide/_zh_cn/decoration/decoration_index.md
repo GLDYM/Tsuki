@@ -65,3 +65,7 @@ navigation:
 
 手持物品右击可将手中的物品放入供盘并展示于供盘上，展示物品朝向与供盘朝向一致。亦可用于合成定食。
 
+### 照明灯塔<ItemImage id="tsuki:lighthouse_illumination" scale="0.6"/>
+
+照明灯塔是用于装饰的动态光束方块。具体使用见[详情页](lighthouse.md)。
+

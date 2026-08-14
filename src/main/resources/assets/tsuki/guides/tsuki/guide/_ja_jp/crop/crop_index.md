@@ -66,6 +66,10 @@ item_ids:
 - 梅の苗木<ItemImage id="tsuki:ume_sapling" scale="0.6"/>: クラフトで入手できます。梅の葉には時々梅の実<ItemImage id="tsuki:ume" scale="0.6"/>がなり、右クリックで収穫できます。
 - ひまわり<ItemImage id="tsuki:sunflower_seeds" scale="0.6"/>: 草を壊して入手し、土系ブロックに植えられます。成長には 3 ブロック分の高さが必要で、収穫時にグロウストーンを得ることがあります。
 
+## 農業設備
+
+- [スプリンクラー](sprinkler.md)<ItemImage id="tsuki:iron_sprinkler" scale="0.6"/><ItemImage id="tsuki:gold_sprinkler" scale="0.6"/><ItemImage id="tsuki:diamond_sprinkler" scale="0.6"/><ItemImage id="tsuki:sakura_diamond_sprinkler" scale="0.6"/>: 耕地に水を与え、作物の成長を加速させます。詳しくは説明ページを参照してください。
+
 ## 魚介
 
 - 海老<ItemImage id="tsuki:shrimp" scale="0.6"/>、鰹<ItemImage id="tsuki:bonito" scale="0.6"/>: 釣りで入手できます。[漁師](../villager/villager_index.md)からの売買でも入手可能です。
