@@ -6,6 +6,7 @@ import java.util.OptionalInt;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
+import cn.mcmod.tsuki.init.FeatureTypeRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +18,7 @@ import net.minecraft.util.valueproviders.WeightedListInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -58,10 +60,9 @@ public class TsukiTreeFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_UME_KEY = ResourceKey
             .create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fancy_ume"));
 
-    // public static final ResourceKey<ConfiguredFeature<?, ?>> MASSIVE_SAKURA_KEY =
-    // ResourceKey
-    // .create(Registries.CONFIGURED_FEATURE,
-    // ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "massive_sakura"));
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MASSIVE_SAKURA_KEY = ResourceKey
+            .create(Registries.CONFIGURED_FEATURE,
+                    ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "massive_sakura"));
 
     public static synchronized void bootstrapEntries() {
         if (initialized) {
@@ -98,10 +99,8 @@ public class TsukiTreeFeatures {
                 createSimpleBlobTree(BlockRegistry.UME_LOG.get(), BlockRegistry.UME_LEAVES.get()).ignoreVines());
         registryTree(FANCY_UME_KEY, createFancyTree(BlockRegistry.UME_LOG.get(), BlockRegistry.UME_LEAVES.get()));
 
-        // ENTRY.add(new Pair<>(
-        // MASSIVE_SAKURA_KEY,
-        // new ConfiguredFeature<>(FeatureTypeRegistry.MASSIVE_TREE.get(),
-        // NoneFeatureConfiguration.INSTANCE)));
+        ENTRY.add(new Pair<>(MASSIVE_SAKURA_KEY,
+                new ConfiguredFeature<>(FeatureTypeRegistry.MASSIVE_SAKURA.get(), NoneFeatureConfiguration.INSTANCE)));
     }
 
     private static ConfiguredFeature<?, ?> registryTree(ResourceKey<ConfiguredFeature<?, ?>> key,
