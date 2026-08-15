@@ -1,5 +1,12 @@
 # Changelog
 
+# Tsuki 1.7.0
+
+## Feature
+
+- Sprinker: Irrigates farmland and accelerates crop growth, from Maple Tree mod
+- Lighthouse Illumination: Shoots dynamic beams in different polygons, from Maple Tree mod
+
 # Tsuki 1.6.1
 
 ## Feature
