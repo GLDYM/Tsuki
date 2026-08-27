@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "tsuki:vanilla_crop",
+    "tsuki:pepper_crop",
+    "tsuki:hops_crop",
+    "tsuki:grape_vine"
+  ]
+}

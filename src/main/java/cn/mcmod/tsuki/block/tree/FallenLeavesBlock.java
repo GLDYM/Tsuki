@@ -36,7 +36,9 @@ public class FallenLeavesBlock extends BushBlock implements IShearable, Bonemeal
     private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
 
     public FallenLeavesBlock(Properties properties) {
-        super(properties);
+        super(properties
+                .isSuffocating((state, level, pos) -> false)
+                .isViewBlocking((state, level, pos) -> false));
     }
 
     public FallenLeavesBlock() {

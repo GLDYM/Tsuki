@@ -14,4 +14,7 @@ public class TsukiBlockTags {
     public static final TagKey<Block> TRAY_HEAT_SOURCES = TagUtil.modBlockTag(Tsuki.MODID, "tray_heat_sources");
     public static final TagKey<Block> MINEABLE_WITH_KNIFE = TagUtil.forgeBlockTag("mineable/knife");
     public static final TagKey<Block> MINEABLE_WITH_HAMMER = TagUtil.forgeBlockTag("mineable/hammer");
+    public static final TagKey<Block> ORES = TagUtil.forgeBlockTag("ores");
+    public static final TagKey<Block> ORES_IRON = TagUtil.forgeBlockTag("ores/iron");
+    public static final TagKey<Block> ORES_SAKURA_DIAMOND = TagUtil.forgeBlockTag("ores/sakura_diamond");
 }

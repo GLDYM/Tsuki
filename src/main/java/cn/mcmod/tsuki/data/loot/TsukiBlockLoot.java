@@ -47,6 +47,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
     @Override
     public void addTables() {
         dropSelf(BlockRegistry.BAMBOO_BLOCK.get());
+        dropSelf(BlockRegistry.BAMBOO_LANTERN.get());
         BlockRegistry.BLOCKS
                 .getEntries()
                 .forEach(
@@ -70,6 +71,7 @@ public class TsukiBlockLoot extends AbstartctBlockLoot {
                                     && block.get() != BlockRegistry.BAMBOO_DOOR.get()
                                     && block.get() != BlockRegistry.DRINK_DISPLAY.get()
                                     && block.get() != BlockRegistry.SHAKER.get()
+                                    && block.get() != BlockRegistry.BAMBOO_LANTERN.get()
                                     && block.get() != BlockRegistry.SHOJI.get()
                                     && block.get() != BlockRegistry.SHOJI_1.get()
                                     && block.get() != BlockRegistry.SHOJI_2.get()

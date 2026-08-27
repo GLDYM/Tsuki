@@ -45,6 +45,8 @@ public class GrapeLeavesBlock extends Block implements BonemealableBlock {
                 .strength(2.0F)
                 .sound(SoundType.WOOD)
                 .noOcclusion()
+                .isSuffocating((state, level, pos) -> false)
+                .isViewBlocking((state, level, pos) -> false)
                 .randomTicks());
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }

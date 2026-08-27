@@ -15,7 +15,9 @@ public class TsukiLeavesBlock extends LeavesBlock {
     private final Supplier<SimpleParticleType> leaf_particle;
 
     public TsukiLeavesBlock(Properties builder, Supplier<SimpleParticleType> particle) {
-        super(builder);
+        super(builder
+                .isSuffocating((state, level, pos) -> false)
+                .isViewBlocking((state, level, pos) -> false));
         this.leaf_particle = particle;
     }
 

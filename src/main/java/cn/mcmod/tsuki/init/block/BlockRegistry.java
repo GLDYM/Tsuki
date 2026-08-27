@@ -91,7 +91,7 @@ public class BlockRegistry {
     public static final DeferredBlock<Block> SAKURA_LEAVES = BLOCKS.register("sakuraleaves",
             () -> new TsukiLeavesBlock(
                     BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).strength(0.2F).randomTicks()
-                            .sound(SoundType.GRASS).noOcclusion().lightLevel(state -> 8),
+                            .sound(SoundType.GRASS).noOcclusion().lightLevel(state -> 3),
                     ParticleRegistry.SAKURA_LEAF));
 
     public static final DeferredBlock<Block> MAPLE_LEAVES_RED = BLOCKS.register("mapleleaves_red",

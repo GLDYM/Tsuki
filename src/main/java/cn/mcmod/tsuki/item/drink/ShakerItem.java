@@ -318,6 +318,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
         if (stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
                 || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
                 || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
+                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
                 || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME_JUICE).get())
                 || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.COLA).get())) {
             return true;

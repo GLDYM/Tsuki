@@ -115,9 +115,18 @@ public class TsukiBlockTagsProvider extends BlockTagsProvider {
                 .add(BlockRegistry.PEPPER_SPLINT.get())
                 .add(BlockRegistry.VANILLA_SPLINT.get())
                 .add(BlockRegistry.GRAPE_SPLINT_STAND.get())
-                .add(BlockRegistry.GRAPE_SPLINT.get());
+                .add(BlockRegistry.GRAPE_SPLINT.get())
+                .add(BlockRegistry.BAMBOO_LANTERN.get());
         this.tag(TsukiBlockTags.MINEABLE_WITH_HAMMER)
                 .add(BlockRegistry.TATARA.get());
+        this.tag(TsukiBlockTags.ORES)
+                .addTag(TsukiBlockTags.ORES_IRON)
+                .addTag(TsukiBlockTags.ORES_SAKURA_DIAMOND);
+        this.tag(TsukiBlockTags.ORES_IRON)
+                .add(BlockRegistry.IRON_SAND.get());
+        this.tag(TsukiBlockTags.ORES_SAKURA_DIAMOND)
+                .add(BlockRegistry.SAKURA_DIAMOND_ORE.get())
+                .add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get());
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(BlockRegistry.SAKURA_DIAMOND_ORE.get())
                 .add(BlockRegistry.DEEPSLATE_SAKURA_DIAMOND_ORE.get())
