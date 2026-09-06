@@ -45,6 +45,7 @@
 
 本模组使用了以下模组的资产，根据各项目的协议，在此公布：
 
+- [竹](https://github.com/rubnsn/bambooo) (CC-BY-NC-SA 4.0)
 - 樱（MIT）
 - 农夫乐事（MIT）
 - 森罗物语：厨房（CC-BY-NC-SA 4.0）

@@ -46,6 +46,7 @@ This mod uses source code from the following mods, published here according to t
 
 This mod uses assets from the following mods, published here according to their open-source licenses:
 
+- [Bamboo](https://github.com/rubnsn/bambooo) (CC-BY-NC-SA 4.0)
 - Sakura (MIT)
 - Farmer’s Delight (MIT)
 - Kaleidoscope: Cookery (CC-BY-NC-SA 4.0)
