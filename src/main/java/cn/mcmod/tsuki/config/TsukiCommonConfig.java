@@ -65,6 +65,15 @@ public class TsukiCommonConfig {
                 .comment("Changes generate amount of Iron Sand. Increase value to gen more Iron Sand.")
                 .translation("tsuki.config.iron_sand_amount")
                 .defineInRange("iron_sand_amount", 128, 1, 5120);
+
+        bambooEnableSpread = builder
+                .comment("Enables bamboo shoot spreading.")
+                .translation("tsuki.config.bamboo_enable_spread")
+                .define("bamboo_enable_spread", true);
+        bambooSpreadChance = builder
+                .comment("Sets the bamboo shoot spreading chance per random tick.")
+                .translation("tsuki.config.bamboo_spread_chance")
+                .defineInRange("bamboo_spread_chance", 0.15D, 0.0D, 1.0D);
         builder.pop();
 
         builder.comment("Progression settings")
@@ -183,19 +192,6 @@ public class TsukiCommonConfig {
                 .translation("tsuki.config.magatama_white_mining_speed_compensation_multiplier")
                 .defineInRange("magatama_white_mining_speed_compensation_multiplier", 5.0D, 1.0D, 64.0D);
         builder.pop();
-        builder.pop();
-
-        builder.comment("Bamboo settings")
-                .translation("tsuki.config.category.bamboo")
-                .push("bamboo");
-        bambooEnableSpread = builder
-                .comment("Enables bamboo spreading.")
-                .translation("tsuki.config.bamboo_enable_spread")
-                .define("bamboo_enable_spread", true);
-        bambooSpreadChance = builder
-                .comment("Sets the bamboo spreading chance per random tick.")
-                .translation("tsuki.config.bamboo_spread_chance")
-                .defineInRange("bamboo_spread_chance", 0.15D, 0.0D, 1.0D);
         builder.pop();
 
         builder.comment("Futon settings")
