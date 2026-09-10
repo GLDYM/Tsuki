@@ -8,6 +8,15 @@
       }
     ]
   },
+  "music_disc.shoegaze": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "tsuki:shoegaze",
+        "stream": true
+      }
+    ]
+  },
   "taiko": {
     "category": "block",
     "sounds": [

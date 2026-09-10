@@ -300,6 +300,12 @@ public class ArmorToolRegistry {
                     .rarity(Rarity.EPIC)
                     .jukeboxPlayable(JukeboxSongRegistry.DISC_MUSIC_MIKO)));
 
+    public static final DeferredItem<Item> MUSIC_DISC_SHOEGAZE = register("music_disc_shoegaze",
+            () -> new Item(Tsuki.defaultItemProperties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC)
+                    .jukeboxPlayable(JukeboxSongRegistry.DISC_MUSIC_SHOEGAZE)));
+
     private static <V extends Item> DeferredItem<V> register(String name, Supplier<V> item) {
         return ITEMS.register(name, item);
     }

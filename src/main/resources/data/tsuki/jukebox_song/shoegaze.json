@@ -1,0 +1,8 @@
+{
+  "comparator_output": 13,
+  "description": {
+    "translate": "jukebox_song.tsuki.music_disc.shoegaze"
+  },
+  "length_in_seconds": 360.0,
+  "sound_event": "tsuki:music_disc.shoegaze"
+}

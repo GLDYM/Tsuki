@@ -54,7 +54,8 @@ public enum TsukiCocktailSet {
             new MobEffectInstance(MobEffects.NIGHT_VISION, 2000, 0),
             new MobEffectInstance(MobEffects.ABSORPTION, 2000, 0)
     }),
-    GLASS_AMERICANO("glass_americano", () -> new MobEffectInstance[] {
+    GLASS_AMERICANO("glass_americano", DrinkRegistry::collinsGlassContainerItem,
+        () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.SATURATION, 12, 0),
             new MobEffectInstance(MobEffects.DIG_SPEED, 2000, 0)
     }),
@@ -62,7 +63,8 @@ public enum TsukiCocktailSet {
             new MobEffectInstance(MobEffects.DIG_SPEED, 3000, 0),
             new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 2000, 0)
     }),
-    GLASS_GIN_FIZZ("glass_gin_fizz", () -> new MobEffectInstance[] {
+    GLASS_GIN_FIZZ("glass_gin_fizz", DrinkRegistry::collinsGlassContainerItem,
+        () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DIG_SPEED, 2000, 0),
             new MobEffectInstance(MobEffects.JUMP, 2000, 0)
     }),
@@ -160,7 +162,8 @@ public enum TsukiCocktailSet {
             new MobEffectInstance(MobEffects.DIG_SPEED, 1000, 0),
             new MobEffectInstance(MobEffectRegistry.GOLDEN_HEART, 500, 0)
     }),
-    GLASS_BLOODY_MARY("glass_bloody_mary", () -> new MobEffectInstance[] {
+    GLASS_BLOODY_MARY("glass_bloody_mary", DrinkRegistry::collinsGlassContainerItem,
+        () -> new MobEffectInstance[] {
             new MobEffectInstance(MobEffects.DAMAGE_BOOST, 2000, 1)
     }),
     GLASS_OLD_FASHIONED("glass_old_fashioned", () -> new MobEffectInstance[] {

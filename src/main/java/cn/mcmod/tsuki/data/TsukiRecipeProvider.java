@@ -718,6 +718,13 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .unlockedBy("has_item", has(ArmorToolRegistry.SAKURA_DIAMOND.get()))
                 .save(consumer);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
+                ArmorToolRegistry.MUSIC_DISC_SHOEGAZE.get())
+                .requires(ArmorToolRegistry.KIMONO_ENE.get())
+                .requires(ArmorToolRegistry.SAKURA_DIAMOND.get())
+                .unlockedBy("has_item", has(ArmorToolRegistry.SAKURA_DIAMOND.get()))
+                .save(consumer);
+
         // Straw Hat
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT,
                 ArmorToolRegistry.STRAW_HAT.get())
@@ -3517,6 +3524,8 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
     private void registerCocktailCraftRecipes(RecipeOutput consumer) {
         ItemLike iceCube = TsukiNormalItemSet.ICE_CUBE.getItem().get();
 
+        ItemLike collinsGlass = DrinkRegistry.COLLINS_GLASS.get();
+
         ItemLike beer = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BEER).get();
         ItemLike redWine = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get();
         ItemLike whiteWine = DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get();
@@ -3556,6 +3565,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         // Every recipe which contains multiple alcohols should not appear there.
         // TODO: Make cocktail remain their container and add container in all the
         // shapeless recipes.
+        // TODO: Add Stir.
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR).get())
                 .requires(whiteWine)
@@ -3747,10 +3757,12 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         // .unlockedBy("has_item", has(gin))
         // .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
         // "glass_martini"));
+        // TODO: Stir
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_AMERICANO).get())
-                .requires(redWine)
+                .requires(Items.RED_DYE)
                 .requires(liqueur)
+                .requires(bitters)
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(redWine))
@@ -3863,6 +3875,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         // .unlockedBy("has_item", has(brandy))
         // .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
         // "glass_sidecar"));
+        // TODO: Stir
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_BLOODY_MARY).get())
                 .requires(vodka)
@@ -3870,7 +3883,9 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(lemonJuice)
                 .requires(worcesterSauce)
                 .requires(salt)
+                .requires(TsukiNormalItemSet.BLACK_PEPPER.getItem().get())
                 .requires(iceCube)
+                .requires(collinsGlass)
                 .unlockedBy("has_item", has(vodka))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_bloody_mary"));
         ShapelessRecipeBuilder
@@ -4307,12 +4322,12 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(whiteWine)
                 .requires(iceCube)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_martini"));
-        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_AMERICANO).get())
-                .requires(redWine)
-                .requires(liqueur)
-                .requires(sodaWater)
-                .requires(iceCube)
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_americano"));
+        // ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_AMERICANO).get())
+        //         .requires(liqueur)
+        //         .requires(bitters)
+        //         .requires(sodaWater)
+        //         .requires(iceCube)
+        //         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_americano"));
         ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_NEGRONI).get())
                 .requires(gin)
                 .requires(redWine)
@@ -4388,14 +4403,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(lemonJuice)
                 .requires(iceCube)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_sidecar"));
-        ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_BLOODY_MARY).get())
-                .requires(vodka)
-                .requires(tomatoSauce)
-                .requires(lemonJuice)
-                .requires(worcesterSauce)
-                .requires(salt)
-                .requires(iceCube)
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_bloody_mary"));
+        // ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_BLOODY_MARY).get())
+        //         .requires(vodka)
+        //         .requires(tomatoSauce)
+        //         .requires(lemonJuice)
+        //         .requires(worcesterSauce)
+        //         .requires(salt)
+        //         .requires(iceCube)
+        //         .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_bloody_mary"));
         ShakerRecipeBuilder.shaking(DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_OLD_FASHIONED).get())
                 .requires(whiskey)
                 .requires(bitters)

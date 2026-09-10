@@ -4,7 +4,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "tsuki:block/drink/collins_glass",
-		"1": "Desktop/月 酒馆/Gin_Fizz",
+		"1": "tsuki:block/drink/gin_fizz",
 		"particle": "tsuki:block/drink/collins_glass"
 	},
 	"elements": [

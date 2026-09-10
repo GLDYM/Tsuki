@@ -11,6 +11,9 @@ public class JukeboxSongRegistry {
     public static final ResourceKey<JukeboxSong> DISC_MUSIC_MIKO = ResourceKey.create(Registries.JUKEBOX_SONG,
             ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "miko"));
 
+    public static final ResourceKey<JukeboxSong> DISC_MUSIC_SHOEGAZE = ResourceKey.create(Registries.JUKEBOX_SONG,
+            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "shoegaze"));
+
     public static void register() {
         // fuck.
     }
