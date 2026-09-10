@@ -979,6 +979,7 @@ public enum TsukiFoodSet {
     LEMON_JUICE(
             FoodInfo.builder()
                     .name("lemon_juice")
+                    .alwaysEat()
                     .amountAndCalories(1, 0.1F)
                     .water(40.0F)
                     .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
@@ -989,6 +990,7 @@ public enum TsukiFoodSet {
     LIME_JUICE(
             FoodInfo.builder()
                     .name("lime_juice")
+                    .alwaysEat()
                     .amountAndCalories(1, 0.1F)
                     .water(40.0F)
                     .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
@@ -999,6 +1001,7 @@ public enum TsukiFoodSet {
     SODA_WATER(
             FoodInfo.builder()
                     .name("soda_water")
+                    .alwaysEat()
                     .amountAndCalories(1, 0.1F)
                     .water(50.0F)
                     .nutrients(0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
@@ -1009,6 +1012,8 @@ public enum TsukiFoodSet {
     COLA(
             FoodInfo.builder()
                     .name("cola")
+                    .eatTime(5)
+                    .alwaysEat()
                     .amountAndCalories(1, 0.1F)
                     .water(45.0F)
                     .nutrients(0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
@@ -1019,6 +1024,7 @@ public enum TsukiFoodSet {
     BLACKCURRANT_JUICE(
             FoodInfo.builder()
                     .name("blackcurrant_juice")
+                    .alwaysEat()
                     .amountAndCalories(1, 0.1F)
                     .water(40.0F)
                     .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)
@@ -1029,6 +1035,7 @@ public enum TsukiFoodSet {
     ORANGE_JUICE(
             FoodInfo.builder()
                     .name("orange_juice")
+                    .alwaysEat()
                     .amountAndCalories(1, 0.1F)
                     .water(40.0F)
                     .nutrients(0.0F, 2.0F, 0.0F, 0.0F, 0.0F)

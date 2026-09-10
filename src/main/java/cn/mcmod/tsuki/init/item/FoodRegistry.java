@@ -7,6 +7,7 @@ import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.item.enums.TsukiCuisineSet;
 import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.item.BuggysMeatItem;
+import cn.mcmod.tsuki.item.ColaItem;
 import cn.mcmod.mmlib.item.ItemFoodBase;
 import cn.mcmod.mmlib.item.info.FoodInfo;
 import cn.mcmod.mmlib.registry.ItemRegistryUtil;
@@ -21,6 +22,9 @@ public class FoodRegistry {
             TsukiFoodSet.class, info -> register(info.getFoodInfo().getName(), () -> {
                 if (info == TsukiFoodSet.BUGGYS_MEAT) {
                     return new BuggysMeatItem(Tsuki.defaultItemProperties(), info.getFoodInfo());
+                }
+                if (info == TsukiFoodSet.COLA) {
+                    return new ColaItem(Tsuki.defaultItemProperties(), info.getFoodInfo());
                 }
                 return normalFood(info.getFoodInfo());
             }));
