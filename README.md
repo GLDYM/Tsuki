@@ -51,6 +51,7 @@ This mod uses assets from the following mods, published here according to their 
 - Farmer’s Delight (MIT)
 - Kaleidoscope: Cookery (CC-BY-NC-SA 4.0)
 - [MinecraftDungeonsPotion](https://skfb.ly/oUXPQ) by kompotikivun (CC-BY 4.0)
+- [ウォルフライエブライニクルシュリーク](https://nepiapororecords.bandcamp.com/track/--65) by るいご (CC-BY-NC-SA 4.0)
 
 This mod refers assets from the following mods, published here according to their open-source licenses:
 

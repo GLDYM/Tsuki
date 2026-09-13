@@ -23,6 +23,7 @@ public class TsukiItemTags {
     public static final TagKey<Item> KAWARA_BLOCK = TagUtil.modItemTag(Tsuki.MODID, "kawara_block");
     public static final TagKey<Item> STRIPPED_LOG = TagUtil.forgeItemTag("stripped_logs");
     public static final TagKey<Item> STRIPPED_WOOD = TagUtil.forgeItemTag("stripped_woods");
+    public static final TagKey<Item> MUSIC_DISCS = TagUtil.forgeItemTag("music_discs");
 
     public static final TagKey<Item> SALT = TagUtil.forgeItemTag("salt");
     public static final TagKey<Item> DUST_SALT = TagUtil.forgeItemTag("dusts/salt");

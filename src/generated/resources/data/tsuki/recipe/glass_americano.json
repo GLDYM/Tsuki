@@ -3,10 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "tsuki:glass_red_wine"
+      "item": "minecraft:red_dye"
     },
     {
       "item": "tsuki:glass_liqueur"
+    },
+    {
+      "item": "tsuki:bitters"
     },
     {
       "item": "tsuki:soda_water"

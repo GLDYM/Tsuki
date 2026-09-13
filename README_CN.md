@@ -33,7 +33,7 @@
 
 ## 版权声明
 
-本模组使用了以下模组的源代码，根据各项目的开源协议，在此公布：
+本模组使用了以下源代码，根据各项目的开源协议，在此公布：
 
 - 樱（MIT）
 - 妖怪之山通用库（MIT）
@@ -43,13 +43,14 @@
 - 烹饪锅 (MIT)
 - 妖怪们的归家 (LGPL 2.1)
 
-本模组使用了以下模组的资产，根据各项目的协议，在此公布：
+本模组使用了以下资产，根据各项目的协议，在此公布：
 
 - [竹](https://github.com/rubnsn/bambooo) (CC-BY-NC-SA 4.0)
 - 樱（MIT）
 - 农夫乐事（MIT）
 - 森罗物语：厨房（CC-BY-NC-SA 4.0）
 - [MinecraftDungeonsPotion](https://skfb.ly/oUXPQ) by kompotikivun (CC-BY 4.0)
+- [ウォルフライエブライニクルシュリーク](https://nepiapororecords.bandcamp.com/track/--65) by るいご (CC-BY-NC-SA 4.0)
 
 本模组参考了以下模组的资产，根据各项目的协议，在此公布：
 

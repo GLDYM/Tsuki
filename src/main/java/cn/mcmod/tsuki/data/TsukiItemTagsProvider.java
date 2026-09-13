@@ -34,6 +34,9 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.copy(BlockTags.PLANKS, ItemTags.PLANKS);
         this.copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
         this.copy(BlockTags.BEDS, ItemTags.BEDS);
+        this.tag(TsukiItemTags.MUSIC_DISCS).add(
+                ArmorToolRegistry.MUSIC_DISC_MIKO.get(),
+                ArmorToolRegistry.MUSIC_DISC_SHOEGAZE.get());
         this.copy(TsukiBlockTags.KAWARA_BLOCK, TsukiItemTags.KAWARA_BLOCK);
         this.copy(TsukiBlockTags.STRIPPED_LOG, TsukiItemTags.STRIPPED_LOG);
         this.copy(TsukiBlockTags.STRIPPED_WOOD, TsukiItemTags.STRIPPED_WOOD);
