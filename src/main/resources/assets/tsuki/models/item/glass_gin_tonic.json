@@ -1,9 +1,10 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
 	"textures": {
 		"0": "tsuki:block/drink/collins_glass",
-		"1": "tsuki:block/drink/Gin_Tonic",
+		"1": "tsuki:block/drink/gin_tonic",
 		"2": "tsuki:block/drink/bubble",
 		"particle": "tsuki:block/drink/collins_glass"
 	},

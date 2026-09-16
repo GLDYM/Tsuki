@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.compat.jei;
 
 import java.util.List;
+import java.util.function.Function;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.client.screen.CookingPotScreen;
 import cn.mcmod.tsuki.client.screen.DistillerScreen;
@@ -33,9 +34,13 @@ import cn.mcmod.tsuki.container.StoneMortarContainer;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import cn.mcmod.tsuki.item.drink.WineBottleItem;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.ingredients.ITypedIngredient;
+import mezz.jei.api.recipe.advanced.ISimpleRecipeManagerPlugin;
+import mezz.jei.api.registration.IAdvancedRegistration;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
@@ -50,6 +55,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.material.Fluid;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
@@ -126,6 +133,18 @@ public class JEIPlugin implements IModPlugin {
     }
 
     @Override
+    public void registerAdvanced(IAdvancedRegistration registration) {
+        registration.addTypedRecipeManagerPlugin(FERMENTER_JEI_TYPE,
+                new BottledFluidRecipeManagerPlugin<>(
+                        findRecipesByType(RecipeTypeRegistry.FERMENTER_RECIPE_TYPE.get()),
+                        FermenterRecipe::getResultFluid));
+        registration.addTypedRecipeManagerPlugin(DISTILLER_JEI_TYPE,
+                new BottledFluidRecipeManagerPlugin<>(
+                        findRecipesByType(RecipeTypeRegistry.DISTILLER_RECIPE_TYPE.get()),
+                        DistillerRecipe::getResultFluid));
+    }
+
+    @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.COOKING_POT.get()), COOKING_POT_JEI_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BlockRegistry.STONE_MORTAR.get()), STONE_MORTAR_JEI_TYPE);
@@ -163,6 +182,59 @@ public class JEIPlugin implements IModPlugin {
 
     private static RecipeHolder<CraftingRecipe> toCraftingRecipeHolder(EquipmentDyeDisplay.Entry entry) {
         return new RecipeHolder<>(entry.recipeId(), entry.toShapelessRecipe());
+    }
+
+    private static final class BottledFluidRecipeManagerPlugin<T> implements ISimpleRecipeManagerPlugin<T> {
+        private final List<T> recipes;
+        private final Function<T, FluidStack> resultFluid;
+
+        private BottledFluidRecipeManagerPlugin(List<T> recipes, Function<T, FluidStack> resultFluid) {
+            this.recipes = recipes;
+            this.resultFluid = resultFluid;
+        }
+
+        @Override
+        public boolean isHandledInput(ITypedIngredient<?> input) {
+            return false;
+        }
+
+        @Override
+        public boolean isHandledOutput(ITypedIngredient<?> output) {
+            return getContainedFluid(output) != null;
+        }
+
+        @Override
+        public List<T> getRecipesForInput(ITypedIngredient<?> input) {
+            return List.of();
+        }
+
+        @Override
+        public List<T> getRecipesForOutput(ITypedIngredient<?> output) {
+            Fluid fluid = getContainedFluid(output);
+            if (fluid == null) {
+                return List.of();
+            }
+            return recipes.stream()
+                    .filter(recipe -> {
+                        FluidStack result = resultFluid.apply(recipe);
+                        return !result.isEmpty() && result.getFluid().isSame(fluid);
+                    })
+                    .toList();
+        }
+
+        @Override
+        public List<T> getAllRecipes() {
+            return List.of();
+        }
+
+        private static Fluid getContainedFluid(ITypedIngredient<?> ingredient) {
+            return ingredient.getItemStack()
+                    .map(ItemStack::getItem)
+                    .filter(WineBottleItem.class::isInstance)
+                    .map(WineBottleItem.class::cast)
+                    .map(WineBottleItem::getFluid)
+                    .orElse(null);
+        }
     }
 
 }
