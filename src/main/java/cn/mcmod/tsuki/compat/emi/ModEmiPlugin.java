@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.mcmod.tsuki.compat.EquipmentDyeDisplay;
+import cn.mcmod.tsuki.compat.KatanaSheathingDisplay;
 import cn.mcmod.tsuki.compat.emi.category.EmiChoppingRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiCookingPotRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiDistillerRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiEquipmentDyeRecipe;
+import cn.mcmod.tsuki.compat.emi.category.EmiKatanaSheathingRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiFermenterRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiShakerRecipe;
 import cn.mcmod.tsuki.compat.emi.category.EmiStoneMortarRecipe;
@@ -114,6 +116,9 @@ public class ModEmiPlugin implements EmiPlugin {
                 new ItemStack(ArmorToolRegistry.TAMAHAGANE.get())));
         for (EquipmentDyeDisplay.Entry entry : EquipmentDyeDisplay.entries()) {
             registry.addRecipe(EmiEquipmentDyeRecipe.of(toSyncId(entry.recipeId()), entry));
+        }
+        for (KatanaSheathingDisplay.Entry entry : KatanaSheathingDisplay.entries()) {
+            registry.addRecipe(EmiKatanaSheathingRecipe.of(toSyncId(entry.recipeId()), entry));
         }
 
         registry.addWorkstation(EmiCookingPotRecipe.CATEGORY, EmiStack.of(BlockRegistry.COOKING_POT.get()));

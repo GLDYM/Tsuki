@@ -21,6 +21,7 @@ import cn.mcmod.tsuki.compat.jei.category.StoneMortarCategory;
 import cn.mcmod.tsuki.compat.jei.category.TataraCategory;
 import cn.mcmod.tsuki.compat.jei.recipe.TataraJeiRecipe;
 import cn.mcmod.tsuki.compat.EquipmentDyeDisplay;
+import cn.mcmod.tsuki.compat.KatanaSheathingDisplay;
 import cn.mcmod.tsuki.recipe.ChoppingRecipe;
 import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import cn.mcmod.tsuki.recipe.DistillerRecipe;
@@ -130,6 +131,8 @@ public class JEIPlugin implements IModPlugin {
                 new ItemStack(ArmorToolRegistry.TAMAHAGANE.get()))));
         registration.addRecipes(RecipeTypes.CRAFTING,
                 EquipmentDyeDisplay.entries().stream().map(JEIPlugin::toCraftingRecipeHolder).toList());
+        registration.addRecipes(RecipeTypes.CRAFTING,
+                KatanaSheathingDisplay.entries().stream().map(JEIPlugin::toCraftingRecipeHolder).toList());
     }
 
     @Override
@@ -181,6 +184,10 @@ public class JEIPlugin implements IModPlugin {
     }
 
     private static RecipeHolder<CraftingRecipe> toCraftingRecipeHolder(EquipmentDyeDisplay.Entry entry) {
+        return new RecipeHolder<>(entry.recipeId(), entry.toShapelessRecipe());
+    }
+
+    private static RecipeHolder<CraftingRecipe> toCraftingRecipeHolder(KatanaSheathingDisplay.Entry entry) {
         return new RecipeHolder<>(entry.recipeId(), entry.toShapelessRecipe());
     }
 

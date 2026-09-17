@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.item.tool;
 
 import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
@@ -38,16 +39,7 @@ public class SheathItem extends Item {
                 return InteractionResultHolder.fail(sheathStack);
             }
             if (!level.isClientSide()) {
-                ItemStack sheathKatana = otherStack.transmuteCopy(
-                        otherStack.is(ArmorToolRegistry.SAKURA_KATANA.get())
-                                ? ArmorToolRegistry.SAKURA_KATANA_SHEATH.get()
-                                : ArmorToolRegistry.KATANA_SHEATH.get(),
-                        1);
-
-                CompoundTag customTag = sheathKatana.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
-                        .copyTag();
-                customTag.put(TAG_SHEATH, sheathStack.copyWithCount(1).saveOptional(player.registryAccess()));
-                sheathKatana.set(DataComponents.CUSTOM_DATA, CustomData.of(customTag));
+                ItemStack sheathKatana = sheath(otherStack, sheathStack, player.registryAccess());
 
                 otherStack.shrink(1);
                 player.setItemInHand(hand, sheathKatana);
@@ -59,6 +51,24 @@ public class SheathItem extends Item {
 
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(sheathStack);
+    }
+
+    public static ItemStack sheath(ItemStack katanaStack, ItemStack sheathStack,
+            HolderLookup.Provider registries) {
+        Item resultItem;
+        if (katanaStack.is(ArmorToolRegistry.KATANA.get())) {
+            resultItem = ArmorToolRegistry.KATANA_SHEATH.get();
+        } else if (katanaStack.is(ArmorToolRegistry.SAKURA_KATANA.get())) {
+            resultItem = ArmorToolRegistry.SAKURA_KATANA_SHEATH.get();
+        } else {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack sheathKatana = katanaStack.transmuteCopy(resultItem, 1);
+        CompoundTag customTag = sheathKatana.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        customTag.put(TAG_SHEATH, sheathStack.copyWithCount(1).saveOptional(registries));
+        sheathKatana.set(DataComponents.CUSTOM_DATA, CustomData.of(customTag));
+        return sheathKatana;
     }
 
     @Override

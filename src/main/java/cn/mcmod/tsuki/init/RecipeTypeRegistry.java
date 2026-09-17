@@ -8,6 +8,7 @@ import cn.mcmod.tsuki.recipe.CookingPotServingRecipe;
 import cn.mcmod.tsuki.recipe.DistillerRecipe;
 import cn.mcmod.tsuki.recipe.EquipmentDyeRecipe;
 import cn.mcmod.tsuki.recipe.FermenterRecipe;
+import cn.mcmod.tsuki.recipe.KatanaSheathingRecipe;
 import cn.mcmod.tsuki.recipe.ShakerPourRecipe;
 import cn.mcmod.tsuki.recipe.ShakerRecipe;
 import cn.mcmod.tsuki.recipe.StoneMortarRecipe;
@@ -53,6 +54,8 @@ public class RecipeTypeRegistry {
             .register("shaker_pour", () -> new SimpleCraftingRecipeSerializer<>(ShakerPourRecipe::new));
     public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<EquipmentDyeRecipe>> EQUIPMENT_DYE_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("equipment_dye", () -> new SimpleCraftingRecipeSerializer<>(EquipmentDyeRecipe::new));
+    public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<KatanaSheathingRecipe>> KATANA_SHEATHING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
+            .register("katana_sheathing", () -> new SimpleCraftingRecipeSerializer<>(KatanaSheathingRecipe::new));
     public static final DeferredHolder<RecipeSerializer<?>, SimpleCraftingRecipeSerializer<CookingPotServingRecipe>> COOKING_POT_SERVING_RECIPE_SERIALIZER = RECIPE_SERIALIZERS
             .register("cooking_pot_serving", () -> new SimpleCraftingRecipeSerializer<>(CookingPotServingRecipe::new));
 
