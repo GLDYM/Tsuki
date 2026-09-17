@@ -3429,96 +3429,96 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BEER_BOTTLE).get())
                 .unlockedBy("has_beer", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BEER_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_beer"));
+                .save(consumer, manualOnlyRecipeId("glass_beer"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_DOBUROKU).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.DOBUROKU_BOTTLE).get())
                 .unlockedBy("has_doburoku",
                         has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.DOBUROKU_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_doburoku"));
+                .save(consumer, manualOnlyRecipeId("glass_doburoku"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_SAKE).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SAKE_BOTTLE).get())
                 .unlockedBy("has_sake", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SAKE_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_sake"));
+                .save(consumer, manualOnlyRecipeId("glass_sake"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_SHOUCHU).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get())
                 .unlockedBy("has_shouchu", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.SHOUCHU_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_shouchu"));
+                .save(consumer, manualOnlyRecipeId("glass_shouchu"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RED_WINE).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RED_WINE_BOTTLE).get())
                 .unlockedBy("has_red_wine",
                         has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RED_WINE_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_red_wine"));
+                .save(consumer, manualOnlyRecipeId("glass_red_wine"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHITE_WINE).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHITE_WINE_BOTTLE).get())
                 .unlockedBy("has_white_wine",
                         has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHITE_WINE_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_white_wine"));
+                .save(consumer, manualOnlyRecipeId("glass_white_wine"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_CHAMPAGNE).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get())
                 .unlockedBy("has_champagne",
                         has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.CHAMPAGNE_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_champagne"));
+                .save(consumer, manualOnlyRecipeId("glass_champagne"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_RUM).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RUM_BOTTLE).get())
                 .unlockedBy("has_rum", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.RUM_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_rum"));
+                .save(consumer, manualOnlyRecipeId("glass_rum"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_WHISKEY).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHISKEY_BOTTLE).get())
                 .unlockedBy("has_whiskey", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.WHISKEY_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_whiskey"));
+                .save(consumer, manualOnlyRecipeId("glass_whiskey"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_BRANDY).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BRANDY_BOTTLE).get())
                 .unlockedBy("has_brandy", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.BRANDY_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_brandy"));
+                .save(consumer, manualOnlyRecipeId("glass_brandy"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_GIN).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.GIN_BOTTLE).get())
                 .unlockedBy("has_gin", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.GIN_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_gin"));
+                .save(consumer, manualOnlyRecipeId("glass_gin"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_TEQUILA).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.TEQUILA_BOTTLE).get())
                 .unlockedBy("has_tequila", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.TEQUILA_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_tequila"));
+                .save(consumer, manualOnlyRecipeId("glass_tequila"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_VODKA).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.VODKA_BOTTLE).get())
                 .unlockedBy("has_vodka", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.VODKA_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_vodka"));
+                .save(consumer, manualOnlyRecipeId("glass_vodka"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_LIQUEUR).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.LIQUEUR_BOTTLE).get())
                 .unlockedBy("has_liqueur", has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.LIQUEUR_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_liqueur"));
+                .save(consumer, manualOnlyRecipeId("glass_liqueur"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.ALCOHOLS.get(TsukiAlcoholSet.GLASS_COCOA_LIQUEUR).get())
                 .requires(DrinkRegistry.GLASS_CUP.get())
                 .requires(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.COCOA_LIQUEUR_BOTTLE).get())
                 .unlockedBy("has_cocoa_liqueur",
                         has(DrinkRegistry.WINE_BOTTLES.get(TsukiWineBottleSet.COCOA_LIQUEUR_BOTTLE).get()))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cocoa_liqueur"));
+                .save(consumer, manualOnlyRecipeId("glass_cocoa_liqueur"));
     }
 
     private void registerCocktailCraftRecipes(RecipeOutput consumer) {
@@ -3572,14 +3572,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(blackcurrantJuice)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(whiteWine))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kir"));
+                .save(consumer, manualOnlyRecipeId("glass_kir"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KIR_ROYALE).get())
                 .requires(champagne)
                 .requires(blackcurrantJuice)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(champagne))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kir_royale"));
+                .save(consumer, manualOnlyRecipeId("glass_kir_royale"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_CASSIS_ORANGE).get())
                 .requires(liqueur)
@@ -3587,7 +3587,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(orangeJuice)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(liqueur))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cassis_orange"));
+                .save(consumer, manualOnlyRecipeId("glass_cassis_orange"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_CASSIS_SODA).get())
                 .requires(liqueur)
@@ -3595,21 +3595,21 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(liqueur))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cassis_soda"));
+                .save(consumer, manualOnlyRecipeId("glass_cassis_soda"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MIMOSA).get())
                 .requires(champagne)
                 .requires(orangeJuice)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(champagne))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_mimosa"));
+                .save(consumer, manualOnlyRecipeId("glass_mimosa"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SHANDY_GAFF).get())
                 .requires(beer)
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(beer))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_shandy_gaff"));
+                .save(consumer, manualOnlyRecipeId("glass_shandy_gaff"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_RED_EYE).get())
                 .requires(beer)
@@ -3617,14 +3617,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(worcesterSauce)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(beer))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_red_eye"));
+                .save(consumer, manualOnlyRecipeId("glass_red_eye"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_HIGHBALL).get())
                 .requires(whiskey)
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(whiskey))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_highball"));
+                .save(consumer, manualOnlyRecipeId("glass_highball"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GIN_TONIC).get())
                 .requires(gin)
@@ -3632,14 +3632,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(lime)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(gin))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_gin_tonic"));
+                .save(consumer, manualOnlyRecipeId("glass_gin_tonic"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GIMLET).get())
                 .requires(gin)
                 .requires(limeJuice)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(gin))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_gimlet"));
+                .save(consumer, manualOnlyRecipeId("glass_gimlet"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GIN_FIZZ).get())
                 .requires(gin)
@@ -3648,14 +3648,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(gin))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_gin_fizz"));
+                .save(consumer, manualOnlyRecipeId("glass_gin_fizz"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SCREWDRIVER).get())
                 .requires(vodka)
                 .requires(orangeJuice)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(vodka))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_screwdriver"));
+                .save(consumer, manualOnlyRecipeId("glass_screwdriver"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SALTY_DOG).get())
                 .requires(vodka)
@@ -3663,7 +3663,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(salt)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(vodka))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_salty_dog"));
+                .save(consumer, manualOnlyRecipeId("glass_salty_dog"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MOSCOW_MULE).get(), 2)
         // .requires(vodka)
@@ -3689,7 +3689,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(blackcurrantJuice)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(tequila))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_tequila_sunrise"));
+                .save(consumer, manualOnlyRecipeId("glass_tequila_sunrise"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MARGARITA).get(), 2)
         // .requires(tequila)
@@ -3708,7 +3708,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(lime)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(rum))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_cuba_libre"));
+                .save(consumer, manualOnlyRecipeId("glass_cuba_libre"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_DAIQUIRI).get())
                 .requires(rum)
@@ -3716,7 +3716,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sugar)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(rum))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_daiquiri"));
+                .save(consumer, manualOnlyRecipeId("glass_daiquiri"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_GROG).get())
                 .requires(rum)
@@ -3725,14 +3725,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(rum))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_grog"));
+                .save(consumer, manualOnlyRecipeId("glass_grog"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_HOT_TODDY).get())
                 .requires(whiskey)
                 .requires(lemonJuice)
                 .requires(sugar)
                 .unlockedBy("has_item", has(whiskey))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_hot_toddy"));
+                .save(consumer, manualOnlyRecipeId("glass_hot_toddy"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SANGRIA).get())
                 .requires(redWine)
@@ -3741,14 +3741,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sugar)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(redWine))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_sangria"));
+                .save(consumer, manualOnlyRecipeId("glass_sangria"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_SPRITZER).get())
                 .requires(whiteWine)
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(whiteWine))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_spritzer"));
+                .save(consumer, manualOnlyRecipeId("glass_spritzer"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MARTINI).get(), 2)
         // .requires(gin)
@@ -3766,7 +3766,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(redWine))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_americano"));
+                .save(consumer, manualOnlyRecipeId("glass_americano"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_NEGRONI).get(), 3)
         // .requires(gin)
@@ -3792,21 +3792,21 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sugar)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(champagne))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_bellini"));
+                .save(consumer, manualOnlyRecipeId("glass_bellini"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KALIMOTXO).get())
                 .requires(redWine)
                 .requires(cola)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(redWine))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kalimotxo"));
+                .save(consumer, manualOnlyRecipeId("glass_kalimotxo"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_KITTY).get())
                 .requires(redWine)
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(redWine))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_kitty"));
+                .save(consumer, manualOnlyRecipeId("glass_kitty"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_OPERATOR).get())
                 .requires(whiteWine)
@@ -3814,7 +3814,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(whiteWine))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_operator"));
+                .save(consumer, manualOnlyRecipeId("glass_operator"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MATADOR).get())
                 .requires(tequila)
@@ -3822,7 +3822,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(limeJuice)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(tequila))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_matador"));
+                .save(consumer, manualOnlyRecipeId("glass_matador"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,
                         DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_HOT_BUTTERED_RUM).get())
@@ -3830,7 +3830,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sugar)
                 .requires(milk)
                 .unlockedBy("has_item", has(rum))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_hot_buttered_rum"));
+                .save(consumer, manualOnlyRecipeId("glass_hot_buttered_rum"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_PINA_COLADA).get())
                 .requires(rum)
@@ -3839,7 +3839,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sugar)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(rum))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_pina_colada"));
+                .save(consumer, manualOnlyRecipeId("glass_pina_colada"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_BLACK_RUSSIAN).get(), 2)
         // .requires(vodka)
@@ -3887,7 +3887,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(iceCube)
                 .requires(collinsGlass)
                 .unlockedBy("has_item", has(vodka))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_bloody_mary"));
+                .save(consumer, manualOnlyRecipeId("glass_bloody_mary"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_OLD_FASHIONED).get())
                 .requires(whiskey)
@@ -3895,7 +3895,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sugar)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(whiskey))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_old_fashioned"));
+                .save(consumer, manualOnlyRecipeId("glass_old_fashioned"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_WHISKEY_SOUR).get())
                 .requires(whiskey)
@@ -3903,7 +3903,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sugar)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(whiskey))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_whiskey_sour"));
+                .save(consumer, manualOnlyRecipeId("glass_whiskey_sour"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_MOJITO).get())
                 .requires(rum)
@@ -3913,7 +3913,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(mint)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(rum))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_mojito"));
+                .save(consumer, manualOnlyRecipeId("glass_mojito"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_RUSTY_NAIL).get(), 2)
         // .requires(whiskey)
@@ -3991,7 +3991,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(egg)
                 .requires(sugar)
                 .unlockedBy("has_item", has(brandy))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_eggnog"));
+                .save(consumer, manualOnlyRecipeId("glass_eggnog"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_FLYING_GRASSHOPPER).get(),
         // 3)
@@ -4033,7 +4033,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(gin))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_john_collins"));
+                .save(consumer, manualOnlyRecipeId("glass_john_collins"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_LEMON_MARGARITA).get(), 2)
         // .requires(tequila)
@@ -4066,7 +4066,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(bitters)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(whiskey))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_mint_julep"));
+                .save(consumer, manualOnlyRecipeId("glass_mint_julep"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_PANACHE).get())
                 .requires(beer)
@@ -4075,7 +4075,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .requires(sodaWater)
                 .requires(iceCube)
                 .unlockedBy("has_item", has(beer))
-                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "glass_panache"));
+                .save(consumer, manualOnlyRecipeId("glass_panache"));
         // ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,
         // DrinkRegistry.COCKTAILS.get(TsukiCocktailSet.GLASS_PARADISE).get())
         // .requires(gin)
@@ -4144,6 +4144,11 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         // .unlockedBy("has_item", has(vodka))
         // .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
         // "glass_russian_spring"));
+    }
+
+    private static ResourceLocation manualOnlyRecipeId(String path) {
+        // Create excludes recipe IDs ending in this suffix from mechanical automation.
+        return ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, path + "_manual_only");
     }
 
     private void registerCocktailShakerRecipes(RecipeOutput consumer) {
