@@ -207,6 +207,19 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.DRINK_GLASSES).add(
                 DrinkRegistry.GLASS_CUP.get(),
                 DrinkRegistry.COLLINS_GLASS.get());
+        this.tag(TsukiItemTags.SHAKER_OUTPUT_COUNT)
+                .add(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get(),
+                        FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get(),
+                        FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get(),
+                        FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get(),
+                        FoodRegistry.FOODSET.get(TsukiFoodSet.LIME_JUICE).get(),
+                        FoodRegistry.FOODSET.get(TsukiFoodSet.COLA).get());
+        DrinkRegistry.ALCOHOLS.values().forEach(item -> this.tag(TsukiItemTags.SHAKER_OUTPUT_COUNT).add(item.get()));
+        DrinkRegistry.COCKTAILS.entrySet().stream()
+                .filter(entry -> entry.getKey().isAlcoholic())
+                .forEach(entry -> this.tag(TsukiItemTags.SHAKER_OUTPUT_COUNT).add(entry.getValue().get()));
+        DrinkRegistry.WINE_BOTTLES.values()
+                .forEach(item -> this.tag(TsukiItemTags.SHAKER_OUTPUT_COUNT).add(item.get()));
         this.tag(TsukiItemTags.INGREDIENT_BLACKLIST)
                 .addOptionalTag(ResourceLocation.parse("kaleidoscope_cookery:ingredient_blacklist"))
                 .addOptionalTag(ResourceLocation.parse("c:tools"))

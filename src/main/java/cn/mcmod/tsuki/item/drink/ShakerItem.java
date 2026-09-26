@@ -1,12 +1,11 @@
 package cn.mcmod.tsuki.item.drink;
 
 import cn.mcmod.tsuki.block.entity.DrinkDisplayBlockEntity;
-import cn.mcmod.tsuki.init.item.FoodRegistry;
 import cn.mcmod.tsuki.client.render.item.ShakerRenderer;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
 import cn.mcmod.tsuki.init.item.DrinkRegistry;
-import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.recipe.ShakerRecipe;
+import cn.mcmod.tsuki.tag.TsukiItemTags;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -312,21 +311,7 @@ public class ShakerItem extends BlockItem implements GeoItem {
     }
 
     private boolean isBaseDrinkInput(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return false;
-        }
-        if (stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.SODA_WATER).get())
-                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.BLACKCURRANT_JUICE).get())
-                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.ORANGE_JUICE).get())
-                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON_JUICE).get())
-                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.LIME_JUICE).get())
-                || stack.is(FoodRegistry.FOODSET.get(TsukiFoodSet.COLA).get())) {
-            return true;
-        }
-        if (stack.getItem() instanceof DrinkItem drinkItem) {
-            return drinkItem.isAlcoholic();
-        }
-        return stack.getItem() instanceof WineBottleItem;
+        return stack.is(TsukiItemTags.SHAKER_OUTPUT_COUNT);
     }
 
     private void triggerShakeStart(Player player, ItemStack stack, ServerLevel level) {
