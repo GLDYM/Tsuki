@@ -4,6 +4,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.fluid.FluidRegistry;
+import cn.mcmod.tsuki.block.HotSpringWaterBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -48,4 +49,7 @@ public class FluidBlockRegistry {
             () -> new LiquidBlock(FluidRegistry.TEQUILA.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER)));
     public static final DeferredBlock<LiquidBlock> MAPLE_SYRUP_BLOCK = BLOCKS.register("maple_syrup",
             () -> new LiquidBlock(FluidRegistry.MAPLE_SYRUP.get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER)));
+    public static final DeferredBlock<LiquidBlock> HOT_SPRING_WATER_BLOCK = BLOCKS.register("hot_spring_water",
+            () -> new HotSpringWaterBlock(FluidRegistry.HOT_SPRING_WATER.get(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.WATER)));
 }

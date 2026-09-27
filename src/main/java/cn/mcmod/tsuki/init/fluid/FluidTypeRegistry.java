@@ -33,12 +33,19 @@ public class FluidTypeRegistry {
     public static final DeferredHolder<FluidType, FluidType> GIN = register("gin", 0xFFE4F6E8);
     public static final DeferredHolder<FluidType, FluidType> TEQUILA = register("tequila", 0xFFD4A34A);
     public static final DeferredHolder<FluidType, FluidType> MAPLE_SYRUP = register("maple_syrup", 0xFF2DFFD8);
+    public static final DeferredHolder<FluidType, FluidType> HOT_SPRING_WATER = register("hot_spring_water", 0xFFE8A85A);
 
+    @Deprecated
     private static DeferredHolder<FluidType, FluidType> register(String name, int color) {
-        return FLUID_TYPES.register(name, () -> create(color));
+        return register(name);
     }
 
-    private static FluidType create(int color) {
+    private static DeferredHolder<FluidType, FluidType> register(String name) {
+        return FLUID_TYPES.register(name, () -> create(name));
+    }
+
+    private static FluidType create(String name) {
+        // TODO: remove initializeClient
         return new FluidType(FluidType.Properties.create()
                 .temperature(27)
                 .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
@@ -49,17 +56,17 @@ public class FluidTypeRegistry {
                 consumer.accept(new IClientFluidTypeExtensions() {
                     @Override
                     public int getTintColor() {
-                        return color;
+                        return -1;
                     }
 
                     @Override
                     public ResourceLocation getStillTexture() {
-                        return ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_still");
+                        return ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "block/" + name + "_still");
                     }
 
                     @Override
                     public ResourceLocation getFlowingTexture() {
-                        return ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_flow");
+                        return ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "block/" + name + "_flow");
                     }
                 });
             }

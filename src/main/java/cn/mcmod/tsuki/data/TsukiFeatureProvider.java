@@ -39,6 +39,8 @@ public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
                             WorldGenerationRegistry.FEATURE_ORE_SAKURA_DIAMOND);
                     bootstrap.register(WorldGenerationRegistry.FEATURE_ORE_IRON_SAND_KEY,
                             WorldGenerationRegistry.FEATURE_ORE_IRON_SAND);
+                    bootstrap.register(WorldGenerationRegistry.FEATURE_HOT_SPRING_KEY,
+                            WorldGenerationRegistry.FEATURE_HOT_SPRING);
                     TsukiTreePlacedFeatures.bootstrapConfigured(bootstrap);
                 })
                 .add(Registries.PLACED_FEATURE, bootstrap -> {
@@ -52,6 +54,8 @@ public class TsukiFeatureProvider extends DatapackBuiltinEntriesProvider {
                             WorldGenerationRegistry.ORE_SAKURA_DIAMOND);
                     bootstrap.register(WorldGenerationRegistry.ORE_IRON_SAND_KEY,
                             WorldGenerationRegistry.ORE_IRON_SAND);
+                    bootstrap.register(WorldGenerationRegistry.HOT_SPRING_KEY,
+                            WorldGenerationRegistry.HOT_SPRING);
                     TsukiTreePlacedFeatures.bootstrapPlaced(bootstrap);
                 }), Set.of(Tsuki.MODID));
     }

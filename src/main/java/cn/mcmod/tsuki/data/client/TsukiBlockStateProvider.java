@@ -296,6 +296,7 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
         fluidBlock(FluidBlockRegistry.GIN_BLOCK.get());
         fluidBlock(FluidBlockRegistry.TEQUILA_BLOCK.get());
         fluidBlock(FluidBlockRegistry.MAPLE_SYRUP_BLOCK.get());
+        fluidBlock(FluidBlockRegistry.HOT_SPRING_WATER_BLOCK.get());
         simpleBlock(BlockRegistry.DRINK_DISPLAY.get(), models().getExistingFile(modLoc("block/empty_cup_display")));
         simpleBlock(BlockRegistry.ZABUTON.get(), models().getExistingFile(modLoc("block/zabuton")));
         futon(BlockRegistry.FUTON.get());

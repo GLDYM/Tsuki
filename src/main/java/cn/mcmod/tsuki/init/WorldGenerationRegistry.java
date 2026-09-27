@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseThresholdProvider;
 import net.minecraft.world.level.levelgen.heightproviders.BiasedToBottomHeight;
@@ -26,6 +27,14 @@ import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 public class WorldGenerationRegistry {
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_HOT_SPRING_KEY = ResourceKey.create(
+            Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "hot_spring"));
+    public static final ConfiguredFeature<NoneFeatureConfiguration, ?> FEATURE_HOT_SPRING = new ConfiguredFeature<>(
+            FeatureTypeRegistry.HOT_SPRING.get(), NoneFeatureConfiguration.INSTANCE);
+    public static final ResourceKey<PlacedFeature> HOT_SPRING_KEY = ResourceKey.create(Registries.PLACED_FEATURE,
+            ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "hot_spring"));
+    public static final PlacedFeature HOT_SPRING = new PlacedFeature(Holder.direct(FEATURE_HOT_SPRING), List.of(
+            PlacementUtils.HEIGHTMAP, InSquarePlacement.spread(), BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(100)));
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> FEATURE_PATCH_BAMBOOSHOOT_KEY = ResourceKey.create(
             Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "patch_bambooshoot"));

@@ -1,0 +1,22 @@
+{
+  "feature": {
+    "type": "tsuki:hot_spring",
+    "config": {}
+  },
+  "placement": [
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "MOTION_BLOCKING"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 100
+    }
+  ]
+}

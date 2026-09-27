@@ -47,5 +47,7 @@ public class BucketItemRegistry {
             () -> new BucketItem(FluidRegistry.TEQUILA.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
     public static final DeferredItem<Item> MAPLE_SYRUP_BUCKET = ITEMS.register("maple_syrup_bucket",
             () -> new BucketItem(FluidRegistry.MAPLE_SYRUP.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
+    public static final DeferredItem<Item> HOT_SPRING_WATER_BUCKET = ITEMS.register("hot_spring_water_bucket",
+            () -> new BucketItem(FluidRegistry.HOT_SPRING_WATER.get(), new Item.Properties().craftRemainder(Items.BUCKET)));
 
 }

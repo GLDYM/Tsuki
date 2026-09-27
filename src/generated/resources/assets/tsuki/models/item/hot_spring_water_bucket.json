@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tsuki:item/hot_spring_water_bucket"
+  }
+}
