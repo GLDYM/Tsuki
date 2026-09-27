@@ -1,16 +1,12 @@
 package cn.mcmod.tsuki.init.fluid;
 
 import cn.mcmod.tsuki.Tsuki;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
-
-import java.util.function.Consumer;
 
 public class FluidTypeRegistry {
     public static final DeferredRegister<FluidType> FLUID_TYPES = DeferredRegister
@@ -45,31 +41,10 @@ public class FluidTypeRegistry {
     }
 
     private static FluidType create(String name) {
-        // TODO: remove initializeClient
         return new FluidType(FluidType.Properties.create()
                 .temperature(27)
                 .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
                 .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
-                .density(3000).viscosity(1000)) {
-            @Override
-            public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
-                consumer.accept(new IClientFluidTypeExtensions() {
-                    @Override
-                    public int getTintColor() {
-                        return -1;
-                    }
-
-                    @Override
-                    public ResourceLocation getStillTexture() {
-                        return ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "block/" + name + "_still");
-                    }
-
-                    @Override
-                    public ResourceLocation getFlowingTexture() {
-                        return ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "block/" + name + "_flow");
-                    }
-                });
-            }
-        };
+                .density(3000).viscosity(1000));
     }
 }
