@@ -25,7 +25,7 @@ public class TsukiKeyInputHandler {
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.player == null || minecraft.gameMode == null) {
+        if (minecraft.player == null || minecraft.player.input == null || minecraft.gameMode == null) {
             return;
         }
 
