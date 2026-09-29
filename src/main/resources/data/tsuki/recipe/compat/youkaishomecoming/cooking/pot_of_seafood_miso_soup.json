@@ -34,13 +34,13 @@
       "item": "minecraft:brown_mushroom"
     },
     {
-      "tag": "c:crops/onion"
+      "tag": "c:foods/onion"
     },
     {
-      "tag": "c:foods/raw_salmon"
+      "tag": "c:foods/safe_raw_fish"
     },
     {
-      "tag": "c:foods/raw_salmon"
+      "tag": "c:foods/safe_raw_fish"
     }
   ],
   "recipeTime": 400,

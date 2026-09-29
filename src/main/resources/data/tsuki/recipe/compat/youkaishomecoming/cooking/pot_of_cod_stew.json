@@ -16,7 +16,7 @@
   },
   "ingredients": [
     {
-      "tag": "c:foods/raw_cod"
+      "tag": "c:foods/safe_raw_fish"
     },
     {
       "tag": "c:eggs"

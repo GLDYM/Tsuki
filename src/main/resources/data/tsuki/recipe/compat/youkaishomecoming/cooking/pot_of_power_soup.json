@@ -19,10 +19,10 @@
       "tag": "c:crops/soybean"
     },
     {
-      "tag": "c:foods/raw_boar"
+      "tag": "youkaishomecoming:raw_boar"
     },
     {
-      "tag": "c:foods/raw_venison"
+      "tag": "youkaishomecoming:raw_venison"
     },
     {
       "item": "minecraft:kelp"
@@ -37,7 +37,7 @@
       "tag": "c:foods/cabbage"
     },
     {
-      "tag": "c:crops/onion"
+      "tag": "c:foods/onion"
     }
   ],
   "recipeTime": 400,
