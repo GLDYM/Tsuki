@@ -1,11 +1,12 @@
 package cn.mcmod.tsuki.block.entity;
 
 import cn.mcmod.tsuki.block.machine.SprinklerBlock;
-import cn.mcmod.tsuki.block.crop.SunflowerCropBlock;
 import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
+import cn.mcmod.tsuki.tag.TsukiBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.FarmBlock;
+import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.Level;
@@ -75,8 +76,16 @@ public class SprinklerBlockEntity extends BlockEntity implements GeoBlockEntity 
     }
 
     private static void growByAge(ServerLevel level, BlockPos pos, BlockState state, int growthStages) {
-        if (state.getBlock() instanceof SunflowerCropBlock sunflower) {
-            sunflower.growFromSprinkler(level, pos, state, growthStages);
+        if (state.is(TsukiBlockTags.SPRINKLER_BLACKLIST)) {
+            return;
+        }
+
+        if (!state.is(TsukiBlockTags.SPRINKLER_DIRECT)) {
+            if (state.getBlock() instanceof BonemealableBlock growable
+                    && growable.isValidBonemealTarget(level, pos, state)
+                    && growable.isBonemealSuccess(level, level.random, pos, state)) {
+                growable.performBonemeal(level, level.random, pos, state);
+            }
             return;
         }
 

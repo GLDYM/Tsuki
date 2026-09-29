@@ -12,6 +12,8 @@ public class TsukiBlockTags {
     public static final TagKey<Block> HEAT_SOURCES = TagUtil.modBlockTag(Tsuki.MODID, "heat_sources");
     public static final TagKey<Block> HEAT_CONDUCTORS = TagUtil.modBlockTag(Tsuki.MODID, "heat_conductors");
     public static final TagKey<Block> TRAY_HEAT_SOURCES = TagUtil.modBlockTag(Tsuki.MODID, "tray_heat_sources");
+    public static final TagKey<Block> SPRINKLER_BLACKLIST = TagUtil.modBlockTag(Tsuki.MODID, "sprinkler_blacklist");
+    public static final TagKey<Block> SPRINKLER_DIRECT = TagUtil.modBlockTag(Tsuki.MODID, "sprinkler_direct");
     public static final TagKey<Block> MINEABLE_WITH_KNIFE = TagUtil.forgeBlockTag("mineable/knife");
     public static final TagKey<Block> MINEABLE_WITH_HAMMER = TagUtil.forgeBlockTag("mineable/hammer");
     public static final TagKey<Block> ORES = TagUtil.forgeBlockTag("ores");
