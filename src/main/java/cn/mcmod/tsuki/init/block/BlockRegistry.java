@@ -68,9 +68,12 @@ import java.util.Optional;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.SlabBlock;
@@ -79,6 +82,7 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -306,6 +310,51 @@ public class BlockRegistry {
             () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
     public static final DeferredBlock<Block> BAMBOO_PLANK_SLAB = BLOCKS.register("slab_plank_bamboo",
             () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+
+    public static final DeferredBlock<Block> SAKURA_PLANK_FENCE = BLOCKS.register("fence_plank_sakura",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> MAPLE_PLANK_FENCE = BLOCKS.register("fence_plank_maple",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> UME_PLANK_FENCE = BLOCKS.register("fence_plank_ume",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_PLANK_FENCE = BLOCKS.register("fence_plank_bamboo",
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+    public static final DeferredBlock<Block> SAKURA_PLANK_FENCE_GATE = BLOCKS.register("fence_gate_plank_sakura",
+            () -> new FenceGateBlock(WoodType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> MAPLE_PLANK_FENCE_GATE = BLOCKS.register("fence_gate_plank_maple",
+            () -> new FenceGateBlock(WoodType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> UME_PLANK_FENCE_GATE = BLOCKS.register("fence_gate_plank_ume",
+            () -> new FenceGateBlock(WoodType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> BAMBOO_PLANK_FENCE_GATE = BLOCKS.register("fence_gate_plank_bamboo",
+            () -> new FenceGateBlock(WoodType.BAMBOO,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
+    public static final DeferredBlock<Block> SAKURA_PLANK_PRESSURE_PLATE = BLOCKS.register("pressure_plate_plank_sakura",
+            () -> new PressurePlateBlock(BlockSetType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
+    public static final DeferredBlock<Block> MAPLE_PLANK_PRESSURE_PLATE = BLOCKS.register("pressure_plate_plank_maple",
+            () -> new PressurePlateBlock(BlockSetType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
+    public static final DeferredBlock<Block> UME_PLANK_PRESSURE_PLATE = BLOCKS.register("pressure_plate_plank_ume",
+            () -> new PressurePlateBlock(BlockSetType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
+    public static final DeferredBlock<Block> BAMBOO_PLANK_PRESSURE_PLATE = BLOCKS.register("pressure_plate_plank_bamboo",
+            () -> new PressurePlateBlock(BlockSetType.BAMBOO,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PRESSURE_PLATE)));
+    public static final DeferredBlock<Block> SAKURA_PLANK_BUTTON = BLOCKS.register("button_plank_sakura",
+            () -> new ButtonBlock(BlockSetType.OAK, 30,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+    public static final DeferredBlock<Block> MAPLE_PLANK_BUTTON = BLOCKS.register("button_plank_maple",
+            () -> new ButtonBlock(BlockSetType.OAK, 30,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+    public static final DeferredBlock<Block> UME_PLANK_BUTTON = BLOCKS.register("button_plank_ume",
+            () -> new ButtonBlock(BlockSetType.OAK, 30,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+    public static final DeferredBlock<Block> BAMBOO_PLANK_BUTTON = BLOCKS.register("button_plank_bamboo",
+            () -> new ButtonBlock(BlockSetType.BAMBOO, 30,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_BUTTON)));
 
     public static final DeferredBlock<Block> STRAW_BLOCK = BLOCKS.register("straw_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK)));

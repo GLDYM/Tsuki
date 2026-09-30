@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "M": {
+      "item": "tsuki:plank_sakura"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "SMS",
+    "SMS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:fence_gate_plank_sakura"
+  }
+}

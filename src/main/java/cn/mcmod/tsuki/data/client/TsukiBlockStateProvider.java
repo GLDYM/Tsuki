@@ -15,9 +15,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
 import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
@@ -310,6 +313,22 @@ public class TsukiBlockStateProvider extends BlockStateProvider {
                 (FenceBlock) BlockRegistry.BAMBOO_FENCE_SUNBURNT.get(),
                 "bamboo_sunburnt",
                 "bamboo_fence_sunburnt");
+        fenceBlock((FenceBlock) BlockRegistry.SAKURA_PLANK_FENCE.get(), texture("plank_sakura"));
+        fenceBlock((FenceBlock) BlockRegistry.MAPLE_PLANK_FENCE.get(), texture("plank_maple"));
+        fenceBlock((FenceBlock) BlockRegistry.UME_PLANK_FENCE.get(), texture("plank_ume"));
+        fenceBlock((FenceBlock) BlockRegistry.BAMBOO_PLANK_FENCE.get(), texture("plank_bamboo"));
+        fenceGateBlock((FenceGateBlock) BlockRegistry.SAKURA_PLANK_FENCE_GATE.get(), texture("plank_sakura"));
+        fenceGateBlock((FenceGateBlock) BlockRegistry.MAPLE_PLANK_FENCE_GATE.get(), texture("plank_maple"));
+        fenceGateBlock((FenceGateBlock) BlockRegistry.UME_PLANK_FENCE_GATE.get(), texture("plank_ume"));
+        fenceGateBlock((FenceGateBlock) BlockRegistry.BAMBOO_PLANK_FENCE_GATE.get(), texture("plank_bamboo"));
+        pressurePlateBlock((PressurePlateBlock) BlockRegistry.SAKURA_PLANK_PRESSURE_PLATE.get(), texture("plank_sakura"));
+        pressurePlateBlock((PressurePlateBlock) BlockRegistry.MAPLE_PLANK_PRESSURE_PLATE.get(), texture("plank_maple"));
+        pressurePlateBlock((PressurePlateBlock) BlockRegistry.UME_PLANK_PRESSURE_PLATE.get(), texture("plank_ume"));
+        pressurePlateBlock((PressurePlateBlock) BlockRegistry.BAMBOO_PLANK_PRESSURE_PLATE.get(), texture("plank_bamboo"));
+        buttonBlock((ButtonBlock) BlockRegistry.SAKURA_PLANK_BUTTON.get(), texture("plank_sakura"));
+        buttonBlock((ButtonBlock) BlockRegistry.MAPLE_PLANK_BUTTON.get(), texture("plank_maple"));
+        buttonBlock((ButtonBlock) BlockRegistry.UME_PLANK_BUTTON.get(), texture("plank_ume"));
+        buttonBlock((ButtonBlock) BlockRegistry.BAMBOO_PLANK_BUTTON.get(), texture("plank_bamboo"));
         doorBlockWithRenderType((DoorBlock) BlockRegistry.BAMBOO_DOOR.get(),
                 texture("bamboo_door_upper"), texture("bamboo_door_upper"), "cutout");
 

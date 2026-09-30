@@ -43,6 +43,62 @@ public class TsukiItemModelProvider extends AbstractItemModelProvider {
         BlockItemRegistry.ITEMS.getEntries().forEach(item -> {
             if (item.get() instanceof BlockItem) {
                 BlockItem blockItem = (BlockItem) item.get();
+                if (blockItem.getBlock() == BlockRegistry.SAKURA_PLANK_FENCE.get()) {
+                    woodenFence(blockItem::getBlock, BlockRegistry.SAKURA_PLANK::get);
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.MAPLE_PLANK_FENCE.get()) {
+                    woodenFence(blockItem::getBlock, BlockRegistry.MAPLE_PLANK::get);
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.UME_PLANK_FENCE.get()) {
+                    woodenFence(blockItem::getBlock, BlockRegistry.UME_PLANK::get);
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.BAMBOO_PLANK_FENCE.get()) {
+                    woodenFence(blockItem::getBlock, BlockRegistry.BAMBOO_PLANK::get);
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.SAKURA_PLANK_BUTTON.get()) {
+                    withExistingParent(item.getId().getPath(), mcLoc("block/button_inventory"))
+                            .texture("texture", modLoc("block/plank_sakura"));
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.MAPLE_PLANK_BUTTON.get()) {
+                    withExistingParent(item.getId().getPath(), mcLoc("block/button_inventory"))
+                            .texture("texture", modLoc("block/plank_maple"));
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.UME_PLANK_BUTTON.get()) {
+                    withExistingParent(item.getId().getPath(), mcLoc("block/button_inventory"))
+                            .texture("texture", modLoc("block/plank_ume"));
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.BAMBOO_PLANK_BUTTON.get()) {
+                    withExistingParent(item.getId().getPath(), mcLoc("block/button_inventory"))
+                            .texture("texture", modLoc("block/plank_bamboo"));
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.SAKURA_PLANK_FENCE_GATE.get()) {
+                    withExistingParent(item.getId().getPath(), mcLoc("block/oak_fence_gate"))
+                            .texture("texture", modLoc("block/plank_sakura"));
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.MAPLE_PLANK_FENCE_GATE.get()) {
+                    withExistingParent(item.getId().getPath(), mcLoc("block/oak_fence_gate"))
+                            .texture("texture", modLoc("block/plank_maple"));
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.UME_PLANK_FENCE_GATE.get()) {
+                    withExistingParent(item.getId().getPath(), mcLoc("block/oak_fence_gate"))
+                            .texture("texture", modLoc("block/plank_ume"));
+                    return;
+                }
+                if (blockItem.getBlock() == BlockRegistry.BAMBOO_PLANK_FENCE_GATE.get()) {
+                    withExistingParent(item.getId().getPath(), mcLoc("block/bamboo_fence_gate"))
+                            .texture("texture", modLoc("block/plank_bamboo"));
+                    return;
+                }
                 if (blockItem instanceof GeoItem
                         || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE.get()
                         || blockItem.getBlock() == BlockRegistry.BAMBOO_FENCE_SUNBURNT.get()

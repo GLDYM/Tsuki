@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/oak_fence_gate",
+  "textures": {
+    "texture": "tsuki:block/plank_sakura"
+  }
+}

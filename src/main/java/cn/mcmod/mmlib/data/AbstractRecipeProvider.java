@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -331,6 +332,21 @@ public abstract class AbstractRecipeProvider extends RecipeProvider implements I
                 .define('M', blockIn)
                 .define('S', Tags.Items.RODS_WOODEN)
                 .unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn).getPath(), has(blockIn)).save(consumer);
+    }
+
+    public void makePressurePlate(RecipeOutput consumer, Block plateOut, Block blockIn) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, plateOut)
+                .pattern("PP")
+                .define('P', blockIn)
+                .unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn).getPath(), has(blockIn))
+                .save(consumer);
+    }
+
+    public void makeButton(RecipeOutput consumer, Block buttonOut, Block blockIn) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, buttonOut)
+                .requires(blockIn)
+                .unlockedBy("has_" + BuiltInRegistries.BLOCK.getKey(blockIn).getPath(), has(blockIn))
+                .save(consumer);
     }
 
     protected final ResourceLocation locEquip(String name) {

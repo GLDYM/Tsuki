@@ -92,6 +92,39 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> BAMBOO_PLANK_SLAB = ITEMS.register("slab_plank_bamboo",
             () -> new BlockItem(BlockRegistry.BAMBOO_PLANK_SLAB.get(), Tsuki.defaultItemProperties()));
 
+    public static final DeferredItem<Item> SAKURA_PLANK_FENCE = ITEMS.register("fence_plank_sakura",
+            () -> new BlockItem(BlockRegistry.SAKURA_PLANK_FENCE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_PLANK_FENCE = ITEMS.register("fence_plank_maple",
+            () -> new BlockItem(BlockRegistry.MAPLE_PLANK_FENCE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_PLANK_FENCE = ITEMS.register("fence_plank_ume",
+            () -> new BlockItem(BlockRegistry.UME_PLANK_FENCE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_PLANK_FENCE = ITEMS.register("fence_plank_bamboo",
+            () -> new BlockItem(BlockRegistry.BAMBOO_PLANK_FENCE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAKURA_PLANK_FENCE_GATE = ITEMS.register("fence_gate_plank_sakura",
+            () -> new BlockItem(BlockRegistry.SAKURA_PLANK_FENCE_GATE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_PLANK_FENCE_GATE = ITEMS.register("fence_gate_plank_maple",
+            () -> new BlockItem(BlockRegistry.MAPLE_PLANK_FENCE_GATE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_PLANK_FENCE_GATE = ITEMS.register("fence_gate_plank_ume",
+            () -> new BlockItem(BlockRegistry.UME_PLANK_FENCE_GATE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_PLANK_FENCE_GATE = ITEMS.register("fence_gate_plank_bamboo",
+            () -> new BlockItem(BlockRegistry.BAMBOO_PLANK_FENCE_GATE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAKURA_PLANK_PRESSURE_PLATE = ITEMS.register("pressure_plate_plank_sakura",
+            () -> new BlockItem(BlockRegistry.SAKURA_PLANK_PRESSURE_PLATE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_PLANK_PRESSURE_PLATE = ITEMS.register("pressure_plate_plank_maple",
+            () -> new BlockItem(BlockRegistry.MAPLE_PLANK_PRESSURE_PLATE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_PLANK_PRESSURE_PLATE = ITEMS.register("pressure_plate_plank_ume",
+            () -> new BlockItem(BlockRegistry.UME_PLANK_PRESSURE_PLATE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_PLANK_PRESSURE_PLATE = ITEMS.register("pressure_plate_plank_bamboo",
+            () -> new BlockItem(BlockRegistry.BAMBOO_PLANK_PRESSURE_PLATE.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> SAKURA_PLANK_BUTTON = ITEMS.register("button_plank_sakura",
+            () -> new BlockItem(BlockRegistry.SAKURA_PLANK_BUTTON.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> MAPLE_PLANK_BUTTON = ITEMS.register("button_plank_maple",
+            () -> new BlockItem(BlockRegistry.MAPLE_PLANK_BUTTON.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> UME_PLANK_BUTTON = ITEMS.register("button_plank_ume",
+            () -> new BlockItem(BlockRegistry.UME_PLANK_BUTTON.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> BAMBOO_PLANK_BUTTON = ITEMS.register("button_plank_bamboo",
+            () -> new BlockItem(BlockRegistry.BAMBOO_PLANK_BUTTON.get(), Tsuki.defaultItemProperties()));
+
     // Tatami
     public static final DeferredItem<Item> TATAMI = ITEMS.register("tatami",
             () -> new BlockItem(BlockRegistry.TATAMI.get(), Tsuki.defaultItemProperties()));

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/bamboo_fence_gate",
+  "textures": {
+    "texture": "tsuki:block/plank_bamboo"
+  }
+}

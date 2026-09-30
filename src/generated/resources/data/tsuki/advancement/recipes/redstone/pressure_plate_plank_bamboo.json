@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_plank_bamboo": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tsuki:plank_bamboo"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tsuki:pressure_plate_plank_bamboo"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_plank_bamboo"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tsuki:pressure_plate_plank_bamboo"
+    ]
+  }
+}

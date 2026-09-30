@@ -1,5 +1,9 @@
 {
   "values": [
+    "tsuki:fence_plank_sakura",
+    "tsuki:fence_plank_maple",
+    "tsuki:fence_plank_ume",
+    "tsuki:fence_plank_bamboo",
     "tsuki:bamboo_fence",
     "tsuki:bamboo_fence_sunburnt"
   ]

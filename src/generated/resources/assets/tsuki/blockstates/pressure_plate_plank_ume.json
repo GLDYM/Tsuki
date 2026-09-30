@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "tsuki:block/pressure_plate_plank_ume"
+    },
+    "powered=true": {
+      "model": "tsuki:block/pressure_plate_plank_ume_down"
+    }
+  }
+}
