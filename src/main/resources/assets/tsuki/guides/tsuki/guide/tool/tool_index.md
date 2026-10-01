@@ -29,6 +29,7 @@ item_ids:
 - Broom<ItemImage id="tsuki:broom" scale="0.6"/>: Right-click fallen leaves to quickly break them; right-click dirt blocks to convert them to grass paths.
 - [????](mythic_pickaxe.md)<ItemImage id="tsuki:mythic_pickaxe" scale="0.6"/>: Forged using paper as a medium to bridge two magically-imbued materials. See detailed page.
 - [Magatama](./magatama.md)<ItemImage id="tsuki:magatama_white" scale="0.6"/><ItemImage id="tsuki:magatama_blue" scale="0.6"/><ItemImage id="tsuki:magatama_green" scale="0.6"/><ItemImage id="tsuki:magatama_orange" scale="0.6"/><ItemImage id="tsuki:magatama_pink" scale="0.6"/><ItemImage id="tsuki:magatama_purple" scale="0.6"/><ItemImage id="tsuki:magatama_red" scale="0.6"/>: Powerful relics unexpectedly uncovered while exploring the past. See detailed page.
+- [Yata no Kagami](./yata_no_kagami.md)<ItemImage id="tsuki:yata_no_kagami" scale="0.6"/>: A soulbound charm that enables noclip while creative flying.
 
 ## Weapons
 

@@ -14,6 +14,7 @@
     "MagatamaWhiteCreativeInstantStopMixin",
     "MagatamaWhiteElytraServerMixin",
     "MagatamaWhiteElytraUpdateMixin",
+    "YataNoKagamiPlayerMixin",
     "VillagerMixin"
   ],
   "package": "cn.mcmod.tsuki.mixin",

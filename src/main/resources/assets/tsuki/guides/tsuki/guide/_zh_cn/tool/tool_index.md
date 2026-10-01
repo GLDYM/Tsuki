@@ -29,6 +29,7 @@ item_ids:
 - 扫帚<ItemImage id="tsuki:broom" scale="0.6"/>：对落叶右键使用可快速破坏之，对泥土类方块使用可将其转化为草径。
 - [？？？？](mythic_pickaxe.md)<ItemImage id="tsuki:mythic_pickaxe" scale="0.6"/>：以纸为媒介，沟通两种蕴含魔法的材料而制成。见详情页。
 - [勾玉](./magatama.md)<ItemImage id="tsuki:magatama_white" scale="0.6"/><ItemImage id="tsuki:magatama_blue" scale="0.6"/><ItemImage id="tsuki:magatama_green" scale="0.6"/><ItemImage id="tsuki:magatama_orange" scale="0.6"/><ItemImage id="tsuki:magatama_pink" scale="0.6"/><ItemImage id="tsuki:magatama_purple" scale="0.6"/><ItemImage id="tsuki:magatama_red" scale="0.6"/>：在对过去的探索中，意外获得的强大遗物。见详情页。
+- [八咫镜](./yata_no_kagami.md)<ItemImage id="tsuki:yata_no_kagami" scale="0.6"/>：创造飞行时可以穿过方块。
 
 ## 武器
 

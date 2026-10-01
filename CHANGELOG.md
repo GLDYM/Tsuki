@@ -8,9 +8,14 @@
   - Naturally generate in the world
   - Summon poof particles
   - Recover health
+- Yata No Kagami
+  - New charm, like the Magatama
+  - Craft by Steel ingot and Copper Blocks
+  - Pass through blocks when creative flying
 - New models of some cocktails
   - Some cocktail recipes are changed to be consistent with the models
-- New music disc: [るいご - ウォルフライエブライニクルシュリーク](https://nepiapororecords.bandcamp.com/track/--65)
+- More Wood blocks
+- New Music disc: [るいご - ウォルフライエブライニクルシュリーク](https://nepiapororecords.bandcamp.com/track/--65)
 - Drinking Cola will generate harmless explosion to push the player high
 - Link wine fluids to the wine bottles
 - Configs of Bamboo spread

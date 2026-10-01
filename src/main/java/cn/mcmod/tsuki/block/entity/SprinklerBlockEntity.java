@@ -84,7 +84,9 @@ public class SprinklerBlockEntity extends BlockEntity implements GeoBlockEntity 
             if (state.getBlock() instanceof BonemealableBlock growable
                     && growable.isValidBonemealTarget(level, pos, state)
                     && growable.isBonemealSuccess(level, level.random, pos, state)) {
-                growable.performBonemeal(level, level.random, pos, state);
+                for (int i = 0; i < growthStages; i++) {
+                    growable.performBonemeal(level, level.random, pos, state);
+                }
             }
             return;
         }

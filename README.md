@@ -43,6 +43,7 @@ This mod uses source code from the following mods, published here according to t
 - BalancedFlight (MIT)
 - CrockPot (MIT)
 - Youkai's Homecoming (LGPL 2.1)
+- Carpet (MIT)
 
 This mod uses assets from the following mods, published here according to their open-source licenses:
 

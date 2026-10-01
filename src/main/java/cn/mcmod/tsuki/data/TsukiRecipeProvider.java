@@ -92,6 +92,17 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
     }
 
     private void registerCraftingRecipe(RecipeOutput consumer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ArmorToolRegistry.YATA_NO_KAGAMI.get())
+                .pattern("AAB")
+                .pattern("DSB")
+                .pattern("DCC")
+                .define('A', Items.COPPER_BLOCK)
+                .define('B', Items.EXPOSED_COPPER)
+                .define('C', Items.WEATHERED_COPPER)
+                .define('D', Items.OXIDIZED_COPPER)
+                .define('S', ArmorToolRegistry.STEEL_INGOT.get())
+                .unlockedBy("has_steel_ingot", has(ArmorToolRegistry.STEEL_INGOT.get()))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yata_no_kagami"));
         lighthouseRecipe(consumer);
         sprinklerRecipe(consumer, BlockRegistry.IRON_SPRINKLER.get(), Items.IRON_INGOT);
         sprinklerRecipe(consumer, BlockRegistry.GOLD_SPRINKLER.get(), Items.GOLD_INGOT);

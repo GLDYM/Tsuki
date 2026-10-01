@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:copper_block"
+    },
+    "B": {
+      "item": "minecraft:exposed_copper"
+    },
+    "C": {
+      "item": "minecraft:weathered_copper"
+    },
+    "D": {
+      "item": "minecraft:oxidized_copper"
+    },
+    "S": {
+      "item": "tsuki:steel_ingot"
+    }
+  },
+  "pattern": [
+    "AAB",
+    "DSB",
+    "DCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:yata_no_kagami"
+  }
+}

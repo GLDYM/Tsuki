@@ -29,6 +29,7 @@ item_ids:
 - 箒<ItemImage id="tsuki:broom" scale="0.6"/>: 落ち葉に右クリックすると素早く除去でき、土系ブロックには右クリックで草の道を作れます。
 - [神話のツルハシ](mythic_pickaxe.md)<ItemImage id="tsuki:mythic_pickaxe" scale="0.6"/>: 紙を媒介に、魔力を宿す 2 種の素材をつなぎ合わせて作られたとされる不思議な道具です。詳細は個別ページへ。
 - [勾玉](./magatama.md)<ItemImage id="tsuki:magatama_white" scale="0.6"/><ItemImage id="tsuki:magatama_blue" scale="0.6"/><ItemImage id="tsuki:magatama_green" scale="0.6"/><ItemImage id="tsuki:magatama_orange" scale="0.6"/><ItemImage id="tsuki:magatama_pink" scale="0.6"/><ItemImage id="tsuki:magatama_purple" scale="0.6"/><ItemImage id="tsuki:magatama_red" scale="0.6"/>: 過去を探る中で偶然見つかった、強力な遺物です。詳細は個別ページを参照してください。
+- [八咫鏡](./yata_no_kagami.md)<ItemImage id="tsuki:yata_no_kagami" scale="0.6"/>: クリエイティブ飛行中にブロックをすり抜けられます。
 
 ## 武器
 

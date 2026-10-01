@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.event;
 
 import cn.mcmod.tsuki.Tsuki;
+import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
 import cn.mcmod.tsuki.tag.TsukiItemTags;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public final class MagatamaSoulboundEvent {
 
         for (ItemEntity drop : event.getDrops()) {
             ItemStack stack = drop.getItem();
-            if (!stack.is(TsukiItemTags.MAGATAMAS)) {
+            if (!stack.is(TsukiItemTags.MAGATAMAS) && !stack.is(ArmorToolRegistry.YATA_NO_KAGAMI.get())) {
                 continue;
             }
 

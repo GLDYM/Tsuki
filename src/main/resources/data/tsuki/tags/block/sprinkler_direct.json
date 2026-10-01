@@ -4,6 +4,14 @@
     {
         "id": "youkaishomecoming:udumbara",
         "required": false
+    },
+    {
+        "id": "immortalers_delight:sextlotus",
+        "required": false
+    },
+    {
+        "id": "goetydelight:metamorphic_scent_grass",
+        "required": false
     }
   ]
 }

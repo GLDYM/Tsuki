@@ -4,7 +4,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "tsuki:block/drink/collins_glass",
-		"1": "tsuki:block/drink/Mojito",
+		"1": "tsuki:block/drink/mojito",
 		"particle": "tsuki:block/drink/collins_glass"
 	},
 	"elements": [
