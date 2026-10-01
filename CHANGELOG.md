@@ -39,10 +39,12 @@
 - Bamboo Lantern did not drop itself
 - All fluid used wrong textures
 - The client sometimes crashed with NPE when connecting to the server
+- The Lighthouse Illumination GUI do not close after pressing 'Apply'
 
 ## Others
 
-- Add license of bamboo
+- Add license of Bamboo
+- Add license of Carpet
 
 
 # Tsuki 1.7.0

@@ -76,6 +76,7 @@ public class LighthouseIlluminationScreen extends AbstractContainerScreen<Lighth
             int alpha = Integer.parseInt(transparencyField.getValue());
             send(color, menu.blockEntity.getLength(), menu.blockEntity.getWidth(), alpha,
                     menu.blockEntity.getPolygonCount());
+            onClose();
         } catch (NumberFormatException ignored) {
         }
     }
