@@ -87,10 +87,10 @@ public class GrapeVineBlock extends Block implements BonemealableBlock {
     }
 
     private void spreadToNeighbors(Level level, BlockPos pos, int age) {
-        if (age >= 2 && level.getBlockState(pos.above()).is(BlockRegistry.GRAPE_SPLINT_STAND.get())) {
+        if (age == 2 && level.getBlockState(pos.above()).is(BlockRegistry.GRAPE_SPLINT_STAND.get())) {
             level.setBlock(pos.above(), this.defaultBlockState().setValue(AGE, 0), 2);
         }
-        if (age >= 5) {
+        if (age == 5) {
             BlockPos[] horizontalNeighbors = { pos.east(), pos.north(), pos.west(), pos.south() };
             for (BlockPos neighbor : horizontalNeighbors) {
                 if (level.getBlockState(neighbor).is(BlockRegistry.GRAPE_SPLINT.get())) {
@@ -113,8 +113,14 @@ public class GrapeVineBlock extends Block implements BonemealableBlock {
 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        int newAge = Math.min(7, state.getValue(AGE) + Mth.nextInt(random, 2, 5));
-        spreadToNeighbors(level, pos, newAge);
+        int currentAge = state.getValue(AGE);
+        int newAge = Math.min(7, currentAge + Mth.nextInt(random, 2, 5));
+        if (currentAge <= 2 && newAge >= 2) {
+            spreadToNeighbors(level, pos, 2);
+        }
+        if (currentAge <= 5 && newAge >= 5) {
+            spreadToNeighbors(level, pos, 5);
+        }
         level.setBlock(pos, state.setValue(AGE, newAge), 2);
     }
 }

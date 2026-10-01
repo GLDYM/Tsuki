@@ -23,11 +23,8 @@ item_ids:
   - tsuki:vanilla_seeds
   - tsuki:pepper_seeds
   - tsuki:hop
-  - tsuki:grape_seeds
   - tsuki:vanilla_splint
   - tsuki:pepper_splint
-  - tsuki:grape_splint_stand
-  - tsuki:grape_splint
   - tsuki:bamboo_shoot
   - tsuki:sakura_sapling
   - tsuki:maple_sapling_red
@@ -54,7 +51,8 @@ item_ids:
 - 香草<ItemImage id="tsuki:vanilla_seeds" scale="0.6"/><ItemImage id="tsuki:vanilla" scale="0.6"/>：可通过野生种获得。需种植于香草架<ItemImage id="tsuki:vanilla_splint" scale="0.6"/>上，右键收获。
 - 胡椒<ItemImage id="tsuki:pepper_seeds" scale="0.6"/><ItemImage id="tsuki:peppercorn_green" scale="0.6"/><ItemImage id="tsuki:peppercorn_red" scale="0.6"/>：可通过野生种获得。需种植于胡椒架<ItemImage id="tsuki:pepper_splint" scale="0.6"/>上，右键收获。成熟前一阶段收获得到绿胡椒<ItemImage id="tsuki:peppercorn_green" scale="0.6"/>，成熟时收获得到红胡椒<ItemImage id="tsuki:peppercorn_red" scale="0.6"/>。
 - 啤酒花<ItemImage id="tsuki:hop" scale="0.6"/>：需种植于葡萄架（纵向）<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>上，右键收获。
-- 葡萄<ItemImage id="tsuki:grape_seeds" scale="0.6"/><ItemImage id="tsuki:grape_green" scale="0.6"/><ItemImage id="tsuki:grape" scale="0.6"/>：需种植于葡萄架（纵向）<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>上。种植后会在水平方向上相邻的葡萄架（横向）<ItemImage id="tsuki:grape_splint" scale="0.6"/>上长出葡萄叶，并继续向上生长。葡萄叶可结出葡萄，手持剪刀右键收获。成熟前一阶段收获得到绿葡萄<ItemImage id="tsuki:grape_green" scale="0.6"/>，成熟时收获得到葡萄<ItemImage id="tsuki:grape" scale="0.6"/>。
+
+- [葡萄](./grape.md)<ItemImage id="tsuki:grape_seeds" scale="0.6"/><ItemImage id="tsuki:grape_green" scale="0.6"/><ItemImage id="tsuki:grape" scale="0.6"/>：查看详细的种植结构、生长阶段、收获方式和产物用途。
 - 香菇<ItemImage id="tsuki:edodes" scale="0.6"/>，食用菌<ItemImage id="tsuki:shimeji" scale="0.6"/>：将枫树落叶置于枫树原木上，对其使用骨粉可转化为蘑菇落叶<ItemImage id="fallen_leaves_mushroom" scale="0.6"/>。使用剪刀采集长有蘑菇的落叶<ItemImage id="fallen_leaves_mushroom" scale="0.6"/>以获取。
 - 松茸<ItemImage id="tsuki:matsutake" scale="0.6"/>：转化蘑菇落叶时有概率转化为松茸落叶<ItemImage id="fallen_leaves_matsutake" scale="0.6"/>。使用剪刀采集长有松茸的落叶<ItemImage id="fallen_leaves_matsutake" scale="0.6"/>以获取。
 

@@ -23,11 +23,8 @@ item_ids:
   - tsuki:vanilla_seeds
   - tsuki:pepper_seeds
   - tsuki:hop
-  - tsuki:grape_seeds
   - tsuki:vanilla_splint
   - tsuki:pepper_splint
-  - tsuki:grape_splint_stand
-  - tsuki:grape_splint
   - tsuki:bamboo_shoot
   - tsuki:sakura_sapling
   - tsuki:maple_sapling_red
@@ -54,7 +51,7 @@ item_ids:
 - バニラ<ItemImage id="tsuki:vanilla_seeds" scale="0.6"/><ItemImage id="tsuki:vanilla" scale="0.6"/>: 野生でも見つかります。バニラ支柱<ItemImage id="tsuki:vanilla_splint" scale="0.6"/>に植え、右クリックで収穫します。
 - 胡椒<ItemImage id="tsuki:pepper_seeds" scale="0.6"/><ItemImage id="tsuki:peppercorn_green" scale="0.6"/><ItemImage id="tsuki:peppercorn_red" scale="0.6"/>: 野生でも見つかります。胡椒支柱<ItemImage id="tsuki:pepper_splint" scale="0.6"/>に植え、右クリックで収穫します。未熟最終段階で青胡椒、完熟で赤胡椒になります。
 - ホップ<ItemImage id="tsuki:hop" scale="0.6"/>: 縦向きの葡萄棚支柱<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>に植える必要があります。右クリックで収穫します。
-- 葡萄<ItemImage id="tsuki:grape_seeds" scale="0.6"/><ItemImage id="tsuki:grape_green" scale="0.6"/><ItemImage id="tsuki:grape" scale="0.6"/>: 縦向きの葡萄棚支柱<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>に植えます。隣接する横向きの葡萄棚<ItemImage id="tsuki:grape_splint" scale="0.6"/>に葉を広げつつ上へ伸びます。葉から葡萄が実り、ハサミ右クリックで収穫します。
+- [葡萄](./grape.md)<ItemImage id="tsuki:grape_seeds" scale="0.6"/><ItemImage id="tsuki:grape_green" scale="0.6"/><ItemImage id="tsuki:grape" scale="0.6"/>: 栽培構造、成長段階、収穫方法、用途の詳細を確認できます。
 - 椎茸<ItemImage id="tsuki:edodes" scale="0.6"/>、しめじ<ItemImage id="tsuki:shimeji" scale="0.6"/>: 楓の落ち葉を楓原木に置いて骨粉を使うと、きのこ付き落ち葉<ItemImage id="tsuki:fallen_leaves_mushroom" scale="0.6"/>へ変化します。これをハサミ右クリックで収穫します。
 - 松茸<ItemImage id="tsuki:matsutake" scale="0.6"/>: きのこ付き落ち葉の変化時に、まれに松茸付き落ち葉<ItemImage id="tsuki:fallen_leaves_matsutake" scale="0.6"/>になります。ハサミ右クリックで収穫します。
 

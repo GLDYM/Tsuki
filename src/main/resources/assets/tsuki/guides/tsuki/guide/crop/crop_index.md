@@ -23,11 +23,8 @@ item_ids:
   - tsuki:vanilla_seeds
   - tsuki:pepper_seeds
   - tsuki:hop
-  - tsuki:grape_seeds
   - tsuki:vanilla_splint
   - tsuki:pepper_splint
-  - tsuki:grape_splint_stand
-  - tsuki:grape_splint
   - tsuki:bamboo_shoot
   - tsuki:sakura_sapling
   - tsuki:maple_sapling_red
@@ -54,7 +51,7 @@ All crop seeds can be obtained by breaking grass. The [Japanese Farmer](../villa
 - Vanilla<ItemImage id="tsuki:vanilla_seeds" scale="0.6"/><ItemImage id="tsuki:vanilla" scale="0.6"/>: Seeds can be found wild. Must be planted on a Vanilla Splint<ItemImage id="tsuki:vanilla_splint" scale="0.6"/>; harvest with right-click.
 - Pepper<ItemImage id="tsuki:pepper_seeds" scale="0.6"/><ItemImage id="tsuki:peppercorn_green" scale="0.6"/><ItemImage id="tsuki:peppercorn_red" scale="0.6"/>: Seeds can be found wild. Must be planted on a Pepper Splint<ItemImage id="tsuki:pepper_splint" scale="0.6"/>; harvest with right-click. Last immature stage yields Green Peppercorn<ItemImage id="tsuki:peppercorn_green" scale="0.6"/>, mature yields Red Peppercorn<ItemImage id="tsuki:peppercorn_red" scale="0.6"/>.
 - Hop<ItemImage id="tsuki:hop" scale="0.6"/>: Must be planted on a vertical Grape Splint Stand<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>; harvest with right-click.
-- Grape<ItemImage id="tsuki:grape_seeds" scale="0.6"/><ItemImage id="tsuki:grape_green" scale="0.6"/><ItemImage id="tsuki:grape" scale="0.6"/>: Must be planted on a vertical Grape Splint Stand<ItemImage id="tsuki:grape_splint_stand" scale="0.6"/>. When planted it will grow grape leaves on adjacent horizontal Grape Splints<ItemImage id="tsuki:grape_splint" scale="0.6"/>, and continue growing upward. Grape leaves can produce grapes; use shears and right-click to harvest. Last immature stage yields Green Grape<ItemImage id="tsuki:grape_green" scale="0.6"/>, mature yields Grape<ItemImage id="tsuki:grape" scale="0.6"/>.
+- [Grape](./grape.md)<ItemImage id="tsuki:grape_seeds" scale="0.6"/><ItemImage id="tsuki:grape_green" scale="0.6"/><ItemImage id="tsuki:grape" scale="0.6"/>: Detailed planting layout, growth stages, harvesting, and products.
 - Edodes<ItemImage id="tsuki:edodes" scale="0.6"/>，Shimeji<ItemImage id="tsuki:shimeji" scale="0.6"/>：Put Fallen Maple Leaves on a Maple Log and use bone meal to change them into Mushroom Fallen Leaves<ItemImage id="fallen_leaves_mushroom" scale="0.6"/>. Use shears and right-click Mushroom Fallen Leaves<ItemImage id="fallen_leaves_mushroom" scale="0.6"/> to harvest.
 - Matsutake<ItemImage id="tsuki:matsutake" scale="0.6"/>：Sometimes coverting Mushroom Fallen Leaves can get Matsutake Fallen Leaves<ItemImage id="fallen_leaves_matsutake" scale="0.6"/>. Use shears and right-click Matsutake Fallen Leaves<ItemImage id="fallen_leaves_matsutake" scale="0.6"/> to harvest.
 

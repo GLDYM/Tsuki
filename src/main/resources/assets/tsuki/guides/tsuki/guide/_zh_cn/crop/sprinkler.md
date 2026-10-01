@@ -3,7 +3,7 @@ navigation:
   title: 洒水器
   icon: iron_sprinkler
   parent: crop/crop_index.md
-  position: 0
+  position: 10
 item_ids:
   - tsuki:iron_sprinkler
   - tsuki:gold_sprinkler

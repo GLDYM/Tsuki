@@ -3,7 +3,7 @@ navigation:
   title: 八咫镜
   icon: yata_no_kagami
   parent: tool/tool_index.md
-  position: 2
+  position: 3
 item_ids:
   - tsuki:yata_no_kagami
 ---
