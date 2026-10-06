@@ -11,36 +11,31 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionResult;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.AdvancementEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public final class TsukiGuideMeCompat {
-    private static final String RECEIVED_GUIDE_TAG = "TsukiReceivedGuide";
     public static final ResourceLocation GUIDE_ID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "guide");
+    private static final ResourceLocation GUIDE_ROOT_ADVANCEMENT_ID = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+            "guide/root");
     public static final Guide GUIDE = Guide.builder(GUIDE_ID).build();
 
     private TsukiGuideMeCompat() {
     }
 
     public static void register() {
-        NeoForge.EVENT_BUS.addListener(TsukiGuideMeCompat::onPlayerLoggedIn);
+        NeoForge.EVENT_BUS.addListener(TsukiGuideMeCompat::onAdvancementEarned);
         NeoForge.EVENT_BUS.addListener(TsukiGuideMeCompat::onRightClickGuide);
     }
 
-    private static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity().level().isClientSide()) {
+    private static void onAdvancementEarned(AdvancementEvent.AdvancementEarnEvent event) {
+        if (!event.getAdvancement().id().equals(GUIDE_ROOT_ADVANCEMENT_ID)) {
             return;
         }
         if (!TsukiCommonConfig.GIVE_GUIDE_ON_FIRST_LOGIN.get()) {
             return;
         }
 
-        var persistentData = event.getEntity().getPersistentData();
-        if (persistentData.getBoolean(RECEIVED_GUIDE_TAG)) {
-            return;
-        }
-
-        persistentData.putBoolean(RECEIVED_GUIDE_TAG, true);
         giveGuide(event.getEntity(), new ItemStack(ItemRegistry.SAKURA_GUIDE.get()));
     }
 

@@ -5,18 +5,18 @@
 ## Feature
 
 - Hot Spring
-  - Naturally generate in the world
+  - Naturally generated in the world
   - Summon poof particles
   - Recover health
 - Yata No Kagami
   - New charm, like the Magatama
-  - Craft by Steel ingot and Copper Blocks
+  - Crafted with Steel Ingot and Copper Blocks
   - Pass through blocks when creative flying
 - New models of some cocktails
   - Some cocktail recipes are changed to be consistent with the models
 - More Wood blocks
 - New Music disc: [るいご - ウォルフライエブライニクルシュリーク](https://nepiapororecords.bandcamp.com/track/--65)
-- Drinking Cola will generate harmless explosion to push the player high
+- Drinking Cola will generate a harmless explosion to push the player high
 - Link wine fluids to the wine bottles
 - Configs of Bamboo spread
 
@@ -26,7 +26,7 @@
 - The light level of Sakura Leaves was reduced from 8 to 3
 - Re-add Sheath Katana recipes
   - To compat epic combat & better combat
-- Change the Base Drinks of Shaker into tag
+- Change the Base Drinks of Shaker into tags
 - Remove cocktail recipes of Create Mechanical Mixer
   - Because Mechanical Mixer deals wrong on these recipes
 - Remove initializeClient
@@ -37,15 +37,14 @@
 - Ores lost tags
 - Leaves could suffocate players
 - Bamboo Lantern did not drop itself
-- All fluid used wrong textures
+- All fluids used the wrong textures
 - The client sometimes crashed with NPE when connecting to the server
-- The Lighthouse Illumination GUI do not close after pressing 'Apply'
+- The Lighthouse Illumination GUI does not close after pressing 'Apply'
 
 ## Others
 
 - Add license of Bamboo
 - Add license of Carpet
-
 
 # Tsuki 1.7.0
 
