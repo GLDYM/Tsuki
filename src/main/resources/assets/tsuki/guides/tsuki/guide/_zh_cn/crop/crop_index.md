@@ -62,7 +62,7 @@ item_ids:
 - 山樱<ItemImage id="tsuki:sakura_sapling" scale="0.6"/>：合成获得。高产量的建材。
 - 枫树<ItemImage id="tsuki:maple_sapling_red" scale="0.6"/><ItemImage id="tsuki:maple_sapling_yellow" scale="0.6"/><ItemImage id="tsuki:maple_sapling_orange" scale="0.6"/><ItemImage id="tsuki:maple_sapling_green" scale="0.6"/>：合成获得，亦于[枫树林](../compat/compat_index.md)中自然生成。枫树生长时，会在其下生成相应颜色的落叶<ItemImage id="fallen_leaves_red" scale="0.6"/><ItemImage id="fallen_leaves_yellow" scale="0.6"/><ItemImage id="fallen_leaves_orange" scale="0.6"/><ItemImage id="fallen_leaves_green" scale="0.6"/>。有时会生成枫糖浆原木<ItemImage id="tsuki:maple_sap_log" scale="0.6"/>，可使用[枫糖龙头](../cooking/maple_spile.md)<ItemImage id="tsuki:maple_spile" scale="0.6"/>与[枫糖大锅](../cooking/maple_spile.md)<ItemImage id="tsuki:maple_cauldron" scale="0.6"/>收集枫糖浆。绿色枫树下方有时候会生成毛栗<ItemImage id="tsuki:chestnut_burrs" scale="0.6"/>，右键可收获；切开毛栗<ItemImage id="tsuki:chestnut_burrs" scale="0.6"/>可获得板栗<ItemImage id="tsuki:chestnut" scale="0.6"/>。
 - 梅树<ItemImage id="tsuki:ume_sapling" scale="0.6"/>：合成获得。梅树树叶会不定期生长出梅子<ItemImage id="tsuki:ume" scale="0.6"/>，右键可收获。
-- 向日葵<ItemImage id="tsuki:sunflower_seeds" scale="0.6"/>：破坏草获得，可种植于泥土类方块上。向日葵需要三格高度以生长，成熟时收获获得萤石粉。
+- 向日葵<ItemImage id="tsuki:sunflower_seeds" scale="0.6"/>：破坏草获得，可种植于泥土类方块上。向日葵需要三格高度以生长，成熟时收获获得荧石粉。
 
 ## 农业设备
 

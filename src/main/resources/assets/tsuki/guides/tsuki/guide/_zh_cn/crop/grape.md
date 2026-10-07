@@ -68,7 +68,7 @@ item_ids:
     <Block x="-1" y="3" id="grape_splint"/>
     <BlockAnnotation x="0" y="3" z="0">
         如果在年龄 2 后再放置这个葡萄架……
-
+    
         这个葡萄架上将不会长出葡萄藤。
     </BlockAnnotation>
 </GameScene>
