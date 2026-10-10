@@ -6,6 +6,8 @@ import cn.mcmod.tsuki.container.DistillerContainer;
 import cn.mcmod.tsuki.container.FermenterContainer;
 import cn.mcmod.tsuki.container.StoneMortarContainer;
 import cn.mcmod.tsuki.container.LighthouseIlluminationContainer;
+import cn.mcmod.tsuki.container.WallLightContainer;
+import cn.mcmod.tsuki.container.CeilingLightContainer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
@@ -20,6 +22,10 @@ public class MenuTypeRegistry {
             .register("stone_mortar", () -> IMenuTypeExtension.create(StoneMortarContainer::new));
     public static final DeferredHolder<MenuType<?>, MenuType<LighthouseIlluminationContainer>> LIGHTHOUSE_ILLUMINATION = CONTAINER_TYPES
             .register("lighthouse_illumination", () -> IMenuTypeExtension.create(LighthouseIlluminationContainer::new));
+    public static final DeferredHolder<MenuType<?>, MenuType<WallLightContainer>> WALL_LIGHT = CONTAINER_TYPES
+            .register("wall_light", () -> IMenuTypeExtension.create(WallLightContainer::new));
+    public static final DeferredHolder<MenuType<?>, MenuType<CeilingLightContainer>> CEILING_LIGHT = CONTAINER_TYPES
+            .register("ceiling_light", () -> IMenuTypeExtension.create(CeilingLightContainer::new));
 
     public static final DeferredHolder<MenuType<?>, MenuType<CookingPotContainer>> COOKING_POT = CONTAINER_TYPES
             .register("cooking_pot", () -> IMenuTypeExtension.create(CookingPotContainer::new));

@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=east,lit=false": {"model": "tsuki:block/wall_light_wood"},
+    "facing=east,lit=true": {"model": "tsuki:block/wall_light_wood"},
+    "facing=south,lit=false": {"model": "tsuki:block/wall_light_wood", "y": 90},
+    "facing=south,lit=true": {"model": "tsuki:block/wall_light_wood", "y": 90},
+    "facing=west,lit=false": {"model": "tsuki:block/wall_light_wood", "y": 180},
+    "facing=west,lit=true": {"model": "tsuki:block/wall_light_wood", "y": 180},
+    "facing=north,lit=false": {"model": "tsuki:block/wall_light_wood", "y": 270},
+    "facing=north,lit=true": {"model": "tsuki:block/wall_light_wood", "y": 270}
+  }
+}

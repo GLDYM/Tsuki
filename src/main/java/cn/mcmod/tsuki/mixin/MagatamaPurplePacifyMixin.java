@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: LGPL-2.1
 package cn.mcmod.tsuki.mixin;
 
 import cn.mcmod.tsuki.item.magatama.MagatamaPurpleHelper;

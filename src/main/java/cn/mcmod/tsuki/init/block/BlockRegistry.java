@@ -40,6 +40,8 @@ import cn.mcmod.tsuki.block.machine.MapleSpileBlock;
 import cn.mcmod.tsuki.block.machine.ShakerBlock;
 import cn.mcmod.tsuki.block.machine.StoneMortarBlock;
 import cn.mcmod.tsuki.block.machine.LighthouseIlluminationBlock;
+import cn.mcmod.tsuki.block.machine.WallLightBlock;
+import cn.mcmod.tsuki.block.machine.CeilingLightBlock;
 import cn.mcmod.tsuki.block.machine.SprinklerBlock;
 import cn.mcmod.tsuki.block.machine.TataraBlock;
 import cn.mcmod.tsuki.block.tree.BambooBlock;
@@ -631,6 +633,10 @@ public class BlockRegistry {
             () -> new StoneMortarBlock());
     public static final DeferredBlock<Block> LIGHTHOUSE_ILLUMINATION = BLOCKS.register("lighthouse_illumination",
             () -> new LighthouseIlluminationBlock());
+    public static final DeferredBlock<Block> WALL_LIGHT = BLOCKS.register("wall_light", () -> new WallLightBlock());
+    public static final DeferredBlock<Block> WALL_LIGHT_WOOD = BLOCKS.register("wall_light_wood", () -> new WallLightBlock(true));
+    public static final DeferredBlock<Block> CEILING_LIGHT = BLOCKS.register("ceiling_light", () -> new CeilingLightBlock());
+    public static final DeferredBlock<Block> CEILING_LIGHT_WOOD = BLOCKS.register("ceiling_light_wood", () -> new CeilingLightBlock(true));
     public static final DeferredBlock<Block> IRON_SPRINKLER = BLOCKS.register("iron_sprinkler",
             () -> new SprinklerBlock(SprinklerBlock.Material.IRON));
     public static final DeferredBlock<Block> GOLD_SPRINKLER = BLOCKS.register("gold_sprinkler",

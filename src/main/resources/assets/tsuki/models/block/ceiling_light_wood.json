@@ -1,0 +1,7 @@
+{
+  "parent": "tsuki:block/ceiling_light",
+  "textures": {
+    "particle": "tsuki:block/ceiling_light_wood",
+    "body": "tsuki:block/ceiling_light_wood"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "tsuki:block/wall_light",
+  "textures": {
+    "particle": "tsuki:block/wall_light_wood",
+    "body": "tsuki:block/wall_light_wood"
+  }
+}

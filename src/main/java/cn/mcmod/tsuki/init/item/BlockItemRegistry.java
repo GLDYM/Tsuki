@@ -2,6 +2,8 @@ package cn.mcmod.tsuki.init.item;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.item.LighthouseIlluminationItem;
+import cn.mcmod.tsuki.item.WallLightItem;
+import cn.mcmod.tsuki.item.CeilingLightItem;
 import cn.mcmod.tsuki.item.SprinklerItem;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.item.block.CookingPotItem;
@@ -317,6 +319,14 @@ public class BlockItemRegistry {
     public static final DeferredItem<Item> LIGHTHOUSE_ILLUMINATION = ITEMS.register("lighthouse_illumination",
             () -> new LighthouseIlluminationItem(BlockRegistry.LIGHTHOUSE_ILLUMINATION.get(),
                     Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> WALL_LIGHT = ITEMS.register("wall_light",
+            () -> new WallLightItem(BlockRegistry.WALL_LIGHT.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> WALL_LIGHT_WOOD = ITEMS.register("wall_light_wood",
+            () -> new WallLightItem(BlockRegistry.WALL_LIGHT_WOOD.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> CEILING_LIGHT = ITEMS.register("ceiling_light",
+            () -> new CeilingLightItem(BlockRegistry.CEILING_LIGHT.get(), Tsuki.defaultItemProperties()));
+    public static final DeferredItem<Item> CEILING_LIGHT_WOOD = ITEMS.register("ceiling_light_wood",
+            () -> new CeilingLightItem(BlockRegistry.CEILING_LIGHT_WOOD.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> IRON_SPRINKLER = ITEMS.register("iron_sprinkler",
             () -> new SprinklerItem(BlockRegistry.IRON_SPRINKLER.get(), Tsuki.defaultItemProperties()));
     public static final DeferredItem<Item> GOLD_SPRINKLER = ITEMS.register("gold_sprinkler",

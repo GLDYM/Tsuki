@@ -1102,5 +1102,21 @@
   "gui.tsuki.lighthouse.length": "Length: %s",
   "gui.tsuki.lighthouse.width": "Beam Width: %s",
   "gui.tsuki.lighthouse.transparency": "Opacity",
-  "gui.tsuki.lighthouse.polygon_count": "Polygon Count: %s"
+  "gui.tsuki.lighthouse.polygon_count": "Polygon Count: %s",
+  "block.tsuki.wall_light": "Wall Light",
+  "block.tsuki.wall_light_wood": "Wooden Wall Light",
+  "block.tsuki.ceiling_light": "Ceiling Light",
+  "block.tsuki.ceiling_light_wood": "Wooden Ceiling Light",
+  "item.tsuki.wall_light": "Stone Wall Light",
+  "item.tsuki.wall_light_wood": "Wooden Wall Light",
+  "item.tsuki.ceiling_light": "Stone Ceiling Light",
+  "item.tsuki.ceiling_light_wood": "Wooden Ceiling Light",
+  "container.tsuki.wall_light": "Wall Light Settings",
+  "container.tsuki.ceiling_light": "Ceiling Light Settings",
+  "gui.tsuki.light.apply": "Apply",
+  "gui.tsuki.light.color": "Beam Color",
+  "gui.tsuki.light.length": "Length: %s",
+  "gui.tsuki.light.width": "Beam Width: %s",
+  "gui.tsuki.light.polygon": "Polygon Count: %s",
+  "gui.tsuki.light.transparency": "Opacity"
 }

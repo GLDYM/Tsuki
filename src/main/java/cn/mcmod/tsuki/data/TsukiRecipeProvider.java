@@ -104,6 +104,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .unlockedBy("has_steel_ingot", has(ArmorToolRegistry.STEEL_INGOT.get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "yata_no_kagami"));
         lighthouseRecipe(consumer);
+        sLightRecipes(consumer);
         sprinklerRecipe(consumer, BlockRegistry.IRON_SPRINKLER.get(), Items.IRON_INGOT);
         sprinklerRecipe(consumer, BlockRegistry.GOLD_SPRINKLER.get(), Items.GOLD_INGOT);
         sprinklerRecipe(consumer, BlockRegistry.DIAMOND_SPRINKLER.get(), Items.DIAMOND);
@@ -1597,6 +1598,29 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .define('B', Tags.Items.OBSIDIANS)
                 .unlockedBy("has_glowstone", has(Items.GLOWSTONE))
                 .save(consumer);
+    }
+
+    private void sLightRecipes(RecipeOutput consumer) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockItemRegistry.WALL_LIGHT.get())
+                .pattern("SS ").pattern("DSG").pattern("SS ").define('S', Items.STONE)
+                .define('D', ArmorToolRegistry.SAKURA_DIAMOND.get()).define('G', Items.GLOWSTONE_DUST)
+                .unlockedBy("has_glowstone_dust", has(Items.GLOWSTONE_DUST))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "wall_light"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockItemRegistry.WALL_LIGHT_WOOD.get())
+                .pattern("SS ").pattern("DSG").pattern("SS ").define('S', TsukiItemTags.LUMBER)
+                .define('D', ArmorToolRegistry.SAKURA_DIAMOND.get()).define('G', Items.GLOWSTONE_DUST)
+                .unlockedBy("has_glowstone_dust", has(Items.GLOWSTONE_DUST))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "wall_light_wood"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockItemRegistry.CEILING_LIGHT.get())
+                .pattern(" G ").pattern("SSS").pattern("SDS").define('S', Items.STONE)
+                .define('D', ArmorToolRegistry.SAKURA_DIAMOND.get()).define('G', Items.GLOWSTONE_DUST)
+                .unlockedBy("has_glowstone_dust", has(Items.GLOWSTONE_DUST))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ceiling_light"));
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, BlockItemRegistry.CEILING_LIGHT_WOOD.get())
+                .pattern(" G ").pattern("SSS").pattern("SDS").define('S', TsukiItemTags.LUMBER)
+                .define('D', ArmorToolRegistry.SAKURA_DIAMOND.get()).define('G', Items.GLOWSTONE_DUST)
+                .unlockedBy("has_glowstone_dust", has(Items.GLOWSTONE_DUST))
+                .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "ceiling_light_wood"));
     }
 
     private void registerDecorativeBlockRecipes(RecipeOutput consumer) {

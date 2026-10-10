@@ -67,7 +67,7 @@ public class LighthouseIlluminationScreen extends AbstractContainerScreen<Lighth
 
     private void changePolygonCount(int amount) {
         send(menu.blockEntity.getColor(), menu.blockEntity.getLength(), menu.blockEntity.getWidth(),
-                menu.blockEntity.getTransparency(), Math.clamp(menu.blockEntity.getPolygonCount() + amount, 2, 10));
+                menu.blockEntity.getTransparency(), Math.clamp(menu.blockEntity.getPolygonCount() + amount, 2, 32));
     }
 
     private void apply() {

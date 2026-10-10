@@ -12,6 +12,8 @@ import cn.mcmod.tsuki.block.entity.ShakerBlockEntity;
 import cn.mcmod.tsuki.block.entity.ShojiBlockEntity;
 import cn.mcmod.tsuki.block.entity.StoneMortarBlockEntity;
 import cn.mcmod.tsuki.block.entity.LighthouseIlluminationBlockEntity;
+import cn.mcmod.tsuki.block.entity.WallLightBlockEntity;
+import cn.mcmod.tsuki.block.entity.CeilingLightBlockEntity;
 import cn.mcmod.tsuki.block.entity.SprinklerBlockEntity;
 import cn.mcmod.tsuki.block.entity.SunflowerCropBlockEntity;
 import net.minecraft.core.registries.Registries;
@@ -31,6 +33,13 @@ public class BlockEntityRegistry {
             .register("lighthouse_illumination", () -> BlockEntityType.Builder
                     .of(LighthouseIlluminationBlockEntity::new, BlockRegistry.LIGHTHOUSE_ILLUMINATION.get())
                     .build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WallLightBlockEntity>> WALL_LIGHT = BLOCK_ENTITIES
+            .register("wall_light", () -> BlockEntityType.Builder.of(WallLightBlockEntity::new,
+                    BlockRegistry.WALL_LIGHT.get(), BlockRegistry.WALL_LIGHT_WOOD.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CeilingLightBlockEntity>> CEILING_LIGHT = BLOCK_ENTITIES
+            .register("ceiling_light", () -> BlockEntityType.Builder.of(CeilingLightBlockEntity::new,
+                    BlockRegistry.CEILING_LIGHT.get(), BlockRegistry.CEILING_LIGHT_WOOD.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SprinklerBlockEntity>> SPRINKLER = BLOCK_ENTITIES
             .register("sprinkler", () -> BlockEntityType.Builder.of(SprinklerBlockEntity::new,

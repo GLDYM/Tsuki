@@ -15,6 +15,8 @@ import cn.mcmod.tsuki.client.render.SeatEntityRenderer;
 import cn.mcmod.tsuki.client.render.ShojiRenderer;
 import cn.mcmod.tsuki.client.render.StoneMortarRenderer;
 import cn.mcmod.tsuki.client.render.LighthouseIlluminationRenderer;
+import cn.mcmod.tsuki.client.render.WallLightRenderer;
+import cn.mcmod.tsuki.client.render.CeilingLightRenderer;
 import cn.mcmod.tsuki.client.render.SprinklerRenderer;
 import cn.mcmod.tsuki.client.render.SunflowerCropRenderer;
 import cn.mcmod.tsuki.client.render.entity.SamuraiIllagerRenderer;
@@ -89,6 +91,8 @@ public class ClientEvents {
             BlockEntityRenderers.register(BlockEntityRegistry.STONE_MORTAR.get(), StoneMortarRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.LIGHTHOUSE_ILLUMINATION.get(),
                     LighthouseIlluminationRenderer::new);
+            BlockEntityRenderers.register(BlockEntityRegistry.WALL_LIGHT.get(), WallLightRenderer::new);
+            BlockEntityRenderers.register(BlockEntityRegistry.CEILING_LIGHT.get(), CeilingLightRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.SPRINKLER.get(), SprinklerRenderer::new);
             BlockEntityRenderers.register(BlockEntityRegistry.CHOPPING_BOARD.get(), ChoppingBoardRender::new);
             BlockEntityRenderers.register(BlockEntityRegistry.COOKING_POT.get(), CookingPotRender::new);

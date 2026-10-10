@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: LGPL-2.1
 package cn.mcmod.tsuki.event;
 
 import cn.mcmod.tsuki.Tsuki;

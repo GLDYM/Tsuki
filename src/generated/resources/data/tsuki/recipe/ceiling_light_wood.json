@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "D": {
+      "item": "tsuki:sakura_diamond"
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "S": {
+      "tag": "c:lumber"
+    }
+  },
+  "pattern": [
+    " G ",
+    "SSS",
+    "SDS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "tsuki:ceiling_light_wood"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=false": {"model": "tsuki:block/ceiling_light_wood"},
+    "lit=true": {"model": "tsuki:block/ceiling_light_wood"}
+  }
+}
