@@ -1,5 +1,7 @@
 package cn.mcmod.tsuki.compat.curios;
 
+import java.util.List;
+import java.util.function.Predicate;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,5 +23,12 @@ public final class CuriosCompat {
             return ItemStack.EMPTY;
         }
         return CuriosCompatImpl.findFirstEquippedStack(player, item);
+    }
+
+    public static List<ItemStack> removeStacks(Player player, Predicate<ItemStack> predicate) {
+        if (!ModList.get().isLoaded("curios")) {
+            return List.of();
+        }
+        return CuriosCompatImpl.removeStacks(player, predicate);
     }
 }

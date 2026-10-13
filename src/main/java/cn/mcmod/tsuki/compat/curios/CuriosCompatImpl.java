@@ -1,5 +1,8 @@
 package cn.mcmod.tsuki.compat.curios;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,6 +29,23 @@ final class CuriosCompatImpl {
                 .filter(stack -> !stack.isEmpty())
                 .findFirst()
                 .orElse(ItemStack.EMPTY);
+    }
+
+    static List<ItemStack> removeStacks(Player player, Predicate<ItemStack> predicate) {
+        List<ItemStack> removed = new ArrayList<>();
+        CuriosApi.getCuriosInventory(player).ifPresent(curios -> {
+            for (ICurioStacksHandler stacksHandler : curios.getCurios().values()) {
+                IDynamicStackHandler stacks = stacksHandler.getStacks();
+                for (int slot = 0; slot < stacks.getSlots(); slot++) {
+                    ItemStack stack = stacks.getStackInSlot(slot);
+                    if (predicate.test(stack)) {
+                        removed.add(stack.copy());
+                        stacks.setStackInSlot(slot, ItemStack.EMPTY);
+                    }
+                }
+            }
+        });
+        return removed;
     }
 
     private static ItemStack findItem(IDynamicStackHandler stacks, Item item) {
