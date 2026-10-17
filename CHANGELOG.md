@@ -1,5 +1,22 @@
 # Changelog
 
+# Tsuki 1.8.1
+
+## Feature
+
+- Ceiling Light & Wall Light: Shoots dynamic beams in different polygons, from Maple Tree mod
+
+## Change
+
+- Change the default value of bambooSpread to false
+- Move giveGuide from persistentData to advancement
+
+## Bug Fix
+
+- [Critical] The Pot could duplicated almost every item due to Create's wrong impl
+- The model of straw hat iss too small
+- The Soulbound of magatama ignores curios slots
+
 # Tsuki 1.8.0
 
 ## Feature
