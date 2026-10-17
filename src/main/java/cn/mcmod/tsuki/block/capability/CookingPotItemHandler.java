@@ -110,64 +110,85 @@ public class CookingPotItemHandler implements IItemHandler {
     public ItemStack insertItem(int slot, @Nonnull ItemStack stack, @Nullable Direction side, boolean simulate,
             int[] exposedSlots) {
         if (isInputView(side, exposedSlots) && !stack.isEmpty()) {
-            ItemStack remaining = stack.copy();
-            ItemStack single = stack.copyWithCount(1);
-            int[] emptyCandidates = new int[exposedSlots.length];
-            int emptyCount = 0;
-
-            for (int exposedSlot : exposedSlots) {
-                if (!itemHandler.getStackInSlot(exposedSlot).isEmpty()) {
-                    continue;
-                }
-                if (!itemHandler.insertItem(exposedSlot, single, true).isEmpty()) {
-                    continue;
-                }
-                emptyCandidates[emptyCount++] = exposedSlot;
+            ItemStack[] plannedStacks = new ItemStack[exposedSlots.length];
+            int[] insertionCounts = new int[exposedSlots.length];
+            for (int i = 0; i < exposedSlots.length; ++i) {
+                plannedStacks[i] = itemHandler.getStackInSlot(exposedSlots[i]).copy();
             }
 
-            for (int i = 0; i < emptyCount && !remaining.isEmpty(); ++i) {
-                if (itemHandler.insertItem(emptyCandidates[i], single, simulate).isEmpty()) {
-                    remaining.shrink(1);
-                }
-            }
-
-            while (!remaining.isEmpty()) {
-                int bestSlot = -1;
-                int bestCount = Integer.MAX_VALUE;
-
-                for (int exposedSlot : exposedSlots) {
-                    ItemStack slotStack = itemHandler.getStackInSlot(exposedSlot);
-                    if (slotStack.isEmpty()) {
-                        continue;
-                    }
-                    if (!ItemStack.isSameItemSameComponents(slotStack, remaining)) {
-                        continue;
-                    }
-                    if (!itemHandler.insertItem(exposedSlot, single, true).isEmpty()) {
-                        continue;
-                    }
-
-                    int count = slotStack.getCount();
-                    if (count < bestCount) {
-                        bestCount = count;
-                        bestSlot = exposedSlot;
-                    }
-                }
-
-                if (bestSlot == -1) {
+            int insertedCount = 0;
+            while (insertedCount < stack.getCount()) {
+                int targetIndex = findInputSlot(plannedStacks, exposedSlots, stack);
+                if (targetIndex < 0) {
                     break;
                 }
 
-                ItemStack before = remaining;
-                remaining = itemHandler.insertItem(bestSlot, remaining, simulate);
-                if (remaining.getCount() == before.getCount()) {
-                    break;
+                ItemStack targetStack = plannedStacks[targetIndex];
+                if (targetStack.isEmpty()) {
+                    plannedStacks[targetIndex] = stack.copyWithCount(1);
+                } else {
+                    targetStack.grow(1);
+                }
+                ++insertionCounts[targetIndex];
+                ++insertedCount;
+            }
+
+            if (!simulate) {
+                ItemStack single = stack.copyWithCount(1);
+                for (int i = 0; i < exposedSlots.length; ++i) {
+                    if (insertionCounts[i] > 0) {
+                        itemHandler.insertItem(exposedSlots[i], single.copyWithCount(insertionCounts[i]), false);
+                    }
                 }
             }
-            return remaining;
+
+            return insertedCount == stack.getCount()
+                    ? ItemStack.EMPTY
+                    : stack.copyWithCount(stack.getCount() - insertedCount);
         }
 
         return itemHandler.insertItem(mapSlot(slot, exposedSlots), stack, simulate);
+    }
+
+    private int findInputSlot(ItemStack[] plannedStacks, int[] exposedSlots, ItemStack stack) {
+        for (int i = 0; i < plannedStacks.length; ++i) {
+            ItemStack plannedStack = plannedStacks[i];
+            if (plannedStack.isEmpty()) {
+                if (canInsertIntoSlot(exposedSlots[i], plannedStack, stack)) {
+                    return i;
+                }
+                continue;
+            }
+            if (!ItemStack.isSameItemSameComponents(plannedStack, stack)
+                    || !canInsertIntoSlot(exposedSlots[i], plannedStack, stack)) {
+                continue;
+            }
+
+            boolean smallerStackExists = false;
+            for (int j = i + 1; j < plannedStacks.length; ++j) {
+                ItemStack laterStack = plannedStacks[j];
+                if (laterStack.isEmpty()
+                        || (ItemStack.isSameItemSameComponents(laterStack, stack)
+                                && laterStack.getCount() < plannedStack.getCount())) {
+                    smallerStackExists = true;
+                    break;
+                }
+            }
+            if (!smallerStackExists) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private boolean canInsertIntoSlot(int slot, ItemStack existing, ItemStack stack) {
+        if (!itemHandler.isItemValid(slot, stack)) {
+            return false;
+        }
+        int limit = Math.min(itemHandler.getSlotLimit(slot), stack.getMaxStackSize());
+        return existing.isEmpty()
+                ? limit > 0
+                : ItemStack.isSameItemSameComponents(existing, stack) && existing.getCount() < limit;
     }
 
     public ItemStack insertItem(int slot, @Nonnull ItemStack stack, @Nullable Direction side, boolean simulate) {

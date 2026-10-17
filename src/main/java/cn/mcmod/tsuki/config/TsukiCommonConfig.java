@@ -69,7 +69,7 @@ public class TsukiCommonConfig {
         bambooEnableSpread = builder
                 .comment("Enables bamboo shoot spreading.")
                 .translation("tsuki.config.bamboo_enable_spread")
-                .define("bamboo_enable_spread", true);
+                .define("bamboo_enable_spread", false);
         bambooSpreadChance = builder
                 .comment("Sets the bamboo shoot spreading chance per random tick.")
                 .translation("tsuki.config.bamboo_spread_chance")
