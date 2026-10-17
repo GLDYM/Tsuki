@@ -13,9 +13,9 @@
 
 ## Bug Fix
 
-- [Critical] The Pot could duplicated almost every item due to Create's wrong impl
-- The model of straw hat iss too small
-- The Soulbound of magatama ignores curios slots
+- [Critical] The Pot could duplicate almost every item due to Create's wrong impl
+- The model of the straw hat is too small
+- The Soulbound of Magatama ignores Curios slots
 
 # Tsuki 1.8.0
 
