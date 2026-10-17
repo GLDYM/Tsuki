@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BambooLeaves;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -35,7 +36,7 @@ public class BambooShoot extends BushBlock implements BonemealableBlock {
 
     public BambooShoot() {
         this(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_SAPLING).randomTicks().noCollission().instabreak()
-                .sound(BlockRegistry.BAMBOO_PLANT.get().defaultBlockState().getSoundType()));
+                .sound(SoundType.GRASS).noOcclusion());
     }
 
     @Override
