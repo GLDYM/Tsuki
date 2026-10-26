@@ -40,9 +40,7 @@ This mod uses source code from the following mods, published here according to t
 - MMLib (MIT)
 - Farmer’s Delight (MIT)
 - Kaleidoscope: Cookery (BSD-3)
-- BalancedFlight (MIT)
 - CrockPot (MIT)
-- Youkai's Homecoming (LGPL 2.1)
 - Carpet (MIT)
 
 This mod uses assets from the following mods, published here according to their open-source licenses:
@@ -53,7 +51,3 @@ This mod uses assets from the following mods, published here according to their 
 - Kaleidoscope: Cookery (CC-BY-NC-SA 4.0)
 - [MinecraftDungeonsPotion](https://skfb.ly/oUXPQ) by kompotikivun (CC-BY 4.0)
 - [ウォルフライエブライニクルシュリーク](https://nepiapororecords.bandcamp.com/track/--65) by るいご (CC-BY-NC-SA 4.0)
-
-This mod refers assets from the following mods, published here according to their open-source licenses:
-
-- Kitchen Karrot (MIT)

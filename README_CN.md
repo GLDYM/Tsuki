@@ -51,7 +51,3 @@
 - 森罗物语：厨房（CC-BY-NC-SA 4.0）
 - [MinecraftDungeonsPotion](https://skfb.ly/oUXPQ) by kompotikivun (CC-BY 4.0)
 - [ウォルフライエブライニクルシュリーク](https://nepiapororecords.bandcamp.com/track/--65) by るいご (CC-BY-NC-SA 4.0)
-
-本模组参考了以下模组的资产，根据各项目的协议，在此公布：
-
-- 胡萝卜厨房 (MIT)
