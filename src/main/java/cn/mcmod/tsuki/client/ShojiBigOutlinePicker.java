@@ -1,5 +1,6 @@
 package cn.mcmod.tsuki.client;
 
+import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.decoration.ShojiBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -11,7 +12,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
+
 public final class ShojiBigOutlinePicker {
+    private static final double MAX_TRACE_DISTANCE = 16.0D;
+    private static final int MAX_TRACE_STEPS = 96;
+    private static final double TRACE_MARGIN = 1.0D;
+
+    private static boolean rangeWarned;
+
     private ShojiBigOutlinePicker() {
     }
 
@@ -22,24 +30,64 @@ public final class ShojiBigOutlinePicker {
         }
 
         Vec3 origin = player.getEyePosition();
-        double maxRange = minecraft.hitResult == null ? Double.MAX_VALUE
-                : minecraft.hitResult.getLocation().distanceToSqr(origin) + 0.5D;
-        double range = player.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
-        Vec3 target = getTraceTarget(player, Math.min(maxRange, range) + 1.0D, origin);
+        if (!isFinite(origin)) {
+            return;
+        }
 
-        BlockHitResult result = findHit(minecraft, origin, target, maxRange);
+        double limit = getPickLimit(minecraft, player, origin);
+        if (!(limit > 0.0D)) {
+            return;
+        }
+
+        Vec3 target = getTraceTarget(player, limit + TRACE_MARGIN, origin);
+        if (!isFinite(target)) {
+            return;
+        }
+
+        BlockHitResult result = findHit(minecraft, origin, target, limit * limit);
         if (result != null) {
             minecraft.hitResult = result;
             minecraft.crosshairPickEntity = null;
         }
     }
 
-    private static BlockHitResult findHit(Minecraft minecraft, Vec3 origin, Vec3 target, double maxRange) {
-        BlockHitResult bestResult = null;
-        double bestDistance = maxRange;
+    private static double getPickLimit(Minecraft minecraft, LocalPlayer player, Vec3 origin) {
+        double range = player.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
+        if (!Double.isFinite(range)) {
+            warnOnce("Block interaction range is not finite ({}), shōji outline picking is disabled", range);
+            return 0.0D;
+        }
+        if (range > MAX_TRACE_DISTANCE) {
+            warnOnce("Block interaction range is {} blocks, capping shōji outline picking at {} blocks", range,
+                    MAX_TRACE_DISTANCE);
+        }
 
+        double limit = Math.min(range, MAX_TRACE_DISTANCE);
+        if (minecraft.hitResult != null) {
+            double hitDistance = Math.sqrt(minecraft.hitResult.getLocation().distanceToSqr(origin));
+            if (!Double.isFinite(hitDistance)) {
+                return 0.0D;
+            }
+            limit = Math.min(limit, hitDistance + 0.5D);
+        }
+        return limit;
+    }
+
+    private static BlockHitResult findHit(Minecraft minecraft, Vec3 origin, Vec3 target, double limitSqr) {
+        if (!Double.isFinite(limitSqr) || limitSqr <= 0.0D) {
+            return null;
+        }
+
+        BlockHitResult bestResult = null;
+        double bestDistance = limitSqr;
+
+        int steps = 0;
         TraceResult trace = traceUntil(origin, target);
         while (trace != null && !trace.missed()) {
+            if (++steps > MAX_TRACE_STEPS) {
+                return bestResult;
+            }
+
             BlockPos pos = trace.pos();
 
             for (int x = -1; x <= 1; x++) {
@@ -75,7 +123,11 @@ public final class ShojiBigOutlinePicker {
                 return bestResult;
             }
 
-            trace = trace.next();
+            TraceResult next = trace.next();
+            if (next != null && next.sameCell(trace)) {
+                return bestResult;
+            }
+            trace = next;
         }
 
         return null;
@@ -101,13 +153,24 @@ public final class ShojiBigOutlinePicker {
     }
 
     private static TraceResult traceUntil(Vec3 start, Vec3 end) {
-        if (Double.isNaN(start.x) || Double.isNaN(start.y) || Double.isNaN(start.z)
-                || Double.isNaN(end.x) || Double.isNaN(end.y) || Double.isNaN(end.z)) {
+        if (!isFinite(start) || !isFinite(end)) {
             return null;
         }
 
         return new TraceResult(start, end, Mth.floor(end.x), Mth.floor(end.y), Mth.floor(end.z),
                 Mth.floor(start.x), Mth.floor(start.y), Mth.floor(start.z));
+    }
+
+    private static boolean isFinite(Vec3 vec) {
+        return Double.isFinite(vec.x) && Double.isFinite(vec.y) && Double.isFinite(vec.z);
+    }
+
+    private static void warnOnce(String message, Object... args) {
+        if (rangeWarned) {
+            return;
+        }
+        rangeWarned = true;
+        Tsuki.getLogger().warn(message, args);
     }
 
     private record TraceResult(Vec3 start, Vec3 end, int dx, int dy, int dz, int x, int y, int z) {
@@ -117,6 +180,10 @@ public final class ShojiBigOutlinePicker {
 
         BlockPos pos() {
             return new BlockPos(x, y, z);
+        }
+
+        boolean sameCell(TraceResult other) {
+            return x == other.x && y == other.y && z == other.z;
         }
 
         TraceResult next() {
@@ -149,13 +216,13 @@ public final class ShojiBigOutlinePicker {
             double progressY = stepY ? (nextY - start.y) / deltaY : 999.0D;
             double progressZ = stepZ ? (nextZ - start.z) / deltaZ : 999.0D;
 
-            if (progressX == -0.0D) {
+            if (progressX == 0.0D) {
                 progressX = -1.0E-4D;
             }
-            if (progressY == -0.0D) {
+            if (progressY == 0.0D) {
                 progressY = -1.0E-4D;
             }
-            if (progressZ == -0.0D) {
+            if (progressZ == 0.0D) {
                 progressZ = -1.0E-4D;
             }
 
