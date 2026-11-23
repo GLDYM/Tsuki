@@ -9,7 +9,7 @@ navigation:
 
 ## 可选前置
 
-- Terrablender：世界中会自然生成枫树林群系。
+- Lithostitched：世界中会自然生成枫树林群系。
 
 ## 联动模组
 

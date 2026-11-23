@@ -32,9 +32,10 @@ import cn.mcmod.tsuki.init.item.BlockItemRegistry;
 import cn.mcmod.tsuki.init.item.BucketItemRegistry;
 import cn.mcmod.tsuki.init.MobEffectRegistry;
 
+import cn.mcmod.tsuki.compat.ageratum.TsukiAgeratumCompat;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideMeCompat;
 import cn.mcmod.tsuki.compat.guideme.TsukiGuideCompat;
-import cn.mcmod.tsuki.compat.terrablender.TsukiTerraBlenderCompat;
+import cn.mcmod.tsuki.compat.lithostitched.TsukiLithostitchedCompat;
 import cn.mcmod.tsuki.network.TsukiNetwork;
 
 import net.minecraft.world.item.Item;
@@ -99,6 +100,8 @@ public class Tsuki {
 
         if (ModList.get().isLoaded("guideme")) {
             TsukiGuideMeCompat.register();
+        } else if (ModList.get().isLoaded("ageratum")) {
+            TsukiAgeratumCompat.register();
         } else {
             TsukiGuideCompat.register();
         }
@@ -111,8 +114,8 @@ public class Tsuki {
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
-        if (ModList.get().isLoaded("terrablender")) {
-            event.enqueueWork(TsukiTerraBlenderCompat::register);
+        if (ModList.get().isLoaded("lithostitched")) {
+            event.enqueueWork(TsukiLithostitchedCompat::register);
         }
     }
 

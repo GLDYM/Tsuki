@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.data;
 
-import cn.mcmod.tsuki.compat.terrablender.TsukiBiomeRegistry;
 import cn.mcmod.tsuki.tag.TsukiBiomeTags;
+import cn.mcmod.tsuki.worldgen.TsukiBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
@@ -39,7 +39,7 @@ public class TsukiBiomeTagProvider extends BiomeTagsProvider {
         TagAppender<Biome> sakuraDiamondOreTag = this.tag(TsukiBiomeTags.CAN_SPAWN_SAKURA_DIAMOND_ORE);
         sakuraDiamondOreTag.add(Biomes.BAMBOO_JUNGLE);
         sakuraDiamondOreTag.add(Biomes.CHERRY_GROVE);
-        sakuraDiamondOreTag.add(TsukiBiomeRegistry.MAPLE_FOREST);
+        sakuraDiamondOreTag.add(TsukiBiomes.MAPLE_FOREST);
 
         TagAppender<Biome> ironSandOreTag = this.tag(TsukiBiomeTags.CAN_SPAWN_IRON_SAND_ORE);
         ironSandOreTag.addTag(BiomeTags.IS_BEACH);
@@ -50,6 +50,6 @@ public class TsukiBiomeTagProvider extends BiomeTagsProvider {
 
         TagAppender<Biome> samuraiSpawnTag = this.tag(TsukiBiomeTags.HAS_SAMURAI_SPAWNS);
         samuraiSpawnTag.add(Biomes.BAMBOO_JUNGLE);
-        samuraiSpawnTag.add(TsukiBiomeRegistry.MAPLE_FOREST);
+        samuraiSpawnTag.add(TsukiBiomes.MAPLE_FOREST);
     }
 }

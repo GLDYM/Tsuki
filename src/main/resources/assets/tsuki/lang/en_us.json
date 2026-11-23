@@ -894,7 +894,7 @@
   "tsuki.chat.mythic_pickaxe.enchant_drop": "[%s] DROP",
   "tsuki.chat.mythic_pickaxe.enchant_max": "[%s] MAX",
   "tsuki.chat.mythic_pickaxe.enchant_up": "[%s] UP",
-  "tsuki.chat.sakura_guide.no_guideme": "§6[Tsuki]§r Install GuideME to view in-game guide!\nhttps://www.curseforge.com/minecraft/mc-mods/guideme",
+  "tsuki.chat.sakura_guide.missing_guide_mod": "§6[Tsuki]§r Install GuideME or Ageratum to view the in-game guide!\nhttps://www.curseforge.com/minecraft/mc-mods/guideme\nhttps://www.curseforge.com/minecraft/mc-mods/ageratum",
   "tsuki.config.allow_cooking_pot_input_stacking": "Allow Cooking Pot Input Stacking",
   "tsuki.config.allow_cooking_pot_input_stacking.tooltip": "Allow inserting cooking pot input items into occupied input slots.",
   "tsuki.config.bambooshot_weight": "BambooShot Weight",

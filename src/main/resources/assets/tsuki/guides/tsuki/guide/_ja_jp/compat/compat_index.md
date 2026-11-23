@@ -9,7 +9,7 @@ navigation:
 
 ## 任意依存
 
-- TerraBlender: 楓の森が自然生成されます。
+- Lithostitched: 楓の森が自然生成されます。
 
 ## 対応 MOD
 

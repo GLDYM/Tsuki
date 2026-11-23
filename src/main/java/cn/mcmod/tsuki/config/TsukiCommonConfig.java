@@ -92,7 +92,7 @@ public class TsukiCommonConfig {
 
         giveGuideOnFirstLogin = builder
                 .comment(
-                        "Gives the Tsuki guide book to players the first time they join a world when GuideME is installed.")
+                        "Gives the Tsuki guide book to players the first time they join a world when GuideME or Ageratum is installed.")
                 .translation("tsuki.config.give_guide_on_first_login")
                 .define("give_guide_on_first_login", true);
         builder.pop();

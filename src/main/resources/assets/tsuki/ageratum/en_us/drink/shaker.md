@@ -1,0 +1,30 @@
+---
+navigation:
+  title: "Shaker"
+items:
+  - tsuki:shaker
+---
+
+# Shaker
+
+The shaker<item id="tsuki:shaker"/> is a tool for mixing beverages and ingredients.
+
+## Adding Ingredients
+
+- Sneak + right-click to place the shaker.
+- Right-click with an item to add it to the shaker. If the item has a container, the container will be left behind.
+- Right-click with an empty hand to try to remove an ingredient. If the ingredient requires a container, you must hold an appropriate container to retrieve it.
+- After adding the required materials, sneak + left-click to pick up the shaker and begin mixing.
+
+## Mixing
+
+- Hold the shaker containing ingredients and hold right-click to mix.
+- The shaker must contain multiple alcohols/soft drinks, or a single alcohol/soft drink with ingredients, to mix.
+- Most recipes require 12s of shaking.
+- When mixing completes, all materials inside are consumed and the cocktail is produced based on the inputs. The recipe that requires the most matching ingredients is chosen first. If no recipe matches, the output is [Tskimi Seiran's Mythery Mix](mythery_mix.md)<item id="tsuki:mythery_mix"/>. The number of cocktails produced equals the number of alcohol/soft drink items input.
+
+## Pouring
+
+- The shaker can be combined with the appropriate container at a crafting table to obtain cocktails.
+- After placing the shaker, right-click the placed shaker while holding the required container to extract the cocktail.
+- While holding the shaker, right-click a placed matching container to pour drinks into it.

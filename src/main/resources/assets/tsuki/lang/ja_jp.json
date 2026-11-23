@@ -905,7 +905,7 @@
   "tsuki.chat.mythic_pickaxe.enchant_drop": "[%s] ドロップ",
   "tsuki.chat.mythic_pickaxe.enchant_max": "[%s] マックス",
   "tsuki.chat.mythic_pickaxe.enchant_up": "[%s] アップ",
-  "tsuki.chat.sakura_guide.no_guideme": "§6[Tsuki]§r ゲーム内ガイドを見るには GuideME を導入してください。\nhttps://www.curseforge.com/minecraft/mc-mods/guideme",
+  "tsuki.chat.sakura_guide.missing_guide_mod": "§6[Tsuki]§r ゲーム内ガイドを見るには GuideME または Ageratum を導入してください。\nhttps://www.curseforge.com/minecraft/mc-mods/guideme\nhttps://www.curseforge.com/minecraft/mc-mods/ageratum",
   "tsuki.config.allow_cooking_pot_input_stacking": "調理鍋を積み重ねることができるようにする",
   "tsuki.config.allow_cooking_pot_input_stacking.tooltip": "調理鍋の入力項目を使用中の入力スロットに挿入できるようにします。",
   "tsuki.config.category.client": "クライアント設定",

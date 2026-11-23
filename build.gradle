@@ -117,9 +117,9 @@ repositories {
 }
 
 dependencies {
-    // Ageratum, embedded via Jar-in-Jar.
-    // compileOnly "curse.maven:ageratum-1500610:7935946"
-    // runtimeOnly "curse.maven:ageratum-1500610:7935946"
+    // Ageratum
+    compileOnly "maven.modrinth:ageratum:${ageratum_version}"
+    runtimeOnly "maven.modrinth:ageratum:${ageratum_version}"
     // GuideME
     compileOnly 'org.appliedenergistics:guideme:21.1.15:api'
     // runtimeOnly 'org.appliedenergistics:guideme:21.1.15'
@@ -153,9 +153,9 @@ dependencies {
     // Kaleidoscope Cookery
     compileOnly "maven.modrinth:kaleidoscope-cookery:1.4.0-neoforge+mc1.21.1"
     runtimeOnly "maven.modrinth:kaleidoscope-cookery:1.4.0-neoforge+mc1.21.1"
-    // TerraBlender
-    compileOnly "com.github.glitchfiend:TerraBlender-neoforge:${mc_version}-4.1.0.8"
-    // runtimeOnly "com.github.glitchfiend:TerraBlender-neoforge:${mc_version}-4.1.0.8"
+    // Lithostitched
+    compileOnly "maven.modrinth:lithostitched:${lithostitched_version}"
+    runtimeOnly "maven.modrinth:lithostitched:${lithostitched_version}"
 
     // Dev Tools
     // MCMOD Export Tool

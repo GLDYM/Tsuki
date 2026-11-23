@@ -307,25 +307,29 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         }
 
         int maxStackSize = Math.min(inventory.getSlotLimit(SLOT_OUTPUT), mealStack.getMaxStackSize());
-        if (!outputStack.isEmpty() && outputStack.getCount() >= maxStackSize) {
+        int transferCount = Math.min(mealStack.getCount(), maxStackSize - outputStack.getCount());
+        if (!requiredContainer.isEmpty()) {
+            transferCount = Math.min(transferCount, containerStack.getCount());
+        }
+        if (transferCount <= 0) {
             return false;
         }
 
-        if (outputStack.isEmpty()) {
-            ItemStack toOutput = mealStack.copy();
-            toOutput.setCount(1);
-            inventory.setStackInSlot(SLOT_OUTPUT, toOutput);
-        } else {
-            outputStack.grow(1);
-        }
+        ItemStack toOutput = outputStack.isEmpty()
+                ? mealStack.copyWithCount(transferCount)
+                : outputStack.copyWithCount(outputStack.getCount() + transferCount);
 
-        mealStack.shrink(1);
+        mealStack.shrink(transferCount);
         if (mealStack.isEmpty()) {
             this.mealContainer = ItemStack.EMPTY;
         }
         if (!requiredContainer.isEmpty()) {
-            containerStack.shrink(1);
+            containerStack.shrink(transferCount);
         }
+
+        // Update the output last so its inventory notification contains the
+        // complete transfer rather than the meal being visible in both slots.
+        inventory.setStackInSlot(SLOT_OUTPUT, toOutput);
         return true;
     }
 

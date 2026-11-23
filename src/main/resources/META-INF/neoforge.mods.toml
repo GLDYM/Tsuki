@@ -45,9 +45,15 @@ config="tsuki.mixins.json"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.tsuki]]
-    modId="terrablender"
+    modId="ageratum"
     type = "optional"
-    versionRange="[4.1.0,)"
+    versionRange="[0.0.1,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.tsuki]]
+    modId="lithostitched"
+    type = "optional"
+    versionRange="[1.6,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.tsuki]]

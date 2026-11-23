@@ -9,7 +9,7 @@ navigation:
 
 ## Optional Dependencies
 
-- TerraBlender: Maple forests will naturally generate in the world.
+- Lithostitched: Maple forests will naturally generate in the world.
 
 ## Compatible Mods
 

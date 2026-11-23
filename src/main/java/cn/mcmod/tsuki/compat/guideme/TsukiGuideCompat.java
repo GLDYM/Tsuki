@@ -27,7 +27,7 @@ public final class TsukiGuideCompat {
         }
 
         event.getEntity().displayClientMessage(
-                Component.translatable("tsuki.chat.sakura_guide.no_guideme"),
+                Component.translatable("tsuki.chat.sakura_guide.missing_guide_mod"),
                 false);
     }
 
@@ -40,7 +40,7 @@ public final class TsukiGuideCompat {
         }
 
         event.getEntity().displayClientMessage(
-                Component.translatable("tsuki.chat.sakura_guide.no_guideme"),
+                Component.translatable("tsuki.chat.sakura_guide.missing_guide_mod"),
                 false);
         event.setCanceled(true);
         event.setCancellationResult(InteractionResult.SUCCESS);
