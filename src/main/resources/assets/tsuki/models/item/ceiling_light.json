@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "tsuki:block/ceiling_light",
+  "parent": "builtin/entity",
   "texture_size": [
     128,
     64
