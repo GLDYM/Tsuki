@@ -48,6 +48,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
 
     public static final int TANK_CAPACITY = 4000;
     private final ItemStackHandler inventory;
+    private final RecipeWrapper recipeWrapper;
     private final FermenterItemHandler itemHandler;
 
     private final FluidTank inputfluidTank;
@@ -66,6 +67,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
         super(BlockEntityRegistry.DISTILLER.get(), pos, state);
 
         this.inventory = createHandler();
+        this.recipeWrapper = new RecipeWrapper(this.inventory);
         this.itemHandler = new FermenterItemHandler(inventory);
         this.blockData = createIntArray();
         this.inputfluidTank = createInputFluidHandler();
@@ -78,7 +80,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
     public static void workingTick(Level level, BlockPos pos, BlockState state, DistillerBlockEntity blockEntity) {
         boolean didInventoryChange = false;
         if (blockEntity.isHeated(level, pos) && blockEntity.hasInput()) {
-            Optional<DistillerRecipe> recipe = blockEntity.getMatchingRecipe(new RecipeWrapper(blockEntity.inventory));
+            Optional<DistillerRecipe> recipe = blockEntity.getMatchingRecipe(blockEntity.recipeWrapper);
             if (recipe.isPresent() && blockEntity.canWork(recipe.get())) {
                 didInventoryChange = blockEntity.processRecipe(recipe.get());
             } else {
@@ -114,15 +116,10 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
         }
 
         if (lastRecipeID != null) {
-            Optional<RecipeHolder<DistillerRecipe>> recipeHolder = level.getRecipeManager()
-                    .getAllRecipesFor(RecipeTypeRegistry.DISTILLER_RECIPE_TYPE.get()).stream()
-                    .filter(now -> now.id().equals(lastRecipeID)).findFirst();
-            if (recipeHolder.isPresent()) {
-                DistillerRecipe cookingRecipe = recipeHolder.get().value();
-                if (cookingRecipe.matchesWithFluid(this.inputfluidTank.getFluid(),
-                        inventoryWrapper, level)) {
-                    return Optional.of(cookingRecipe);
-                }
+            Optional<RecipeHolder<?>> recipeHolder = level.getRecipeManager().byKey(lastRecipeID);
+            if (recipeHolder.isPresent() && recipeHolder.get().value() instanceof DistillerRecipe cookingRecipe
+                    && cookingRecipe.matchesWithFluid(this.inputfluidTank.getFluid(), inventoryWrapper, level)) {
+                return Optional.of(cookingRecipe);
             }
         }
 
@@ -133,6 +130,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
                 DistillerRecipe recipe = holder.value();
                 if (recipe.matchesWithFluid(this.inputfluidTank.getFluid(), inventoryWrapper, level)) {
                     lastRecipeID = holder.id();
+                    checkNewRecipe = false;
                     return Optional.of(recipe);
                 }
             }
@@ -218,6 +216,7 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
                 slotStack.shrink(1);
             }
         }
+        checkNewRecipe = true;
         return true;
     }
 

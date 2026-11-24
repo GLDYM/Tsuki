@@ -34,7 +34,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 
 public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuProvider {
 
@@ -66,8 +65,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         boolean isWorking = false;
 
         if (blockEntity.hasInput()) {
-            Optional<StoneMortarRecipe> recipe = blockEntity
-                    .getMatchingRecipe(new RecipeWrapper(blockEntity.inventory), level);
+            Optional<StoneMortarRecipe> recipe = blockEntity.getMatchingRecipe(level);
             if (recipe.isPresent() && blockEntity.canWork(recipe.get(), level)) {
                 isWorking = true;
                 didInventoryChange = blockEntity.processRecipe(recipe.get(), level);
@@ -104,29 +102,42 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
         return false;
     }
 
-    private Optional<StoneMortarRecipe> getMatchingRecipe(RecipeWrapper inventoryWrapper, Level level) {
+    private Optional<StoneMortarRecipe> getMatchingRecipe(Level level) {
         if (level == null) {
             return Optional.empty();
         }
+
+        if (lastRecipeID != null) {
+            Optional<RecipeHolder<?>> cachedHolder = level.getRecipeManager().byKey(lastRecipeID);
+            if (cachedHolder.isPresent() && cachedHolder.get().value() instanceof StoneMortarRecipe cachedRecipe
+                    && canWork(cachedRecipe, level)) {
+                if (workingInputSlot >= 0 && workingInputSlot < 4
+                        && cachedRecipe.matchesInput(inventory.getStackInSlot(workingInputSlot))) {
+                    return Optional.of(cachedRecipe);
+                }
+                for (int slot = 0; slot < 4; slot++) {
+                    ItemStack stack = inventory.getStackInSlot(slot);
+                    if (!stack.isEmpty() && cachedRecipe.matchesInput(stack)) {
+                        workingInputSlot = slot;
+                        return Optional.of(cachedRecipe);
+                    }
+                }
+            }
+        }
+
+        if (!checkNewRecipe) {
+            workingInputSlot = -1;
+            return Optional.empty();
+        }
+
         workingInputSlot = -1;
+        var allRecipes = level.getRecipeManager().getAllRecipesFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get());
         for (int slot = 0; slot < 4; slot++) {
             ItemStack stack = inventory.getStackInSlot(slot);
             if (stack.isEmpty()) {
                 continue;
             }
-
-            if (lastRecipeID != null) {
-                Optional<RecipeHolder<?>> cachedHolder = level.getRecipeManager().byKey(lastRecipeID);
-                if (cachedHolder.isPresent() && cachedHolder.get().value() instanceof StoneMortarRecipe cachedRecipe
-                        && cachedRecipe.matchesInput(stack) && canWork(cachedRecipe, level)) {
-                    workingInputSlot = slot;
-                    checkNewRecipe = false;
-                    return Optional.of(cachedRecipe);
-                }
-            }
-
-            for (RecipeHolder<StoneMortarRecipe> holder : level.getRecipeManager()
-                    .getAllRecipesFor(RecipeTypeRegistry.STONE_MORTAR_RECIPE_TYPE.get())) {
+            for (RecipeHolder<StoneMortarRecipe> holder : allRecipes) {
                 StoneMortarRecipe recipe = holder.value();
                 if (!recipe.matchesInput(stack) || !canWork(recipe, level)) {
                     continue;
@@ -136,10 +147,6 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
                 checkNewRecipe = false;
                 return Optional.of(recipe);
             }
-        }
-
-        if (!checkNewRecipe) {
-            return Optional.empty();
         }
 
         checkNewRecipe = false;
@@ -318,10 +325,13 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     private ItemStackHandler createHandler() {
         return new ItemStackHandler(6) {
             @Override
+            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+                return slot >= 0 && slot < 4;
+            }
+
+            @Override
             protected void onContentsChanged(int slot) {
-                if (slot >= 0 && slot < 4) {
-                    checkNewRecipe = true;
-                }
+                checkNewRecipe = true;
                 inventoryChanged();
             }
         };

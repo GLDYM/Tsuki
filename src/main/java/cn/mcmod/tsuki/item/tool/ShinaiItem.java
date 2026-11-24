@@ -33,6 +33,9 @@ public class ShinaiItem extends SwordItem {
         if (level.isClientSide() || !(entity instanceof Player player)) {
             return;
         }
+        if (!isSelected && stack != player.getOffhandItem()) {
+            return;
+        }
 
         ItemStack mainHand = player.getMainHandItem();
         ItemStack offHand = player.getOffhandItem();

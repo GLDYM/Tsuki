@@ -51,7 +51,7 @@ public class SprinklerBlockEntity extends BlockEntity implements GeoBlockEntity 
         if (level.isClientSide)
             return;
         ServerLevel server = (ServerLevel) level;
-        if (level.getGameTime() % 20 == 0)
+        if (Math.floorMod(level.getGameTime() + pos.asLong(), 20L) == 0)
             wetFarmland(server, pos);
         SprinklerBlock.Material material = state.getValue(SprinklerBlock.MATERIAL);
         if (server.random.nextInt(material.growthRate()) == 0) {
@@ -61,8 +61,11 @@ public class SprinklerBlockEntity extends BlockEntity implements GeoBlockEntity 
 
     private static void wetFarmland(ServerLevel level, BlockPos center) {
         for (BlockPos pos : BlockPos.betweenClosed(center.offset(-4, -1, -4), center.offset(4, 1, 4))) {
+            if (!level.isLoaded(pos)) {
+                continue;
+            }
             BlockState state = level.getBlockState(pos);
-            if (state.hasProperty(FarmBlock.MOISTURE)) {
+            if (state.hasProperty(FarmBlock.MOISTURE) && state.getValue(FarmBlock.MOISTURE) < 7) {
                 level.setBlock(pos, state.setValue(FarmBlock.MOISTURE, 7), 2);
             }
         }
@@ -70,22 +73,42 @@ public class SprinklerBlockEntity extends BlockEntity implements GeoBlockEntity 
 
     private static void accelerate(ServerLevel level, BlockPos center, int growthStages) {
         for (BlockPos pos : BlockPos.betweenClosed(center.offset(-4, -1, -4), center.offset(4, 1, 4))) {
+            if (!level.isLoaded(pos)) {
+                continue;
+            }
             BlockState state = level.getBlockState(pos);
-            growByAge(level, pos, state, growthStages);
+            if (!state.isAir()) {
+                growByAge(level, pos, state, growthStages);
+            }
         }
     }
 
     private static void growByAge(ServerLevel level, BlockPos pos, BlockState state, int growthStages) {
+        boolean isBonemealable = state.getBlock() instanceof BonemealableBlock;
+        boolean hasAgeProperty = state.hasProperty(BlockStateProperties.AGE_7)
+                || state.hasProperty(BlockStateProperties.AGE_3)
+                || state.hasProperty(BlockStateProperties.AGE_5);
+        if (!isBonemealable && !hasAgeProperty) {
+            return;
+        }
+
         if (state.is(TsukiBlockTags.SPRINKLER_BLACKLIST)) {
             return;
         }
 
         if (!state.is(TsukiBlockTags.SPRINKLER_DIRECT)) {
-            if (state.getBlock() instanceof BonemealableBlock growable
-                    && growable.isValidBonemealTarget(level, pos, state)
-                    && growable.isBonemealSuccess(level, level.random, pos, state)) {
+            if (isBonemealable) {
+                BlockState currentState = state;
                 for (int i = 0; i < growthStages; i++) {
-                    growable.performBonemeal(level, level.random, pos, state);
+                    if (!(currentState.getBlock() instanceof BonemealableBlock growable)
+                            || !growable.isValidBonemealTarget(level, pos, currentState)
+                            || !growable.isBonemealSuccess(level, level.random, pos, currentState)) {
+                        break;
+                    }
+                    growable.performBonemeal(level, level.random, pos, currentState);
+                    if (i + 1 < growthStages) {
+                        currentState = level.getBlockState(pos);
+                    }
                 }
             }
             return;
