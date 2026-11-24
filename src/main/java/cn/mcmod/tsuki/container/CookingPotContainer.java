@@ -70,6 +70,9 @@ public class CookingPotContainer extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
+        if (index < 0 || index >= this.slots.size() || index == CookingPotBlockEntity.SLOT_MEAL_DISPLAY) {
+            return ItemStack.EMPTY;
+        }
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
 
@@ -128,7 +131,7 @@ public class CookingPotContainer extends AbstractContainerMenu {
     }
 
     public CookingPotContainer(final int windowId, final Inventory playerInventory, final FriendlyByteBuf data) {
-        this(windowId, playerInventory, getTileEntity(playerInventory, data), new SimpleContainerData(4));
+        this(windowId, playerInventory, getTileEntity(playerInventory, data), new SimpleContainerData(2));
     }
 
     @Override

@@ -1,5 +1,6 @@
 package cn.mcmod.tsuki.block.capability;
 
+import java.util.EnumMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -13,6 +14,7 @@ public class FermenterItemHandler implements IItemHandler {
     private static final int SLOT_OUTPUT_END = 5;
 
     private final IItemHandler itemHandler;
+    private final EnumMap<Direction, IItemHandler> sideViews = new EnumMap<>(Direction.class);
 
     public FermenterItemHandler(IItemHandler itemHandler) {
         this.itemHandler = itemHandler;
@@ -20,8 +22,12 @@ public class FermenterItemHandler implements IItemHandler {
 
     public IItemHandler forSide(@Nullable Direction side) {
         if (side == null) {
-            return itemHandler;
+            return this;
         }
+        return sideViews.computeIfAbsent(side, this::createSideView);
+    }
+
+    private IItemHandler createSideView(Direction side) {
         return new IItemHandler() {
             @Override
             public int getSlots() {

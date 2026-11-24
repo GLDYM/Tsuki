@@ -11,14 +11,19 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
+@EventBusSubscriber(modid = Tsuki.MODID)
 public record MagatamaBoostPayload() implements CustomPacketPayload {
-    private static final Map<UUID, Long> LAST_BOOST_TICK = new HashMap<>();
+    private static final Map<UUID, Long> LAST_BOOST_TICK = new ConcurrentHashMap<>();
     private static final long BOOST_COOLDOWN_TICKS = 20L;
 
     public static final MagatamaBoostPayload INSTANCE = new MagatamaBoostPayload();
@@ -61,8 +66,8 @@ public record MagatamaBoostPayload() implements CustomPacketPayload {
             }
 
             long gameTime = player.level().getGameTime();
-            long lastTick = LAST_BOOST_TICK.getOrDefault(player.getUUID(), 0L);
-            if (gameTime - lastTick < BOOST_COOLDOWN_TICKS) {
+            Long lastTick = LAST_BOOST_TICK.get(player.getUUID());
+            if (lastTick != null && gameTime >= lastTick && gameTime - lastTick < BOOST_COOLDOWN_TICKS) {
                 if (TsukiCommonConfig.DEBUG_MODE.get()) {
                     Tsuki.getLogger().info("[MagatamaWhite] Server boost rejected by cooldown: now={}, last={}",
                             gameTime, lastTick);
@@ -72,12 +77,22 @@ public record MagatamaBoostPayload() implements CustomPacketPayload {
 
             LAST_BOOST_TICK.put(player.getUUID(), gameTime);
             player.startFallFlying();
-            ItemStack rocket = new ItemStack(Items.FIREWORK_ROCKET, 64);
+            ItemStack rocket = new ItemStack(Items.FIREWORK_ROCKET, 1);
             player.level().addFreshEntity(new FireworkRocketEntity(player.level(), rocket, player));
             if (TsukiCommonConfig.DEBUG_MODE.get()) {
                 Tsuki.getLogger().info("[MagatamaWhite] Server boost applied: player={}, delta={}",
                         player.getGameProfile().getName(), player.getDeltaMovement());
             }
         });
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event) {
+        LAST_BOOST_TICK.remove(event.getEntity().getUUID());
+    }
+
+    @SubscribeEvent
+    public static void onServerStopping(ServerStoppingEvent event) {
+        LAST_BOOST_TICK.clear();
     }
 }

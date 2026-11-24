@@ -2,12 +2,14 @@ package cn.mcmod.tsuki.network.payload;
 
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.block.entity.LighthouseIlluminationBlockEntity;
+import cn.mcmod.tsuki.container.AbstractLightContainer;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 public record ConfigureLighthousePayload(BlockPos pos, int color, int length, int width, int transparency,
@@ -28,12 +30,23 @@ public record ConfigureLighthousePayload(BlockPos pos, int color, int length, in
 
     public static void handle(ConfigureLighthousePayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
-            if (context.player().level()
-                    .getBlockEntity(payload.pos) instanceof LighthouseIlluminationBlockEntity lighthouse
-                    && context.player().distanceToSqr(payload.pos.getX() + .5, payload.pos.getY() + .5,
-                            payload.pos.getZ() + .5) <= 64)
+            if (!(context.player() instanceof ServerPlayer player)) {
+                return;
+            }
+            if (!(player.containerMenu instanceof AbstractLightContainer<?> menu)
+                    || !menu.blockEntity.getBlockPos().equals(payload.pos)
+                    || !menu.stillValid(player)) {
+                return;
+            }
+            if (player.distanceToSqr(payload.pos.getX() + 0.5D, payload.pos.getY() + 0.5D,
+                    payload.pos.getZ() + 0.5D) > 64.0D
+                    || !player.level().isLoaded(payload.pos)) {
+                return;
+            }
+            if (player.level().getBlockEntity(payload.pos) instanceof LighthouseIlluminationBlockEntity lighthouse) {
                 lighthouse.configure(payload.color, payload.length, payload.width, payload.transparency,
                         payload.polygonCount);
+            }
         });
     }
 }
