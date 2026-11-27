@@ -3,6 +3,7 @@ package cn.mcmod.tsuki.villager;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import java.util.List;
 
+import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.item.enums.TsukiFoodSet;
 import cn.mcmod.tsuki.init.item.enums.TsukiNormalItemSet;
 import net.minecraft.world.entity.npc.VillagerProfession;
@@ -16,7 +17,7 @@ import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = Tsuki.MODID)
 public class VillagerTradeHandler {
     @SubscribeEvent
     public static void onVillagerTrades(VillagerTradesEvent event) {

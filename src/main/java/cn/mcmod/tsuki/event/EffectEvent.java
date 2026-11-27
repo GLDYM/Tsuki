@@ -16,6 +16,9 @@ public class EffectEvent {
 
     @SubscribeEvent
     public static void onLivingHurt(LivingIncomingDamageEvent event) {
+        if (event.getEntity().level().isClientSide()) {
+            return;
+        }
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
         }

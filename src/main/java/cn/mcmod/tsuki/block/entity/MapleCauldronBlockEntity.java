@@ -52,7 +52,7 @@ public class MapleCauldronBlockEntity extends BlockEntity implements HeatableBlo
     }
 
     private void drawingTick(Level level, BlockPos pos) {
-        if (!canDraw(level, pos)) {
+        if (fluidTank.getSpace() <= 0 || !canDraw(level, pos)) {
             mapleTime = 0;
             return;
         }
@@ -71,13 +71,13 @@ public class MapleCauldronBlockEntity extends BlockEntity implements HeatableBlo
         }
 
         ItemStack out = inventory.getStackInSlot(0);
-        ItemStack syrupItem = new ItemStack(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get(), 8);
+        var syrupItem = ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MAPLE_SYRUP).get();
 
-        if (!out.isEmpty() && !ItemStack.isSameItemSameComponents(out, syrupItem)) {
+        if (!out.isEmpty() && (!out.is(syrupItem) || !out.getComponentsPatch().isEmpty())) {
             cookTime = 0;
             return;
         }
-        if (!out.isEmpty() && out.getCount() + syrupItem.getCount() > out.getMaxStackSize()) {
+        if (!out.isEmpty() && out.getCount() + 8 > out.getMaxStackSize()) {
             cookTime = 0;
             return;
         }
@@ -87,7 +87,7 @@ public class MapleCauldronBlockEntity extends BlockEntity implements HeatableBlo
             cookTime = 0;
             fluidTank.drain(500, FluidAction.EXECUTE);
             if (out.isEmpty()) {
-                inventory.setStackInSlot(0, syrupItem.copy());
+                inventory.setStackInSlot(0, new ItemStack(syrupItem, 8));
             } else {
                 out.grow(8);
                 inventory.setStackInSlot(0, out);
@@ -206,11 +206,18 @@ public class MapleCauldronBlockEntity extends BlockEntity implements HeatableBlo
         };
     }
 
+    private void onFluidChanged() {
+        setChanged();
+        if (level != null && !level.isClientSide) {
+            syncLevelState();
+        }
+    }
+
     private FluidTank createFluidTank() {
         return new FluidTank(TANK_CAPACITY) {
             @Override
             protected void onContentsChanged() {
-                inventoryChanged();
+                onFluidChanged();
                 super.onContentsChanged();
             }
 

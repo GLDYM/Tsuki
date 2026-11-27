@@ -67,6 +67,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     public static final int SLOT_OUTPUT = 11;
     public static final int SLOT_COUNT = 12;
     private final ItemStackHandler inventory;
+    private final RecipeWrapper recipeWrapper;
     private final CookingPotItemHandler itemHandler;
 
     private final FluidTank fluidTank;
@@ -79,12 +80,15 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     private ItemStack mealContainer;
 
     private ResourceLocation lastRecipeID;
+    @Nullable
+    private CookingPotRecipe cachedCompatRecipe;
     private boolean checkNewRecipe;
 
     public CookingPotBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.COOKING_POT.get(), pos, state);
 
         this.inventory = createHandler();
+        this.recipeWrapper = new RecipeWrapper(this.inventory);
         this.itemHandler = new CookingPotItemHandler(inventory);
         this.blockData = createIntArray();
         this.fluidTank = createFluidHandler();
@@ -98,7 +102,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         boolean wasWorking = blockEntity.isWorking();
         boolean didInventoryChange = false;
         if (blockEntity.isHeated(level, pos) && blockEntity.hasInput()) {
-            Optional<CookingPotRecipe> recipe = blockEntity.getMatchingRecipe(new RecipeWrapper(blockEntity.inventory));
+            Optional<CookingPotRecipe> recipe = blockEntity.getMatchingRecipe(blockEntity.recipeWrapper);
             if (recipe.isPresent() && blockEntity.canWork(recipe.get(), level)) {
                 blockEntity.renderCookingParticles(level, pos);
                 didInventoryChange = blockEntity.processRecipe(recipe.get(), level);
@@ -107,8 +111,6 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 blockEntity.recipeTimeTotal = 0;
             }
         } else {
-            if (state.is(BlockRegistry.COOKING_POT.get()))
-                state.setValue(CookingPotBlock.OPEN, true);
             blockEntity.recipeTime = 0;
             blockEntity.recipeTimeTotal = 0;
         }
@@ -141,16 +143,18 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         }
 
         if (lastRecipeID != null) {
-            Optional<RecipeHolder<CookingPotRecipe>> recipeHolder = level.getRecipeManager()
-                    .getAllRecipesFor(RecipeTypeRegistry.COOKING_RECIPE_TYPE.get()).stream()
-                    .filter(now -> now.id().equals(lastRecipeID)).findFirst();
-            if (recipeHolder.isPresent()) {
-                CookingPotRecipe cookingRecipe = recipeHolder.get().value();
-                if (cookingRecipe.matchesWithFluid(this.fluidTank.getFluid(), inventoryWrapper,
-                        level)) {
-                    return Optional.of(cookingRecipe);
-                }
+            Optional<RecipeHolder<?>> recipeHolder = level.getRecipeManager().byKey(lastRecipeID);
+            if (recipeHolder.isPresent() && recipeHolder.get().value() instanceof CookingPotRecipe cookingRecipe
+                    && cookingRecipe.matchesWithFluid(this.fluidTank.getFluid(), inventoryWrapper, level)) {
+                return Optional.of(cookingRecipe);
             }
+        }
+
+        if (cachedCompatRecipe != null) {
+            if (cachedCompatRecipe.matchesWithFluid(this.fluidTank.getFluid(), inventoryWrapper, level)) {
+                return Optional.of(cachedCompatRecipe);
+            }
+            cachedCompatRecipe = null;
         }
 
         if (checkNewRecipe) {
@@ -162,6 +166,8 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 if (recipe.matchesWithFluid(this.fluidTank.getFluid(),
                         inventoryWrapper, level)) {
                     lastRecipeID = holder.id();
+                    cachedCompatRecipe = null;
+                    checkNewRecipe = false;
                     return Optional.of(recipe);
                 }
             }
@@ -169,27 +175,27 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
             Optional<CookingPotRecipe> fdCompatRecipe = FDCookingPotCompat.findMatching(level, inventoryWrapper,
                     this.fluidTank.getFluid());
             if (fdCompatRecipe.isPresent()) {
-                // Compat recipe is generated at runtime and has no holder in this recipe
-                // manager.
                 lastRecipeID = null;
+                cachedCompatRecipe = fdCompatRecipe.get();
+                checkNewRecipe = false;
                 return fdCompatRecipe;
             }
 
             Optional<CookingPotRecipe> kcCompatRecipe = KCCookingPotCompat.findMatching(level, inventoryWrapper,
                     this.fluidTank.getFluid());
             if (kcCompatRecipe.isPresent()) {
-                // Compat recipe is generated at runtime and has no holder in this recipe
-                // manager.
                 lastRecipeID = null;
+                cachedCompatRecipe = kcCompatRecipe.get();
+                checkNewRecipe = false;
                 return kcCompatRecipe;
             }
 
             Optional<CookingPotRecipe> kcPotCompatRecipe = KCPotCompat.findMatching(level, inventoryWrapper,
                     this.fluidTank.getFluid());
             if (kcPotCompatRecipe.isPresent()) {
-                // Compat recipe is generated at runtime and has no holder in this recipe
-                // manager.
                 lastRecipeID = null;
+                cachedCompatRecipe = kcPotCompatRecipe.get();
+                checkNewRecipe = false;
                 return kcPotCompatRecipe;
             }
         }
@@ -269,6 +275,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 slotStack.shrink(1);
             }
         }
+        checkNewRecipe = true;
         return true;
     }
 
@@ -643,6 +650,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
             protected void onContentsChanged(int slot) {
                 if (slot >= SLOT_INPUT_START && slot < SLOT_INPUT_START + SLOT_INPUT_COUNT) {
                     checkNewRecipe = true;
+                    cachedCompatRecipe = null;
                 }
                 inventoryChanged();
             }
@@ -654,6 +662,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
             @Override
             public void onContentsChanged() {
                 checkNewRecipe = true;
+                cachedCompatRecipe = null;
                 inventoryChanged();
                 super.onContentsChanged();
             }

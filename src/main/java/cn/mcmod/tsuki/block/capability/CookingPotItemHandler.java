@@ -1,6 +1,7 @@
 package cn.mcmod.tsuki.block.capability;
 
 import cn.mcmod.tsuki.block.entity.CookingPotBlockEntity;
+import java.util.EnumMap;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -9,16 +10,33 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.IItemHandler;
 
 public class CookingPotItemHandler implements IItemHandler {
+    private static final int[] UP_SLOTS = createInputSlots();
+    private static final int[] DOWN_SLOTS = new int[] { CookingPotBlockEntity.SLOT_OUTPUT };
+    private static final int[] SIDE_SLOTS = new int[] { CookingPotBlockEntity.SLOT_CONTAINER_INPUT };
+
     private final IItemHandler itemHandler;
+    private final EnumMap<Direction, IItemHandler> sideViews = new EnumMap<>(Direction.class);
 
     public CookingPotItemHandler(IItemHandler itemHandler) {
         this.itemHandler = itemHandler;
     }
 
+    private static int[] createInputSlots() {
+        int[] inputSlots = new int[CookingPotBlockEntity.SLOT_INPUT_COUNT];
+        for (int i = 0; i < inputSlots.length; i++) {
+            inputSlots[i] = CookingPotBlockEntity.SLOT_INPUT_START + i;
+        }
+        return inputSlots;
+    }
+
     public IItemHandler forSide(@Nullable Direction side) {
         if (side == null) {
-            return itemHandler;
+            return this;
         }
+        return sideViews.computeIfAbsent(side, this::createSideView);
+    }
+
+    private IItemHandler createSideView(Direction side) {
         int[] exposedSlots = createExposedSlots(side);
         return new IItemHandler() {
             @Override
@@ -58,18 +76,14 @@ public class CookingPotItemHandler implements IItemHandler {
 
     private static int[] createExposedSlots(@Nullable Direction side) {
         if (side == Direction.UP) {
-            int[] inputSlots = new int[CookingPotBlockEntity.SLOT_INPUT_COUNT];
-            for (int i = 0; i < inputSlots.length; i++) {
-                inputSlots[i] = CookingPotBlockEntity.SLOT_INPUT_START + i;
-            }
-            return inputSlots;
+            return UP_SLOTS;
         }
 
         if (side == Direction.DOWN) {
-            return new int[] { CookingPotBlockEntity.SLOT_OUTPUT };
+            return DOWN_SLOTS;
         }
 
-        return new int[] { CookingPotBlockEntity.SLOT_CONTAINER_INPUT };
+        return SIDE_SLOTS;
     }
 
     private int mapSlot(int slot, int[] exposedSlots) {
@@ -198,6 +212,9 @@ public class CookingPotItemHandler implements IItemHandler {
     @Override
     @Nonnull
     public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+        if (slot == CookingPotBlockEntity.SLOT_MEAL_DISPLAY || slot == CookingPotBlockEntity.SLOT_OUTPUT) {
+            return stack;
+        }
         return itemHandler.insertItem(slot, stack, simulate);
     }
 
@@ -212,6 +229,9 @@ public class CookingPotItemHandler implements IItemHandler {
     @Override
     @Nonnull
     public ItemStack extractItem(int slot, int amount, boolean simulate) {
+        if (slot == CookingPotBlockEntity.SLOT_MEAL_DISPLAY) {
+            return ItemStack.EMPTY;
+        }
         return itemHandler.extractItem(slot, amount, simulate);
     }
 

@@ -26,9 +26,30 @@ public final class MagatamaWhiteEvent {
             "magatama_white_max_health");
     private static final AttributeModifier CREATIVE_FLIGHT_MODIFIER = new AttributeModifier(CREATIVE_FLIGHT_MODIFIER_ID,
             1.0D, AttributeModifier.Operation.ADD_VALUE);
-    private static final int CHECK_INTERVAL_TICKS = 20;
+    private static final int CHECK_INTERVAL_TICKS = 5;
 
     private MagatamaWhiteEvent() {
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            syncWhiteMagatamaState(player);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            syncWhiteMagatamaState(player);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            syncWhiteMagatamaState(player);
+        }
     }
 
     @SubscribeEvent
@@ -43,6 +64,10 @@ public final class MagatamaWhiteEvent {
             return;
         }
 
+        syncWhiteMagatamaState(player);
+    }
+
+    private static void syncWhiteMagatamaState(ServerPlayer player) {
         updateCreativeFlight(player, MagatamaWhiteHelper.isCreativeModeActive(player));
         updateMaxHealth(player, MagatamaWhiteHelper.hasActiveWhiteMagatama(player));
     }
@@ -54,11 +79,15 @@ public final class MagatamaWhiteEvent {
         }
 
         if (active) {
-            creativeFlight.addOrUpdateTransientModifier(CREATIVE_FLIGHT_MODIFIER);
+            if (creativeFlight.getModifier(CREATIVE_FLIGHT_MODIFIER_ID) == null) {
+                creativeFlight.addOrUpdateTransientModifier(CREATIVE_FLIGHT_MODIFIER);
+            }
             return;
         }
 
-        creativeFlight.removeModifier(CREATIVE_FLIGHT_MODIFIER_ID);
+        if (creativeFlight.getModifier(CREATIVE_FLIGHT_MODIFIER_ID) != null) {
+            creativeFlight.removeModifier(CREATIVE_FLIGHT_MODIFIER_ID);
+        }
         if (!player.isCreative() && !player.isSpectator() && player.getAbilities().flying && !player.mayFly()) {
             stopFlying(player);
         }
@@ -116,14 +145,20 @@ public final class MagatamaWhiteEvent {
         }
 
         if (active && TsukiCommonConfig.MAGATAMA_WHITE_ENABLE_PENALTY.get()) {
-            maxHealth.addOrUpdateTransientModifier(createMaxHealthPenaltyModifier(maxHealth));
+            AttributeModifier modifier = createMaxHealthPenaltyModifier(maxHealth);
+            AttributeModifier existing = maxHealth.getModifier(MAX_HEALTH_MODIFIER_ID);
+            if (existing == null || Double.compare(existing.amount(), modifier.amount()) != 0) {
+                maxHealth.addOrUpdateTransientModifier(modifier);
+            }
             if (player.getHealth() > player.getMaxHealth()) {
                 player.setHealth(player.getMaxHealth());
             }
             return;
         }
 
-        maxHealth.removeModifier(MAX_HEALTH_MODIFIER_ID);
+        if (maxHealth.getModifier(MAX_HEALTH_MODIFIER_ID) != null) {
+            maxHealth.removeModifier(MAX_HEALTH_MODIFIER_ID);
+        }
         if (player.getHealth() > player.getMaxHealth()) {
             player.setHealth(player.getMaxHealth());
         }

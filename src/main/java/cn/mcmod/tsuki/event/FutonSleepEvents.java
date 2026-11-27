@@ -3,6 +3,9 @@ package cn.mcmod.tsuki.event;
 import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.config.TsukiCommonConfig;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -12,10 +15,14 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.CanContinueSleepingEvent;
 import net.neoforged.neoforge.event.entity.player.CanPlayerSleepEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
+import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
 @EventBusSubscriber(modid = Tsuki.MODID)
 public final class FutonSleepEvents {
+    private static final Map<ResourceKey<Level>, Float> ACCELERATED_LEVELS = new ConcurrentHashMap<>();
+
     private FutonSleepEvents() {
     }
 
@@ -45,21 +52,39 @@ public final class FutonSleepEvents {
             return;
         }
 
+        ResourceKey<Level> dimension = serverLevel.dimension();
         float futonDaytimePerTick = TsukiCommonConfig.FUTON_DAYTIME_PER_TICK.get().floatValue();
         boolean accelerateOnlyDay = TsukiCommonConfig.FUTON_ACCELERATE_ONLY_DAY.get();
         boolean shouldAccelerate = (!accelerateOnlyDay || serverLevel.isDay()) && hasSleepingFutonPlayer(serverLevel);
         float currentDayTimePerTick = serverLevel.getDayTimePerTick();
 
         if (shouldAccelerate) {
-            if (currentDayTimePerTick != futonDaytimePerTick) {
+            ACCELERATED_LEVELS.putIfAbsent(dimension, currentDayTimePerTick);
+            if (Float.compare(currentDayTimePerTick, futonDaytimePerTick) != 0) {
                 serverLevel.setDayTimePerTick(futonDaytimePerTick);
             }
             return;
         }
 
-        if (currentDayTimePerTick == futonDaytimePerTick) {
-            serverLevel.setDayTimePerTick(-1.0F);
+        Float previousRate = ACCELERATED_LEVELS.remove(dimension);
+        if (previousRate != null) {
+            serverLevel.setDayTimePerTick(previousRate);
         }
+    }
+
+    @SubscribeEvent
+    public static void onLevelUnload(LevelEvent.Unload event) {
+        if (event.getLevel() instanceof ServerLevel serverLevel) {
+            Float previousRate = ACCELERATED_LEVELS.remove(serverLevel.dimension());
+            if (previousRate != null) {
+                serverLevel.setDayTimePerTick(previousRate);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onServerStopping(ServerStoppingEvent event) {
+        ACCELERATED_LEVELS.clear();
     }
 
     private static boolean hasSleepingFutonPlayer(ServerLevel serverLevel) {

@@ -25,10 +25,27 @@ public final class CuriosCompat {
         return CuriosCompatImpl.findFirstEquippedStack(player, item);
     }
 
+    public record RemovedCurioStack(String slotId, int slotIndex, ItemStack stack) {
+    }
+
     public static List<ItemStack> removeStacks(Player player, Predicate<ItemStack> predicate) {
         if (!ModList.get().isLoaded("curios")) {
             return List.of();
         }
         return CuriosCompatImpl.removeStacks(player, predicate);
+    }
+
+    public static List<RemovedCurioStack> removeStacksWithSlots(Player player, Predicate<ItemStack> predicate) {
+        if (!ModList.get().isLoaded("curios")) {
+            return List.of();
+        }
+        return CuriosCompatImpl.removeStacksWithSlots(player, predicate);
+    }
+
+    public static boolean tryRestoreStack(Player player, String slotId, int slotIndex, ItemStack stack) {
+        if (!ModList.get().isLoaded("curios")) {
+            return false;
+        }
+        return CuriosCompatImpl.tryRestoreStack(player, slotId, slotIndex, stack);
     }
 }

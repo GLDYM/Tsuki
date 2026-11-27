@@ -25,6 +25,9 @@ public class KatanaItem extends SwordItem {
         if (level.isClientSide() || !(entity instanceof Player player)) {
             return;
         }
+        if (!isSelected && stack != player.getOffhandItem()) {
+            return;
+        }
 
         ItemStack mainhand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offhand = player.getItemInHand(InteractionHand.OFF_HAND);

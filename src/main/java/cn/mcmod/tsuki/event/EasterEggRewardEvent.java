@@ -11,14 +11,17 @@ import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.common.util.FakePlayer;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,8 +37,9 @@ public final class EasterEggRewardEvent {
     private static final String REWARDED_PLAYERS_KEY = "RewardedPlayers";
 
     private static final List<RewardRule> SPECIAL_REWARDS = List.of(
-            // Dev
+            // Dev (development environment only)
             RewardRule.builder()
+                    .devOnly()
                     .names("Dev")
                     .rewards(
                             stack(ArmorToolRegistry.SAKURA_DIAMOND, 4))
@@ -43,44 +47,32 @@ public final class EasterEggRewardEvent {
                     .build(),
             // Polaris_Light
             RewardRule.builder()
-                    .names("Polaris_Light")
-                    .uuids("cf6bcfbc-3e2a-4aa4-be23-b45d2482fd98")
+                    .uuids(
+                            "cf6bcfbc-3e2a-4aa4-be23-b45d2482fd98",
+                            "befa7fff-4d8e-3ff9-a6ae-6f122a2e4bb8")
                     .rewards(
                             stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64),
                             stack(ArmorToolRegistry.MAGATAMA_WHITE, 1))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
+            // Stargz_10
             RewardRule.builder()
-                    // .names("Polaris_Light")
-                    .uuids("befa7fff-4d8e-3ff9-a6ae-6f122a2e4bb8")
-                    .rewards(
-                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64),
-                            stack(ArmorToolRegistry.MAGATAMA_WHITE, 1))
-                    .messageKey("tsuki.chat.easter_egg.rewarded")
-                    .build(),
-            RewardRule.builder()
-                    .names("Stargz_10")
-                    .uuids("0302463f-0cdf-42a8-aea6-996b84fceffa")
+                    .uuids(
+                            "0302463f-0cdf-42a8-aea6-996b84fceffa",
+                            "c0c97bf5-b51a-352f-bd10-3058da95118f")
                     .rewards(
                             stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
+            // Syameimaru_Zheng
             RewardRule.builder()
-                    // .names("Stargz_10")
-                    .uuids("c0c97bf5-b51a-352f-bd10-3058da95118f")
-                    .rewards(
-                            stack(TsukiCuisineSet.RICE_CURRY_KATSU.getItem(), 64))
-                    .messageKey("tsuki.chat.easter_egg.rewarded")
-                    .build(),
-            RewardRule.builder()
-                    .names("Syameimaru_Zheng")
                     .uuids("f1191641-34ab-4077-a6df-5c03a1a1170a")
                     .rewards(
                             stack(TsukiFoodSet.SUSHI.getItem(), 64))
                     .messageKey("tsuki.chat.easter_egg.rewarded")
                     .build(),
+            // bagu_chan
             RewardRule.builder()
-                    .names("bagu_chan")
                     .uuids("e1db1fa2-d0be-4075-8c16-9c489e3a2941")
                     .rewards(
                             stack(TsukiFoodSet.BUGGYS_MEAT.getItem(), 16))
@@ -92,11 +84,9 @@ public final class EasterEggRewardEvent {
 
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity().level().isClientSide()) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || player instanceof FakePlayer) {
             return;
         }
-
-        var player = event.getEntity();
         if (!(player.level() instanceof ServerLevel serverLevel)) {
             return;
         }
@@ -150,13 +140,17 @@ public final class EasterEggRewardEvent {
         return new RewardStack(item, count);
     }
 
-    private record RewardRule(Set<String> names, Set<UUID> uuids, List<RewardStack> rewards, String messageKey) {
+    private record RewardRule(boolean devOnly, Set<String> names, Set<UUID> uuids, List<RewardStack> rewards,
+            String messageKey) {
         private static Builder builder() {
             return new Builder();
         }
 
         private boolean matches(String lowerName, UUID uuid) {
-            return names.contains(lowerName) || uuids.contains(uuid);
+            if (devOnly && FMLEnvironment.production) {
+                return false;
+            }
+            return uuids.contains(uuid) || (devOnly && names.contains(lowerName));
         }
 
         private List<ItemStack> createRewardStacks() {
@@ -164,10 +158,16 @@ public final class EasterEggRewardEvent {
         }
 
         private static final class Builder {
+            private boolean devOnly = false;
             private Set<String> names = Set.of();
             private Set<UUID> uuids = Set.of();
             private List<RewardStack> rewards = List.of();
             private String messageKey = "tsuki.chat.easter_egg.rewarded";
+
+            private Builder devOnly() {
+                this.devOnly = true;
+                return this;
+            }
 
             private Builder names(String... values) {
                 this.names = Arrays.stream(values)
@@ -194,7 +194,7 @@ public final class EasterEggRewardEvent {
             }
 
             private RewardRule build() {
-                return new RewardRule(names, uuids, rewards, messageKey);
+                return new RewardRule(devOnly, names, uuids, rewards, messageKey);
             }
         }
     }

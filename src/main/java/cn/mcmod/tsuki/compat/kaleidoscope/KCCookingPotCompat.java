@@ -42,15 +42,20 @@ public final class KCCookingPotCompat {
             return Optional.empty();
         }
 
+        boolean debug = TsukiCommonConfig.DEBUG_MODE.get();
         ResourceLocation soupBase = getSoupBaseFromFluid(fluid);
         if (soupBase == null) {
-            logDebug("skip: unsupported fluid={}, inputs={}", describeFluid(fluid), describeWrapperInputs(wrapper));
+            if (debug) {
+                logDebug("skip: unsupported fluid={}, inputs={}", describeFluid(fluid), describeWrapperInputs(wrapper));
+            }
             return Optional.empty();
         }
 
         RecipeType<StockpotRecipe> stockpotType = getStockpotType();
         if (stockpotType == null) {
-            logDebug("skip: stockpot recipe type is null, soupBase={}", soupBase);
+            if (debug) {
+                logDebug("skip: stockpot recipe type is null, soupBase={}", soupBase);
+            }
             return Optional.empty();
         }
 
@@ -59,15 +64,17 @@ public final class KCCookingPotCompat {
         int bestIngredientCount = -1;
         int checked = 0;
         int matched = 0;
-        StringJoiner matchedIds = new StringJoiner(", ");
+        StringJoiner matchedIds = debug ? new StringJoiner(", ") : null;
         for (RecipeHolder<StockpotRecipe> holder : level.getRecipeManager().getAllRecipesFor(stockpotType)) {
             checked++;
             StockpotRecipe recipe = holder.value();
             if (recipe.matches(input, level)) {
                 matched++;
                 int ingredientCount = getNonEmptyIngredientCount(recipe);
-                matchedIds.add(holder.id() + "[ingredients=" + ingredientCount + ",result=" + recipe.result().getCount()
-                        + "]");
+                if (matchedIds != null) {
+                    matchedIds.add(holder.id() + "[ingredients=" + ingredientCount + ",result="
+                            + recipe.result().getCount() + "]");
+                }
                 if (ingredientCount > bestIngredientCount) {
                     bestIngredientCount = ingredientCount;
                     bestMatch = holder;
@@ -76,28 +83,35 @@ public final class KCCookingPotCompat {
         }
 
         if (bestMatch == null) {
-            logDebugDedup(
-                    "kc-no-match|" + soupBase + "|" + describeFluid(fluid) + "|" + describeWrapperInputs(wrapper),
-                    "no match: soupBase={}, fluid={}, inputs={}, checked={}, matched={}",
-                    soupBase,
-                    describeFluid(fluid),
-                    describeWrapperInputs(wrapper),
-                    checked,
-                    matched);
+            if (debug) {
+                String fluidDesc = describeFluid(fluid);
+                String inputsDesc = describeWrapperInputs(wrapper);
+                logDebugDedup(
+                        "kc-no-match|" + soupBase + "|" + fluidDesc + "|" + inputsDesc,
+                        "no match: soupBase={}, fluid={}, inputs={}, checked={}, matched={}",
+                        soupBase,
+                        fluidDesc,
+                        inputsDesc,
+                        checked,
+                        matched);
+            }
             return Optional.empty();
         }
 
-        logDebugDedup(
-                "kc-match|" + bestMatch.id() + "|" + soupBase + "|" + describeFluid(fluid) + "|"
-                        + describeWrapperInputs(wrapper),
-                "matched: selected={}, soupBase={}, fluid={}, inputs={}, checked={}, matched={}, candidates=[{}]",
-                bestMatch.id(),
-                soupBase,
-                describeFluid(fluid),
-                describeWrapperInputs(wrapper),
-                checked,
-                matched,
-                matchedIds);
+        if (debug) {
+            String fluidDesc = describeFluid(fluid);
+            String inputsDesc = describeWrapperInputs(wrapper);
+            logDebugDedup(
+                    "kc-match|" + bestMatch.id() + "|" + soupBase + "|" + fluidDesc + "|" + inputsDesc,
+                    "matched: selected={}, soupBase={}, fluid={}, inputs={}, checked={}, matched={}, candidates=[{}]",
+                    bestMatch.id(),
+                    soupBase,
+                    fluidDesc,
+                    inputsDesc,
+                    checked,
+                    matched,
+                    matchedIds);
+        }
         return transform(bestMatch.id(), bestMatch.value(), level);
     }
 

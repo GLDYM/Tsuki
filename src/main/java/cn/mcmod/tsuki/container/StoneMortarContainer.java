@@ -64,7 +64,10 @@ public class StoneMortarContainer extends AbstractContainerMenu {
     public ItemStack quickMoveStack(Player playerIn, int index) {
         // 0-5: Contain inventory
         // 6-32: Player inventory
-        // 33-42: Hot bar in the player inventory
+        // 33-41: Hot bar in the player inventory
+        if (index < 0 || index >= this.slots.size()) {
+            return ItemStack.EMPTY;
+        }
 
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
@@ -73,23 +76,19 @@ public class StoneMortarContainer extends AbstractContainerMenu {
             ItemStack itemStack1 = slot.getItem();
             itemStack = itemStack1.copy();
 
-            if (index >= 0 && index <= 5) {
+            if (index <= 5) {
                 if (!this.moveItemStackTo(itemStack1, 6, 42, true)) {
                     return ItemStack.EMPTY;
                 }
                 slot.onQuickCraft(itemStack1, itemStack);
-            } else if (index >= 6) {
-                if (!this.moveItemStackTo(itemStack1, 0, 4, false)) {
-                    if (index >= 6 && index < 33) {
-                        if (!this.moveItemStackTo(itemStack1, 33, 42, false)) {
-                            return ItemStack.EMPTY;
-                        }
-                    } else if (index >= 33 && index < 42 && !this.moveItemStackTo(itemStack1, 6, 33, false)) {
+            } else if (!this.moveItemStackTo(itemStack1, 0, 4, false)) {
+                if (index < 33) {
+                    if (!this.moveItemStackTo(itemStack1, 33, 42, false)) {
                         return ItemStack.EMPTY;
                     }
+                } else if (index < 42 && !this.moveItemStackTo(itemStack1, 6, 33, false)) {
+                    return ItemStack.EMPTY;
                 }
-            } else if (!this.moveItemStackTo(itemStack1, 6, 43, false)) {
-                return ItemStack.EMPTY;
             }
 
             if (itemStack1.getCount() == 0) {
@@ -118,7 +117,7 @@ public class StoneMortarContainer extends AbstractContainerMenu {
     }
 
     public StoneMortarContainer(final int windowId, final Inventory playerInventory, final FriendlyByteBuf data) {
-        this(windowId, playerInventory, getTileEntity(playerInventory, data), new SimpleContainerData(4));
+        this(windowId, playerInventory, getTileEntity(playerInventory, data), new SimpleContainerData(2));
     }
 
     @Override

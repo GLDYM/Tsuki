@@ -80,7 +80,7 @@ public class SprinklerBlock extends BaseEntityBlock {
 
     public SprinklerBlock(Material material) {
         this(Properties.of().mapColor(mapColor(material)).strength(1.5F).sound(SoundType.METAL)
-                .noOcclusion().randomTicks(), material);
+                .noOcclusion(), material);
     }
 
     private static MapColor mapColor(Material material) {

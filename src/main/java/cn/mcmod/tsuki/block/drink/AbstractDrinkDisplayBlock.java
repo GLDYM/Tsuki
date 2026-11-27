@@ -107,16 +107,18 @@ public abstract class AbstractDrinkDisplayBlock extends BaseEntityBlock {
 
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!level.isClientSide && state.getBlock() != newState.getBlock()) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof DrinkDisplayBlockEntity drinkDisplay) {
-                for (int i = 0; i < DrinkDisplayBlockEntity.SLOT_COUNT; i++) {
-                    ItemStack stack = drinkDisplay.getStackInSlot(i);
-                    if (!stack.isEmpty()) {
-                        Block.popResource(level, pos, stack.copy());
+        if (state.getBlock() != newState.getBlock()) {
+            if (!level.isClientSide && !isMoving) {
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if (blockEntity instanceof DrinkDisplayBlockEntity drinkDisplay) {
+                    for (int i = 0; i < DrinkDisplayBlockEntity.SLOT_COUNT; i++) {
+                        ItemStack stack = drinkDisplay.removeItem(i);
+                        if (!stack.isEmpty()) {
+                            Block.popResource(level, pos, stack);
+                        }
                     }
+                    level.updateNeighbourForOutputSignal(pos, this);
                 }
-                level.updateNeighbourForOutputSignal(pos, this);
             }
             super.onRemove(state, level, pos, newState, isMoving);
         }

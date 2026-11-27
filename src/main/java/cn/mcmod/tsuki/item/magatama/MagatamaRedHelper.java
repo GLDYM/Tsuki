@@ -23,6 +23,9 @@ public final class MagatamaRedHelper {
     private static final double RANGE_UP = 48.0D;
     private static final double RANGE_DOWN = 16.0D;
 
+    private static volatile List<? extends String> cachedConfigIds;
+    private static volatile Set<EntityType<?>> cachedTargetTypes = Set.of();
+
     private MagatamaRedHelper() {
     }
 
@@ -45,6 +48,11 @@ public final class MagatamaRedHelper {
     }
 
     public static void executeCull(ServerPlayer player) {
+        Set<EntityType<?>> targetTypes = getTargetEntityTypeSet();
+        if (targetTypes.isEmpty()) {
+            return;
+        }
+
         AABB checkBox = new AABB(
                 player.getX() - RANGE_XZ,
                 player.getY() - RANGE_DOWN,
@@ -54,27 +62,25 @@ public final class MagatamaRedHelper {
                 player.getZ() + RANGE_XZ);
 
         for (LivingEntity entity : player.level().getEntitiesOfClass(LivingEntity.class, checkBox,
-                MagatamaRedHelper::isTargetEntity)) {
+                entity -> entity.isAlive() && targetTypes.contains(entity.getType()))) {
             entity.hurt(player.damageSources().outOfBorder(), Float.MAX_VALUE);
         }
     }
 
-    private static boolean isTargetEntity(LivingEntity entity) {
-        if (!entity.isAlive()) {
-            return false;
-        }
-        return getTargetEntityIds().contains(BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()));
+    public static List<EntityType<?>> getConfiguredTargetEntityTypes() {
+        return List.copyOf(getTargetEntityTypeSet());
     }
 
-    public static List<EntityType<?>> getConfiguredTargetEntityTypes() {
+    private static Set<EntityType<?>> getTargetEntityTypeSet() {
         List<? extends String> configuredIds = TsukiCommonConfig.MAGATAMA_RED_TARGET_ENTITIES.get();
+        if (configuredIds == cachedConfigIds) {
+            return cachedTargetTypes;
+        }
+
         Set<EntityType<?>> entityTypes = new LinkedHashSet<>();
         for (String configuredId : configuredIds) {
             ResourceLocation location = ResourceLocation.tryParse(configuredId);
-            if (location == null) {
-                continue;
-            }
-            if (!BuiltInRegistries.ENTITY_TYPE.containsKey(location)) {
+            if (location == null || !BuiltInRegistries.ENTITY_TYPE.containsKey(location)) {
                 continue;
             }
             EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(location);
@@ -82,17 +88,9 @@ public final class MagatamaRedHelper {
                 entityTypes.add(entityType);
             }
         }
-        return List.copyOf(entityTypes);
-    }
-
-    private static Set<ResourceLocation> getTargetEntityIds() {
-        Set<ResourceLocation> ids = new LinkedHashSet<>();
-        for (String configuredId : TsukiCommonConfig.MAGATAMA_RED_TARGET_ENTITIES.get()) {
-            ResourceLocation location = ResourceLocation.tryParse(configuredId);
-            if (location != null) {
-                ids.add(location);
-            }
-        }
-        return ids;
+        Set<EntityType<?>> resolved = Set.copyOf(entityTypes);
+        cachedTargetTypes = resolved;
+        cachedConfigIds = configuredIds;
+        return resolved;
     }
 }

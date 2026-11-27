@@ -105,14 +105,10 @@ public class ChoppingBoardBlockEntity extends SyncedBlockEntity {
             return Optional.empty();
 
         if (lastRecipeID != null) {
-            Optional<RecipeHolder<ChoppingRecipe>> recipeHolder = level.getRecipeManager()
-                    .getAllRecipesFor(RecipeTypeRegistry.CHOPPING_RECIPE_TYPE.get()).stream()
-                    .filter(now -> now.id().equals(lastRecipeID)).findFirst();
-            if (recipeHolder.isPresent()) {
-                ChoppingRecipe recipe = recipeHolder.get().value();
-                if (recipe.matches(recipeWrapper, level) && recipe.getTool().test(toolStack)) {
-                    return Optional.of(recipe);
-                }
+            Optional<RecipeHolder<?>> recipeHolder = level.getRecipeManager().byKey(lastRecipeID);
+            if (recipeHolder.isPresent() && recipeHolder.get().value() instanceof ChoppingRecipe recipe
+                    && recipe.matches(recipeWrapper, level) && recipe.getTool().test(toolStack)) {
+                return Optional.of(recipe);
             }
         }
 

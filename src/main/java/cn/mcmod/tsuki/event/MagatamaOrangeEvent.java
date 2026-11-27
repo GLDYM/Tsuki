@@ -29,9 +29,6 @@ public final class MagatamaOrangeEvent {
 
     @SubscribeEvent
     public static void onFoodRightClick(PlayerInteractEvent.RightClickItem event) {
-        if (event.getEntity().level().isClientSide()) {
-            return;
-        }
         if (!MagatamaOrangeHelper.hasActiveOrangeMagatama(event.getEntity())) {
             return;
         }
@@ -122,13 +119,17 @@ public final class MagatamaOrangeEvent {
             return;
         }
         double amount = Math.max(0.0D, player.getMaxHealth());
+        AttributeModifier existing = maxAbsorption.getModifier(MAX_ABSORPTION_MODIFIER_ID);
+        if (existing != null && Double.compare(existing.amount(), amount) == 0) {
+            return;
+        }
         maxAbsorption.addOrUpdateTransientModifier(new AttributeModifier(
                 MAX_ABSORPTION_MODIFIER_ID, amount, AttributeModifier.Operation.ADD_VALUE));
     }
 
     private static void removeMaxAbsorptionModifier(ServerPlayer player) {
         AttributeInstance maxAbsorption = player.getAttribute(Attributes.MAX_ABSORPTION);
-        if (maxAbsorption == null) {
+        if (maxAbsorption == null || maxAbsorption.getModifier(MAX_ABSORPTION_MODIFIER_ID) == null) {
             return;
         }
         maxAbsorption.removeModifier(MAX_ABSORPTION_MODIFIER_ID);

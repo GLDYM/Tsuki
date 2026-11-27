@@ -1,5 +1,6 @@
 package cn.mcmod.tsuki.event;
 
+import cn.mcmod.tsuki.Tsuki;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -10,7 +11,7 @@ import net.neoforged.neoforge.event.level.BlockEvent.BlockToolModificationEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 
-@EventBusSubscriber()
+@EventBusSubscriber(modid = Tsuki.MODID)
 public class LogStripEvent {
 
     @SubscribeEvent
