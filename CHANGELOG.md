@@ -1,5 +1,66 @@
 # Changelog
 
+# Tsuki 1.9.1
+
+Most of changes were dome by [rianfalltwilight-lab](https://www.curseforge.com/members/rianfalltwilight)
+
+## Feature
+
+- Wall Light & Ceiling Light now render with their GeckoLib geo models when held or in the inventory
+- New model for Piña Colada
+- Soulbound Magatama & Yata No Kagami are restored to their original Curios slot after respawn when possible
+
+## Change
+
+- Guide delivery is now tracked per player UUID in the world save
+  - The "missing guide mod" notice is shown only once per player
+  - This should fix the weird persistent data lost bug
+- Magatama effects are synced on lifecycle events instead of every tick
+  - Maybe have un-synced bugs, but this change gives much performance improvement.
+  
+- Futon daytime acceleration now restores the dimension's previous `dayTimePerTick`
+- Sprinkler
+  - Wetting is spread over 20 ticks instead of every sprinkler on the same tick
+  - Skips unloaded chunks, already-moist farmland and non-growable blocks
+  - Bonemeal growth re-reads the block state between stages
+- Orange Magatama food use is now also applied on the client, matching the server
+
+## Performance
+
+- Machine recipe lookups now reuse cached results
+- Cooking Pot no longer rescans every compact recipes each tick
+- Light beam rendering uses scalar math and reused vertices, with fewer allocations
+- Red Magatama target list is cached instead of being reparsed for every entity
+- Sprinkler no longer force-loads chunks or sends block updates for already-wet farmland
+
+## Bug Fix
+
+- Fixed the game freezing when looking at large Shoji doors (#19)
+- Fixed the Wall Light and Ceiling Light item models
+- Fixed soulbound items duplicating when `keepInventory` is enabled
+- Fixed Sprinkler growth stages overwriting each other 
+- Fixed automation inserting items into the Cooking Pot / Stone Mortar output slots
+- Fixed the Shaker dropping items on the client
+- Fixed the "missing guide mod" message being sent on every login
+
+## Security
+
+- The easter egg reward is now limited to UUID
+- Light configuration packets now require the matching menu, position and interaction distance
+
+## Others
+
+- Optimize images
+- Updated author and credits metadata
+
+# Tsuki 1.9.0
+
+## **BREAKING CHANGE**
+
+*   **Change TerraBlender to Lithostitched**
+*   Add Ageratum Guide Support, now GuideME is Optional
+    *   But GuideME still have a better display
+
 # Tsuki 1.8.1
 
 ## Feature
