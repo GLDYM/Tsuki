@@ -1,23 +1,17 @@
 modLoader="javafml"
 loaderVersion="[4,)"
-license="MIT License"
+license="${mod_license}"
 
 [[mods]]
-modId="tsuki"
+modId="${mod_id}"
 version="${mod_version}"
-displayName="Tsuki"
+displayName="${mod_name}"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/tsuki"
 logoFile="logo.png"
-credits="MCMOD Modding Group, MMF-Group"
-authors="Polaris_Light, Syameimaru Zheng, Bagu_chan"
-description='''
-A mod that mix Bamboo, WA and MapleTree.
+credits="${mod_credits}"
+authors="${mod_authors}"
+description='''${mod_description}'''
 
-This mod is full of Japanese style, Teishoku, sushi, and lots of foods.
-New battle styles with your katana and kodachi, Cooking with campfire and cooking pot.
-New illager with his katana spawn in Bamboo forest and maple forest!
-New dress: Kimono, yukata and Haori.
-'''
 [[mixins]]
 config="tsuki.mixins.json"
 [[dependencies.tsuki]]
