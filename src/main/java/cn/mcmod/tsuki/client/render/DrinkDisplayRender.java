@@ -17,12 +17,16 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import java.util.Map;
+import java.util.WeakHashMap;
+
 public class DrinkDisplayRender implements BlockEntityRenderer<DrinkDisplayBlockEntity> {
     private static final float DISPLAY_SCALE = 0.6F;
     private static final float MYTHERY_MIX_SCALE = 0.6F;
     private static final float ITEM_RENDERER_CENTER_OFFSET = 0.3125F;
     private static final ModelResourceLocation EMPTY_GLASS_BOTTLE_MODEL = ModelResourceLocation.inventory(
             ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "empty_glass_bottle"));
+    private final Map<BakedModel, Float> modelMinYCache = new WeakHashMap<>();
 
     public DrinkDisplayRender(BlockEntityRendererProvider.Context context) {
     }
@@ -73,12 +77,19 @@ public class DrinkDisplayRender implements BlockEntityRenderer<DrinkDisplayBlock
     }
 
     private float getModelMinY(BakedModel resolvedModel) {
-        if (resolvedModel.isCustomRenderer()) {
-            return 0.0F;
+        Float cached = modelMinYCache.get(resolvedModel);
+        if (cached != null) {
+            return cached;
         }
-        PoseStack transformStack = new PoseStack();
-        resolvedModel.applyTransform(ItemDisplayContext.FIXED, transformStack, false);
-        float fixedScaleY = transformStack.last().pose().m11();
-        return 0.5F - 0.5F * fixedScaleY;
+
+        float minY = 0.0F;
+        if (!resolvedModel.isCustomRenderer()) {
+            PoseStack transformStack = new PoseStack();
+            resolvedModel.applyTransform(ItemDisplayContext.FIXED, transformStack, false);
+            float fixedScaleY = transformStack.last().pose().m11();
+            minY = 0.5F - 0.5F * fixedScaleY;
+        }
+        modelMinYCache.put(resolvedModel, minY);
+        return minY;
     }
 }

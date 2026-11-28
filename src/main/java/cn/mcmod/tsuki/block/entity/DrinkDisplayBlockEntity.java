@@ -45,6 +45,16 @@ public class DrinkDisplayBlockEntity extends SyncedBlockEntity {
         }
     }
 
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        tag.put("Inventory", inventory.serializeNBT(registries));
+        for (int i = 0; i < SLOT_COUNT; i++) {
+            tag.putFloat("Rotation" + i, rotations[i]);
+        }
+        return tag;
+    }
+
     public boolean addItem(ItemStack stack, int slot, float rotation) {
         if (slot < 0 || slot >= SLOT_COUNT || stack.isEmpty() || !getStackInSlot(slot).isEmpty()) {
             return false;

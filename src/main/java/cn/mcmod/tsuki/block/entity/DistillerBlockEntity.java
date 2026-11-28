@@ -302,6 +302,15 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
         compound.put("RecipesUsed", compoundRecipes);
     }
 
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        tag.put("Inventory", inventory.serializeNBT(registries));
+        tag.put("InputFluidTank", inputfluidTank.writeToNBT(registries, new CompoundTag()));
+        tag.put("OutputFluidTank", outputfluidTank.writeToNBT(registries, new CompoundTag()));
+        return tag;
+    }
+
     private ItemStackHandler createHandler() {
         return new ItemStackHandler(6) {
             @Override

@@ -70,6 +70,9 @@ public class KitunebiBlock extends LightBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (random.nextInt(4) != 0) {
+            return;
+        }
         Player player = level.getNearestPlayer(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, 32.0D, false);
         if (player == null) {
             return;

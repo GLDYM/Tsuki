@@ -16,16 +16,6 @@ public final class MagatamaOrangeHelper {
     }
 
     public static ItemStack findActiveStack(Player player) {
-        for (int slot = 0; slot < HOTBAR_SIZE; slot++) {
-            ItemStack stack = player.getInventory().getItem(slot);
-            if (stack.is(ArmorToolRegistry.MAGATAMA_ORANGE.get())) {
-                return stack;
-            }
-        }
-        ItemStack offhand = player.getOffhandItem();
-        if (offhand.is(ArmorToolRegistry.MAGATAMA_ORANGE.get())) {
-            return offhand;
-        }
-        return CuriosCompat.findFirstEquippedStack(player, ArmorToolRegistry.MAGATAMA_ORANGE.get());
+        return MagatamaEquipmentCache.getActiveStack(player, ArmorToolRegistry.MAGATAMA_ORANGE.get());
     }
 }

@@ -50,6 +50,13 @@ public class ShakerBlockEntity extends SyncedBlockEntity {
         }
     }
 
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        tag.put("Inventory", inventory.serializeNBT(registries));
+        return tag;
+    }
+
     public ItemStackHandler getInventory() {
         return inventory;
     }

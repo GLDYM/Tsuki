@@ -612,6 +612,17 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     }
 
     @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        tag.put("Inventory", inventory.serializeNBT(registries));
+        tag.put("FluidTank", fluidTank.writeToNBT(registries, new CompoundTag()));
+        if (!mealContainer.isEmpty()) {
+            tag.put("MealContainer", mealContainer.saveOptional(registries));
+        }
+        return tag;
+    }
+
+    @Override
     protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
         super.applyImplicitComponents(componentInput);
         this.inventory.setStackInSlot(SLOT_MEAL_DISPLAY,

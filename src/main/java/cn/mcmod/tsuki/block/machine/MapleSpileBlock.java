@@ -130,7 +130,7 @@ public class MapleSpileBlock extends HorizontalDirectionalBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (!canWork(level, pos, state) || random.nextInt(10) != 0) {
+        if (random.nextInt(10) != 0 || !canWork(level, pos, state)) {
             return;
         }
 

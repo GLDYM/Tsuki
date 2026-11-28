@@ -37,6 +37,13 @@ public class ObonBlockEntity extends SyncedBlockEntity {
         compound.put("Inventory", inventory.serializeNBT(registries));
     }
 
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        tag.put("Inventory", inventory.serializeNBT(registries));
+        return tag;
+    }
+
     public boolean addItem(ItemStack itemStack) {
         if (isEmpty() && !itemStack.isEmpty()) {
             inventory.setStackInSlot(0, itemStack.split(1));
