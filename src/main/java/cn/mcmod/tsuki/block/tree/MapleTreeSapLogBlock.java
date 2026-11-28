@@ -21,7 +21,7 @@ public class MapleTreeSapLogBlock extends RotatedPillarBlock {
         super(BlockBehaviour.Properties.of().mapColor(
                 state -> (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.WOOD
                         : MapColor.PODZOL))
-                .strength(2.0F).sound(SoundType.WOOD));
+                .strength(2.0F).sound(SoundType.WOOD).randomTicks());
         this.registerDefaultState(this.defaultBlockState().setValue(EXHAUSTION, false));
     }
 
@@ -33,10 +33,13 @@ public class MapleTreeSapLogBlock extends RotatedPillarBlock {
     @Override
     public void randomTick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource rand) {
         super.randomTick(state, worldIn, pos, rand);
-        if (!worldIn.isAreaLoaded(pos, 1) || state.getValue(EXHAUSTION)) {
+        if (!worldIn.isAreaLoaded(pos, 1)) {
             return;
         }
-        if (rand.nextInt(36000) == 0) {
+        // A carved sap log that has been drained by a spile eventually returns
+        // to a normal log on a random tick. Non-exhausted logs stay carved so
+        // they remain tappable.
+        if (state.getValue(EXHAUSTION)) {
             worldIn.setBlockAndUpdate(pos, BlockRegistry.MAPLE_LOG.get().withPropertiesOf(state));
         }
     }

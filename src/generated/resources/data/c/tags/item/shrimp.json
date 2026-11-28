@@ -1,5 +1,9 @@
 {
   "values": [
-    "tsuki:shrimp"
+    "tsuki:shrimp",
+    {
+      "id": "crabbersdelight:shrimp",
+      "required": false
+    }
   ]
 }

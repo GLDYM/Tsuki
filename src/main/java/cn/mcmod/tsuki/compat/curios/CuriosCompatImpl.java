@@ -1,7 +1,9 @@
 package cn.mcmod.tsuki.compat.curios;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -31,6 +33,22 @@ final class CuriosCompatImpl {
             }
         }
         return ItemStack.EMPTY;
+    }
+
+    static Map<Item, ItemStack> findEquippedStacks(Player player, Predicate<ItemStack> predicate) {
+        Map<Item, ItemStack> found = new LinkedHashMap<>();
+        CuriosApi.getCuriosInventory(player).ifPresent(curios -> {
+            for (ICurioStacksHandler handler : curios.getCurios().values()) {
+                IDynamicStackHandler stacks = handler.getStacks();
+                for (int slot = 0; slot < stacks.getSlots(); slot++) {
+                    ItemStack stack = stacks.getStackInSlot(slot);
+                    if (!stack.isEmpty() && predicate.test(stack)) {
+                        found.putIfAbsent(stack.getItem(), stack);
+                    }
+                }
+            }
+        });
+        return found;
     }
 
     static List<ItemStack> removeStacks(Player player, Predicate<ItemStack> predicate) {

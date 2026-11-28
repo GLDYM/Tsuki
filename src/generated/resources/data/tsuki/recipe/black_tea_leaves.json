@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "tsuki:green_tea_leaves"
+      "tag": "tsuki:green_tea_leaves"
     }
   ],
   "result": {

@@ -21,17 +21,7 @@ public final class MagatamaPurpleHelper {
     }
 
     public static ItemStack findActiveStack(Player player) {
-        for (int slot = 0; slot < HOTBAR_SIZE; slot++) {
-            ItemStack stack = player.getInventory().getItem(slot);
-            if (stack.is(ArmorToolRegistry.MAGATAMA_PURPLE.get())) {
-                return stack;
-            }
-        }
-        ItemStack offhand = player.getOffhandItem();
-        if (offhand.is(ArmorToolRegistry.MAGATAMA_PURPLE.get())) {
-            return offhand;
-        }
-        return CuriosCompat.findFirstEquippedStack(player, ArmorToolRegistry.MAGATAMA_PURPLE.get());
+        return MagatamaEquipmentCache.getActiveStack(player, ArmorToolRegistry.MAGATAMA_PURPLE.get());
     }
 
     public static void triggerAttackCooldown(Player player) {

@@ -12,13 +12,7 @@ public final class MagatamaBlueHelper {
     }
 
     public static ItemStack findActiveStack(Player player) {
-        for (int slot = 0; slot < HOTBAR_SIZE; slot++) {
-            ItemStack stack = player.getInventory().getItem(slot);
-            if (stack.is(ArmorToolRegistry.MAGATAMA_BLUE.get())) {
-                return stack;
-            }
-        }
-        return CuriosCompat.findFirstEquippedStack(player, ArmorToolRegistry.MAGATAMA_BLUE.get());
+        return MagatamaEquipmentCache.getActiveStack(player, ArmorToolRegistry.MAGATAMA_BLUE.get());
     }
 
     public static MagatamaBlueItem.WeatherMode toggleMainHandMode(Player player) {

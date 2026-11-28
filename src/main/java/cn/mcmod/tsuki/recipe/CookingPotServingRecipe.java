@@ -73,8 +73,11 @@ public class CookingPotServingRecipe extends CustomRecipe {
             if (selectedStack.hasCraftingRemainingItem()) {
                 remainders.set(i, selectedStack.getCraftingRemainingItem());
             } else if (selectedStack.is(BlockItemRegistry.COOKING_POT.get())) {
-                CookingPotBlockEntity.takeServingFromItem(selectedStack);
+                // Never mutate the crafting-input stack in place: derive the
+                // remainder from a copy so the grid stays consistent if the
+                // recipe is cancelled or re-evaluated.
                 ItemStack newCookingPotStack = selectedStack.copy();
+                CookingPotBlockEntity.takeServingFromItem(newCookingPotStack);
                 newCookingPotStack.setCount(1);
                 remainders.set(i, newCookingPotStack);
                 break;

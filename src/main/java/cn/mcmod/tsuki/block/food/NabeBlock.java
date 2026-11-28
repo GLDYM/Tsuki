@@ -112,11 +112,16 @@ public class NabeBlock extends Block implements HeatableBlockEntity {
 
     protected ItemInteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
         if (!isHeated(level, pos)) {
-            player.displayClientMessage(Component.translatable("tsuki.block.nabe.not_cooked"), true);
+            if (!level.isClientSide()) {
+                player.displayClientMessage(Component.translatable("tsuki.block.nabe.not_cooked"), true);
+            }
             return ItemInteractionResult.FAIL;
         } else if (!player.canEat(false)) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         } else {
+            if (level.isClientSide()) {
+                return ItemInteractionResult.SUCCESS;
+            }
             player.getFoodData().eat(this.getFoodInfo().getAmount(), this.getFoodInfo().getCalories());
             int i = state.getValue(BITES);
             level.gameEvent(player, GameEvent.EAT, pos);

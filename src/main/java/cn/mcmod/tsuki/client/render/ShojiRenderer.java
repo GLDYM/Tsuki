@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import org.joml.Matrix3f;
@@ -38,6 +39,7 @@ public class ShojiRenderer implements BlockEntityRenderer<ShojiBlockEntity> {
     private static final float LV0 = 2f / TH, LV1 = 34f / TH;
     private static final float RU0 = 18f / TW, RU1 = 20f / TW;
     private static final float RV0 = 2f / TH, RV1 = 34f / TH;
+    private final Vector3f normalScratch = new Vector3f();
 
     static {
         for (int i = 0; i < MAX_TYPES; i++) {
@@ -50,8 +52,10 @@ public class ShojiRenderer implements BlockEntityRenderer<ShojiBlockEntity> {
     }
 
     @Override
-    public boolean shouldRenderOffScreen(ShojiBlockEntity blockEntity) {
-        return true;
+    public AABB getRenderBoundingBox(ShojiBlockEntity blockEntity) {
+        // The sliding panel can extend one block sideways when open; keep the
+        // bounding box large enough for frustum culling without disabling it.
+        return new AABB(blockEntity.getBlockPos()).inflate(1.0D);
     }
 
     @Override
@@ -158,7 +162,7 @@ public class ShojiRenderer implements BlockEntityRenderer<ShojiBlockEntity> {
     private void addVertex(VertexConsumer builder, Matrix4f pose, Matrix3f normal,
             float x, float y, float z, float u, float v,
             float nx, float ny, float nz, int packedLight, int packedOverlay) {
-        Vector3f transformedNormal = normal.transform(nx, ny, nz, new Vector3f());
+        Vector3f transformedNormal = normal.transform(nx, ny, nz, normalScratch);
         builder.addVertex(pose, x, y, z)
                 .setColor(255, 255, 255, 255)
                 .setUv(u, v)

@@ -13,19 +13,32 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
-public class TsukiCompostableDataMapProvider extends DataMapProvider {
+/**
+ * Generates both the compostables and the furnace fuels data maps.
+ * <p>
+ * NeoForge only allows a single {@link DataMapProvider} per datagen run, so all Tsuki data maps
+ * are registered here. Furnace fuels used to be applied by a {@code FurnaceFuelBurnTimeEvent}
+ * listener; keeping them in a data map makes the values data-pack overridable.
+ */
+public class TsukiDataMapProvider extends DataMapProvider {
 
-    public TsukiCompostableDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
+    public TsukiDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
         super(packOutput, provider);
     }
 
     @Override
     protected void gather(HolderLookup.Provider provider) {
+        gatherCompostables();
+        gatherFurnaceFuels();
+    }
+
+    private void gatherCompostables() {
         Builder<Compostable, Item> builder = builder(NeoForgeDataMaps.COMPOSTABLES);
         FoodRegistry.ITEMS.getEntries().forEach(item -> {
             register(builder, item);
@@ -66,6 +79,16 @@ public class TsukiCompostableDataMapProvider extends DataMapProvider {
         registerHolder(builder, BlockItemRegistry.MATSUTAKE_FALLEN_LEAVES, 0.3F);
     }
 
+    private void gatherFurnaceFuels() {
+        Builder<FurnaceFuel, Item> builder = builder(NeoForgeDataMaps.FURNACE_FUELS);
+        registerFuel(builder, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO), 400);
+        registerFuel(builder, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_SUNBURNT), 400);
+        registerFuel(builder, BlockItemRegistry.BAMBOO_BLOCK, 4000);
+        registerFuel(builder, BlockItemRegistry.BAMBOO_BLOCK_SUNBURNT, 4000);
+        registerFuel(builder, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BAMBOO_CHARCOAL), 1600);
+        registerFuel(builder, BlockItemRegistry.BAMBOO_CHARCOAL_BLOCK, 16000);
+    }
+
     private static void register(DataMapProvider.Builder<Compostable, Item> builder,
             DeferredHolder<Item, ? extends Item> itemHolder) {
         Item item = itemHolder.get();
@@ -84,5 +107,10 @@ public class TsukiCompostableDataMapProvider extends DataMapProvider {
             Supplier<Item> itemSupplier, float chance) {
         ResourceLocation itemId = BuiltInRegistries.ITEM.getKey(itemSupplier.get());
         builder.add(itemId, new Compostable(chance), false);
+    }
+
+    private static void registerFuel(DataMapProvider.Builder<FurnaceFuel, Item> builder,
+            DeferredHolder<Item, ? extends Item> itemHolder, int burnTime) {
+        builder.add(itemHolder.getId(), new FurnaceFuel(burnTime), false);
     }
 }

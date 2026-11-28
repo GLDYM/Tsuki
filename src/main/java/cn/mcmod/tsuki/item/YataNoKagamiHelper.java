@@ -1,7 +1,7 @@
 package cn.mcmod.tsuki.item;
 
-import cn.mcmod.tsuki.compat.curios.CuriosCompat;
 import cn.mcmod.tsuki.init.item.ArmorToolRegistry;
+import cn.mcmod.tsuki.item.magatama.MagatamaEquipmentCache;
 import net.minecraft.world.entity.player.Player;
 
 public final class YataNoKagamiHelper {
@@ -11,14 +11,7 @@ public final class YataNoKagamiHelper {
     }
 
     public static boolean isActive(Player player) {
-        if (!player.getAbilities().flying) {
-            return false;
-        }
-        for (int slot = 0; slot < HOTBAR_SIZE; slot++) {
-            if (player.getInventory().getItem(slot).is(ArmorToolRegistry.YATA_NO_KAGAMI.get())) {
-                return true;
-            }
-        }
-        return !CuriosCompat.findFirstEquippedStack(player, ArmorToolRegistry.YATA_NO_KAGAMI.get()).isEmpty();
+        return player.getAbilities().flying
+                && MagatamaEquipmentCache.isActive(player, ArmorToolRegistry.YATA_NO_KAGAMI.get());
     }
 }

@@ -39,8 +39,7 @@ public class PepperSplintBlock extends Block {
                 .mapColor(MapColor.WOOD)
                 .strength(2.0F)
                 .sound(SoundType.WOOD)
-                .noOcclusion()
-                .randomTicks());
+                .noOcclusion());
     }
 
     @Override

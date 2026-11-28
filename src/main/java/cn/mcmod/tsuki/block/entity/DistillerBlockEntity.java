@@ -78,6 +78,9 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
     public static void workingTick(Level level, BlockPos pos, BlockState state, DistillerBlockEntity blockEntity) {
+        if (level.isClientSide()) {
+            return;
+        }
         boolean didInventoryChange = false;
         if (blockEntity.isHeated(level, pos) && blockEntity.hasInput()) {
             Optional<DistillerRecipe> recipe = blockEntity.getMatchingRecipe(blockEntity.recipeWrapper);
@@ -141,32 +144,37 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
     protected boolean canWork(DistillerRecipe recipe) {
-        if (hasInput()) {
-            NonNullList<ItemStack> resultStacks = recipe.getResultItemList();
-            boolean fluid_flag = !(recipe.getResultFluid().isEmpty());
-            FluidTank outTank = this.outputfluidTank;
-            fluid_flag = outTank.isEmpty() || recipe.getResultFluid().isEmpty() ||
-                    (FluidStack.isSameFluidSameComponents(outTank.getFluid(), recipe.getResultFluid())
-                            && outTank.getSpace() >= recipe.getResultFluid().getAmount());
-            boolean flag = true;
-            for (int i = 3; i < resultStacks.size() + 3; i++) {
-                if (!flag)
-                    break;
-                ItemStack resultStack = resultStacks.get(i - 3);
-                ItemStack outputStack = inventory.getStackInSlot(i);
-                if (outputStack.isEmpty()) {
-                    flag = true;
-                } else if (!ItemStack.isSameItem(outputStack, resultStack)) {
-                    flag = false;
-                } else if (outputStack.getCount() + resultStack.getCount() <= inventory.getSlotLimit(i)) {
-                    flag = true;
-                } else {
-                    flag = outputStack.getCount() + resultStack.getCount() <= resultStack.getMaxStackSize();
-                }
-            }
-            return fluid_flag && flag;
+        if (!hasInput()) {
+            return false;
         }
-        return false;
+
+        NonNullList<ItemStack> resultStacks = recipe.getResultItemList();
+        if (resultStacks.size() > 3) {
+            return false;
+        }
+
+        FluidStack resultFluid = recipe.getResultFluid();
+        FluidTank outTank = this.outputfluidTank;
+        boolean fluidFlag = resultFluid.isEmpty()
+                || (outTank.isEmpty() && outTank.getCapacity() >= resultFluid.getAmount())
+                || (FluidStack.isSameFluidSameComponents(outTank.getFluid(), resultFluid)
+                        && outTank.getSpace() >= resultFluid.getAmount());
+
+        boolean flag = true;
+        for (int i = 3; i < resultStacks.size() + 3 && flag; i++) {
+            ItemStack resultStack = resultStacks.get(i - 3);
+            ItemStack outputStack = inventory.getStackInSlot(i);
+            if (outputStack.isEmpty()) {
+                flag = true;
+            } else if (!ItemStack.isSameItemSameComponents(outputStack, resultStack)) {
+                flag = false;
+            } else if (outputStack.getCount() + resultStack.getCount() <= inventory.getSlotLimit(i)) {
+                flag = true;
+            } else {
+                flag = outputStack.getCount() + resultStack.getCount() <= resultStack.getMaxStackSize();
+            }
+        }
+        return fluidFlag && flag;
     }
 
     private boolean processRecipe(DistillerRecipe recipe) {
@@ -183,11 +191,12 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
         recipeTime = 0;
 
         NonNullList<ItemStack> resultStacks = recipe.getResultItemList();
-        for (int i = 3; i < resultStacks.size() + 3; i++) {
+        int resultCount = Math.min(resultStacks.size(), 3);
+        for (int i = 3; i < resultCount + 3; i++) {
             ItemStack outStack = inventory.getStackInSlot(i);
             if (outStack.isEmpty()) {
                 inventory.setStackInSlot(i, resultStacks.get(i - 3).copy());
-            } else if (ItemStack.isSameItem(outStack, resultStacks.get(i - 3))) {
+            } else if (ItemStack.isSameItemSameComponents(outStack, resultStacks.get(i - 3))) {
                 outStack.grow(resultStacks.get(i - 3).getCount());
             }
         }
@@ -291,6 +300,15 @@ public class DistillerBlockEntity extends SyncedBlockEntity implements MenuProvi
         experienceTracker
                 .forEach((recipeId, craftedAmount) -> compoundRecipes.putInt(recipeId.toString(), craftedAmount));
         compound.put("RecipesUsed", compoundRecipes);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        CompoundTag tag = new CompoundTag();
+        tag.put("Inventory", inventory.serializeNBT(registries));
+        tag.put("InputFluidTank", inputfluidTank.writeToNBT(registries, new CompoundTag()));
+        tag.put("OutputFluidTank", outputfluidTank.writeToNBT(registries, new CompoundTag()));
+        return tag;
     }
 
     private ItemStackHandler createHandler() {

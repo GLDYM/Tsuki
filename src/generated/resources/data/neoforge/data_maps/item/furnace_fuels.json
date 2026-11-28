@@ -1,0 +1,22 @@
+{
+  "values": {
+    "tsuki:bamboo": {
+      "burn_time": 400
+    },
+    "tsuki:bamboo_block": {
+      "burn_time": 4000
+    },
+    "tsuki:bamboo_block_sunburnt": {
+      "burn_time": 4000
+    },
+    "tsuki:bamboo_charcoal": {
+      "burn_time": 1600
+    },
+    "tsuki:bamboo_charcoal_block": {
+      "burn_time": 16000
+    },
+    "tsuki:bamboo_sunburnt": {
+      "burn_time": 400
+    }
+  }
+}

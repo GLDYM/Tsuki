@@ -72,7 +72,7 @@ public class NorenBlock extends Block {
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos fromPos,
             boolean isMoving) {
-        if (!state.canSurvive(level, pos)) {
+        if (!level.isClientSide && !state.canSurvive(level, pos)) {
             level.destroyBlock(pos, true);
         }
         super.neighborChanged(state, level, pos, block, fromPos, isMoving);

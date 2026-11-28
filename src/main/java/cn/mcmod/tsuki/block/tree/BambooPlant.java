@@ -38,7 +38,7 @@ public class BambooPlant extends Block implements BonemealableBlock {
     public static final int AGE_THICK_BAMBOO = 1;
 
     public BambooPlant() {
-        super(BlockBehaviour.Properties.of());
+        super(BlockBehaviour.Properties.of().randomTicks());
         this.registerDefaultState(this.stateDefinition.any().setValue(LEAVES, BambooLeaves.NONE));
     }
 

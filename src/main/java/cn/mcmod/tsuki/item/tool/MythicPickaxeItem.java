@@ -105,12 +105,22 @@ public class MythicPickaxeItem extends PickaxeItem {
         int currentExp = Math.max(0, tag.getInt(KEY_MINING_EXPERIENCE));
         int currentLevel = Math.max(1, tag.getInt(KEY_MINING_LEVEL));
 
-        currentExp += addAmount;
-        while (currentExp >= TsukiCommonConfig.MYTHIC_PICKAXE_EXP_NEEDED.get()) {
+        int requiredExp = Math.max(1, TsukiCommonConfig.MYTHIC_PICKAXE_EXP_NEEDED.get());
+        currentExp = (int) Math.min(Integer.MAX_VALUE, (long) currentExp + addAmount);
+        while (currentExp >= requiredExp) {
             currentLevel += 1;
             levelUps += 1;
-            currentExp = randomRange(useRandom, 1, 30);
+            // Keep the old randomized overflow flavour while guaranteeing
+            // progress: the next value is always below the threshold, so a
+            // low configured threshold (including 1) cannot loop forever.
+            currentExp = requiredExp <= 1
+                    ? 0
+                    : Math.min(randomRange(useRandom, 1, 30), requiredExp - 1);
             rollLevelUpEnchantments(stack, useRandom, registryAccess, player);
+            if (levelUps >= 1000) {
+                currentExp = 0;
+                break;
+            }
         }
 
         tag.putInt(KEY_MINING_EXPERIENCE, currentExp);
@@ -130,7 +140,13 @@ public class MythicPickaxeItem extends PickaxeItem {
     }
 
     private static void ensureInitialized(ItemStack stack, RandomSource random) {
-        CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        CustomData existingData = stack.get(DataComponents.CUSTOM_DATA);
+        if (existingData != null
+                && existingData.contains(KEY_MINING_LEVEL)
+                && existingData.contains(KEY_MINING_EXPERIENCE)) {
+            return;
+        }
+        CompoundTag tag = existingData == null ? new CompoundTag() : existingData.copyTag();
         boolean changed = false;
 
         if (!tag.contains(KEY_MINING_LEVEL)) {

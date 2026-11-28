@@ -1,5 +1,6 @@
 package cn.mcmod.tsuki.network;
 
+import cn.mcmod.tsuki.network.payload.CookingPotStackingPayload;
 import cn.mcmod.tsuki.network.payload.MagatamaBoostPayload;
 import cn.mcmod.tsuki.network.payload.ToggleMagatamaModePayload;
 import cn.mcmod.tsuki.network.payload.ConfigureLighthousePayload;
@@ -16,6 +17,8 @@ public final class TsukiNetwork {
         PayloadRegistrar registrar = event.registrar("1");
         registrar.playToServer(ToggleMagatamaModePayload.TYPE, ToggleMagatamaModePayload.STREAM_CODEC,
                 ToggleMagatamaModePayload::handle);
+        registrar.playToServer(CookingPotStackingPayload.TYPE, CookingPotStackingPayload.STREAM_CODEC,
+                CookingPotStackingPayload::handle);
         registrar.playToServer(MagatamaBoostPayload.TYPE, MagatamaBoostPayload.STREAM_CODEC,
                 MagatamaBoostPayload::handle);
         registrar.playToServer(ConfigureLighthousePayload.TYPE, ConfigureLighthousePayload.STREAM_CODEC,

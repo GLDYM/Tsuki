@@ -25,6 +25,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class StoneMortarRenderer implements BlockEntityRenderer<StoneMortarBlockEntity> {
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
+            "textures/block/mortar.png");
 
     private final ModelPart top;
     private final ModelPart bb_main;
@@ -65,8 +67,6 @@ public class StoneMortarRenderer implements BlockEntityRenderer<StoneMortarBlock
                 rotation = ((world.getGameTime() + partialTicks) * degreesPerTick) % 360.0F;
             }
             top.setRotation(0F, ((float) Math.PI * rotation) / 180.0F, 0F);
-            ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Tsuki.MODID,
-                    "textures/block/mortar.png");
             this.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entitySolid(TEXTURE)), combinedLight,
                     combinedOverlay);
             poseStack.popPose();

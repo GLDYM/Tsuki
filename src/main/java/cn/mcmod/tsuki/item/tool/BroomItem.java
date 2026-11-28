@@ -23,9 +23,13 @@ public class BroomItem extends ShovelItem {
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
         if (state.getBlock() instanceof FallenLeavesBlock) {
-            level.destroyBlock(pos, true);
-            level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-            context.getItemInHand().hurtAndBreak(1, context.getPlayer(), EquipmentSlot.MAINHAND);
+            if (!level.isClientSide) {
+                level.destroyBlock(pos, true);
+                level.playSound(null, pos, SoundEvents.GRASS_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if (context.getPlayer() != null) {
+                    context.getItemInHand().hurtAndBreak(1, context.getPlayer(), EquipmentSlot.MAINHAND);
+                }
+            }
             return InteractionResult.SUCCESS;
         }
         return super.useOn(context);

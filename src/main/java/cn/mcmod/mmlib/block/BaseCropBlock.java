@@ -39,7 +39,9 @@ public class BaseCropBlock extends CropBlock {
             LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
         if (direction == Direction.DOWN && !state.canSurvive(level, currentPos)) {
             if (neighborState.is(Blocks.DIRT)) {
-                level.setBlock(neighborPos, Blocks.FARMLAND.defaultBlockState(), 3);
+                if (!level.isClientSide()) {
+                    level.setBlock(neighborPos, Blocks.FARMLAND.defaultBlockState(), 3);
+                }
                 return state;
             }
             return Blocks.AIR.defaultBlockState();

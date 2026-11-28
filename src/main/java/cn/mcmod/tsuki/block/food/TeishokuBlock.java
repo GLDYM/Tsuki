@@ -75,6 +75,9 @@ public class TeishokuBlock extends Block {
         if (!player.canEat(false)) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         } else {
+            if (level.isClientSide()) {
+                return ItemInteractionResult.SUCCESS;
+            }
             player.getFoodData().eat(this.getFoodInfo().getAmount(), this.getFoodInfo().getCalories());
             int i = state.getValue(BITES);
             level.gameEvent(player, GameEvent.EAT, pos);

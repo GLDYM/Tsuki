@@ -22,6 +22,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.fluids.FluidStack;
 
+import java.util.Map;
+import java.util.WeakHashMap;
+
 public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEntity> {
 
     private static final int FLOATING_MIN_FLUID = 250;
@@ -33,6 +36,7 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
     private static final float FLUID_MAX_Y = 6.8F / 16.0F;
     private static final ResourceLocation FINISHED_TEXTURE = ResourceLocation.fromNamespaceAndPath("tsuki",
             "block/cooking_pot/default_finished");
+    private static final Map<CookingPotBlockEntity, SlotRandomCache> SLOT_RANDOM_CACHE = new WeakHashMap<>();
 
     public CookingPotRender(BlockEntityRendererProvider.Context pContext) {
     }
@@ -128,6 +132,8 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
         ItemRenderer renderer = Minecraft.getInstance().getItemRenderer();
         long now = System.currentTimeMillis();
         boolean shouldFloat = blockEntity.getFluidTank().getFluidAmount() >= FLOATING_MIN_FLUID;
+        SlotRandomCache randomCache = SLOT_RANDOM_CACHE.computeIfAbsent(blockEntity,
+                ignored -> new SlotRandomCache(CookingPotBlockEntity.SLOT_INPUT_COUNT));
 
         for (int slot = 0; slot < CookingPotBlockEntity.SLOT_INPUT_COUNT; slot++) {
             ItemStack stack = blockEntity.getInventory().getStackInSlot(CookingPotBlockEntity.SLOT_INPUT_START + slot);
@@ -135,7 +141,10 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
                 continue;
             }
 
-            int random = stack.hashCode();
+            // Cache the component hash (it is relatively expensive), but keep
+            // using it as the seed so each item keeps its own stable random
+            // float/rotation instead of becoming visually uniform.
+            int random = randomCache.getHash(slot, stack);
             long time = now + random;
             float offsetX = (random % 100) * 0.002F;
             float offsetZ = (random % 50) * 0.004F;
@@ -162,6 +171,25 @@ public class CookingPotRender implements BlockEntityRenderer<CookingPotBlockEnti
             renderer.renderStatic(stack, ItemDisplayContext.FIXED, combinedLight, combinedOverlay, poseStack, buffer,
                     blockEntity.getLevel(), posLong + slot);
             poseStack.popPose();
+        }
+    }
+
+    private static final class SlotRandomCache {
+        private final int[] hashes;
+        private final boolean[] initialized;
+
+        private SlotRandomCache(int size) {
+            this.hashes = new int[size];
+            this.initialized = new boolean[size];
+        }
+
+        private int getHash(int slot, ItemStack stack) {
+            int hash = stack.hashCode();
+            if (!this.initialized[slot] || this.hashes[slot] != hash) {
+                this.hashes[slot] = hash;
+                this.initialized[slot] = true;
+            }
+            return this.hashes[slot];
         }
     }
 

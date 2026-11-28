@@ -1,5 +1,9 @@
 {
   "values": [
-    "tsuki:green_tea_leaves"
+    "tsuki:green_tea_leaves",
+    {
+      "id": "youkaishomecoming:green_tea_leaves",
+      "required": false
+    }
   ]
 }
