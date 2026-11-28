@@ -83,35 +83,46 @@ public class ChoppingBoardBlock extends BaseEntityBlock {
                 }
                 if (heldStack.isEmpty()) {
                     return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-                } else if (board.addItem(player.getAbilities().instabuild ? heldStack.copy() : heldStack)) {
+                }
+                if (worldIn.isClientSide) {
+                    return ItemInteractionResult.sidedSuccess(true);
+                }
+                if (board.addItem(player.getAbilities().instabuild ? heldStack.copy() : heldStack)) {
                     worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_PLACE,
                             SoundSource.BLOCKS, 1.0F, 0.8F);
-                    return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
+                    return ItemInteractionResult.sidedSuccess(false);
                 }
 
             } else if (!heldStack.isEmpty()) {
+                if (worldIn.isClientSide) {
+                    return ItemInteractionResult.sidedSuccess(true);
+                }
                 ItemStack boardStack = board.getStoredItem().copy();
                 if (board.processStoredItemUsingTool(heldStack, player)) {
                     spawnCuttingParticles(worldIn, pos, boardStack, 5);
-                    return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
+                    return ItemInteractionResult.sidedSuccess(false);
                 }
                 return ItemInteractionResult.CONSUME;
             } else if (board.getRecipeTime() > 0) {
-                if (player != null)
+                if (!worldIn.isClientSide && player != null)
                     player.displayClientMessage(Component.translatable("tsuki.block.chopping_board.has_chopped"),
                             true);
                 return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
             } else if (handIn.equals(InteractionHand.MAIN_HAND)) {
+                if (worldIn.isClientSide) {
+                    return ItemInteractionResult.sidedSuccess(true);
+                }
                 if (!player.isCreative()) {
-                    if (!player.getInventory().add(board.removeItem())) {
-                        Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), board.removeItem());
+                    ItemStack removed = board.removeItem();
+                    if (!player.getInventory().add(removed)) {
+                        Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), removed);
                     }
                 } else {
                     board.removeItem();
                 }
                 worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_HIT, SoundSource.BLOCKS,
                         0.25F, 0.5F);
-                return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
+                return ItemInteractionResult.sidedSuccess(false);
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -119,7 +130,8 @@ public class ChoppingBoardBlock extends BaseEntityBlock {
 
     public static void spawnCuttingParticles(Level worldIn, BlockPos pos, ItemStack stack, int count) {
         for (int i = 0; i < count; ++i) {
-            Vec3 vec3d = new Vec3(((double) worldIn.random.nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D,
+            Vec3 vec3d = new Vec3(((double) worldIn.random.nextFloat() - 0.5D) * 0.1D,
+                    worldIn.random.nextDouble() * 0.1D + 0.1D,
                     ((double) worldIn.random.nextFloat() - 0.5D) * 0.1D);
             if (worldIn instanceof ServerLevel serverlevel) {
                 serverlevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack), pos.getX() + 0.5F,
@@ -135,7 +147,7 @@ public class ChoppingBoardBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = worldIn.getBlockEntity(pos);
-            if (blockEntity instanceof ChoppingBoardBlockEntity board) {
+            if (!worldIn.isClientSide && blockEntity instanceof ChoppingBoardBlockEntity board) {
                 Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), board.getStoredItem());
                 worldIn.updateNeighbourForOutputSignal(pos, this);
             }

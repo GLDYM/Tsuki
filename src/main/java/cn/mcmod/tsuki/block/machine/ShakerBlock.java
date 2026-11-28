@@ -199,6 +199,10 @@ public class ShakerBlock extends BaseEntityBlock {
             }
         }
 
+        if (level.isClientSide) {
+            return true;
+        }
+
         shaker.getInventory().setStackInSlot(emptySlot, storedIngredient);
         shaker.setShakeProgress(0);
 
@@ -253,7 +257,13 @@ public class ShakerBlock extends BaseEntityBlock {
 
     private boolean takeInputWithoutContainer(Level level, BlockPos pos, Player player, ShakerBlockEntity shaker) {
         int slot = findLastLooseInputSlot(shaker);
-        if (slot >= 0 && takeOne(shaker, player, slot, false)) {
+        if (slot < 0) {
+            return false;
+        }
+        if (level.isClientSide) {
+            return true;
+        }
+        if (takeOne(shaker, player, slot, false)) {
             level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.3F, 1.0F);
             return true;
         }

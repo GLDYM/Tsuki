@@ -1,0 +1,200 @@
+{
+  "values": {
+    "#tsuki:magatamas": [
+      { "aspect": "thaumaturge:praecantatio", "amount": 10 },
+      { "aspect": "thaumaturge:potentia", "amount": 5 },
+      { "aspect": "thaumaturge:lux", "amount": 3 }
+    ],
+    "#tsuki:tools/katanas": [
+      { "aspect": "thaumaturge:metallum", "amount": 10 },
+      { "aspect": "thaumaturge:instrumentum", "amount": 5 },
+      { "aspect": "thaumaturge:mortuus", "amount": 2 }
+    ],
+    "#tsuki:tools/knives/fish": [
+      { "aspect": "thaumaturge:metallum", "amount": 5 },
+      { "aspect": "thaumaturge:instrumentum", "amount": 3 }
+    ],
+    "#tsuki:tools/knives/noodle": [
+      { "aspect": "thaumaturge:metallum", "amount": 5 },
+      { "aspect": "thaumaturge:instrumentum", "amount": 3 }
+    ],
+    "#tsuki:kimono": [
+      { "aspect": "thaumaturge:fabrico", "amount": 10 },
+      { "aspect": "thaumaturge:herba", "amount": 3 }
+    ],
+    "#tsuki:haori": [
+      { "aspect": "thaumaturge:fabrico", "amount": 10 },
+      { "aspect": "thaumaturge:herba", "amount": 3 }
+    ],
+    "#tsuki:samurai_helmet": [
+      { "aspect": "thaumaturge:metallum", "amount": 8 },
+      { "aspect": "thaumaturge:praemunio", "amount": 4 }
+    ],
+    "#tsuki:samurai_chestplate": [
+      { "aspect": "thaumaturge:metallum", "amount": 8 },
+      { "aspect": "thaumaturge:praemunio", "amount": 4 }
+    ],
+    "#tsuki:samurai_leggings": [
+      { "aspect": "thaumaturge:metallum", "amount": 7 },
+      { "aspect": "thaumaturge:praemunio", "amount": 3 }
+    ],
+    "#tsuki:samurai_boots": [
+      { "aspect": "thaumaturge:metallum", "amount": 6 },
+      { "aspect": "thaumaturge:praemunio", "amount": 3 }
+    ],
+    "#tsuki:soldier_helmet": [
+      { "aspect": "thaumaturge:metallum", "amount": 5 },
+      { "aspect": "thaumaturge:praemunio", "amount": 3 }
+    ],
+    "#tsuki:soldier_chestplate": [
+      { "aspect": "thaumaturge:metallum", "amount": 5 },
+      { "aspect": "thaumaturge:praemunio", "amount": 3 }
+    ],
+    "#tsuki:soldier_leggings": [
+      { "aspect": "thaumaturge:metallum", "amount": 4 },
+      { "aspect": "thaumaturge:praemunio", "amount": 2 }
+    ],
+    "#tsuki:soldier_boots": [
+      { "aspect": "thaumaturge:metallum", "amount": 4 },
+      { "aspect": "thaumaturge:praemunio", "amount": 2 }
+    ],
+    "#tsuki:green_tea_leaves": [
+      { "aspect": "thaumaturge:herba", "amount": 5 },
+      { "aspect": "thaumaturge:aqua", "amount": 2 }
+    ],
+    "#tsuki:black_tea_leaves": [
+      { "aspect": "thaumaturge:herba", "amount": 5 },
+      { "aspect": "thaumaturge:ignis", "amount": 1 }
+    ],
+    "#tsuki:rice": [
+      { "aspect": "thaumaturge:herba", "amount": 3 },
+      { "aspect": "thaumaturge:victus", "amount": 2 }
+    ],
+    "#tsuki:fishcake": [
+      { "aspect": "thaumaturge:bestia", "amount": 3 },
+      { "aspect": "thaumaturge:aqua", "amount": 2 }
+    ],
+    "#tsuki:soups": [
+      { "aspect": "thaumaturge:aqua", "amount": 5 },
+      { "aspect": "thaumaturge:victus", "amount": 3 }
+    ],
+    "#tsuki:wine_bottles": [
+      { "aspect": "thaumaturge:aqua", "amount": 5 },
+      { "aspect": "thaumaturge:herba", "amount": 5 }
+    ],
+    "#tsuki:drink_glasses": [
+      { "aspect": "thaumaturge:vitreus", "amount": 5 }
+    ],
+    "#tsuki:drink_containers": [
+      { "aspect": "thaumaturge:vitreus", "amount": 2 },
+      { "aspect": "thaumaturge:metallum", "amount": 1 }
+    ],
+    "tsuki:bamboo": [
+      { "aspect": "thaumaturge:herba", "amount": 5 }
+    ],
+    "tsuki:bamboo_sunburnt": [
+      { "aspect": "thaumaturge:herba", "amount": 3 },
+      { "aspect": "thaumaturge:ignis", "amount": 2 }
+    ],
+    "tsuki:bamboo_block": [
+      { "aspect": "thaumaturge:herba", "amount": 10 }
+    ],
+    "tsuki:bamboo_block_sunburnt": [
+      { "aspect": "thaumaturge:herba", "amount": 5 },
+      { "aspect": "thaumaturge:ignis", "amount": 5 }
+    ],
+    "tsuki:bamboo_charcoal": [
+      { "aspect": "thaumaturge:ignis", "amount": 5 },
+      { "aspect": "thaumaturge:perditio", "amount": 1 }
+    ],
+    "tsuki:bamboo_charcoal_block": [
+      { "aspect": "thaumaturge:ignis", "amount": 20 },
+      { "aspect": "thaumaturge:perditio", "amount": 2 }
+    ],
+    "tsuki:sakura_diamond": [
+      { "aspect": "thaumaturge:vitreus", "amount": 10 },
+      { "aspect": "thaumaturge:lux", "amount": 5 },
+      { "aspect": "thaumaturge:praecantatio", "amount": 5 }
+    ],
+    "tsuki:sakura_diamond_ore": [
+      { "aspect": "thaumaturge:terra", "amount": 5 },
+      { "aspect": "thaumaturge:vitreus", "amount": 5 }
+    ],
+    "tsuki:deepslate_sakura_diamond_ore": [
+      { "aspect": "thaumaturge:terra", "amount": 5 },
+      { "aspect": "thaumaturge:vitreus", "amount": 5 },
+      { "aspect": "thaumaturge:tenebrae", "amount": 2 }
+    ],
+    "tsuki:sakura_diamond_block": [
+      { "aspect": "thaumaturge:vitreus", "amount": 20 },
+      { "aspect": "thaumaturge:lux", "amount": 10 }
+    ],
+    "tsuki:iron_sand": [
+      { "aspect": "thaumaturge:metallum", "amount": 5 },
+      { "aspect": "thaumaturge:terra", "amount": 2 }
+    ],
+    "tsuki:straw": [
+      { "aspect": "thaumaturge:herba", "amount": 5 }
+    ],
+    "tsuki:silk": [
+      { "aspect": "thaumaturge:fabrico", "amount": 5 },
+      { "aspect": "thaumaturge:bestia", "amount": 2 }
+    ],
+    "tsuki:shrimp": [
+      { "aspect": "thaumaturge:bestia", "amount": 3 },
+      { "aspect": "thaumaturge:aqua", "amount": 3 }
+    ],
+    "tsuki:chestnut": [
+      { "aspect": "thaumaturge:herba", "amount": 3 }
+    ],
+    "tsuki:maple_syrup": [
+      { "aspect": "thaumaturge:herba", "amount": 3 },
+      { "aspect": "thaumaturge:aqua", "amount": 2 }
+    ],
+    "tsuki:sake_kasu": [
+      { "aspect": "thaumaturge:aqua", "amount": 2 },
+      { "aspect": "thaumaturge:herba", "amount": 2 }
+    ],
+    "tsuki:mirin_kasu": [
+      { "aspect": "thaumaturge:aqua", "amount": 2 },
+      { "aspect": "thaumaturge:herba", "amount": 2 }
+    ],
+    "tsuki:kouji": [
+      { "aspect": "thaumaturge:herba", "amount": 2 },
+      { "aspect": "thaumaturge:alkimia", "amount": 2 }
+    ],
+    "tsuki:yeast": [
+      { "aspect": "thaumaturge:victus", "amount": 2 }
+    ],
+    "tsuki:miso": [
+      { "aspect": "thaumaturge:herba", "amount": 3 },
+      { "aspect": "thaumaturge:aqua", "amount": 2 }
+    ],
+    "tsuki:soysauce": [
+      { "aspect": "thaumaturge:aqua", "amount": 3 }
+    ],
+    "tsuki:mirin": [
+      { "aspect": "thaumaturge:aqua", "amount": 3 },
+      { "aspect": "thaumaturge:herba", "amount": 2 }
+    ],
+    "tsuki:vinegar": [
+      { "aspect": "thaumaturge:aqua", "amount": 3 },
+      { "aspect": "thaumaturge:alkimia", "amount": 2 }
+    ],
+    "tsuki:salt": [
+      { "aspect": "thaumaturge:terra", "amount": 3 },
+      { "aspect": "thaumaturge:aqua", "amount": 1 }
+    ],
+    "tsuki:nuka": [
+      { "aspect": "thaumaturge:herba", "amount": 2 }
+    ],
+    "tsuki:charcoal_powder": [
+      { "aspect": "thaumaturge:ignis", "amount": 3 },
+      { "aspect": "thaumaturge:perditio", "amount": 1 }
+    ],
+    "tsuki:sakura_coin": [
+      { "aspect": "thaumaturge:metallum", "amount": 5 },
+      { "aspect": "thaumaturge:desiderium", "amount": 3 }
+    ]
+  }
+}

@@ -61,6 +61,9 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
     }
 
     public static void workingTick(Level level, BlockPos pos, BlockState state, StoneMortarBlockEntity blockEntity) {
+        if (level.isClientSide()) {
+            return;
+        }
         boolean didInventoryChange = false;
         boolean isWorking = false;
 
@@ -166,7 +169,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
                 ItemStack outStack = inventory.getStackInSlot(4);
                 if (outStack.isEmpty()) {
                     check_extra = true;
-                } else if (!ItemStack.isSameItem(outStack, resultStack)) {
+                } else if (!ItemStack.isSameItemSameComponents(outStack, resultStack)) {
                     return false;
                 } else {
                     check_extra = outStack.getCount() + resultStack.getCount() <= resultStack.getMaxStackSize();
@@ -180,7 +183,7 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
                     ItemStack extraStack = inventory.getStackInSlot(5);
                     if (extraStack.isEmpty()) {
                         return true;
-                    } else if (!ItemStack.isSameItem(extraStack, resultExtraStack)) {
+                    } else if (!ItemStack.isSameItemSameComponents(extraStack, resultExtraStack)) {
                         return false;
                     } else {
                         return extraStack.getCount() + resultExtraStack.getCount() <= resultExtraStack
@@ -222,13 +225,13 @@ public class StoneMortarBlockEntity extends SyncedBlockEntity implements MenuPro
                 : ItemStack.EMPTY;
         if (outStack.isEmpty()) {
             inventory.setStackInSlot(4, resultStack.copy());
-        } else if (ItemStack.isSameItem(outStack, resultStack)) {
+        } else if (ItemStack.isSameItemSameComponents(outStack, resultStack)) {
             outStack.grow(resultStack.getCount());
         }
         if (!resultExtraStack.isEmpty()) {
             if (extraStack.isEmpty()) {
                 inventory.setStackInSlot(5, resultExtraStack.copy());
-            } else if (ItemStack.isSameItem(extraStack, resultExtraStack)) {
+            } else if (ItemStack.isSameItemSameComponents(extraStack, resultExtraStack)) {
                 extraStack.grow(resultExtraStack.getCount());
             }
         }

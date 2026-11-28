@@ -24,7 +24,7 @@ public class EffectEvent {
         }
 
         if (player.hasEffect(MobEffectRegistry.FIRE_BLADE)) {
-            event.getEntity().igniteForSeconds(600);
+            event.getEntity().igniteForSeconds(30);
         }
 
         if (player.hasEffect(MobEffectRegistry.POISONING)) {

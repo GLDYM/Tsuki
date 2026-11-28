@@ -21,7 +21,7 @@ public class MapleTreeSapLogBlock extends RotatedPillarBlock {
         super(BlockBehaviour.Properties.of().mapColor(
                 state -> (state.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MapColor.WOOD
                         : MapColor.PODZOL))
-                .strength(2.0F).sound(SoundType.WOOD));
+                .strength(2.0F).sound(SoundType.WOOD).randomTicks());
         this.registerDefaultState(this.defaultBlockState().setValue(EXHAUSTION, false));
     }
 

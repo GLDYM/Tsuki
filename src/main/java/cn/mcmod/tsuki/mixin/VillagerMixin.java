@@ -46,7 +46,7 @@ public abstract class VillagerMixin extends AbstractVillager {
             if (listings != null) {
                 VillagerTrades.ItemListing[] selected = TsukiVillagerTrades
                         .selectFourWithAtLeastOneBuy((Villager) (Object) this, listings, this.random);
-                MerchantOffers offers = this.offers;
+                MerchantOffers offers = this.getOffers();
                 this.addOffersFromItemListings(offers, selected, Math.min(4, selected.length));
             }
         }

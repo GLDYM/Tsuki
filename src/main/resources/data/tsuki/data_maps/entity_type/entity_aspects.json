@@ -1,0 +1,9 @@
+{
+  "values": {
+    "tsuki:samurai_illager": [
+      { "aspect": "thaumaturge:humanus", "amount": 5 },
+      { "aspect": "thaumaturge:mortuus", "amount": 5 },
+      { "aspect": "thaumaturge:instrumentum", "amount": 5 }
+    ]
+  }
+}

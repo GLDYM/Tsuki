@@ -321,20 +321,20 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "papers_from_lumbers"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
+                .requires(TsukiItemTags.GREEN_TEA_LEAVES)
                 .unlockedBy("has_green_tea_leaves",
                         has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "black_tea_leaves"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.EARL_GREY_LEAVES).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get())
+                .requires(TsukiItemTags.BLACK_TEA_LEAVES)
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
                 .unlockedBy("has_black_tea_leaves",
                         has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "earl_grey_leaves"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.FRUIT_TEA_LEAVES).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get())
+                .requires(TsukiItemTags.BLACK_TEA_LEAVES)
                 .requires(TsukiItemTags.FRUITS)
                 .requires(TsukiItemTags.FRUITS)
                 .unlockedBy("has_black_tea_leaves",
@@ -342,7 +342,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "fruit_tea_leaves"));
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MINT_TEA_LEAVES).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
+                .requires(TsukiItemTags.GREEN_TEA_LEAVES)
                 .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MINT).get())
                 .unlockedBy("has_green_tea_leaves",
                         has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get()))
@@ -350,7 +350,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, ItemRegistry.MATERIALS.get(TsukiNormalItemSet.RICE_TEA_LEAVES).get())
                 .requires(TsukiItemTags.RICE_BROWN)
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
+                .requires(TsukiItemTags.GREEN_TEA_LEAVES)
                 .unlockedBy("has_green_tea_leaves",
                         has(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get()))
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "rice_tea_leaves"));
@@ -2018,7 +2018,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "flour_rice_from_mortar"));
         StoneMortarRecipeBuilder.mortar(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get(), 3)
                 .addResult(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.MOCHA).get(), 3)
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get(), 4)
+                .requires(TsukiItemTags.GREEN_TEA_LEAVES, 4)
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "mocha_from_mortar"));
     }
 
@@ -3380,14 +3380,14 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder
                 .cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                         DrinkRegistry.TEAS.get(TsukiTeaSet.GREEN_TEA).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
+                .requires(TsukiItemTags.GREEN_TEA_LEAVES)
                 .container(DrinkRegistry.CUP.get())
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "green_tea_cooking"));
 
         CookingPotRecipeBuilder
                 .cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                         DrinkRegistry.TEAS.get(TsukiTeaSet.BLACK_TEA).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get())
+                .requires(TsukiItemTags.BLACK_TEA_LEAVES)
                 .container(DrinkRegistry.CUP.get())
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "black_tea_cooking"));
 
@@ -3430,7 +3430,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder
                 .cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                         DrinkRegistry.TEAS.get(TsukiTeaSet.MILK_TEA).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get())
+                .requires(TsukiItemTags.BLACK_TEA_LEAVES)
                 .requires(TsukiItemTags.MILK)
                 .container(DrinkRegistry.CUP.get())
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "milk_tea_cooking"));
@@ -3438,7 +3438,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder
                 .cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                         DrinkRegistry.TEAS.get(TsukiTeaSet.MILK_GREEN_TEA).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
+                .requires(TsukiItemTags.GREEN_TEA_LEAVES)
                 .requires(TsukiItemTags.MILK)
                 .container(DrinkRegistry.CUP.get())
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "milk_green_tea_cooking"));
@@ -3462,7 +3462,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder
                 .cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                         DrinkRegistry.TEAS.get(TsukiTeaSet.LEMON_BLACK_TEA).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get())
+                .requires(TsukiItemTags.BLACK_TEA_LEAVES)
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
                 .container(DrinkRegistry.CUP.get())
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "lemon_black_tea_cooking"));
@@ -3470,7 +3470,7 @@ public class TsukiRecipeProvider extends AbstractRecipeProvider {
         CookingPotRecipeBuilder
                 .cooking(FluidIngredient.fromTag(TsukiFluidTags.WATER_WATER, 125),
                         DrinkRegistry.TEAS.get(TsukiTeaSet.LEMON_GREEN_TEA).get())
-                .requires(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
+                .requires(TsukiItemTags.GREEN_TEA_LEAVES)
                 .requires(FoodRegistry.FOODSET.get(TsukiFoodSet.LEMON).get())
                 .container(DrinkRegistry.CUP.get())
                 .save(consumer, ResourceLocation.fromNamespaceAndPath(Tsuki.MODID, "lemon_green_tea_cooking"));

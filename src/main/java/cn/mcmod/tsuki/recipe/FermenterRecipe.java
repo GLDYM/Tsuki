@@ -26,21 +26,21 @@ public class FermenterRecipe extends AbstractRecipe {
 
     @Expose
     @SerializedName("ingredients")
-    public NonNullList<Ingredient> inputItems;
+    public NonNullList<Ingredient> inputItems = NonNullList.create();
     @Expose
     @SerializedName("fluid")
-    public FluidIngredient inputFluid;
+    public FluidIngredient inputFluid = FluidIngredient.EMPTY;
 
     @Expose
     @SerializedName("results")
-    public NonNullList<ItemStack> outputItems;
+    public NonNullList<ItemStack> outputItems = NonNullList.create();
     @Expose
     @SerializedName("result_fluid")
-    public FluidStack outputFluid;
+    public FluidStack outputFluid = FluidStack.EMPTY;
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return this.inputItems;
+        return this.inputItems == null ? NonNullList.create() : this.inputItems;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class FermenterRecipe extends AbstractRecipe {
     }
 
     public FluidIngredient getRequiredFluid() {
-        return inputFluid;
+        return inputFluid == null ? FluidIngredient.EMPTY : inputFluid;
     }
 
     public boolean matchesWithFluid(FluidStack fluid, RecipeWrapper inv, Level worldIn) {
@@ -74,9 +74,8 @@ public class FermenterRecipe extends AbstractRecipe {
 
     @Override
     public ItemStack assemble(RecipeWrapper inv, HolderLookup.Provider registries) {
-        if (this.outputItems.size() > 0)
-            return this.outputItems.get(0).copy();
-        return ItemStack.EMPTY;
+        NonNullList<ItemStack> results = this.getResultItemList();
+        return results.isEmpty() ? ItemStack.EMPTY : results.get(0).copy();
     }
 
     @Override
@@ -86,17 +85,16 @@ public class FermenterRecipe extends AbstractRecipe {
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries) {
-        if (this.outputItems.size() > 0)
-            return this.outputItems.get(0);
-        return ItemStack.EMPTY;
+        NonNullList<ItemStack> results = this.getResultItemList();
+        return results.isEmpty() ? ItemStack.EMPTY : results.get(0);
     }
 
     public NonNullList<ItemStack> getResultItemList() {
-        return this.outputItems;
+        return this.outputItems == null ? NonNullList.create() : this.outputItems;
     }
 
     public FluidStack getResultFluid() {
-        return outputFluid;
+        return outputFluid == null ? FluidStack.EMPTY : outputFluid;
     }
 
     public int getRecipeTime() {

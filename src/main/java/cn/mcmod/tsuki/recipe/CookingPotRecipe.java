@@ -25,20 +25,20 @@ public class CookingPotRecipe extends AbstractRecipe {
     public int recipeTime;
     @Expose
     @SerializedName("ingredients")
-    public NonNullList<Ingredient> inputItems;
+    public NonNullList<Ingredient> inputItems = NonNullList.create();
     @Expose
     @SerializedName("fluid")
-    public FluidIngredient fluidInput;
+    public FluidIngredient fluidInput = FluidIngredient.EMPTY;
     @Expose
     @SerializedName("result")
-    public ItemStack output;
+    public ItemStack output = ItemStack.EMPTY;
     @Expose
     @SerializedName("container")
     public ItemStack container = ItemStack.EMPTY;
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return this.inputItems;
+        return this.inputItems == null ? NonNullList.create() : this.inputItems;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class CookingPotRecipe extends AbstractRecipe {
     }
 
     public FluidIngredient getRequiredFluid() {
-        return fluidInput;
+        return fluidInput == null ? FluidIngredient.EMPTY : fluidInput;
     }
 
     public ItemStack getContainer() {
@@ -84,7 +84,7 @@ public class CookingPotRecipe extends AbstractRecipe {
 
     @Override
     public ItemStack assemble(RecipeWrapper inv, HolderLookup.Provider registries) {
-        return this.output.copy();
+        return this.getResultItem(registries).copy();
     }
 
     @Override
@@ -94,7 +94,7 @@ public class CookingPotRecipe extends AbstractRecipe {
 
     @Override
     public ItemStack getResultItem(HolderLookup.Provider registries) {
-        return this.output;
+        return this.output == null ? ItemStack.EMPTY : this.output;
     }
 
     @Override

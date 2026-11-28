@@ -44,8 +44,10 @@ public class TeishokuFinishedBlock extends Block {
 
     private ItemInteractionResult takePlates(Level worldIn, BlockPos pos, BlockState state, Player player,
             InteractionHand handIn) {
-        worldIn.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
-        worldIn.destroyBlock(pos, true);
+        if (!worldIn.isClientSide) {
+            worldIn.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.PLAYERS, 0.8F, 0.8F);
+            worldIn.destroyBlock(pos, true);
+        }
         return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
     }
 

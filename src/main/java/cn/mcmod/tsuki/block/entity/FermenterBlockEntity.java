@@ -77,6 +77,9 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
     public static void workingTick(Level level, BlockPos pos, BlockState state, FermenterBlockEntity blockEntity) {
+        if (level.isClientSide()) {
+            return;
+        }
         boolean didInventoryChange = false;
         if (blockEntity.hasInput()) {
             Optional<FermenterRecipe> recipe = blockEntity.getMatchingRecipe(blockEntity.recipeWrapper);
@@ -141,39 +144,43 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
     }
 
     protected boolean canWork(FermenterRecipe recipe) {
-        if (hasInput()) {
-            NonNullList<ItemStack> resultStacks = recipe.getResultItemList();
-            boolean fluid_flag = !(recipe.getResultFluid().isEmpty());
-            FluidTank outTank = this.outputfluidTank;
-            fluid_flag = (FluidStack.isSameFluidSameComponents(outTank.getFluid(), recipe.getResultFluid())
-                    && outTank.getSpace() >= recipe.getResultFluid().getAmount())
-                    && outTank.getSpace() >= recipe.getResultFluid().getAmount()
-                    || outTank.isEmpty()
-                    || recipe.getResultFluid().isEmpty();
-            if (resultStacks.size() <= 0) {
-                return fluid_flag && recipe.getRequiredFluid() != FluidIngredient.EMPTY;
-            } else {
-                boolean flag = true;
-                for (int i = 3; i < resultStacks.size() + 3; i++) {
-                    if (!flag)
-                        break;
-                    ItemStack resultStack = resultStacks.get(i - 3);
-                    ItemStack outputStack = inventory.getStackInSlot(i);
-                    if (outputStack.isEmpty()) {
-                        flag = true;
-                    } else if (!ItemStack.isSameItem(outputStack, resultStack)) {
-                        flag = false;
-                    } else if (outputStack.getCount() + resultStack.getCount() <= inventory.getSlotLimit(i)) {
-                        flag = true;
-                    } else {
-                        flag = outputStack.getCount() + resultStack.getCount() <= resultStack.getMaxStackSize();
-                    }
-                }
-                return fluid_flag && flag;
-            }
-        } else {
+        if (!hasInput()) {
             return false;
         }
+
+        NonNullList<ItemStack> resultStacks = recipe.getResultItemList();
+        if (resultStacks.size() > 3) {
+            // The block exposes only three output slots; refuse oversized
+            // datapack recipes instead of indexing past the inventory.
+            return false;
+        }
+
+        FluidStack resultFluid = recipe.getResultFluid();
+        FluidTank outTank = this.outputfluidTank;
+        boolean fluidFlag = resultFluid.isEmpty()
+                || (outTank.isEmpty() && outTank.getCapacity() >= resultFluid.getAmount())
+                || (FluidStack.isSameFluidSameComponents(outTank.getFluid(), resultFluid)
+                        && outTank.getSpace() >= resultFluid.getAmount());
+
+        if (resultStacks.isEmpty()) {
+            return fluidFlag && recipe.getRequiredFluid() != FluidIngredient.EMPTY;
+        }
+
+        boolean flag = true;
+        for (int i = 3; i < resultStacks.size() + 3 && flag; i++) {
+            ItemStack resultStack = resultStacks.get(i - 3);
+            ItemStack outputStack = inventory.getStackInSlot(i);
+            if (outputStack.isEmpty()) {
+                flag = true;
+            } else if (!ItemStack.isSameItemSameComponents(outputStack, resultStack)) {
+                flag = false;
+            } else if (outputStack.getCount() + resultStack.getCount() <= inventory.getSlotLimit(i)) {
+                flag = true;
+            } else {
+                flag = outputStack.getCount() + resultStack.getCount() <= resultStack.getMaxStackSize();
+            }
+        }
+        return fluidFlag && flag;
     }
 
     private boolean processRecipe(FermenterRecipe recipe) {
@@ -190,11 +197,12 @@ public class FermenterBlockEntity extends SyncedBlockEntity implements MenuProvi
         recipeTime = 0;
 
         NonNullList<ItemStack> resultStacks = recipe.getResultItemList();
-        for (int i = 3; i < resultStacks.size() + 3; i++) {
+        int resultCount = Math.min(resultStacks.size(), 3);
+        for (int i = 3; i < resultCount + 3; i++) {
             ItemStack outStack = inventory.getStackInSlot(i);
             if (outStack.isEmpty()) {
                 inventory.setStackInSlot(i, resultStacks.get(i - 3).copy());
-            } else if (ItemStack.isSameItem(outStack, resultStacks.get(i - 3))) {
+            } else if (ItemStack.isSameItemSameComponents(outStack, resultStacks.get(i - 3))) {
                 outStack.grow(resultStacks.get(i - 3).getCount());
             }
         }

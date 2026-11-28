@@ -15,7 +15,6 @@ import cn.mcmod.tsuki.client.particle.ParticleRegistry;
 import cn.mcmod.tsuki.compat.farmersdelight.FDCookingPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCPotCompat;
 import cn.mcmod.tsuki.compat.kaleidoscope.KCCookingPotCompat;
-import cn.mcmod.tsuki.config.TsukiClientConfig;
 import cn.mcmod.tsuki.container.CookingPotContainer;
 import cn.mcmod.tsuki.init.ItemDataComponentRegistry;
 import cn.mcmod.tsuki.init.RecipeTypeRegistry;
@@ -23,6 +22,7 @@ import cn.mcmod.tsuki.init.block.BlockEntityRegistry;
 import cn.mcmod.tsuki.init.block.BlockRegistry;
 import cn.mcmod.tsuki.init.item.BlockItemRegistry;
 import cn.mcmod.tsuki.item.component.ItemStackWrapper;
+import cn.mcmod.tsuki.network.payload.CookingPotStackingPayload;
 import cn.mcmod.tsuki.recipe.CookingPotRecipe;
 import cn.mcmod.mmlib.block.entity.HeatableBlockEntity;
 import cn.mcmod.mmlib.block.entity.SyncedBlockEntity;
@@ -99,6 +99,9 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     }
 
     public static void workingTick(Level level, BlockPos pos, BlockState state, CookingPotBlockEntity blockEntity) {
+        if (level.isClientSide()) {
+            return;
+        }
         boolean wasWorking = blockEntity.isWorking();
         boolean didInventoryChange = false;
         if (blockEntity.isHeated(level, pos) && blockEntity.hasInput()) {
@@ -214,7 +217,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 ItemStack outputStack = inventory.getStackInSlot(SLOT_MEAL_DISPLAY);
                 if (outputStack.isEmpty()) {
                     return true;
-                } else if (!ItemStack.isSameItem(outputStack, resultStack)) {
+                } else if (!ItemStack.isSameItemSameComponents(outputStack, resultStack)) {
                     return false;
                 } else if (!ItemStack.isSameItemSameComponents(this.mealContainer, requiredContainer)) {
                     return false;
@@ -250,7 +253,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
         if (outStack.isEmpty()) {
             inventory.setStackInSlot(SLOT_MEAL_DISPLAY, resultStack.copy());
             this.mealContainer = recipeContainer.copy();
-        } else if (ItemStack.isSameItem(outStack, resultStack)) {
+        } else if (ItemStack.isSameItemSameComponents(outStack, resultStack)) {
             outStack.grow(resultStack.getCount());
         }
         if (recipe.getRequiredFluid() != FluidIngredient.EMPTY)
@@ -455,7 +458,7 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
                 ItemStack remaining = inventory.insertItem(i, single, false);
                 inserted = remaining.isEmpty();
             }
-            if (TsukiClientConfig.ALLOW_COOKING_POT_INPUT_STACKING.get()) {
+            if (player.getPersistentData().getBoolean(CookingPotStackingPayload.KEY)) {
                 for (int i = SLOT_INPUT_START; i < SLOT_INPUT_START + SLOT_INPUT_COUNT && !inserted; ++i) {
                     if (inventory.getStackInSlot(i).isEmpty()) {
                         continue;
@@ -612,21 +615,24 @@ public class CookingPotBlockEntity extends SyncedBlockEntity implements MenuProv
     protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
         super.applyImplicitComponents(componentInput);
         this.inventory.setStackInSlot(SLOT_MEAL_DISPLAY,
-                componentInput.getOrDefault(ItemDataComponentRegistry.MEAL.get(), ItemStackWrapper.EMPTY).getStack());
+                componentInput.getOrDefault(ItemDataComponentRegistry.MEAL.get(), ItemStackWrapper.EMPTY).getStack()
+                        .copy());
         this.mealContainer = componentInput
                 .getOrDefault(ItemDataComponentRegistry.CONTAINER.get(), ItemStackWrapper.EMPTY)
-                .getStack();
+                .getStack().copy();
     }
 
     @Override
     protected void collectImplicitComponents(DataComponentMap.Builder components) {
         super.collectImplicitComponents(components);
-        if (!getMeal().isEmpty()) {
-            components.set(ItemDataComponentRegistry.MEAL.get(), new ItemStackWrapper(getMeal()));
+        ItemStack meal = getMeal();
+        if (!meal.isEmpty()) {
+            components.set(ItemDataComponentRegistry.MEAL.get(), new ItemStackWrapper(meal.copy()));
         }
-        if (!getServingContainerForMeal(getMeal()).isEmpty()) {
+        ItemStack servingContainer = getServingContainerForMeal(meal);
+        if (!servingContainer.isEmpty()) {
             components.set(ItemDataComponentRegistry.CONTAINER.get(),
-                    new ItemStackWrapper(getServingContainerForMeal(getMeal())));
+                    new ItemStackWrapper(servingContainer.copy()));
         }
     }
 

@@ -1,5 +1,29 @@
 # Changelog
 
+# Tsuki Unreleased
+
+## Feature
+
+- Furnace fuel values now come from the `neoforge:furnace_fuels` data map
+  - Data packs can now override or extend these values
+
+## Change
+
+- Yata No Kagami noclip no longer redirects `Player#isSpectator()`
+  - Re-implemented through `aiStep`, `touch` and `updatePlayerPose` hooks
+  - Fixes conflicts with other mods that redirect the same method
+
+## Compat
+
+- Youkai's Homecoming (unofficial 1.21.1 port)
+  - Green and black tea leaves are now interchangeable through `c:tea_leaves/green` and `c:tea_leaves/black`
+  - Tsuki tea recipes now use the tea leaf tags, so Youkai's Homecoming tea leaves can be used in them
+- Crabber's Delight
+  - Tsuki shrimp is now part of `crabbersdelight:raw_seafood`
+  - Crabber's Delight shrimp is now accepted by Tsuki's `c:shrimp` recipes
+- Thaumaturge 
+  - Aspect data for Tsuki's items and the Samurai Illager
+
 # Tsuki 1.9.1
 
 Most of changes were dome by [rianfalltwilight-lab](https://www.curseforge.com/members/rianfalltwilight)

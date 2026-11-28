@@ -267,7 +267,8 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
                 .forEach(bottle -> this.tag(TsukiItemTags.DRINK_CONTAINERS).add(bottle.get()));
         DrinkRegistry.WINE_BOTTLES.values().forEach(bottle -> this.tag(TsukiItemTags.WINE_BOTTLES).add(bottle.get()));
         this.tag(TsukiItemTags.NATTO).add(FoodRegistry.FOODSET.get(TsukiFoodSet.NATTO).get());
-        this.tag(TsukiItemTags.SHRIMP).add(FoodRegistry.FOODSET.get(TsukiFoodSet.SHRIMP).get());
+        this.tag(TsukiItemTags.SHRIMP).add(FoodRegistry.FOODSET.get(TsukiFoodSet.SHRIMP).get())
+                .addOptional(ResourceLocation.parse("crabbersdelight:shrimp"));
         this.tag(TsukiItemTags.FISHCAKE)
                 .add(FoodRegistry.FOODSET.get(TsukiFoodSet.FISHCAKE).get())
                 .add(FoodRegistry.FOODSET.get(TsukiFoodSet.CHIKUWA).get())
@@ -307,9 +308,11 @@ public class TsukiItemTagsProvider extends ItemTagsProvider {
         this.tag(TsukiItemTags.CROPS_GRAPE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.GRAPE).get());
         this.tag(TsukiItemTags.CROPS_HOP).add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.HOP).get());
         this.tag(TsukiItemTags.GREEN_TEA_LEAVES)
-                .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get());
+                .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.GREEN_TEA_LEAVES).get())
+                .addOptional(ResourceLocation.parse("youkaishomecoming:green_tea_leaves"));
         this.tag(TsukiItemTags.BLACK_TEA_LEAVES)
-                .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get());
+                .add(ItemRegistry.MATERIALS.get(TsukiNormalItemSet.BLACK_TEA_LEAVES).get())
+                .addOptional(ResourceLocation.parse("youkaishomecoming:black_tea_leaves"));
         this.tag(TsukiItemTags.CROPS_RICE).add(ItemRegistry.RICE_SEEDS.get());
         this.tag(TsukiItemTags.CROPS_TARO).add(ItemRegistry.TARO.get());
         this.tag(TsukiItemTags.VEGETABLES_CABBAGE).add(FoodRegistry.FOODSET.get(TsukiFoodSet.CABBAGE).get());

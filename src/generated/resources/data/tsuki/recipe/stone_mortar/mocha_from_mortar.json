@@ -3,7 +3,7 @@
   "experience": 0,
   "ingredient": {
     "count": 4,
-    "item": "tsuki:green_tea_leaves"
+    "tag": "tsuki:green_tea_leaves"
   },
   "recipeTime": 200,
   "results": [

@@ -87,23 +87,31 @@ public class ObonBlock extends BaseEntityBlock {
                 }
                 if (heldStack.isEmpty()) {
                     return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-                } else if (obon.addItem(player.getAbilities().instabuild ? heldStack.copy() : heldStack)) {
+                }
+                if (worldIn.isClientSide) {
+                    return ItemInteractionResult.sidedSuccess(true);
+                }
+                if (obon.addItem(player.getAbilities().instabuild ? heldStack.copy() : heldStack)) {
                     worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_PLACE,
                             SoundSource.BLOCKS, 1.0F, 0.8F);
-                    return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
+                    return ItemInteractionResult.sidedSuccess(false);
                 }
 
             } else if (handIn.equals(InteractionHand.MAIN_HAND)) {
+                if (worldIn.isClientSide) {
+                    return ItemInteractionResult.sidedSuccess(true);
+                }
                 if (!player.isCreative()) {
-                    if (!player.getInventory().add(obon.removeItem())) {
-                        Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), obon.removeItem());
+                    ItemStack removed = obon.removeItem();
+                    if (!player.getInventory().add(removed)) {
+                        Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), removed);
                     }
                 } else {
                     obon.removeItem();
                 }
                 worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WOOD_HIT, SoundSource.BLOCKS,
                         0.25F, 0.5F);
-                return ItemInteractionResult.sidedSuccess(worldIn.isClientSide);
+                return ItemInteractionResult.sidedSuccess(false);
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
@@ -113,7 +121,7 @@ public class ObonBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = worldIn.getBlockEntity(pos);
-            if (blockEntity instanceof ObonBlockEntity obon) {
+            if (!worldIn.isClientSide && blockEntity instanceof ObonBlockEntity obon) {
                 Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), obon.getStoredItem());
                 worldIn.updateNeighbourForOutputSignal(pos, this);
             }

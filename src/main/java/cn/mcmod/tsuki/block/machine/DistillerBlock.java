@@ -21,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -87,6 +88,13 @@ public class DistillerBlock extends BaseEntityBlock {
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         return state.getValue(TRAY_SUPPORT) ? SHAPE_WITH_TRAY : Shapes.block();
+    }
+
+    @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
+            LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
+        BlockState belowBlock = level.getBlockState(currentPos.below());
+        return state.setValue(TRAY_SUPPORT, belowBlock.is(TsukiBlockTags.TRAY_HEAT_SOURCES));
     }
 
     @Override

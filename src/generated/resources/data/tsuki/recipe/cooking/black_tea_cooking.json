@@ -10,7 +10,7 @@
   },
   "ingredients": [
     {
-      "item": "tsuki:black_tea_leaves"
+      "tag": "tsuki:black_tea_leaves"
     }
   ],
   "recipeTime": 200,
